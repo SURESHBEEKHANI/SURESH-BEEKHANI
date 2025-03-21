@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Database, Laptop, Network, Terminal, Brain } from 'lucide-react';
+import { Database, Laptop, Network, Terminal, Brain, Eye } from 'lucide-react';
 
 interface Skill {
   category: string;
@@ -74,6 +74,15 @@ const Skills = () => {
       ],
     },
     {
+      category: 'Computer Vision',
+      items: [
+        { name: 'OpenCV', level: 88 },
+        { name: 'YOLO', level: 85 },
+        { name: 'Image Segmentation', level: 82 },
+        { name: 'CNN Architectures', level: 90 },
+      ],
+    },
+    {
       category: 'Visualization',
       items: [
         { name: 'Tableau', level: 90 },
@@ -106,7 +115,8 @@ const Skills = () => {
                 {groupIndex === 0 && <Terminal className="text-primary mr-3 h-5 w-5" />}
                 {groupIndex === 1 && <Laptop className="text-primary mr-3 h-5 w-5" />}
                 {groupIndex === 2 && <Brain className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 3 && <Network className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 3 && <Eye className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 4 && <Network className="text-primary mr-3 h-5 w-5" />}
                 <h3 className="text-xl font-display font-semibold">{skillGroup.category}</h3>
               </div>
               
