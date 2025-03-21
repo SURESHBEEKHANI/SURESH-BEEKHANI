@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -40,6 +40,13 @@ const Contact = () => {
       setIsSubmitting(false);
     }, 1500);
   };
+  
+  const socialLinks = [
+    { name: 'Github', icon: <Github className="h-5 w-5" />, url: 'https://github.com/datasciencepro' },
+    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://linkedin.com/in/datasciencepro' },
+    { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, url: 'https://twitter.com/datasciencepro' },
+    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, url: 'https://instagram.com/datasciencepro' },
+  ];
   
   const contactInfo = [
     {
@@ -103,14 +110,16 @@ const Contact = () => {
               <div className="mt-12">
                 <h4 className="font-semibold mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
-                  {['github', 'linkedin', 'twitter', 'medium'].map((social) => (
+                  {socialLinks.map((social) => (
                     <a
-                      key={social}
-                      href="#"
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="bg-primary/10 rounded-full p-3 text-primary hover:bg-primary hover:text-white transition-colors"
+                      aria-label={social.name}
                     >
-                      <span className="sr-only">{social}</span>
-                      <i className={`fab fa-${social}`}></i>
+                      {social.icon}
                     </a>
                   ))}
                 </div>

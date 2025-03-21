@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -9,6 +9,13 @@ const Footer = () => {
       behavior: 'smooth'
     });
   };
+  
+  const socialLinks = [
+    { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/datasciencepro' },
+    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/datasciencepro' },
+    { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://twitter.com/datasciencepro' },
+    { name: 'Instagram', icon: <Instagram size={20} />, url: 'https://instagram.com/datasciencepro' },
+  ];
   
   return (
     <footer className="bg-foreground text-white py-12">
@@ -20,14 +27,16 @@ const Footer = () => {
               Transforming data into valuable insights through machine learning and data science solutions.
             </p>
             <div className="flex space-x-4">
-              {['github', 'linkedin', 'twitter', 'medium'].map((social) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white/10 rounded-full p-2 hover:bg-primary transition-colors"
+                  aria-label={social.name}
                 >
-                  <span className="sr-only">{social}</span>
-                  <i className={`fab fa-${social}`}></i>
+                  {social.icon}
                 </a>
               ))}
             </div>
