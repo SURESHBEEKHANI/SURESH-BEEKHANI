@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Database, Laptop, Network, Terminal } from 'lucide-react';
+import { Database, Laptop, Network, Terminal, Brain } from 'lucide-react';
 
 interface Skill {
   category: string;
@@ -65,12 +65,12 @@ const Skills = () => {
       ],
     },
     {
-      category: 'Data Engineering',
+      category: 'GenAI',
       items: [
-        { name: 'Spark', level: 80 },
-        { name: 'Hadoop', level: 75 },
-        { name: 'Airflow', level: 85 },
-        { name: 'Kafka', level: 70 },
+        { name: 'LLMs', level: 90 },
+        { name: 'Stable Diffusion', level: 85 },
+        { name: 'Hugging Face', level: 85 },
+        { name: 'Prompt Engineering', level: 90 },
       ],
     },
     {
@@ -105,7 +105,7 @@ const Skills = () => {
               <div className="flex items-center mb-6">
                 {groupIndex === 0 && <Terminal className="text-primary mr-3 h-5 w-5" />}
                 {groupIndex === 1 && <Laptop className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 2 && <Database className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 2 && <Brain className="text-primary mr-3 h-5 w-5" />}
                 {groupIndex === 3 && <Network className="text-primary mr-3 h-5 w-5" />}
                 <h3 className="text-xl font-display font-semibold">{skillGroup.category}</h3>
               </div>
