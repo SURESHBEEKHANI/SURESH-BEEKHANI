@@ -11,10 +11,10 @@ const Footer = () => {
   };
   
   const socialLinks = [
-    { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/datasciencepro' },
-    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/datasciencepro' },
-    { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://twitter.com/datasciencepro' },
-    { name: 'Instagram', icon: <Instagram size={20} />, url: 'https://instagram.com/datasciencepro' },
+    { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/sureshbeekhani' },
+    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/sureshbeekhani' },
+    { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://twitter.com/sureshbeekhani' },
+    { name: 'Instagram', icon: <Instagram size={20} />, url: 'https://instagram.com/sureshbeekhani' },
   ];
   
   return (
@@ -22,9 +22,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-xl font-display font-semibold mb-4">DataSci<span className="text-primary">Pro</span></h3>
+            <h3 className="text-xl font-display font-semibold mb-4">Suresh<span className="text-primary">Beekhani</span></h3>
             <p className="text-white/70 mb-6">
-              Transforming data into valuable insights through machine learning and data science solutions.
+              Data Scientist and AI/ML Engineer dedicated to helping others learn and apply artificial intelligence and data science.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -45,7 +45,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
+              {['Home', 'About', 'Portfolio', 'Skills', 'Services', 'Experience', 'Contact'].map((item) => (
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase()}`} 
@@ -61,16 +61,16 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-white/70">
-              <li>San Francisco, CA</li>
-              <li>contact@datasci.pro</li>
-              <li>+1 (555) 123-4567</li>
+              <li>Pakistan</li>
+              <li>sureshbeekhani26@gmail.com</li>
+              <li>+92 340 1213187</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/70 text-sm">
-            © {new Date().getFullYear()} DataSciPro. All rights reserved.
+            © {new Date().getFullYear()} Suresh Beekhani. All rights reserved.
           </p>
           
           <button

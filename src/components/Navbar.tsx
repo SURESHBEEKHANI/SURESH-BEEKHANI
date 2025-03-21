@@ -25,8 +25,10 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'Portfolio', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Services', href: '#services' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' }
   ];
   
@@ -35,7 +37,7 @@ const Navbar = () => {
       isScrolled ? 'bg-white/90 shadow-md backdrop-blur-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#home" className="text-xl font-display font-bold text-primary">DataSci<span className="text-foreground">Pro</span></a>
+        <a href="#home" className="text-xl font-display font-bold text-primary">Suresh<span className="text-foreground">Beekhani</span></a>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">

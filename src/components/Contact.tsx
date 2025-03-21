@@ -42,29 +42,29 @@ const Contact = () => {
   };
   
   const socialLinks = [
-    { name: 'Github', icon: <Github className="h-5 w-5" />, url: 'https://github.com/datasciencepro' },
-    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://linkedin.com/in/datasciencepro' },
-    { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, url: 'https://twitter.com/datasciencepro' },
-    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, url: 'https://instagram.com/datasciencepro' },
+    { name: 'Github', icon: <Github className="h-5 w-5" />, url: 'https://github.com/sureshbeekhani' },
+    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://linkedin.com/in/sureshbeekhani' },
+    { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, url: 'https://twitter.com/sureshbeekhani' },
+    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, url: 'https://instagram.com/sureshbeekhani' },
   ];
   
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       title: 'Email',
-      content: 'contact@datasci.pro',
-      link: 'mailto:contact@datasci.pro'
+      content: 'sureshbeekhani26@gmail.com',
+      link: 'mailto:sureshbeekhani26@gmail.com'
     },
     {
       icon: <Phone className="h-5 w-5 text-primary" />,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      content: '+92 340 1213187',
+      link: 'tel:+923401213187'
     },
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
       title: 'Location',
-      content: 'San Francisco, CA',
+      content: 'Pakistan',
       link: 'https://maps.google.com'
     }
   ];

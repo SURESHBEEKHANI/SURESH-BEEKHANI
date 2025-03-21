@@ -4,32 +4,32 @@ import { Award, Brain, Code, Database } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { label: 'Years Experience', value: '6+' },
-    { label: 'Projects Completed', value: '30+' },
-    { label: 'Algorithms Developed', value: '50+' },
-    { label: 'Happy Clients', value: '20+' }
+    { label: 'Years Experience', value: '5+' },
+    { label: 'Projects Completed', value: '25+' },
+    { label: 'AI Models Built', value: '40+' },
+    { label: 'Happy Clients', value: '15+' }
   ];
 
   const specializations = [
     {
       icon: <Brain className="h-8 w-8 text-primary" />,
       title: 'Machine Learning',
-      description: 'Expertise in developing and implementing machine learning models for various applications.'
+      description: 'Developing and implementing advanced machine learning models for predictive analysis and decision-making systems.'
     },
     {
       icon: <Database className="h-8 w-8 text-primary" />,
-      title: 'Data Engineering',
-      description: 'Building robust data pipelines and infrastructure to support analytics and ML systems.'
+      title: 'Deep Learning',
+      description: 'Creating complex neural network architectures for computer vision, NLP, and other AI applications.'
     },
     {
       icon: <Code className="h-8 w-8 text-primary" />,
-      title: 'Predictive Analytics',
-      description: 'Creating insightful forecasting models that drive business decision-making.'
+      title: 'Natural Language Processing',
+      description: 'Building language models and text analysis systems that understand and generate human language.'
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
-      title: 'Deep Learning',
-      description: 'Implementing neural networks for computer vision, NLP, and other complex challenges.'
+      title: 'Generative AI',
+      description: 'Developing state-of-the-art generative models for content creation and creative AI applications.'
     }
   ];
 
@@ -41,7 +41,7 @@ const About = () => {
             About Me
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Passionate About Data & Machine Learning
+            Passionate About AI & Data Science
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
         </div>
@@ -49,13 +49,16 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
             <h3 className="text-2xl font-display font-semibold mb-6">
-              Creating <span className="text-primary">Intelligent Solutions</span> Through Data Science
+              Creating <span className="text-primary">Intelligent Solutions</span> Through AI
             </h3>
             <p className="text-foreground/80 mb-6">
-              I am a dedicated data scientist and machine learning engineer with a passion for extracting meaningful insights from complex datasets. With expertise in statistical analysis, predictive modeling, and algorithm development, I help organizations make data-driven decisions.
+              I am a dedicated Data Scientist and AI/ML Engineer with a passion for extracting meaningful insights from complex datasets. 
+              With expertise in machine learning, deep learning, and natural language processing, I help organizations leverage the power of AI.
             </p>
             <p className="text-foreground/80 mb-8">
-              My approach combines technical excellence with a deep understanding of business needs, ensuring that the solutions I develop deliver real value. I specialize in creating custom machine learning models that solve specific problems and drive innovation.
+              My approach combines technical excellence with a deep understanding of business needs, ensuring that the solutions 
+              I develop deliver real value. I also focus on sharing my knowledge through tutorials and content to help others 
+              master the exciting field of artificial intelligence.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
