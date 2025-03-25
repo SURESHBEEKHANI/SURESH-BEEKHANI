@@ -98,19 +98,19 @@ const Skills = () => {
   let currentProgressIndex = 0;
   
   return (
-    <section id="skills" className="py-24 bg-secondary/50">
+    <section id="skills" className="pro-section bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-16 text-center">
-          <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+        <div className="pro-heading">
+          <div className="pro-heading-badge">
             My Expertise
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h2 className="pro-heading-title">
             Technical Skills
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
+          <div className="pro-heading-line"></div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-8">
           {skills.map((skillGroup, groupIndex) => (
             <div key={groupIndex} className="glass-effect rounded-lg p-6">
               <div className="flex items-center mb-6">
@@ -122,13 +122,13 @@ const Skills = () => {
                 <h3 className="text-xl font-display font-semibold">{skillGroup.category}</h3>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {skillGroup.items.map((skill, skillIndex) => {
                   const progressId = currentProgressIndex++;
                   
                   return (
                     <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
+                      <div className="flex justify-between mb-1.5">
                         <span className="text-sm font-medium">{skill.name}</span>
                         <span className="text-sm font-medium text-primary">{skill.level}%</span>
                       </div>
@@ -147,8 +147,8 @@ const Skills = () => {
           ))}
         </div>
         
-        <div className="mt-16 glass-effect rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-display font-semibold mb-6">Professional Certifications</h3>
+        <div className="mt-16 glass-effect rounded-lg p-8">
+          <h3 className="text-2xl font-display font-semibold mb-6 text-center">Professional Certifications</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               'AWS Certified Machine Learning Specialist',
@@ -160,9 +160,9 @@ const Skills = () => {
             ].map((cert, index) => (
               <div 
                 key={index} 
-                className="bg-white/50 rounded-lg p-4 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]"
+                className="pro-card p-4"
               >
-                <span className="text-foreground/80 text-sm">{cert}</span>
+                <span className="text-foreground/80 text-sm font-medium">{cert}</span>
               </div>
             ))}
           </div>
