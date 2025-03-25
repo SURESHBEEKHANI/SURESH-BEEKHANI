@@ -76,7 +76,7 @@ const Skills = () => {
       ],
     },
     {
-      category: 'GenAI',
+      category: 'Generative AI',
       items: [
         { name: 'LLMs', level: 90 },
         { name: 'Stable Diffusion', level: 85 },
