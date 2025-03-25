@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowDown, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -114,27 +115,34 @@ const Hero = () => {
       />
       
       <div className="z-10 max-w-7xl mx-auto px-6 text-center md:text-left">
-        <div className="animate-fade-up">
-          <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
-            Data Scientist & AI/ML Engineer
-          </div>
-          <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-4">
-            I'm <span className="text-primary">Suresh Beekhani</span>
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mb-8">
-            A Data Scientist and AI/ML Engineer dedicated to sharing my passion for artificial intelligence and data science. 
-            Through engaging tutorials and content, I aim to help learners master Machine Learning, Deep Learning, 
-            Natural Language Processing, and Generative AI.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-            <a href="/resume.pdf" className="btn-primary inline-flex items-center">
-              <FileText className="mr-2 h-4 w-4" />
-              Resume
-            </a>
-            <a href="#about" className="group inline-flex items-center justify-center px-6 py-3 rounded-md bg-foreground/5 text-foreground font-medium transition-all duration-300 hover:bg-foreground/10">
-              Learn More 
-              <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
-            </a>
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <Avatar className="w-48 h-48 border-4 border-primary/20 shadow-xl">
+            <AvatarImage src="/lovable-uploads/265ecab4-6df4-4b33-93bd-45afeb05e532.png" alt="Suresh Beekhani" />
+            <AvatarFallback className="text-4xl">SB</AvatarFallback>
+          </Avatar>
+          
+          <div className="animate-fade-up">
+            <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+              Data Scientist & AI/ML Engineer
+            </div>
+            <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-4">
+              I'm <span className="text-primary">Suresh Beekhani</span>
+            </h1>
+            <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mb-8">
+              A Data Scientist and AI/ML Engineer dedicated to sharing my passion for artificial intelligence and data science. 
+              Through engaging tutorials and content, I aim to help learners master Machine Learning, Deep Learning, 
+              Natural Language Processing, and Generative AI.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+              <a href="/resume.pdf" className="btn-primary inline-flex items-center">
+                <FileText className="mr-2 h-4 w-4" />
+                Resume
+              </a>
+              <a href="#about" className="group inline-flex items-center justify-center px-6 py-3 rounded-md bg-foreground/5 text-foreground font-medium transition-all duration-300 hover:bg-foreground/10">
+                Learn More 
+                <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
