@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Database, Laptop, Network, Terminal, Brain, Eye } from 'lucide-react';
+import { Database, Laptop, Network, Terminal, Brain, Eye, MessageSquare } from 'lucide-react';
 
 interface Skill {
   category: string;
@@ -65,6 +65,17 @@ const Skills = () => {
       ],
     },
     {
+      category: 'NLP',
+      items: [
+        { name: 'BERT', level: 88 },
+        { name: 'Transformers', level: 85 },
+        { name: 'Spacy', level: 90 },
+        { name: 'NLTK', level: 92 },
+        { name: 'Text Classification', level: 88 },
+        { name: 'Sentiment Analysis', level: 85 },
+      ],
+    },
+    {
       category: 'GenAI',
       items: [
         { name: 'LLMs', level: 90 },
@@ -116,9 +127,10 @@ const Skills = () => {
               <div className="flex items-center mb-6">
                 {groupIndex === 0 && <Terminal className="text-primary mr-3 h-5 w-5" />}
                 {groupIndex === 1 && <Laptop className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 2 && <Brain className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 3 && <Eye className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 4 && <Network className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 2 && <MessageSquare className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 3 && <Brain className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 4 && <Eye className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 5 && <Network className="text-primary mr-3 h-5 w-5" />}
                 <h3 className="text-xl font-display font-semibold">{skillGroup.category}</h3>
               </div>
               
