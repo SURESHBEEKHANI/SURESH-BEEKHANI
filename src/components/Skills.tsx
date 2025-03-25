@@ -80,6 +80,8 @@ const Skills = () => {
         { name: 'YOLO', level: 85 },
         { name: 'Image Segmentation', level: 82 },
         { name: 'CNN Architectures', level: 90 },
+        { name: 'Object Detection', level: 87 },
+        { name: 'Image Classification', level: 92 },
       ],
     },
     {
