@@ -53,6 +53,7 @@ const Skills = () => {
         { name: 'R', level: 85 },
         { name: 'SQL', level: 90 },
         { name: 'Java', level: 75 },
+        { name: 'Deep Learning', level: 88 },
       ],
     },
     {
@@ -76,7 +77,7 @@ const Skills = () => {
       ],
     },
     {
-      category: 'Generative AI',
+      category: 'GenAI',
       items: [
         { name: 'LLMs', level: 90 },
         { name: 'Stable Diffusion', level: 85 },
