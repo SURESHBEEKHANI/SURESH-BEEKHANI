@@ -134,7 +134,7 @@ const Hero = () => {
               Natural Language Processing, and Generative AI.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <a href="/resume.pdf" className="btn-primary inline-flex items-center">
+              <a href="https://drive.google.com/drive/folders/1nenB6s7mXNZllsPHh2-74QziMBLU-U6b?usp=drive_link" className="btn-primary inline-flex items-center" target="_blank" rel="noopener noreferrer">
                 <FileText className="mr-2 h-4 w-4" />
                 Resume
               </a>
