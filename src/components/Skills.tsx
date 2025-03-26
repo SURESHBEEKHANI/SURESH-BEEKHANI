@@ -47,16 +47,6 @@ const Skills = () => {
   
   const skills: Skill[] = [
     {
-      category: 'Programming Languages',
-      items: [
-        { name: 'Python', level: 95 },
-        { name: 'R', level: 85 },
-        { name: 'SQL', level: 90 },
-        { name: 'Java', level: 75 },
-        { name: 'Deep Learning', level: 88 },
-      ],
-    },
-    {
       category: 'Machine Learning',
       items: [
         { name: 'Scikit-Learn', level: 90 },
@@ -126,12 +116,11 @@ const Skills = () => {
           {skills.map((skillGroup, groupIndex) => (
             <div key={groupIndex} className="glass-effect rounded-lg p-6">
               <div className="flex items-center mb-6">
-                {groupIndex === 0 && <Terminal className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 1 && <Laptop className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 2 && <MessageSquare className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 3 && <Brain className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 4 && <Eye className="text-primary mr-3 h-5 w-5" />}
-                {groupIndex === 5 && <Network className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 0 && <Laptop className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 1 && <MessageSquare className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 2 && <Brain className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 3 && <Eye className="text-primary mr-3 h-5 w-5" />}
+                {groupIndex === 4 && <Network className="text-primary mr-3 h-5 w-5" />}
                 <h3 className="text-xl font-display font-semibold">{skillGroup.category}</h3>
               </div>
               
