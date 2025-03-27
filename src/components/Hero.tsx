@@ -116,16 +116,19 @@ const Hero = () => {
       
       <div className="z-10 max-w-7xl mx-auto px-6 text-center md:text-left">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          <Avatar className="w-48 h-48 border-4 border-primary/20 shadow-xl">
-            <AvatarImage src="/lovable-uploads/265ecab4-6df4-4b33-93bd-45afeb05e532.png" alt="Suresh Beekhani" />
-            <AvatarFallback className="text-4xl">SB</AvatarFallback>
-          </Avatar>
+          <div className="relative">
+            <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
+            <Avatar className="w-48 h-48 border-4 border-primary/20 shadow-xl relative z-10">
+              <AvatarImage src="/lovable-uploads/028d2d88-6fe9-45b1-8640-efb0e9339fb5.png" alt="Suresh Beekhani" className="object-cover" />
+              <AvatarFallback className="text-4xl">SB</AvatarFallback>
+            </Avatar>
+          </div>
           
           <div className="animate-fade-up">
-            <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+            <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold">
               Data Scientist & AI/ML Engineer
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-4">
+            <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">
               I'm <span className="text-primary">Suresh Beekhani</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mb-8">

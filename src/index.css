@@ -247,3 +247,13 @@
   content: "";
   @apply absolute bottom-0 left-0 w-24 h-1 bg-primary;
 }
+
+/* Avatar glow effect for hero section */
+.avatar-glow {
+  @apply relative;
+}
+
+.avatar-glow::before {
+  content: "";
+  @apply absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow;
+}

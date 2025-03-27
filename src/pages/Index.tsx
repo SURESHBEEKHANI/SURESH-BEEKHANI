@@ -53,9 +53,7 @@ const Index = () => {
       <Navbar />
       
       <main>
-        <section id="home" className="min-h-screen flex items-center">
-          <Hero />
-        </section>
+        <Hero />
         
         <section id="about" className="pro-section">
           <div className="section-container">

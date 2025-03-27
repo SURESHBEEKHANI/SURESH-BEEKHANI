@@ -49,10 +49,12 @@ const Navbar = () => {
   
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${
-      isScrolled ? 'glass-effect border-b border-white/10' : 'bg-transparent'
+      isScrolled ? 'glass-effect border-b border-white/10 shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#home" className="text-xl font-display font-bold text-primary">Suresh<span className="text-foreground">Beekhani</span></a>
+        <a href="#home" className="text-xl font-display font-bold text-primary flex items-center">
+          Suresh<span className="text-foreground">Beekhani</span>
+        </a>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -84,7 +86,7 @@ const Navbar = () => {
       
       {/* Mobile Navigation */}
       <div className={`md:hidden absolute top-full left-0 right-0 glass-effect border-b border-white/10 transition-all duration-300 overflow-hidden ${
-        isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        isMobileMenuOpen ? 'max-h-96 opacity-100 shadow-lg' : 'max-h-0 opacity-0'
       }`}>
         <div className="px-6 py-4 flex flex-col space-y-4">
           {navLinks.map((link) => (
