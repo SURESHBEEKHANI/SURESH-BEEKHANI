@@ -50,11 +50,38 @@ const Projects = () => {
       technologies: ['D3.js', 'React', 'Plotly', 'PostgreSQL'],
       demo: '#',
     },
+    {
+      title: 'Object Detection System',
+      description: 'Implemented a real-time object detection system using YOLO architecture with 95% mAP on custom datasets.',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500',
+      category: 'computer-vision',
+      technologies: ['PyTorch', 'OpenCV', 'YOLO', 'TensorRT'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Facial Recognition System',
+      description: 'Developed a secure facial recognition system with liveness detection to prevent spoofing attacks.',
+      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=500',
+      category: 'computer-vision',
+      technologies: ['TensorFlow', 'Dlib', 'OpenCV', 'FaceNet'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Image Segmentation Pipeline',
+      description: 'Created an advanced image segmentation pipeline for medical imaging analysis with 92% accuracy.',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500',
+      category: 'computer-vision',
+      technologies: ['U-Net', 'PyTorch', 'MONAI', 'NumPy'],
+      github: '#',
+    },
   ];
   
   const categories = [
     { label: 'All Projects', value: 'all' },
     { label: 'Machine Learning', value: 'machine-learning' },
+    { label: 'Computer Vision', value: 'computer-vision' },
     { label: 'Predictive Analytics', value: 'predictive-analytics' },
     { label: 'NLP', value: 'nlp' },
     { label: 'Data Visualization', value: 'data-visualization' },
