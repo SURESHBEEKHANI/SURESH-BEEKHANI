@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useToast } from "@/hooks/use-toast";
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,7 +12,16 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const { toast } = useToast();
+  
   useEffect(() => {
+    // Welcome toast when the page loads
+    toast({
+      title: "Welcome to my portfolio",
+      description: "Feel free to explore my projects and services!",
+      duration: 5000,
+    });
+    
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -29,7 +39,14 @@ const Index = () => {
         });
       });
     });
-  }, []);
+    
+    // Clean up event listeners
+    return () => {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.removeEventListener('click', function() {});
+      });
+    };
+  }, [toast]);
   
   return (
     <div className="min-h-screen">

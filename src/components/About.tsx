@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Award, Brain, Code, Database } from 'lucide-react';
+import { Award, Brain, Code, Database, Lightbulb, Star } from 'lucide-react';
 
 const About = () => {
   const stats = [
@@ -27,21 +27,21 @@ const About = () => {
       description: 'Building language models and text analysis systems that understand and generate human language.'
     },
     {
-      icon: <Award className="h-8 w-8 text-primary" />,
+      icon: <Lightbulb className="h-8 w-8 text-primary" />,
       title: 'Generative AI',
       description: 'Developing state-of-the-art generative models for content creation and creative AI applications.'
     }
   ];
 
   return (
-    <section id="about" className="py-24 bg-secondary/50">
+    <section id="about" className="py-24 bg-gradient-to-b from-secondary/30 to-secondary/60">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 text-center">
           <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
             About Me
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Passionate About AI & Data Science
+            Passionate About <span className="text-primary">AI & Data Science</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
         </div>
@@ -63,7 +63,7 @@ const About = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, index) => (
-                <div key={index} className="glass-effect rounded-lg p-4 text-center">
+                <div key={index} className="glass-effect rounded-lg p-4 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <div className="text-3xl font-display font-bold text-primary mb-1">{stat.value}</div>
                   <div className="text-sm text-foreground/70">{stat.label}</div>
                 </div>
@@ -76,7 +76,7 @@ const About = () => {
               {specializations.map((item, index) => (
                 <div 
                   key={index} 
-                  className="glass-effect rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
+                  className="glass-effect rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] border-l-2 border-primary"
                 >
                   <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-4">
                     {item.icon}

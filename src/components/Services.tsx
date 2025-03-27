@@ -37,14 +37,14 @@ const Services = () => {
   ];
   
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-24 bg-gradient-to-b from-background to-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 text-center">
           <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
             What I Offer
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            My Services
+            My <span className="text-primary">Services</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-foreground/80 max-w-2xl mx-auto">
@@ -57,7 +57,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="glass-effect rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
+              className="enhanced-card p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
             >
               <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
                 {service.icon}

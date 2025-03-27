@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowDown, FileText } from 'lucide-react';
+import { ArrowDown, FileText, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
@@ -141,6 +141,18 @@ const Hero = () => {
               <a href="#about" className="group inline-flex items-center justify-center px-6 py-3 rounded-md bg-foreground/5 text-foreground font-medium transition-all duration-300 hover:bg-foreground/10">
                 Learn More 
                 <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
+              </a>
+            </div>
+            
+            <div className="flex justify-center md:justify-start gap-4 mt-6">
+              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
+                <Github className="h-5 w-5" />
+              </a>
+              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
+                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>
