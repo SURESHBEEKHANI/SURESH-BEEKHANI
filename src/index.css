@@ -132,7 +132,19 @@
 
 /* Professional section styling */
 .pro-section {
-  @apply py-24 relative overflow-hidden;
+  @apply py-24 relative overflow-hidden border-b border-gray-100;
+}
+
+.pro-section:last-child {
+  @apply border-b-0;
+}
+
+.pro-section:nth-child(even) {
+  @apply bg-gradient-to-b from-background to-secondary/30;
+}
+
+.pro-section:nth-child(odd) {
+  @apply bg-white;
 }
 
 .pro-section-title {
@@ -188,4 +200,50 @@
   .pro-grid-4 {
     @apply grid-cols-4;
   }
+}
+
+/* Section dividers and decorations */
+.section-divider {
+  @apply relative py-8 flex items-center justify-center;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  @apply h-px bg-gray-200 flex-grow;
+}
+
+.section-divider::before {
+  @apply mr-8;
+}
+
+.section-divider::after {
+  @apply ml-8;
+}
+
+.section-decoration {
+  @apply absolute -z-10 opacity-50 blur-3xl;
+}
+
+.section-decoration-1 {
+  @apply bg-primary/20 w-64 h-64 rounded-full -top-32 -left-32;
+}
+
+.section-decoration-2 {
+  @apply bg-blue-300/30 w-96 h-96 rounded-full -bottom-48 -right-48;
+}
+
+/* Section container styling */
+.section-container {
+  @apply max-w-7xl mx-auto px-6 relative z-10;
+}
+
+/* Section header with consistent styling */
+.section-header {
+  @apply relative mb-16 pb-4 border-b border-gray-100;
+}
+
+.section-header::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-24 h-1 bg-primary;
 }

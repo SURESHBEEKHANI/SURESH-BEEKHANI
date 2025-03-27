@@ -51,13 +51,55 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Services />
-      <Experience />
-      <Contact />
+      
+      <main>
+        <section id="home" className="min-h-screen flex items-center">
+          <Hero />
+        </section>
+        
+        <section id="about" className="pro-section">
+          <div className="section-container">
+            <div className="section-decoration section-decoration-1"></div>
+            <About />
+            <div className="section-decoration section-decoration-2"></div>
+          </div>
+        </section>
+        
+        <section id="projects" className="pro-section">
+          <div className="section-container">
+            <Projects />
+          </div>
+        </section>
+        
+        <section id="skills" className="pro-section">
+          <div className="section-container">
+            <div className="section-decoration section-decoration-1"></div>
+            <Skills />
+            <div className="section-decoration section-decoration-2"></div>
+          </div>
+        </section>
+        
+        <section id="services" className="pro-section">
+          <div className="section-container">
+            <Services />
+          </div>
+        </section>
+        
+        <section id="experience" className="pro-section">
+          <div className="section-container">
+            <div className="section-decoration section-decoration-1"></div>
+            <Experience />
+            <div className="section-decoration section-decoration-2"></div>
+          </div>
+        </section>
+        
+        <section id="contact" className="pro-section">
+          <div className="section-container">
+            <Contact />
+          </div>
+        </section>
+      </main>
+      
       <Footer />
     </div>
   );

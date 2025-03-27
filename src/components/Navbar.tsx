@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   
@@ -16,6 +17,20 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+      
+      // Determine active section based on scroll position
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + 100; // Offset
+      
+      sections.forEach(section => {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+        const sectionId = section.getAttribute('id') || '';
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(sectionId);
+        }
+      });
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -34,7 +49,7 @@ const Navbar = () => {
   
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${
-      isScrolled ? 'bg-white/90 shadow-md backdrop-blur-md' : 'bg-transparent'
+      isScrolled ? 'glass-effect border-b border-white/10' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#home" className="text-xl font-display font-bold text-primary">Suresh<span className="text-foreground">Beekhani</span></a>
@@ -45,7 +60,11 @@ const Navbar = () => {
             <a 
               key={link.label} 
               href={link.href}
-              className="nav-link text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className={`nav-link text-sm font-medium transition-colors ${
+                activeSection === link.href.substring(1) 
+                  ? 'text-primary font-semibold after:w-full' 
+                  : 'text-foreground hover:text-primary'
+              }`}
             >
               {link.label}
             </a>
@@ -64,7 +83,7 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300 overflow-hidden ${
+      <div className={`md:hidden absolute top-full left-0 right-0 glass-effect border-b border-white/10 transition-all duration-300 overflow-hidden ${
         isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="px-6 py-4 flex flex-col space-y-4">
@@ -72,7 +91,11 @@ const Navbar = () => {
             <a 
               key={link.label} 
               href={link.href}
-              className="text-foreground hover:text-primary py-2 border-b border-gray-100 transition-colors"
+              className={`py-2 border-b border-white/10 transition-colors ${
+                activeSection === link.href.substring(1) 
+                  ? 'text-primary font-semibold' 
+                  : 'text-foreground hover:text-primary'
+              }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}

@@ -37,38 +37,34 @@ const Services = () => {
   ];
   
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-background to-secondary/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-16 text-center">
-          <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
-            What I Offer
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            My <span className="text-primary">Services</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-foreground/80 max-w-2xl mx-auto">
-            I provide a range of data science and AI services to help businesses leverage the power of artificial intelligence 
-            and data-driven decision making.
-          </p>
-        </div>
-        
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className="enhanced-card p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
-            >
-              <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-display font-semibold mb-2">{service.title}</h3>
-              <p className="text-foreground/70">{service.description}</p>
-            </div>
-          ))}
-        </div>
+    <div>
+      <div className="pro-heading">
+        <div className="pro-heading-badge">What I Offer</div>
+        <h2 className="pro-heading-title">
+          My <span className="text-primary">Services</span>
+        </h2>
+        <div className="pro-heading-line"></div>
+        <p className="text-foreground/80 max-w-2xl mx-auto">
+          I provide a range of data science and AI services to help businesses leverage the power of artificial intelligence 
+          and data-driven decision making.
+        </p>
       </div>
-    </section>
+      
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <div 
+            key={index}
+            className="enhanced-card p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
+          >
+            <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+              {service.icon}
+            </div>
+            <h3 className="text-xl font-display font-semibold mb-2">{service.title}</h3>
+            <p className="text-foreground/70">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
