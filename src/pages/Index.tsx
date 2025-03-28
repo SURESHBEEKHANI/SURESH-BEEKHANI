@@ -10,16 +10,18 @@ import Services from '@/components/Services';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     // Welcome toast when the page loads
     toast({
       title: "Welcome to my portfolio",
       description: "Feel free to explore my projects and services!",
-      duration: 5000,
+      duration: isMobile ? 4000 : 5000,
     });
     
     // Smooth scroll for anchor links
@@ -33,8 +35,11 @@ const Index = () => {
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
         
+        // Add offset for mobile to account for the larger header
+        const offset = isMobile ? 60 : 80;
+        
         window.scrollTo({
-          top: targetElement.offsetTop,
+          top: targetElement.offsetTop - offset,
           behavior: 'smooth'
         });
       });
@@ -46,7 +51,7 @@ const Index = () => {
         anchor.removeEventListener('click', function() {});
       });
     };
-  }, [toast]);
+  }, [toast, isMobile]);
   
   return (
     <div className="min-h-screen">

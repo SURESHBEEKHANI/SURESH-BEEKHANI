@@ -66,6 +66,11 @@
   }
 }
 
+/* Custom screen size for extra small devices */
+@screen xs {
+  /* Add any xs specific styles here */
+}
+
 /* Animations and transitions */
 .section-transition {
   @apply transition-all duration-300 ease-in-out;
@@ -88,7 +93,7 @@
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center px-6 py-3 rounded-md bg-primary text-white font-medium shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:translate-y-[-2px] active:translate-y-0 active:shadow-md;
+  @apply inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-md bg-primary text-white font-medium shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:translate-y-[-2px] active:translate-y-0 active:shadow-md;
 }
 
 /* Add animation classes */
@@ -132,7 +137,7 @@
 
 /* Professional section styling */
 .pro-section {
-  @apply py-24 relative overflow-hidden border-b border-gray-100;
+  @apply py-16 sm:py-20 md:py-24 relative overflow-hidden border-b border-gray-100;
 }
 
 .pro-section:last-child {
@@ -148,33 +153,33 @@
 }
 
 .pro-section-title {
-  @apply text-3xl md:text-4xl font-display font-bold mb-4;
+  @apply text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-3 sm:mb-4;
 }
 
 .pro-section-subtitle {
-  @apply text-lg text-muted-foreground mb-12 max-w-2xl mx-auto;
+  @apply text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto;
 }
 
 /* Professional heading styling */
 .pro-heading {
-  @apply mb-16 text-center;
+  @apply mb-10 sm:mb-16 text-center;
 }
 
 .pro-heading-badge {
-  @apply inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium;
+  @apply inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs sm:text-sm font-medium;
 }
 
 .pro-heading-title {
-  @apply text-3xl md:text-4xl font-display font-bold mb-4;
+  @apply text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-3 sm:mb-4;
 }
 
 .pro-heading-line {
-  @apply w-20 h-1 bg-primary mx-auto mb-8;
+  @apply w-16 sm:w-20 h-1 bg-primary mx-auto mb-6 sm:mb-8;
 }
 
 /* Professional grid layout */
 .pro-grid {
-  @apply grid gap-8;
+  @apply grid gap-4 sm:gap-8;
 }
 
 /* Small tablet and up */
@@ -204,7 +209,7 @@
 
 /* Section dividers and decorations */
 .section-divider {
-  @apply relative py-8 flex items-center justify-center;
+  @apply relative py-6 sm:py-8 flex items-center justify-center;
 }
 
 .section-divider::before,
@@ -214,11 +219,11 @@
 }
 
 .section-divider::before {
-  @apply mr-8;
+  @apply mr-4 sm:mr-8;
 }
 
 .section-divider::after {
-  @apply ml-8;
+  @apply ml-4 sm:ml-8;
 }
 
 .section-decoration {
@@ -226,26 +231,26 @@
 }
 
 .section-decoration-1 {
-  @apply bg-primary/20 w-64 h-64 rounded-full -top-32 -left-32;
+  @apply bg-primary/20 w-48 sm:w-64 h-48 sm:h-64 rounded-full -top-24 sm:-top-32 -left-24 sm:-left-32;
 }
 
 .section-decoration-2 {
-  @apply bg-blue-300/30 w-96 h-96 rounded-full -bottom-48 -right-48;
+  @apply bg-blue-300/30 w-64 sm:w-96 h-64 sm:h-96 rounded-full -bottom-32 sm:-bottom-48 -right-32 sm:-right-48;
 }
 
 /* Section container styling */
 .section-container {
-  @apply max-w-7xl mx-auto px-6 relative z-10;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 relative z-10;
 }
 
 /* Section header with consistent styling */
 .section-header {
-  @apply relative mb-16 pb-4 border-b border-gray-100;
+  @apply relative mb-10 sm:mb-16 pb-3 sm:pb-4 border-b border-gray-100;
 }
 
 .section-header::after {
   content: "";
-  @apply absolute bottom-0 left-0 w-24 h-1 bg-primary;
+  @apply absolute bottom-0 left-0 w-16 sm:w-24 h-1 bg-primary;
 }
 
 /* Avatar glow effect for hero section */

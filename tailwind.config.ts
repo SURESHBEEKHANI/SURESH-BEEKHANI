@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			screens: {
+				'xs': '475px',
+			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				display: ['Manrope', 'sans-serif'],
