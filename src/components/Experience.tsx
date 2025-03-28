@@ -1,14 +1,25 @@
-
 import React from 'react';
 import { Briefcase, GraduationCap, Calendar, Building } from 'lucide-react';
 
 const Experience = () => {
   const workExperience = [
     {
-      title: 'Senior Data Scientist',
-      company: 'AI Solutions Inc.',
+      title: 'AI Engineer',
+      company: 'Upwork Freelancer',
       period: '2021 - Present',
       description: 'Leading machine learning projects and developing AI solutions for enterprise clients. Specializing in natural language processing and deep learning applications.'
+    },
+    {
+      title: 'Machine Learning Engineer',
+      company: 'AtliQ',
+      period: 'December 2023 - December 2024',
+      description: 'Working on Machine Learning, Deep Learning, and Natural Language Processing (NLP) to develop and optimize AI-driven solutions. Responsible for building, training, and deploying models for various applications, including text processing, predictive analytics, and automation. Collaborating with cross-functional teams to enhance AI capabilities and improve system performance.'
+    },
+    {
+      title: 'Associate Machine Learning Engineer',
+      company: 'Avanza Solutions',
+      period: 'October 2022 - December 2023',
+      description: 'As an Associate Machine Learning Engineer at Avanza Solutions, I spearheaded advanced machine learning initiatives, contributing to the development of cutting-edge AI solutions.'
     },
     {
       title: 'Machine Learning Engineer',
@@ -27,14 +38,14 @@ const Experience = () => {
   const education = [
     {
       degree: 'Master of Science in Data Science',
-      institution: 'University of Data Sciences',
-      period: '2016 - 2018',
+      institution: 'Virtual University of Pakistan',
+      period: '2022 - 2024',
       description: 'Specialized in machine learning and artificial intelligence applications.'
     },
     {
       degree: 'Bachelor of Science in Computer Science',
-      institution: 'Tech University',
-      period: '2012 - 2016',
+      institution: 'Sir Syed University of Engineering & Technology (SSUET)',
+      period: '2018 - 2022',
       description: 'Focused on algorithms, programming, and mathematics foundations.'
     }
   ];
