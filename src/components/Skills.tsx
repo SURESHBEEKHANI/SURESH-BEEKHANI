@@ -62,7 +62,8 @@ const Skills = () => {
         { name: 'Scikit-Learn', level: 90 },
         { name: 'TensorFlow', level: 85 },
         { name: 'PyTorch', level: 80 },
-        { name: 'Keras', level: 85 },
+        { name: 'NumPy', level: 85 },
+        { name: 'pandas', level: 75 },
       ],
     },
     {
@@ -83,6 +84,8 @@ const Skills = () => {
         { name: 'Stable Diffusion', level: 85 },
         { name: 'Hugging Face', level: 85 },
         { name: 'Prompt Engineering', level: 90 },
+        { name: 'LangChain', level: 80 },
+        { name: 'Vector Database', level: 70 },
       ],
     },
     {
@@ -102,6 +105,8 @@ const Skills = () => {
         { name: 'Tableau', level: 90 },
         { name: 'Power BI', level: 85 },
         { name: 'Matplotlib', level: 90 },
+        { name: 'Plotly', level: 75 },
+        { name: 'SeaBorn', level: 75 },
         { name: 'D3.js', level: 75 },
       ],
     },
