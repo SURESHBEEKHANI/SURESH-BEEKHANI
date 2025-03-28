@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ActivitySquare, BarChart, BrainCircuit, BookOpen, Database, MessageSquare } from 'lucide-react';
+import { ActivitySquare, BarChart, BrainCircuit, BookOpen, Database, MessageSquare, Search } from 'lucide-react';
+import GenerativeAI from './GenerativeAI';
 
 const Services = () => {
   const services = [
@@ -63,6 +64,19 @@ const Services = () => {
             <p className="text-foreground/70 text-sm sm:text-base">{service.description}</p>
           </div>
         ))}
+      </div>
+      
+      <div className="mt-16 px-4 sm:px-0">
+        <div className="flex items-center justify-center mb-10">
+          <div className="bg-primary/10 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mr-4">
+            <Search className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+          </div>
+          <h3 className="text-xl sm:text-2xl font-display font-semibold">
+            Try our Generative AI Powered Knowledge Base
+          </h3>
+        </div>
+        
+        <GenerativeAI />
       </div>
     </div>
   );
