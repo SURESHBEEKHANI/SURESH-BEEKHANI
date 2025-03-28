@@ -1,7 +1,7 @@
 
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { Document } from "langchain/document";
-import { Embeddings } from "langchain/core/embeddings";
+import { Embeddings } from "@langchain/openai";
 import { pipeline } from "@huggingface/transformers";
 
 // This class manages the vector database and embeddings

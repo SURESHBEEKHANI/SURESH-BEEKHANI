@@ -126,7 +126,7 @@ const Hero = () => {
           <div className="relative mt-16 sm:mt-0">
             <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
             <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-xl relative z-10">
-              <AvatarImage src="/lovable-uploads/028d2d88-6fe9-45b1-8640-efb0e9339fb5.png" alt="Suresh Beekhani" className="object-cover" />
+              <AvatarImage src="/lovable-uploads/4eff67c8-9bd9-4cf9-b2cc-3a4b8fa22941.png" alt="Suresh Beekhani" className="object-cover" />
               <AvatarFallback className="text-4xl">SB</AvatarFallback>
             </Avatar>
           </div>
