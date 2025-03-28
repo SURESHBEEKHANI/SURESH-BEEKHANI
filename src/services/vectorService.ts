@@ -1,6 +1,7 @@
 
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { Document } from "langchain/document";
+import { Embeddings } from "langchain/embeddings/base";
 import { pipeline } from "@huggingface/transformers";
 
 // This class manages the vector database and embeddings
@@ -22,22 +23,26 @@ export class VectorService {
         "mixedbread-ai/mxbai-embed-xsmall-v1"
       );
       
-      // Create a custom embedding function
-      const embedFunction = async (texts: string[]) => {
-        const embeddings = await this.embeddingModel(texts, { 
-          pooling: "mean", 
-          normalize: true 
-        });
-        return embeddings.tolist();
+      // Create a custom embedding function that implements the Embeddings interface
+      const customEmbeddings: Embeddings = {
+        embedDocuments: async (texts: string[]) => {
+          const embeddings = await this.embeddingModel(texts, { 
+            pooling: "mean", 
+            normalize: true 
+          });
+          return embeddings.tolist();
+        },
+        embedQuery: async (query: string) => {
+          const embedding = await this.embeddingModel([query], {
+            pooling: "mean",
+            normalize: true
+          });
+          return embedding.tolist()[0];
+        }
       };
       
       // Initialize the vector store with our embedding function
-      this.vectorStore = new MemoryVectorStore({
-        embeddings: {
-          embedDocuments: async (documents: string[]) => embedFunction(documents),
-          embedQuery: async (query: string) => (await embedFunction([query]))[0],
-        }
-      });
+      this.vectorStore = new MemoryVectorStore(customEmbeddings);
       
       this.isInitialized = true;
       console.log("Vector service initialized successfully");
