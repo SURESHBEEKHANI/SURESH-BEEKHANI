@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -143,6 +144,40 @@
   background-size: 400% 400%;
 }
 
+/* Wave animation for background elements */
+@keyframes wave {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-wave {
+  animation: wave 8s ease-in-out infinite;
+}
+
+/* Blob animation for organic shapes */
+@keyframes morphBlob {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.animate-blob {
+  animation: morphBlob 12s ease-in-out infinite;
+}
+
 /* Enhanced card styling */
 .enhanced-card {
   @apply glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl border-l-2 border-primary;
@@ -279,4 +314,16 @@
 .avatar-glow::before {
   content: "";
   @apply absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -10,6 +10,7 @@ import Services from '@/components/Services';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import BackgroundAnimation from '@/components/BackgroundAnimation';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -55,6 +56,7 @@ const Index = () => {
   
   return (
     <div className="min-h-screen">
+      <BackgroundAnimation />
       <Navbar />
       
       <main>

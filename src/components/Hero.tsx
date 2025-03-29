@@ -1,132 +1,21 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { ArrowDown, FileText, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const isMobile = useIsMobile();
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    // Set canvas size to match window
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    window.addEventListener('resize', resize);
-    resize();
-    
-    // Fewer particles on mobile
-    const particleCount = isMobile ? 25 : 50;
-    
-    // Particles
-    const particles: {
-      x: number;
-      y: number;
-      radius: number;
-      color: string;
-      velocity: { x: number; y: number };
-      alpha: number;
-    }[] = [];
-    
-    const createParticles = () => {
-      for (let i = 0; i < particleCount; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const radius = Math.random() * (isMobile ? 1.5 : 2) + (isMobile ? 0.5 : 1);
-        const color = `hsla(221, 83%, 53%, ${Math.random() * 0.5})`;
-        const vx = (Math.random() - 0.5) * (isMobile ? 0.05 : 0.1);
-        const vy = (Math.random() - 0.5) * (isMobile ? 0.05 : 0.1);
-        
-        particles.push({
-          x,
-          y,
-          radius,
-          color,
-          velocity: { x: vx, y: vy },
-          alpha: Math.random() * 0.5 + 0.3
-        });
-      }
-    };
-    
-    createParticles();
-    
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Update particles
-      particles.forEach((particle) => {
-        particle.x += particle.velocity.x;
-        particle.y += particle.velocity.y;
-        
-        // Boundary check
-        if (particle.x < 0 || particle.x > canvas.width) {
-          particle.velocity.x *= -1;
-        }
-        
-        if (particle.y < 0 || particle.y > canvas.height) {
-          particle.velocity.y *= -1;
-        }
-        
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-      });
-      
-      // Draw connections (fewer on mobile)
-      const connectionDistance = isMobile ? 100 : 150;
-      
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < connectionDistance) {
-            ctx.beginPath();
-            ctx.strokeStyle = `hsla(221, 83%, 53%, ${0.1 * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-    };
-    
-    animate();
-    
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-  }, [isMobile]);
   
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
-      <canvas 
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-      />
-      
       <div className="z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-0 text-center md:text-left">
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
           <div className="relative mt-16 sm:mt-0">
             <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
             <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-xl relative z-10">
-              <AvatarImage src="image/logo.png" alt="Suresh Beekhani" className="object-cover" />
+              <AvatarImage src="/image/sureshbeekhani.png" alt="Suresh Beekhani" className="object-cover" />
               <AvatarFallback className="text-4xl">SB</AvatarFallback>
             </Avatar>
           </div>
