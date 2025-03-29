@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -69,13 +68,14 @@ const Projects = () => {
       demo: '#',
     },
     {
-      title: 'Brain Tumor Segmentation ',
-      description: 'Brain Tumor Segmentation is a deep learning application that leverages YOLO-Seg to detect and segment brain tumors from MRI scans in real-time.',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500',
-      category: 'computer-vision',
-      technologies: ['U-Net', 'PyTorch', 'MONAI', 'NumPy'],
-      github: 'https://github.com/SURESHBEEKHANI/Brain_Tumor_Segmentation',
-    },
+      title: "Brain Tumor Segmentation",
+      description: "Brain Tumor Segmentation is a deep learning application that leverages YOLO-Seg to detect and segment brain tumors from MRI scans in real-time.",
+      image: "/image/Brain-tumor-seg.JPEG",
+      category: "computer-vision",
+      technologies: ["Yolo", "OpenCV", "React", "Streamlit"],
+      github: "https://github.com/SURESHBEEKHANI/Brain_Tumor_Segmentation"
+    }
+    ,
     {
       title: 'Text-to-Image Generator',
       description: 'Built a text-to-image generation system using diffusion models to create high-quality images from text descriptions.',
