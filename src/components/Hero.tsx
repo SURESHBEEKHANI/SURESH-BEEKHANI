@@ -126,7 +126,7 @@ const Hero = () => {
           <div className="relative mt-16 sm:mt-0">
             <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
             <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-xl relative z-10">
-              <AvatarImage src="/lovable-uploads/4eff67c8-9bd9-4cf9-b2cc-3a4b8fa22941.png" alt="Suresh Beekhani" className="object-cover" />
+              <AvatarImage src="image/logo.png" alt="Suresh Beekhani" className="object-cover" />
               <AvatarFallback className="text-4xl">SB</AvatarFallback>
             </Avatar>
           </div>
@@ -155,10 +155,10 @@ const Hero = () => {
             </div>
             
             <div className="flex justify-center md:justify-start gap-4 mt-5 sm:mt-6">
-              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
+              <a href="https://github.com/sureshbeekhani" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
                 <Github className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
+              <a href="https://linkedin.com/in/suresh-beekhani" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
