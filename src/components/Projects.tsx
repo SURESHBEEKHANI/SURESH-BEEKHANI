@@ -12,7 +12,7 @@ interface Project {
 }
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('machine-learning'); // Default to 'machine-learning'
   
   const projects: Project[] = [
     {
@@ -84,14 +84,13 @@ const Projects = () => {
     }
     ,
     {
-      title: 'Text-to-Image Generator',
-      description: 'Built a text-to-image generation system using diffusion models to create high-quality images from text descriptions.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=500',
-      category: 'generative-ai',
-      technologies: ['Stable Diffusion', 'PyTorch', 'CLIP', 'Transformers'],
-      github: '#',
-      demo: '#',
-    },
+      title: "Mistral-7B DPO Fine-Tuning for Healthcare",
+      description: "Fine-tuned the Mistral-7B model using Direct Preference Optimization (DPO) to enhance medical text processing and AI-assisted healthcare insights.",
+      image: "image/Fine-Tuning.png",
+      category: "generative-ai",
+      technologies: ["Mistral-7B", "DPO", "LoRA", "Transformers", "PyTorch"],
+      github: "https://github.com/SURESHBEEKHANI/Advanced-LLM-Fine-Tuning",
+    },    
     {
       title: 'AI Music Composer',
       description: 'Developed a neural network that generates original music compositions in various styles and genres.',
@@ -113,7 +112,6 @@ const Projects = () => {
   ];
   
   const categories = [
-    //{ label: 'All Projects', value: 'all' },
     { label: 'Machine Learning', value: 'machine-learning' },
     { label: 'Computer Vision', value: 'computer-vision' },
     { label: 'Generative AI', value: 'generative-ai' },
