@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 const Experience = () => {
   const workExperience = [
     {
-      title: 'AI Engineer',
+      title: 'Machine Learning Engineer',
       company: 'Upwork Freelancer',
       period: '2021 - Present',
       description: 'Leading machine learning projects and developing AI solutions for enterprise clients. Specializing in natural language processing and deep learning applications.'
@@ -15,27 +15,22 @@ const Experience = () => {
     {
       title: 'Machine Learning Engineer',
       company: 'AtliQ',
-      period: 'December 2023 - December 2024',
+      period: 'December 2022 - December 2024',
       description: 'Working on Machine Learning, Deep Learning, and Natural Language Processing (NLP) to develop and optimize AI-driven solutions. Responsible for building, training, and deploying models for various applications, including text processing, predictive analytics, and automation. Collaborating with cross-functional teams to enhance AI capabilities and improve system performance.'
     },
     {
       title: 'Associate Machine Learning Engineer',
       company: 'Avanza Solutions',
-      period: 'October 2022 - December 2023',
+      period: 'October 2020 - December 2021',
       description: 'As an Associate Machine Learning Engineer at Avanza Solutions, I spearheaded advanced machine learning initiatives, contributing to the development of cutting-edge AI solutions.'
     },
     {
-      title: 'Machine Learning Engineer',
+      title: ' Intern  Machine Learning Engineer',
       company: 'TechData Labs',
-      period: '2019 - 2021',
+      period: '2019 - 2020',
       description: 'Developed and implemented machine learning models for predictive analytics and data visualization solutions.'
     },
-    {
-      title: 'Data Analyst',
-      company: 'DataCorp Analytics',
-      period: '2018 - 2019',
-      description: 'Performed data analysis and developed statistical models to derive insights from large datasets.'
-    }
+
   ];
   
   const education = [
