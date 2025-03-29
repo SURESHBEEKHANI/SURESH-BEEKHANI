@@ -52,7 +52,7 @@ const Projects = () => {
     {
       title: 'PPE Detection System',
       description: 'Developed a high-accuracy, real-time object detection solution using the YOLO architecture, achieving a 95% mAP on specialized datasets.',
-      image: 'image/PPE.png', // Corrected the image path
+      image: 'image/PPE.png',
       category: 'computer-vision',
       technologies: ['CNN', 'OpenCV', 'YOLO', 'Object Detection'],
       github: 'https://github.com/SURESHBEEKHANI/PPE-Detect',
@@ -92,23 +92,21 @@ const Projects = () => {
       github: "https://github.com/SURESHBEEKHANI/Advanced-LLM-Fine-Tuning",
     },    
     {
-      title: 'AI Music Composer',
-      description: 'Developed a neural network that generates original music compositions in various styles and genres.',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=500',
-      category: 'generative-ai',
-      technologies: ['TensorFlow', 'RNN/LSTM', 'Magenta', 'Music21'],
-      github: '#',
-      demo: '#',
-    },
+      title: "Multi-Agent AI Financial Analyst",
+      description: "Designed an AI-driven multi-agent system for financial analysis, leveraging advanced machine learning models to assess market trends and generate insights.",
+      image: "image/Financial-Analyst.png",
+      category: "generative-ai",
+      technologies: ["langchain" , "langgraph", "LLM", "Python"],
+      github: "https://github.com/SURESHBEEKHANI/Financial-Analyst-AI-Multi-Agent-System"
+    },    
     {
-      title: 'Conversational AI Assistant',
-      description: 'Created a domain-specific conversational AI that can answer questions and assist users with technical support.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=500',
-      category: 'generative-ai',
-      technologies: ['LangChain', 'OpenAI API', 'Retrieval Augmented Generation', 'Vector DB'],
-      github: '#',
-      demo: '#',
-    },
+      title: "Medical Chatbot RAG System",
+      description: "Developed a Retrieval-Augmented Generation (RAG)-based medical chatbot that provides accurate and context-aware responses to user queries in the healthcare domain.",
+      image: "image/Medical-Chatbot.png",
+      category: "generative-ai",
+      technologies: ["LangChain", "OpenAI API", "Retrieval-Augmented Generation", "Vector DB"],
+      github: "https://github.com/SURESHBEEKHANI/Medical-Chatbot-RAG-System.git"
+    },    
   ];
   
   const categories = [
