@@ -62,8 +62,8 @@ const Projects = () => {
       "description": "Developed an automated system for extracting and recognizing license plates from vehicle images using computer vision and deep learning.",
       "image": "image/License_Plate_Extraction.png",
       "category": "computer-vision",
-      "technologies": ["OpenCV", "YOLO", "Tesseract OCR", "Deep Learning"],
-      "github": "https://github.com/yourusername/license-plate-extraction"
+      "technologies": ["OpenCV", "YOLO", "PaddleOCR", "Deep Learning"],
+      "github": "https://github.com/SURESHBEEKHANI/License-Plate-Extraction-Save-Data-to-SQL-Database"
     },    
     {
       title: 'Lung_Cancer_Detection ',
@@ -113,7 +113,7 @@ const Projects = () => {
   ];
   
   const categories = [
-    { label: 'All Projects', value: 'all' },
+    //{ label: 'All Projects', value: 'all' },
     { label: 'Machine Learning', value: 'machine-learning' },
     { label: 'Computer Vision', value: 'computer-vision' },
     { label: 'Generative AI', value: 'generative-ai' },
