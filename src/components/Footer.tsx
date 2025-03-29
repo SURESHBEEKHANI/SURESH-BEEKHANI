@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
     { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/sureshbeekhani' },
     { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/sureshbeekhani' },
     { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://twitter.com/sureshbeekhani' },
-    { name: 'Instagram', icon: <Instagram size={20} />, url: 'https://instagram.com/sureshbeekhani' },
+
   ];
   
   return (

@@ -67,7 +67,7 @@ const Navbar = () => {
   ];
   
   // WhatsApp phone number with international format
-  const whatsappNumber = "+1234567890"; // Replace with your actual WhatsApp number
+  const whatsappNumber = "+923401213187"; // Replace with your actual WhatsApp number
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
   
   return (
