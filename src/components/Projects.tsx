@@ -58,13 +58,21 @@ const Projects = () => {
       github: 'https://github.com/SURESHBEEKHANI/PPE-Detect',
     },    
     {
-      title: 'Facial Recognition System',
-      description: 'Developed a secure facial recognition system with liveness detection to prevent spoofing attacks.',
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=500',
+      "title": "License Plate Extraction",
+      "description": "Developed an automated system for extracting and recognizing license plates from vehicle images using computer vision and deep learning.",
+      "image": "image/License_Plate_Extraction.png",
+      "category": "computer-vision",
+      "technologies": ["OpenCV", "YOLO", "Tesseract OCR", "Deep Learning"],
+      "github": "https://github.com/yourusername/license-plate-extraction"
+    },    
+    {
+      title: 'Lung_Cancer_Detection ',
+      description: 'advanced system for detecting lung cancer using medical imaging techniques, aimed at early diagnosis and treatment',
+      image: 'image/Lung_Cancer_Detection.png',
       category: 'computer-vision',
-      technologies: ['TensorFlow', 'Dlib', 'OpenCV', 'FaceNet'],
-      github: '#',
-      demo: '#',
+      technologies: ['TensorFlow', 'Yolo', 'OpenCV', 'CNN'],
+      github: 'https://github.com/SURESHBEEKHANI/Lung_Cancer_Detection',
+    
     },
     {
       title: "Brain Tumor Segmentation",
