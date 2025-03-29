@@ -56,10 +56,12 @@ const Index = () => {
   
   return (
     <div className="min-h-screen">
+      {/* BackgroundAnimation is positioned at the back with fixed positioning */}
       <BackgroundAnimation />
+      
       <Navbar />
       
-      <main>
+      <main className="relative z-10">
         <Hero />
         
         <section id="about" className="pro-section">
