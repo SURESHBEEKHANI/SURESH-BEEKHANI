@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -66,6 +66,10 @@ const Navbar = () => {
     { label: 'Contact', href: '#contact' }
   ];
   
+  // WhatsApp phone number with international format
+  const whatsappNumber = "+1234567890"; // Replace with your actual WhatsApp number
+  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 py-3 sm:py-4 ${
       isScrolled ? 'glass-effect border-b border-white/10 shadow-md' : 'bg-transparent'
@@ -92,20 +96,45 @@ const Navbar = () => {
           ))}
         </div>
         
-        {/* Mobile Menu Button */}
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="md:hidden mobile-menu-button"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
+        {/* WhatsApp Button - Desktop */}
+        <a 
+          href={whatsappUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6"
         >
-          {isMobileMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
-        </Button>
+          <Phone className="h-4 w-4" />
+          <span className="font-medium text-sm">{whatsappNumber}</span>
+        </a>
+        
+        {/* Mobile Menu with WhatsApp Button */}
+        <div className="md:hidden flex items-center gap-3">
+          {/* WhatsApp Icon for Mobile */}
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            aria-label="Contact on WhatsApp"
+          >
+            <Phone className="h-4 w-4" />
+          </a>
+          
+          {/* Mobile Menu Button */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="mobile-menu-button"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
       </div>
       
       {/* Mobile Navigation */}
@@ -127,6 +156,18 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          
+          {/* WhatsApp full button in mobile menu */}
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 rounded-md transition-all duration-300"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Phone className="h-4 w-4" />
+            <span className="font-medium">Contact on WhatsApp</span>
+          </a>
         </div>
       </div>
     </nav>
