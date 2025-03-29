@@ -106,6 +106,32 @@ const Projects = () => {
       category: "generative-ai",
       technologies: ["LangChain", "OpenAI API", "Retrieval-Augmented Generation", "Vector DB"],
       github: "https://github.com/SURESHBEEKHANI/Medical-Chatbot-RAG-System.git"
+    }, 
+    {
+      title: "AI-Powered ATS",
+      description: "Developed an AI-driven Applicant Tracking System (ATS) to streamline resume screening and candidate evaluation using LLM and natural language processing.",
+      image: "image/AI-Powered ATS.png",
+      category: "generative-ai",
+      technologies: ["LLM", "web scraping", "Python", "google-generativeai"],
+      github: "https://github.com/SURESHBEEKHANI/Resume-Application-Tracking-System-ATS.git"
+    }
+    ,
+    {
+      title: "AI Research Agent",
+      description: "Developed a multi-agent AI system for autonomous research and financial analysis, utilizing advanced machine learning models to extract insights from market trends and web data.",
+      image: "image/AI-Research-Agent.png",
+      category: "generative-ai",
+      technologies: ["Autogen", "LangGraph", "LLM", "Python", "Web Scraping"],
+      github: "https://github.com/SURESHBEEKHANI/Financial-Analyst-AI-Multi-Agent-System"
+    }
+    ,
+    {
+      title: "AI-Powered Cold Email Automation",
+      description: "Built an AI-driven cold email automation system leveraging LLMs and Retrieval-Augmented Generation (RAG) to craft personalized, high-conversion email campaigns.",
+      image: "image/Cold-Email-Automation.png",
+      category: "generative-ai",
+      technologies: ["LangChain", "OpenAI API", "LLM", "Vector DB"],
+      github: "https://github.com/SURESHBEEKHANI/Cold-Email-Automations.git"
     },    
   ];
   

@@ -42,18 +42,6 @@ const Hero = () => {
                 <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
               </a>
             </div>
-            
-            <div className="flex justify-center md:justify-start gap-4 mt-5 sm:mt-6">
-              <a href="https://github.com/sureshbeekhani" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
-                <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-              <a href="https://linkedin.com/in/suresh-beekhani" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
-                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-              <a href="#" className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary/20 transition-colors">
-                <Twitter className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-            </div>
           </div>
         </div>
       </div>
