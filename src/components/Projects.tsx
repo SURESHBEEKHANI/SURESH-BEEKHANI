@@ -70,7 +70,7 @@ const Projects = () => {
     {
       title: "Brain Tumor Segmentation",
       description: "Brain Tumor Segmentation is a deep learning application that leverages YOLO-Seg to detect and segment brain tumors from MRI scans in real-time.",
-      image: "image/Brain-tumor-seg.JPEG",
+      image: 'image/Brain-tumor-seg.JPEG',
       category: "computer-vision",
       technologies: ["Yolo", "OpenCV", "CNN", "Image Processing"],
       github: "https://github.com/SURESHBEEKHANI/Brain_Tumor_Segmentation"
