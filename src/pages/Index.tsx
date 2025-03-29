@@ -78,12 +78,10 @@ const Index = () => {
           </div>
         </section>
         
-        <section id="skills" className="pro-section">
-          <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
-            <Skills />
-            <div className="section-decoration section-decoration-2"></div>
-          </div>
+        <section id="skills" className="relative">
+          <div className="section-decoration section-decoration-1"></div>
+          <Skills />
+          <div className="section-decoration section-decoration-2"></div>
         </section>
         
         <section id="services" className="pro-section">
