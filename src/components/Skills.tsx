@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Database, Laptop, Network, Terminal, Brain, Eye, MessageSquare, Code } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -170,21 +169,22 @@ const Skills = () => {
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              'AWS Certified Machine Learning Specialist',
-              'TensorFlow Developer Certificate',
-              'Microsoft Certified: Azure Data Scientist Associate',
-              'Google Professional Data Engineer',
-              'IBM Data Science Professional',
-              'Cloudera Certified Data Analyst'
-            ].map((cert, index) => (
+              { cert: 'AWS Certified Machine Learning Specialist', course: 'AWS Machine Learning Pathway' },
+              { cert: 'TensorFlow Developer Certificate', course: 'TensorFlow for Deep Learning' },
+              { cert: 'Microsoft Certified: Azure Data Scientist Associate', course: 'Azure Data Science Track' },
+              { cert: 'Google Professional Data Engineer', course: 'Google Cloud Data Engineering' },
+              { cert: 'IBM Data Science Professional', course: 'IBM Data Science Specialization' },
+              { cert: 'Cloudera Certified Data Analyst', course: 'Cloudera Data Analysis Training' }
+            ].map((item, index) => (
               <div 
                 key={index} 
                 className="bg-white/90 p-4 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
               >
                 <span className="text-foreground/80 text-sm font-medium flex items-center gap-2">
                   <Database className="h-4 w-4 text-primary" />
-                  {cert}
+                  {item.cert}
                 </span>
+                <p className="text-xs text-gray-500 mt-1">{item.course}</p>
               </div>
             ))}
           </div>

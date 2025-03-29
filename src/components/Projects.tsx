@@ -52,7 +52,7 @@ const Projects = () => {
     {
       title: 'PPE Detection System',
       description: 'Developed a high-accuracy, real-time object detection solution using the YOLO architecture, achieving a 95% mAP on specialized datasets.',
-      image: 'image/ppe_detection.png',
+      image: 'image/PPE.png', // Corrected the image path
       category: 'computer-vision',
       technologies: ['CNN', 'OpenCV', 'YOLO', 'Object Detection'],
       github: 'https://github.com/SURESHBEEKHANI/PPE-Detect',
@@ -69,7 +69,7 @@ const Projects = () => {
     {
       title: "Brain Tumor Segmentation",
       description: "Brain Tumor Segmentation is a deep learning application that leverages YOLO-Seg to detect and segment brain tumors from MRI scans in real-time.",
-      image: 'image/brain_tumor_segmentation.png',
+      image: 'image/Brain-tumor-seg.JPEG',
       category: "computer-vision",
       technologies: ["Yolo", "OpenCV", "CNN", "Image Processing"],
       github: "https://github.com/SURESHBEEKHANI/Brain_Tumor_Segmentation"
