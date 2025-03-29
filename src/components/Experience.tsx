@@ -1,5 +1,8 @@
+
 import React from 'react';
-import { Briefcase, GraduationCap, Calendar, Building } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar, Building, User } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Experience = () => {
   const workExperience = [
@@ -54,9 +57,9 @@ const Experience = () => {
     <section id="experience" className="py-24 bg-gradient-to-b from-secondary/60 to-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 text-center">
-          <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+          <Badge variant="outline" className="mb-2 px-4 py-1 bg-primary/10 text-primary font-medium">
             My Journey
-          </div>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Experience & <span className="text-primary">Education</span>
           </h2>
@@ -74,16 +77,25 @@ const Experience = () => {
             
             <div className="space-y-8">
               {workExperience.map((exp, index) => (
-                <div key={index} className="glass-effect rounded-lg p-6 relative border-l-4 border-primary hover:shadow-lg transition-all duration-300">
-                  <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full absolute -top-3 right-6 flex items-center">
-                    <Calendar className="w-3 h-3 mr-1" /> {exp.period}
-                  </span>
-                  <h4 className="text-xl font-display font-semibold mb-1">{exp.title}</h4>
-                  <p className="text-primary/80 mb-3 flex items-center">
-                    <Building className="w-4 h-4 mr-2" /> {exp.company}
-                  </p>
-                  <p className="text-foreground/70">{exp.description}</p>
-                </div>
+                <Card key={index} className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                  <CardContent className="p-6">
+                    <div className="flex flex-col">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="text-xl font-display font-semibold">{exp.title}</h4>
+                        <Badge variant="outline" className="bg-primary/10 text-primary flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" /> {exp.period}
+                        </Badge>
+                      </div>
+                      
+                      <p className="text-primary/80 mb-3 flex items-center">
+                        <Building className="w-4 h-4 mr-2" /> {exp.company}
+                      </p>
+                      
+                      <p className="text-foreground/70">{exp.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -98,16 +110,25 @@ const Experience = () => {
             
             <div className="space-y-8">
               {education.map((edu, index) => (
-                <div key={index} className="glass-effect rounded-lg p-6 relative border-l-4 border-primary hover:shadow-lg transition-all duration-300">
-                  <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full absolute -top-3 right-6 flex items-center">
-                    <Calendar className="w-3 h-3 mr-1" /> {edu.period}
-                  </span>
-                  <h4 className="text-xl font-display font-semibold mb-1">{edu.degree}</h4>
-                  <p className="text-primary/80 mb-3 flex items-center">
-                    <Building className="w-4 h-4 mr-2" /> {edu.institution}
-                  </p>
-                  <p className="text-foreground/70">{edu.description}</p>
-                </div>
+                <Card key={index} className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                  <CardContent className="p-6">
+                    <div className="flex flex-col">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="text-xl font-display font-semibold">{edu.degree}</h4>
+                        <Badge variant="outline" className="bg-primary/10 text-primary flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" /> {edu.period}
+                        </Badge>
+                      </div>
+                      
+                      <p className="text-primary/80 mb-3 flex items-center">
+                        <Building className="w-4 h-4 mr-2" /> {edu.institution}
+                      </p>
+                      
+                      <p className="text-foreground/70">{edu.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
