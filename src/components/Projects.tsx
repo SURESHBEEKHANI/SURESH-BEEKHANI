@@ -21,9 +21,51 @@ const Projects = () => {
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500',
       category: 'machine-learning',
       technologies: ['Python', 'Scikit-Learn', 'TensorFlow', 'Pandas'],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/SURESHBEEKHANI/customer-churn-prediction.git',
     },
+
+    {
+      title: "Movie Recommender System",
+      description: "Developed a machine learning-based movie recommendation system that suggests personalized movies based on user preferences and viewing history.",
+      image: "image/Movie Recommender System.png",
+      category: "machine-learning",
+      technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
+      github: "https://github.com/SURESHBEEKHANI/Movie-Recommender-System.git"
+    },
+    {
+      title: " Spam Detection System",
+      description: "Built a machine learning-based spam detection system that accurately classifies emails and messages as spam or legitimate using NLP and deep learning techniques.",
+      image: "image/Spam-Detection.png",
+      category: "machine-learning",
+      technologies: ["Scikit-Learn", "TensorFlow", "Pandas", "NLP"],
+      github: "https://github.com/SURESHBEEKHANI/spam-detection.git"
+    }, 
+    {
+      title: "Heart Attack Prediction System",
+      description: "Developed a machine learning-based system to predict heart attack risks using patient health data, enabling early detection and preventive healthcare measures.",
+      image: "image/Heart-Attack-Prediction.png",
+      category: "machine-learning",
+      technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
+      github: "https://github.com/SURESHBEEKHANI/Heart-Attack-Prediction.git"
+    },
+    {
+      title: "Visa Approval Prediction System",
+      description: "Developed a machine learning-based system to predict visa approval probabilities based on applicant data, enhancing decision-making for immigration processes.",
+      image: "image/Visa-Approval-Prediction.png",
+      category: "machine-learning",
+      technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
+      github: "https://github.com/SURESHBEEKHANI/Visa-Approval-Prediction.git"
+    }
+    ,
+    {
+      title: "Loan Eligibility Prediction System",
+      description: "Built a machine learning-based system to predict loan eligibility by analyzing applicant financial history, credit score, and income, aiding financial institutions in decision-making.",
+      image: "image/Loan-Eligibility-Prediction.png",
+      category: "machine-learning",
+      technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
+      github: "https://github.com/SURESHBEEKHANI/Loan-Eligibility-Prediction.git"
+    }
+    ,                               
     {
       title: 'Predictive Maintenance System',
       description: 'Created a real-time monitoring system using IoT data to predict equipment failures before they occur.',
