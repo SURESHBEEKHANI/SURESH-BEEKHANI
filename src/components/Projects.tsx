@@ -117,37 +117,40 @@ const projects = [
   }
   ,
   {
-    title: "Hate Speech Detection",
-    description: "Developed a deep learning model using LSTM to classify and detect hate speech in text data. The project includes data preprocessing, model training, and deployment as a Flask-based web application for real-time text classification.",
-    image: "image/Hate-Speech-Detection.png",
+    title: "Speech-to-Text Recognition",
+    description: "Developed a deep learning-based speech-to-text recognition system that converts spoken language into written text. The project leverages advanced ASR (Automatic Speech Recognition) models, incorporating data preprocessing, model training, and deployment as a Flask-based web application for real-time transcription.",
+    image: "image/Speech-to-Text.png",
     category: "NLP",
-    technologies: ["Python", "LSTM", "TensorFlow", "NLTK", "spaCy"],
-    github: "https://github.com/SURESHBEEKHANI/Hate-Speech-Classifier-LSTM"
-  }, 
-  {
-    title: "Hate Speech Detection",
-    description: "Developed a deep learning model using LSTM to classify and detect hate speech in text data. The project includes data preprocessing, model training, and deployment as a Flask-based web application for real-time text classification.",
-    image: "image/Hate-Speech-Detection.png",
-    category: "NLP",
-    technologies: ["Python", "LSTM", "TensorFlow", "NLTK", "spaCy"],
-    github: "https://github.com/SURESHBEEKHANI/Hate-Speech-Classifier-LSTM"
+    technologies: ["Python", "DeepSpeech", "Wav2Vec2", "TensorFlow", "NLTK"],
+    github: "https://github.com/SURESHBEEKHANI/Speech-to-Text-Recognition"
   },
   {
-    title: "Content Creators",
-    description: "Developed a deep learning model using LSTM to classify and detect hate speech in text data. The project includes data preprocessing, model training, and deployment as a Flask-based web application for real-time text classification.",
-    image: "image/Hate-Speech-Detection.png",
-    category: "NLP",
-    technologies: ["Python", "LSTM", "TensorFlow", "NLTK", "spaCy"],
-    github: "https://github.com/SURESHBEEKHANI/Hate-Speech-Classifier-LSTM"
-  },
+      title: "Machine Translation",
+      description: "Developed a deep learning-based machine translation system that converts text from one language to another. The project leverages transformer models like MarianMT and T5 for accurate and fluent translations, incorporating data preprocessing, model training, and deployment as a Flask-based web application.",
+      image: "image/Machine-Translation.png",
+      category: "NLP",
+      technologies: ["Python", "Transformers", "MarianMT", "T5", "spaCy"],
+      github: "https://github.com/SURESHBEEKHANI/Machine-Translation"
+    }
+    ,
   {
-    title: "Hate Speech Detection",
-    description: "Developed a deep learning model using LSTM to classify and detect hate speech in text data. The project includes data preprocessing, model training, and deployment as a Flask-based web application for real-time text classification.",
-    image: "image/Hate-Speech-Detection.png",
+    title: "AI Content Creators",
+    description: "Developed an AI-powered system that generates high-quality content using advanced NLP models. The project leverages deep learning techniques to create text, automate writing tasks, and enhance content generation efficiency.",
+    image: "image/AI-Content-Creation.png",
     category: "NLP",
-    technologies: ["Python", "LSTM", "TensorFlow", "NLTK", "spaCy"],
-    github: "https://github.com/SURESHBEEKHANI/Hate-Speech-Classifier-LSTM"
-  },
+    technologies: ["Python", "GPT", "Transformer Models", "NLTK", "spaCy"],
+    github: "https://github.com/SURESHBEEKHANI/Advanced-LLM-Fine-Tuning/blob/main/Fine_tune_a_Mistral_7b_model_with_DPO.ipynb"
+  },  
+  {
+    title: "Named Entity Recognition (NER)",
+    description: "Developed a deep learning-based Named Entity Recognition (NER) system using transformer models and NLP techniques. The project focuses on extracting entities such as names, locations, organizations, and dates from unstructured text data. It includes data preprocessing, model training, and deployment as a Flask-based web application for real-time entity recognition.",
+    image: "image/NER-Model.png",
+    category: "NLP",
+    technologies: ["Python", "Transformer Models", "spaCy", "NLTK", "Hugging Face"],
+    github: "https://github.com/SURESHBEEKHANI/Advanced-LLM-Fine-Tuning/blob/main/Finetune_Gemma_NRE.ipynb"
+  }
+  ,
+  
   {
     title: 'PPE Detection System',
     description: 'Developed a high-accuracy, real-time object detection solution using the YOLO architecture, achieving a 95% mAP on specialized datasets.',
@@ -283,16 +286,6 @@ const Projects = () => {
                 className="bg-white text-primary p-2 rounded-full hover:scale-110 transition-transform"
               >
                 <Github className="h-5 w-5" />
-              </a>
-            )}
-            {project.demo && (
-              <a 
-                href={project.demo} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white text-primary p-2 rounded-full hover:scale-110 transition-transform"
-              >
-                <ExternalLink className="h-5 w-5" />
               </a>
             )}
           </div>
