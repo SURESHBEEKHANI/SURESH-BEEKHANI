@@ -9,7 +9,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500',
     category: 'machine-learning',
     technologies: ['Python', 'Scikit-Learn', 'TensorFlow', 'Pandas'],
-    github: 'https://github.com/SURESHBEEKHANI/customer-churn-prediction.git',
+    github: 'https://github.com/SURESHBEEKHANI/Customer-Churn-Prediction-With-ANN.git',
   },
   {
     title: "Movie Recommender System",
