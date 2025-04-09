@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import App from '@/App';
 
 // Project data
 const projects = [
@@ -68,21 +69,21 @@ const projects = [
     github: "https://github.com/SURESHBEEKHANI/Student-Exam-Performance-Prediction.git"
   }, 
   {
-    title: "Energy Consumption Forecasting",
-    description: "Developed a machine learning-based system to predict energy consumption patterns using historical data, weather conditions, and time-based trends, helping businesses and households optimize energy usage.",
-    image: "image/Energy-Consumption-Forecasting.png",
+    title: "Climate Forecasting",
+    description: "Developed a machine learning-driven system to predict climate patterns, using historical weather data, environmental factors, and time-based trends. This system helps businesses and governments plan for climate-related challenges more effectively.",
+    image: "image/Climate_Forecasting.png",
     category: "predictive-analytics",
-    technologies: ["Python", "forecasting", "Scikit-Learn", "Time Series Analysis"],
-    github: "https://github.com/SURESHBEEKHANI/energy-consumption-forecasting.git"
-  }, 
+    technologies: ["Python", "Scikit-Learn", "Time Series Analysis", "Forecasting"],
+    github: "https://github.com/SURESHBEEKHANI/Delhi-Climate-Forecasting.git"
+  },
   {
-    title: "Demand Forecasting",
-    description: "Developed a machine learning-based system to predict product demand using historical sales data, pricing trends, promotions, and market conditions, helping businesses optimize inventory and supply chain management.",
-    image: "image/Demand-Forecasting.png",
+    title: "Stock Market Forecasting",
+    description: "Created an interactive web application for forecasting stock prices using historical data from Yahoo Finance. Employed ARIMA models to predict key metrics (Open, High, Low, Close), providing users with valuable insights to make informed financial decisions.",
+    image: "image/Stock-Market-Forecasting.png",
     category: "predictive-analytics",
-    technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
-    github: "https://github.com/SURESHBEEKHANI/demand-forecasting.git"
-  }, 
+    technologies: ["Python", "Streamlit", "ARIMA", "Pandas", "yfinance", "Matplotlib"],
+    github: "https://github.com/SURESHBEEKHANI/stock-market-forecasting.git",
+  },  
   {
     title: "Sales Forecasting System",
     description: "Built a machine learning-based system to predict future sales trends using historical data, enabling businesses to optimize inventory, marketing, and revenue strategies.",
