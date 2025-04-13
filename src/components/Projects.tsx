@@ -236,7 +236,7 @@ const projects = [
     title: "Superstore Performance Dashboard",
     description: "Developed an interactive dashboard to analyze sales performance across segments, regions, and product categories using historical data from 2016 to 2019. Delivered key insights to drive data-driven decisions.",
     image: "image/Superstore-Dashboard.png",
-    category: "data-visualization",
+    category: "Data-Analysis",
     technologies: ["PowerBI", "SQL", "Data Analytics", "Business Intelligence"],
     github: "https://github.com/SURESHBEEKHANI/powerbi-projects/tree/main/retail-sales-dashboard" // Replace with your actual link
   },
@@ -244,7 +244,7 @@ const projects = [
     title: "Credit Card Financial Dashboard",
     description: "Designed a Power BI dashboard to track credit card revenue, interest earnings, and customer behavior. Leveraged SQL for data transformation and built dynamic visuals to uncover financial patterns across card types, demographics, and transaction methods.",
     image: "image/Credit-Card-Dashboard.png", // Optional: can use a screenshot from the Power BI report
-    category: "data-visualization",
+    category: "Data-Analysis",
     technologies: ["Power BI", "SQL", "Data Modeling", "DAX", "Financial Analytics"],
     github: "https://github.com/SURESHBEEKHANI/powerbi-projects/tree/main/Credit_Card_Financial_Dashboard"
   },  
@@ -252,45 +252,46 @@ const projects = [
     title: "WhatsApp Conversations Analysis",
     description: "Streamlit-based web application to analyze WhatsApp chat history with insights into user activity, word usage, emoji trends, and message timelines.",
     image: "image/whatsapp-analysis.png", // Optional: Replace with actual image path
-    category: "data-visualization",
+    category: "Data-Analysis",
     technologies: ["Python", "Streamlit", "Pandas", "Matplotlib", "Seaborn"],
     github: "https://github.com/SURESHBEEKHANI/WhatsApp-Conversations-Analysis"
   },
   {
     title: "Exploratory Data Analysis",
     description: "This project aims to understand how heart disease is influenced by various medical and lifestyle factors such as age, sex, cholesterol levels, blood pressure, and heart rate. The primary goal is to predict the presence of heart disease based on these features.",
-    image: "image/Heart-Disease-EDA.png",  // You can replace this with a relevant image for the heart disease EDA
-    category: "data-visualization",
+    image: "image/EDA.png",  // You can replace this with a relevant image for the heart disease EDA
+    category: "Data-Analysis",
     technologies: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn"],
     github: "https://shorturl.at/NhsFW"
 }
 ,
+{
+  title: "Music Store Data Analysis SQL",
+  description: "Analyzed an online music store database using SQL to extract insights about sales performance, customer behavior, and artist popularity. Designed complex queries to answer business questions and visualize data-driven outcomes.",
+  image: "image/Music-Store-Analysis.png",
+  category: "Data-Analysis",
+  technologies: ["PostgreSQL", "PgAdmin4", "Data Analysis", "SQL"],
+  github: "https://github.com/SURESHBEEKHANI/Music-Store-Data-Analysis-Project-using-SQL"
+}
+,  
   {
     title: "AI-Powered Cold Email Automation",
     description: "Built an AI-driven cold email automation system leveraging LLMs and Retrieval-Augmented Generation (RAG) to craft personalized, high-conversion email campaigns.",
     image: "image/Cold-Email-Automation.png",
-    category: "data-visualization",
-    technologies: ["LangChain", "OpenAI API", "LLM", "Vector DB"],
-    github: "https://github.com/SURESHBEEKHANI/Cold-Email-Automations.git"
-  },    
-  {
-    title: "AI-Powered Cold Email Automation",
-    description: "Built an AI-driven cold email automation system leveraging LLMs and Retrieval-Augmented Generation (RAG) to craft personalized, high-conversion email campaigns.",
-    image: "image/Cold-Email-Automation.png",
-    category: "data-visualization",
+    category: "Data-Analysis",
     technologies: ["LangChain", "OpenAI API", "LLM", "Vector DB"],
     github: "https://github.com/SURESHBEEKHANI/Cold-Email-Automations.git"
   },      
 ];
 
-// Categories data
+// Categories data"PgAdmin4", 
 const categories = [
   { label: 'Machine Learning', value: 'machine-learning' },
   { label: 'Computer Vision', value: 'computer-vision' },
   { label: 'Generative AI', value: 'generative-ai' },
   { label: 'Predictive Analytics', value: 'predictive-analytics' },
   { label: 'NLP', value: 'NLP' },
-  { label: 'Data Visualization', value: 'data-visualization' },
+  { label: ' Data Analysis', value: 'Data-Analysis' },
 ];
 
 const Projects = () => {
