@@ -37,14 +37,6 @@ const projects = [
     github: "https://github.com/SURESHBEEKHANI/Heart-Attack-Prediction.git"
   },
   {
-    title: "Visa Approval Prediction System",
-    description: "Developed a machine learning-based system to predict visa approval probabilities based on applicant data, enhancing decision-making for immigration processes.",
-    image: "image/Visa-Approval-Prediction.png",
-    category: "machine-learning",
-    technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
-    github: "https://github.com/SURESHBEEKHANI/Visa-Approval-Prediction.git"
-  },
-  {
     title: "Loan Eligibility Prediction System",
     description: "Built a machine learning-based system to predict loan eligibility by analyzing applicant financial history, credit score, and income, aiding financial institutions in decision-making.",
     image: "image/Loan-Eligibility-Prediction.png",
@@ -52,6 +44,15 @@ const projects = [
     technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
     github: "https://github.com/SURESHBEEKHANI/Loan-Eligibility-Prediction.git"
   },
+  {
+    title: "Customer Segmentation",
+    description: "Developed an interactive Streamlit application to segment customers using K-Means clustering. Users can upload datasets, select numerical features, and explore customer clusters via Elbow Method, scatter plots, and distribution charts.",
+    image: "image/customer-segmentation.png",
+    category: "machine-learning",
+    technologies: ["Python", "Scikit-Learn", "Streamlit", "Pandas", "Matplotlib"],
+    github: "https://github.com/SURESHBEEKHANI/Customer-Segmentation.git"
+  }
+  ,
   {
     title: "Gemstone Price Prediction System",
     description: "Developed a machine learning-based system to predict gemstone prices based on attributes such as color, clarity, cut, and carat weight, assisting jewelers and traders in accurate valuation.",
@@ -83,15 +84,7 @@ const projects = [
     category: "predictive-analytics",
     technologies: ["Python", "Streamlit", "ARIMA", "Pandas", "yfinance", "Matplotlib"],
     github: "https://github.com/SURESHBEEKHANI/stock-market-forecasting.git",
-  },  
-  {
-    title: "Sales Forecasting System",
-    description: "Built a machine learning-based system to predict future sales trends using historical data, enabling businesses to optimize inventory, marketing, and revenue strategies.",
-    image: "image/Sales-Forecasting.png",
-    category: "predictive-analytics",
-    technologies: ["Python", "Scikit-Learn", "Time Series Analysis", "Forecasting"],
-    github: "https://github.com/SURESHBEEKHANI/Sales-Forecasting-System.git"
-  },        
+  },          
   {
     title: "Boston House Price Prediction",
     description: "ML-based system predicting house prices in Boston using real estate data and market trends.",
@@ -100,6 +93,14 @@ const projects = [
     technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
     github: "https://github.com/SURESHBEEKHANI/Predicting-Boston-House-Prices.git"
   }, 
+  {
+    title: "Visa Approval Prediction System",
+    description: "Developed a machine learning-based system to predict visa approval probabilities based on applicant data, enhancing decision-making for immigration processes.",
+    image: "image/Visa-Approval-Prediction.png",
+    category: "predictive-analytics",
+    technologies: ["Python", "Scikit-Learn", "TensorFlow", "Pandas"],
+    github: "https://github.com/SURESHBEEKHANI/Visa-Approval-Prediction.git"
+  },
   {
     title: "Sentiment Analysis",
     description:"Developed an NLP pipeline for sentiment analysis and topic modeling using customer feedback data.",
