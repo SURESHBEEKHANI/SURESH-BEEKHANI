@@ -1,6 +1,20 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Database, Laptop, Network, Terminal, Brain, Eye, MessageSquare, Code, Award, BookOpen, Star } from 'lucide-react';
+import { 
+  Database, 
+  Laptop, 
+  Network, 
+  Terminal, 
+  Brain, 
+  Eye, 
+  MessageSquare, 
+  Code, 
+  Award, 
+  BookOpen, 
+  Star,
+  Microscope,  // New import for Machine Learning
+  BarChart     // New import for Visualization
+} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -65,7 +79,7 @@ const Skills = () => {
     },
     {
       category: 'Machine Learning',
-      icon: <Code className="h-8 w-8" />,
+      icon: <Microscope className="h-8 w-8" />,  // Changed from Code to Microscope
       bgColor: 'bg-blue-100 dark:bg-blue-950/30',
       items: [
         { name: 'Scikit-Learn', level: 90 },
@@ -116,7 +130,7 @@ const Skills = () => {
     },
     {
       category: 'Visualization',
-      icon: <Terminal className="h-8 w-8" />,
+      icon: <BarChart className="h-8 w-8" />,  // Changed from Terminal to BarChart
       bgColor: 'bg-rose-100 dark:bg-rose-950/30',
       items: [
         { name: 'Tableau', level: 90 },
