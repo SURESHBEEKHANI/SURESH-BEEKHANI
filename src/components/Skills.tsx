@@ -212,7 +212,7 @@ const Skills = () => {
               { cert: 'AWS Certified Machine Learning Specialist', course: 'AWS Machine Learning Pathway', icon: <Database className="h-4 w-4" /> },
               { cert: 'TensorFlow Developer Certificate', course: 'TensorFlow for Deep Learning', icon: <BookOpen className="h-4 w-4" /> },
               { cert: 'Microsoft Certified: Azure Data Scientist Associate', course: 'Azure Data Science Track', icon: <Database className="h-4 w-4" /> },
-              { cert: 'Google Professional Data Engineer', course: 'Google Cloud Data Engineering', icon: <Laptop className="h-4 w-4" /> },
+              { cert: 'Google Professional Generative AI Engineer', course: 'Google Cloud', icon: <Laptop className="h-4 w-4" /> },
               { cert: 'IBM Data Science Professional', course: 'IBM Data Science Specialization', icon: <Star className="h-4 w-4" /> },
               { cert: 'Cloudera Certified Data Analyst', course: 'Cloudera Data Analysis Training', icon: <Network className="h-4 w-4" /> }
             ].map((item, index) => (

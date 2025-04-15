@@ -44,8 +44,6 @@ const Contact = () => {
   const socialLinks = [
     { name: 'Github', icon: <Github className="h-5 w-5" />, url: 'https://github.com/sureshbeekhani' },
     { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://linkedin.com/in/suresh-beekhani' },
-    { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, url: 'https://twitter.com/sureshbeekhani' },
-    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, url: 'https://instagram.com/sureshbeekhani' },
   ];
   
   const contactInfo = [

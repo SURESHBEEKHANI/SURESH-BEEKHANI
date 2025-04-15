@@ -13,8 +13,6 @@ const Footer = () => {
   const socialLinks = [
     { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/sureshbeekhani' },
     { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/sureshbeekhani' },
-    { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://twitter.com/sureshbeekhani' },
-
   ];
   
   return (
