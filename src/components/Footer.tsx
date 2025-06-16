@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Twitter } from 'lucide-react';
 
@@ -13,6 +12,7 @@ const Footer = () => {
   const socialLinks = [
     { name: 'Github', icon: <Github size={20} />, url: 'https://github.com/sureshbeekhani' },
     { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com/in/sureshbeekhani' },
+    { name: 'X', icon: <Twitter size={20} />, url: 'https://x.com/SureshBeekhan' },
   ];
   
   return (

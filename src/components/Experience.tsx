@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Briefcase, GraduationCap, Calendar, Building, User } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -35,10 +34,10 @@ const Experience = () => {
   
   const education = [
     {
-      degree: 'Master of Science in Data Science',
-      institution: 'Virtual University of Pakistan',
-      period: '2022 - 2024',
-      description: 'Specialized in machine learning and artificial intelligence applications.'
+      degree: 'Self-Learning in Machine Learning and AI',
+      institution: 'YouTube, Coursera, edX, and Other Online Platforms',
+      period: '2022 - 2025',
+      description: 'Specialized in machine learning and artificial intelligence applications through self-guided study using platforms such as YouTube, Coursera, edX, and other online learning resources.'
     },
     {
       degree: 'Bachelor of Science in Computer Science',
@@ -72,7 +71,11 @@ const Experience = () => {
             
             <div className="space-y-8">
               {workExperience.map((exp, index) => (
-                <Card key={index} className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative">
+                <Card
+                  key={index}
+                  className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
+                >
                   <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
                   <CardContent className="p-6">
                     <div className="flex flex-col">
@@ -105,7 +108,11 @@ const Experience = () => {
             
             <div className="space-y-8">
               {education.map((edu, index) => (
-                <Card key={index} className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative">
+                <Card
+                  key={index}
+                  className="overflow-hidden border-none hover:shadow-lg transition-all duration-300 relative animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
+                >
                   <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
                   <CardContent className="p-6">
                     <div className="flex flex-col">

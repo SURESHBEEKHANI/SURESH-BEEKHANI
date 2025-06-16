@@ -4,7 +4,7 @@ import { Award, Brain, Code, Database, Lightbulb, Star } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { label: 'Years Experience', value: '4+' },
+    { label: 'Years Experience', value: '3+' },
     { label: 'Projects Completed', value: '25+' },
     { label: 'AI Models Built', value: '40+' },
     { label: 'Happy Clients', value: '15+' }
