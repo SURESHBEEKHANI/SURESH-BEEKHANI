@@ -36,7 +36,18 @@ const Skills = () => {
     { name: 'Ultralytics', image: '/image/skills_img/Ultratics.png' },
     { name: 'OpenCV', image: '/image/skills_img/opencv.png'},
     { name: 'Langchain', image: '/image/skills_img/langchain.png' },
+    {name: 'OpenAI', image: '/image/skills_img/openai.jpg'},
+    {name: 'Groq', image: '/image/skills_img/groq.png'},
+    {name: 'Pinecone', image: '/image/skills_img/pinecone.png'},
+    {name: 'Quadrant', image:'/image/skills_img/quadrant.png'},
     { name: 'FastAPI', image: '/image/skills_img/fastapi.png' },
+    {name: 'Docker', image: '/image/skills_img/docker.png'},
+    {name: 'AWS', image: '/image/skills_img/aws.png'},
+    {name: 'MLflow', image: '/image/skills_img/mlflow.svg'},
+    {name: 'DVC',  image: '/image/skills_img/dvc.png'},
+    {name: 'Git', image: '/image/skills_img/git.png'},
+    {name: 'GitHub', image: '/image/skills_img/GitHub.jpg'}
+
   ];
 
   return (
