@@ -15,14 +15,14 @@ const Skills = () => {
     if (!scrollContainer) return;
 
     const scroll = () => {
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+      if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth) / 2) {
         scrollContainer.scrollLeft = 0;
       } else {
-        scrollContainer.scrollLeft += 220;
+        scrollContainer.scrollLeft += 2;
       }
     };
 
-    const interval = setInterval(scroll, 3000);
+    const interval = setInterval(scroll, 20);
     return () => clearInterval(interval);
   }, []);
 
@@ -30,12 +30,16 @@ const Skills = () => {
     { name: 'NumPy', image: '/image/skills_img/numpy.png' },
     { name: 'Pandas', image: '/image/skills_img/pandas.png'},
     { name: 'Matplotlib', image: '/image/skills_img/matplot.png' },
+    {name: 'Seabron', image: '/image/skills_img/seaborn.svg'},
+    {name:'Ploty', image:'/image/skills_img/plotly.jpg'},
+    {name: 'PowerBI',image:'/image/skills_img/Powerbi.png'},
     { name: 'Scikit-learn', image: '/image/skills_img/sikitlearn.png' },
     { name: 'TensorFlow', image: '/image/skills_img/tensorflow.png' },
     { name: 'PyTorch', image: '/image/skills_img/pytorch.png' },
     { name: 'Ultralytics', image: '/image/skills_img/Ultratics.png' },
     { name: 'OpenCV', image: '/image/skills_img/opencv.png'},
     { name: 'Langchain', image: '/image/skills_img/langchain.png' },
+    {name: 'LangGraph', image: '/image/skills_img/langgraph.png'},
     {name: 'OpenAI', image: '/image/skills_img/openai.jpg'},
     {name: 'Groq', image: '/image/skills_img/groq.png'},
     {name: 'Pinecone', image: '/image/skills_img/pinecone.png'},
@@ -47,8 +51,10 @@ const Skills = () => {
     {name: 'DVC',  image: '/image/skills_img/dvc.png'},
     {name: 'Git', image: '/image/skills_img/git.png'},
     {name: 'GitHub', image: '/image/skills_img/GitHub.jpg'}
-
   ];
+
+  // Duplicate the skills array to create a seamless loop
+  const duplicatedSkills = [...skills, ...skills];
 
   return (
     <section id="skills" className="py-20 relative z-10 bg-gradient-to-b from-white to-gray-50">
@@ -70,7 +76,7 @@ const Skills = () => {
             className="overflow-x-auto pb-6 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             <div className="flex space-x-6 min-w-max px-4">
-              {skills.map((skill, index) => (
+              {duplicatedSkills.map((skill, index) => (
                 <Card 
                   key={index} 
                   className="overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 bg-white flex-shrink-0 w-[200px]"
