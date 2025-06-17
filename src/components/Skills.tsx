@@ -52,6 +52,9 @@ const skillData: Skill[] = [
   { name: 'NLTK', image: '/image/skills_img/nltk.png', category: 'nlp' },
   { name: 'TextBlob', image: '/image/skills_img/textblob.jpg', category: 'nlp' },
   { name: 'Gensim', image: '/image/skills_img/gensim.jpg', category: 'nlp' },
+  { name: 'Transformers', image: '/image/skills_img/transformers.png', category: 'nlp' },
+  { name: 'BERT', image: '/image/skills_img/bert.png', category: 'nlp' },
+  
  
   // Data Analysis
   { name: 'Matplotlib', image: '/image/skills_img/matplot.png', category: 'data-analysis' },
