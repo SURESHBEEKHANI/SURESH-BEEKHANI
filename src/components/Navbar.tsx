@@ -98,7 +98,7 @@ const Navbar = () => {
   
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 py-3 sm:py-4 ${
-      isScrolled ? 'glass-effect border-b border-white/10 shadow-md' : 'bg-transparent'
+      isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center transition-opacity duration-500">
@@ -167,7 +167,7 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden absolute top-full left-0 right-0 glass-effect border-b border-white/10 transition-all duration-300 overflow-hidden mobile-menu-container ${
+      <div className={`md:hidden absolute top-full left-0 right-0 bg-background/80 backdrop-blur-sm transition-all duration-300 overflow-hidden mobile-menu-container ${
         isMobileMenuOpen ? 'max-h-[70vh] opacity-100 shadow-lg' : 'max-h-0 opacity-0'
       }`}>
         <div className="px-6 py-4 flex flex-col space-y-3 max-h-[70vh] overflow-y-auto">

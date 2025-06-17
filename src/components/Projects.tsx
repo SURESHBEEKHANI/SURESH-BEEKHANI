@@ -313,6 +313,7 @@ const Projects = () => {
             src={project.image} 
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-90 transition-opacity duration-500 flex items-center justify-center gap-4">
             {project.github && (

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowDown, FileText, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,7 @@ const Hero = () => {
           <div className="relative mt-16 sm:mt-0">
             <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
             <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-xl relative z-10">
-              <AvatarImage src="image/sureshbeekhani.png" alt="Suresh Beekhani" className="object-cover" />
+              <AvatarImage src="image/sureshbeekhani.png" alt="Suresh Beekhani" className="object-cover" loading="lazy" />
               <AvatarFallback className="text-4xl">SB</AvatarFallback>
             </Avatar>
           </div>
