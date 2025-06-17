@@ -7,7 +7,14 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
   const isMobile = useIsMobile();
+  
+  const logos = [
+    { prefix: 'ML-', suffix: 'Engineer' },
+    { prefix: 'AI-', suffix: 'Engineer' },
+    { prefix: 'Data-', suffix: 'Scientist' }
+  ];
   
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   
@@ -36,6 +43,14 @@ const Navbar = () => {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    const logoInterval = setInterval(() => {
+      setCurrentLogoIndex((prevIndex) => (prevIndex + 1) % logos.length);
+    }, 3000);
+
+    return () => clearInterval(logoInterval);
   }, []);
   
   // Close mobile menu when clicking outside
@@ -74,8 +89,11 @@ const Navbar = () => {
       isScrolled ? 'glass-effect border-b border-white/10 shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center">
-          ML-<span className="text-foreground"> Engineer</span>
+        <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center transition-opacity duration-500">
+          <div className="logo-circle mr-2">
+            {logos[currentLogoIndex].prefix.replace('-', '')}
+          </div>
+          <span className="text-foreground">{logos[currentLogoIndex].suffix}</span>
         </a>
         
         {/* Desktop Navigation */}
