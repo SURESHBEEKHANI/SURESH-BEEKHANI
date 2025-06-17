@@ -75,7 +75,7 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center">
-          Suresh<span className="text-foreground">Beekhani</span>
+          ML-<span className="text-foreground"> Engineer</span>
         </a>
         
         {/* Desktop Navigation */}
