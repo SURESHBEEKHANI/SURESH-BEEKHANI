@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -43,13 +43,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Portfolio', 'Skills', 'Services', 'Experience', 'Contact'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'Home', id: 'home' },
+                { name: 'About', id: 'about' },
+                { name: 'Portfolio', id: 'projects' },
+                { name: 'Skills', id: 'skills' },
+                { name: 'Services', id: 'services' },
+                { name: 'Experience', id: 'experience' },
+                { name: 'Contact', id: 'contact' }
+              ].map((item) => (
+                <li key={item.name}>
                   <a 
-                    href={`#${item.toLowerCase()}`} 
+                    href={`#${item.id}`} 
                     className="text-white/70 hover:text-primary transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -59,9 +67,18 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-white/70">
-              <li>Pakistan</li>
-              <li>sureshbeekhani26@gmail.com</li>
-              <li>+92 340 1213187</li>
+              <li className="flex items-center gap-2">
+                <MapPin size={16} />
+                <span>Karachi, Pakistan</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={16} />
+                <span>sureshbeekhani26@gmail.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} />
+                <span>+92 340 1213187</span>
+              </li>
             </ul>
           </div>
         </div>

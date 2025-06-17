@@ -224,7 +224,6 @@ const BackgroundAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isMobile = useIsMobile();
 
-  // Initialize the gradient and particle animations using the custom hooks
   useGradientAnimation('gradient-background');
   useParticlesAnimation(canvasRef, isMobile);
 
