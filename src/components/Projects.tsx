@@ -214,12 +214,12 @@ const projects = [
   },
   {
     title: "AI Research Agent",
-    description: "Developed a multi-agent AI system for autonomous research and financial analysis, utilizing advanced machine learning models to extract insights from market trends and web data.",
+    description: "AI Research Agent is an intelligent assistant designed to streamline academic research. It enables users to search, summarize, and analyze scholarly papers from platforms like ArXiv and Google Scholar. Built with React, FastAPI, and Groq AI, it offers concise insights—including pros and cons—through a sleek, high-performance interface.",
     image: "/image/project_img/AI-Research-Agent.png",
     category: "generative-ai",
     technologies: ["Autogen", "LangGraph", "LLM", "Python", "Web Scraping"],
-    github: "https://github.com/SURESHBEEKHANI/Financial-Analyst-AI-Multi-Agent-System"
-  },
+    github: "https://github.com/SURESHBEEKHANI/Autogen-Research-Agent.git"
+  },  
   {
     title: "AI-Powered Cold Email Automation",
     description: "Built an AI-driven cold email automation system leveraging LLMs and Retrieval-Augmented Generation (RAG) to craft personalized, high-conversion email campaigns.",
