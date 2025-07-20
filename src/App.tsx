@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import HealthTechAI from "./pages/HealthTechAI";
 import EdTechAI from "./pages/EdTechAI";
+import FinTechAI from "./pages/FinTechAI";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/healthtechai" element={<HealthTechAI />} />
           <Route path="/edtechai" element={<EdTechAI />} />
+          <Route path="/fintechai" element={<FinTechAI />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
