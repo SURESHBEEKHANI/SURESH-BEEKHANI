@@ -32,28 +32,28 @@ const FinTechAI: React.FC = () => {
       id: 4,
       title: "Personalized Financial Advice",
       description: "AI-powered chatbots and robo-advisors provide tailored financial guidance and portfolio management to individual investors.",
-      image: "/image/pages_img/Financial-Analyst.png",
+      image: "/image/pages_img/Personalized-Financial.jpg",
       alt: "Personalized Financial Advice"
     },
     {
       id: 5,
       title: "Risk Management",
       description: "AI models predict and mitigate financial risks by analyzing market trends, customer behavior, and macroeconomic indicators.",
-      image: "/image/pages_img/Demand-Forecasting.png",
+      image: "/image/pages_img/Risk-Management.webp",
       alt: "Risk Management"
     },
     {
       id: 6,
       title: "Customer Service Automation",
       description: "Natural language processing enables AI chatbots to handle customer inquiries, resolve issues, and improve satisfaction efficiently.",
-      image: "/image/pages_img/AI-Content-Creation.png",
+      image: "/image/pages_img/Customer-Service",
       alt: "Customer Service Automation"
     },
     {
       id: 7,
       title: "Regulatory Compliance",
       description: "AI systems monitor transactions and generate compliance reports, ensuring adherence to financial regulations and reducing manual workload.",
-      image: "/image/pages_img/License_Plate_Extraction.png",
+      image: "/image/pages_img/Regulatory-Compliance.jpeg",
       alt: "Regulatory Compliance"
     }
   ];
