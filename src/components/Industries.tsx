@@ -90,6 +90,17 @@ const Industries: React.FC = () => {
               >
                 {cardContent}
               </a>
+            ) : industry.name === "GreenTech" ? (
+              <a
+                key={industry.name}
+                href="/GreenTechAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
+                style={{ minHeight: '14rem' }}
+              >
+                {cardContent}
+              </a>
             ) : (
               <div
                 key={industry.name}
