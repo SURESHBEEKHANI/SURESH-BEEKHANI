@@ -54,7 +54,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item.name}>
                   <a 
-                    href={`#${item.id}`} 
+                    href={`/#${item.id}`} 
                     className="text-white/70 hover:text-primary transition-colors"
                   >
                     {item.name}

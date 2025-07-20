@@ -83,13 +83,14 @@ const Navbar = () => {
   }, [isMobile, isMobileMenuOpen]);
   
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Portfolio', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Services', href: '#services' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Home', href: '/#home' },
+    { label: 'About', href: '/#about' },
+    { label: 'Portfolio', href: '/#projects' },
+    { label: 'Industries', href: '/#industries' },
+    { label: 'Skills', href: '/#skills' },
+    { label: 'Services', href: '/#services' },
+    { label: 'Experience', href: '/#experience' },
+    { label: 'Contact', href: '/#contact' }
   ];
   
   // WhatsApp phone number with international format
@@ -97,9 +98,7 @@ const Navbar = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 py-3 sm:py-4 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-4 sm:px-6 py-3 sm:py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center transition-opacity duration-500">
           <div className="logo-circle mr-2">

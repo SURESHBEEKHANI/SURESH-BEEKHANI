@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
+import Industries from '@/components/Industries';
 import Services from '@/components/Services';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
@@ -83,7 +84,13 @@ const Index = () => {
           <Skills />
           <div className="section-decoration section-decoration-2"></div>
         </section>
-        
+
+        <section id="industries" className="pro-section">
+          <div className="section-container">
+            <Industries />
+          </div>
+        </section>
+
         <section id="services" className="pro-section">
           <div className="section-container">
             <Services />

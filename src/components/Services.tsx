@@ -4,9 +4,29 @@ import { ActivitySquare, BarChart, BrainCircuit, BookOpen, Database, MessageSqua
 const Services = () => {
   const services = [
     {
-      icon: <BrainCircuit className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
-      title: 'Machine Learning Solutions',
-      description: 'Custom machine learning models tailored to your specific business needs and data challenges.'
+      icon: <BarChart className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Predictive Modelling',
+      description: 'Build robust predictive models to forecast outcomes and drive business strategy.'
+    },
+    {
+      icon: <MessageSquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Chat GPT Integration',
+      description: 'Integrate advanced conversational AI (ChatGPT) into your applications for enhanced user engagement.'
+    },
+    {
+      icon: <ActivitySquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Natural Language Processing',
+      description: 'Extract insights from text data using NLP techniques for sentiment analysis, entity recognition, and more.'
+    },
+    {
+      icon: <BrainCircuit className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Machine Learning',
+      description: 'End-to-end machine learning solutions from data preprocessing to model deployment.'
+    },
+    {
+      icon: <ActivitySquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Computer Vision',
+      description: 'Leverage computer vision for image recognition, object detection, and video analytics.'
     },
     {
       icon: <Database className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
@@ -19,9 +39,9 @@ const Services = () => {
       description: 'Forecasting and prediction services to help you make data-driven decisions for your business.'
     },
     {
-      icon: <ActivitySquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
-      title: 'NLP & Text Analytics',
-      description: 'Natural language processing solutions for text analysis, sentiment analysis, and more.'
+      icon: <BarChart className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />, // Example icon
+      title: 'Time Series Forecasting',
+      description: 'Accurate time series forecasting for sales, demand, and financial cost prediction using advanced statistical and machine learning models.'
     },
     {
       icon: <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
@@ -32,11 +52,6 @@ const Services = () => {
       icon: <MessageSquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
       title: 'AI Consulting',
       description: 'Expert guidance on implementing AI strategies and solutions for your organization.'
-    },
-    {
-      icon: <ActivitySquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
-      title: 'Computer Vision',
-      description: 'Advanced computer vision solutions for object detection, image recognition, and video analytics.'
     },
     {
       icon: <BrainCircuit className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />,
