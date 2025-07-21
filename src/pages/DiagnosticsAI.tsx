@@ -11,70 +11,56 @@ const DiagnosticsAI: React.FC = () => {
       id: 0,
       title: "Medical Image Analysis",
       description: "AI algorithms analyze X-rays, MRIs, and CT scans to detect anomalies such as tumors, fractures, and infections with high accuracy.",
-      image: "/image/pages_img/medical-image-analysis.jpg",
+      image: "/image/pages_img/Medical-Image-Analysis.webp",
       alt: "Medical Image Analysis"
     },
     {
       id: 1,
       title: "Early Disease Detection",
       description: "Machine learning models identify early signs of diseases like cancer, diabetes, and cardiovascular conditions, enabling timely intervention.",
-      image: "/image/pages_img/Diagnostics.jpg",
+      image: "/image/pages_img/Early-Disease-Detection.jpg",
       alt: "Early Disease Detection"
     },
     {
       id: 2,
       title: "Predictive Diagnostics",
       description: "AI predicts patient risk factors and potential health issues by analyzing electronic health records and lifestyle data.",
-      image: "/image/pages_img/PredictiveAnalytics.jpg",
+      image: "/image/pages_img/Predictive-Diagnostics.avif",
       alt: "Predictive Diagnostics"
     },
     {
       id: 3,
       title: "Pathology Automation",
       description: "Automated analysis of pathology slides speeds up diagnosis and reduces human error in laboratory settings.",
-      image: "/image/pages_img/DrugDiscover.jpg",
+      image: "/image/pages_img/Pathology-Automation.webp",
       alt: "Pathology Automation"
-    },
-    {
-      id: 4,
-      title: "Remote Patient Monitoring",
-      description: "AI-powered devices continuously monitor patient vitals and alert healthcare providers to critical changes in real time.",
-      image: "/image/pages_img/remot-p-m.webp",
-      alt: "Remote Patient Monitoring"
     },
     {
       id: 5,
       title: "Genomic Data Analysis",
       description: "AI analyzes genetic data to identify mutations and recommend personalized treatment plans.",
-      image: "/image/pages_img/Diagnostics.jpg",
+      image: "/image/pages_img/Genomic-Data-Analysis.jpg",
       alt: "Genomic Data Analysis"
     },
     {
       id: 6,
       title: "Clinical Decision Support",
       description: "AI systems assist doctors by providing evidence-based recommendations and diagnostic suggestions.",
-      image: "/image/pages_img/AI HealthSoft.webp",
+      image: "/image/pages_img/Clinical-Decision-Support.jpg",
       alt: "Clinical Decision Support"
     },
     {
       id: 7,
       title: "Workflow Optimization",
       description: "AI streamlines diagnostic workflows, automates administrative tasks, and improves resource allocation in healthcare facilities.",
-      image: "/image/pages_img/Administrative-Automation.jpg",
+      image: "/image/pages_img/Workflow-Optimization.jpg",
       alt: "Workflow Optimization"
-    },
-    {
-      id: 8,
-      title: "Point-of-Care Diagnostics",
-      description: "Portable AI-powered diagnostic tools enable rapid testing and results at the patient’s bedside or in remote locations.",
-      image: "/image/pages_img/Diagnostics.jpg",
-      alt: "Point-of-Care Diagnostics"
     },
     {
       id: 9,
       title: "Anomaly Detection in Lab Results",
       description: "AI flags abnormal lab results and trends, supporting early intervention and improved patient outcomes.",
-      image: "/image/pages_img/Diagnostics.jpg",
+      image: "/image/pages_img/Anomaly-Detection.jpg",
       alt: "Anomaly Detection in Lab Results"
     },
   ];
@@ -174,8 +160,8 @@ const DiagnosticsAI: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
                 <img
-                  src="/image/pages_img/AI HealthSoft.webp"
-                  alt="AI in Diagnostics - Digital Transformation"
+                  src="/image/pages_img/AI-Diagnostics-in.jpg"
+                  alt="AI in Diagnostics Illustration"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
