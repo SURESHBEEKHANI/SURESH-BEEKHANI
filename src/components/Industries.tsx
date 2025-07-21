@@ -25,7 +25,7 @@ const Industries: React.FC = () => {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-foreground/80 max-w-2xl mx-auto">
-            I specialize in Artificial Intelligence (AI) and Machine Learning (ML), with deep expertise in a variety of ML frameworks and technologies. I apply these skills across multiple industries to develop intelligent, data-driven solutions.
+            Delivering intelligent, data-driven solutions with advanced AI and ML expertise across industries.
           </p>
         </div>
         {/* Industries Grid */}
@@ -57,7 +57,18 @@ const Industries: React.FC = () => {
                 </div>
               </div>
             );
-            return isHealthTech ? (
+            return industry.name === "AI Diagnostics" ? (
+              <a
+                key={industry.name}
+                href="/diagnosticsai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
+                style={{ minHeight: '14rem' }}
+              >
+                {cardContent}
+              </a>
+            ) : isHealthTech ? (
               <a
                 key={industry.name}
                 href="/HealthTechAI"
@@ -94,6 +105,39 @@ const Industries: React.FC = () => {
               <a
                 key={industry.name}
                 href="/GreenTechAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
+                style={{ minHeight: '14rem' }}
+              >
+                {cardContent}
+              </a>
+            ) : industry.name === "Retail" ? (
+              <a
+                key={industry.name}
+                href="/RetailAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
+                style={{ minHeight: '14rem' }}
+              >
+                {cardContent}
+              </a>
+            ) : industry.name === "E-Commerce" ? (
+              <a
+                key={industry.name}
+                href="/E-Commerce"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
+                style={{ minHeight: '14rem' }}
+              >
+                {cardContent}
+              </a>
+            ) : industry.name === "HIPAA Compliance" ? (
+              <a
+                key={industry.name}
+                href="/HIPAACompliance"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-effect rounded-lg overflow-hidden transition-all duration-500 hover:shadow-xl group flex flex-col items-center justify-center bg-white shadow border border-gray-100 text-center cursor-pointer p-0"
