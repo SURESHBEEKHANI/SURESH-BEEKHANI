@@ -9,73 +9,73 @@ const ECommerceAI: React.FC = () => {
   const useCases = [
     {
       id: 0,
-      title: "Personalized Product Recommendations",
-      description: "AI analyzes customer behavior and preferences to suggest products tailored to individual shoppers, increasing conversion rates.",
-      image: "/image/pages_img/Content-Recommendation.jpg",
-      alt: "Personalized Product Recommendations"
+      title: "Abandoned Cart Recovery",
+      description: "AI identifies users who abandon carts and sends personalized emails or offers to encourage purchase completion, increasing conversion rates.",
+      image: "/image/pages_img/Abandoned-Cart-Recovery.png",
+      alt: "Abandoned Cart Recovery"
     },
     {
       id: 1,
-      title: "Dynamic Pricing",
-      description: "Machine learning models adjust prices in real-time based on demand, competition, and inventory, maximizing revenue and competitiveness.",
-      image: "/image/pages_img/E-Commerce.jpg",
-      alt: "Dynamic Pricing"
+      title: "Automated Product Tagging",
+      description: "AI automatically tags products based on images and descriptions, improving search accuracy and SEO.",
+      image: "/image/pages_img/Automated-Product-Tagging.jpg",
+      alt: "Automated Product Tagging"
     },
     {
       id: 2,
-      title: "Fraud Detection",
-      description: "AI systems monitor transactions for suspicious activity, reducing chargebacks and protecting both merchants and customers.",
-      image: "/image/pages_img/Fraud-Detection.jpg",
-      alt: "Fraud Detection"
+      title: "Voice Commerce",
+      description: "AI enables customers to shop using voice assistants and smart speakers, offering a hands-free shopping experience.",
+      image: "/image/pages_img/Voice-Commerce.webp",
+      alt: "Voice Commerce"
     },
     {
       id: 3,
-      title: "Customer Service Chatbots",
-      description: "AI-powered chatbots provide instant support, answer queries, and resolve issues 24/7, improving customer satisfaction.",
-      image: "/image/pages_img/Customer-Service",
-      alt: "Customer Service Chatbots"
+      title: "AI-Powered Product Descriptions",
+      description: "Automatically generates SEO-friendly product descriptions, saving time and improving product discoverability.",
+      image: "/image/pages_img/Product-Descriptions.jpg",
+      alt: "AI-Powered Product Descriptions"
     },
     {
       id: 4,
-      title: "Inventory Optimization",
-      description: "Predictive analytics help manage stock levels, forecast demand, and reduce overstock or stockouts.",
-      image: "/image/pages_img/Demand-Forecasting.png",
-      alt: "Inventory Optimization"
+      title: "Return Prediction & Management",
+      description: "Predicts the likelihood of product returns and optimizes return processes to reduce costs and improve customer satisfaction.",
+      image: "/image/pages_img/Return-Prediction-Management.jpg",
+      alt: "Return Prediction & Management"
     },
     {
       id: 5,
-      title: "Visual Search",
-      description: "Customers can search for products using images, with AI matching photos to similar items in the catalog.",
-      image: "/image/pages_img/medical-image-analysis.jpg",
-      alt: "Visual Search"
+      title: "AI-Driven A/B Testing",
+      description: "AI automatically tests and optimizes website layouts, banners, and offers for maximum engagement and sales.",
+      image: "/image/pages_img/AI-Driven-Testing.jpg",
+      alt: "AI-Driven A/B Testing"
     },
     {
       id: 6,
-      title: "Customer Segmentation",
-      description: "AI segments customers based on behavior and demographics, enabling targeted marketing and personalized experiences.",
-      image: "/image/pages_img/customer-segmentation.png",
-      alt: "Customer Segmentation"
+      title: "Personalized Email Campaigns",
+      description: "AI segments customers and personalizes email marketing content to boost open rates and conversions.",
+      image: "/image/pages_img/Customer-Segmentation.jpg",
+      alt: "Personalized Email Campaigns"
     },
     {
       id: 7,
-      title: "Supply Chain Automation",
-      description: "AI streamlines logistics, predicts delays, and optimizes delivery routes for efficient order fulfillment.",
-      image: "/image/pages_img/automated-grading.jpg",
-      alt: "Supply Chain Automation"
+      title: "Customer Lifetime Value Prediction",
+      description: "Predicts which customers will be most valuable over time, enabling targeted retention and loyalty strategies.",
+      image: "/image/pages_img/Customer-Lifetime-Value-Prediction.jpg",
+      alt: "Customer Lifetime Value Prediction"
     },
     {
       id: 8,
-      title: "Sentiment Analysis",
-      description: "AI analyzes customer reviews and feedback to gauge sentiment, helping brands improve products and services.",
-      image: "/image/pages_img/Sentiment-Analysis.png",
-      alt: "Sentiment Analysis"
+      title: "Automated Review Moderation",
+      description: "AI filters and moderates product reviews for quality and compliance, ensuring trustworthy feedback on your site.",
+      image: "/image/pages_img/Automated-Review-Moderation.jpg",
+      alt: "Automated Review Moderation"
     },
     {
       id: 9,
-      title: "Churn Prediction",
-      description: "Predictive models identify customers likely to leave, enabling proactive retention strategies.",
-      image: "/image/pages_img/PredictiveAnalytics.jpg",
-      alt: "Churn Prediction"
+      title: "Intelligent Sizing & Fit Recommendations",
+      description: "AI suggests the best sizes and fits for apparel based on user data and return history, reducing fit-related returns.",
+      image: "/image/pages_img/Intelligent-Sizing-Fit-Recommendations.png",
+      alt: "Intelligent Sizing & Fit Recommendations"
     },
   ];
 
@@ -174,8 +174,8 @@ const ECommerceAI: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
                 <img
-                  src="/image/pages_img/retail.jpg"
-                  alt="AI in E-Commerce - Digital Transformation"
+                  src="/image/pages_img/AI-in-E-Commerce.png"
+                  alt="AI in E-Commerce Illustration"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
