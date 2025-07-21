@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import Navbar from '@/components/Navbar';
@@ -56,7 +55,7 @@ const Index = () => {
   }, [toast, isMobile]);
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* BackgroundAnimation is positioned at the back with fixed positioning */}
       <BackgroundAnimation />
       
