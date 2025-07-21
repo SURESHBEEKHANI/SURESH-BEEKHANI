@@ -11,42 +11,42 @@ const HIPAACompliance: React.FC = () => {
       id: 0,
       title: "Automated PHI Redaction",
       description: "AI systems can automatically detect and redact Protected Health Information (PHI) in documents, ensuring compliance with HIPAA privacy rules.",
-      image: "/image/pages_img/HIPAA.avif",
+      image: "/image/pages_img/Automated-PHI-Redaction.jpg",
       alt: "Automated PHI Redaction"
     },
     {
       id: 1,
       title: "Anomaly Detection in Access Logs",
       description: "Machine learning models monitor access logs for unusual activity, helping prevent unauthorized access to sensitive health data.",
-      image: "/image/pages_img/AI-HealthSoft.webp",
+      image: "/image/pages_img/Anomaly-Detection-Access-Logs.jpg",
       alt: "Anomaly Detection"
     },
     {
       id: 2,
       title: "Secure Data Sharing",
       description: "AI enables secure, compliant data sharing between healthcare providers, improving care coordination while maintaining privacy.",
-      image: "/image/pages_img/Regulatory-Compliance.jpeg",
+      image: "/image/pages_img/Secure-Data-Sharing.jpg",
       alt: "Secure Data Sharing"
     },
     {
       id: 3,
       title: "Automated Compliance Audits",
       description: "AI tools can automate HIPAA compliance audits, flagging potential violations and streamlining reporting.",
-      image: "/image/pages_img/Administrative-Automation.jpg",
+      image: "/image/pages_img/Automated-Compliance-Audits.webp",
       alt: "Automated Compliance Audits"
     },
     {
       id: 4,
       title: "Real-Time Threat Detection",
       description: "AI-driven security systems provide real-time alerts for potential data breaches or suspicious activity.",
-      image: "/image/pages_img/Diagnostics.jpg",
+      image: "/image/pages_img/Real-Time-Threat-Detection.jpeg",
       alt: "Real-Time Threat Detection"
     },
     {
       id: 5,
       title: "Patient Consent Management",
       description: "AI helps manage and verify patient consent for data use, ensuring all actions are logged and compliant.",
-      image: "/image/pages_img/Personalized-Financial.jpg",
+      image: "/image/pages_img/Patient-Consent-Management.png",
       alt: "Patient Consent Management"
     },
   ];
@@ -142,8 +142,8 @@ const HIPAACompliance: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
                 <img
-                  src="/image/pages_img/AI-HealthSoft.webp"
-                  alt="AI in Healthcare Compliance"
+                  src="/image/pages_img/AI-HIPAA-Compliance.png"
+                  alt="AI HIPAA Compliance Illustration"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
