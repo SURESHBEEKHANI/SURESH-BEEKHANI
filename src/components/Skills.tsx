@@ -86,6 +86,7 @@ const categories = [
 const Skills: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('machine-learning');
   const [isPaused, setIsPaused] = useState(false);
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const filteredSkills = skillData.filter(skill => skill.category === activeCategory);
@@ -149,7 +150,12 @@ const Skills: React.FC = () => {
               {duplicatedSkills.map((skill, index) => (
                 <Card
                   key={`${skill.name}-${index}`}
-                  className="w-[200px] flex-shrink-0 overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 bg-white"
+                  className={`w-[200px] flex-shrink-0 overflow-hidden border transition-all duration-300 bg-white cursor-pointer ${
+                    selectedSkill && selectedSkill.name === skill.name && selectedSkill.category === skill.category
+                      ? 'border-primary ring-2 ring-primary shadow-xl'
+                      : 'border-gray-100 shadow-md hover:shadow-lg'
+                  }`}
+                  onClick={() => setSelectedSkill(skill)}
                 >
                   <CardContent className="p-6 flex flex-col items-center justify-center">
                     <div className="w-24 h-24 mb-4 flex items-center justify-center">
@@ -169,6 +175,15 @@ const Skills: React.FC = () => {
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none" />
         </div>
+      {/* Optionally show selected skill info below */}
+      {selectedSkill && (
+        <div className="mt-8 flex flex-col items-center">
+          <div className="flex items-center gap-4">
+            <img src={selectedSkill.image} alt={selectedSkill.name} className="w-16 h-16 object-contain rounded" />
+            <span className="text-lg font-semibold">Selected: {selectedSkill.name}</span>
+          </div>
+        </div>
+      )}
       </div>
     </section>
   );
