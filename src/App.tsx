@@ -13,6 +13,12 @@ import DiagnosticsAI from "./pages/DiagnosticsAI";
 import RetailAI from "./pages/RetailAI";
 import ECommerceAI from "./pages/E-Commerce";
 import HIPAACompliance from "./pages/HIPAACompliance";
+import AIChatbotDevelopment from "./pages/AIChatbotDevelopment";
+import PredictiveModelling from "./pages/PredictiveModelling";
+import ChatGPTIntegrations from "./pages/ChatGPTIntegrations";
+import NaturalLanguageProcessing from "./pages/NaturalLanguageProcessing";
+import MachineLearning from "./pages/MachineLearning";
+import ComputerVision from "./pages/ComputerVision";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +38,12 @@ const App = () => (
           <Route path="/retailai" element={<RetailAI />} />
           <Route path="/e-commerce" element={<ECommerceAI />} />
           <Route path="/hipaacompliance" element={<HIPAACompliance />} />
+          <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
+          <Route path="/predictive-modelling" element={<PredictiveModelling />} />
+          <Route path="/chat-gpt-integrations" element={<ChatGPTIntegrations />} />
+          <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
+          <Route path="/machine-learning" element={<MachineLearning />} />
+          <Route path="/computer-vision" element={<ComputerVision />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
