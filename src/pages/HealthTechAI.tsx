@@ -119,7 +119,7 @@ const HealthTechAI: React.FC = () => {
                 AI In <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Health Tech</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4 text-left">
-                AI in healthcare provides clinical software solutions.nIt saves lives by predicting treatment responses\nand analyzing vast medical data.
+                AI in healthcare provides clinical software solutions.nIt saves lives by predicting treatment responses and analyzing vast medical data.
               </p>
               <div className="flex space-x-4 pt-6 w-full justify-start">
                 <a
@@ -167,7 +167,7 @@ const HealthTechAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-teal-700">machine learning</span> and <span className="font-semibold text-blue-700">computer vision</span>, is transforming healthcare—enabling faster diagnoses, automating tasks, and personalizing care for better outcomes.
+                AI, including <span className="font-semibold text-teal-700">machine learning</span> and <span className="font-semibold text-blue-700">computer vision</span>, is transforming healthcare enabling faster diagnoses, automating tasks, and personalizing care for better outcomes.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From analyzing complex medical images to predicting patient risks and streamlining hospital operations, AI technologies are making healthcare more efficient and effective. These advancements empower clinicians to make data-driven decisions, reduce errors, and deliver tailored treatments that improve patient experiences and outcomes.

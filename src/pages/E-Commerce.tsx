@@ -195,7 +195,7 @@ const ECommerceAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing e-commerce—enabling personalized shopping, automating tasks, and providing actionable insights for better business outcomes.
+                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing e-commerce enabling personalized shopping, automating tasks, and providing actionable insights for better business outcomes.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From dynamic pricing to intelligent customer service, AI technologies empower retailers to boost sales, improve efficiency, and deliver exceptional customer experiences.

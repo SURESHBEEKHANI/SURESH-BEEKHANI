@@ -166,7 +166,7 @@ const HIPAACompliance: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI and machine learning are transforming healthcare compliance by automating data protection, monitoring, and reporting—helping organizations meet HIPAA requirements efficiently.
+                AI and machine learning are transforming healthcare compliance by automating data protection, monitoring, and reporting helping organizations meet HIPAA requirements efficiently.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From real-time threat detection to automated audits, AI-driven solutions reduce risk, improve accuracy, and free up resources for patient care.

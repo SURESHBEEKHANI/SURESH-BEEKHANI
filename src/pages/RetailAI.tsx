@@ -171,7 +171,7 @@ const RetailAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-pink-700">computer vision</span>, is revolutionizing retail—enabling personalized shopping, automating operations, and providing actionable insights for better business outcomes.
+                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-pink-700">computer vision</span>, is revolutionizing retail enabling personalized shopping, automating operations, and providing actionable insights for better business outcomes.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From dynamic pricing to predictive analytics, AI technologies empower retailers to enhance customer engagement, optimize supply chains, and boost profitability.

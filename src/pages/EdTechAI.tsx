@@ -194,7 +194,7 @@ const EdTechAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-blue-700">natural language processing</span>, is revolutionizing education—enabling adaptive learning, automating tasks, and providing actionable insights for better outcomes.
+                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-blue-700">natural language processing</span>, is revolutionizing education enabling adaptive learning, automating tasks, and providing actionable insights for better outcomes.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From personalized lesson plans to predictive analytics for student success, AI technologies empower educators and learners to achieve more. These advancements foster engagement, improve retention, and make education accessible to all.

@@ -175,7 +175,7 @@ const DiagnosticsAI: React.FC = () => {
                 AI in <span className="text-green-700">Diagnostics</span>
               </h2>
               <p className="text-xl text-gray-800 max-w-2xl">
-                <span className="font-semibold text-green-700">Deep learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span> are revolutionizing diagnostics—enabling early disease detection, automating workflows, and supporting clinical decisions.
+                <span className="font-semibold text-green-700">Deep learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span> are revolutionizing diagnostics enabling early disease detection, automating workflows, and supporting clinical decisions.
               </p>
               <p className="text-lg text-gray-700 max-w-2xl">
                 From medical imaging to real-time patient monitoring, AI empowers providers to deliver faster, more accurate, and personalized care.

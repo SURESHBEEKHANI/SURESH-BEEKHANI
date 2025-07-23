@@ -174,7 +174,7 @@ const GreenTechAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-green-900">data analytics</span>, is revolutionizing sustainability—enabling smart energy, climate forecasting, and resource optimization for a cleaner future.
+                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-green-900">data analytics</span>, is revolutionizing sustainability enabling smart energy, climate forecasting, and resource optimization for a cleaner future.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From predictive maintenance to carbon tracking, AI technologies empower organizations and communities to achieve environmental goals. These advancements foster efficiency, reduce emissions, and make sustainability actionable.

@@ -157,7 +157,7 @@ const FinTechAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing finance—enabling smarter decisions, automating processes, and enhancing security.
+                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing finance enabling smarter decisions, automating processes, and enhancing security.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From fraud detection to personalized banking, AI technologies empower financial institutions to deliver better services, reduce risks, and drive innovation in a rapidly evolving industry.
