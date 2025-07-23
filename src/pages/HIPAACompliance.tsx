@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 const HIPAACompliance: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const useCases = [
     {
@@ -100,7 +101,19 @@ const HIPAACompliance: React.FC = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
-        <div className="absolute inset-0 opacity-10">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/image/pages_img/HIPAA.avif"
+            alt="HIPAA Compliance Background"
+            className="w-full h-full object-cover object-center"
+            style={{ filter: 'brightness(0.5)' }}
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-blue-900/70" />
+        </div>
+        {/* SVG pattern overlay (optional, can be removed if not needed) */}
+        <div className="absolute inset-0 opacity-10 z-10">
           <div
             className="absolute inset-0"
             style={{
@@ -108,7 +121,7 @@ const HIPAACompliance: React.FC = () => {
             }}
           ></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-white space-y-8">
               <div className="space-y-4">
@@ -119,18 +132,16 @@ const HIPAACompliance: React.FC = () => {
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
                 Leveraging AI to enhance healthcare data security, automate compliance, and protect patient privacy under HIPAA regulations.
               </p>
-            </div>
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/HIPAA.avif"
-                  alt="HIPAA Compliance Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                />
+              <div>
+                <a
+                  href="mailto:sureshbeekhani@gmail.com"
+                  className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:from-green-500 hover:to-blue-600 transition-all duration-200 text-lg"
+                >
+                  Talk to an Expert
+                </a>
               </div>
             </div>
-          </div>
+      </div>
         </div>
       </section>
 

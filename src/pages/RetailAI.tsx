@@ -120,41 +120,31 @@ const RetailAI: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-800/90 via-yellow-700/90 to-pink-900/90">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff9800' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")`
-            }}
-          ></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Content */}
-            <div className="text-white space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
-                  AI In <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Retail</span>
-                </h1>
-              </div>
-              <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
-                AI is transforming retail with personalized experiences, efficient operations, and data-driven insights for both online and offline stores.
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-yellow-300 via-pink-300 to-yellow-300 overflow-hidden">
+        {/* Background image overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/retail.jpg')] bg-cover bg-center"></div>
+        {/* Content Wrapper */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+          {/* Text Column */}
+          <div className="flex-1 text-white space-y-8 w-full">
+            <div className="w-full">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI In <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Retail</span>
+              </h1>
+              <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full my-4"></div>
+              <p className="text-lg md:text-2xl text-white w-full whitespace-pre-line mt-4">
+                Transform retail with AI-powered personalization, efficiency, and insights.Empower your business with next-gen solutions.Unlock growth and innovation.
               </p>
-            </div>
-            {/* Right: Image */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/retail.jpg"
-                  alt="AI Retail Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                />
+              <div className="flex space-x-4 pt-6 w-full">
+                <a href="mailto:sureshbeekhani@26gamil.com">
+                  <button className="bg-gradient-to-r from-yellow-300 to-pink-300 hover:from-yellow-400 hover:to-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
+                    Talk to an Expert
+                  </button>
+                </a>
               </div>
             </div>
           </div>
+          
         </div>
       </section>
 

@@ -69,44 +69,37 @@ const PredictiveModelling: React.FC = () => {
 		<div className="min-h-screen bg-gray-50">
 			<Navbar />
 
-			{/* Section 1: Predictive Modelling */}
-			<section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
-				<div className="absolute inset-0 opacity-10">
-					<div
-						className="absolute inset-0"
-						style={{
-							backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-						}}
-					></div>
-				</div>
-				<div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-						<div className="text-white space-y-8">
-							<h1 className="text-4xl md:text-5xl font-bold font-display">
-								Predictive Modelling
+			{/* Section 1: Predictive Modelling (Hero Section) */}
+			<section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+				{/* Background image overlay */}
+				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Predictive-Modelling.jpg')] bg-cover bg-center"></div>
+				{/* Content Wrapper */}
+				<div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+					{/* Text Column */}
+					<div className="flex-1 text-white space-y-8 w-full">
+						<div className="w-full">
+							<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+								Predictive{' '}
+								<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+									Modelling
+								</span>
 							</h1>
-							<p className="text-lg text-white/80 max-w-2xl">
-								Based on previous data, our predictive analytics services are
-								helping in predicting future patterns and results. It is applied
-								across several sectors to help decision-makers and strategists make
-								the best choices.
+							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
+								Based on previous data, our predictive analytics services are helping in predicting future patterns and results.\nIt is applied across several sectors to help decision-makers and strategists make the best choices.
 							</p>
-							<div>
+							<div className="flex space-x-4 pt-6 w-full">
 								<a
 									href="mailto:sureshbeekhani26@gmail.com"
-									className="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow hover:bg-green-700 transition mt-4"
+									className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
 								>
 									Talk to our Engineer
 								</a>
 							</div>
 						</div>
-						<div className="relative flex justify-center lg:justify-end">
-							<img
-								src="/image/pages_img/Predictive-Modelling.jpg"
-								alt="Predictive Modelling Hero"
-								className="w-full max-w-md rounded-2xl shadow-lg object-cover border-4 border-white/20"
-							/>
-						</div>
+					</div>
+					{/* Image Column */}
+					<div className="relative flex-1 flex justify-center lg:justify-end">
+						
 					</div>
 				</div>
 			</section>

@@ -128,15 +128,25 @@ const ECommerceAI: React.FC = () => {
       <Navbar />
       {/* Hero Section - Professional Layout */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/image/pages_img/E-Commerce.jpg" // Use your preferred image
+            alt="E-Commerce Background"
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.35 }} // Adjust opacity as needed
+          />
+          {/* Color Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-800/80 via-green-700/80 to-blue-900/80"></div>
+          {/* Optional: Pattern Overlay */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 opacity-10"
             style={{
-              backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")`
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
             }}
           ></div>
         </div>
+        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
@@ -149,18 +159,15 @@ const ECommerceAI: React.FC = () => {
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
                 AI is transforming e-commerce by personalizing shopping, optimizing operations, and delivering data-driven insights for retailers and customers alike.
               </p>
+              <a
+                href="mailto:sureshbeekhno26@gmail.com"
+                className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-lg hover:from-green-500 hover:to-blue-600 transition-all duration-200"
+              >
+                Talk to an Expert
+              </a>
             </div>
-            {/* Right: Image */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/E-Commerce.jpg"
-                  alt="AI E-Commerce Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                />
-              </div>
-            </div>
+            
+            
           </div>
         </div>
       </section>

@@ -310,33 +310,34 @@ const AIChatbotDevelopment: React.FC = () => {
 		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
 			<Navbar />
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-green-800 to-blue-900 overflow-hidden">
+			<section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+				{/* Background image overlay */}
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg')] bg-cover bg-center" />
 				<div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-					<div className="flex-1 text-white space-y-8">
-						<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
-							Empower Your Business with <span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">AI Chatbot Solutions</span>
-						</h1>
-						<p className="text-lg md:text-2xl text-gray-100 max-w-2xl">
-							Deliver instant, personalized support 24/7. Streamline communication, boost satisfaction, and automate with intelligent, cost-effective chatbots tailored to your needs.
-						</p>
-						<div className="flex space-x-4 pt-2">
-							<a
-								href="mailto:sureshbeekhani26@gmail.com"
-								className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
-							>
-								Talk to an Expert
-							</a>
+					{/* Text Column */}
+					<div className="flex-1 text-white space-y-8 w-full">
+						<div className="w-full">
+							<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+								Empower Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI Chatbot Solutions</span>
+							</h1>
+							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
+								Deliver instant, personalized support 24/7.\nStreamline communication, boost satisfaction, and automate with intelligent, cost-effective chatbots tailored to your needs.
+							</p>
+							<div className="flex space-x-4 pt-6 w-full">
+								<a
+									href="mailto:sureshbeekhani26@gmail.com"
+									className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+								>
+									Talk to in Expert
+								</a>
+							</div>
 						</div>
 					</div>
+					{/* Image Column */}
 					<div className="flex-1 flex justify-center md:justify-end">
 						<div className="relative">
-							<div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
-							<img
-								src="/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg"
-								alt="AI Chatbot Development Hero"
-								className="relative w-full max-w-md h-80 md:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-							/>
+							<div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
+							
 						</div>
 					</div>
 				</div>

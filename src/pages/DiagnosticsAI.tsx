@@ -126,38 +126,29 @@ const DiagnosticsAI: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 text-gray-900">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-green-800 to-blue-800">
-        <div className="absolute inset-0 opacity-20">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Content */}
-            <div className="space-y-6">
-              <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg">
-                AI in <span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">Diagnostics</span>
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Diagnostics.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 text-white space-y-8">
+            <div className="w-full">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI in <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Diagnostics</span>
               </h1>
-              <p className="text-2xl text-gray-100 max-w-2xl font-light">
+              <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
                 Transforming healthcare with rapid, accurate disease detection, automated image analysis, and actionable insights for professionals.
               </p>
-            </div>
-            {/* Right: Image */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-40"></div>
-                <img
-                  src="/image/pages_img/Diagnostics.jpg"
-                  alt="AI Diagnostics Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/30"
-                  loading="lazy"
-                />
+              <div className="flex space-x-4 pt-6 w-full">
+                <a
+                  href="mailto:sureshbeekhani26@gmail.com"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+                >
+                  Talk to an Expert
+                </a>
               </div>
             </div>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            {/* Optionally, you can add an image or illustration here if needed */}
           </div>
         </div>
       </section>

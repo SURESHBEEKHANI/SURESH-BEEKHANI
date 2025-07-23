@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Button } from "../components/ui/button";
 
 const FinTechAI: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -106,42 +107,31 @@ const FinTechAI: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-yellow-800/90 via-blue-700/90 to-blue-900/90">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-            }}
-          ></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Content */}
-            <div className="text-white space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
-                  AI In <span className="bg-gradient-to-r from-yellow-300 to-blue-300 bg-clip-text text-transparent">FinTech</span>
-                </h1>
-              </div>
-              <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
-                AI is transforming financial services with intelligent automation, fraud prevention, and personalized customer experiences.
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        {/* Background image overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/fintech.jpg')] bg-cover bg-center"></div>
+        {/* Content Wrapper */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+          {/* Text Column */}
+          <div className="flex-1 text-white space-y-8 w-full">
+            <div className="w-full">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI In <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">FinTech</span>
+              </h1>
+              <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
+                AI is transforming financial services with intelligent automation,fraud prevention, and personalized customer experiences.
               </p>
-            </div>
-            {/* Right: Image */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/fintech.jpg"
-                  alt="AI FinTech Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                />
+              {/* Button */}
+              <div className="flex space-x-4 pt-6 w-full">
+                <a href="mailto:sureshbeekhani@26gmail.com">
+                  <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
+                    Talk to an Expert
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </section>
 
       {/* Main Content Section */}

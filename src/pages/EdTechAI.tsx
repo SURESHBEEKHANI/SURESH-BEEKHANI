@@ -128,8 +128,19 @@ const EdTechAI: React.FC = () => {
       <Navbar />
       {/* Hero Section - Professional Layout */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/image/pages_img/EdTechAI.avif" // Use your preferred hero background image
+            alt="EdTech AI Hero Background"
+            className="w-full h-full object-cover object-center"
+            style={{ filter: 'brightness(0.5)' }}
+          />
+          {/* Semi-transparent overlay */}
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 z-10">
           <div
             className="absolute inset-0"
             style={{
@@ -137,7 +148,7 @@ const EdTechAI: React.FC = () => {
             }}
           ></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
             <div className="text-white space-y-8">
@@ -149,19 +160,14 @@ const EdTechAI: React.FC = () => {
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
                 AI in education transforms learning with personalized content, intelligent tutoring, and data-driven insights for students and educators.
               </p>
+              <a
+                href="mailto:sureshbeekhani@26gamil.com"
+                className="mt-6 inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+              >
+                Talk to an Expert
+              </a>
             </div>
-            {/* Right: Image */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/EdTechAI.avif"
-                  alt="AI EdTech Hero"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                />
-              </div>
             </div>
-          </div>
         </div>
       </section>
 
