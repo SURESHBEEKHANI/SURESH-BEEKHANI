@@ -85,7 +85,7 @@ const PredictiveModelling: React.FC = () => {
 								</span>
 							</h1>
 							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-								Based on previous data, our predictive analytics services are helping in predicting future patterns and results.\nIt is applied across several sectors to help decision-makers and strategists make the best choices.
+								Using past data, our predictive analytics services forecast future trends and outcomes, empowering decision-makers across industries.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
@@ -120,24 +120,13 @@ const PredictiveModelling: React.FC = () => {
 						</h2>
 						<div className="text-blue-900 text-lg space-y-4">
 							<p>
-								Unlock the full potential of your data with our end-to-end predictive
-								analytics solutions. We deliver actionable insights through advanced
-								machine learning models and sophisticated algorithms, empowering your
-								organization to anticipate trends and make data-driven decisions with
-								confidence.
+								Unlock actionable insights from your data with our predictive analytics solutions. Using advanced machine learning, we help you anticipate trends and make smarter, data-driven decisions.
 							</p>
 							<p>
-								Our experts partner closely with you to understand your unique business
-								challenges and objectives. We design and implement tailored predictive
-								models that streamline operations, reduce risk, and maximize resource
-								allocation—helping you stay ahead in a rapidly evolving marketplace.
+								Our tailored models streamline operations, reduce risk, and maximize resources giving your business a competitive edge.
 							</p>
 							<p>
-								Experience seamless integration and intuitive analytics platforms that
-								transform complex data into clear, strategic guidance. With our
-								predictive analytics services, you gain a decisive edge—enabling smarter
-								decisions, improved performance, and sustainable growth in today’s
-								competitive landscape.
+								Experience clear, strategic guidance and seamless integration for improved performance and sustainable growth.
 							</p>
 						</div>
 					</div>
@@ -376,7 +365,7 @@ const PredictiveModelling: React.FC = () => {
 				</div>
 			</section>
 
-			{/* Industries We Work With */}
+			{/* Industries We Work With (Updated to match ChatGPTIntegrations style) */}
 			<section className="py-24 px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-green-900 to-cyan-900 relative">
 				<div className="absolute inset-0 pointer-events-none">
 					<div className="w-full h-full bg-gradient-to-tr from-cyan-400/10 via-blue-700/10 to-green-400/10 opacity-80"></div>
@@ -390,24 +379,30 @@ const PredictiveModelling: React.FC = () => {
 							Empowering organizations across diverse sectors to make smarter, data-driven decisions with advanced analytics and AI.
 						</p>
 					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl shadow-2xl">
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl shadow-2xl">
 						{industries.map((industry) => (
-							<a
+							<div
 								key={industry.name}
-								href={industry.page}
-								className="group relative flex items-center justify-center border-b border-r border-white/30 bg-cover bg-center transition min-h-[220px] hover:scale-[1.03] hover:z-20 focus:z-20 focus:outline-none"
-								style={{ backgroundImage: `url(${industry.image})` }}
+								className="group relative border-b border-r border-white/30 min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
 							>
-								<div className="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-br group-hover:from-green-500/60 group-hover:via-cyan-500/60 group-hover:to-blue-700/60 backdrop-blur-sm transition-colors duration-300"></div>
-								<div className="relative z-10 text-center px-4 py-6">
-									<h3 className="text-2xl font-bold mb-2 drop-shadow transition-colors duration-300 text-white group-hover:text-yellow-200">
-										{industry.name}
-									</h3>
-									<p className="text-white/90 text-base font-medium drop-shadow transition-colors duration-300 group-hover:text-yellow-100">
-										{industry.description}
-									</p>
+								<img
+									src={industry.image}
+									alt={industry.name}
+									className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
+								/>
+								{/* Default dark overlay */}
+								<div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
+								{/* Hover overlay with content */}
+								<div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
+									<div className="text-2xl font-bold text-white mb-4">{industry.name}</div>
+									<div className="text-white text-base font-normal mb-4">{industry.description}</div>
+									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Read More <span aria-hidden="true">→</span></a>
 								</div>
-							</a>
+								{/* Default industry name (only visible when not hovered) */}
+								<div className="relative z-20 text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300">
+									{industry.name}
+								</div>
+							</div>
 						))}
 					</div>
 				</div>

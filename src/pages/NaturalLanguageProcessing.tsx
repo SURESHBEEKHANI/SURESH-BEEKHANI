@@ -250,21 +250,35 @@ const NaturalLanguageProcessing: React.FC = () => {
       </section>
 
       {/* NLP Capabilities Section */}
-      <section className="relative w-full min-h-[40vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 to-green-50/90">
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 py-20">
-          <div className="space-y-6 flex flex-col justify-center text-left">
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">
-              The Power of Natural Language Processing
-            </h2>
-            <p className="text-xl text-gray-700 max-w-2xl">
-              Unlock new possibilities for your business with advanced Natural Language Processing (NLP) solutions. Our services help computers better understand, analyze, and generate human language—enabling smarter chatbots, accurate language translation, and much more.
-            </p>
-            <p className="text-lg text-gray-700 max-w-2xl">
-              Our team of NLP specialists will seamlessly integrate and tailor these solutions to your unique needs. This empowers you to make informed, data-driven decisions and improve your organization’s efficiency.
-            </p>
-            <p className="text-lg text-gray-700 max-w-2xl">
-              Whether in healthcare, finance, education, or beyond, NLP can transform how you work and serve your customers. Rely on our expertise to help your business grow and stay ahead.
-            </p>
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 to-green-50/90">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: NLP Image */}
+            <div className="relative flex justify-center lg:justify-start">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-20"></div>
+                <img
+                  src="/image/pages_img/NLP-power.jpeg"
+                  alt="The Power of Natural Language Processing"
+                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+                />
+              </div>
+            </div>
+            {/* Right: Content */}
+            <div className="space-y-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
+                The Power of Natural Language Processing
+              </h2>
+              <p className="text-xl text-gray-700 max-w-2xl">
+                Unlock new possibilities for your business with advanced Natural Language Processing (NLP) solutions. Our services help computers better understand, analyze, and generate human language, enabling smarter chatbots, accurate language translation, and much more.
+              </p>
+              <p className="text-lg text-gray-700 max-w-2xl">
+                Our team of NLP specialists will seamlessly integrate and tailor these solutions to your unique needs. This empowers you to make informed, data-driven decisions and improve your organization’s efficiency.
+              </p>
+              <p className="text-lg text-gray-700 max-w-2xl">
+                Whether in healthcare, finance, education, or beyond, NLP can transform how you work and serve your customers. Rely on our expertise to help your business grow and stay ahead.
+              </p>
+            </div>
           </div>
         </div>
       </section>

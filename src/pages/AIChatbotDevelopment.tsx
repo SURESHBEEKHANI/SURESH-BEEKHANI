@@ -317,11 +317,11 @@ const AIChatbotDevelopment: React.FC = () => {
 					{/* Text Column */}
 					<div className="flex-1 text-white space-y-8 w-full">
 						<div className="w-full">
-							<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								Empower Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI Chatbot Solutions</span>
+							<h1 className="text-3xl md:text-4xl font-extrabold leading-snug tracking-tight drop-shadow-lg w-full break-words whitespace-pre-line text-left">
+								Empower Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI Chatbots Solutions</span>
 							</h1>
 							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-								Deliver instant, personalized support 24/7.\nStreamline communication, boost satisfaction, and automate with intelligent, cost-effective chatbots tailored to your needs.
+								Get instant, personalized support 24/7 with smart, cost-effective chatbots that streamline communication and boost satisfaction.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
@@ -362,19 +362,13 @@ const AIChatbotDevelopment: React.FC = () => {
 								AI Models Leveraged by Our Specialists
 							</h2>
 							<p className="text-xl text-gray-700 max-w-2xl">
-								As the Chatbot market grows, more businesses are realizing the
-								benefits of using chatbots. The ease of automation and AI-powered
-								customer service solutions has led to a surge in chatbot use across
-								industries. Businesses are integrating AI chatbot solutions into
-								their operations to enhance overall efficiency. We are
-								dedicated to revolutionizing customer interactions with chatbot
-								development services.
+								As the chatbot market expands, more businesses are adopting AI chatbots to automate tasks and improve customer service. These solutions make operations more efficient and enhance customer experiences across industries.
 							</p>
 							<p className="text-lg text-gray-700 max-w-2xl">
-								AI chatbots are transforming how businesses connect with customers and streamline operations. With advanced automation and 24/7 support, companies across every industry are leveraging chatbots to boost efficiency, reduce costs, and deliver seamless, personalized experiences.
+								AI chatbots work around the clock, helping companies boost productivity, cut costs, and deliver fast, personalized support.
 							</p>
 							<p className="text-lg text-gray-700 max-w-2xl">
-								From e-commerce to customer service, our AI-powered chatbots handle inquiries, automate workflows, and provide instant, tailored assistance. Stay ahead in the digital era with scalable, intelligent chatbot solutions designed to elevate engagement and drive business growth.
+								Whether for e-commerce or customer service, our AI chatbots answer questions, automate processes, and provide instant assistance helping your business grow and stay competitive.
 							</p>
 						</div>
 					</div>

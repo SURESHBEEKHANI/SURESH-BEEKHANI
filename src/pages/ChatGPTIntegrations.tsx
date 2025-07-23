@@ -230,10 +230,10 @@ const ChatGPTIntegrations: React.FC = () => {
           <div className="flex-1 text-white space-y-8 w-full">
             <div className="w-full">
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Supercharge Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">ChatGPT Processing</span>
+                Supercharge Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">ChatGPT</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-                Integrate ChatGPT for instant, intelligent automation,\n24/7 support, and seamless engagement across all your digital channels.
+                Integrate ChatGPT for instant, intelligent automation,24/7 support, and seamless engagement across all your digital channels.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a
