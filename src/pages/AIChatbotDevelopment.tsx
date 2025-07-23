@@ -185,57 +185,54 @@ const chatbotTypes = [
 ];
 
 const industries = [
-	{
-		name: "HealthTech",
-		image: "/image/pages_img/healthtechai.jpg",
-		description:
-			"AI-powered solutions for healthcare automation, diagnostics, and patient engagement.",
-		page: "/HealthTechAI",
-	},
-	{
-		name: "EdTech",
-		image: "/image/pages_img/EdTechAI.avif",
-		description:
-			"AI chatbots that personalize learning, automate admin tasks, and provide real-time feedback for students and educators.",
-		page: "/EdTechAI",
-	},
-	{
-		name: "FinTech",
-		image: "/image/pages_img/fintech.jpg",
-		description: "AI chatbots for banking, financial support, fraud detection, and customer engagement.",
-		page: "/FinTechAI",
-	},
-	{
-		name: "GreenTech",
-		image:  "/image/pages_img/greentech.jpg",
-		description: "AI for sustainability, energy management, carbon tracking, and green innovation.",
-		page: "/GreenTechAI",
-	},
-	{
-		name: "Retail",
-		image: "/image/pages_img/retail.jpg",
-		description: "AI chatbots for retail automation, customer engagement, and personalized shopping experiences.",
-		page: "/RetailAI",
-	},
-	{
-		name: "AI Diagnostics",
-		image: "/image/pages_img/Diagnostics.jpg",
-		description: "AI-driven diagnostics for healthcare, predictive analytics, and workflow automation.",
-		page: "/DiagnosticsAI",
-	},
-	{
-		name: "E-Commerce",
-		image: "/image/pages_img/E-Commerce.jpg",
-		description:
-			"AI chatbots for e-commerce: automate inquiries, provide order tracking, and personalize shopping.",
-		page: "/E-Commerce",
-	},
-	{
-		name: "HIPAA Compliance",
-		image: "/image/pages_img/HIPAA.avif",
-		description: "AI chatbots for HIPAA-compliant healthcare communication and data security.",
-		page: "/HIPAACompliance",
-	},
+  {
+	name: "HealthTech",
+	image: "/image/pages_img/healthtechai.jpg",
+	description: "AI-powered solutions for healthcare automation, diagnostics, and patient engagement.",
+	page: "/HealthTechAI",
+  },
+  {
+	name: "EdTech",
+	image: "/image/pages_img/EdTechAI.avif",
+	description: "AI chatbots that personalize learning, automate admin tasks, and provide real-time feedback for students and educators.",
+	page: "/EdTechAI",
+  },
+  {
+	name: "FinTech",
+	image: "/image/pages_img/fintech.jpg",
+	description: "AI chatbots for banking, financial support, fraud detection, and customer engagement.",
+	page: "/FinTechAI",
+  },
+  {
+	name: "GreenTech",
+	image: "/image/pages_img/greentech.jpg",
+	description: "AI for sustainability, energy management, carbon tracking, and green innovation.",
+	page: "/GreenTechAI",
+  },
+  {
+	name: "Retail",
+	image: "/image/pages_img/retail.jpg",
+	description: "AI chatbots for retail automation, customer engagement, and personalized shopping experiences.",
+	page: "/RetailAI",
+  },
+  {
+	name: "AI Diagnostics",
+	image: "/image/pages_img/Diagnostics.jpg",
+	description: "AI-driven diagnostics for healthcare, predictive analytics, and workflow automation.",
+	page: "/DiagnosticsAI",
+  },
+  {
+	name: "E-Commerce",
+	image: "/image/pages_img/E-Commerce.jpg",
+	description: "AI chatbots for e-commerce: automate inquiries, provide order tracking, and personalize shopping.",
+	page: "/E-Commerce",
+  },
+  {
+	name: "HIPAA Compliance",
+	image: "/image/pages_img/HIPAA.avif",
+	description: "AI chatbots for HIPAA-compliant healthcare communication and data security.",
+	page: "/HIPAACompliance",
+  },
 ];
 
 const AIChatbotDevelopment: React.FC = () => {
@@ -310,50 +307,36 @@ const AIChatbotDevelopment: React.FC = () => {
 	];
 
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
 			<Navbar />
-			{/* Hero Section (Customized AI Chatbot Development) */}
-			<section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
-				<div className="absolute inset-0 opacity-10">
-					<div
-						className="absolute inset-0"
-						style={{
-							backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-						}}
-					></div>
-				</div>
-				<div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-						<div className="text-white space-y-8">
-							<div className="space-y-4">
-								<h1 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
-									Customized{" "}
-									<span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">
-										AI Chatbot Development
-									</span>
-								</h1>
-							</div>
-							<p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
-								Empower your business with intelligent AI chatbots tailored to your needs. Deliver instant, personalized support to customers 24/7, streamline communication, and boost satisfaction all with efficient, cost-effective automation.
-							</p>
-							<div className="flex space-x-4 pt-2">
-								<a
-									href="mailto:sureshbeekhani26@gmail.com"
-									className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
-								>
-									Talk to our Engineer
-								</a>
-							</div>
+			{/* Hero Section */}
+			<section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-green-800 to-blue-900 overflow-hidden">
+				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg')] bg-cover bg-center" />
+				<div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+					<div className="flex-1 text-white space-y-8">
+						<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
+							Empower Your Business with <span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">AI Chatbot Solutions</span>
+						</h1>
+						<p className="text-lg md:text-2xl text-gray-100 max-w-2xl">
+							Deliver instant, personalized support 24/7. Streamline communication, boost satisfaction, and automate with intelligent, cost-effective chatbots tailored to your needs.
+						</p>
+						<div className="flex space-x-4 pt-2">
+							<a
+								href="mailto:sureshbeekhani26@gmail.com"
+								className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+							>
+								Talk to an Expert
+							</a>
 						</div>
-						<div className="relative flex justify-center lg:justify-end">
-							<div className="relative">
-								<div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-								<img
-									src="/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg"
-									alt="AI Chatbot Development Hero"
-									className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-								/>
-							</div>
+					</div>
+					<div className="flex-1 flex justify-center md:justify-end">
+						<div className="relative">
+							<div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
+							<img
+								src="/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg"
+								alt="AI Chatbot Development Hero"
+								className="relative w-full max-w-md h-80 md:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+							/>
 						</div>
 					</div>
 				</div>
@@ -576,14 +559,14 @@ const AIChatbotDevelopment: React.FC = () => {
 									alt={industry.name}
 									className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
 								/>
-								{/* Default dark overlay */}
-								<div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
-								{/* Hover overlay with content (60% transparency) */}
-								<div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-green-700/60 via-blue-600/60 to-cyan-400/60 backdrop-blur-md">
-									<div className="text-2xl font-bold text-white mb-4">{industry.name}</div>
-									<div className="text-white text-base font-normal mb-4">{industry.description}</div>
-									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Read More <span>→</span></a>
-								</div>
+							   {/* Default dark overlay */}
+							   <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
+							   {/* Hover overlay with content (90% transparent, matches card background) */}
+							   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
+								   <div className="text-2xl font-bold text-white mb-4">{industry.name}</div>
+								   <div className="text-white text-base font-normal mb-4">{industry.description}</div>
+								   <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Read More <span aria-hidden="true">→</span></a>
+							   </div>
 								{/* Default industry name (only visible when not hovered) */}
 								<div className="relative z-20 text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300">
 									{industry.name}
