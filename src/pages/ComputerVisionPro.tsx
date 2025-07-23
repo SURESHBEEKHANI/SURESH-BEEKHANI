@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -209,7 +208,7 @@ const onboardingSteps = [
   },
 ];
 
-const ComputerVision: React.FC = () => {
+const ComputerVisionPro: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -589,4 +588,4 @@ const ComputerVision: React.FC = () => {
   );
 };
 
-export default ComputerVision;
+export default ComputerVisionPro; 
