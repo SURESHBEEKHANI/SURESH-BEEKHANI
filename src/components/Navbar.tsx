@@ -86,11 +86,34 @@ const Navbar = () => {
     { label: 'Home', href: '/#home' },
     { label: 'About', href: '/#about' },
     { label: 'Portfolio', href: '/#projects' },
-    { label: 'Industries', href: '/#industries' },
+    { label: 'Industries', href: '/#industrie' }, // Changed to 'Industries'
     { label: 'Skills', href: '/#skills' },
     { label: 'Services', href: '/#services' },
     { label: 'Experience', href: '/#experience' },
-    { label: 'Contact', href: '/#contact' }
+    { label: 'Contact', href: '/#contact' },
+  ];
+  
+  // Update industries array to reflect actual industry pages in /src/pages
+  const industrie = [
+    
+    { name: "Diagnostics AI", page: "/DiagnosticsAI" },
+    { name: "E-Commerce", page: "/E-Commerce" },
+    { name: "EdTech AI", page: "/EdTechAI" },
+    { name: "FinTech AI", page: "/FinTechAI" },
+    { name: "GreenTech AI", page: "/GreenTechAI" },
+    { name: "HealthTech AI", page: "/HealthTechAI" },
+    { name: "HIPAA Compliance", page: "/HIPAACompliance" },
+    { name: "Retail AI", page: "/RetailAI" },
+  ];
+
+  // Services array for dropdown
+  const services = [
+    { name: "AI Chatbot Development", page: "/ai-chatbot-development" },
+    { name: "Predictive Modelling", page: "/predictive-modelling" },
+    { name: "Chat GPT Integrations", page: "/chat-gpt-integrations" },
+    { name: "Natural Language Processing", page: "/natural-language-processing" },
+    { name: "Machine Learning", page: "/machine-learning" },
+    { name: "Computer Vision", page: "/computer-vision" },
   ];
   
   // WhatsApp phone number with international format
@@ -109,19 +132,47 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href}
-              className={`nav-link text-sm font-medium transition-colors ${
-                activeSection === link.href.substring(1) 
-                  ? 'text-primary font-semibold after:w-full' 
-                  : 'text-foreground hover:text-primary'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.label === 'Industries' ? (
+              <div key="Industries" className="relative group">
+                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                  {industrie.map((industry) => (
+                    <a
+                      key={industry.name}
+                      href={industry.page}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-150"
+                    >
+                      {industry.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : link.label === 'Services' ? (
+              <div key="Services" className="relative group">
+                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Services</button>
+                <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                  {services.map((service) => (
+                    <a
+                      key={service.name}
+                      href={service.page}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-150"
+                    >
+                      {service.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`nav-link text-sm font-medium transition-colors ${activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </div>
         
         {/* WhatsApp Button - Desktop */}
@@ -170,20 +221,50 @@ const Navbar = () => {
         isMobileMenuOpen ? 'max-h-[70vh] opacity-100 shadow-lg' : 'max-h-0 opacity-0'
       }`}>
         <div className="px-6 py-4 flex flex-col space-y-3 max-h-[70vh] overflow-y-auto">
-          {navLinks.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href}
-              className={`py-2.5 border-b border-white/10 transition-colors ${
-                activeSection === link.href.substring(1) 
-                  ? 'text-primary font-semibold' 
-                  : 'text-foreground hover:text-primary'
-              }`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.label === 'Industries' ? (
+              <details key="Industries" className="group">
+                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Industries</summary>
+                <div className="pl-4">
+                  {industrie.map((industry) => (
+                    <a
+                      key={industry.name}
+                      href={industry.page}
+                      className="block py-2 text-sm text-foreground hover:text-primary"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {industry.name}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : link.label === 'Services' ? (
+              <details key="Services" className="group">
+                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Services</summary>
+                <div className="pl-4">
+                  {services.map((service) => (
+                    <a
+                      key={service.name}
+                      href={service.page}
+                      className="block py-2 text-sm text-foreground hover:text-primary"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {service.name}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`py-2.5 border-b border-white/10 transition-colors ${activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            )
+          )}
           
           {/* WhatsApp full button in mobile menu */}
           <a 
