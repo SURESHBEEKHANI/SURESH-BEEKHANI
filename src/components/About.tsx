@@ -22,9 +22,9 @@ const About = () => {
       description: 'Creating complex neural network architectures for computer vision, NLP, and other AI applications.'
     },
     {
-      icon: <Code className="h-8 w-8 text-primary" />,
-      title: 'Natural Language Processing',
-      description: 'Building language models and text analysis systems that understand and generate human language.'
+      icon: <Star className="h-8 w-8 text-primary" />, 
+      title: 'AI Agents',
+      description: 'Developing intelligent AI agents that autonomously perceive, reason, and act to accomplish complex tasks.'
     },
     {
       icon: <Lightbulb className="h-8 w-8 text-primary" />,

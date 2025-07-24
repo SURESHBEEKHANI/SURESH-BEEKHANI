@@ -22,6 +22,9 @@ const Navbar = () => {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
   const isMobile = useIsMobile();
   
+  // Get current path for active highlighting
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
+  
   const logos = [
     { prefix: 'ML-', suffix: 'Engineer' },
     { prefix: 'AI-', suffix: 'Engineer' },
@@ -83,11 +86,9 @@ const Navbar = () => {
   }, [isMobile, isMobileMenuOpen]);
   
   const navLinks = [
-    { label: 'Home', href: '/#home' },
     { label: 'About', href: '/#about' },
     { label: 'Portfolio', href: '/#projects' },
     { label: 'Industries', href: '/#industrie' }, // Changed to 'Industries'
-    { label: 'Skills', href: '/#skills' },
     { label: 'Services', href: '/#services' },
     { label: 'Experience', href: '/#experience' },
     { label: 'Contact', href: '/#contact' },
@@ -136,12 +137,12 @@ const Navbar = () => {
             link.label === 'Industries' ? (
               <div key="Industries" className="relative group">
                 <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                <div className="absolute left-0 mt-2 -mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
                   {industrie.map((industry) => (
                     <a
                       key={industry.name}
                       href={industry.page}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-150"
+                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
                     >
                       {industry.name}
                     </a>
@@ -151,12 +152,12 @@ const Navbar = () => {
             ) : link.label === 'Services' ? (
               <div key="Services" className="relative group">
                 <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Services</button>
-                <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                <div className="absolute left-0 mt-2 -mt-1 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
                   {services.map((service) => (
                     <a
                       key={service.name}
                       href={service.page}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-150"
+                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
                     >
                       {service.name}
                     </a>
@@ -230,7 +231,7 @@ const Navbar = () => {
                     <a
                       key={industry.name}
                       href={industry.page}
-                      className="block py-2 text-sm text-foreground hover:text-primary"
+                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {industry.name}
@@ -246,7 +247,7 @@ const Navbar = () => {
                     <a
                       key={service.name}
                       href={service.page}
-                      className="block py-2 text-sm text-foreground hover:text-primary"
+                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.name}

@@ -229,7 +229,7 @@ const ComputerVisionPro: React.FC = () => {
                 Computer <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Vision</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-                Transform your business with advanced computer vision solutions for automation, insights, and engagement across all your digital channels.
+              Our computer vision solutions drive innovation in security, autonomy, medical imaging, facial recognition, and quality control boosting accuracy and efficiency.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a
@@ -246,6 +246,7 @@ const ComputerVisionPro: React.FC = () => {
           </div>
         </div>
       </section>
+
 
       {/* Computer Vision Capabilities Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 to-green-50/90">
@@ -289,33 +290,67 @@ const ComputerVisionPro: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Computer Vision Services Offered
+              Advanced Computer Vision Services for Intelligent Automation
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              End-to-end computer vision integration, API development, automation, and support for your business.
+              Unlock the power of intelligent automation with our advanced computer vision services tailored for modern business needs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cvServices.map((service) => (
-              <div
-                key={service.id}
-                className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-cyan-300/20 rounded-lg flex items-center justify-center group-hover:bg-cyan-300/30 transition-colors">
-                    {service.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-white mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-200 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+            {/* Object Detection */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Target Icon */}
+                <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-            ))}
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Object Detection</h3>
+              <p className="text-gray-700 text-center">Our computer vision as a service offers advanced object detection capabilities. We deliver precise object and location detection by using advanced computer vision techniques. The system can swiftly process massive volumes of visual data.</p>
+            </div>
+            {/* Facial Recognition */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Face Icon */}
+                <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9a3 3 0 0 1-6 0"/><path d="M9 15s1.5 2 3 2 3-2 3-2"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Facial Recognition</h3>
+              <p className="text-gray-700 text-center">Experience the power of facial recognition services. It utilizes advanced computer vision technology for precise and secure Facial Authentication in various applications. It can be used for multiple things, including marketing, law enforcement, and security.</p>
+            </div>
+            {/* Image Segmentation */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Layers Icon */}
+                <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Image Segmentation</h3>
+              <p className="text-gray-700 text-center">A key computer vision component is segmenting an image into functional parts or segments. This simplifies extracting helpful information and carrying out sophisticated image-processing operations.</p>
+            </div>
+            {/* Optical Character Recognition (OCR) */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Text Icon */}
+                <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h8"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Optical Character Recognition (OCR)</h3>
+              <p className="text-gray-700 text-center">Computer vision services for OCR enable text extraction from images or videos. It converts scanned documents, images, and video frames into machine-readable text. We employ deep learning techniques to analyze visual data.</p>
+            </div>
+            {/* Scene Reconstruction */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* 3D Cube Icon */}
+                <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M16 8v8M8 8v8M3 12h18"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scene Reconstruction</h3>
+              <p className="text-gray-700 text-center">Scene reconstruction entails creating precise 3D models of actual surroundings using visual input. This technology can be used for various things, such as developing immersive virtual reality experiences.</p>
+            </div>
+            {/* Video Analysis */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Video Icon */}
+                <svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="15" height="10" rx="2"/><polygon points="20 7 23 9.5 23 14.5 20 17 20 7"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Video Analysis</h3>
+              <p className="text-gray-700 text-center">Video analysis is another part of our computer vision service. It uses AI algorithms to analyze video data and extract insights and patterns. This includes activities like following the movements of objects or people.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -328,41 +363,45 @@ const ComputerVisionPro: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              Computer Vision Solution Features
+              Discover the Benefits of Computer Vision: Key Features
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Visual Understanding */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 hover:shadow-2xl hover:border-cyan-400 transition-all duration-300 flex flex-col items-start gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-cyan-200 transition-colors">
-                <svg className="w-8 h-8 text-cyan-500 group-hover:text-cyan-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
+            {/* Accuracy */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+              <div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Target Icon */}
+                <svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 group-hover:text-cyan-700 transition-colors">Visual Understanding</h3>
-              <p className="text-gray-700">Computer vision enables systems to interpret and analyze images and videos, resulting in more effective and automated processes.</p>
-            </div>
-            {/* Personalization */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 hover:shadow-2xl hover:border-green-400 transition-all duration-300 flex flex-col items-start gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-green-200 transition-colors">
-                <svg className="w-8 h-8 text-green-500 group-hover:text-green-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
-              </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 group-hover:text-green-700 transition-colors">Personalization</h3>
-              <p className="text-gray-700">Deliver personalized recommendations, alerts, and content based on visual data and user context for a rewarding experience.</p>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Accuracy</h3>
+              <p className="text-gray-700 text-center">Object detection uses computer vision techniques to identify and locate things in digital photos or videos for various applications.</p>
             </div>
             {/* Scalability */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 flex flex-col items-start gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-blue-200 transition-colors">
-                <svg className="w-8 h-8 text-blue-500 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+              <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Layers Icon */}
+                <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 group-hover:text-blue-700 transition-colors">Scalability</h3>
-              <p className="text-gray-700">Computer vision solutions scale to handle high volumes of images and video streams, suitable for organizations of all sizes and industries.</p>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scalability</h3>
+              <p className="text-gray-700 text-center">Xeven solutions computer vision services offer scalability to handle diverse image and video data volumes, from small datasets to massive streams.</p>
             </div>
-            {/* Time and Cost Savings */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 hover:shadow-2xl hover:border-yellow-400 transition-all duration-300 flex flex-col items-start gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-yellow-200 transition-colors">
-                <svg className="w-8 h-8 text-yellow-500 group-hover:text-yellow-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            {/* Flexibility */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+              <div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Settings Icon */}
+                <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 group-hover:text-yellow-700 transition-colors">Time and Cost Savings</h3>
-              <p className="text-gray-700">Automate processes like visual inspection and document processing, saving manual labor expenses and streamlining workflows.</p>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Flexibility</h3>
+              <p className="text-gray-700 text-center">Our adaptable and scalable services enable customers to customize output formats, data preparation, and algorithms to suit their unique requirements.</p>
+            </div>
+            {/* Increase Civilian Safety */}
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+              <div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                {/* Shield Icon */}
+                <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Increase Civilian Safety</h3>
+              <p className="text-gray-700 text-center">Computer vision AI can improve civilian safety by identifying and assessing a person's activities in real time.</p>
             </div>
           </div>
         </div>

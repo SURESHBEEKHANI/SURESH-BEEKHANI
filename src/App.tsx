@@ -18,7 +18,7 @@ import PredictiveModelling from "./pages/PredictiveModelling";
 import ChatGPTIntegrations from "./pages/ChatGPTIntegrations";
 import NaturalLanguageProcessing from "./pages/NaturalLanguageProcessing";
 import MachineLearning from "./pages/MachineLearning";
-import ComputerVision from "./pages/ComputerVision";
+import ComputerVisionPro from "./pages/ComputerVisionPro";
 
 const queryClient = new QueryClient();
 
@@ -43,7 +43,7 @@ const App = () => (
           <Route path="/chat-gpt-integrations" element={<ChatGPTIntegrations />} />
           <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
-          <Route path="/computer-vision" element={<ComputerVision />} />
+          <Route path="/computer-vision" element={<ComputerVisionPro />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

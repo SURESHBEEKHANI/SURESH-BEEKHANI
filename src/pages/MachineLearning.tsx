@@ -279,7 +279,7 @@ const MachineLearning: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Predictive Analysis */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-300/20">
                 {/* Chart/Trend Icon */}
                 <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" strokeLinecap="round" strokeLinejoin="round"/><path d="M21 21H3V3" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -290,7 +290,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Deep Learning */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-green-300/20">
                 {/* Neural Network Icon */}
                 <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/><circle cx="12" cy="8" r="1.5"/><circle cx="12" cy="16" r="1.5"/><path d="M8 12h8M12 8v8"/></svg>
@@ -301,7 +301,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Natural Language Processing */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-blue-300/20">
                 {/* NLP/Text Icon */}
                 <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -312,7 +312,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Computer Vision */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-purple-300/20">
                 {/* Eye/Camera Icon */}
                 <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M2 7h4l2-3h8l2 3h4v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/></svg>
@@ -323,7 +323,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Speech Recognition */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-yellow-300/20">
                 {/* Microphone Icon */}
                 <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><path d="M12 22v-4"/><path d="M8 22h8"/></svg>
@@ -334,7 +334,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Generative Models */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-start">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-pink-300/20">
                 {/* Sparkle/Generate Icon */}
                 <svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3.5"/></svg>
@@ -361,7 +361,7 @@ const MachineLearning: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Open Source Libraries and Frameworks */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-start">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-100">
                 {/* Open Source/Code Icon */}
                 <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
@@ -372,7 +372,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Cloud-Based Solutions */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-start">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100">
                 {/* Cloud Icon */}
                 <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 16a4 4 0 0 0-3-7.87A5 5 0 0 0 2 13a5 5 0 0 0 5 5h10a4 4 0 0 0 0-8z"/></svg>
@@ -383,7 +383,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Transformer-based Solutions */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-start">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-green-100">
                 {/* Transformer/Model Icon */}
                 <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg>
@@ -394,7 +394,7 @@ const MachineLearning: React.FC = () => {
               </p>
             </div>
             {/* Continual Learning */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-start">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center">
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-lg bg-yellow-100">
                 {/* Refresh/Loop Icon */}
                 <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4v5h.582M20 20v-5h-.581M19.418 9A7.974 7.974 0 0 0 12 4a8 8 0 0 0-7.418 5M4.582 15A7.974 7.974 0 0 0 12 20a8 8 0 0 0 7.418-5"/></svg>
@@ -529,7 +529,7 @@ const MachineLearning: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Expertise */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Star/Expertise Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -538,7 +538,7 @@ const MachineLearning: React.FC = () => {
               <p className="text-gray-700 text-center">Seasoned professionals with deep experience in AI and ML integrations.</p>
             </div>
             {/* Custom Solutions */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Puzzle/Custom Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
@@ -547,7 +547,7 @@ const MachineLearning: React.FC = () => {
               <p className="text-gray-700 text-center">Tailored ML integrations to fit your unique business needs and goals.</p>
             </div>
             {/* End-to-End Support */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Support/Headset Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
@@ -556,7 +556,7 @@ const MachineLearning: React.FC = () => {
               <p className="text-gray-700 text-center">Comprehensive guidance from planning to deployment and ongoing optimization.</p>
             </div>
             {/* Proven Results */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Trophy/Results Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>

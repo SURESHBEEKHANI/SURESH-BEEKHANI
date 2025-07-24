@@ -396,18 +396,16 @@ const AIChatbotDevelopment: React.FC = () => {
 								key={service.id}
 								className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300"
 							>
-								<div className="flex items-start space-x-4">
-									<div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
+								<div className="flex flex-col items-center text-center space-y-4">
+									<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 										{service.icon}
 									</div>
-									<div>
-										<h3 className="font-semibold text-lg text-white mb-2">
-											{service.title}
-										</h3>
-										<p className="text-gray-200 leading-relaxed">
-											{service.description}
-										</p>
-									</div>
+									<h3 className="font-semibold text-lg text-white mb-2">
+										{service.title}
+									</h3>
+									<p className="text-gray-200 leading-relaxed">
+										{service.description}
+									</p>
 								</div>
 							</div>
 						))}
@@ -587,53 +585,41 @@ const AIChatbotDevelopment: React.FC = () => {
 						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* Website Icon */}
 							<svg className="w-8 h-8 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">Websites</h3>
-								<p className="text-gray-700">Give your website visitors the help they need right when they need it. Our chatbot for websites can answer queries, provide product information, and help checkout.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Websites</h3>
+							<p className="text-gray-700">Give your website visitors the help they need right when they need it. Our chatbot for websites can answer queries, provide product information, and help checkout.</p>
 						</div>
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* Social Media Icon */}
 							<svg className="w-8 h-8 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">Social Media</h3>
-								<p className="text-gray-700">Keep your social media followers engaged with our AI-powered AI chatbot. It can answer questions, support customers, and even run contests and promotions.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Social Media</h3>
+							<p className="text-gray-700">Keep your social media followers engaged with our AI-powered AI chatbot. It can answer questions, support customers, and even run contests and promotions.</p>
 						</div>
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* E-commerce Icon */}
 							<svg className="w-8 h-8 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">E-commerce Portals</h3>
-								<p className="text-gray-700">Make online shopping a breeze for your customers with our AI chatbot. It can help them find products, track orders, and answer return questions.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">E-commerce Portals</h3>
+							<p className="text-gray-700">Make online shopping a breeze for your customers with our AI chatbot. It can help them find products, track orders, and answer return questions.</p>
 						</div>
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* Android Icon */}
 							<svg className="w-8 h-8 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="10" rx="2"/><path d="M8 17v2m8-2v2"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">Android Applications</h3>
-								<p className="text-gray-700">Enhance your Android app with our AI chatbot. It can provide customer support, automate tasks, and personalize user experience.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Android Applications</h3>
+							<p className="text-gray-700">Enhance your Android app with our AI chatbot. It can provide customer support, automate tasks, and personalize user experience.</p>
 						</div>
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* iOS Icon */}
 							<svg className="w-8 h-8 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">iOS Applications</h3>
-								<p className="text-gray-700">Our cutting-edge AI chatbot is the perfect addition to your iOS app. It can provide 24/7 customer support, answer questions, and onboard new users.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">iOS Applications</h3>
+							<p className="text-gray-700">Our cutting-edge AI chatbot is the perfect addition to your iOS app. It can provide 24/7 customer support, answer questions, and onboard new users.</p>
 						</div>
-						<div className="bg-white/80 rounded-xl p-6 shadow-md flex items-start gap-4">
+						<div className="bg-white/80 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
 							{/* Web App Icon */}
 							<svg className="w-8 h-8 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5V3h8v2"/></svg>
-							<div>
-								<h3 className="font-semibold text-lg text-blue-900 mb-2">Web-Based Applications</h3>
-								<p className="text-gray-700">Post-deployment, we ensure chatbots perform optimally through regular updates, upgrades, and issue resolution support. Our dedicated engineers perform monitoring and troubleshooting to optimize performance.</p>
-							</div>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Web-Based Applications</h3>
+							<p className="text-gray-700">Post-deployment, we ensure chatbots perform optimally through regular updates, upgrades, and issue resolution support. Our dedicated engineers perform monitoring and troubleshooting to optimize performance.</p>
 						</div>
 					</div>
 				</div>
@@ -652,82 +638,70 @@ Why Partner with a Leading AI Chatbot Development Expert?
 		</div>
 		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{/* Card 1 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<circle cx="12" cy="12" r="10" />
 						<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Proven Chatbot Expertise</h3>
-<p className="text-gray-700">Benefit from extensive experience in designing, developing, and deploying robust AI chatbots tailored to your organization’s unique objectives and operational needs.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Proven Chatbot Expertise</h3>
+				<p className="text-gray-700">Benefit from extensive experience in designing, developing, and deploying robust AI chatbots tailored to your organization’s unique objectives and operational needs.</p>
 			</div>
 			{/* Card 2 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<rect x="4" y="4" width="16" height="16" rx="4" />
 						<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Cross-Industry Solutions</h3>
-<p className="text-gray-700">Delivering AI chatbot solutions across customer service, e-commerce, healthcare, and more, with a proven record of meeting the demands of diverse industries.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Cross-Industry Solutions</h3>
+				<p className="text-gray-700">Delivering AI chatbot solutions across customer service, e-commerce, healthcare, and more, with a proven record of meeting the demands of diverse industries.</p>
 			</div>
 			{/* Card 3 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round" />
 						<circle cx="12" cy="12" r="10" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Cutting-Edge AI & NLP</h3>
-<p className="text-gray-700">Utilizing advanced Natural Language Processing and Machine Learning, our chatbots deliver seamless, human-like interactions and intelligent automation.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Cutting-Edge AI & NLP</h3>
+				<p className="text-gray-700">Utilizing advanced Natural Language Processing and Machine Learning, our chatbots deliver seamless, human-like interactions and intelligent automation.</p>
 			</div>
 			{/* Card 4 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 						<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Tailored to Your Brand</h3>
-<p className="text-gray-700">Every solution is meticulously crafted to reflect your brand identity, business goals, and audience expectations—whether for support, sales, or engagement.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Tailored to Your Brand</h3>
+				<p className="text-gray-700">Every solution is meticulously crafted to reflect your brand identity, business goals, and audience expectations—whether for support, sales, or engagement.</p>
 			</div>
 			{/* Card 5 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<rect x="3" y="11" width="18" height="7" rx="2" />
 						<path d="M7 11V7a5 5 0 0110 0v4" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Scalable for Growth</h3>
-<p className="text-gray-700">Our AI chatbots are engineered for scalability, ensuring consistent performance and adaptability as your business evolves and expands.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Scalable for Growth</h3>
+				<p className="text-gray-700">Our AI chatbots are engineered for scalability, ensuring consistent performance and adaptability as your business evolves and expands.</p>
 			</div>
 			{/* Card 6 */}
-			<div className="bg-white/90 rounded-xl p-6 shadow-md flex items-start gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+			<div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-2">
 					<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M12 8v4l3 3" />
 						<circle cx="12" cy="12" r="10" />
 					</svg>
 				</div>
-				<div>
-<h3 className="font-semibold text-lg text-blue-900 mb-2">Uncompromising Security & Compliance</h3>
-<p className="text-gray-700">Data privacy and security are paramount. Our solutions adhere to industry standards, including HIPAA, ensuring robust protection for all user data.</p>
-				</div>
+				<h3 className="font-semibold text-lg text-blue-900 mb-2">Uncompromising Security & Compliance</h3>
+				<p className="text-gray-700">Data privacy and security are paramount. Our solutions adhere to industry standards, including HIPAA, ensuring robust protection for all user data.</p>
 			</div>
 		</div>
 	</div>
@@ -744,54 +718,54 @@ Why Partner with a Leading AI Chatbot Development Expert?
 				</div>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
   {/* Card 1: Operational Cost Reduction */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-green-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v8m0 0c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="10"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Operational Cost Reduction</h3>
-	</div>
-	<p className="text-gray-700">AI chatbots automate routine and repetitive tasks, reducing the need for manual intervention and significantly lowering operational costs.</p>
-				  </div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v8m0 0c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="10"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Operational Cost Reduction</h3>
+    <p className="text-gray-700">Automate routine tasks and reduce manual work to lower your business costs.</p>
+  </div>
   {/* Card 2: Enhanced Efficiency */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-blue-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Enhanced Efficiency</h3>
-	</div>
-	<p className="text-gray-700">Provide round-the-clock support, resolve inquiries instantly, and allow your team to focus on complex, value-driven tasks.</p>
-				  </div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Enhanced Efficiency</h3>
+    <p className="text-gray-700">Provide instant, 24/7 support and let your team focus on high-value work.</p>
+  </div>
   {/* Card 3: Actionable Insights */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-yellow-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Actionable Insights</h3>
-	</div>
-	<p className="text-gray-700">Leverage data collected by chatbots to gain deep insights into customer preferences and behaviors, enabling smarter business decisions and personalized experiences.</p>
-				  </div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Actionable Insights</h3>
+    <p className="text-gray-700">Gain valuable data on customer needs and behaviors for smarter decisions.</p>
+  </div>
   {/* Card 4: Sustainable Competitive Edge */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-cyan-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Sustainable Competitive Edge</h3>
-	</div>
-	<p className="text-gray-700">Showcase your commitment to innovation and customer-centricity, differentiating your brand and building lasting loyalty.</p>
-				  </div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Sustainable Competitive Edge</h3>
+    <p className="text-gray-700">Show your commitment to innovation and stand out from competitors.</p>
+  </div>
   {/* Card 5: Superior User Engagement */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-pink-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Superior User Engagement</h3>
-	</div>
-	<p className="text-gray-700">Deliver interactive, personalized experiences that increase user engagement, strengthen relationships, and drive higher conversion rates.</p>
-				  </div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Superior User Engagement</h3>
+    <p className="text-gray-700">Deliver interactive, personalized experiences that boost engagement.</p>
+  </div>
   {/* Card 6: Scalable & Future-Ready */}
-  <div className="bg-white/90 rounded-xl p-6 shadow-md flex flex-col gap-2">
-	<div className="flex items-center mb-2">
-	  <svg className="w-7 h-7 text-purple-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-	  <h3 className="font-semibold text-lg text-blue-900">Scalable & Future-Ready</h3>
-	</div>
-	<p className="text-gray-700">Our chatbots are designed for seamless integration and effortless scalability, ensuring your business remains agile and ready for future growth.</p>
-				  </div>
-				</div>
+  <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2">
+      <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+    </div>
+    <h3 className="font-semibold text-lg text-blue-900 mb-2">Scalable & Future-Ready</h3>
+    <p className="text-gray-700">Easily scale and adapt your chatbot as your business grows.</p>
+  </div>
+</div>
 			  </div>
 			</section>
 
@@ -961,7 +935,7 @@ Why Partner with a Leading AI Chatbot Development Expert?
 	return (
 	  <div className="grid md:grid-cols-2 gap-8">
 		{steps.map((step, idx) => (
-		  <div key={step.title} className="bg-white rounded-xl shadow-md p-6 flex flex-col items-start gap-4 h-full">
+		  <div key={step.title} className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center gap-4 h-full">
 			<div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-gray-100 mb-2">
 			  {step.icon}
 			</div>
