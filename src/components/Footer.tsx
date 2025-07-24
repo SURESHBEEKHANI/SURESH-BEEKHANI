@@ -44,7 +44,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
             <ul className="space-y-2">
               {[
-                { name: 'Home', id: 'home' },
+              
                 { name: 'About', id: 'about' },
                 { name: 'Portfolio', id: 'projects' },
                 { name: 'Skills', id: 'skills' },
