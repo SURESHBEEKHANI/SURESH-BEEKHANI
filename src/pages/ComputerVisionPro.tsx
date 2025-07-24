@@ -229,14 +229,14 @@ const ComputerVisionPro: React.FC = () => {
                 Computer <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Vision</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-              Our computer vision solutions drive innovation in security, autonomy, medical imaging, facial recognition, and quality control boosting accuracy and efficiency.
+              Empower your business with next-generation computer vision solutions—driving innovation in security, automation, medical imaging, facial recognition, and quality assurance for superior accuracy and efficiency.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a
                   href="mailto:sureshbeekhani26@gmail.com"
                   className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Talk to an Expert
+                  Talk to in Expert
                 </a>
               </div>
             </div>
@@ -269,13 +269,13 @@ const ComputerVisionPro: React.FC = () => {
                 The Power of Computer Vision
               </h2>
               <p className="text-xl text-gray-700 max-w-2xl">
-                Unlock new possibilities for your business with advanced Computer Vision solutions. Our services help computers better understand, analyze, and interpret visual data, enabling smarter automation, security, and much more.
+                Unlock transformative opportunities with advanced computer vision. Our tailored solutions enable computers to interpret, analyze, and act on visual data—fueling smarter automation, enhanced security, and actionable insights.
               </p>
               <p className="text-lg text-gray-700 max-w-2xl">
-                Our team of computer vision specialists will seamlessly integrate and tailor these solutions to your unique needs. This empowers you to make informed, data-driven decisions and improve your organization’s efficiency.
+                Our dedicated experts seamlessly integrate and customize computer vision technologies to your unique needs, empowering data-driven decisions and operational excellence.
               </p>
               <p className="text-lg text-gray-700 max-w-2xl">
-                Whether in healthcare, retail, security, or beyond, computer vision can transform how you work and serve your customers. Rely on our expertise to help your business grow and stay ahead.
+                From healthcare and retail to security and beyond, computer vision redefines how you serve customers and grow your business. Partner with us to stay ahead of the curve.
               </p>
             </div>
           </div>
@@ -293,7 +293,7 @@ const ComputerVisionPro: React.FC = () => {
               Advanced Computer Vision Services for Intelligent Automation
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Unlock the power of intelligent automation with our advanced computer vision services tailored for modern business needs.
+              Harness intelligent automation with our advanced computer vision services—purpose-built for today’s dynamic business landscape.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -304,7 +304,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Object Detection</h3>
-              <p className="text-gray-700 text-center">Our computer vision as a service offers advanced object detection capabilities. We deliver precise object and location detection by using advanced computer vision techniques. The system can swiftly process massive volumes of visual data.</p>
+              <p className="text-gray-700 text-center">Leverage state-of-the-art object detection to accurately identify and locate items in images and video. Our solutions process high volumes of visual data with speed and precision, unlocking new efficiencies.</p>
             </div>
             {/* Facial Recognition */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
@@ -313,7 +313,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9a3 3 0 0 1-6 0"/><path d="M9 15s1.5 2 3 2 3-2 3-2"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Facial Recognition</h3>
-              <p className="text-gray-700 text-center">Experience the power of facial recognition services. It utilizes advanced computer vision technology for precise and secure Facial Authentication in various applications. It can be used for multiple things, including marketing, law enforcement, and security.</p>
+              <p className="text-gray-700 text-center">Unlock secure, seamless authentication and personalized experiences with advanced facial recognition. Ideal for marketing, security, and compliance-driven applications.</p>
             </div>
             {/* Image Segmentation */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
@@ -322,7 +322,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Image Segmentation</h3>
-              <p className="text-gray-700 text-center">A key computer vision component is segmenting an image into functional parts or segments. This simplifies extracting helpful information and carrying out sophisticated image-processing operations.</p>
+              <p className="text-gray-700 text-center">Segment images into meaningful regions for deeper analysis and actionable insights. Simplify complex visual data and enable sophisticated image processing at scale.</p>
             </div>
             {/* Optical Character Recognition (OCR) */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
@@ -331,7 +331,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h8"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Optical Character Recognition (OCR)</h3>
-              <p className="text-gray-700 text-center">Computer vision services for OCR enable text extraction from images or videos. It converts scanned documents, images, and video frames into machine-readable text. We employ deep learning techniques to analyze visual data.</p>
+              <p className="text-gray-700 text-center">Extract text from images and video with high-accuracy OCR powered by deep learning. Transform scanned documents and visuals into actionable, machine-readable data.</p>
             </div>
             {/* Scene Reconstruction */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
@@ -340,7 +340,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M16 8v8M8 8v8M3 12h18"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scene Reconstruction</h3>
-              <p className="text-gray-700 text-center">Scene reconstruction entails creating precise 3D models of actual surroundings using visual input. This technology can be used for various things, such as developing immersive virtual reality experiences.</p>
+              <p className="text-gray-700 text-center">Reconstruct detailed 3D models from visual input for immersive experiences and advanced analytics. Ideal for virtual reality, simulation, and spatial analysis.</p>
             </div>
             {/* Video Analysis */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
@@ -349,7 +349,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="15" height="10" rx="2"/><polygon points="20 7 23 9.5 23 14.5 20 17 20 7"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Video Analysis</h3>
-              <p className="text-gray-700 text-center">Video analysis is another part of our computer vision service. It uses AI algorithms to analyze video data and extract insights and patterns. This includes activities like following the movements of objects or people.</p>
+              <p className="text-gray-700 text-center">Gain real-time insights from video streams using AI-powered analysis. Track movement, detect patterns, and extract valuable intelligence for security and operations.</p>
             </div>
           </div>
         </div>
@@ -374,7 +374,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Accuracy</h3>
-              <p className="text-gray-700 text-center">Object detection uses computer vision techniques to identify and locate things in digital photos or videos for various applications.</p>
+              <p className="text-gray-700 text-center">Achieve exceptional precision in object detection and localization across images and video—enabling reliable, data-driven decisions.</p>
             </div>
             {/* Scalability */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
@@ -383,7 +383,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scalability</h3>
-              <p className="text-gray-700 text-center">Xeven solutions computer vision services offer scalability to handle diverse image and video data volumes, from small datasets to massive streams.</p>
+              <p className="text-gray-700 text-center">Effortlessly scale from pilot projects to enterprise-wide deployments. Our solutions handle everything from small datasets to massive, real-time data streams.</p>
             </div>
             {/* Flexibility */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
@@ -392,7 +392,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Flexibility</h3>
-              <p className="text-gray-700 text-center">Our adaptable and scalable services enable customers to customize output formats, data preparation, and algorithms to suit their unique requirements.</p>
+              <p className="text-gray-700 text-center">Customize every aspect—from data preparation to output formats and algorithms—to perfectly align with your business objectives.</p>
             </div>
             {/* Increase Civilian Safety */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
@@ -401,7 +401,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
               <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Increase Civilian Safety</h3>
-              <p className="text-gray-700 text-center">Computer vision AI can improve civilian safety by identifying and assessing a person's activities in real time.</p>
+              <p className="text-gray-700 text-center">Enhance public safety by monitoring and analyzing activities in real time, proactively identifying risks and ensuring rapid response.</p>
             </div>
           </div>
         </div>
@@ -440,7 +440,7 @@ const ComputerVisionPro: React.FC = () => {
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
                   <div className="text-2xl font-bold text-white mb-4">{industry.name}</div>
                   <div className="text-white text-base font-normal mb-4">{industry.description}</div>
-                  <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Read More <span aria-hidden="true">→</span></a>
+                  <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Learn More <span aria-hidden="true">→</span></a>
                 </div>
                 {/* Default industry name (only visible when not hovered) */}
                 <div className="relative z-20 text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300">
@@ -463,7 +463,7 @@ const ComputerVisionPro: React.FC = () => {
               Computer Vision Integration Platforms
             </h2>
             <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              We leverage the best-in-class platforms and frameworks for robust, scalable computer vision integrations.
+              We leverage industry-leading platforms and frameworks to deliver robust, scalable computer vision integrations tailored to your needs.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
@@ -496,7 +496,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Define the use case</span>
-              <p className="text-gray-700 text-center">Identify the business scenario and audience for computer vision integration.</p>
+              <p className="text-gray-700 text-center">Pinpoint your business challenge and target audience to maximize the impact of computer vision integration.</p>
             </div>
             {/* Data collection & preparation */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
@@ -505,7 +505,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Data collection & preparation</span>
-              <p className="text-gray-700 text-center">Gather and prepare image/video data for model training.</p>
+              <p className="text-gray-700 text-center">Curate and prepare high-quality image and video data to ensure optimal model performance.</p>
             </div>
             {/* Development & integration */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
@@ -514,7 +514,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Development & integration</span>
-              <p className="text-gray-700 text-center">Build and integrate computer vision solutions into your application.</p>
+              <p className="text-gray-700 text-center">Develop and seamlessly embed computer vision capabilities into your applications for immediate business value.</p>
             </div>
             {/* Deployment & monitoring */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
@@ -523,7 +523,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Deployment & monitoring</span>
-              <p className="text-gray-700 text-center">Deploy the computer vision solution and monitor performance with analytics.</p>
+              <p className="text-gray-700 text-center">Deploy your solution with confidence and monitor performance using advanced analytics for continuous improvement.</p>
             </div>
           </div>
         </div>
@@ -546,7 +546,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Expertise</span>
-              <p className="text-gray-700 text-center">Seasoned professionals with deep experience in AI and computer vision integrations.</p>
+              <p className="text-gray-700 text-center">Work with seasoned professionals who bring deep expertise in AI and computer vision, ensuring your project’s success.</p>
             </div>
             {/* Custom Solutions */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
@@ -555,7 +555,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Custom Solutions</span>
-              <p className="text-gray-700 text-center">Tailored computer vision integrations to fit your unique business needs and goals.</p>
+              <p className="text-gray-700 text-center">Receive bespoke computer vision integrations designed to meet your unique business goals and challenges.</p>
             </div>
             {/* End-to-End Support */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
@@ -564,7 +564,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">End-to-End Support</span>
-              <p className="text-gray-700 text-center">Comprehensive guidance from planning to deployment and ongoing optimization.</p>
+              <p className="text-gray-700 text-center">Benefit from comprehensive support at every stage—from strategy and planning to deployment and optimization.</p>
             </div>
             {/* Proven Results */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
@@ -573,7 +573,7 @@ const ComputerVisionPro: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Proven Results</span>
-              <p className="text-gray-700 text-center">A track record of successful projects and measurable business impact.</p>
+              <p className="text-gray-700 text-center">Join a growing list of clients who have achieved measurable business impact and lasting value with our solutions.</p>
             </div>
           </div>
         </div>

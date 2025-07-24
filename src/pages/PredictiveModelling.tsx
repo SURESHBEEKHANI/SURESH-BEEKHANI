@@ -81,18 +81,18 @@ const PredictiveModelling: React.FC = () => {
 							<h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
 								Predictive{' '}
 								<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-									Modelling
+									Modeling
 								</span>
 							</h1>
 							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-								Using past data, our predictive analytics services forecast future trends and outcomes, empowering decision-makers across industries.
+								Harness the power of data-driven foresight. Our predictive analytics solutions empower organizations to anticipate trends, optimize operations, and drive strategic growth across industries.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
 									href="mailto:sureshbeekhani26@gmail.com"
 									className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
 								>
-									Talk to our Engineer
+									Talk to in Engineer
 								</a>
 							</div>
 						</div>
@@ -116,17 +116,17 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="flex-1">
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-6">
-							Get Accurate Insights with Our Predictive Analytics Services
+							Unlock Actionable Insights with Predictive Analytics
 						</h2>
 						<div className="text-blue-900 text-lg space-y-4">
 							<p>
-								Unlock actionable insights from your data with our predictive analytics solutions. Using advanced machine learning, we help you anticipate trends and make smarter, data-driven decisions.
+								Transform your data into a strategic asset. Our advanced predictive analytics solutions reveal hidden opportunities, enabling you to make proactive, confident decisions.
 							</p>
 							<p>
-								Our tailored models streamline operations, reduce risk, and maximize resources giving your business a competitive edge.
+								Custom-built models streamline your workflows, minimize risk, and maximize ROI—giving your business a decisive edge.
 							</p>
 							<p>
-								Experience clear, strategic guidance and seamless integration for improved performance and sustainable growth.
+								Experience seamless integration, expert guidance, and measurable results that fuel sustainable growth.
 							</p>
 						</div>
 					</div>
@@ -138,10 +138,10 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center space-y-6 mb-16">
 						<h3 className="text-3xl font-bold text-center text-blue-100 mb-4">
-							Key Features of Our Predictive Analytics Services
+							Key Advantages of Our Predictive Analytics
 						</h3>
 						<p className="text-center text-blue-100 text-lg max-w-3xl mx-auto mb-8">
-							Discover the capabilities that set our predictive analytics solutions apart, delivering actionable insights for business growth.
+							Discover the features that set our predictive analytics apart—delivering clarity, agility, and competitive advantage for your business.
 						</p>
 						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 							{/* Robustness */}
@@ -163,12 +163,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Robustness
+									Robust Performance
 								</h4>
 								<p className="text-blue-900">
-									Robustness is a key feature of our predictive analytics services. We
-									can handle diverse data types, adapt to different environments, and
-									effortlessly scale to handle large datasets.
+									Our solutions are engineered for reliability—adapting to diverse data sources, scaling effortlessly, and delivering consistent results in any environment.
 								</p>
 							</div>
 							{/* Flexibility */}
@@ -186,11 +184,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Flexibility
+									Flexible Customization
 								</h4>
 								<p className="text-blue-900">
-									We offer customized predictive analytics solutions. It allows users to
-									define their models and adjust them as necessary.
+									We tailor predictive models to your unique needs, allowing you to refine and adapt solutions as your business evolves.
 								</p>
 							</div>
 							{/* Transfer Learning */}
@@ -207,11 +204,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Transfer Learning
+									Accelerated Model Development
 								</h4>
 								<p className="text-blue-900">
-									Leveraging pre-trained models and transferring knowledge from one domain
-									to another allows for faster and more efficient model development.
+									Leverage pre-trained models and transfer learning to accelerate deployment and unlock value faster—no need to start from scratch.
 								</p>
 							</div>
 							{/* Interpretable Models */}
@@ -229,12 +225,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Interpretable Models
+									Transparent Insights
 								</h4>
 								<p className="text-blue-900">
-									The capacity to describe how a model generates its predictions enables
-									users to comprehend the elements that go into a forecast and develop
-									faith in the model's results.
+									Gain full visibility into how predictions are made. Our interpretable models build trust and empower you to act with confidence.
 								</p>
 							</div>
 							{/* Automated Feature Selection */}
@@ -252,12 +246,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Automated Feature Selection
+									Automated Feature Discovery
 								</h4>
 								<p className="text-blue-900">
-									This is the potential to determine a dataset's essential features
-									swiftly. It saves time and effort while facilitating the development of
-									robust models.
+									Quickly identify the most impactful data features—saving time, reducing complexity, and strengthening your predictive outcomes.
 								</p>
 							</div>
 							{/* Real-time Scoring */}
@@ -275,11 +267,10 @@ const PredictiveModelling: React.FC = () => {
 									</svg>
 								</div>
 								<h4 className="font-semibold text-lg text-blue-800 mb-2">
-									Real-time Scoring
+									Real-Time Decisioning
 								</h4>
 								<p className="text-blue-900">
-									The capability to swiftly score new data as it becomes available,
-									enabling in-the-moment judgments based on the most recent data.
+									Score new data instantly as it arrives, enabling you to make timely, informed decisions that keep you ahead of the curve.
 								</p>
 							</div>
 						</div>
@@ -292,10 +283,10 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center mb-10">
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-4">
-							Improve Business Decision-Making with Predictive Modeling Services
+							Elevate Business Decisions with Predictive Modeling
 						</h2>
 						<p className="text-lg text-blue-800/80 max-w-2xl mx-auto">
-							Explore our advanced analytics modules designed to empower your business with actionable insights and smarter strategies.
+							Explore our advanced analytics modules—designed to deliver actionable intelligence and drive smarter strategies for your organization.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -310,8 +301,7 @@ const PredictiveModelling: React.FC = () => {
 								Regression Analysis
 							</h4>
 							<p className="text-blue-900 text-base">
-								With the use of powerful predictive analytics tools, we offer regression
-								analysis.
+								Unlock precise forecasting and trend analysis with robust regression tools tailored to your business objectives.
 							</p>
 						</div>
 						{/* Time Series Forecasting Card */}
@@ -326,8 +316,7 @@ const PredictiveModelling: React.FC = () => {
 								Time Series Forecasting
 							</h4>
 							<p className="text-blue-900 text-base">
-								Time series forecasting involves examining time-stamped data to forecast
-								future patterns.
+								Anticipate future trends and seasonality by analyzing time-stamped data for accurate, forward-looking insights.
 							</p>
 						</div>
 						{/* Classification Analysis Card */}
@@ -341,8 +330,7 @@ const PredictiveModelling: React.FC = () => {
 								Classification Analysis
 							</h4>
 							<p className="text-blue-900 text-base">
-								Industries such as health tech can use classification analysis to make
-								sense of their data.
+								Empower your business to categorize and interpret complex data, driving smarter segmentation and decision-making.
 							</p>
 						</div>
 						{/* Anomaly Detection Card */}
@@ -357,8 +345,7 @@ const PredictiveModelling: React.FC = () => {
 								Anomaly Detection
 							</h4>
 							<p className="text-blue-900 text-base">
-								Advanced Anomaly Detection helps identify and flag unexpected or unusual
-								data points.
+								Proactively identify outliers and unusual patterns to mitigate risk and ensure operational integrity.
 							</p>
 						</div>
 					</div>
@@ -373,10 +360,10 @@ const PredictiveModelling: React.FC = () => {
 				<div className="relative z-10 max-w-7xl mx-auto">
 					<div className="text-center space-y-6 mb-20">
 						<h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg">
-							Industries Leveraging Predictive Modelling
+							Industries Transforming with Predictive Modeling
 						</h2>
 						<p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium">
-							Empowering organizations across diverse sectors to make smarter, data-driven decisions with advanced analytics and AI.
+							Empowering organizations across sectors to make smarter, data-driven decisions with advanced analytics and AI.
 						</p>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl shadow-2xl">
@@ -396,7 +383,7 @@ const PredictiveModelling: React.FC = () => {
 								<div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
 									<div className="text-2xl font-bold text-white mb-4">{industry.name}</div>
 									<div className="text-white text-base font-normal mb-4">{industry.description}</div>
-									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Read More <span aria-hidden="true">→</span></a>
+									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform">Learn More <span aria-hidden="true">→</span></a>
 								</div>
 								{/* Default industry name (only visible when not hovered) */}
 								<div className="relative z-20 text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300">
@@ -413,7 +400,7 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center mb-10">
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-4">
-							Predictive Modelling Development Process
+							Our Predictive Modeling Process
 						</h2>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -424,8 +411,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M12 2v20m10-10H2" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</div>
-							<h3 className="text-xl font-semibold text-blue-900 mb-2">Data Preprocessing</h3>
-							<p className="text-gray-700">Collecting, purifying, and converting unprocessed data into an analysis-ready format.</p>
+							<h3 className="text-xl font-semibold text-blue-900 mb-2">Data Preparation</h3>
+							<p className="text-gray-700">We collect, cleanse, and transform raw data into a format ready for insightful analysis.</p>
 						</div>
 						{/* Model Selection */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -436,7 +423,7 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="text-xl font-semibold text-blue-900 mb-2">Model Selection</h3>
-							<p className="text-gray-700">Selecting the appropriate predictive model based on the type of data and the business problem.</p>
+							<p className="text-gray-700">We identify the optimal predictive model based on your data and business goals.</p>
 						</div>
 						{/* Model Training */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -447,7 +434,7 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="text-xl font-semibold text-blue-900 mb-2">Model Training</h3>
-							<p className="text-gray-700">Using preprocessed data to train the chosen model, often splitting the data into training and testing sets to assess performance and accuracy.</p>
+							<p className="text-gray-700">We train and validate your model using best-in-class techniques to ensure accuracy and reliability.</p>
 						</div>
 						{/* Model Deployment */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -458,7 +445,7 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="text-xl font-semibold text-blue-900 mb-2">Model Deployment</h3>
-							<p className="text-gray-700">Deploying the trained model in the real world by integrating it into a larger system, such as a web application or business process.</p>
+							<p className="text-gray-700">We seamlessly integrate your predictive model into your business systems for real-world impact.</p>
 						</div>
 					</div>
 				</div>
@@ -471,7 +458,7 @@ const PredictiveModelling: React.FC = () => {
 						<div className="flex justify-center">
 							<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 						</div>
-						<h2 className="text-2xl lg:text-3xl font-bold text-white">Predictive Modelling Platforms</h2>
+						<h2 className="text-2xl lg:text-3xl font-bold text-white">Leading Predictive Modeling Platforms</h2>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
 						<div className="flex flex-col items-center">
@@ -502,8 +489,8 @@ const PredictiveModelling: React.FC = () => {
 			<section className="py-20 px-6 lg:px-8 bg-white">
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center mb-12">
-						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-4">Why Choose Us for Predictive Modelling?</h2>
-						<p className="text-lg text-blue-800/80 max-w-2xl mx-auto">Discover what sets our predictive modelling services apart and why organizations trust us to deliver actionable insights and measurable results.</p>
+						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-4">Why Partner with Us for Predictive Modeling?</h2>
+						<p className="text-lg text-blue-800/80 max-w-2xl mx-auto">See why leading organizations trust us to deliver predictive modeling solutions that drive measurable business outcomes.</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* Expertise */}
@@ -514,8 +501,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">Expertise</h3>
-							<p className="text-gray-700">Our team brings years of experience in predictive analytics, machine learning, and data science across diverse industries.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Proven Expertise</h3>
+							<p className="text-gray-700">Our team combines deep industry knowledge with advanced analytics experience to deliver results you can trust.</p>
 						</div>
 						{/* Custom Solutions */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -525,8 +512,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">Custom Solutions</h3>
-							<p className="text-gray-700">We tailor every predictive modelling solution to your unique business needs and objectives for maximum impact.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Tailored Solutions</h3>
+							<p className="text-gray-700">Every solution is custom-built to align with your business objectives and deliver maximum value.</p>
 						</div>
 						{/* Advanced Technology */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -536,8 +523,8 @@ const PredictiveModelling: React.FC = () => {
 									<circle cx="12" cy="12" r="10" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">Advanced Technology</h3>
-							<p className="text-gray-700">We leverage the latest tools and algorithms to deliver accurate, scalable, and future-ready predictive models.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Cutting-Edge Technology</h3>
+							<p className="text-gray-700">We utilize the latest tools and algorithms to ensure your predictive models are accurate, scalable, and future-ready.</p>
 						</div>
 						{/* Proven Results */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -547,8 +534,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M7 11V7a5 5 0 0110 0v4" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">Proven Results</h3>
-							<p className="text-gray-700">Our solutions drive measurable improvements in efficiency, decision-making, and business growth for our clients.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Demonstrated Results</h3>
+							<p className="text-gray-700">Our solutions consistently drive efficiency, smarter decisions, and business growth for our clients.</p>
 						</div>
 						{/* End-to-End Support */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -558,8 +545,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M8 15h8M8 11h8M8 7h8" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">End-to-End Support</h3>
-							<p className="text-gray-700">From consultation to deployment and beyond, we provide comprehensive support at every stage of your project.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Comprehensive Support</h3>
+							<p className="text-gray-700">From initial consultation to deployment and beyond, we provide end-to-end support for your success.</p>
 						</div>
 						{/* Data Security */}
 						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
@@ -569,8 +556,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 								</svg>
 							</div>
-							<h3 className="font-semibold text-lg text-blue-900 mb-2">Data Security</h3>
-							<p className="text-gray-700">We prioritize the confidentiality and security of your data, adhering to industry best practices and compliance standards.</p>
+							<h3 className="font-semibold text-lg text-blue-900 mb-2">Data Security First</h3>
+							<p className="text-gray-700">We safeguard your data with industry-leading security practices and strict compliance standards.</p>
 						</div>
 					</div>
 				</div>
@@ -587,10 +574,10 @@ const PredictiveModelling: React.FC = () => {
 						{/* FAQ 1 */}
 						<details className="bg-white rounded-3xl shadow-lg p-6 group">
 							<summary className="cursor-pointer font-semibold text-xl text-blue-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								What is predictive modelling and forecasting?
+								What is predictive modeling and forecasting?
 								<span className="ml-2 text-blue-900 group-hover:text-green-700">▼</span>
 							</summary>
-							<div className="pt-4 text-gray-800 text-lg">Predictive modelling and forecasting use historical data and statistical techniques to predict future events or outcomes. These approaches help organizations anticipate trends, make informed decisions, and optimize strategies for better results.</div>
+							<div className="pt-4 text-gray-800 text-lg">Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.</div>
 						</details>
 						{/* FAQ 2 */}
 						<details className="bg-white rounded-3xl shadow-lg p-6 group">
@@ -598,7 +585,7 @@ const PredictiveModelling: React.FC = () => {
 								Why is predictive analytics important?
 								<span className="ml-2 text-blue-900 group-hover:text-green-700">▼</span>
 							</summary>
-							<div className="pt-4 text-gray-800 text-lg">Predictive analytics empowers organizations to make data-driven decisions, anticipate future events, identify patterns, mitigate risks, optimize resources, and gain a competitive edge across industries.</div>
+							<div className="pt-4 text-gray-800 text-lg">Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.</div>
 						</details>
 						{/* FAQ 3 */}
 						<details className="bg-white rounded-3xl shadow-lg p-6 group">
@@ -606,7 +593,7 @@ const PredictiveModelling: React.FC = () => {
 								What is the difference between machine learning and predictive analytics?
 								<span className="ml-2 text-blue-900 group-hover:text-green-700">▼</span>
 							</summary>
-							<div className="pt-4 text-gray-800 text-lg">Machine learning is a subset of predictive analytics. Predictive analytics uses statistical methods and historical data to make predictions, while machine learning uses algorithms that automatically learn from data to make predictions without explicit programming.</div>
+							<div className="pt-4 text-gray-800 text-lg">Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.</div>
 						</details>
 						{/* FAQ 4 */}
 						<details className="bg-white rounded-3xl shadow-lg p-6 group">
@@ -614,15 +601,15 @@ const PredictiveModelling: React.FC = () => {
 								Will a predictive analytics tool bring value to my company?
 								<span className="ml-2 text-blue-900 group-hover:text-green-700">▼</span>
 							</summary>
-							<div className="pt-4 text-gray-800 text-lg">Yes, predictive analytics tools can add significant value by uncovering hidden patterns, identifying trends, improving decision-making, optimizing processes, reducing risks, and enhancing customer satisfaction through actionable, data-driven insights.</div>
+							<div className="pt-4 text-gray-800 text-lg">Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction—delivering measurable business value.</div>
 						</details>
 						{/* FAQ 5 */}
 						<details className="bg-white rounded-3xl shadow-lg p-6 group">
 							<summary className="cursor-pointer font-semibold text-xl text-blue-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								What are predictive modelling techniques?
+								What are predictive modeling techniques?
 								<span className="ml-2 text-blue-900 group-hover:text-green-700">▼</span>
 							</summary>
-							<div className="pt-4 text-gray-800 text-lg">Predictive modelling techniques include linear regression, logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. These methods help predict outcomes and support informed decision-making based on historical data.</div>
+							<div className="pt-4 text-gray-800 text-lg">Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.</div>
 						</details>
 					</div>
 				</div>

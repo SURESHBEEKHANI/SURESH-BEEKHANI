@@ -125,7 +125,7 @@ const FinTechAI: React.FC = () => {
               <div className="flex space-x-4 pt-6 w-full justify-start">
                 <a href="mailto:sureshbeekhani@26gmail.com">
                   <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
-                    Connect with an AI Specialist
+                  Talk to in Expert
                   </Button>
                 </a>
               </div>

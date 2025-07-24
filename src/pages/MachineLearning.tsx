@@ -215,14 +215,14 @@ const MachineLearning: React.FC = () => {
                 Machine <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Learning</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-                Empower your business with custom machine learning models and solutions.
+                Accelerate business growth with tailored machine learning solutions that drive results.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a
                   href="mailto:sureshbeekhani26@gmail.com"
                   className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Talk to an Expert
+                  Talk to in Expert
                 </a>
               </div>
             </div>
@@ -248,19 +248,19 @@ const MachineLearning: React.FC = () => {
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-blue-900">Custom Machine Learning Solutions for Your Business</h2>
             <p className="text-lg text-gray-700">
-              Unlock the full potential of your data with machine learning services tailored to your organization’s unique needs. We empower businesses to boost efficiency and accuracy through advanced AI and predictive modeling.
+              Unlock actionable insights and maximize efficiency with machine learning services designed for your unique business objectives. Our advanced AI and predictive analytics empower you to stay ahead in a competitive market.
             </p>
             <p className="text-lg text-gray-700">
-              Our dedicated ML specialists partner with you to:
+              Our expert ML team partners with you to:
             </p>
             <ul className="list-disc pl-6 text-gray-800 space-y-2">
-              <li>Design and deploy bespoke machine learning models</li>
-              <li>Streamline and automate routine operations</li>
-              <li>Reveal hidden patterns and emerging trends</li>
-              <li>Deliver actionable insights for smarter decision-making</li>
+              <li>Develop and implement bespoke machine learning models</li>
+              <li>Automate and optimize critical business operations</li>
+              <li>Uncover valuable patterns and emerging opportunities</li>
+              <li>Deliver data-driven strategies for confident decision-making</li>
             </ul>
             <p className="text-lg text-gray-700">
-              Harness the power of your data and gain a competitive edge in today’s fast-paced market with our expert ML solutions.
+              Harness the power of your data to achieve measurable business impact with our proven ML expertise.
             </p>
           </div>
         </div>
@@ -274,7 +274,7 @@ const MachineLearning: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Transform the future with our ML services
+              Transform Your Business with Our Machine Learning Services
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -286,7 +286,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Predictive Analysis</h3>
               <p className="text-gray-200 leading-relaxed">
-                Our predictive analysis solutions use advanced statistical and machine learning algorithms to analyze data and accurately predict future events.
+                Leverage predictive analytics to anticipate trends, optimize operations, and make proactive business decisions with confidence.
               </p>
             </div>
             {/* Deep Learning */}
@@ -297,7 +297,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Deep Learning</h3>
               <p className="text-gray-200 leading-relaxed">
-                Deep learning services use neural networks and attention models to automatically learn and improve from data, enabling machines to recognize patterns and make intelligent decisions.
+                Harness the power of deep learning to recognize complex patterns, automate processes, and unlock new opportunities for innovation.
               </p>
             </div>
             {/* Natural Language Processing */}
@@ -308,7 +308,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Natural Language Processing</h3>
               <p className="text-gray-200 leading-relaxed">
-                NLP solutions enable machines to understand and interpret human language, allowing more efficient communication and decision-making.
+                Enable seamless human-machine interaction and extract valuable insights from text data with advanced language understanding.
               </p>
             </div>
             {/* Computer Vision */}
@@ -319,7 +319,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Computer Vision</h3>
               <p className="text-gray-200 leading-relaxed">
-                Xeven Solutions computer vision technology enables visual analysis and interpretation. It empowers applications such as image recognition, object detection, and medical imaging.
+                Transform visual data into actionable intelligence—empowering applications from image recognition to automated quality control.
               </p>
             </div>
             {/* Speech Recognition */}
@@ -330,7 +330,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Speech Recognition</h3>
               <p className="text-gray-200 leading-relaxed">
-                Our speech recognition technology uses cutting-edge machine learning techniques to transcribe and interpret spoken language accurately.
+                Accurately transcribe and interpret spoken language to streamline workflows and enhance customer experiences.
               </p>
             </div>
             {/* Generative Models */}
@@ -341,7 +341,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-white mb-2">Generative Models</h3>
               <p className="text-gray-200 leading-relaxed">
-                The generative model solutions use ML as a service to generate new content. It is usable in a wide range of applications, such as dataset augmentation, image synthesis, and text generation.
+                Unlock creativity and efficiency with generative AI—enabling content creation, data augmentation, and innovative business solutions.
               </p>
             </div>
           </div>
@@ -356,7 +356,7 @@ const MachineLearning: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              Machine Learning Features
+              Machine Learning Capabilities
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -368,7 +368,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-blue-900 mb-2">Open Source Libraries and Frameworks</h3>
               <p className="text-gray-700">
-                We provide open-source machine learning libraries-based solutions for recommender systems, NLP, and predictive analysis.
+                Build on trusted, open-source ML libraries for scalable, reliable solutions in recommendation, language, and predictive analytics.
               </p>
             </div>
             {/* Cloud-Based Solutions */}
@@ -379,7 +379,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-blue-900 mb-2">Cloud-Based Solutions</h3>
               <p className="text-gray-700">
-                We construct our Machine Learning Solutions on cloud-based platforms like Microsoft Azure and (AWS), employing their scalable and secure architecture for hosting AI applications.
+                Deploy secure, scalable machine learning applications on leading cloud platforms, ensuring flexibility and robust performance.
               </p>
             </div>
             {/* Transformer-based Solutions */}
@@ -390,7 +390,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-blue-900 mb-2">Transformer-based Solutions</h3>
               <p className="text-gray-700">
-                Utilize our advanced deep learning solutions, featuring transformer-based models like BERT and GPT, outperforming traditional approaches in NLP tasks.
+                Achieve superior results in natural language tasks with state-of-the-art transformer models like BERT and GPT.
               </p>
             </div>
             {/* Continual Learning */}
@@ -401,7 +401,7 @@ const MachineLearning: React.FC = () => {
               </div>
               <h3 className="font-semibold text-lg text-blue-900 mb-2">Continual Learning</h3>
               <p className="text-gray-700">
-                Our company employs continual learning in Machine Learning Services. This facilitates ML models to adapt and learn as new data becomes available.
+                Ensure your models evolve with your business—adapting to new data and market changes for sustained performance.
               </p>
             </div>
           </div>
@@ -416,10 +416,10 @@ const MachineLearning: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Industries We Work With
+              Industries We Empower
             </h2>
             <p className="text-xl text-cyan-100 max-w-3xl mx-auto">
-              Delivering industry-leading ML solutions for targeted industries to achieve your goals and boost business.
+              Delivering high-impact machine learning solutions tailored to your industry’s unique challenges and opportunities.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
@@ -464,7 +464,7 @@ const MachineLearning: React.FC = () => {
               ML Integration Platforms
             </h2>
             <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              We leverage the best-in-class platforms and frameworks for robust, scalable ML integrations.
+              We utilize industry-leading platforms and frameworks to deliver robust, scalable machine learning integrations.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
@@ -486,7 +486,7 @@ const MachineLearning: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Machine Learning Service Development Process
+              Our Machine Learning Development Process
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -494,25 +494,25 @@ const MachineLearning: React.FC = () => {
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2 font-bold text-lg">1</span>
               <span className="font-bold text-blue-900 text-lg text-center">Data Preparation and Exploration</span>
-              <p className="text-gray-700 text-center">The first step in the development process is to prepare and explore the data. Procedures, including gathering, cleaning, and converting, are involved to make the data consistent and correct.</p>
+              <p className="text-gray-700 text-center">We begin by gathering, cleaning, and transforming your data—ensuring accuracy and consistency for optimal model performance.</p>
             </div>
             {/* Step 2: Model Building and Training */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2 font-bold text-lg">2</span>
               <span className="font-bold text-blue-900 text-lg text-center">Model Building and Training</span>
-              <p className="text-gray-700 text-center">The machine learning service provider builds and trains the model in the second stage. To do this, a suitable algorithm must be chosen, and the hyperparameters must be adjusted.</p>
+              <p className="text-gray-700 text-center">Our experts select the right algorithms and fine-tune hyperparameters to build high-performing, business-aligned models.</p>
             </div>
             {/* Step 3: Model Evaluation and Validation */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2 font-bold text-lg">3</span>
               <span className="font-bold text-blue-900 text-lg text-center">Model Evaluation and Validation</span>
-              <p className="text-gray-700 text-center">The next step is to evaluate and validate its performance. This involves testing the model on a separate data set and comparing it to other models or benchmarks.</p>
+              <p className="text-gray-700 text-center">We rigorously test and validate models against benchmarks to ensure reliability and measurable results before deployment.</p>
             </div>
             {/* Step 4: Deployment and Maintenance */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2 font-bold text-lg">4</span>
               <span className="font-bold text-blue-900 text-lg text-center">Deployment and Maintenance</span>
-              <p className="text-gray-700 text-center">The final stage requires that the machine learning model be implemented and maintained. This comprises integrating the model into the software or system and monitoring its functionality.</p>
+              <p className="text-gray-700 text-center">Seamlessly integrate models into your systems and monitor performance for continuous improvement and business value.</p>
             </div>
           </div>
         </div>
@@ -525,7 +525,7 @@ const MachineLearning: React.FC = () => {
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">Why Choose Us</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-white">Why Partner with Us?</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Expertise */}
@@ -535,7 +535,7 @@ const MachineLearning: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Expertise</span>
-              <p className="text-gray-700 text-center">Seasoned professionals with deep experience in AI and ML integrations.</p>
+              <p className="text-gray-700 text-center">Work with seasoned professionals who deliver proven AI and ML solutions that drive business growth.</p>
             </div>
             {/* Custom Solutions */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
@@ -544,7 +544,7 @@ const MachineLearning: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Custom Solutions</span>
-              <p className="text-gray-700 text-center">Tailored ML integrations to fit your unique business needs and goals.</p>
+              <p className="text-gray-700 text-center">Receive machine learning integrations tailored to your business goals and operational needs.</p>
             </div>
             {/* End-to-End Support */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
@@ -553,7 +553,7 @@ const MachineLearning: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">End-to-End Support</span>
-              <p className="text-gray-700 text-center">Comprehensive guidance from planning to deployment and ongoing optimization.</p>
+              <p className="text-gray-700 text-center">Benefit from comprehensive guidance at every stage—from strategy to deployment and beyond.</p>
             </div>
             {/* Proven Results */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
@@ -562,7 +562,7 @@ const MachineLearning: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
               </span>
               <span className="font-bold text-blue-900 text-lg text-center">Proven Results</span>
-              <p className="text-gray-700 text-center">A track record of successful projects and measurable business impact.</p>
+              <p className="text-gray-700 text-center">See measurable impact with a track record of successful projects and tangible business outcomes.</p>
             </div>
           </div>
         </div>

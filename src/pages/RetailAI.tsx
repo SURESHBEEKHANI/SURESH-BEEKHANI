@@ -138,7 +138,7 @@ const RetailAI: React.FC = () => {
               <div className="flex space-x-4 pt-6 w-full">
                 <a href="mailto:sureshbeekhani@26gamil.com">
                   <button className="bg-gradient-to-r from-yellow-300 to-pink-300 hover:from-yellow-400 hover:to-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
-                    Connect with an AI Retail Expert
+                  Talk to in Expert
                   </button>
                 </a>
               </div>

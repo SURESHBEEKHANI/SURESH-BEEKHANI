@@ -137,7 +137,7 @@ const HIPAACompliance: React.FC = () => {
                   href="mailto:sureshbeekhani@gmail.com"
                   className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:from-green-500 hover:to-blue-600 transition-all duration-200 text-lg"
                 >
-                  Connect with a Compliance Expert
+                  Talk to in Expert
                 </a>
               </div>
             </div>

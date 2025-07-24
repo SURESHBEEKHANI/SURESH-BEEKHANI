@@ -128,7 +128,7 @@ const HealthTechAI: React.FC = () => {
                   href="mailto:sureshbeekhani@26gamil.com"
                   className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Connect with a Healthcare AI Expert
+                  Talk to in Expert
                 </a>
               </div>
             </div>

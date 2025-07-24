@@ -318,10 +318,10 @@ const AIChatbotDevelopment: React.FC = () => {
 					<div className="flex-1 text-white space-y-8 w-full">
 						<div className="w-full">
 							<h1 className="text-3xl md:text-4xl font-extrabold leading-snug tracking-tight drop-shadow-lg w-full break-words whitespace-pre-line text-left">
-								Empower Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI Chatbots Solutions</span>
+								Empower Your Business with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI Chatbot Solutions</span>
 							</h1>
 							<p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-								Get instant, personalized support 24/7 with smart, cost-effective chatbots that streamline communication and boost satisfaction.
+								Deliver instant, tailored support around the clock with intelligent chatbots that streamline communication and elevate customer satisfaction.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
@@ -359,16 +359,16 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 						<div className="space-y-6">
 							<h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
-								AI Models Leveraged by Our Specialists
+								AI Models Powering Our Chatbot Solutions
 							</h2>
 							<p className="text-xl text-gray-700 max-w-2xl">
-								As the chatbot market expands, more businesses are adopting AI chatbots to automate tasks and improve customer service. These solutions make operations more efficient and enhance customer experiences across industries.
+								As AI-driven chatbots become essential for modern businesses, our solutions automate operations and deliver exceptional customer experiences across industries.
 							</p>
 							<p className="text-lg text-gray-700 max-w-2xl">
-								AI chatbots work around the clock, helping companies boost productivity, cut costs, and deliver fast, personalized support.
+								Our chatbots work tirelessly to boost productivity, reduce costs, and provide fast, personalized service at scale.
 							</p>
 							<p className="text-lg text-gray-700 max-w-2xl">
-								Whether for e-commerce or customer service, our AI chatbots answer questions, automate processes, and provide instant assistance helping your business grow and stay competitive.
+								From e-commerce to customer service, our AI chatbots answer questions, automate workflows, and deliver real-time support to help your business thrive.
 							</p>
 						</div>
 					</div>
@@ -383,11 +383,10 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
 						</div>
 						<h2 className="text-2xl lg:text-3xl font-bold text-white">
-							Customized AI Chatbot Development Services Offered
+							Comprehensive AI Chatbot Development Services
 						</h2>
 						<p className="text-xl text-gray-200 max-w-3xl mx-auto">
-							End-to-end chatbot design, development, integration, and support for
-							your business.
+							Full-spectrum chatbot design, development, integration, and ongoing support tailored to your business needs.
 						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -421,11 +420,10 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 						</div>
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-							AI Chatbots We Develop
+							Custom AI Chatbots We Build
 						</h2>
 						<p className="text-xl text-blue-700 max-w-3xl mx-auto">
-							AI virtual assistants customized for your business. We build
-							conversational chatbots using advanced AI, NLP, and ML.
+							Conversational AI assistants designed for your business. We leverage advanced AI, NLP, and machine learning to deliver impactful chatbot solutions.
 						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -533,10 +531,10 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
 						</div>
 						<h2 className="text-2xl lg:text-3xl font-bold text-white">
-							Industries We Work With
+							Industries We Serve
 						</h2>
 						<p className="text-xl text-green-100 max-w-3xl mx-auto">
-				Delivering industry-leading AI chatbot solutions for targeted industries to achieve your goals and boost business.
+							Empowering leading industries with AI chatbot solutions that drive results and accelerate growth.
 						</p>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
@@ -578,10 +576,10 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 						</div>
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-							Integrate Our Chatbots into Different Platforms
+							Seamless Chatbot Integration Across Platforms
 						</h2>
 						<p className="text-xl text-blue-700 max-w-3xl mx-auto">
-							Our AI chatbots integrate seamlessly with all major platforms—reach your customers anywhere, anytime.
+							Reach your customers anywhere—our AI chatbots integrate effortlessly with all major digital platforms.
 						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -633,7 +631,7 @@ const AIChatbotDevelopment: React.FC = () => {
 				<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 			</div>
 <h2 className="text-2xl lg:text-3xl font-bold text-white">
-Why Partner with a Leading AI Chatbot Development Expert?
+Why Choose Us for AI Chatbot Development?
 </h2>
 		</div>
 		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -714,7 +712,7 @@ Why Partner with a Leading AI Chatbot Development Expert?
 				  <div className="flex justify-center">
 					<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 				  </div>
-<h2 className="text-2xl lg:text-3xl font-bold text-blue-900">How Can Professional AI Chatbot Development Transform Your Business?</h2>
+<h2 className="text-2xl lg:text-3xl font-bold text-blue-900">How Can AI Chatbots Transform Your Business?</h2>
 				</div>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
   {/* Card 1: Operational Cost Reduction */}
@@ -895,10 +893,10 @@ Why Partner with a Leading AI Chatbot Development Expert?
 		<div className="flex justify-center">
 		  <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
 		</div>
-	<h2 className="text-2xl lg:text-3xl font-bold text-white">Get Started Today</h2>
+	<h2 className="text-2xl lg:text-3xl font-bold text-white">Get Started with AI Chatbots</h2>
 	  </div>
 	  <div className="flex justify-center mb-8">
-	<span className="text-white text-lg font-medium text-center">Our professional, results-driven process ensures your project is delivered with clarity, efficiency, and excellence—every step of the way.</span>
+	<span className="text-white text-lg font-medium text-center">Our proven, results-driven process ensures your project is delivered with clarity, efficiency, and excellence at every stage.</span>
 	  </div>
   {/* Dynamic onboarding steps as cards */}
   {(() => {

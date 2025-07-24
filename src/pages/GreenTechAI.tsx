@@ -141,7 +141,7 @@ const GreenTechAI: React.FC = () => {
                   href="mailto:sureshbeekhani26@gmail.com"
                   className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Connect with a GreenTech AI Specialist
+                  Talk to in Expert
                 </a>
               </div>
             </div>
