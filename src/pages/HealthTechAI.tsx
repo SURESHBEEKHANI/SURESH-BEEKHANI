@@ -111,22 +111,24 @@ const HealthTechAI: React.FC = () => {
         {/* Background image overlay */}
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/healthtechai.jpg')] bg-cover bg-center"></div>
         {/* Content Wrapper */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-start gap-12">
           {/* Text Column */}
           <div className="flex-1 text-white space-y-8 w-full flex flex-col items-start text-left">
             <div className="w-full">
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
-                AI In <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Health Tech</span>
+                Transforming <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Healthcare with AI</span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4 text-left">
-                AI in healthcare provides clinical software solutions.nIt saves lives by predicting treatment responses and analyzing vast medical data.
+                Empower your organization with intelligent healthcare solutions.<br />
+                Harness AI to drive better outcomes, streamline operations,<br />
+                and deliver exceptional patient care.
               </p>
               <div className="flex space-x-4 pt-6 w-full justify-start">
                 <a
                   href="mailto:sureshbeekhani@26gamil.com"
                   className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Talk to an Expert
+                  Connect with a Healthcare AI Expert
                 </a>
               </div>
             </div>
@@ -163,14 +165,14 @@ const HealthTechAI: React.FC = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-blue-900">
-                  AI in Healthcare <span className="text-teal-700">Software</span>
+                  AI-Powered <span className="text-teal-700">Healthcare Software</span>
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-teal-700">machine learning</span> and <span className="font-semibold text-blue-700">computer vision</span>, is transforming healthcare enabling faster diagnoses, automating tasks, and personalizing care for better outcomes.
+                AI, including <span className="font-semibold text-teal-700">machine learning</span> and <span className="font-semibold text-blue-700">computer vision</span>, is revolutionizing healthcare—enabling faster, more accurate diagnoses, automating complex workflows, and personalizing care at scale.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From analyzing complex medical images to predicting patient risks and streamlining hospital operations, AI technologies are making healthcare more efficient and effective. These advancements empower clinicians to make data-driven decisions, reduce errors, and deliver tailored treatments that improve patient experiences and outcomes.
+                From advanced medical image analysis to predictive patient risk modeling and operational automation, AI empowers clinicians to make informed decisions, reduce errors, and deliver tailored treatments that elevate patient experiences and outcomes.
               </p>
             </div>
           </div>
@@ -185,102 +187,90 @@ const HealthTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-teal-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Capabilities and Benefits
+              Key Capabilities & Strategic Benefits
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Discover the key advantages of implementing AI and ML in healthcare software
+              Explore how AI and ML drive measurable value in healthcare software
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Operational Efficiency */}
+            {/* Operational Excellence */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-teal-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-teal-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Operational Efficiency</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML automate routine tasks and improve operational efficiency in healthcare organizations, resulting in increased productivity and reduced costs.</p>
-            </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">Operational Excellence</h3>
+                <p className="text-gray-200 leading-relaxed">Leverage AI and ML to automate routine processes, boost productivity, and reduce operational costs—freeing your team to focus on what matters most: patient care.</p>
               </div>
             </div>
 
-              {/* Cost Savings */}
+              {/* Cost Optimization */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Cost Savings</h3>
-                  <p className="text-gray-200 leading-relaxed">Implementing AI and ML in digital healthcare software leads to significant cost savings through process automation and cost-effective treatment identification.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">Cost Optimization</h3>
+                <p className="text-gray-200 leading-relaxed">AI-driven automation and intelligent analytics deliver significant cost savings by streamlining workflows and identifying the most effective treatments.</p>
               </div>
             </div>
 
-            {/* Clinical Outcomes */}
+            {/* Superior Clinical Outcomes */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-teal-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-teal-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Clinical Outcomes</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML enhance clinical outcomes by enabling early detection and precise diagnosis, leading to better patient outcomes and lower healthcare costs.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">Superior Clinical Outcomes</h3>
+                <p className="text-gray-200 leading-relaxed">Enable earlier detection, more precise diagnoses, and improved patient outcomes—while reducing overall healthcare expenditures.</p>
               </div>
             </div>
 
-            {/* Revenue Streams */}
+            {/* New Revenue Opportunities */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Revenue Streams</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML create new revenue streams through cutting-edge services like tailored treatment, telemedicine, and remote monitoring.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">New Revenue Opportunities</h3>
+                <p className="text-gray-200 leading-relaxed">Unlock new business models with AI-powered services such as personalized care, telehealth, and remote patient monitoring.</p>
               </div>
             </div>
 
-            {/* Resource Utilization */}
+            {/* Optimized Resource Allocation */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-teal-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-teal-300/20 rounded-lg flex items-center justify-center group-hover:bg-teal-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-teal-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Resource Utilization</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML optimize resource utilization by predicting service demand and allocating resources efficiently for improved patient care.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">Optimized Resource Allocation</h3>
+                <p className="text-gray-200 leading-relaxed">Predict demand and allocate resources efficiently, ensuring optimal patient care and operational agility.</p>
               </div>
             </div>
 
-              {/* Competitive Advantage */}
+              {/* Sustainable Competitive Edge */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
+              <div className="flex flex-col items-center text-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mx-auto">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Competitive Advantage</h3>
-                  <p className="text-gray-200 leading-relaxed">Healthcare firms gain competitive edge by using AI to offer better services, enhance patient outcomes, and cut costs.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2 mt-4">Sustainable Competitive Edge</h3>
+                <p className="text-gray-200 leading-relaxed">Stay ahead of the curve by delivering superior services, maximizing patient satisfaction, and driving down costs with advanced AI solutions.</p>
               </div>
             </div>
           </div>
@@ -295,10 +285,10 @@ const HealthTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              AI Health Tech Use Cases
+              Real-World AI Use Cases in Healthcare
             </h2>
             <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              Discover how AI is revolutionizing healthcare across various applications
+              See how AI is reshaping healthcare delivery and patient engagement
             </p>
           </div>
 
@@ -325,17 +315,50 @@ const HealthTechAI: React.FC = () => {
             {/* Content Carousel */}
             <div className="flex space-x-8 px-16 overflow-hidden">
               {useCases.slice(currentIndex, currentIndex + 3).map((useCase) => (
-                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4">
+                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4 text-center">
                   <div className="relative h-48">
                     <img
                       src={useCase.image}
-                      alt={useCase.alt}
+                      alt={(() => {
+                        switch (useCase.id) {
+                          case 1: return "Accelerated Drug Discovery";
+                          case 2: return "Virtual Health Assistant Solutions";
+                          case 3: return "Remote Patient Monitoring Technology";
+                          case 4: return "AI Medical Image Analysis";
+                          case 5: return "Predictive Analytics in Healthcare";
+                          case 6: return "Automated Healthcare Administration";
+                          case 7: return "AI-Driven Mental Health Insights";
+                          default: return useCase.alt;
+                        }
+                      })()}
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{useCase.title}</h3>
-                    <p className="text-gray-600">{useCase.description}</p>
+                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{(() => {
+                      switch (useCase.id) {
+                        case 1: return "Accelerated Drug Discovery";
+                        case 2: return "Virtual Health Assistants";
+                        case 3: return "Remote Patient Monitoring";
+                        case 4: return "Medical Image Analysis";
+                        case 5: return "Predictive Analytics";
+                        case 6: return "Automated Administration";
+                        case 7: return "Mental Health Insights";
+                        default: return useCase.title;
+                      }
+                    })()}</h3>
+                    <p className="text-gray-600">{(() => {
+                      switch (useCase.id) {
+                        case 1: return "Accelerate the discovery of new drugs by analyzing vast datasets, identifying promising compounds, and streamlining clinical development.";
+                        case 2: return "AI-powered virtual assistants deliver personalized health guidance, medication reminders, and 24/7 patient support.";
+                        case 3: return "Remotely track patient vitals and health trends, enabling early intervention and proactive care management.";
+                        case 4: return "Leverage AI for rapid, accurate interpretation of X-rays, MRIs, and CT scans—improving diagnostic confidence.";
+                        case 5: return "Predict patient outcomes and risks with advanced analytics, empowering smarter treatment planning and preventive care.";
+                        case 6: return "Automate administrative workflows to reduce errors, speed up processes, and enhance patient satisfaction.";
+                        case 7: return "Utilize AI to detect behavioral patterns and support mental health professionals in delivering timely, effective care.";
+                        default: return useCase.description;
+                      }
+                    })()}</p>
                   </div>
                 </div>
               ))}
@@ -352,10 +375,10 @@ const HealthTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-teal-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Why Choose Me
+              Why Partner with Me
             </h2>
             <p className="text-xl text-teal-100 max-w-3xl mx-auto">
-              Proven expertise and track record in AI development and deployment
+              Trusted expertise and a proven record in delivering impactful AI solutions
             </p>
           </div>
 
@@ -363,36 +386,36 @@ const HealthTechAI: React.FC = () => {
             {/* 3+ Years of Experience */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-teal-600">3+</span>
-              <h3 className="text-lg font-bold text-blue-900">Years of Experience</h3>
+              <h3 className="text-lg font-bold text-blue-900">Years of AI Experience</h3>
               <p className="text-gray-700 text-sm">
-                With over 3 years of hands-on experience in AI development and deployment, I bring proven expertise to help your business unlock the full potential of artificial intelligence.
+                Over three years of hands-on AI development and deployment, delivering measurable value for healthcare organizations.
               </p>
             </div>
 
             {/* 25+ Projects Completed */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-teal-600">25+</span>
-              <h3 className="text-lg font-bold text-blue-900">Projects Completed</h3>
+              <h3 className="text-lg font-bold text-blue-900">AI Projects Delivered</h3>
               <p className="text-gray-700 text-sm">
-                I've successfully delivered over 25 AI projects, each tailored to the unique needs of clients across various industries—ensuring real, measurable results.
+                Successfully completed 25+ AI projects, each tailored to client needs and focused on driving real business outcomes.
               </p>
             </div>
 
             {/* 40+ AI Models Built */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-teal-600">40+</span>
-              <h3 className="text-lg font-bold text-blue-900">AI Models Built</h3>
+              <h3 className="text-lg font-bold text-blue-900">Custom AI Models</h3>
               <p className="text-gray-700 text-sm">
-                From predictive analytics to natural language processing and computer vision, I've developed 40+ custom AI models that drive innovation and solve real-world problems.
+                Built 40+ advanced AI models—from predictive analytics to natural language and vision—solving real-world healthcare challenges.
               </p>
             </div>
 
             {/* 15+ Happy Clients */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-teal-600">15+</span>
-              <h3 className="text-lg font-bold text-blue-900">Happy Clients</h3>
+              <h3 className="text-lg font-bold text-blue-900">Satisfied Clients</h3>
               <p className="text-gray-700 text-sm">
-                Client satisfaction is my top priority. With 15+ happy clients, I build lasting partnerships based on trust, results, and continuous improvement.
+                15+ clients trust my expertise to deliver results, build lasting partnerships, and continuously improve their AI capabilities.
               </p>
             </div>
 
@@ -403,9 +426,9 @@ const HealthTechAI: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </span>
-              <h3 className="text-lg font-bold text-blue-900">Global Presence</h3>
+              <h3 className="text-lg font-bold text-blue-900">Global Clientele</h3>
               <p className="text-gray-700 text-sm">
-                As a freelancer with a global footprint, I provide services to clients in the USA, UK, and UAE. This international reach allows me to deliver scalable AI solutions and support to businesses worldwide—no matter where you're located.
+                Serving clients across the USA, UK, and UAE, I deliver scalable AI solutions and dedicated support—wherever your business operates.
               </p>
             </div>
           </div>
@@ -435,7 +458,16 @@ const HealthTechAI: React.FC = () => {
                   onClick={() => toggleFAQ(faq.id)}
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
+                  <span className="text-lg font-semibold text-gray-900">{(() => {
+                    switch (faq.id) {
+                      case 1: return "What is Healthcare Technology?";
+                      case 2: return "How are AI and ML transforming healthcare?";
+                      case 3: return "How can AI and ML benefit my health-tech business?";
+                      case 4: return "What are the main concerns with AI in healthcare?";
+                      case 5: return "Where is AI making the biggest impact in healthcare?";
+                      default: return faq.question;
+                    }
+                  })()}</span>
                   <svg
                     className={`w-6 h-6 text-gray-600 transform transition-transform duration-200 ${
                       openFAQ === faq.id ? 'rotate-180' : ''
@@ -450,7 +482,16 @@ const HealthTechAI: React.FC = () => {
                 </button>
                 {openFAQ === faq.id && (
                   <div className="px-6 pb-4 text-gray-700">
-                    <p>{faq.answer}</p>
+                    <p>{(() => {
+                      switch (faq.id) {
+                        case 1: return "Healthcare technology refers to digital platforms, software, and systems that enhance patient care, streamline operations, and improve healthcare delivery. This includes electronic health records, telemedicine, AI-powered diagnostics, and integrated patient management tools—all working together to create seamless, efficient healthcare experiences.";
+                        case 2: return "AI and ML are revolutionizing healthcare by enabling advanced image analysis, predictive risk modeling, accelerated drug discovery, virtual assistants, remote monitoring, and automated administration. These innovations empower clinicians to make smarter decisions, improve accuracy, and deliver more personalized care.";
+                        case 3: return "Absolutely. AI and ML can elevate your health-tech business by boosting efficiency, reducing costs, improving patient outcomes, unlocking new revenue streams, and providing a clear competitive edge. Automate routine tasks, enhance diagnostics, and make data-driven decisions that drive business growth and patient satisfaction.";
+                        case 4: return "Key concerns include data privacy, security, algorithmic bias, regulatory compliance, integration with legacy systems, and the need for human oversight. Addressing these challenges requires robust data governance, transparent AI, and a strong compliance framework—ensuring AI augments, not replaces, human expertise.";
+                        case 5: return "AI is making a significant impact in medical imaging, predictive analytics, drug development, virtual assistants, remote monitoring, administrative automation, personalized medicine, clinical decision support, robotic surgery, and mental health support. These applications drive efficiency, accuracy, and better outcomes across the healthcare landscape.";
+                        default: return faq.answer;
+                      }
+                    })()}</p>
                   </div>
                 )}
               </div>

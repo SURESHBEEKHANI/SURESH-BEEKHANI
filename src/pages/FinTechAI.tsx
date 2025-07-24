@@ -11,51 +11,51 @@ const FinTechAI: React.FC = () => {
     {
       id: 1,
       title: "Fraud Detection",
-      description: "AI algorithms analyze transaction patterns in real-time to detect and prevent fraudulent activities, protecting both institutions and customers.",
+      description: "Leverage AI to instantly identify and prevent fraudulent transactions, safeguarding your business and customers with proactive, real-time protection.",
       image: "/image/pages_img/Fraud-Detection.jpg",
-      alt: "Fraud Detection"
+      alt: "AI-powered Fraud Detection in Finance"
     },
     {
       id: 2,
       title: "Credit Scoring",
-      description: "Machine learning models assess creditworthiness by analyzing a wide range of financial and behavioral data, enabling more accurate and inclusive lending decisions.",
+      description: "Empower smarter lending with AI-driven credit scoring that analyzes diverse financial and behavioral data for faster, fairer, and more accurate decisions.",
       image: "/image/pages_img/Credit-Scoring.avif",
-      alt: "Credit Scoring"
+      alt: "AI Credit Scoring Solution"
     },
     {
       id: 3,
       title: "Algorithmic Trading",
-      description: "AI-driven trading systems execute trades at optimal times by processing vast amounts of market data and identifying profitable opportunities.",
+      description: "Maximize returns with AI-powered trading systems that process market data at scale, executing trades at optimal moments for superior performance.",
       image: "/image/pages_img/Algorithmic-Trading.jpg",
-      alt: "Algorithmic Trading"
+      alt: "AI Algorithmic Trading Platform"
     },
     {
       id: 4,
       title: "Personalized Financial Advice",
-      description: "AI-powered chatbots and robo-advisors provide tailored financial guidance and portfolio management to individual investors.",
+      description: "Deliver tailored financial guidance at scale with AI chatbots and robo-advisors, enhancing client engagement and portfolio outcomes.",
       image: "/image/pages_img/Personalized-Financial.jpg",
-      alt: "Personalized Financial Advice"
+      alt: "AI Personalized Financial Advisory"
     },
     {
       id: 5,
       title: "Risk Management",
-      description: "AI models predict and mitigate financial risks by analyzing market trends, customer behavior, and macroeconomic indicators.",
+      description: "Mitigate risk with AI models that anticipate threats and market shifts, enabling confident, data-driven decisions in dynamic environments.",
       image: "/image/pages_img/Risk-Management.webp",
-      alt: "Risk Management"
+      alt: "AI Risk Management in Finance"
     },
     {
       id: 6,
       title: "Customer Service Automation",
-      description: "Natural language processing enables AI chatbots to handle customer inquiries, resolve issues, and improve satisfaction efficiently.",
+      description: "Transform support with AI chatbots that resolve inquiries instantly, streamline operations, and elevate customer satisfaction around the clock.",
       image: "/image/pages_img/Customer-Service",
-      alt: "Customer Service Automation"
+      alt: "AI Customer Service Automation"
     },
     {
       id: 7,
       title: "Regulatory Compliance",
-      description: "AI systems monitor transactions and generate compliance reports, ensuring adherence to financial regulations and reducing manual workload.",
+      description: "Ensure seamless compliance with AI systems that monitor transactions, flag anomalies, and automate reporting to reduce manual effort and risk.",
       image: "/image/pages_img/Regulatory-Compliance.jpeg",
-      alt: "Regulatory Compliance"
+      alt: "AI Regulatory Compliance Automation"
     }
   ];
 
@@ -63,27 +63,27 @@ const FinTechAI: React.FC = () => {
     {
       id: 1,
       question: "What is FinTech?",
-      answer: "FinTech, or Financial Technology, refers to the use of technology to improve and automate financial services, including banking, payments, investments, and insurance."
+      answer: "FinTech—short for Financial Technology—refers to innovative digital solutions that streamline, automate, and enhance financial services such as banking, payments, investing, and insurance."
     },
     {
       id: 2,
       question: "How is AI used in FinTech?",
-      answer: "AI is used in FinTech for fraud detection, credit scoring, algorithmic trading, personalized financial advice, risk management, customer service automation, and regulatory compliance."
+      answer: "AI powers fraud detection, credit scoring, algorithmic trading, personalized advice, risk management, automated customer service, and regulatory compliance—driving efficiency and smarter outcomes across the financial sector."
     },
     {
       id: 3,
       question: "What are the benefits of AI in FinTech?",
-      answer: "AI in FinTech increases efficiency, reduces fraud, improves decision-making, enhances customer experience, and ensures regulatory compliance."
+      answer: "AI accelerates decision-making, reduces fraud, enhances customer experiences, improves compliance, and unlocks new growth opportunities for financial organizations."
     },
     {
       id: 4,
       question: "Are there challenges to using AI in FinTech?",
-      answer: "Challenges include data privacy, algorithmic bias, integration with legacy systems, and regulatory hurdles. Addressing these requires robust data governance and transparent AI models."
+      answer: "Key challenges include data privacy, algorithmic bias, integration with legacy systems, and evolving regulations. Addressing these requires robust governance and transparent, ethical AI practices."
     },
     {
       id: 5,
       question: "Can AI replace financial advisors?",
-      answer: "AI can automate many advisory tasks and provide data-driven insights, but human advisors remain essential for complex financial planning and relationship management."
+      answer: "AI automates routine advisory tasks and delivers actionable insights, but human expertise remains vital for complex strategies and building trusted client relationships."
     }
   ];
 
@@ -113,19 +113,19 @@ const FinTechAI: React.FC = () => {
         {/* Content Wrapper */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
           {/* Text Column */}
-          <div className="flex-1 text-white space-y-8 w-full">
+          <div className="flex-1 text-white space-y-8 w-4/5 flex flex-col items-start">
             <div className="w-full">
-              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
                 AI In <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">FinTech</span>
               </h1>
-              <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-                AI is transforming financial services with intelligent automation,fraud prevention, and personalized customer experiences.
+              <p className="text-lg md:text-2xl leading-relaxed text-gray-100 max-w-2xl text-left">
+                Unlock the future of finance with AI—driving intelligent automation, robust fraud prevention, and hyper-personalized customer experiences.
               </p>
               {/* Button */}
-              <div className="flex space-x-4 pt-6 w-full">
+              <div className="flex space-x-4 pt-6 w-full justify-start">
                 <a href="mailto:sureshbeekhani@26gmail.com">
                   <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
-                    Talk to an Expert
+                    Connect with an AI Specialist
                   </Button>
                 </a>
               </div>
@@ -144,7 +144,7 @@ const FinTechAI: React.FC = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
                 <img
                   src="/image/pages_img/AI-Financial.jpg"
-                  alt="AI in FinTech - Digital Transformation"
+                  alt="AI-Driven Financial Transformation"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
@@ -157,10 +157,10 @@ const FinTechAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing finance enabling smarter decisions, automating processes, and enhancing security.
+                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is redefining financial services—empowering smarter decisions, automating workflows, and strengthening security at every level.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From fraud detection to personalized banking, AI technologies empower financial institutions to deliver better services, reduce risks, and drive innovation in a rapidly evolving industry.
+                From advanced fraud detection to bespoke banking, AI enables financial institutions to deliver exceptional service, minimize risk, and accelerate innovation in a rapidly changing market.
               </p>
             </div>
           </div>
@@ -175,97 +175,73 @@ const FinTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Capabilities and Benefits
+              Capabilities & Strategic Advantages
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Discover the key advantages of implementing AI and ML in FinTech software
+              Explore how AI and machine learning elevate FinTech performance, resilience, and customer value.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Improved Decision-Making */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Improved Decision-Making</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML analyze large volumes of data in real time, providing insights that enhance decision-making processes and increase the accuracy of predictions.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Improved Decision-Making</h3>
+              <p className="text-gray-200 leading-relaxed">AI and ML deliver actionable insights from vast data sets in real time, empowering leaders to make faster, more accurate, and more confident decisions.</p>
             </div>
             {/* Enhanced Fraud Detection */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Enhanced Fraud Detection</h3>
-                  <p className="text-gray-200 leading-relaxed">Real-time fraud detection is made possible by AI and computer vision. It can reduce financial losses and protect user data.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Enhanced Fraud Detection</h3>
+              <p className="text-gray-200 leading-relaxed">AI-driven fraud detection proactively identifies threats, reducing financial losses and protecting your brand and customers.</p>
             </div>
             {/* Increased Operational Efficiency */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Increased Operational Efficiency</h3>
-                  <p className="text-gray-200 leading-relaxed">Fintech solutions for banks use AI to automate tasks, streamline processes, and boost productivity while reducing operational costs.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Increased Operational Efficiency</h3>
+              <p className="text-gray-200 leading-relaxed">AI automates routine processes, streamlines operations, and drives productivity—delivering measurable cost savings and scalability.</p>
             </div>
             {/* Personalized Customer Experience */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Personalized Customer Experience</h3>
-                  <p className="text-gray-200 leading-relaxed">ML-powered Fintech business solutions can analyze user data and deliver personalized financial advice. Moreover, it enhances customer service experiences.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Personalized Customer Experience</h3>
+              <p className="text-gray-200 leading-relaxed">AI-powered solutions analyze customer data to deliver tailored advice and seamless support, building loyalty and satisfaction at every touchpoint.</p>
             </div>
             {/* Enhanced Risk Management */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Enhanced Risk Management</h3>
-                  <p className="text-gray-200 leading-relaxed">Advanced technology gives financial organizations a competitive edge in fintech. AI and ML enable real-time risk assessment for better judgments and confident navigation.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Enhanced Risk Management</h3>
+              <p className="text-gray-200 leading-relaxed">AI and ML provide real-time risk assessment, enabling proactive mitigation and confident navigation of complex financial landscapes.</p>
             </div>
             {/* Improved Financial Planning and Analysis */}
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Improved Financial Planning and Analysis</h3>
-                  <p className="text-gray-200 leading-relaxed">The financial planning and analysis processes can be improved by using fintech payment solutions to produce precise projections and insights.</p>
-                </div>
+            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors mb-3">
+                <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
               </div>
+              <h3 className="font-semibold text-lg text-white mb-2">Improved Financial Planning and Analysis</h3>
+              <p className="text-gray-200 leading-relaxed">AI-driven analytics deliver precise forecasts and deep insights, empowering smarter financial planning and strategic growth.</p>
             </div>
           </div>
         </div>
@@ -279,10 +255,10 @@ const FinTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-blue-500 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              AI FinTech Use Cases
+              AI-Powered FinTech Use Cases
             </h2>
             <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              Discover how AI is revolutionizing finance across various applications
+              See how AI is reshaping finance—driving innovation, efficiency, and value across every application.
             </p>
           </div>
           <div className="relative">
@@ -333,10 +309,10 @@ const FinTechAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Why Choose Me
+              Why Partner With Me
             </h2>
             <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Proven expertise and track record in FinTech AI development and deployment
+              Trusted expertise and a proven record of delivering transformative AI solutions for the financial sector.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -345,7 +321,7 @@ const FinTechAI: React.FC = () => {
               <span className="text-4xl font-extrabold text-yellow-600">4+</span>
               <h3 className="text-lg font-bold text-blue-900">Years of Experience</h3>
               <p className="text-gray-700 text-sm">
-                Over 4 years of hands-on experience in FinTech AI development, delivering impactful solutions for financial institutions and clients.
+                4+ years of specialized experience delivering high-impact AI solutions for financial leaders and innovators.
               </p>
             </div>
             {/* 15+ FinTech Projects */}
@@ -353,7 +329,7 @@ const FinTechAI: React.FC = () => {
               <span className="text-4xl font-extrabold text-yellow-600">15+</span>
               <h3 className="text-lg font-bold text-blue-900">FinTech Projects</h3>
               <p className="text-gray-700 text-sm">
-                Successfully delivered 15+ FinTech AI projects, each tailored to unique financial needs and challenges.
+                15+ successful FinTech AI projects, each tailored to unique business goals and industry challenges.
               </p>
             </div>
             {/* 25+ AI Models Built */}
@@ -361,7 +337,7 @@ const FinTechAI: React.FC = () => {
               <span className="text-4xl font-extrabold text-yellow-600">25+</span>
               <h3 className="text-lg font-bold text-blue-900">AI Models Built</h3>
               <p className="text-gray-700 text-sm">
-                Developed 25+ custom AI models for fraud detection, credit scoring, and algorithmic trading.
+                25+ custom AI models engineered for fraud prevention, credit analysis, and intelligent trading.
               </p>
             </div>
             {/* 10+ Happy Clients */}
@@ -369,7 +345,7 @@ const FinTechAI: React.FC = () => {
               <span className="text-4xl font-extrabold text-yellow-600">10+</span>
               <h3 className="text-lg font-bold text-blue-900">Happy Clients</h3>
               <p className="text-gray-700 text-sm">
-                Partnered with 10+ financial institutions, delivering measurable improvements in efficiency and security.
+                10+ financial organizations empowered with measurable gains in efficiency, security, and growth.
               </p>
             </div>
             {/* Global Reach */}
@@ -381,7 +357,7 @@ const FinTechAI: React.FC = () => {
               </span>
               <h3 className="text-lg font-bold text-blue-900">Global Reach</h3>
               <p className="text-gray-700 text-sm">
-                Providing FinTech AI solutions to clients and institutions worldwide, supporting scalable and secure financial services.
+                Delivering scalable, secure AI solutions to financial institutions worldwide—enabling global impact and local excellence.
               </p>
             </div>
           </div>

@@ -129,16 +129,16 @@ const RetailAI: React.FC = () => {
           <div className="flex-1 text-white space-y-8 w-full">
             <div className="w-full">
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                AI In <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Retail</span>
+                Transforming <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Retail with AI</span>
               </h1>
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full my-4"></div>
               <p className="text-lg md:text-2xl text-white w-full whitespace-pre-line mt-4">
-                Transform retail with AI-powered personalization, efficiency, and insights.Empower your business with next-gen solutions.Unlock growth and innovation.
+                Accelerate growth with AI-powered personalization and intelligent operations.<br />Drive sales, exceed customer expectations, and lead the future of retail.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a href="mailto:sureshbeekhani@26gamil.com">
                   <button className="bg-gradient-to-r from-yellow-300 to-pink-300 hover:from-yellow-400 hover:to-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg">
-                    Talk to an Expert
+                    Connect with an AI Retail Expert
                   </button>
                 </a>
               </div>
@@ -171,10 +171,10 @@ const RetailAI: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-pink-700">computer vision</span>, is revolutionizing retail enabling personalized shopping, automating operations, and providing actionable insights for better business outcomes.
+                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-pink-700">computer vision</span>, is revolutionizing retail by delivering tailored shopping experiences, automating workflows, and unlocking actionable insights for smarter business decisions.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From dynamic pricing to predictive analytics, AI technologies empower retailers to enhance customer engagement, optimize supply chains, and boost profitability.
+                From dynamic pricing to predictive analytics, AI empowers retailers to deepen customer engagement, streamline supply chains, and maximize profitability.
               </p>
             </div>
           </div>
@@ -189,17 +189,17 @@ const RetailAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Capabilities and Benefits
+              AI Capabilities & Business Impact
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Discover the key advantages of implementing AI and ML in Retail
+              Explore the strategic advantages of AI and machine learning in retail
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Operational Efficiency */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
                   <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
@@ -208,77 +208,77 @@ const RetailAI: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Operational Efficiency</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML automate routine retail tasks, streamline operations, and reduce costs, resulting in increased productivity and profitability.</p>
+                  <p className="text-gray-200 leading-relaxed">Automate routine processes, streamline operations, and reduce manual effort—boosting productivity and operational agility across your retail business.</p>
                 </div>
               </div>
             </div>
             {/* Cost Savings */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-pink-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-pink-300/20 rounded-lg flex items-center justify-center group-hover:bg-pink-300/30 transition-colors">
                   <svg className="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Cost Savings</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML in retail lead to significant cost savings through process automation, demand forecasting, and optimized resource allocation.</p>
+                  <h3 className="font-semibold text-lg text-white mb-2">Cost Optimization</h3>
+                  <p className="text-gray-200 leading-relaxed">Leverage AI to forecast demand, automate workflows, and allocate resources efficiently—delivering measurable cost savings at scale.</p>
                 </div>
               </div>
             </div>
             {/* Enhanced Customer Experience */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
                   <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Enhanced Customer Experience</h3>
-                  <p className="text-gray-200 leading-relaxed">AI enables personalized shopping, faster service, and seamless omnichannel experiences, delighting customers and building loyalty.</p>
+                  <h3 className="font-semibold text-lg text-white mb-2">Exceptional Customer Experience</h3>
+                  <p className="text-gray-200 leading-relaxed">Deliver hyper-personalized shopping, faster service, and seamless omnichannel journeys that delight customers and foster loyalty.</p>
                 </div>
               </div>
             </div>
             {/* Revenue Growth */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-pink-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-pink-300/20 rounded-lg flex items-center justify-center group-hover:bg-pink-300/30 transition-colors">
                   <svg className="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Revenue Growth</h3>
-                  <p className="text-gray-200 leading-relaxed">AI creates new revenue streams through innovative retail services like dynamic pricing, visual search, and automated marketing.</p>
+                  <h3 className="font-semibold text-lg text-white mb-2">Revenue Acceleration</h3>
+                  <p className="text-gray-200 leading-relaxed">Unlock new revenue streams with AI-driven pricing, visual search, and automated marketing—fueling growth and innovation.</p>
                 </div>
               </div>
             </div>
             {/* Inventory Optimization */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-yellow-300/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-300/30 transition-colors">
                   <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Inventory Optimization</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML optimize inventory by predicting demand, reducing waste, and ensuring products are always available for customers.</p>
+                  <h3 className="font-semibold text-lg text-white mb-2">Inventory Precision</h3>
+                  <p className="text-gray-200 leading-relaxed">Predict demand, minimize waste, and ensure product availability—AI keeps your shelves stocked and customers satisfied.</p>
                 </div>
               </div>
             </div>
             {/* Competitive Advantage */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-pink-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-pink-300/20 rounded-lg flex items-center justify-center group-hover:bg-pink-300/30 transition-colors">
                   <svg className="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Competitive Advantage</h3>
-                  <p className="text-gray-200 leading-relaxed">Retailers gain a competitive edge by leveraging AI for better customer insights, faster operations, and innovative services.</p>
+                  <h3 className="font-semibold text-lg text-white mb-2">Competitive Edge</h3>
+                  <p className="text-gray-200 leading-relaxed">Gain actionable insights, accelerate decision-making, and outpace competitors by harnessing the power of AI in every retail function.</p>
                 </div>
               </div>
             </div>
@@ -294,10 +294,10 @@ const RetailAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-pink-500 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-pink-900">
-              AI Retail Use Cases
+              AI-Powered Retail Use Cases
             </h2>
             <p className="text-xl text-pink-700 max-w-3xl mx-auto">
-              Discover how AI is revolutionizing retail across various applications
+              See how AI is reshaping retail with real-world, high-impact applications
             </p>
           </div>
           <div className="relative">
@@ -321,17 +321,77 @@ const RetailAI: React.FC = () => {
             {/* Content Carousel */}
             <div className="flex space-x-8 px-16 overflow-hidden">
               {useCases.slice(currentIndex, currentIndex + 3).map((useCase) => (
-                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4">
-                  <div className="relative h-48">
+                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4 text-center flex flex-col items-center">
+                  <div className="relative h-48 w-full flex items-center justify-center">
                     <img
                       src={useCase.image}
-                      alt={useCase.alt}
+                      alt={
+                        useCase.title === "Personalized Recommendations"
+                          ? "AI-driven personalized product recommendations for retail"
+                          : useCase.title === "Inventory Optimization"
+                          ? "AI-powered inventory optimization in retail"
+                          : useCase.title === "Customer Service Chatbots"
+                          ? "AI customer service chatbot for retail support"
+                          : useCase.title === "Fraud Detection"
+                          ? "AI fraud detection for secure retail transactions"
+                          : useCase.title === "Dynamic Pricing"
+                          ? "AI dynamic pricing solutions for retail"
+                          : useCase.title === "Customer Segmentation"
+                          ? "AI customer segmentation for targeted retail marketing"
+                          : useCase.title === "Supply Chain Optimization"
+                          ? "AI supply chain optimization in retail"
+                          : useCase.title === "Visual Search"
+                          ? "AI visual search for intuitive retail shopping"
+                          : useCase.title === "Sentiment Analysis"
+                          ? "AI sentiment analysis of retail customer feedback"
+                          : useCase.alt
+                      }
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{useCase.title}</h3>
-                    <p className="text-gray-600">{useCase.description}</p>
+                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{
+                      useCase.title === "Personalized Recommendations"
+                        ? "Personalized Product Recommendations"
+                        : useCase.title === "Inventory Optimization"
+                        ? "Inventory Optimization"
+                        : useCase.title === "Customer Service Chatbots"
+                        ? "AI Customer Service Chatbots"
+                        : useCase.title === "Fraud Detection"
+                        ? "Fraud Detection & Prevention"
+                        : useCase.title === "Dynamic Pricing"
+                        ? "Dynamic Pricing"
+                        : useCase.title === "Customer Segmentation"
+                        ? "Customer Segmentation"
+                        : useCase.title === "Supply Chain Optimization"
+                        ? "Supply Chain Optimization"
+                        : useCase.title === "Visual Search"
+                        ? "Visual Product Search"
+                        : useCase.title === "Sentiment Analysis"
+                        ? "Customer Sentiment Analysis"
+                        : useCase.title
+                    }</h3>
+                    <p className="text-gray-600">{
+                      useCase.title === "Personalized Recommendations"
+                        ? "Deliver tailored product suggestions that increase conversions and foster customer loyalty."
+                        : useCase.title === "Inventory Optimization"
+                        ? "Anticipate demand and optimize stock levels to reduce shortages and excess inventory."
+                        : useCase.title === "Customer Service Chatbots"
+                        ? "Provide instant, 24/7 support with AI chatbots that resolve queries and enhance satisfaction."
+                        : useCase.title === "Fraud Detection"
+                        ? "Detect and prevent fraudulent transactions in real time, safeguarding your business and customers."
+                        : useCase.title === "Dynamic Pricing"
+                        ? "Maximize revenue with AI-driven pricing that adapts to market trends and customer demand."
+                        : useCase.title === "Customer Segmentation"
+                        ? "Segment customers by behavior and preferences for highly targeted marketing campaigns."
+                        : useCase.title === "Supply Chain Optimization"
+                        ? "Streamline supply chain operations, cut costs, and accelerate delivery with intelligent automation."
+                        : useCase.title === "Visual Search"
+                        ? "Empower shoppers to find products using images for a seamless, intuitive experience."
+                        : useCase.title === "Sentiment Analysis"
+                        ? "Analyze customer feedback to uncover insights and drive continuous improvement."
+                        : useCase.description
+                    }</p>
                   </div>
                 </div>
               ))}
@@ -348,43 +408,43 @@ const RetailAI: React.FC = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Why Choose Me
+              Why Partner with Me
             </h2>
             <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Proven expertise and track record in Retail AI development and deployment
+              Trusted expertise and a proven record of delivering transformative Retail AI solutions
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* 3+ Years of Experience */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-yellow-600">3+</span>
-              <h3 className="text-lg font-bold text-pink-900">Years of Experience</h3>
+              <h3 className="text-lg font-bold text-pink-900">Years of Retail AI Experience</h3>
               <p className="text-gray-700 text-sm">
-                Over 3 years of hands-on experience in Retail AI development, delivering impactful solutions for businesses and customers.
+                Over 3 years of hands-on expertise building and deploying AI solutions that drive measurable results for retailers.
               </p>
             </div>
             {/* 20+ Retail Projects */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-yellow-600">20+</span>
-              <h3 className="text-lg font-bold text-pink-900">Retail Projects</h3>
+              <h3 className="text-lg font-bold text-pink-900">Retail AI Projects Delivered</h3>
               <p className="text-gray-700 text-sm">
-                Successfully delivered 20+ Retail AI projects, each tailored to unique business needs and challenges.
+                Successfully completed 20+ AI projects, each tailored to address unique retail challenges and opportunities.
               </p>
             </div>
             {/* 30+ AI Models Built */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-yellow-600">30+</span>
-              <h3 className="text-lg font-bold text-pink-900">AI Models Built</h3>
+              <h3 className="text-lg font-bold text-pink-900">Custom AI Models Developed</h3>
               <p className="text-gray-700 text-sm">
-                Developed 30+ custom AI models for personalized recommendations, demand forecasting, and customer analytics.
+                Built 30+ advanced AI models for recommendations, forecasting, and customer analytics—driving business growth.
               </p>
             </div>
             {/* 10+ Happy Clients */}
             <div className="bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-yellow-600">10+</span>
-              <h3 className="text-lg font-bold text-pink-900">Happy Clients</h3>
+              <h3 className="text-lg font-bold text-pink-900">Satisfied Retail Clients</h3>
               <p className="text-gray-700 text-sm">
-                Partnered with 10+ retail businesses, delivering measurable improvements in sales and efficiency.
+                Partnered with 10+ retail businesses, consistently delivering increased sales, efficiency, and customer satisfaction.
               </p>
             </div>
             {/* Global Reach */}
@@ -394,9 +454,9 @@ const RetailAI: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </span>
-              <h3 className="text-lg font-bold text-pink-900">Global Reach</h3>
+              <h3 className="text-lg font-bold text-pink-900">Global Retail Impact</h3>
               <p className="text-gray-700 text-sm">
-                Providing Retail AI solutions to clients and businesses worldwide, supporting scalable and innovative commerce.
+                Delivering scalable, innovative AI solutions to retailers worldwide—empowering global commerce.
               </p>
             </div>
           </div>
@@ -423,7 +483,7 @@ const RetailAI: React.FC = () => {
               <div key={faq.id} className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden">
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full px-6 py-4 text-center flex flex-col items-center justify-center hover:bg-gray-50 transition-colors duration-200"
                 >
                   <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
                   <svg
@@ -439,8 +499,20 @@ const RetailAI: React.FC = () => {
                   </svg>
                 </button>
                 {openFAQ === faq.id && (
-                  <div className="px-6 pb-4 text-gray-700">
-                    <p>{faq.answer}</p>
+                  <div className="px-6 pb-4 text-gray-700 text-center">
+                    <p>{
+                      faq.question === "What is Retail AI?"
+                        ? "Retail AI leverages artificial intelligence to optimize operations, elevate customer experiences, and drive sales through actionable insights."
+                        : faq.question === "How is AI used in retail?"
+                        ? "AI powers personalized recommendations, inventory management, automated support, fraud prevention, dynamic pricing, and more—enabling smarter retail."
+                        : faq.question === "What are the benefits of AI in retail?"
+                        ? "AI delivers greater efficiency, higher customer satisfaction, cost reduction, and data-driven decision-making for retailers."
+                        : faq.question === "Can AI help with inventory management?"
+                        ? "Absolutely. AI forecasts demand and optimizes inventory, minimizing stockouts and excess stock."
+                        : faq.question === "Is AI in retail secure?"
+                        ? "AI strengthens security by detecting fraud and safeguarding customer data. Robust data governance and cybersecurity are essential."
+                        : faq.answer
+                    }</p>
                   </div>
                 )}
               </div>

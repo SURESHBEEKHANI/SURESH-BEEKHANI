@@ -10,72 +10,72 @@ const ECommerceAI: React.FC = () => {
     {
       id: 0,
       title: "Abandoned Cart Recovery",
-      description: "AI identifies users who abandon carts and sends personalized emails or offers to encourage purchase completion, increasing conversion rates.",
+      description: "Leverage AI to identify shoppers who abandon their carts and automatically deliver tailored emails or incentives, driving higher conversion rates and recapturing lost revenue.",
       image: "/image/pages_img/Abandoned-Cart-Recovery.png",
-      alt: "Abandoned Cart Recovery"
+      alt: "AI-Powered Abandoned Cart Recovery"
     },
     {
       id: 1,
       title: "Automated Product Tagging",
-      description: "AI automatically tags products based on images and descriptions, improving search accuracy and SEO.",
+      description: "Automatically classify and tag products using AI-driven image and text analysis, enhancing product discoverability and boosting search performance.",
       image: "/image/pages_img/Automated-Product-Tagging.jpg",
-      alt: "Automated Product Tagging"
+      alt: "Automated Product Tagging with AI"
     },
     {
       id: 2,
       title: "Voice Commerce",
-      description: "AI enables customers to shop using voice assistants and smart speakers, offering a hands-free shopping experience.",
+      description: "Enable seamless, hands-free shopping experiences by integrating AI-powered voice assistants and smart speaker capabilities into your storefront.",
       image: "/image/pages_img/Voice-Commerce.webp",
-      alt: "Voice Commerce"
+      alt: "Voice-Enabled Commerce Solutions"
     },
     {
       id: 3,
       title: "AI-Powered Product Descriptions",
-      description: "Automatically generates SEO-friendly product descriptions, saving time and improving product discoverability.",
+      description: "Generate compelling, SEO-optimized product descriptions at scale, saving time and ensuring every listing stands out in search results.",
       image: "/image/pages_img/Product-Descriptions.jpg",
-      alt: "AI-Powered Product Descriptions"
+      alt: "Automated Product Description Generation"
     },
     {
       id: 4,
       title: "Return Prediction & Management",
-      description: "Predicts the likelihood of product returns and optimizes return processes to reduce costs and improve customer satisfaction.",
+      description: "Predict return likelihood and streamline reverse logistics with AI, reducing costs and improving customer satisfaction through proactive management.",
       image: "/image/pages_img/Return-Prediction-Management.jpg",
-      alt: "Return Prediction & Management"
+      alt: "AI-Driven Return Management"
     },
     {
       id: 5,
       title: "AI-Driven A/B Testing",
-      description: "AI automatically tests and optimizes website layouts, banners, and offers for maximum engagement and sales.",
+      description: "Continuously optimize your site’s layout, banners, and promotions with AI-powered experimentation for maximum engagement and sales uplift.",
       image: "/image/pages_img/AI-Driven-Testing.jpg",
-      alt: "AI-Driven A/B Testing"
+      alt: "AI-Driven A/B Testing for E-Commerce"
     },
     {
       id: 6,
       title: "Personalized Email Campaigns",
-      description: "AI segments customers and personalizes email marketing content to boost open rates and conversions.",
+      description: "Boost open and conversion rates by using AI to segment audiences and deliver highly relevant, personalized email content at scale.",
       image: "/image/pages_img/Customer-Segmentation.jpg",
-      alt: "Personalized Email Campaigns"
+      alt: "AI-Personalized Email Marketing"
     },
     {
       id: 7,
       title: "Customer Lifetime Value Prediction",
-      description: "Predicts which customers will be most valuable over time, enabling targeted retention and loyalty strategies.",
+      description: "Identify and nurture your most valuable customers with AI-driven insights, enabling targeted retention and loyalty strategies that maximize long-term revenue.",
       image: "/image/pages_img/Customer-Lifetime-Value-Prediction.jpg",
-      alt: "Customer Lifetime Value Prediction"
+      alt: "Customer Lifetime Value Analytics"
     },
     {
       id: 8,
       title: "Automated Review Moderation",
-      description: "AI filters and moderates product reviews for quality and compliance, ensuring trustworthy feedback on your site.",
+      description: "Ensure trust and compliance by automatically filtering and moderating product reviews, maintaining high-quality, authentic feedback on your platform.",
       image: "/image/pages_img/Automated-Review-Moderation.jpg",
-      alt: "Automated Review Moderation"
+      alt: "AI Review Moderation"
     },
     {
       id: 9,
       title: "Intelligent Sizing & Fit Recommendations",
-      description: "AI suggests the best sizes and fits for apparel based on user data and return history, reducing fit-related returns.",
+      description: "Reduce returns and increase satisfaction by providing AI-powered, data-driven sizing and fit suggestions tailored to each shopper.",
       image: "/image/pages_img/Intelligent-Sizing-Fit-Recommendations.png",
-      alt: "Intelligent Sizing & Fit Recommendations"
+      alt: "AI Sizing and Fit Recommendations"
     },
   ];
 
@@ -83,27 +83,27 @@ const ECommerceAI: React.FC = () => {
     {
       id: 1,
       question: "What is E-Commerce AI?",
-      answer: "E-Commerce AI refers to the use of artificial intelligence technologies to enhance online retail operations, including personalized shopping, automation, analytics, and customer engagement."
+      answer: "E-Commerce AI harnesses artificial intelligence to transform online retail—enabling personalized shopping, automating operations, and delivering actionable insights that drive business growth."
     },
     {
       id: 2,
       question: "How does AI improve online shopping?",
-      answer: "AI personalizes product recommendations, automates customer service, optimizes pricing, detects fraud, and streamlines logistics, resulting in a better shopping experience and increased sales."
+      answer: "AI elevates the shopping experience by personalizing recommendations, automating support, optimizing pricing, detecting fraud, and streamlining logistics—resulting in higher sales and customer satisfaction."
     },
     {
       id: 3,
       question: "Is AI safe for handling customer data?",
-      answer: "When implemented with proper security and privacy measures, AI can securely process and analyze customer data, helping to prevent fraud and protect sensitive information."
+      answer: "With robust security and privacy protocols, AI can securely process and analyze customer data, helping prevent fraud and safeguard sensitive information."
     },
     {
       id: 4,
       question: "Can AI help reduce cart abandonment?",
-      answer: "Yes, AI can identify reasons for cart abandonment and trigger personalized reminders or offers to encourage customers to complete their purchases."
+      answer: "Absolutely. AI pinpoints abandonment triggers and delivers timely, personalized reminders or offers, motivating customers to complete their purchases."
     },
     {
       id: 5,
       question: "What are the benefits of AI for e-commerce businesses?",
-      answer: "AI increases efficiency, boosts sales, improves customer satisfaction, reduces operational costs, and provides actionable insights for business growth."
+      answer: "AI empowers e-commerce brands to operate more efficiently, increase sales, delight customers, cut costs, and unlock data-driven strategies for sustainable growth."
     }
   ];
 
@@ -223,87 +223,75 @@ const ECommerceAI: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Operational Efficiency */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
                   <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Operational Efficiency</h3>
-                  <p className="text-gray-200 leading-relaxed">AI and ML automate routine e-commerce tasks, streamline operations, and reduce costs for online retailers.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Operational Efficiency</h3>
+                <p className="text-gray-200 leading-relaxed">Automate routine workflows and streamline operations with AI, freeing your team to focus on strategic growth while reducing manual overhead.</p>
               </div>
             </div>
             {/* Cost Savings */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Cost Savings</h3>
-                  <p className="text-gray-200 leading-relaxed">AI-driven automation and analytics reduce operational costs and improve profitability for e-commerce businesses.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Cost Savings</h3>
+                <p className="text-gray-200 leading-relaxed">Drive profitability by leveraging AI to cut operational costs, optimize resource allocation, and eliminate inefficiencies across your business.</p>
               </div>
             </div>
             {/* Enhanced Customer Experience */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
                   <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Enhanced Customer Experience</h3>
-                  <p className="text-gray-200 leading-relaxed">AI personalizes shopping, provides instant support, and anticipates customer needs, leading to higher satisfaction and loyalty.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Enhanced Customer Experience</h3>
+                <p className="text-gray-200 leading-relaxed">Deliver hyper-personalized shopping, instant support, and proactive service—building loyalty and exceeding customer expectations at every touchpoint.</p>
               </div>
             </div>
             {/* Revenue Growth */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Revenue Growth</h3>
-                  <p className="text-gray-200 leading-relaxed">AI-powered recommendations, dynamic pricing, and targeted marketing drive sales and revenue growth.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Revenue Growth</h3>
+                <p className="text-gray-200 leading-relaxed">Accelerate sales with AI-powered recommendations, dynamic pricing, and precision marketing that convert browsers into loyal buyers.</p>
               </div>
             </div>
             {/* Inventory Optimization */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
                   <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Inventory Optimization</h3>
-                  <p className="text-gray-200 leading-relaxed">AI predicts demand, manages stock, and reduces waste, ensuring products are available when customers need them.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Inventory Optimization</h3>
+                <p className="text-gray-200 leading-relaxed">Predict demand, optimize stock levels, and minimize waste with AI-driven inventory management—ensuring products are always available when customers need them.</p>
               </div>
             </div>
             {/* Competitive Advantage */}
             <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col items-center text-center space-y-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
                   <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Competitive Advantage</h3>
-                  <p className="text-gray-200 leading-relaxed">E-commerce businesses gain an edge by leveraging AI for innovation, efficiency, and superior customer experiences.</p>
-                </div>
+                <h3 className="font-semibold text-lg text-white mb-2">Competitive Advantage</h3>
+                <p className="text-gray-200 leading-relaxed">Stay ahead of the curve by adopting AI for innovation, operational excellence, and superior customer engagement in a rapidly evolving market.</p>
               </div>
             </div>
           </div>
@@ -345,8 +333,8 @@ const ECommerceAI: React.FC = () => {
             {/* Content Carousel */}
             <div className="flex space-x-8 px-16 overflow-hidden">
               {useCases.slice(currentIndex, currentIndex + 3).map((useCase) => (
-                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4">
-                  <div className="relative h-48">
+                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4 flex flex-col items-center text-center">
+                  <div className="relative h-48 w-full flex items-center justify-center">
                     <img
                       src={useCase.image}
                       alt={useCase.alt}

@@ -105,7 +105,7 @@ const HIPAACompliance: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="/image/pages_img/HIPAA.avif"
-            alt="HIPAA Compliance Background"
+            alt="Modern HIPAA Compliance Solutions Background"
             className="w-full h-full object-cover object-center"
             style={{ filter: 'brightness(0.5)' }}
           />
@@ -130,14 +130,14 @@ const HIPAACompliance: React.FC = () => {
                 </h1>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
-                Leveraging AI to enhance healthcare data security, automate compliance, and protect patient privacy under HIPAA regulations.
+                Empowering healthcare organizations to safeguard data, streamline compliance, and elevate patient trust with advanced AI-driven HIPAA solutions.
               </p>
               <div>
                 <a
                   href="mailto:sureshbeekhani@gmail.com"
                   className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:from-green-500 hover:to-blue-600 transition-all duration-200 text-lg"
                 >
-                  Talk to an Expert
+                  Connect with a Compliance Expert
                 </a>
               </div>
             </div>
@@ -154,7 +154,7 @@ const HIPAACompliance: React.FC = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
                 <img
                   src="/image/pages_img/AI-HIPAA-Compliance.png"
-                  alt="AI HIPAA Compliance Illustration"
+                  alt="AI-Enabled HIPAA Compliance Illustration"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
@@ -166,10 +166,10 @@ const HIPAACompliance: React.FC = () => {
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI and machine learning are transforming healthcare compliance by automating data protection, monitoring, and reporting helping organizations meet HIPAA requirements efficiently.
+                Harness the power of AI and machine learning to automate compliance, proactively secure sensitive data, and ensure seamless adherence to HIPAA standards across your organization.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From real-time threat detection to automated audits, AI-driven solutions reduce risk, improve accuracy, and free up resources for patient care.
+                From instant threat detection to automated audit trails, AI solutions minimize risk, boost operational efficiency, and let your teams focus on delivering exceptional patient care.
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ const HIPAACompliance: React.FC = () => {
               Capabilities and Benefits
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Key advantages of using AI for HIPAA compliance in healthcare
+              Discover how AI transforms HIPAA compliance into a strategic advantage for healthcare organizations.
             </p>
           </div>
 
@@ -202,7 +202,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Automated Compliance</h3>
-                  <p className="text-gray-200 leading-relaxed">AI automates compliance checks, reducing manual effort and minimizing human error in HIPAA processes.</p>
+                  <p className="text-gray-200 leading-relaxed">AI streamlines compliance processes, reducing manual workload and virtually eliminating costly errors in HIPAA management.</p>
                 </div>
               </div>
             </div>
@@ -215,7 +215,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Enhanced Security</h3>
-                  <p className="text-gray-200 leading-relaxed">Machine learning detects threats and vulnerabilities in real time, improving the security of patient data.</p>
+                  <p className="text-gray-200 leading-relaxed">Real-time machine learning identifies threats and vulnerabilities, proactively protecting patient data from emerging risks.</p>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Cost Reduction</h3>
-                  <p className="text-gray-200 leading-relaxed">AI-driven automation reduces the cost of compliance and security operations for healthcare organizations.</p>
+                  <p className="text-gray-200 leading-relaxed">Automated AI-driven workflows lower compliance and security costs, maximizing your organization’s resources and ROI.</p>
                 </div>
               </div>
             </div>
@@ -241,7 +241,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Faster Audits</h3>
-                  <p className="text-gray-200 leading-relaxed">Automated tools speed up compliance audits and reporting, making it easier to maintain HIPAA standards.</p>
+                  <p className="text-gray-200 leading-relaxed">AI-powered tools accelerate compliance audits and reporting, ensuring you stay ahead of regulatory requirements with ease.</p>
                 </div>
               </div>
             </div>
@@ -254,7 +254,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Improved Accuracy</h3>
-                  <p className="text-gray-200 leading-relaxed">AI reduces human error in compliance processes, ensuring more accurate and reliable results.</p>
+                  <p className="text-gray-200 leading-relaxed">AI minimizes human error, delivering consistently accurate and reliable compliance outcomes.</p>
                 </div>
               </div>
             </div>
@@ -267,7 +267,7 @@ const HIPAACompliance: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-2">Regulatory Confidence</h3>
-                  <p className="text-gray-200 leading-relaxed">AI helps organizations stay up to date with changing HIPAA regulations and best practices.</p>
+                  <p className="text-gray-200 leading-relaxed">Stay confidently compliant as AI keeps your organization aligned with evolving HIPAA regulations and industry best practices.</p>
                 </div>
               </div>
             </div>
@@ -286,7 +286,7 @@ const HIPAACompliance: React.FC = () => {
               AI & HIPAA Use Cases
             </h2>
             <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              Explore how AI is used to support HIPAA compliance in healthcare
+              See how leading healthcare organizations leverage AI to achieve robust HIPAA compliance and operational excellence.
             </p>
           </div>
           <div className="relative">
@@ -312,13 +312,37 @@ const HIPAACompliance: React.FC = () => {
                   <div className="relative h-48">
                     <img
                       src={useCase.image}
-                      alt={useCase.alt}
+                      alt={
+                        useCase.id === 0 ? "Automated PHI Redaction for HIPAA Compliance" :
+                        useCase.id === 1 ? "AI-Powered Anomaly Detection in Access Logs" :
+                        useCase.id === 2 ? "Secure Data Sharing with AI" :
+                        useCase.id === 3 ? "Automated HIPAA Compliance Audits" :
+                        useCase.id === 4 ? "Real-Time Threat Detection in Healthcare" :
+                        useCase.id === 5 ? "AI-Driven Patient Consent Management" :
+                        useCase.alt
+                      }
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{useCase.title}</h3>
-                    <p className="text-gray-600">{useCase.description}</p>
+                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{
+                      useCase.id === 0 ? "Automated PHI Redaction" :
+                      useCase.id === 1 ? "Anomaly Detection in Access Logs" :
+                      useCase.id === 2 ? "Secure Data Sharing" :
+                      useCase.id === 3 ? "Automated Compliance Audits" :
+                      useCase.id === 4 ? "Real-Time Threat Detection" :
+                      useCase.id === 5 ? "Patient Consent Management" :
+                      useCase.title
+                    }</h3>
+                    <p className="text-gray-600">{
+                      useCase.id === 0 ? "AI automatically identifies and redacts Protected Health Information (PHI) in records, ensuring privacy and seamless HIPAA compliance." :
+                      useCase.id === 1 ? "Machine learning continuously monitors access logs, instantly flagging suspicious activity to prevent unauthorized data exposure." :
+                      useCase.id === 2 ? "AI enables secure, compliant data exchange between providers, enhancing care coordination while maintaining strict privacy controls." :
+                      useCase.id === 3 ? "AI automates HIPAA compliance audits, quickly identifying potential risks and simplifying regulatory reporting." :
+                      useCase.id === 4 ? "AI-driven security delivers real-time alerts for potential breaches, empowering rapid response to protect sensitive health data." :
+                      useCase.id === 5 ? "AI streamlines patient consent management, ensuring every action is logged, verified, and fully compliant." :
+                      useCase.description
+                    }</p>
                   </div>
                 </div>
               ))}
@@ -338,7 +362,7 @@ const HIPAACompliance: React.FC = () => {
               Why Choose Me
             </h2>
             <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              Experience in building secure, compliant AI solutions for healthcare
+              Proven expertise in delivering secure, compliant AI solutions for healthcare leaders.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -346,28 +370,28 @@ const HIPAACompliance: React.FC = () => {
               <span className="text-4xl font-extrabold text-green-600">5+</span>
               <h3 className="text-lg font-bold text-blue-900">Years in Healthcare AI</h3>
               <p className="text-gray-700 text-sm">
-                Over 5 years of experience developing AI solutions for healthcare compliance and security.
+                5+ years of hands-on experience building AI solutions that drive compliance and security in healthcare.
               </p>
             </div>
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-green-600">15+</span>
               <h3 className="text-lg font-bold text-blue-900">HIPAA Projects</h3>
               <p className="text-gray-700 text-sm">
-                Successfully delivered 15+ HIPAA-compliant AI projects for healthcare organizations.
+                Delivered 15+ successful HIPAA-compliant AI projects for top healthcare organizations.
               </p>
             </div>
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-green-600">20+</span>
               <h3 className="text-lg font-bold text-blue-900">AI Models Deployed</h3>
               <p className="text-gray-700 text-sm">
-                Built and deployed 20+ AI models focused on healthcare data privacy and compliance.
+                Developed and deployed 20+ AI models focused on healthcare data privacy, security, and compliance.
               </p>
             </div>
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
               <span className="text-4xl font-extrabold text-green-600">10+</span>
               <h3 className="text-lg font-bold text-blue-900">Healthcare Partners</h3>
               <p className="text-gray-700 text-sm">
-                Partnered with 10+ healthcare providers to deliver secure, compliant AI solutions.
+                Trusted by 10+ healthcare providers to deliver robust, compliant AI-driven solutions.
               </p>
             </div>
             <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
@@ -378,7 +402,7 @@ const HIPAACompliance: React.FC = () => {
               </span>
               <h3 className="text-lg font-bold text-blue-900">Global Reach</h3>
               <p className="text-gray-700 text-sm">
-                Delivering HIPAA-compliant AI solutions to clients worldwide.
+                Supporting healthcare innovators worldwide with scalable, HIPAA-compliant AI solutions.
               </p>
             </div>
           </div>
@@ -386,49 +410,58 @@ const HIPAACompliance: React.FC = () => {
       </section>
 
       {/* Frequently Asked Questions (FAQ) Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-green-900 to-cyan-900">
+      <section className="py-20 px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
+            <h2 className="text-2xl lg:text-3xl font-bold text-green-700">
               Frequently Asked Questions
             </h2>
           </div>
-          <div className="space-y-6">
-            {/* Example FAQ item - repeat for each question/answer */}
-            <div className="bg-white/90 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-lg text-blue-900 mb-2">What is HIPAA?</h3>
-              <p className="text-gray-700">
-                HIPAA (Health Insurance Portability and Accountability Act) is a US law designed to protect patients' medical records and other health information provided to health plans, doctors, hospitals, and other healthcare providers.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-lg text-blue-900 mb-2">How does AI help with HIPAA compliance?</h3>
-              <p className="text-gray-700">
-                AI can automate data protection, monitor for unauthorized access, assist with audits, and help ensure that healthcare data is handled in compliance with HIPAA regulations.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-lg text-blue-900 mb-2">What are the risks of using AI in healthcare?</h3>
-              <p className="text-gray-700">
-                Risks include data breaches, algorithmic bias, and improper handling of sensitive information. Proper safeguards and compliance checks are essential.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-lg text-blue-900 mb-2">Can AI replace manual HIPAA audits?</h3>
-              <p className="text-gray-700">
-                AI can automate many aspects of compliance monitoring and reporting, but human oversight is still necessary for full compliance.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-lg text-blue-900 mb-2">Is patient data safe with AI systems?</h3>
-              <p className="text-gray-700">
-                With proper security measures, encryption, and compliance protocols, AI systems can help keep patient data safe and private.
-              </p>
-            </div>
-            {/* ...repeat for all FAQ items... */}
+          <div className="space-y-4">
+            {faqData.map((faq) => (
+              <div key={faq.id} className="bg-white rounded-xl p-6 shadow-md border border-green-100">
+                <button
+                  className="w-full flex justify-between items-center focus:outline-none"
+                  onClick={() => toggleFAQ(faq.id)}
+                  aria-expanded={openFAQ === faq.id}
+                  aria-controls={`faq-answer-${faq.id}`}
+                >
+                  <span className={`font-semibold text-lg mb-2 text-green-700 text-left transition-colors duration-200 ${openFAQ === faq.id ? 'text-blue-700' : ''}`}>{
+                    faq.id === 1 ? "What is HIPAA?" :
+                    faq.id === 2 ? "How does AI support HIPAA compliance?" :
+                    faq.id === 3 ? "What are the risks of using AI in healthcare?" :
+                    faq.id === 4 ? "Can AI fully replace manual HIPAA audits?" :
+                    faq.id === 5 ? "Is patient data secure with AI systems?" :
+                    faq.question
+                  }</span>
+                  <svg
+                    className={`w-6 h-6 ml-2 transform transition-transform duration-200 ${openFAQ === faq.id ? 'rotate-180 text-blue-700' : 'text-green-700'}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFAQ === faq.id && (
+                  <div
+                    id={`faq-answer-${faq.id}`}
+                    className="mt-4 text-green-800 text-base text-left transition-all duration-200"
+                  >{
+                    faq.id === 1 ? "HIPAA (Health Insurance Portability and Accountability Act) is a U.S. law that safeguards patient medical records and health information, ensuring privacy and security across the healthcare ecosystem." :
+                    faq.id === 2 ? "AI automates data protection, continuously monitors for unauthorized access, streamlines audits, and ensures healthcare data is managed in strict alignment with HIPAA requirements." :
+                    faq.id === 3 ? "Potential risks include data breaches, algorithmic bias, and improper handling of sensitive information. Robust safeguards and ongoing compliance checks are essential to mitigate these risks." :
+                    faq.id === 4 ? "AI can automate much of the compliance monitoring and reporting process, but expert human oversight remains vital for comprehensive HIPAA adherence." :
+                    faq.id === 5 ? "With advanced security, encryption, and compliance protocols, AI systems can help ensure patient data remains private and protected at all times." :
+                    faq.answer
+                  }</div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
