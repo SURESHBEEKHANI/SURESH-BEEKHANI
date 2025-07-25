@@ -144,7 +144,7 @@ const AiDrivenLawGpt = () => {
         {/* Right: Image */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="/image/pages_img/law-gpt.jpg"
+            src="/image/pages_img/What-AI-Driven-Law-GPT.webp"
             alt="What is AI-Driven Law GPT illustration"
             loading="lazy"
             className="w-full max-w-3xl h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
@@ -199,10 +199,10 @@ const AiDrivenLawGpt = () => {
               {/* Left: Image */}
               <div className="flex flex-col items-center justify-center">
                 <img
-                  src="/image/pages_img/AI-Legal-Contract-Analyzer.png"
-                  alt="Key Features & Technologies illustration"
+                  src="/image/pages_img/Key-Features-legal.png"
+                  alt="Legal Key Features illustration"
                   loading="lazy"
-                  className="w-full max-w-3xl max-h-64 h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
+                  className="w-full max-w-xs max-h-64 h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
                 />
               </div>
               {/* Right: Features Grid */}
@@ -245,8 +245,8 @@ const AiDrivenLawGpt = () => {
               {/* Right: Development Image */}
               <div className="flex flex-col items-center justify-center">
                 <img
-                  src="/image/pages_img/AI-Driven-Testing.jpg"
-                  alt="Development Illustration"
+                  src="/image/pages_img/Development-Process-law-gpt.png"
+                  alt="Development Process Law GPT illustration"
                   loading="lazy"
                   className="w-full max-w-3xl h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
                 />
