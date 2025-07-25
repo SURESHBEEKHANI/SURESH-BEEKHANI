@@ -328,3 +328,9 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Consistent image sizing and modern hover effect for project sections */
+.project-section img {
+  @apply w-full max-w-[400px] h-auto rounded-xl shadow-lg transition-transform duration-300 hover:scale-105;
+  object-fit: cover;
+}

@@ -19,6 +19,13 @@ import ChatGPTIntegrations from "./pages/ChatGPTIntegrations";
 import NaturalLanguageProcessing from "./pages/NaturalLanguageProcessing";
 import MachineLearning from "./pages/MachineLearning";
 import ComputerVisionPro from "./pages/ComputerVisionPro";
+import PortfolioPage from "./pages/Portfolio";
+import AILaw from "./Pages-Portfolio/ai-driven-law-gpt";
+import AIImageGen from "./Pages-Portfolio/ai-powered-image-generator";
+import SoMeCreator from "./Pages-Portfolio/social-media-content-creator";
+import PatDiag from "./Pages-Portfolio/patient-diagnostic-system";
+import LegalAI from "./Pages-Portfolio/ai-legal-contract-analyzer";
+import PersonalizedTravelAssistant from "./Pages-Portfolio/personalized-travel-assistant";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +51,14 @@ const App = () => (
           <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
           <Route path="/computer-vision" element={<ComputerVisionPro />} />
+          {/* Portfolio and Case Study Routes */}
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/ai-driven-law-gpt" element={<AILaw />} />
+          <Route path="/portfolio/ai-powered-image-generator" element={<AIImageGen />} />
+          <Route path="/portfolio/social-media-content-creator" element={<SoMeCreator />} />
+          <Route path="/portfolio/patient-diagnostic-system" element={<PatDiag />} />
+          <Route path="/portfolio/ai-legal-contract-analyzer" element={<LegalAI />} />
+          <Route path="/portfolio/personalized-travel-assistant" element={<PersonalizedTravelAssistant />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
