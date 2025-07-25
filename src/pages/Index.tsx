@@ -3,7 +3,6 @@ import { useToast } from "@/hooks/use-toast";
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -66,12 +65,6 @@ const Index = () => {
             <div className="section-decoration section-decoration-1"></div>
             <About />
             <div className="section-decoration section-decoration-2"></div>
-          </div>
-        </section>
-        
-        <section id="projects" className="pro-section">
-          <div className="section-container">
-            <Projects />
           </div>
         </section>
         
