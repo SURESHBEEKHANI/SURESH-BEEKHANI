@@ -137,7 +137,7 @@ const Navbar = () => {
             link.label === 'Industries' ? (
               <div key="Industries" className="relative group">
                 <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
-                <div className="absolute left-0 mt-2 -mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
                   {industrie.map((industry) => (
                     <a
                       key={industry.name}
@@ -152,7 +152,7 @@ const Navbar = () => {
             ) : link.label === 'Services' ? (
               <div key="Services" className="relative group">
                 <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Services</button>
-                <div className="absolute left-0 mt-2 -mt-1 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-50">
+                <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
                   {services.map((service) => (
                     <a
                       key={service.name}

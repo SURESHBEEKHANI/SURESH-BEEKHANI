@@ -113,10 +113,10 @@ const SoMeCreator = () => {
             A Social Media Content Creator is a digital tool or platform that empowers users to design, schedule, and manage engaging posts across multiple social channels. It leverages AI to streamline content ideation, automate publishing, and analyze performance, helping brands and individuals grow their online presence efficiently.
           </p>
         </div>
-        {/* Right: Image */}
+        {/* Right: Images */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="/image/pages_img/Social-Media-Content-Creator.png"
+            src="/image/pages_img/What-Social-Media-Content-Creator.jpg"
             alt="What is Social Media Content Creator illustration"
             loading="lazy"
             className="w-full max-w-3xl h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
@@ -168,8 +168,8 @@ const SoMeCreator = () => {
           {/* Left: Image */}
           <div className="flex flex-col items-center justify-center">
             <img
-              src="/image/pages_img/key-f-t-assistent.jpg"
-              alt="Key Features & Technologies illustration"
+              src="/image/pages_img/Key-Features-socal-medui.png"
+              alt="Key Features Social Media illustration"
               loading="lazy"
               className="w-full max-w-3xl max-h-64 h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
             />
@@ -211,8 +211,8 @@ const SoMeCreator = () => {
           {/* Right: Development Image */}
           <div className="flex flex-col items-center justify-center">
             <img
-              src="/image/pages_img/implements-ai-assents.png"
-              alt="Development Illustration"
+              src="/image/pages_img/Social -Media-Development.jpg"
+              alt="Development Process Social Media illustration"
               loading="lazy"
               className="w-full max-w-3xl h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
             />
