@@ -7,7 +7,7 @@ const projects = [
   {
     title: "AI-Driven Law GPT",
     description:
-      "Law Chat GPT leverages advanced AI to generate legal text swiftly and accurately. It empowers professionals to efficiently handle complex legal matters.",
+      "Law GPT uses to quickly accurately generate legal text, helping professionals manage complex legal tasks  ease.",
     image: "/image/pages_img/AI-Driven-Law-GPT.jpg",
     link: "/portfolio/ai-driven-law-gpt"
   },
@@ -35,7 +35,7 @@ const projects = [
   {
     title: "AI Legal Contract Analyzer",
     description:
-      "Legal Contract Analyzer automates contract review with AI. Boosts accuracy, efficiency, and compliance for legal teams.",
+      "Legal Contract Analyzer automates contract review with AI. Boosts accuracy, efficiency, compliance for legal teams.",
     image: "/image/pages_img/AI-Legal-Contract-Analyzer.png",
     link: "/portfolio/ai-legal-contract-analyzer"
   },
