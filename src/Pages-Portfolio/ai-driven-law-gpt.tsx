@@ -76,7 +76,7 @@ const AiDrivenLawGpt = () => {
       <section className="relative w-full min-h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-900 via-blue-700 to-purple-200 animate-fade-in mt-16">
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <img
-            src="/image/pages_img/AI-Driven-Law-GPT.jpg"
+            src="/image/pages_img/ai-law-gpt-backgoud.png"
             alt="AI-Driven Law GPT background"
             style={{ filter: 'brightness(0.6) blur(1px)' }}
             draggable={false}
