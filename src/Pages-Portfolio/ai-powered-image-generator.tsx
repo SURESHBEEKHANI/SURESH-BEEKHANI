@@ -75,12 +75,7 @@ const AIPoweredImageGenerator = () => {
       {/* Hero Section */}
       <section className="relative w-full min-h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-400 to-pink-200 animate-fade-in mt-16">
         <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <img
-            src="/image/pages_img/img-gen-background.png"
-            alt="AI Image Generator background"
-            style={{ filter: 'brightness(0.6) blur(1px)' }}
-            draggable={false}
-          />
+          {/* Background image removed */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-400/60 to-pink-200/60"></div>
         </div>
         <div className="relative z-20 max-w-3xl mx-auto px-6 py-20 w-full text-left">
