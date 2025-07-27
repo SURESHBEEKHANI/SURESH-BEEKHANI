@@ -81,6 +81,7 @@ const Industries = () => {
               <h2 className="text-1xl md:text-3xl font-bold tracking-tight text-gray-900">
               Industries Transformed by AI
               </h2>
+              <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
               <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-medium">
                 Empowering organizations across sectors to make smarter, data-driven decisions with advanced AI and machine learning.
               </p>

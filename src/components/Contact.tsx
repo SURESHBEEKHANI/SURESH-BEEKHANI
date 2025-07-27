@@ -174,7 +174,7 @@ Sent from your portfolio website`;
             <div className="flex items-center justify-center">
               <Button 
                 type="submit" 
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg flex items-center gap-2"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg flex items-center gap-2"
               >
                 <MessageCircle className="h-5 w-5" />
                 Send via WhatsApp

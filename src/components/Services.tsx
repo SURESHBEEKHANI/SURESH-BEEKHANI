@@ -224,7 +224,7 @@ const Services = () => {
                     onClick={() => setSelectedService(service)}
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
                       selectedService === service
-                        ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg'
                         : 'text-white/80 hover:text-white hover:bg-white/10'
                     }`}
                   >
@@ -270,7 +270,7 @@ const Services = () => {
                       console.log('Button clicked for service:', selectedService);
                       handleReadMore();
                     }}
-                    className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2"
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg flex items-center gap-2"
                   >
                     Read More
                     <ArrowRight className="h-4 w-4" />

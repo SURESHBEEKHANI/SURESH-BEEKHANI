@@ -182,7 +182,7 @@ const Navbar = () => {
           href={whatsappUrl} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6"
+          className="hidden md:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6"
         >
           <WhatsAppLogo />
           <span className="font-medium text-sm">{whatsappNumber}</span>
@@ -195,7 +195,7 @@ const Navbar = () => {
             href={whatsappUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
             aria-label="Contact on WhatsApp"
           >
             <WhatsAppLogo />
@@ -273,7 +273,7 @@ const Navbar = () => {
             href={whatsappUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="mt-2 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 rounded-md transition-all duration-300"
+            className="mt-2 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-md transition-all duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <WhatsAppLogo />
