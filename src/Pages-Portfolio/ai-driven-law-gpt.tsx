@@ -74,19 +74,11 @@ const AiDrivenLawGpt = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative w-full min-h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-900 via-blue-700 to-purple-200 animate-fade-in mt-16">
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <img
-            src="/image/pages_img/ai-law-gpt-backgoud.png"
-            alt="AI-Driven Law GPT background"
-            style={{ filter: 'brightness(0.6) blur(1px)' }}
-            draggable={false}
-          />
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-blue-700/60 to-purple-200/60"></div>
-        </div>
         <div className="relative z-20 max-w-3xl mx-auto px-6 py-20 w-full text-left">
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg text-left">AI-Driven Law GPT</h1>
           <p className="text-base md:text-lg font-normal text-gray-100 mb-4 max-w-2xl animate-fade-in text-left">
-            AI-Driven Law GPT leverages advanced AI to generate, review, and summarize legal documents with speed and precision—empowering legal professionals to work smarter.
+            AI-Driven Law GPT leverages advanced AI to generate, review, and summarize legal documents with speed and precision empowering legal professionals to work smarter.
           </p>
         </div>
       </section>
@@ -179,7 +171,7 @@ const AiDrivenLawGpt = () => {
             <div className="flex-1 text-left">
               <h2 className="text-2xl md:text-3xl font-bold text-indigo-900 mb-4">Solution</h2>
               <p className="text-lg md:text-xl text-gray-700 max-w-xl">
-                AI-Driven Law GPT automates legal drafting, research, and compliance—reducing errors, saving time, and enabling lawyers to focus on high-value work.
+                AI-Driven Law GPT automates legal drafting, research, and compliance reducing errors, saving time, and enabling lawyers to focus on high-value work.
               </p>
             </div>
             {/* Right: Image */}

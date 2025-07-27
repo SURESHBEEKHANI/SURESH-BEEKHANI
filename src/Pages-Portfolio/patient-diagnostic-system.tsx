@@ -74,15 +74,8 @@ const PatientDiagnosticSystem = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative w-full min-h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-blue-400 to-pink-200 animate-fade-in mt-16">
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <img
-            src="/image/pages_img/Patient-Diagnostic-System.webp"
-            alt="Patient Diagnostic System background"
-            style={{ filter: 'brightness(0.6) blur(1px)' }}
-            draggable={false}
-          />
+        
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-blue-400/60 to-pink-200/60"></div>
-        </div>
         <div className="relative z-20 max-w-3xl mx-auto px-6 py-20 w-full text-left">
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg text-left">Patient Diagnostic System</h1>
           <p className="text-base md:text-lg font-normal text-gray-100 mb-4 max-w-2xl animate-fade-in text-left">

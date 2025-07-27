@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Github, Linkedin, Twitter, Instagram, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,6 +12,64 @@ const XIcon = () => (
 );
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `*New Contact Form Submission*
+
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Subject:* ${formData.subject}
+
+*Message:*
+${formData.message}
+
+---
+Sent from your portfolio website`;
+
+    // Encode the message for WhatsApp URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Replace with your WhatsApp number (include country code)
+    const whatsappNumber = '923401213187'; // Your WhatsApp number
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Show success toast
+    toast.success('Opening WhatsApp with your message!');
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    });
+  };
+
   return (
     <section id="contact" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,21 +82,105 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-foreground/80 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a collaboration? I'd love to hear from you! Send me a message and I'll get back to you as soon as possible.
+            Have a project in mind or want to discuss a collaboration? I'd love to hear from you! Fill out the form below and it will open WhatsApp with your message.
           </p>
         </div>
-        <div className="flex justify-center">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScDqDaSXj1g071CpTDzbplzw7t8xsrwn7isEhx7EodHN23VAg/viewform?embedded=true"
-            width="100%"
-            height="900"
-            frameBorder="0"
-            marginHeight={0}
-            marginWidth={0}
-            title="Contact Form"
-          >
-            Loading…
-          </iframe>
+        
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  Name *
+                </label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your name"
+                  className="w-full"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  Email *
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="your.email@example.com"
+                  className="w-full"
+                />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  Phone Number
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="+1 (555) 123-4567"
+                  className="w-full"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                  Subject *
+                </label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  required
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  placeholder="Project inquiry, collaboration, etc."
+                  className="w-full"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                Message *
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Tell me about your project or how I can help you..."
+                rows={6}
+                className="w-full resize-none"
+              />
+            </div>
+            
+            <div className="flex items-center justify-center">
+              <Button 
+                type="submit" 
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg flex items-center gap-2"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Send via WhatsApp
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

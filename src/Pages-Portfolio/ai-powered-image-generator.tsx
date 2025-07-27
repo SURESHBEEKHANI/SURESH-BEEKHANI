@@ -74,19 +74,13 @@ const AIPoweredImageGenerator = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative w-full min-h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-400 to-pink-200 animate-fade-in mt-16">
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <img
-            src="/image/pages_img/img-gen-background.png"
-            alt="AI Image Generator background"
-            style={{ filter: 'brightness(0.6) blur(1px)' }}
-            draggable={false}
-          />
+     
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-400/60 to-pink-200/60"></div>
-        </div>
+        
         <div className="relative z-20 max-w-3xl mx-auto px-6 py-20 w-full text-left">
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg text-left">AI-Powered Image Generator</h1>
           <p className="text-base md:text-lg font-normal text-gray-100 mb-4 max-w-2xl animate-fade-in text-left">
-            Instantly create unique, high-quality images for your content, marketing, or social media—no design skills needed.
+            Instantly create unique, high quality images for your content, marketing, or social media no design skills needed.
           </p>
         </div>
       </section>
@@ -97,7 +91,7 @@ const AIPoweredImageGenerator = () => {
           <div className={`text-base md:text-lg text-gray-700 max-w-6xl text-left md:text-justify transition-all duration-300 ${showFullInfo ? '' : 'line-clamp-5'}`}
                style={!showFullInfo ? { WebkitMaskImage: 'linear-gradient(180deg, #000 60%, transparent 100%)', maskImage: 'linear-gradient(180deg, #000 60%, transparent 100%)' } : {}}>
             <p>
-              The AI-Powered Image Generator is a smart digital tool that lets anyone create custom images in seconds. No more searching for stock photos or waiting for designers—just describe what you want, and get a unique image instantly.
+              The AI-Powered Image Generator is a smart digital tool that lets anyone create custom images in seconds. No more searching for stock photos or waiting for designers just describe what you want, and get a unique image instantly.
             </p>
             <p className="mt-3">
               Powered by advanced AI models, it understands your prompts, style preferences, and brand colors, delivering visuals that match your needs. Perfect for marketers, bloggers, businesses, and creators who want to stand out.
@@ -177,7 +171,7 @@ const AIPoweredImageGenerator = () => {
             <div className="flex-1 text-left">
               <h2 className="text-2xl md:text-3xl font-bold text-purple-900 mb-4">Solution</h2>
               <p className="text-lg md:text-xl text-gray-700 max-w-xl">
-                AI Image Generator delivers instant, unique visuals from simple prompts—saving time, reducing costs, and enabling creative freedom for everyone.
+                AI Image Generator delivers instant, unique visuals from simple prompts saving time, reducing costs, and enabling creative freedom for everyone.
               </p>
             </div>
             {/* Right: Image */}

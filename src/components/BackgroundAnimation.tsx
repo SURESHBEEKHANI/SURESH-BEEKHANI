@@ -233,7 +233,7 @@ const BackgroundAnimation = () => {
         id="gradient-background"
         className="absolute inset-0 transition-colors duration-1000 ease-in-out"
         style={{
-          background: 'linear-gradient(135deg, rgba(41,128,240,0.35) 0%, rgba(240,41,128,0.2) 100%)'
+          background: 'linear-gradient(135deg, rgba(0, 110, 255, 0.35) 0%, rgba(240,41,128,0.2) 100%)'
         }}
       ></div>
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-10" />

@@ -130,10 +130,10 @@ const GreenTechAI: React.FC = () => {
           {/* Text Column */}
           <div className="flex-1 text-white space-y-8">
             <div className="w-full">
-              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Accelerating Sustainability with <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">AI-Driven GreenTech</span>
+              <h1 className="text-4xl md:text-3xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              GreenTech with <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">AI-Driven GreenTech</span>
               </h1>
-              <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
+              <p className="text-lg md:text-1xl text-gray-100 w-full whitespace-pre-line mt-4">
                 Harness the power of AI to drive sustainable growth, optimize resources, and unlock new opportunities for a greener future.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
@@ -169,12 +169,12 @@ const GreenTechAI: React.FC = () => {
             {/* Right: Content */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-green-900">
-                  Transforming Sustainability with <span className="text-green-700">AI Innovation</span>
+                <h2 className="text-3xl lg:text-3xl font-bold leading-tight tracking-tight text-green-900">
+                GreenTech with <span className="text-green-700">AI Innovation</span>
                 </h2>
               </div>
-              <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                Advanced <span className="font-semibold text-green-700">AI and machine learning</span> are redefining what’s possible in sustainability—enabling intelligent energy management, precise climate forecasting, and data-driven resource optimization.
+              <p className="text-xl lg:text-1xl leading-relaxed text-gray-800 max-w-2xl">
+                Advanced AI and machine learning are redefining what is  possible in sustainability enabling intelligent energy management, precise climate forecasting, and data-driven resource optimization.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
                 From predictive maintenance to real-time carbon tracking, AI empowers organizations to achieve ambitious environmental goals, maximize efficiency, and deliver measurable impact.
@@ -191,7 +191,7 @@ const GreenTechAI: React.FC = () => {
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-green-500 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
+            <h2 className="text-3xl lg:text-3xl font-bold text-white">
               AI Capabilities & Business Value
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">

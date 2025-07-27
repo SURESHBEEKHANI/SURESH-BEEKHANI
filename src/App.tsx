@@ -3,23 +3,24 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import HealthTechAI from "./pages/HealthTechAI";
-import EdTechAI from "./pages/EdTechAI";
-import FinTechAI from "./pages/FinTechAI";
-import GreenTechAI from "./pages/GreenTechAI";
-import DiagnosticsAI from "./pages/DiagnosticsAI";
-import RetailAI from "./pages/RetailAI";
-import ECommerceAI from "./pages/E-Commerce";
-import HIPAACompliance from "./pages/HIPAACompliance";
-import AIChatbotDevelopment from "./pages/AIChatbotDevelopment";
-import PredictiveModelling from "./pages/PredictiveModelling";
-import ChatGPTIntegrations from "./pages/ChatGPTIntegrations";
-import NaturalLanguageProcessing from "./pages/NaturalLanguageProcessing";
-import MachineLearning from "./pages/MachineLearning";
-import ComputerVisionPro from "./pages/ComputerVisionPro";
-import PortfolioPage from "./pages/Portfolio";
+import Index from "./Index";
+import NotFound from "./pages-Services/NotFound";
+import HealthTechAI from "./pages-Industries/HealthTechAI";
+import EdTechAI from "./pages-Industries/EdTechAI";
+import FinTechAI from "./pages-Industries/FinTechAI";
+import GreenTechAI from "./pages-Industries/GreenTechAI";
+import DiagnosticsAI from "./pages-Industries/DiagnosticsAI";
+import RetailAI from "./pages-Industries/RetailAI";
+import ECommerceAI from "./pages-Industries/E-Commerce";
+import HIPAACompliance from "./pages-Industries/HIPAACompliance";
+import AIChatbotDevelopment from "./pages-Services/AIChatbotDevelopment";
+import PredictiveModelling from "./pages-Services/PredictiveModelling";
+import ChatGPTIntegrations from "./pages-Services/ChatGPTIntegrations";
+import NaturalLanguageProcessing from "./pages-Services/NaturalLanguageProcessing";
+import MachineLearning from "./pages-Services/MachineLearning";
+import ComputerVisionPro from "./pages-Services/ComputerVisionPro";
+import AIDevelopment from "./pages-Services/AI-Development";
+import PortfolioPage from "./Pages-Portfolio/Portfolio";
 import AILaw from "./Pages-Portfolio/ai-driven-law-gpt";
 import AIImageGen from "./Pages-Portfolio/ai-powered-image-generator";
 import SoMeCreator from "./Pages-Portfolio/social-media-content-creator";
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
           <Route path="/computer-vision" element={<ComputerVisionPro />} />
+          <Route path="/ai-development" element={<AIDevelopment />} />
           {/* Portfolio and Case Study Routes */}
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/portfolio/ai-driven-law-gpt" element={<AILaw />} />

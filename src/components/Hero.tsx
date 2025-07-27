@@ -27,9 +27,7 @@ const Hero = () => {
               I'm <span className="text-primary">Suresh Beekhani</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-2xl mb-6 sm:mb-8">
-              A Data Scientist and AI/ML Engineer dedicated to sharing my passion for artificial intelligence and data science. 
-              Through engaging tutorials and content, I aim to help learners master Machine Learning, Deep Learning, 
-              Natural Language Processing, and Generative AI.
+            A passionate Data Scientist and AI/ML Engineer dedicated to sharing knowledge and expertise in artificial intelligence and data science. Through engaging tutorials and innovative AI solutions, I help learners master Machine Learning, Deep Learning, Natural Language Processing, and Generative AI technologies.
             </p>
             <div className="flex flex-col xs:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4">
               <a href="https://drive.google.com/drive/folders/1nenB6s7mXNZllsPHh2-74QziMBLU-U6b?usp=drive_link" className="w-full xs:w-auto btn-primary text-sm sm:text-base inline-flex items-center justify-center" target="_blank" rel="noopener noreferrer">

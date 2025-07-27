@@ -26,10 +26,10 @@ const Navbar = () => {
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
   
   const logos = [
-    { prefix: 'ML-', suffix: 'Engineer' },
-    { prefix: 'AI-', suffix: 'Engineer' },
-    { prefix: 'Data-', suffix: 'Scientist' }
-  ];
+    { prefix: 'ML', suffix: 'Engineer' },
+    { prefix: 'AI', suffix: 'Engineer' },
+    { prefix: 'DATA', suffix: 'Scientist' },
+  ]
   
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   
@@ -88,8 +88,8 @@ const Navbar = () => {
   const navLinks = [
     { label: 'About', href: '/#about' },
     { label: 'Portfolio', href: '/Portfolio' },
-    { label: 'Industries', href: '/#industrie' }, // Changed to 'Industries'
     { label: 'Services', href: '/#services' },
+    { label: 'Industries', href: '/#industries' },
     { label: 'Experience', href: '/#experience' },
     { label: 'Contact', href: '/#contact' },
   ];
@@ -109,6 +109,7 @@ const Navbar = () => {
 
   // Services array for dropdown
   const services = [
+    {name:"AI Development",page: "/AI-Development"},
     { name: "AI Chatbot Development", page: "/ai-chatbot-development" },
     { name: "Predictive Modelling", page: "/predictive-modelling" },
     { name: "Chat GPT Integrations", page: "/chat-gpt-integrations" },
@@ -134,22 +135,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) =>
-            link.label === 'Industries' ? (
-              <div key="Industries" className="relative group">
-                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
-                  {industrie.map((industry) => (
-                    <a
-                      key={industry.name}
-                      href={industry.page}
-                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
-                    >
-                      {industry.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : link.label === 'Services' ? (
+            link.label === 'Services' ? (
               <div key="Services" className="relative group">
                 <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Services</button>
                 <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
@@ -160,6 +146,21 @@ const Navbar = () => {
                       className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
                     >
                       {service.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : link.label === 'Industries' ? (
+              <div key="Industries" className="relative group">
+                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
+                  {industrie.map((industry) => (
+                    <a
+                      key={industry.name}
+                      href={industry.page}
+                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
+                    >
+                      {industry.name}
                     </a>
                   ))}
                 </div>
@@ -223,23 +224,7 @@ const Navbar = () => {
       }`}>
         <div className="px-6 py-4 flex flex-col space-y-3 max-h-[70vh] overflow-y-auto">
           {navLinks.map((link) =>
-            link.label === 'Industries' ? (
-              <details key="Industries" className="group">
-                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Industries</summary>
-                <div className="pl-4">
-                  {industrie.map((industry) => (
-                    <a
-                      key={industry.name}
-                      href={industry.page}
-                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {industry.name}
-                    </a>
-                  ))}
-                </div>
-              </details>
-            ) : link.label === 'Services' ? (
+            link.label === 'Services' ? (
               <details key="Services" className="group">
                 <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Services</summary>
                 <div className="pl-4">
@@ -251,6 +236,22 @@ const Navbar = () => {
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.name}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : link.label === 'Industries' ? (
+              <details key="Industries" className="group">
+                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Industries</summary>
+                <div className="pl-4">
+                  {industrie.map((industry) => (
+                    <a
+                      key={industry.name}
+                      href={industry.page}
+                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {industry.name}
                     </a>
                   ))}
                 </div>

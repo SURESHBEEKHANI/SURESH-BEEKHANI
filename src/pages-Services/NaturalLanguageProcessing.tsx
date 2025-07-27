@@ -221,13 +221,13 @@ const NaturalLanguageProcessing: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Natural-Language-Processing.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-white space-y-8">
             <div className="w-full">
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Natural Language <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Processing</span>
+                Natural  Language < span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Processing  </span>
               </h1>
               <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
                 Transform your business with advanced NLP solutions for automation, insights,
