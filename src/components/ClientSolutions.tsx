@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 
 interface SolutionDetail {
@@ -70,9 +71,14 @@ const ClientSolutions = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-              Personalized AI Solutions For Clients
-            </h2>
+            <div className="text-center">
+              <Badge variant="outline" className="mb-2 px-4 py-1 bg-primary/10 text-primary font-medium text-base">
+                Our Solutions
+              </Badge>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+                Personalized AI Solutions For Clients
+              </h2>
+            </div>
 
             <div className="flex flex-wrap gap-2">
               {solutions.map((solution) => (

@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Industries = () => {
   const industries = [
@@ -78,6 +79,9 @@ const Industries = () => {
         <section className="py-16 px-6 lg:px-8 relative rounded-3xl">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center space-y-4 mb-12">
+              <Badge variant="outline" className="mb-2 px-4 py-1 bg-primary/10 text-primary font-medium text-base">
+                Industries
+              </Badge>
               <h2 className="text-1xl md:text-3xl font-bold tracking-tight text-gray-900">
               Industries Transformed by AI
               </h2>

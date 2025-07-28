@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface FAQItem {
@@ -14,8 +14,8 @@ const FAQ = () => {
     {
       question: "What services do you offer?",
       answer: (
-        <div className="space-y-3">
-          <p className="text-foreground/80 leading-relaxed">
+        <div className="space-y-2">
+          <p className="text-foreground/80 leading-relaxed text-sm">
             I offer comprehensive AI development services including: {' '}
             <a href="/ai-development" className="text-primary hover:text-primary/80 transition-colors">
               AI Development
@@ -84,48 +84,48 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16">
+    <section className="py-12">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
             FAQ
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
             Frequently Asked Questions
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-foreground/80 max-w-2xl mx-auto">
+          <div className="w-16 h-1 bg-primary mx-auto mb-6"></div>
+          <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
             Find answers to common questions about my services, process, and what you can expect when working with me.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqData.map((faq, index) => (
             <div
               key={index}
-              className="border border-border/50 rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm"
+              className="border border-border/50 rounded-md overflow-hidden bg-card/50 backdrop-blur-sm"
             >
               <Button
                 variant="ghost"
                 onClick={() => toggleFAQ(index)}
-                className="w-full h-auto p-6 text-left hover:bg-accent/50 transition-colors duration-200"
+                className="w-full h-auto p-4 text-left hover:bg-accent/50 transition-colors duration-200"
               >
                 <div className="flex items-center justify-between w-full">
-                  <h3 className="text-lg font-semibold text-foreground pr-4">
+                  <h3 className="text-base font-semibold text-foreground pr-3">
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
-                    <ChevronUp className="h-5 w-5 text-primary flex-shrink-0" />
+                    <Minus className="h-4 w-4 text-primary flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                    <Plus className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                   )}
                 </div>
               </Button>
               
               {openIndex === index && (
-                <div className="px-6 pb-6">
+                <div className="px-4 pb-4">
                   <div className="pt-2 border-t border-border/30">
-                    <p className="text-foreground/80 leading-relaxed">
+                    <p className="text-foreground/80 leading-relaxed text-sm">
                       {faq.answer}
                     </p>
                   </div>
@@ -135,8 +135,8 @@ const FAQ = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-foreground/70 mb-4">
+        <div className="mt-8 text-center">
+          <p className="text-foreground/70 mb-3 text-sm">
             Still have questions? I'm here to help!
           </p>
           <Button
@@ -146,7 +146,7 @@ const FAQ = () => {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm"
           >
             Get In Touch
           </Button>

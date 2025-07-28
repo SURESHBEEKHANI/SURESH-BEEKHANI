@@ -1,53 +1,188 @@
-import React from 'react';
-import { ArrowDown, FileText, Github, Linkedin, Twitter } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowDown, FileText, Github, Linkedin, Twitter, Sparkles, Code, Brain, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const isMobile = useIsMobile();
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentSkill, setCurrentSkill] = useState(0);
+  
+  const skills = ['Machine Learning', 'Deep Learning', 'Natural Language Processing', 'Computer Vision', 'AI Development'];
+  
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const skillInterval = setInterval(() => {
+      setCurrentSkill((prev) => (prev + 1) % skills.length);
+    }, 3000);
+    
+    return () => clearInterval(skillInterval);
+  }, [skills.length]);
+
+  const socialLinks = [
+    { icon: <Github size={20} />, href: 'https://github.com/sureshbeekhani', label: 'GitHub' },
+    { icon: <Linkedin size={20} />, href: 'https://linkedin.com/in/sureshbeekhani', label: 'LinkedIn' },
+    { icon: <Twitter size={20} />, href: 'https://x.com/SureshBeekhan', label: 'Twitter' },
+  ];
   
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0"
+      aria-label="Hero Section"
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating particles */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-primary/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-blue-400/40 rounded-full animate-ping"></div>
+        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400/30 rounded-full animate-bounce"></div>
+        <div className="absolute top-60 left-1/3 w-2 h-2 bg-indigo-400/40 rounded-full animate-pulse"></div>
+        
+        {/* Gradient orbs */}
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-100/20 to-purple-100/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-indigo-100/20 to-pink-100/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
       <div className="z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-0 text-center md:text-left">
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-          <div className="relative mt-16 sm:mt-0">
-            <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-20 animate-pulse-slow"></div>
-            <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-xl relative z-10">
-              <AvatarImage src="image/sureshbeekhani.png" alt="Suresh Beekhani" className="object-cover" loading="lazy" />
-              <AvatarFallback className="text-4xl">SB</AvatarFallback>
-            </Avatar>
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+          {/* Avatar Section */}
+          <div className="relative mt-16 sm:mt-0 order-2 md:order-1">
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-blue-400/30 to-purple-400/30 rounded-full blur-2xl opacity-60 animate-pulse"></div>
+              
+              {/* Avatar container */}
+              <div className="relative">
+                <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 border-4 border-white/20 shadow-2xl relative z-10 bg-gradient-to-br from-white to-gray-50">
+                  <AvatarImage 
+                    src="/image/sureshbeekhani.png" 
+                    alt="Suresh Beekhani - Data Scientist and AI/ML Engineer" 
+                    className="object-cover" 
+                    loading="eager"
+                  />
+                  <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary to-blue-600 text-white">
+                    SB
+                  </AvatarFallback>
+                </Avatar>
+                
+                {/* Decorative elements around avatar */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-bounce"></div>
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse"></div>
+                <div className="absolute top-1/2 -right-6 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+              </div>
+            </div>
+            
+            {/* Social links */}
+            <div className="flex justify-center md:justify-start gap-4 mt-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 hover:shadow-lg group"
+                  aria-label={`Visit ${social.label} profile`}
+                >
+                  <div className="text-gray-600 group-hover:text-primary transition-colors">
+                    {social.icon}
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
           
-          <div className="animate-fade-up mt-6 sm:mt-0">
-            <div className="inline-block mb-3 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full text-primary text-xs sm:text-sm font-semibold">
-              Data Scientist & AI/ML Engineer
+          {/* Content Section */}
+          <div className={`order-1 md:order-2 flex-1 space-y-6 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+            <div className="space-y-4">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-full text-primary text-sm font-semibold border border-primary/20">
+                <Sparkles className="w-4 h-4" />
+                Data Scientist & AI/ML Engineer
+              </div>
+              
+              {/* Main heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
+                I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-purple-600">Suresh Beekhani</span>
+              </h1>
+              
+              {/* Animated skill display */}
+              <div className="h-8 flex items-center justify-center md:justify-start">
+                <span className="text-lg sm:text-xl md:text-2xl text-gray-600 mr-2">Specializing in</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-semibold text-primary min-w-[200px] text-left">
+                  {skills[currentSkill]}
+                </span>
+              </div>
+              
+              {/* Description */}
+              <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl leading-relaxed">
+                A passionate Data Scientist and AI/ML Engineer dedicated to sharing knowledge and expertise in artificial intelligence and data science. Through engaging tutorials and innovative AI solutions, I help learners master Machine Learning, Deep Learning, Natural Language Processing, and Generative AI technologies.
+              </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 sm:mb-6">
-              I'm <span className="text-primary">Suresh Beekhani</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-2xl mb-6 sm:mb-8">
-            A passionate Data Scientist and AI/ML Engineer dedicated to sharing knowledge and expertise in artificial intelligence and data science. Through engaging tutorials and innovative AI solutions, I help learners master Machine Learning, Deep Learning, Natural Language Processing, and Generative AI technologies.
-            </p>
-            <div className="flex flex-col xs:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4">
-              <a href="https://drive.google.com/drive/folders/1nenB6s7mXNZllsPHh2-74QziMBLU-U6b?usp=drive_link" className="w-full xs:w-auto btn-primary text-sm sm:text-base inline-flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                <FileText className="mr-2 h-4 w-4" />
-                Resume
-              </a>
-              <a href="#about" className="w-full xs:w-auto group inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-md bg-foreground/5 text-foreground text-sm sm:text-base font-medium transition-all duration-300 hover:bg-foreground/10">
-                Learn More 
-                <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
-              </a>
+            
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+              <Button 
+                asChild
+                className="w-full sm:w-auto bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
+              >
+                <a 
+                  href="https://drive.google.com/drive/folders/1nenB6s7mXNZllsPHh2-74QziMBLU-U6b?usp=drive_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="View Suresh Beekhani's resume"
+                >
+                  <FileText className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                  View Resume
+                </a>
+              </Button>
+              
+              <Button 
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto group border-2 border-gray-200 hover:border-primary/50 bg-white/50 backdrop-blur-sm hover:bg-white/80 px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+              >
+                <a href="#about" aria-label="Learn more about Suresh Beekhani">
+                  Learn More 
+                  <ArrowDown className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-y-1" />
+                </a>
+              </Button>
+            </div>
+            
+            {/* Quick stats */}
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200/50">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">5+</div>
+                <div className="text-sm text-gray-600">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">25+</div>
+                <div className="text-sm text-gray-600">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">40+</div>
+                <div className="text-sm text-gray-600">AI Models Built</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="flex flex-col items-center text-foreground/60 hover:text-primary transition-colors">
-          <span className="text-xs sm:text-sm mb-1 sm:mb-2">Scroll Down</span>
-          <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5" />
-        </a>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="flex flex-col items-center text-foreground/60 hover:text-primary transition-colors group"
+        >
+          <a href="#about" aria-label="Scroll to about section">
+            <span className="text-xs mb-2 group-hover:text-primary transition-colors">Scroll Down</span>
+            <ArrowDown className="h-5 w-5 group-hover:animate-pulse" />
+          </a>
+        </Button>
       </div>
     </section>
   );

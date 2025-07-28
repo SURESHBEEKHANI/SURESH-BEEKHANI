@@ -1,10 +1,14 @@
 import React from 'react';
+import { Badge } from './ui/badge';
 
 const Approach = () => {
   return (
     <section className="py-24 bg-blue-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-2 px-4 py-1 bg-primary/10 text-primary font-medium text-base">
+            Our Approach
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Our Proven Approach to Achieve Your Objectives
           </h2>

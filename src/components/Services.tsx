@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Check, ArrowRight, Sparkles, Zap, Shield, Target, Users, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState('AI Development');
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const services = [
     'AI Development',
@@ -22,6 +28,7 @@ const Services = () => {
     'AI Development': {
       title: 'AI Development',
       description: 'Transform your business with cutting-edge AI solutions.\nOur comprehensive AI development services empower organizations to automate processes, gain insights, and drive innovation across all industries.',
+      icon: <Sparkles className="h-8 w-8" />,
       benefits: [
         {
           title: 'Robust Performance',
@@ -44,6 +51,7 @@ const Services = () => {
     'AI Chatbot Development': {
       title: 'AI Chatbot Development',
       description: 'Transform customer interactions with intelligent chatbots that understand, learn, and respond naturally to user queries.',
+      icon: <Users className="h-8 w-8" />,
       benefits: [
         {
           title: 'Natural Language Processing',
@@ -66,6 +74,7 @@ const Services = () => {
     'ChatGPT Integration': {
       title: 'ChatGPT Integration',
       description: 'Leverage the power of OpenAI\'s ChatGPT to enhance your applications with conversational AI capabilities.',
+      icon: <Zap className="h-8 w-8" />,
       benefits: [
         {
           title: 'Advanced Language Models',
@@ -88,6 +97,7 @@ const Services = () => {
     'Machine & Deep Learning': {
       title: 'Machine & Deep Learning',
       description: 'Build intelligent systems that learn from data and make predictions with unprecedented accuracy.',
+      icon: <Target className="h-8 w-8" />,
       benefits: [
         {
           title: 'Custom Model Development',
@@ -110,6 +120,7 @@ const Services = () => {
     'Computer Vision': {
       title: 'Computer Vision',
       description: 'Enable machines to see, understand, and interpret visual information like humans do.',
+      icon: <Shield className="h-8 w-8" />,
       benefits: [
         {
           title: 'Image Recognition',
@@ -132,6 +143,7 @@ const Services = () => {
     'Predictive Modeling': {
       title: 'Predictive Modeling',
       description: 'Forecast future outcomes and trends using advanced statistical and machine learning techniques.',
+      icon: <TrendingUp className="h-8 w-8" />,
       benefits: [
         {
           title: 'Statistical Analysis',
@@ -154,6 +166,7 @@ const Services = () => {
     'Natural Language Processing': {
       title: 'Natural Language Processing',
       description: 'Enable computers to understand, interpret, and generate human language naturally.',
+      icon: <Sparkles className="h-8 w-8" />,
       benefits: [
         {
           title: 'Text Analysis',
@@ -173,7 +186,6 @@ const Services = () => {
         }
       ]
     },
-
   };
 
   const currentService = serviceDetails[selectedService as keyof typeof serviceDetails];
@@ -191,95 +203,133 @@ const Services = () => {
 
   const handleReadMore = () => {
     const pagePath = servicePageMap[selectedService];
-    console.log('Selected Service:', selectedService);
-    console.log('Page Path:', pagePath);
     if (pagePath) {
       navigate(pagePath);
     }
   };
 
   return (
-    <section id="services" className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section 
+      id="services" 
+      className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white relative overflow-hidden"
+      aria-label="Services Section"
+    >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-tr from-indigo-100/30 to-pink-100/30 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+          <Badge 
+            variant="outline" 
+            className="mb-4 px-4 py-2 bg-primary/10 text-primary font-medium text-sm rounded-full border-primary/20 hover:bg-primary/15 transition-colors duration-300"
+          >
             <Check className="h-4 w-4 mr-2" />
             Services We Offer
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Our <span className="text-primary">Services</span>
+          </Badge>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Services</span>
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
+            Comprehensive AI solutions tailored to transform your business and drive innovation across all industries.
+          </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="grid md:grid-cols-3 lg:grid-cols-4">
+        <Card className="glass-effect rounded-2xl shadow-2xl border border-white/20 backdrop-blur-sm overflow-hidden">
+          <div className="grid lg:grid-cols-4">
             {/* Left Sidebar - Navigation */}
-            <div className="bg-gradient-to-b from-primary to-primary/80 p-6">
-              <h3 className="text-white text-lg font-semibold mb-6">Our Services</h3>
-              <div className="space-y-2">
-                {services.map((service) => (
+            <div className="bg-gradient-to-br from-primary via-blue-600 to-indigo-600 p-6 lg:p-8">
+              <h3 className="text-white text-xl font-semibold mb-8 flex items-center gap-2">
+                <Sparkles className="h-5 w-5" />
+                Our Services
+              </h3>
+              <div className="space-y-3">
+                {services.map((service, index) => (
                   <button
                     key={service}
                     onClick={() => setSelectedService(service)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${
                       selectedService === service
-                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                        ? 'bg-white/20 text-white shadow-lg backdrop-blur-sm border border-white/30'
+                        : 'text-white/80 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm'
                     }`}
+                    aria-label={`Select ${service} service`}
                   >
-                    {service}
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">{service}</span>
+                      {selectedService === service && (
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      )}
+                    </div>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Right Content Area */}
-            <div className="md:col-span-2 lg:col-span-3 p-8">
-              <div className="max-w-4xl">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {currentService.title}
-                </h3>
+            <div className="lg:col-span-3 p-6 lg:p-8">
+              <div className={`max-w-4xl ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-16 h-16 flex items-center justify-center border border-primary/20">
+                    {currentService.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                      {currentService.title}
+                    </h3>
+                    <div className="w-12 h-1 bg-gradient-to-r from-primary to-blue-600 rounded-full mt-2"></div>
+                  </div>
+                </div>
                 
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-gray-600 mb-8 leading-relaxed text-lg">
                   {currentService.description}
                 </p>
 
                 <div className="mb-8">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  <h4 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                    <Target className="h-5 w-5 text-primary" />
                     Business Benefits of Choosing Us
                   </h4>
-                  <div className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-6">
                     {currentService.benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <div>
-                          <p className="text-gray-900">
-                            <span className="font-semibold">{benefit.title}:</span>{' '}
-                            {benefit.description}
-                          </p>
-                        </div>
-                      </div>
+                      <Card
+                        key={index}
+                        className="glass-effect rounded-xl p-6 border border-gray-200/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]"
+                      >
+                        <CardContent className="p-0">
+                          <div className="flex items-start gap-3">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                              <h5 className="font-semibold text-gray-900 mb-2">
+                                {benefit.title}
+                              </h5>
+                              <p className="text-gray-600 text-sm leading-relaxed">
+                                {benefit.description}
+                              </p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     ))}
                   </div>
                 </div>
 
                 <div className="flex justify-end">
                   <Button 
-                    onClick={() => {
-                      console.log('Button clicked for service:', selectedService);
-                      handleReadMore();
-                    }}
-                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg flex items-center gap-2"
+                    onClick={handleReadMore}
+                    className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
                   >
-                    Read More
-                    <ArrowRight className="h-4 w-4" />
+                    Learn More
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );
