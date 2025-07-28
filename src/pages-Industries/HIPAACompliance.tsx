@@ -1,470 +1,376 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AnimatedHero from "../components/ui/AnimatedHero";
+import AnimatedSection from "../components/ui/AnimatedSection";
+import AnimatedCard from "../components/ui/AnimatedCard";
+import AnimatedCarousel from "../components/ui/AnimatedCarousel";
+import AnimatedFAQ from "../components/ui/AnimatedFAQ";
 
 const HIPAACompliance: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [copied, setCopied] = useState(false);
 
-  const useCases = [
-    {
-      id: 0,
-      title: "Automated PHI Redaction",
-      description: "AI systems can automatically detect and redact Protected Health Information (PHI) in documents, ensuring compliance with HIPAA privacy rules.",
-      image: "/image/pages_img/Automated-PHI-Redaction.jpg",
-      alt: "Automated PHI Redaction"
-    },
+  const useCases = useMemo(() => [
     {
       id: 1,
-      title: "Anomaly Detection in Access Logs",
-      description: "Machine learning models monitor access logs for unusual activity, helping prevent unauthorized access to sensitive health data.",
-      image: "/image/pages_img/Anomaly-Detection-Access-Logs.jpg",
-      alt: "Anomaly Detection"
+      title: "Automated Compliance Monitoring",
+      description: "AI continuously monitors systems for HIPAA violations, automatically detecting and flagging potential security breaches and compliance issues.",
+      image: "/image/pages_img/Automated-Compliance-Monitoring.jpg",
+      alt: "AI Automated HIPAA Compliance Monitoring"
     },
     {
       id: 2,
-      title: "Secure Data Sharing",
-      description: "AI enables secure, compliant data sharing between healthcare providers, improving care coordination while maintaining privacy.",
-      image: "/image/pages_img/Secure-Data-Sharing.jpg",
-      alt: "Secure Data Sharing"
+      title: "Data Access Control & Audit",
+      description: "AI-powered systems track and analyze data access patterns, ensuring only authorized personnel can access sensitive patient information.",
+      image: "/image/pages_img/Data-Access-Control-Audit.jpg",
+      alt: "AI Data Access Control"
     },
     {
       id: 3,
-      title: "Automated Compliance Audits",
-      description: "AI tools can automate HIPAA compliance audits, flagging potential violations and streamlining reporting.",
-      image: "/image/pages_img/Automated-Compliance-Audits.webp",
-      alt: "Automated Compliance Audits"
+      title: "Risk Assessment & Management",
+      description: "Machine learning models identify potential security risks and vulnerabilities, enabling proactive compliance management and threat prevention.",
+      image: "/image/pages_img/Risk-Assessment-Management.jpg",
+      alt: "AI Risk Assessment"
     },
     {
       id: 4,
-      title: "Real-Time Threat Detection",
-      description: "AI-driven security systems provide real-time alerts for potential data breaches or suspicious activity.",
-      image: "/image/pages_img/Real-Time-Threat-Detection.jpeg",
-      alt: "Real-Time Threat Detection"
+      title: "Secure Communication Systems",
+      description: "AI ensures all patient communications are encrypted and compliant, automatically detecting and preventing unauthorized data transmission.",
+      image: "/image/pages_img/Secure-Communication-Systems.jpg",
+      alt: "AI Secure Communication"
     },
     {
       id: 5,
-      title: "Patient Consent Management",
-      description: "AI helps manage and verify patient consent for data use, ensuring all actions are logged and compliant.",
-      image: "/image/pages_img/Patient-Consent-Management.png",
-      alt: "Patient Consent Management"
+      title: "Incident Response Automation",
+      description: "AI systems automatically detect and respond to potential HIPAA violations, minimizing response times and reducing breach impact.",
+      image: "/image/pages_img/Incident-Response-Automation.jpg",
+      alt: "AI Incident Response"
     },
-  ];
+    {
+      id: 6,
+      title: "Compliance Reporting & Analytics",
+      description: "AI generates comprehensive compliance reports and provides analytics to demonstrate HIPAA adherence and identify improvement areas.",
+      image: "/image/pages_img/Compliance-Reporting-Analytics.jpg",
+      alt: "AI Compliance Reporting"
+    },
+    {
+      id: 7,
+      title: "Training & Awareness Programs",
+      description: "AI-powered training systems ensure staff understand HIPAA requirements and maintain ongoing compliance awareness.",
+      image: "/image/pages_img/Training-Awareness-Programs.jpg",
+      alt: "AI Training Programs"
+    }
+  ], []);
 
-  const faqData = [
+  const faqData = useMemo(() => [
     {
       id: 1,
-      question: "What is HIPAA?",
-      answer: "HIPAA (Health Insurance Portability and Accountability Act) is a US law designed to protect patients' medical records and other health information provided to health plans, doctors, hospitals, and other healthcare providers."
+      question: "What is HIPAA Compliance?",
+      answer: "HIPAA (Health Insurance Portability and Accountability Act) compliance ensures the protection of patient health information through security measures, privacy controls, and regulatory adherence."
     },
     {
       id: 2,
       question: "How does AI help with HIPAA compliance?",
-      answer: "AI can automate data protection, monitor for unauthorized access, assist with audits, and help ensure that healthcare data is handled in compliance with HIPAA regulations."
+      answer: "AI enhances HIPAA compliance by automating monitoring, detecting violations, managing access controls, and providing real-time security insights to protect patient data."
     },
     {
       id: 3,
-      question: "What are the risks of using AI in healthcare?",
-      answer: "Risks include data breaches, algorithmic bias, and improper handling of sensitive information. Proper safeguards and compliance checks are essential."
+      question: "What are the benefits of AI in HIPAA compliance?",
+      answer: "AI reduces compliance costs, improves accuracy, enables proactive threat detection, automates reporting, and ensures continuous monitoring of security measures."
     },
     {
       id: 4,
-      question: "Can AI replace manual HIPAA audits?",
-      answer: "AI can automate many aspects of compliance monitoring and reporting, but human oversight is still necessary for full compliance."
+      question: "Are there challenges to implementing AI for HIPAA?",
+      answer: "Challenges include ensuring AI systems themselves are compliant, maintaining human oversight, integrating with existing systems, and balancing automation with privacy requirements."
     },
     {
       id: 5,
-      question: "Is patient data safe with AI systems?",
-      answer: "With proper security measures, encryption, and compliance protocols, AI systems can help keep patient data safe and private."
+      question: "Can AI replace human compliance officers?",
+      answer: "AI augments human compliance efforts by automating routine tasks and providing insights, while human expertise remains essential for complex decisions and oversight."
     }
-  ];
+  ], []);
 
-  const nextSlide = () => {
+  const benefits = useMemo(() => [
+    {
+      icon: (
+        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      ),
+      title: "Enhanced Security",
+      description: "AI provides continuous monitoring and threat detection, ensuring patient data remains protected and HIPAA requirements are consistently met.",
+      bgColor: "bg-green-300/20",
+      textColor: "text-green-300",
+      borderColor: "hover:border-green-300"
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
+        </svg>
+      ),
+      title: "Cost Reduction",
+      description: "AI automates compliance tasks, reduces manual monitoring costs, and prevents expensive violations through proactive detection.",
+      bgColor: "bg-blue-300/20",
+      textColor: "text-blue-300",
+      borderColor: "hover:border-blue-300"
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
+        </svg>
+      ),
+      title: "Regulatory Compliance",
+      description: "AI ensures consistent adherence to HIPAA regulations, automates reporting, and provides audit trails for compliance verification.",
+      bgColor: "bg-green-300/20",
+      textColor: "text-green-300",
+      borderColor: "hover:border-green-300"
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
+        </svg>
+      ),
+      title: "Proactive Risk Management",
+      description: "AI identifies potential security risks before they become violations, enabling preventive measures and continuous improvement.",
+      bgColor: "bg-blue-300/20",
+      textColor: "text-blue-300",
+      borderColor: "hover:border-blue-300"
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
+        </svg>
+      ),
+      title: "Automated Monitoring",
+      description: "AI provides 24/7 monitoring of systems and data access, ensuring immediate detection and response to potential violations.",
+      bgColor: "bg-green-300/20",
+      textColor: "text-green-300",
+      borderColor: "hover:border-green-300"
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+      ),
+      title: "Trust & Reputation",
+      description: "AI-powered compliance demonstrates commitment to patient privacy, building trust and maintaining organizational reputation.",
+      bgColor: "bg-blue-300/20",
+      textColor: "text-blue-300",
+      borderColor: "hover:border-blue-300"
+    }
+  ], []);
+
+  const stats = useMemo(() => [
+    {
+      value: "3+",
+      label: "Years of HIPAA AI Experience",
+      description: "Over three years of specialized experience delivering AI solutions that ensure HIPAA compliance and protect patient data."
+    },
+    {
+      value: "15+",
+      label: "HIPAA AI Projects",
+      description: "Successfully delivered 15+ HIPAA compliance AI projects, each designed to protect patient privacy and meet regulatory requirements."
+    },
+    {
+      value: "25+",
+      label: "AI Models Built",
+      description: "Developed 25+ custom AI models for compliance monitoring, threat detection, and security analytics."
+    },
+    {
+      value: "10+",
+      label: "Healthcare Partners",
+      description: "Collaborated with 10+ healthcare organizations, ensuring their systems meet HIPAA requirements and protect patient data."
+    },
+    {
+      value: "🌍",
+      label: "Global Compliance Impact",
+      description: "Delivering scalable HIPAA compliance AI solutions worldwide—protecting patient privacy across diverse healthcare environments."
+    }
+  ], []);
+
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === useCases.length - 3 ? 0 : prevIndex + 1
     );
-  };
+  }, [useCases.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? useCases.length - 3 : prevIndex - 1
     );
-  };
+  }, [useCases.length]);
 
-  const toggleFAQ = (id: number) => {
+  const toggleFAQ = useCallback((id: number) => {
     setOpenFAQ(openFAQ === id ? null : id);
-  };
+  }, [openFAQ]);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
+      
       {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800/90 via-green-700/90 to-blue-900/90">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/image/pages_img/HIPAA.avif"
-            alt="Modern HIPAA Compliance Solutions Background"
-            className="w-full h-full object-cover object-center"
-            style={{ filter: 'brightness(0.5)' }}
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-blue-900/70" />
-        </div>
-        {/* SVG pattern overlay (optional, can be removed if not needed) */}
-        <div className="absolute inset-0 opacity-10 z-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300bfae' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-            }}
-          ></div>
-        </div>
-        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="text-white space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
-                  AI & <span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">HIPAA Compliance</span>
-                </h1>
-              </div>
-              <p className="text-xl lg:text-2xl leading-relaxed text-gray-100 max-w-2xl">
-                Empowering healthcare organizations to safeguard data, streamline compliance, and elevate patient trust with advanced AI-driven HIPAA solutions.
-              </p>
-              <div>
-                <a
-                  href="mailto:sureshbeekhani@gmail.com"
-                  className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:from-green-500 hover:to-blue-600 transition-all duration-200 text-lg"
-                >
-                  Talk to in Expert
-                </a>
-              </div>
-            </div>
-      </div>
-        </div>
-      </section>
+      <AnimatedHero
+        title="AI In HIPAA Compliance"
+        subtitle="Transform healthcare data protection with AI-powered compliance monitoring, automated security controls, and intelligent threat detection that ensures patient privacy."
+        highlightText="HIPAA"
+        backgroundImage="/image/pages_img/HIPAACompliance.jpg"
+        gradientFrom="from-blue-900"
+        gradientVia="via-cyan-800"
+        gradientTo="to-blue-900"
+        buttonText="Talk to an Expert"
+        buttonLink="mailto:sureshbeekhani26@gmail.com"
+      />
 
       {/* Main Content Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-white/90">
+      <AnimatedSection className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-white/90">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative flex justify-center lg:justify-start">
+            {/* Left: Image */}
+            <motion.div 
+              className="relative flex justify-center lg:justify-start"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
-                <img
-                  src="/image/pages_img/AI-HIPAA-Compliance.png"
-                  alt="AI-Enabled HIPAA Compliance Illustration"
+                <motion.img
+                  src="/image/pages_img/AI-HIPAA.jpg"
+                  alt="AI in HIPAA Compliance - Data Protection"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  loading="lazy"
                 />
               </div>
-            </div>
-            <div className="space-y-8">
+            </motion.div>
+            
+            {/* Right: Content */}
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-blue-900">
-                  AI for <span className="text-green-700">HIPAA Compliance</span>
+                  AI in <span className="text-green-700">Healthcare Data Protection</span>
                 </h2>
               </div>
               <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                Harness the power of AI and machine learning to automate compliance, proactively secure sensitive data, and ensure seamless adherence to HIPAA standards across your organization.
+                AI, including <span className="font-semibold text-green-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is revolutionizing HIPAA compliance—enabling automated monitoring, intelligent threat detection, and proactive data protection.
               </p>
               <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From instant threat detection to automated audit trails, AI solutions minimize risk, boost operational efficiency, and let your teams focus on delivering exceptional patient care.
+                From automated compliance monitoring to secure communication systems, AI empowers healthcare organizations to maintain patient privacy, meet regulatory requirements, and build trust through robust data protection.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Capabilities and Benefits Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/90 via-blue-900/90 to-blue-800/90">
+      {/* AI Capabilities and Benefits Section */}
+      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/90 via-blue-900/90 to-blue-800/90">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
+          <motion.div 
+            className="text-center space-y-6 mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
             </div>
             <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Capabilities and Benefits
+              AI Capabilities & Compliance Impact
             </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Discover how AI transforms HIPAA compliance into a strategic advantage for healthcare organizations.
+              Explore how AI and machine learning are transforming HIPAA compliance and healthcare data protection.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Automated Compliance</h3>
-                  <p className="text-gray-200 leading-relaxed">AI streamlines compliance processes, reducing manual workload and virtually eliminating costly errors in HIPAA management.</p>
-                </div>
-              </div>
-            </div>
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Enhanced Security</h3>
-                  <p className="text-gray-200 leading-relaxed">Real-time machine learning identifies threats and vulnerabilities, proactively protecting patient data from emerging risks.</p>
-                </div>
-              </div>
-            </div>
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Cost Reduction</h3>
-                  <p className="text-gray-200 leading-relaxed">Automated AI-driven workflows lower compliance and security costs, maximizing your organization’s resources and ROI.</p>
-                </div>
-              </div>
-            </div>
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Faster Audits</h3>
-                  <p className="text-gray-200 leading-relaxed">AI-powered tools accelerate compliance audits and reporting, ensuring you stay ahead of regulatory requirements with ease.</p>
-                </div>
-              </div>
-            </div>
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Improved Accuracy</h3>
-                  <p className="text-gray-200 leading-relaxed">AI minimizes human error, delivering consistently accurate and reliable compliance outcomes.</p>
-                </div>
-              </div>
-            </div>
-            <div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-300/20 rounded-lg flex items-center justify-center group-hover:bg-blue-300/30 transition-colors">
-                  <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg text-white mb-2">Regulatory Confidence</h3>
-                  <p className="text-gray-200 leading-relaxed">Stay confidently compliant as AI keeps your organization aligned with evolving HIPAA regulations and industry best practices.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              AI & HIPAA Use Cases
-            </h2>
-            <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              See how leading healthcare organizations leverage AI to achieve robust HIPAA compliance and operational excellence.
-            </p>
-          </div>
-          <div className="relative">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-24 transform -translate-y-1/2 z-10 bg-green-100 hover:bg-green-200 text-green-800 p-3 rounded-full shadow-lg transition-all duration-300"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-24 transform -translate-y-1/2 z-10 bg-green-100 hover:bg-green-200 text-green-800 p-3 rounded-full shadow-lg transition-all duration-300"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            <div className="flex space-x-8 px-16 overflow-hidden">
-              {useCases.slice(currentIndex, currentIndex + 3).map((useCase) => (
-                <div key={useCase.id} className="flex-shrink-0 w-80 space-y-4">
-                  <div className="relative h-48">
-                    <img
-                      src={useCase.image}
-                      alt={
-                        useCase.id === 0 ? "Automated PHI Redaction for HIPAA Compliance" :
-                        useCase.id === 1 ? "AI-Powered Anomaly Detection in Access Logs" :
-                        useCase.id === 2 ? "Secure Data Sharing with AI" :
-                        useCase.id === 3 ? "Automated HIPAA Compliance Audits" :
-                        useCase.id === 4 ? "Real-Time Threat Detection in Healthcare" :
-                        useCase.id === 5 ? "AI-Driven Patient Consent Management" :
-                        useCase.alt
-                      }
-                      className="w-full h-full object-cover rounded-lg"
-                    />
+            {benefits.map((benefit, index) => (
+              <AnimatedCard
+                key={index}
+                delay={index * 0.1}
+                className="group bg-white/10 backdrop-blur-sm border border-white/20 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className={`flex-shrink-0 w-12 h-12 ${benefit.bgColor} rounded-lg flex items-center justify-center group-hover:bg-opacity-40 transition-colors`}>
+                    {benefit.icon}
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{
-                      useCase.id === 0 ? "Automated PHI Redaction" :
-                      useCase.id === 1 ? "Anomaly Detection in Access Logs" :
-                      useCase.id === 2 ? "Secure Data Sharing" :
-                      useCase.id === 3 ? "Automated Compliance Audits" :
-                      useCase.id === 4 ? "Real-Time Threat Detection" :
-                      useCase.id === 5 ? "Patient Consent Management" :
-                      useCase.title
-                    }</h3>
-                    <p className="text-gray-600">{
-                      useCase.id === 0 ? "AI automatically identifies and redacts Protected Health Information (PHI) in records, ensuring privacy and seamless HIPAA compliance." :
-                      useCase.id === 1 ? "Machine learning continuously monitors access logs, instantly flagging suspicious activity to prevent unauthorized data exposure." :
-                      useCase.id === 2 ? "AI enables secure, compliant data exchange between providers, enhancing care coordination while maintaining strict privacy controls." :
-                      useCase.id === 3 ? "AI automates HIPAA compliance audits, quickly identifying potential risks and simplifying regulatory reporting." :
-                      useCase.id === 4 ? "AI-driven security delivers real-time alerts for potential breaches, empowering rapid response to protect sensitive health data." :
-                      useCase.id === 5 ? "AI streamlines patient consent management, ensuring every action is logged, verified, and fully compliant." :
-                      useCase.description
-                    }</p>
-                  </div>
+                  <h3 className="font-semibold text-lg text-white mb-2">{benefit.title}</h3>
+                  <p className="text-gray-200 leading-relaxed">{benefit.description}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Me Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/90 via-blue-900/90 to-blue-800/90">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Why Choose Me
-            </h2>
-            <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              Proven expertise in delivering secure, compliant AI solutions for healthcare leaders.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
-              <span className="text-4xl font-extrabold text-green-600">5+</span>
-              <h3 className="text-lg font-bold text-blue-900">Years in Healthcare AI</h3>
-              <p className="text-gray-700 text-sm">
-                5+ years of hands-on experience building AI solutions that drive compliance and security in healthcare.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
-              <span className="text-4xl font-extrabold text-green-600">15+</span>
-              <h3 className="text-lg font-bold text-blue-900">HIPAA Projects</h3>
-              <p className="text-gray-700 text-sm">
-                Delivered 15+ successful HIPAA-compliant AI projects for top healthcare organizations.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
-              <span className="text-4xl font-extrabold text-green-600">20+</span>
-              <h3 className="text-lg font-bold text-blue-900">AI Models Deployed</h3>
-              <p className="text-gray-700 text-sm">
-                Developed and deployed 20+ AI models focused on healthcare data privacy, security, and compliance.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
-              <span className="text-4xl font-extrabold text-green-600">10+</span>
-              <h3 className="text-lg font-bold text-blue-900">Healthcare Partners</h3>
-              <p className="text-gray-700 text-sm">
-                Trusted by 10+ healthcare providers to deliver robust, compliant AI-driven solutions.
-              </p>
-            </div>
-            <div className="bg-white/90 rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center space-y-3">
-              <span className="text-3xl text-green-600">
-                <svg className="w-8 h-8 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </span>
-              <h3 className="text-lg font-bold text-blue-900">Global Reach</h3>
-              <p className="text-gray-700 text-sm">
-                Supporting healthcare innovators worldwide with scalable, HIPAA-compliant AI solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Frequently Asked Questions (FAQ) Section */}
-      <section className="py-20 px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-green-700">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {faqData.map((faq) => (
-              <div key={faq.id} className="bg-white rounded-xl p-6 shadow-md border border-green-100">
-                <button
-                  className="w-full flex justify-between items-center focus:outline-none"
-                  onClick={() => toggleFAQ(faq.id)}
-                  aria-expanded={openFAQ === faq.id}
-                  aria-controls={`faq-answer-${faq.id}`}
-                >
-                  <span className={`font-semibold text-lg mb-2 text-green-700 text-left transition-colors duration-200 ${openFAQ === faq.id ? 'text-blue-700' : ''}`}>{
-                    faq.id === 1 ? "What is HIPAA?" :
-                    faq.id === 2 ? "How does AI support HIPAA compliance?" :
-                    faq.id === 3 ? "What are the risks of using AI in healthcare?" :
-                    faq.id === 4 ? "Can AI fully replace manual HIPAA audits?" :
-                    faq.id === 5 ? "Is patient data secure with AI systems?" :
-                    faq.question
-                  }</span>
-                  <svg
-                    className={`w-6 h-6 ml-2 transform transition-transform duration-200 ${openFAQ === faq.id ? 'rotate-180 text-blue-700' : 'text-green-700'}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {openFAQ === faq.id && (
-                  <div
-                    id={`faq-answer-${faq.id}`}
-                    className="mt-4 text-green-800 text-base text-left transition-all duration-200"
-                  >{
-                    faq.id === 1 ? "HIPAA (Health Insurance Portability and Accountability Act) is a U.S. law that safeguards patient medical records and health information, ensuring privacy and security across the healthcare ecosystem." :
-                    faq.id === 2 ? "AI automates data protection, continuously monitors for unauthorized access, streamlines audits, and ensures healthcare data is managed in strict alignment with HIPAA requirements." :
-                    faq.id === 3 ? "Potential risks include data breaches, algorithmic bias, and improper handling of sensitive information. Robust safeguards and ongoing compliance checks are essential to mitigate these risks." :
-                    faq.id === 4 ? "AI can automate much of the compliance monitoring and reporting process, but expert human oversight remains vital for comprehensive HIPAA adherence." :
-                    faq.id === 5 ? "With advanced security, encryption, and compliance protocols, AI systems can help ensure patient data remains private and protected at all times." :
-                    faq.answer
-                  }</div>
-                )}
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
+
+      {/* Use Cases Section */}
+      <AnimatedCarousel
+        useCases={useCases}
+        title="AI HIPAA Compliance Use Cases"
+        subtitle="See how AI is reshaping healthcare data protection through innovative applications and measurable compliance impact."
+        accentColor="green"
+      />
+
+      {/* Why Choose Me Section */}
+      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/90 via-blue-900/90 to-blue-800/90">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            className="text-center space-y-6 mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex justify-center">
+              <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
+            </div>
+            <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              Why Partner With Me
+            </h2>
+            <p className="text-xl text-green-100 max-w-3xl mx-auto">
+              Trusted expertise and a proven record of delivering transformative AI solutions for healthcare data protection and HIPAA compliance.
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+            {stats.map((stat, index) => (
+              <AnimatedCard
+                key={index}
+                delay={index * 0.1}
+                className="bg-white/90 border border-blue-100 p-6 flex flex-col items-center text-center space-y-3"
+              >
+                <span className="text-4xl font-extrabold text-green-600">{stat.value}</span>
+                <h3 className="text-lg font-bold text-blue-900">{stat.label}</h3>
+                <p className="text-gray-700 text-sm">{stat.description}</p>
+              </AnimatedCard>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* FAQ Section */}
+      <AnimatedFAQ
+        faqData={faqData}
+        title="Frequently Asked Questions"
+        accentColor="green"
+      />
+      
       <Footer />
     </div>
   );

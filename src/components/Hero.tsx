@@ -9,7 +9,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSkill, setCurrentSkill] = useState(0);
   
-  const skills = ['Machine Learning', 'Deep Learning', 'Natural Language Processing', 'Computer Vision', 'AI Development'];
+  const skills = ['Machine Learning', 'Deep Learning', 'Natural Language Processing', 'Computer Vision', 'AI Development','Generative AI'];
   
   useEffect(() => {
     setIsVisible(true);
