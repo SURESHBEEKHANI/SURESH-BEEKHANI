@@ -16,42 +16,42 @@ import {
 } from '@/components/ui/portfolio-components';
 
 // Enhanced Icon components with better accessibility
-const AutomationIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+const AutomationIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="4" y="4" width="16" height="16" rx="2"/>
     <path d="M8 2v4M16 2v4M4 10h16"/>
   </svg>
 );
 
-const AccuracyIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const AccuracyIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 8v4l3 3"/>
   </svg>
 );
 
-const ComplianceIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const ComplianceIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
   </svg>
 );
 
-const InsightsIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const InsightsIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M13 16h-1v-4h-1m1-4h.01"/>
     <circle cx="12" cy="12" r="10"/>
   </svg>
 );
 
-const SpeedIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const SpeedIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
     <path d="M21 12h-6"/>
   </svg>
 );
 
-const IntegrationIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const IntegrationIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M4 17v2a2 2 0 0 0 2 2h2M4 7V5a2 2 0 0 1 2-2h2m8 0h2a2 2 0 0 1 2 2v2m0 8v2a2 2 0 0 1-2 2h-2"/>
   </svg>
@@ -61,33 +61,27 @@ const IntegrationIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
 const features = [
   { 
     title: 'Automated Review', 
-    icon: AutomationIcon,
-    description: 'AI-powered contract analysis and risk detection'
+    icon: AutomationIcon
   },
   { 
     title: 'High Accuracy', 
-    icon: AccuracyIcon,
-    description: '99% accuracy in identifying legal issues and risks'
+    icon: AccuracyIcon
   },
   { 
     title: 'Compliance Checks', 
-    icon: ComplianceIcon,
-    description: 'Built-in regulatory compliance verification'
+    icon: ComplianceIcon
   },
   { 
     title: 'Actionable Insights', 
-    icon: InsightsIcon,
-    description: 'Clear recommendations and risk assessments'
+    icon: InsightsIcon
   },
   { 
     title: 'Rapid Processing', 
-    icon: SpeedIcon,
-    description: 'Process contracts in minutes, not hours'
+    icon: SpeedIcon
   },
   { 
     title: 'Seamless Integration', 
-    icon: IntegrationIcon,
-    description: 'Works with existing legal workflows and systems'
+    icon: IntegrationIcon
   },
 ];
 
@@ -100,41 +94,41 @@ const results = [
 ];
 
 // Development process icons with enhanced accessibility
-const AgileIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+const AgileIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 6v6l4 2"/>
   </svg>
 );
 
-const FeedbackIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const FeedbackIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
   </svg>
 );
 
-const ApiIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const ApiIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="2"/>
     <path d="M7 7h.01M7 11h.01M7 15h.01M11 7h2M11 11h2M11 15h2M15 7h2M15 11h2M15 15h2"/>
   </svg>
 );
 
-const NlpIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const NlpIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 8v4l3 3"/>
   </svg>
 );
 
-const ShieldIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const ShieldIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" stroke="currentColor" strokeWidth="2"/>
     <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2"/>
   </svg>
 );
 
-const ScalableIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const ScalableIcon = ({ className = "w-6 h-6 mb-1 text-indigo-600" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 0v10l6 3"/>
   </svg>
@@ -145,7 +139,7 @@ const steps = [
   { number: 2, title: 'User Feedback Loops', icon: FeedbackIcon },
   { number: 3, title: 'API & Data Integration', icon: ApiIcon },
   { number: 4, title: 'Advanced NLP Models', icon: NlpIcon },
-  { number: 5, title: 'Data Security & Compliance', icon: ShieldIcon },
+  { number: 5, title: 'Security & Compliance', icon: ShieldIcon },
   { number: 6, title: 'Scalable Architecture', icon: ScalableIcon },
 ];
 
@@ -156,24 +150,24 @@ const AILegalContractAnalyzer = () => {
   const infoContent = useMemo(() => (
     <>
       <p>
-        The AI Legal Contract Analyzer is an advanced digital solution designed to streamline and automate the contract review process for legal teams and businesses. By leveraging natural language processing and machine learning, it identifies risks, ensures compliance, and extracts key insights from complex legal documents in seconds.
+        AI-powered contract analyzer that automates review, detects risks, and ensures compliance using NLP and machine learning.
       </p>
       <p className="mt-3">
-        Unlike manual review, which is time-consuming and error-prone, this AI tool delivers consistent, accurate, and scalable results—freeing up legal professionals to focus on higher-value work.
+        Delivers consistent, accurate results while freeing legal professionals to focus on higher-value work.
       </p>
       <h3 className="font-semibold text-indigo-800 mt-4 mb-2">Key Benefits</h3>
       <ul className="list-disc pl-6 mb-3 space-y-1">
-        <li><b>Automated Risk Detection:</b> Instantly flags ambiguous clauses, missing terms, and potential liabilities.</li>
-        <li><b>Compliance Assurance:</b> Checks contracts against regulatory standards and company policies.</li>
-        <li><b>Faster Turnaround:</b> Reduces review time from hours to minutes, accelerating deal cycles.</li>
-        <li><b>Consistent Accuracy:</b> Minimizes human error and ensures every contract is reviewed to the same high standard.</li>
-        <li><b>Actionable Insights:</b> Extracts obligations, deadlines, and key data for easy tracking and reporting.</li>
-        <li><b>Secure & Confidential:</b> Handles sensitive documents with enterprise-grade security and privacy controls.</li>
+        <li><b>Risk Detection:</b> Flags ambiguous clauses and potential liabilities.</li>
+        <li><b>Compliance:</b> Checks against regulatory standards.</li>
+        <li><b>Speed:</b> Reduces review time from hours to minutes.</li>
+        <li><b>Accuracy:</b> Minimizes human error.</li>
+        <li><b>Insights:</b> Extracts key data for tracking.</li>
+        <li><b>Security:</b> Enterprise-grade privacy controls.</li>
       </ul>
       <h3 className="font-semibold text-indigo-800 mt-4 mb-2">Market Growth</h3>
-      <p className="mb-3">The global legal AI market is projected to exceed $37 billion by 2030, driven by the need for efficiency, compliance, and risk mitigation in legal operations.</p>
-      <h3 className="font-semibold text-indigo-800 mt-4 mb-2">Beyond Review – A Legal Partner</h3>
-      <p>More than just a review tool, the AI Legal Contract Analyzer acts as a digital legal partner—offering clause suggestions, version comparisons, and real-time collaboration for legal teams and clients.</p>
+      <p className="mb-3">Global legal AI market projected to exceed $37 billion by 2030.</p>
+      <h3 className="font-semibold text-indigo-800 mt-4 mb-2">Digital Legal Partner</h3>
+      <p>Offers clause suggestions, version comparisons, and real-time collaboration.</p>
     </>
   ), []);
 
@@ -184,7 +178,7 @@ const AILegalContractAnalyzer = () => {
       {/* Enhanced Hero Section */}
       <PortfolioHero
         title="AI Legal Contract Analyzer"
-        description="Automate contract review, boost compliance, and gain actionable insights with AI-powered legal document analysis."
+        description="Automate contract review and boost compliance with AI-powered analysis."
         gradient="from-indigo-900 via-blue-700 to-purple-200"
         backgroundImage="/image/pages_img/AI-Legal-Contract-Analyzer-key-feature.jpg"
       />
@@ -195,12 +189,13 @@ const AILegalContractAnalyzer = () => {
         showFullInfo={showFullInfo}
         setShowFullInfo={setShowFullInfo}
         titleColor="text-indigo-900"
+        className="!text-sm md:!text-base lg:!text-lg"
       >
         {infoContent}
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -209,11 +204,11 @@ const AILegalContractAnalyzer = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
               What is AI Legal Contract Analyzer?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl mb-6 leading-relaxed">
-              A smart tool that automates contract review, detects risks, and ensures compliance saving time and reducing legal exposure.
+            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
+              Smart tool that automates contract review, detects risks, and ensures compliance.
             </p>
           </motion.div>
           <PortfolioImage
@@ -225,7 +220,7 @@ const AILegalContractAnalyzer = () => {
       </PortfolioSection>
 
       {/* Enhanced Problem Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
@@ -238,19 +233,19 @@ const AILegalContractAnalyzer = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl leading-relaxed">
-              Manual contract review is slow, costly, and prone to human error. Legal teams struggle to keep up with growing contract volumes and evolving regulations, risking missed obligations and compliance failures.
+            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+              Manual review is slow, costly, and error-prone. Teams struggle with growing volumes and evolving regulations.
             </p>
           </motion.div>
         </div>
       </PortfolioSection>
 
       {/* Enhanced Main Content Section */}
-      <div className="py-24 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-20 px-6">
+      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-12 px-6">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
@@ -261,11 +256,11 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-700 max-w-xl leading-relaxed">
-                  The AI Legal Contract Analyzer automates review, flags risks, and extracts insights empowering legal teams to work faster, smarter, and with greater confidence.
+                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+                  AI automates review, flags risks, and extracts insights for faster, smarter legal work.
                 </p>
               </motion.div>
               <PortfolioImage
@@ -280,8 +275,9 @@ const AILegalContractAnalyzer = () => {
           <PortfolioSection className="max-w-6xl mx-auto">
             <SectionHeader
               title="Key Features"
-              subtitle="Advanced capabilities that transform contract analysis"
+              subtitle="Advanced capabilities for contract analysis"
               delay={0.1}
+              className="!text-lg md:!text-xl lg:!text-2xl !text-indigo-900"
             />
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
               <PortfolioImage
@@ -294,14 +290,13 @@ const AILegalContractAnalyzer = () => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {features.map((f, i) => (
                   <FeatureCard
                     key={i}
                     icon={f.icon}
                     title={f.title}
-                    description={f.description}
                     delay={i * 0.1}
                   />
                 ))}
@@ -322,8 +317,9 @@ const AILegalContractAnalyzer = () => {
                   title="Development Process"
                   subtitle="Our systematic approach to building AI solutions"
                   delay={0.1}
+                  className="!text-lg md:!text-xl lg:!text-2xl !text-indigo-900"
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-6">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
@@ -335,7 +331,7 @@ const AILegalContractAnalyzer = () => {
                 </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/implements-ai-assents.png"
+                src="/image/pages_img/Development-Process-contect-analyer.avif"
                 alt="Development Illustration"
               />
             </div>
@@ -347,6 +343,9 @@ const AILegalContractAnalyzer = () => {
               <PortfolioImage
                 src="/image/pages_img/result.jpg"
                 alt="Results and impact illustration"
+                className="mt-20"
+                width="600"
+                height="400"
               />
               <motion.div 
                 initial={{ opacity: 0, x: 30 }}
@@ -359,6 +358,7 @@ const AILegalContractAnalyzer = () => {
                   title="Results"
                   subtitle="Measurable impact and outcomes"
                   delay={0.1}
+                  className="!text-lg md:!text-xl lg:!text-2xl !text-indigo-900"
                 />
                 <motion.div
                   variants={staggerContainer}
@@ -388,7 +388,7 @@ const AILegalContractAnalyzer = () => {
           {/* Enhanced Call to Action */}
           <CallToAction
             title="Ready to Transform Your Legal Operations?"
-            subtitle="Let's discuss how AI can revolutionize your contract analysis"
+            subtitle="Let's discuss AI-powered contract analysis"
             gradient="from-indigo-500 to-indigo-700"
             hoverGradient="hover:from-indigo-600 hover:to-indigo-800"
           />

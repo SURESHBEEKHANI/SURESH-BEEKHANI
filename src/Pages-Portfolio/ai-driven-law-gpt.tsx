@@ -60,33 +60,27 @@ const CodeIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
 const features = [
   { 
     title: 'Legal Text Generation', 
-    icon: GavelIcon,
-    description: 'AI-powered drafting of contracts, briefs, and legal documents'
+    icon: GavelIcon
   },
   { 
     title: 'AI-Powered Research', 
-    icon: AiIcon,
-    description: 'Intelligent case law and statute analysis'
+    icon: AiIcon
   },
   { 
-    title: 'Data Privacy & Security', 
-    icon: ShieldIcon,
-    description: 'Enterprise-grade security and compliance'
+    title: 'Privacy & Security', 
+    icon: ShieldIcon
   },
   { 
-    title: 'Instant Case Summaries', 
-    icon: ClockIcon,
-    description: 'Quick generation of case summaries and insights'
+    title: 'Case Summaries', 
+    icon: ClockIcon
   },
   { 
     title: 'Cloud-Based Access', 
-    icon: CloudIcon,
-    description: 'Secure, scalable cloud infrastructure'
+    icon: CloudIcon
   },
   { 
     title: 'Modern Tech Stack', 
-    icon: CodeIcon,
-    description: 'Built with cutting-edge AI and cloud technologies'
+    icon: CodeIcon
   },
 ];
 
@@ -140,12 +134,12 @@ const SustainableIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
 );
 
 const steps = [
-  { number: 1, title: 'Agile Development', icon: AgileIcon },
-  { number: 2, title: 'User Feedback Loops', icon: FeedbackIcon },
-  { number: 3, title: 'API Integrations', icon: ApiIcon },
-  { number: 4, title: 'Legal Domain Expertise', icon: LawIcon },
-  { number: 5, title: 'Compliance & Security', icon: ComplianceIcon },
-  { number: 6, title: 'Sustainable Architecture', icon: SustainableIcon },
+  { number: 1, title: 'Agile  Development', icon: AgileIcon },
+  { number: 2, title: 'Feedback Loops', icon: FeedbackIcon },
+  { number: 3, title: 'API Integration', icon: ApiIcon },
+  { number: 4, title: 'Legal Expertise', icon: LawIcon },
+  { number: 5, title: 'Compliance', icon: ComplianceIcon },
+  { number: 6, title: 'Architecture', icon: SustainableIcon },
 ];
 
 const AiDrivenLawGpt = () => {
@@ -202,7 +196,7 @@ const AiDrivenLawGpt = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -211,10 +205,10 @@ const AiDrivenLawGpt = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
               What is AI-Driven Law GPT?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
               AI-Driven Law GPT is an intelligent legal assistant that drafts, reviews, and summarizes legal documents, saving time and improving accuracy for legal professionals.
             </p>
           </motion.div>
@@ -227,7 +221,7 @@ const AiDrivenLawGpt = () => {
       </PortfolioSection>
 
       {/* Enhanced Challenge Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
@@ -240,10 +234,10 @@ const AiDrivenLawGpt = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Legal professionals face repetitive drafting, research overload, and compliance risks. Manual processes are slow, error-prone, and costly for firms and clients.
             </p>
           </motion.div>
@@ -251,8 +245,8 @@ const AiDrivenLawGpt = () => {
       </PortfolioSection>
 
       {/* Enhanced Solution Section */}
-      <div className="py-24 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-20 px-6">
+      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-12 px-6">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
@@ -263,10 +257,10 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-8 leading-tight">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-700 max-w-xl leading-relaxed">
+                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
                   AI-Driven Law GPT automates legal drafting, research, and compliance reducing errors, saving time, and enabling lawyers to focus on high-value work.
                 </p>
               </motion.div>
@@ -284,6 +278,7 @@ const AiDrivenLawGpt = () => {
               title="Key Features"
               subtitle="Advanced capabilities that transform legal workflows"
               delay={0.1}
+              className="!text-xl md:!text-2xl lg:!text-3xl !text-indigo-900"
             />
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
               <PortfolioImage
@@ -303,7 +298,6 @@ const AiDrivenLawGpt = () => {
                     key={i}
                     icon={f.icon}
                     title={f.title}
-                    description={f.description}
                     delay={i * 0.1}
                   />
                 ))}
@@ -324,8 +318,9 @@ const AiDrivenLawGpt = () => {
                   title="Development Process"
                   subtitle="Our systematic approach to building AI solutions"
                   delay={0.1}
+                  className="!text-xl md:!text-2xl lg:!text-3xl !text-indigo-900"
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
@@ -361,6 +356,7 @@ const AiDrivenLawGpt = () => {
                   title="Results"
                   subtitle="Measurable impact and outcomes"
                   delay={0.1}
+                  className="!text-xl md:!text-2xl lg:!text-3xl !text-indigo-900"
                 />
                 <motion.div
                   variants={staggerContainer}

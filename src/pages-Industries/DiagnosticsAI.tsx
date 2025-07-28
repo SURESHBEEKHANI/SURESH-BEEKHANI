@@ -8,6 +8,53 @@ import AnimatedCard from "../components/ui/AnimatedCard";
 import AnimatedCarousel from "../components/ui/AnimatedCarousel";
 import AnimatedFAQ from "../components/ui/AnimatedFAQ";
 
+// Custom AI Diagnostics Icon Component
+const AIDiagnosticsIcon: React.FC<{ className?: string }> = ({ className = "w-32 h-32" }) => (
+  <motion.div 
+    className={`${className} text-white/90`}
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, delay: 0.3 }}
+  >
+    <svg 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="1.5"
+      className="w-full h-full"
+    >
+      {/* Main Brain/Neural Network */}
+      <path 
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" 
+        stroke="currentColor" 
+        strokeWidth="1.5"
+        fill="none"
+      />
+      
+      {/* Neural Network Nodes */}
+      <circle cx="8" cy="8" r="1" fill="currentColor" />
+      <circle cx="16" cy="8" r="1" fill="currentColor" />
+      <circle cx="8" cy="16" r="1" fill="currentColor" />
+      <circle cx="16" cy="16" r="1" fill="currentColor" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+      
+      {/* Connection Lines */}
+      <path d="M8 8L12 12L16 8" stroke="currentColor" strokeWidth="1" />
+      <path d="M8 16L12 12L16 16" stroke="currentColor" strokeWidth="1" />
+      <path d="M8 8L12 12L8 16" stroke="currentColor" strokeWidth="1" />
+      <path d="M16 8L12 12L16 16" stroke="currentColor" strokeWidth="1" />
+      
+      {/* Medical Cross */}
+      <path d="M12 6v12" stroke="currentColor" strokeWidth="2" />
+      <path d="M6 12h12" stroke="currentColor" strokeWidth="2" />
+      
+      {/* Pulse Lines */}
+      <path d="M4 4L6 6L8 4L10 6L12 4" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+      <path d="M12 20L14 18L16 20L18 18L20 20" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+    </svg>
+  </motion.div>
+);
+
 const DiagnosticsAI: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -16,56 +63,56 @@ const DiagnosticsAI: React.FC = () => {
     {
       id: 0,
       title: "Medical Image Analysis",
-      description: "AI algorithms analyze X-rays, MRIs, and CT scans to detect anomalies such as tumors, fractures, and infections with high accuracy.",
+      description: "AI analyzes X-rays, MRIs, and CT scans to detect tumors, fractures, and infections with high accuracy.",
       image: "/image/pages_img/Medical-Image-Analysis.webp",
       alt: "Medical Image Analysis",
     },
     {
       id: 1,
       title: "Early Disease Detection",
-      description: "Machine learning models identify early signs of diseases like cancer, diabetes, and cardiovascular conditions, enabling timely intervention.",
+      description: "ML models identify early signs of cancer, diabetes, and cardiovascular conditions for timely intervention.",
       image: "/image/pages_img/Early-Disease-Detection.jpg",
       alt: "Early Disease Detection",
     },
     {
       id: 2,
       title: "Predictive Diagnostics",
-      description: "AI predicts patient risk factors and potential health issues by analyzing electronic health records and lifestyle data.",
+      description: "AI predicts patient risk factors by analyzing health records and lifestyle data.",
       image: "/image/pages_img/Predictive-Diagnostics.avif",
       alt: "Predictive Diagnostics",
     },
     {
       id: 3,
       title: "Pathology Automation",
-      description: "Automated analysis of pathology slides speeds up diagnosis and reduces human error in laboratory settings.",
+      description: "Automated pathology slide analysis speeds diagnosis and reduces human error.",
       image: "/image/pages_img/Pathology-Automation.webp",
       alt: "Pathology Automation",
     },
     {
       id: 5,
       title: "Genomic Data Analysis",
-      description: "AI analyzes genetic data to identify mutations and recommend personalized treatment plans.",
+      description: "AI analyzes genetic data to identify mutations and recommend personalized treatments.",
       image: "/image/pages_img/Genomic-Data-Analysis.jpg",
       alt: "Genomic Data Analysis",
     },
     {
       id: 6,
       title: "Clinical Decision Support",
-      description: "AI systems assist doctors by providing evidence-based recommendations and diagnostic suggestions.",
+      description: "AI systems assist doctors with evidence-based recommendations and diagnostic suggestions.",
       image: "/image/pages_img/Clinical-Decision-Support.jpg",
       alt: "Clinical Decision Support",
     },
     {
       id: 7,
       title: "Workflow Optimization",
-      description: "AI streamlines diagnostic workflows, automates administrative tasks, and improves resource allocation in healthcare facilities.",
+      description: "AI streamlines diagnostic workflows and automates administrative tasks in healthcare.",
       image: "/image/pages_img/Workflow-Optimization.jpg",
       alt: "Workflow Optimization",
     },
     {
       id: 9,
       title: "Anomaly Detection in Lab Results",
-      description: "AI flags abnormal lab results and trends, supporting early intervention and improved patient outcomes.",
+      description: "AI flags abnormal lab results and trends for early intervention and better outcomes.",
       image: "/image/pages_img/Anomaly-Detection.jpg",
       alt: "Anomaly Detection in Lab Results",
     },
@@ -75,27 +122,27 @@ const DiagnosticsAI: React.FC = () => {
     {
       id: 1,
       question: "What is AI Diagnostics?",
-      answer: "AI Diagnostics refers to the use of artificial intelligence and machine learning algorithms to assist in the detection, analysis, and prediction of diseases and medical conditions.",
+      answer: "AI Diagnostics uses artificial intelligence and machine learning to assist in disease detection, analysis, and prediction.",
     },
     {
       id: 2,
       question: "How does AI improve diagnostic accuracy?",
-      answer: "AI can process vast amounts of medical data, recognize complex patterns, and reduce human error, leading to more accurate and timely diagnoses.",
+      answer: "AI processes vast medical data, recognizes complex patterns, and reduces human error for more accurate diagnoses.",
     },
     {
       id: 3,
       question: "Is AI Diagnostics safe and reliable?",
-      answer: "When properly validated and used alongside clinical expertise, AI diagnostics can be highly reliable and improve patient safety. However, oversight and continuous evaluation are essential.",
+      answer: "When properly validated and used with clinical expertise, AI diagnostics are highly reliable and improve patient safety.",
     },
     {
       id: 4,
       question: "Can AI replace doctors in diagnostics?",
-      answer: "AI is designed to support—not replace—healthcare professionals. It provides decision support, but final diagnoses and treatment decisions remain with clinicians.",
+      answer: "AI supports healthcare professionals but doesn't replace them. Final diagnoses remain with clinicians.",
     },
     {
       id: 5,
       question: "What are the challenges of AI in diagnostics?",
-      answer: "Challenges include data privacy, integration with existing systems, algorithm transparency, and ensuring unbiased, equitable care.",
+      answer: "Challenges include data privacy, system integration, algorithm transparency, and ensuring unbiased care.",
     },
   ], []);
 
@@ -107,8 +154,8 @@ const DiagnosticsAI: React.FC = () => {
           <circle cx="12" cy="12" r="3" />
         </svg>
       ),
-      title: "Unmatched Speed & Precision",
-      description: "Deliver rapid, highly accurate diagnostic results—minimizing delays and elevating patient outcomes.",
+      title: "Speed & Precision",
+      description: "Deliver rapid, accurate diagnostic results—minimizing delays and improving outcomes.",
       bgColor: "bg-green-300/20",
       textColor: "text-green-300",
       borderColor: "hover:border-green-300"
@@ -120,7 +167,7 @@ const DiagnosticsAI: React.FC = () => {
         </svg>
       ),
       title: "Operational Efficiency",
-      description: "Reduce costs and optimize resources by automating diagnostics and streamlining workflows.",
+      description: "Reduce costs by automating diagnostics and streamlining workflows.",
       bgColor: "bg-blue-300/20",
       textColor: "text-blue-300",
       borderColor: "hover:border-blue-300"
@@ -131,8 +178,8 @@ const DiagnosticsAI: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
         </svg>
       ),
-      title: "Proactive Early Detection",
-      description: "Identify health risks sooner, enabling timely intervention and improved long-term outcomes.",
+      title: "Early Detection",
+      description: "Identify health risks sooner for timely intervention and better outcomes.",
       bgColor: "bg-green-300/20",
       textColor: "text-green-300",
       borderColor: "hover:border-green-300"
@@ -143,8 +190,8 @@ const DiagnosticsAI: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
         </svg>
       ),
-      title: "Effortless Scalability",
-      description: "Deploy AI diagnostics at scale—supporting large populations and remote locations with ease.",
+      title: "Scalability",
+      description: "Deploy AI diagnostics at scale—supporting large populations and remote locations.",
       bgColor: "bg-blue-300/20",
       textColor: "text-blue-300",
       borderColor: "hover:border-blue-300"
@@ -156,7 +203,7 @@ const DiagnosticsAI: React.FC = () => {
         </svg>
       ),
       title: "Consistent Quality",
-      description: "Ensure reliable, standardized diagnostic results—minimizing variability across teams and sites.",
+      description: "Ensure reliable, standardized diagnostic results across teams and sites.",
       bgColor: "bg-green-300/20",
       textColor: "text-green-300",
       borderColor: "hover:border-green-300"
@@ -167,8 +214,8 @@ const DiagnosticsAI: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
         </svg>
       ),
-      title: "Intelligent Decision Support",
-      description: "Empower clinicians with data-driven recommendations for confident, informed decision-making.",
+      title: "Decision Support",
+      description: "Empower clinicians with data-driven recommendations for confident decisions.",
       bgColor: "bg-blue-300/20",
       textColor: "text-blue-300",
       borderColor: "hover:border-blue-300"
@@ -179,27 +226,27 @@ const DiagnosticsAI: React.FC = () => {
     {
       value: "3+",
       label: "Years of AI Experience",
-      description: "Over three years of hands-on success building and deploying AI diagnostics that drive measurable results."
+      description: "Three years of hands-on success building and deploying AI diagnostics."
     },
     {
       value: "20+",
-      label: "Diagnostics Projects Delivered",
-      description: "A portfolio of 20+ tailored AI diagnostics solutions, each designed to solve unique business and clinical challenges."
+      label: "Diagnostics Projects",
+      description: "20+ tailored AI diagnostics solutions for unique business challenges."
     },
     {
       value: "30+",
       label: "Custom AI Models",
-      description: "Developed 30+ advanced AI models for imaging, analytics, and workflow automation—built for real-world impact."
+      description: "30+ advanced AI models for imaging, analytics, and workflow automation."
     },
     {
       value: "10+",
       label: "Satisfied Clients",
-      description: "Partnered with 10+ organizations, consistently delivering improved accuracy, efficiency, and business value."
+      description: "10+ organizations with improved accuracy, efficiency, and business value."
     },
     {
       value: "🌍",
       label: "Global Impact",
-      description: "Delivering scalable, accessible AI diagnostics solutions to clients worldwide—empowering organizations to lead in digital health."
+      description: "Scalable AI diagnostics solutions worldwide—empowering digital health leadership."
     }
   ], []);
 
@@ -226,15 +273,39 @@ const DiagnosticsAI: React.FC = () => {
       {/* Hero Section */}
       <AnimatedHero
         title="AI-Driven Diagnostics"
-        subtitle="Accelerate healthcare innovation with instant, precise disease detection, automated image analysis, and actionable insights that empower professionals to deliver exceptional care."
+        subtitle="Transform your business with cutting-edge AI solutions. Our comprehensive AI development services empower organizations to automate processes, gain insights, and drive innovation across all industries."
         highlightText="Diagnostics"
-        backgroundImage="/image/pages_img/Diagnostics.jpg"
         gradientFrom="from-blue-900"
         gradientVia="via-cyan-800"
         gradientTo="to-blue-900"
         buttonText="Talk to an Expert"
         buttonLink="mailto:sureshbeekhani26@gmail.com"
-      />
+      >
+        <AIDiagnosticsIcon className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48" />
+      </AnimatedHero>
+
+      {/* AI Development Section */}
+      <AnimatedSection className="py-16 px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100">
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            className="text-center space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-green-400 rounded-full"></div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              AI Development
+            </h2>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Revolutionize your business with advanced AI solutions. Automate tasks, unlock insights, and fuel innovation across industries.
+            </p>
+          </motion.div>
+        </div>
+      </AnimatedSection>
 
       {/* Main Content Section */}
       <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-white/90 border-b border-blue-100">
@@ -273,10 +344,10 @@ const DiagnosticsAI: React.FC = () => {
                 Transforming <span className="text-green-700">Diagnostics</span> with AI
               </h2>
               <p className="text-xl text-gray-800 max-w-2xl">
-                <span className="font-semibold text-green-700">Deep learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span> are redefining diagnostics—enabling earlier detection, seamless automation, and smarter clinical decisions.
+                <span className="font-semibold text-green-700">Deep learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span> redefine diagnostics—enabling earlier detection and smarter clinical decisions.
               </p>
               <p className="text-lg text-gray-700 max-w-2xl">
-                From advanced medical imaging to real-time patient monitoring, AI empowers providers to deliver faster, more accurate, and highly personalized care at scale.
+                From medical imaging to patient monitoring, AI empowers providers to deliver faster, more accurate, and personalized care at scale.
               </p>
             </motion.div>
           </div>
@@ -296,9 +367,9 @@ const DiagnosticsAI: React.FC = () => {
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-3xl font-bold text-white">Key Capabilities & Strategic Benefits</h2>
+            <h2 className="text-3xl font-bold text-white">Key Capabilities & Benefits</h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Unlock the full potential of diagnostics with AI-powered speed, accuracy, and efficiency
+              Unlock AI-powered speed, accuracy, and efficiency in diagnostics
             </p>
           </motion.div>
           
@@ -324,7 +395,7 @@ const DiagnosticsAI: React.FC = () => {
       <AnimatedCarousel
         useCases={useCases}
         title="Real-World AI Diagnostics Use Cases"
-        subtitle="See how AI is reshaping diagnostics for healthcare and industry leaders worldwide"
+        subtitle="See how AI reshapes diagnostics for healthcare and industry leaders"
         accentColor="green"
       />
 
@@ -343,7 +414,7 @@ const DiagnosticsAI: React.FC = () => {
             </div>
             <h2 className="text-3xl font-bold text-white">Why Partner with Me?</h2>
             <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              Trusted expertise and a proven record in delivering high-impact AI diagnostics for forward-thinking organizations
+              Trusted expertise in delivering high-impact AI diagnostics for forward-thinking organizations
             </p>
           </motion.div>
           

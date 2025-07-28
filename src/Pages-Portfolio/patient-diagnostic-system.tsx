@@ -62,33 +62,27 @@ const AnalyticsIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
 const features = [
   { 
     title: 'AI Chatbot Triage', 
-    icon: ChatbotIcon,
-    description: 'Intelligent symptom collection and initial assessment'
+    icon: ChatbotIcon
   },
   { 
     title: 'Automated Diagnosis', 
-    icon: DiagnosisIcon,
-    description: 'AI-powered diagnostic suggestions and analysis'
+    icon: DiagnosisIcon
   },
   { 
     title: 'Instant Reporting', 
-    icon: ReportIcon,
-    description: 'Quick generation of patient reports and summaries'
+    icon: ReportIcon
   },
   { 
     title: 'EHR Integration', 
-    icon: IntegrationIcon,
-    description: 'Seamless integration with existing healthcare systems'
+    icon: IntegrationIcon
   },
   { 
-    title: 'Data Privacy & Security', 
-    icon: PrivacyIcon,
-    description: 'HIPAA-compliant data handling and security'
+    title: 'Privacy & Security', 
+    icon: PrivacyIcon
   },
   { 
     title: 'Analytics Dashboard', 
-    icon: AnalyticsIcon,
-    description: 'Comprehensive healthcare analytics and insights'
+    icon: AnalyticsIcon
   },
 ];
 
@@ -190,7 +184,7 @@ const PatientDiagnosticSystem = () => {
         title="Patient Diagnostic System"
         description="AI-powered system for rapid, accurate disease diagnosis. Reduces doctor workload and improves patient care."
         gradient="from-blue-900 via-blue-400 to-pink-200"
-        backgroundImage="/image/pages_img/Patient-Diagnostic-System.webp"
+        backgroundImage="/image/pages_img/Patient-Diagnostic-System.avif"
       />
 
       {/* Enhanced Info Section */}
@@ -204,7 +198,7 @@ const PatientDiagnosticSystem = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -213,15 +207,15 @@ const PatientDiagnosticSystem = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
               What is Patient Diagnostic System?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
               An AI-powered tool that collects symptoms, analyzes data, and provides instant diagnostic suggestions to healthcare professionals.
             </p>
           </motion.div>
           <PortfolioImage
-            src="/image/pages_img/Patient-Diagnostic-System.webp"
+            src="/image/pages_img/Patient-Diagnostic-System.avif"
             alt="What is Patient Diagnostic System illustration"
             delay={0.2}
           />
@@ -229,7 +223,7 @@ const PatientDiagnosticSystem = () => {
       </PortfolioSection>
 
       {/* Enhanced Problems Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
@@ -242,10 +236,10 @@ const PatientDiagnosticSystem = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Manual diagnosis is slow, error-prone, and increases clinician workload. Patients face delays and inconsistent care quality.
             </p>
           </motion.div>
@@ -253,8 +247,8 @@ const PatientDiagnosticSystem = () => {
       </PortfolioSection>
 
       {/* Enhanced Main Content Section */}
-      <div className="py-24 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-20 px-6">
+      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-12 px-6">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
@@ -265,15 +259,15 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-700 max-w-xl leading-relaxed">
+                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
                   The Patient Diagnostic System automates triage, provides instant recommendations, and integrates with EHRs—improving speed, accuracy, and patient outcomes.
                 </p>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/Diagnostics.jpg"
+                src="/image/pages_img/Solutions.jpg"
                 alt="AI-powered diagnostic solution illustration"
                 delay={0.2}
               />
@@ -289,7 +283,7 @@ const PatientDiagnosticSystem = () => {
             />
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
               <PortfolioImage
-                src="/image/pages_img/AI-Driven-Testing.jpg"
+                src="/image/pages_img/Key-Features-patient-diagostic.jpg"
                 alt="Key Features & Technologies illustration"
                 className="max-w-sm"
               />
@@ -298,14 +292,13 @@ const PatientDiagnosticSystem = () => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {features.map((f, i) => (
                   <FeatureCard
                     key={i}
                     icon={f.icon}
                     title={f.title}
-                    description={f.description}
                     delay={i * 0.1}
                   />
                 ))}
@@ -327,7 +320,7 @@ const PatientDiagnosticSystem = () => {
                   subtitle="Our systematic approach to building healthcare AI solutions"
                   delay={0.1}
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
@@ -339,7 +332,7 @@ const PatientDiagnosticSystem = () => {
                 </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/AI-Driven-Law-GPT.jpg"
+                src="/image/pages_img/development-process-patient.jpg"
                 alt="Development Illustration"
               />
             </div>

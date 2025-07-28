@@ -51,17 +51,28 @@ export const FeatureCard = ({
       stiffness: 100
     }}
     viewport={{ once: true, margin: "-50px" }}
-    className={`group flex flex-col items-center text-center bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl p-6 transition-all duration-300 border border-gray-100/50 hover:border-gray-200 ${className}`}
+    className={`group flex flex-col items-center text-center p-6 transition-all duration-300 ${className}`}
     role="article"
     aria-label={`Feature: ${title}`}
   >
-    <motion.div
-      whileHover={{ rotate: 5, scale: 1.1 }}
-      transition={{ duration: 0.2 }}
-    >
-      <Icon className="w-12 h-12 mb-4 text-gradient" />
-    </motion.div>
-    <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+         <motion.div
+       whileHover={{ 
+         rotateY: 15, 
+         rotateX: 10,
+         scale: 1.1,
+         z: 20
+       }}
+       transition={{ duration: 0.3 }}
+       className="transform-style-preserve-3d"
+     >
+       <div className="w-8 h-8 mb-4 text-gradient drop-shadow-lg transform-gpu" style={{ 
+         filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+         transform: 'perspective(1000px) rotateX(5deg) rotateY(5deg)'
+       }}>
+         <Icon className="w-full h-full" />
+       </div>
+     </motion.div>
+    <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
       {title}
     </h3>
     {description && (
@@ -196,7 +207,7 @@ export const PortfolioHero = ({
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl text-left leading-tight"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-2xl text-left leading-tight"
       >
         {title}
       </motion.h1>
@@ -234,7 +245,7 @@ export const InfoSection = ({
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className={`text-3xl md:text-4xl lg:text-5xl font-bold ${titleColor} mb-10 leading-tight`}
+      className={`text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor} mb-10 leading-tight`}
     >
       {title}
     </motion.h2>
@@ -259,16 +270,16 @@ export const InfoSection = ({
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
       )}
     </div>
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="mt-8 text-blue-600 hover:text-blue-800 underline font-semibold text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2"
-      onClick={() => setShowFullInfo(!showFullInfo)}
-      aria-expanded={showFullInfo}
-      aria-controls="info-content"
-    >
-      {showFullInfo ? 'Show Less' : 'Read More'}
-    </motion.button>
+         <motion.button
+       whileHover={{ scale: 1.05 }}
+       whileTap={{ scale: 0.95 }}
+       className="mt-8 text-blue-600 hover:text-blue-800 font-semibold text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2"
+       onClick={() => setShowFullInfo(!showFullInfo)}
+       aria-expanded={showFullInfo}
+       aria-controls="info-content"
+     >
+       {showFullInfo ? 'Show Less' : 'Read More'}
+     </motion.button>
   </div>
 );
 
@@ -278,13 +289,17 @@ export const PortfolioImage = ({
   alt, 
   className = "",
   delay = 0,
-  priority = false
+  priority = false,
+  width,
+  height
 }: {
   src: string;
   alt: string;
   className?: string;
   delay?: number;
   priority?: boolean;
+  width?: string | number;
+  height?: string | number;
 }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -305,8 +320,10 @@ export const PortfolioImage = ({
     <img
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       loading={priority ? "eager" : "lazy"}
-      className={`w-full max-w-4xl h-auto rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 ${className}`}
+      className={`w-full h-auto rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 ${className}`}
       onLoad={(e) => {
         // Add a subtle animation when image loads
         const target = e.target as HTMLImageElement;
@@ -366,19 +383,19 @@ export const CallToAction = ({
           {subtitle}
         </motion.p>
       )}
-      <motion.a
-        href={`mailto:${email}`}
-        whileHover={{ 
-          scale: 1.05,
-          y: -2,
-          transition: { duration: 0.2 }
-        }}
-        whileTap={{ scale: 0.95 }}
-        className={`inline-block bg-gradient-to-r ${gradient} ${hoverGradient} text-white font-bold px-12 py-4 rounded-2xl shadow-xl text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50`}
-        aria-label={`Contact us via email: ${email}`}
-      >
-        Contact Us Today
-      </motion.a>
+             <motion.a
+         href={`mailto:${email}`}
+         whileHover={{ 
+           scale: 1.05,
+           y: -2,
+           transition: { duration: 0.2 }
+         }}
+         whileTap={{ scale: 0.95 }}
+         className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-12 py-4 rounded-2xl shadow-xl text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50"
+         aria-label={`Contact us via email: ${email}`}
+       >
+         Contact Us Today
+       </motion.a>
     </div>
   </motion.section>
 );
@@ -422,13 +439,13 @@ export const SectionHeader = ({
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className={`text-center mb-12 ${className}`}
+    className={`text-center mb-12`}
   >
-    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+    <h2 className={`text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight ${className}`}>
       {title}
     </h2>
     {subtitle && (
-      <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
         {subtitle}
       </p>
     )}

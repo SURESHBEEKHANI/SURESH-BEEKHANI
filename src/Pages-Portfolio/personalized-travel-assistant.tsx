@@ -60,33 +60,27 @@ const CodeIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
 const features = [
   {
     title: 'AI Itinerary Builder',
-    icon: ItineraryIcon,
-    description: 'Intelligent trip planning and route optimization'
+    icon: ItineraryIcon
   },
   {
     title: 'Live Data Integration',
-    icon: CloudIcon,
-    description: 'Real-time travel information and updates'
+    icon: CloudIcon
   },
   {
     title: 'Personalized Suggestions',
-    icon: UserIcon,
-    description: 'AI-powered recommendations based on preferences'
+    icon: UserIcon
   },
   {
     title: 'Seamless Booking & Sync',
-    icon: CalendarIcon,
-    description: 'Integrated booking and calendar synchronization'
+    icon: CalendarIcon
   },
   {
     title: 'Mobile-First Experience',
-    icon: DeviceIcon,
-    description: 'Optimized for all devices and platforms'
+    icon: DeviceIcon
   },
   {
     title: 'Modern Tech Stack',
-    icon: CodeIcon,
-    description: 'Built with cutting-edge technologies'
+    icon: CodeIcon
   },
 ];
 
@@ -202,7 +196,7 @@ const PersonalizedTravelAssistant = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -211,10 +205,10 @@ const PersonalizedTravelAssistant = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
               What is AI Travel Assistant?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
               AI Travel Assistant a smart tool that plans and manages your trips with personalized suggestions and live updates saving you time making travel easier.
             </p>
           </motion.div>
@@ -227,7 +221,7 @@ const PersonalizedTravelAssistant = () => {
       </PortfolioSection>
 
       {/* Enhanced Problem Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-20">
+      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
@@ -240,10 +234,10 @@ const PersonalizedTravelAssistant = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Most travel tools offer generic suggestions, ignoring your preferences and real-time changes. Travelers waste hours researching, often missing out on unique experiences and facing avoidable disruptions.
             </p>
           </motion.div>
@@ -251,8 +245,8 @@ const PersonalizedTravelAssistant = () => {
       </PortfolioSection>
 
       {/* Enhanced Main Content Section */}
-      <div className="py-24 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-20 px-6">
+      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-12 px-6">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
@@ -263,10 +257,10 @@ const PersonalizedTravelAssistant = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-700 max-w-xl leading-relaxed">
+                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
                   An AI Travel Assistant offers personalized trip planning, real-time updates, and smart recommendations—saving time, reducing stress, and making travel smoother and more efficient.
                 </p>
               </motion.div>
@@ -296,14 +290,13 @@ const PersonalizedTravelAssistant = () => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {features.map((f, i) => (
                   <FeatureCard
                     key={i}
                     icon={f.icon}
                     title={f.title}
-                    description={f.description}
                     delay={i * 0.1}
                   />
                 ))}
@@ -325,7 +318,7 @@ const PersonalizedTravelAssistant = () => {
                   subtitle="Our systematic approach to building AI solutions"
                   delay={0.1}
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
