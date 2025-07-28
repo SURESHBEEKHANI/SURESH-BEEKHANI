@@ -133,16 +133,16 @@ const ClientSolutions = () => {
               
               {/* Decorative elements */}
                              <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full opacity-60"></div>
-                             <div className="absolute bottom-20 left-8 w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full opacity-50"></div>
-                             <div className="absolute top-32 left-16 w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-500 transform rotate-45 opacity-70"></div>
-                             <div className="absolute bottom-10 right-16 w-8 h-8 bg-gradient-to-r from-blue-400 to-blue-500 transform rotate-45 opacity-60 text-[#00BFFF]"></div>
-                             <div className="absolute top-20 right-32 w-6 h-6 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full opacity-50"></div>
+              <div className="absolute bottom-20 left-8 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-50"></div>
+              <div className="absolute top-32 left-16 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 transform rotate-45 opacity-70"></div>
+              <div className="absolute bottom-10 right-16 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 transform rotate-45 opacity-60 text-[#00BFFF]"></div>
+              <div className="absolute top-20 right-32 w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-50"></div>
 
               {/* Main card */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-80 h-80 bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
-                                         <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                       <div className="w-6 h-6 bg-white rounded-full"></div>
                     </div>
                     <div className="text-sm font-semibold text-gray-800">
@@ -156,10 +156,10 @@ const ClientSolutions = () => {
                     <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded w-1/2"></div>
                   </div>
 
-                                     <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-[#00BFFF]">
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-[#00BFFF]">
                     <div className="w-4 h-4 bg-white rounded-full"></div>
                   </div>
-                                     <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                  <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
                 </div>
               </div>
             </div>

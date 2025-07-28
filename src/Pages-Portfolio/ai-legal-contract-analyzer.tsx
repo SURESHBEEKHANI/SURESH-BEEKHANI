@@ -135,7 +135,7 @@ const AILegalContractAnalyzer = () => {
         {/* Right: Image */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="/image/pages_img/AI-Legal-Contract-Analyzer.png"
+            src="/image/pages_img/What-AI-Legal-Contract-Analyzer.jpg"
             alt="What is AI Legal Contract Analyzer illustration"
             loading="lazy"
             className="w-full max-w-3xl h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
@@ -187,15 +187,15 @@ const AILegalContractAnalyzer = () => {
           <section className="max-w-6xl mx-auto px-4 py-12 project-section">
             <h2 className="text-2xl md:text-3xl font-bold text-indigo-900 mb-8 text-center w-full">Key Features</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-              {/* Left: Image */}
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/image/pages_img/AI-Legal-Contract-Analyzer.png"
-                  alt="Key Features & Technologies illustration"
-                  loading="lazy"
-                  className="w-full max-w-3xl max-h-64 h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+                             {/* Left: Image */}
+               <div className="flex flex-col items-center justify-center">
+                 <img
+                   src="/image/pages_img/Legal-Contract-Analyzer-key-feature.jpg"
+                   alt="Key Features & Technologies illustration"
+                   loading="lazy"
+                   className="w-full max-w-3xl max-h-64 h-auto rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
+                 />
+               </div>
               {/* Right: Features Grid */}
               <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
