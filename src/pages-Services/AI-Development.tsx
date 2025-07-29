@@ -405,9 +405,6 @@ const AIDevelopment: React.FC = () => {
 						<h2 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-4">
 							AI Development Services
 						</h2>
-						<p className="text-base text-blue-700 max-w-3xl mx-auto">
-							Experience AI solutions that streamline operations and drive innovation.
-						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* AI Chatbot Development */}

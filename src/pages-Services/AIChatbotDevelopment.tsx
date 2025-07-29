@@ -555,7 +555,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							Custom AI Chatbots We Build
 						</h2>
 						<p className="text-base text-blue-700 max-w-3xl mx-auto">
-							Conversational AI assistants with advanced AI, NLP, and machine learning.
+							
 						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
