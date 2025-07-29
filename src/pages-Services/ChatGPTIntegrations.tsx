@@ -237,9 +237,9 @@ const ChatGPTIntegrations: React.FC = () => {
               <div className="flex space-x-4 pt-6 w-full">
                 <a
                   href="mailto:sureshbeekhani26@gmail.com"
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Talk to an Engineer
+                  Talk to an Expert
                 </a>
               </div>
             </div>
@@ -285,17 +285,17 @@ const ChatGPTIntegrations: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
               ChatGPT Integration Services
             </h2>
-            <p className="text-base text-blue-100 max-w-3xl mx-auto">
-              Complete ChatGPT integration services to drive your business forward.
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Seamless ChatGPT integration solutions for enhanced user experiences.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -370,17 +370,17 @@ const ChatGPTIntegrations: React.FC = () => {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-lg">
-              Industries We Empower
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              Industries We Work With
             </h2>
-            <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-medium">
-              Empowering organizations across sectors with ChatGPT solutions.
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              ChatGPT solutions across diverse industry sectors.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
@@ -415,15 +415,18 @@ const ChatGPTIntegrations: React.FC = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
               ChatGPT Integration Platforms
             </h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Leading platforms for ChatGPT integration and development.
+            </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
             {platforms.map((platform) => (
@@ -437,69 +440,69 @@ const ChatGPTIntegrations: React.FC = () => {
       </section>
 
       {/* The development process of Chat GPT integration */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Our ChatGPT Integration Process
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              ChatGPT Integration Development Process
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Define the use case */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Target/Bullseye Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-semibold text-lg text-blue-900 text-center">Define Your Use Case</span>
-              <p className="text-gray-700 text-sm text-center">Pinpoint the business challenge and audience to maximize the value of your ChatGPT integration.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Define Your Use Case</span>
+              <p className="text-gray-800 text-center">Pinpoint the business challenge and audience to maximize the value of your ChatGPT integration.</p>
             </div>
             {/* Data collection & preparation */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Database Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-blue-900 text-center">Data Collection & Preparation</span>
-              <p className="text-gray-700 text-sm text-center">Curate and refine conversational data to ensure optimal model performance and relevance.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Data Collection & Preparation</span>
+              <p className="text-gray-800 text-center">Curate and refine conversational data to ensure optimal model performance and relevance.</p>
             </div>
             {/* Development & integration */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Code/Development Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-blue-900 text-center">Development & Integration</span>
-              <p className="text-gray-700 text-sm text-center">Design, build, and seamlessly embed your chatbot into your digital ecosystem.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Development & Integration</span>
+              <p className="text-gray-800 text-center">Design, build, and seamlessly embed your chatbot into your digital ecosystem.</p>
             </div>
             {/* Deployment & monitoring */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-semibold text-lg text-blue-900 text-center">Deployment & Monitoring</span>
-              <p className="text-gray-700 text-sm text-center">Launch your solution and track performance with actionable analytics for continuous improvement.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Deployment & Monitoring</span>
+              <p className="text-gray-800 text-center">Launch your solution and track performance with actionable analytics for continuous improvement.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-white">Why Partner With Us</h2>
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Proven Expertise */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Star/Expertise Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -508,7 +511,7 @@ const ChatGPTIntegrations: React.FC = () => {
               <p className="text-gray-700 text-sm text-center">Our team brings deep AI and ChatGPT integration experience to deliver results that matter.</p>
             </div>
             {/* Tailored Solutions */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Puzzle/Custom Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
@@ -517,7 +520,7 @@ const ChatGPTIntegrations: React.FC = () => {
               <p className="text-gray-700 text-sm text-center">We craft ChatGPT integrations precisely aligned with your business objectives and industry needs.</p>
             </div>
             {/* End-to-End Partnership */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Support/Headset Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
@@ -526,7 +529,7 @@ const ChatGPTIntegrations: React.FC = () => {
               <p className="text-gray-700 text-sm text-center">From strategy to deployment and beyond, we provide comprehensive support at every stage.</p>
             </div>
             {/* Measurable Impact */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Trophy/Results Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
@@ -539,13 +542,13 @@ const ChatGPTIntegrations: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-6 mb-16">
             <div className="flex justify-center">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-blue-900">Frequently Asked Questions</h2>
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
           </div>
           <div className="space-y-4">
             {faqData.map((faq, idx) => (
@@ -555,26 +558,14 @@ const ChatGPTIntegrations: React.FC = () => {
               >
                 <details className="group">
                   <summary className="cursor-pointer font-semibold text-base text-blue-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-                    {faq.question}
+                    <span className="font-semibold text-lg text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200">
+                      {faq.question}
+                    </span>
                     <span className="ml-2 text-blue-900 group-hover:text-green-700 group-open:hidden">+</span>
                     <span className="ml-2 text-blue-900 group-hover:text-green-700 hidden group-open:inline">-</span>
                   </summary>
-                  <div className="pt-3 text-gray-800 text-sm">
-                    {faq.question === "What is ChatGPT Integration?" && (
-                      "ChatGPT Integration means embedding OpenAI's ChatGPT into your digital platforms, enabling intelligent, conversational AI for automation, support, and customer engagement."
-                    )}
-                    {faq.question === "How can ChatGPT benefit my business?" && (
-                      "ChatGPT automates support, streamlines operations, delivers 24/7 assistance, and elevates user engagement—saving time and driving customer satisfaction."
-                    )}
-                    {faq.question === "Can ChatGPT be customized for my industry?" && (
-                      "Absolutely. ChatGPT can be tailored for healthcare, education, finance, retail, and more—ensuring compliance and delivering industry-specific value."
-                    )}
-                    {faq.question === "Is my data secure with ChatGPT integrations?" && (
-                      "We implement advanced security protocols and adhere to standards like HIPAA and GDPR to keep your data safe and confidential."
-                    )}
-                    {faq.question === "How do I get started with ChatGPT integration?" && (
-                      "Contact us for a personalized consultation. We'll assess your needs, recommend the best solution, and guide you through a seamless integration process."
-                    )}
+                  <div className="pt-3 text-gray-800 animate-fade-in text-sm">
+                    {faq.answer}
                   </div>
                 </details>
               </div>

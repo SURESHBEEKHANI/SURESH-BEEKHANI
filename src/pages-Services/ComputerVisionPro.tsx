@@ -67,15 +67,15 @@ const industries = [
     page: "/RetailAI",
   },
   {
-    name: "Healthcare",
-    image: "/image/pages_img/Diagnostics.jpg",
+    name: "HealthTech",
+    image: "/image/pages_img/healthtechai.jpg",
     description: "AI-powered medical image analysis for diagnostics and patient care.",
     page: "/HealthTechAI",
   },
   {
-    name: "Security & Surveillance",
-    image: "/image/pages_img/Anomaly-Detection-Access-Logs.jpg",
-    description: "Real-time video analytics and anomaly detection for enhanced security.",
+    name: "DiagnosticsAI",
+    image: "/image/pages_img/Diagnostics.jpg",
+    description: "AI-powered medical image analysis for diagnostics and patient care.",
     page: "/DiagnosticsAI",
   },
   {
@@ -197,14 +197,14 @@ const onboardingSteps = [
       <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     ),
     title: 'Receive a Detailed Proposal',
-    description: 'Based on your requirements, we’ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate—so you know exactly what to expect.',
+    description: 'Based on your requirements, we’ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
   },
   {
     icon: (
       <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
     ),
     title: 'Project Kickoff & Delivery',
-    description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication—ensuring a smooth, successful delivery from start to finish.',
+    description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
   },
 ];
 
@@ -225,18 +225,18 @@ const ComputerVisionPro: React.FC = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-white space-y-8">
             <div className="w-full">
-              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Computer <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Vision</span>
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                Computer <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Vision</span>
               </h1>
-              <p className="text-lg md:text-2xl text-gray-100 w-full whitespace-pre-line mt-4">
-              Empower your business with next-generation computer vision solutions—driving innovation in security, automation, medical imaging, facial recognition, and quality assurance for superior accuracy and efficiency.
+              <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
+              Empower your business with next-generation computer vision solutions driving innovation in security, automation, medical imaging, facial recognition, and quality assurance for superior accuracy and efficiency.
               </p>
               <div className="flex space-x-4 pt-6 w-full">
                 <a
-                  href="mailto:sureshbeekhani26@gmail.com"
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+                  href="/#contact"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
                 >
-                  Talk to in Expert
+                  Talk to an Expert
                 </a>
               </div>
             </div>
@@ -249,7 +249,7 @@ const ComputerVisionPro: React.FC = () => {
 
 
       {/* Computer Vision Capabilities Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: CV Image */}
@@ -257,7 +257,7 @@ const ComputerVisionPro: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-20"></div>
                 <img
-                  src="/image/pages_img/AI-Driven-Testing.jpg"
+                  src="/image/pages_img/Power-Computer-Vision.avif"
                   alt="The Power of Computer Vision"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                 />
@@ -265,16 +265,16 @@ const ComputerVisionPro: React.FC = () => {
             </div>
             {/* Right: Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
                 The Power of Computer Vision
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl">
-                Unlock transformative opportunities with advanced computer vision. Our tailored solutions enable computers to interpret, analyze, and act on visual data—fueling smarter automation, enhanced security, and actionable insights.
+              <p className="text-base text-gray-700 max-w-2xl">
+                Unlock transformative opportunities with advanced computer vision. Our tailored solutions enable computers to interpret, analyze, and act on visual data fueling smarter automation, enhanced security, and actionable insights.
               </p>
-              <p className="text-lg text-gray-700 max-w-2xl">
+              <p className="text-base text-gray-700 max-w-2xl">
                 Our dedicated experts seamlessly integrate and customize computer vision technologies to your unique needs, empowering data-driven decisions and operational excellence.
               </p>
-              <p className="text-lg text-gray-700 max-w-2xl">
+              <p className="text-base text-gray-700 max-w-2xl">
                 From healthcare and retail to security and beyond, computer vision redefines how you serve customers and grow your business. Partner with us to stay ahead of the curve.
               </p>
             </div>
@@ -283,17 +283,17 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Advanced Computer Vision Services for Intelligent Automation
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              Advanced Computer Vision Services
             </h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Harness intelligent automation with our advanced computer vision services—purpose-built for today’s dynamic business landscape.
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Intelligent automation solutions for today's dynamic business landscape.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -303,8 +303,8 @@ const ComputerVisionPro: React.FC = () => {
                 {/* Target Icon */}
                 <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Object Detection</h3>
-              <p className="text-gray-700 text-center">Leverage state-of-the-art object detection to accurately identify and locate items in images and video. Our solutions process high volumes of visual data with speed and precision, unlocking new efficiencies.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Object Detection</h3>
+              <p className="text-gray-800 text-center">Accurately identify and locate items in images and video with state-of-the-art detection technology.</p>
             </div>
             {/* Facial Recognition */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
@@ -312,8 +312,8 @@ const ComputerVisionPro: React.FC = () => {
                 {/* Face Icon */}
                 <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9a3 3 0 0 1-6 0"/><path d="M9 15s1.5 2 3 2 3-2 3-2"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Facial Recognition</h3>
-              <p className="text-gray-700 text-center">Unlock secure, seamless authentication and personalized experiences with advanced facial recognition. Ideal for marketing, security, and compliance-driven applications.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Facial Recognition</h3>
+              <p className="text-gray-800 text-center">Secure authentication and personalized experiences with advanced facial recognition technology.</p>
             </div>
             {/* Image Segmentation */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
@@ -321,8 +321,8 @@ const ComputerVisionPro: React.FC = () => {
                 {/* Layers Icon */}
                 <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Image Segmentation</h3>
-              <p className="text-gray-700 text-center">Segment images into meaningful regions for deeper analysis and actionable insights. Simplify complex visual data and enable sophisticated image processing at scale.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Image Segmentation</h3>
+              <p className="text-gray-800 text-center">Segment images into meaningful regions for deeper analysis and actionable insights.</p>
             </div>
             {/* Optical Character Recognition (OCR) */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
@@ -330,8 +330,8 @@ const ComputerVisionPro: React.FC = () => {
                 {/* Text Icon */}
                 <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h8"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Optical Character Recognition (OCR)</h3>
-              <p className="text-gray-700 text-center">Extract text from images and video with high-accuracy OCR powered by deep learning. Transform scanned documents and visuals into actionable, machine-readable data.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Optical Character Recognition (OCR)</h3>
+              <p className="text-gray-800 text-center">Extract text from images and video with high-accuracy OCR powered by deep learning.</p>
             </div>
             {/* Scene Reconstruction */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
@@ -339,8 +339,8 @@ const ComputerVisionPro: React.FC = () => {
                 {/* 3D Cube Icon */}
                 <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M16 8v8M8 8v8M3 12h18"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scene Reconstruction</h3>
-              <p className="text-gray-700 text-center">Reconstruct detailed 3D models from visual input for immersive experiences and advanced analytics. Ideal for virtual reality, simulation, and spatial analysis.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Scene Reconstruction</h3>
+              <p className="text-gray-800 text-center">Reconstruct detailed 3D models from visual input for immersive experiences and analytics.</p>
             </div>
             {/* Video Analysis */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
@@ -348,77 +348,80 @@ const ComputerVisionPro: React.FC = () => {
                 {/* Video Icon */}
                 <svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="15" height="10" rx="2"/><polygon points="20 7 23 9.5 23 14.5 20 17 20 7"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Video Analysis</h3>
-              <p className="text-gray-700 text-center">Gain real-time insights from video streams using AI-powered analysis. Track movement, detect patterns, and extract valuable intelligence for security and operations.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Video Analysis</h3>
+              <p className="text-gray-800 text-center">Gain real-time insights from video streams using AI-powered analysis and pattern detection.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Computer Vision Features Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              Discover the Benefits of Computer Vision: Key Features
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              Computer Vision Benefits
             </h2>
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Intelligent automation solutions for today's dynamic business landscape.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Accuracy */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
                 {/* Target Icon */}
                 <svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Accuracy</h3>
-              <p className="text-gray-700 text-center">Achieve exceptional precision in object detection and localization across images and video—enabling reliable, data-driven decisions.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Accuracy</h3>
+              <p className="text-gray-800 text-center">Exceptional precision in object detection and localization for reliable decisions.</p>
             </div>
             {/* Scalability */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
                 {/* Layers Icon */}
                 <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Scalability</h3>
-              <p className="text-gray-700 text-center">Effortlessly scale from pilot projects to enterprise-wide deployments. Our solutions handle everything from small datasets to massive, real-time data streams.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
+              <p className="text-gray-800 text-center">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
             </div>
             {/* Flexibility */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
                 {/* Settings Icon */}
                 <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Flexibility</h3>
-              <p className="text-gray-700 text-center">Customize every aspect—from data preparation to output formats and algorithms—to perfectly align with your business objectives.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Flexibility</h3>
+              <p className="text-gray-800 text-center">Customize every aspect to perfectly align with your business objectives.</p>
             </div>
             {/* Increase Civilian Safety */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
                 {/* Shield Icon */}
                 <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
-              <h3 className="font-bold text-lg text-blue-900 mb-2 text-center w-full">Increase Civilian Safety</h3>
-              <p className="text-gray-700 text-center">Enhance public safety by monitoring and analyzing activities in real time, proactively identifying risks and ensuring rapid response.</p>
+              <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Increase Civilian Safety</h3>
+              <p className="text-gray-800 text-center">Monitor and analyze activities in real time for enhanced public safety.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
               Industries We Work With
             </h2>
-            <p className="text-xl text-cyan-100 max-w-3xl mx-auto">
-              Delivering industry-leading computer vision solutions for targeted industries to achieve your goals and boost business.
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Tailored computer vision solutions across diverse industry verticals.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
@@ -453,17 +456,17 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
               Computer Vision Integration Platforms
             </h2>
-            <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-              We leverage industry-leading platforms and frameworks to deliver robust, scalable computer vision integrations tailored to your needs.
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Leverage industry-leading platforms for robust computer vision implementations.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
@@ -478,142 +481,153 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* The development process of Computer Vision integration */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              The development process of Computer Vision integration
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              Computer Vision Development Process
             </h2>
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Streamlined approach to implementing computer vision solutions with proven methodology.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Define the use case */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Target/Bullseye Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Define the use case</span>
-              <p className="text-gray-700 text-center">Pinpoint your business challenge and target audience to maximize the impact of computer vision integration.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Define Use Case</span>
+              <p className="text-gray-800 text-center">Pinpoint your business challenge to maximize computer vision impact.</p>
             </div>
             {/* Data collection & preparation */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Database Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Data collection & preparation</span>
-              <p className="text-gray-700 text-center">Curate and prepare high-quality image and video data to ensure optimal model performance.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Data Collection</span>
+              <p className="text-gray-800 text-center">Curate high-quality image and video data for optimal performance.</p>
             </div>
             {/* Development & integration */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Code/Development Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Development & integration</span>
-              <p className="text-gray-700 text-center">Develop and seamlessly embed computer vision capabilities into your applications for immediate business value.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Development</span>
+              <p className="text-gray-800 text-center">Embed computer vision capabilities into your applications.</p>
             </div>
             {/* Deployment & monitoring */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Deployment & monitoring</span>
-              <p className="text-gray-700 text-center">Deploy your solution with confidence and monitor performance using advanced analytics for continuous improvement.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Deployment</span>
+              <p className="text-gray-800 text-center">Deploy with confidence and monitor performance for improvement.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-cyan-900/90 via-blue-900/90 to-blue-800/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
             <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">Why Choose Us</h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Trusted expertise and proven results for your computer vision implementation needs.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Expertise */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Star/Expertise Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Expertise</span>
-              <p className="text-gray-700 text-center">Work with seasoned professionals who bring deep expertise in AI and computer vision, ensuring your project’s success.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Expertise</span>
+              <p className="text-gray-800 text-center">Work with seasoned professionals ensuring your project's success.</p>
             </div>
             {/* Custom Solutions */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Puzzle/Custom Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Custom Solutions</span>
-              <p className="text-gray-700 text-center">Receive bespoke computer vision integrations designed to meet your unique business goals and challenges.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Custom Solutions</span>
+              <p className="text-gray-800 text-center">Bespoke computer vision integrations for your unique business goals.</p>
             </div>
             {/* End-to-End Support */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Support/Headset Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">End-to-End Support</span>
-              <p className="text-gray-700 text-center">Benefit from comprehensive support at every stage—from strategy and planning to deployment and optimization.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">End-to-End Support</span>
+              <p className="text-gray-800 text-center">Comprehensive support from strategy to deployment and optimization.</p>
             </div>
             {/* Proven Results */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Trophy/Results Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
               </span>
-              <span className="font-bold text-blue-900 text-lg text-center">Proven Results</span>
-              <p className="text-gray-700 text-center">Join a growing list of clients who have achieved measurable business impact and lasting value with our solutions.</p>
+              <span className="font-bold text-gray-900 text-lg text-center">Proven Results</span>
+              <p className="text-gray-800 text-center">Join clients who have achieved measurable business impact.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
             <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Common questions about computer vision implementation and our services.
+            </p>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-3">
             {faqData.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl shadow-lg p-8 flex flex-col transition-all duration-300 hover:scale-[1.02]"
+                className="bg-white rounded-xl shadow-lg p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
               >
                 <button
                   className="w-full flex items-center justify-between focus:outline-none group"
                   onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
                   aria-expanded={openFAQ === idx}
                 >
-                  <span className="font-semibold text-xl text-blue-900 text-left group-hover:text-cyan-700 transition-colors duration-200">
+                  <span className="font-semibold text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200">
                     {faq.question}
                   </span>
-                  <svg
-                    className={`w-7 h-7 text-blue-900 group-hover:text-cyan-700 transform transition-transform duration-200 ${openFAQ === idx ? 'rotate-180' : 'rotate-0'}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <div className="flex items-center justify-center w-5 h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200">
+                    {openFAQ === idx ? (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                        <path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                        <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </div>
                 </button>
                 {openFAQ === idx && (
-                  <div className="pt-4 text-gray-800 animate-fade-in text-lg">
+                  <div className="pt-2 text-gray-800 animate-fade-in text-sm">
                     {faq.answer}
                   </div>
                 )}

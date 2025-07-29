@@ -313,7 +313,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
 									href="mailto:sureshbeekhani26@gmail.com"
-									className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
 								>
 									Talk to an Expert
 								</a>
@@ -362,7 +362,7 @@ const AIChatbotDevelopment: React.FC = () => {
 			</section>
 
 			{/* Comprehensive AI Chatbot Development Services */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/90 via-blue-900/90 to-blue-800/90">
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center space-y-6 mb-16">
 						<div className="flex justify-center">
@@ -377,7 +377,7 @@ const AIChatbotDevelopment: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* AI Chatbot Development Solutions */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -404,7 +404,7 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Design and Development */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -432,7 +432,7 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Multi-language Chatbot Development */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -459,7 +459,7 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Integration */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -487,7 +487,7 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Natural Language Processing Chatbot Development */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -514,7 +514,7 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Maintenance and Support */}
-						<div className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+						<div className="group bg-transparent rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
 								<div className="w-12 h-12 bg-green-300/20 rounded-lg flex items-center justify-center group-hover:bg-green-300/30 transition-colors mb-2">
 									<svg
@@ -545,7 +545,7 @@ const AIChatbotDevelopment: React.FC = () => {
 			</section>
 
 			{/* AI Chatbots We Develop (Moved Down) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-6xl mx-auto">
 					<div className="text-center space-y-6 mb-16">
 						<div className="flex justify-center">
@@ -709,7 +709,7 @@ const AIChatbotDevelopment: React.FC = () => {
 			</section>
 
 			{/* Integrate Our Chatbots into Different Platforms (New Section) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center space-y-6 mb-16">
 						<div className="flex justify-center">
@@ -743,7 +743,7 @@ const AIChatbotDevelopment: React.FC = () => {
 			</section>
 
 		{/* Why Choose Us for Custom AI Chatbot Development Services? (New Section) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-green-900 to-cyan-900">
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 	<div className="max-w-7xl mx-auto">
 		<div className="text-center space-y-6 mb-16">
 			<div className="flex justify-center">
@@ -824,7 +824,7 @@ const AIChatbotDevelopment: React.FC = () => {
 </section>
 
 		{/* How Does a Premier AI Chatbot Development Company Benefit Your Business? (New Section) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-50/90 to-blue-50/90">
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 			  <div className="max-w-5xl mx-auto">
 				<div className="text-center space-y-6 mb-16">
 				  <div className="flex justify-center">
