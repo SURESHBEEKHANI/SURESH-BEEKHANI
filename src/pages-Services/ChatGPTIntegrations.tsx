@@ -198,14 +198,14 @@ const onboardingSteps = [
       <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     ),
     title: 'Receive a Detailed Proposal',
-    description: 'Based on your requirements, we’ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate—so you know exactly what to expect.',
+    description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
   },
   {
     icon: (
       <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
     ),
     title: 'Project Kickoff & Delivery',
-    description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication—ensuring a smooth, successful delivery from start to finish.',
+    description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
   },
 ];
 
@@ -221,34 +221,32 @@ const ChatGPTIntegrations: React.FC = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        {/* Background image overlay */}
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ChatGPT-Integrations.jpeg')] bg-cover bg-center" />
-        {/* Content Wrapper */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-          {/* Text Column */}
-          <div className="flex-1 text-white space-y-8 w-full">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-start gap-12">
+          <div className="flex-1 text-white space-y-8">
             <div className="w-full">
-              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Accelerate Your Business Growth with <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">ChatGPT</span>
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
+                ChatGPT <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Integration</span>
               </h1>
-              <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
-                Empower your business with ChatGPT for real-time automation, always-on support, and seamless customer engagement across every digital touchpoint.
+              <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4 text-left">
+                Boost your business with ChatGPT automation.
+              
+                Enhance customer engagement and streamline operations.
+            
+                Leverage AI to scale efficiently and drive growth.
               </p>
-              <div className="flex space-x-4 pt-6 w-full">
-                <a
-                  href="mailto:sureshbeekhani26@gmail.com"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
-                >
-                  Talk to an Expert
-                </a>
+              <div className="flex space-x-4 pt-6 w-full justify-start">
+              <a
+									href="/#contact"
+									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+								>
+									Talk to an Expert
+								</a>
               </div>
             </div>
           </div>
           <div className="flex-1 flex justify-center md:justify-end">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
-              
-            </div>
+            {/* Optionally, you can add an image or illustration here if needed */}
           </div>
         </div>
       </section>
@@ -270,14 +268,19 @@ const ChatGPTIntegrations: React.FC = () => {
             </div>
             {/* Right: Content */}
             <div className="space-y-6">
-              <h2 className="text-xl lg:text-2xl font-bold text-blue-900">
-                ChatGPT Models & Seamless Integrations
-              </h2>
+              <div className="space-y-2">
+                <h2 className="text-xl lg:text-2xl font-bold text-blue-900">
+                  ChatGPT Models & Seamless Integrations
+                </h2>
+              </div>
               <p className="text-base text-blue-900 max-w-2xl">
                 The capabilities of OpenAI ChatGPT and advanced language models to automate, support, and engage at scale. Integrate effortlessly with your platforms for maximum business impact.
               </p>
               <p className="text-base text-blue-900 max-w-2xl">
                 From customer service to business process automation, ChatGPT integrations redefine how you connect, automate, and grow. Stay ahead with intelligent, scalable solutions tailored to your objectives.
+              </p>
+              <p className="text-base text-blue-900 max-w-2xl">
+                Our dedicated experts seamlessly integrate and customize ChatGPT technologies to your unique needs, empowering data-driven decisions and operational excellence.
               </p>
             </div>
           </div>
@@ -287,34 +290,35 @@ const ChatGPTIntegrations: React.FC = () => {
       {/* Services Section */}
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
-            </div>
+          <div className="text-center space-y-2 mb-12">
             <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
               ChatGPT Integration Services
             </h2>
+            <div className="flex justify-center">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
               Seamless ChatGPT integration solutions for enhanced user experiences.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {chatGPTServices.map((service) => (
+            {chatGPTServices.map((service, idx) => (
               <div
                 key={service.id}
-                className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+                className={`bg-white/95 rounded-2xl p-8 shadow-xl border ${idx % 2 === 0 ? 'border-cyan-200' : 'border-blue-200'} flex flex-col gap-4 items-center`}
               >
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex-shrink-0 w-12 h-12 bg-cyan-300/20 rounded-lg flex items-center justify-center group-hover:bg-cyan-300/30 transition-colors mb-4">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-semibold text-lg text-white mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-200 text-sm">
-                    {service.description}
-                  </p>
+                <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mb-2 mx-auto ${
+                  idx === 0 ? 'bg-blue-100' :
+                  idx === 1 ? 'bg-green-100' :
+                  idx === 2 ? 'bg-purple-100' :
+                  idx === 3 ? 'bg-orange-100' :
+                  idx === 4 ? 'bg-pink-100' :
+                  'bg-indigo-100'
+                }`}>
+                  {service.icon}
                 </div>
+                <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{service.title}</h3>
+                <p className="text-gray-800 text-center">{service.description}</p>
               </div>
             ))}
           </div>
@@ -325,12 +329,17 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
+                ChatGPT Integration Features
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-              ChatGPT Integration Features
-            </h2>
+            <p className="text-xl text-blue-900 max-w-3xl mx-auto">
+              Intelligent automation solutions for today's dynamic business landscape.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Advanced Language Understanding */}
@@ -339,7 +348,7 @@ const ChatGPTIntegrations: React.FC = () => {
                 <svg className="w-8 h-8 text-cyan-500 group-hover:text-cyan-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
               </div>
               <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-cyan-700 transition-colors">Advanced Language Understanding</h3>
-              <p className="text-blue-900 text-sm">ChatGPT integrations deliver natural, intuitive conversations—enabling your business to respond intelligently and efficiently to every customer query.</p>
+              <p className="text-blue-900 text-sm">ChatGPT integrations deliver natural, intuitive conversations enabling your business to respond intelligently and efficiently to every customer query.</p>
             </div>
             {/* Personalized Engagement */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 hover:shadow-2xl hover:border-green-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
@@ -347,7 +356,7 @@ const ChatGPTIntegrations: React.FC = () => {
                 <svg className="w-8 h-8 text-green-500 group-hover:text-green-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
               </div>
               <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-green-700 transition-colors">Personalized Engagement</h3>
-              <p className="text-blue-900 text-sm">Leverage AI-driven personalization to deliver tailored recommendations, answers, and content—creating memorable, high-value experiences for every user.</p>
+              <p className="text-blue-900 text-sm">Leverage AI-driven personalization to deliver tailored recommendations, answers, and content creating memorable, high-value experiences for every user.</p>
             </div>
             {/* Effortless Scalability */}
             <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
@@ -373,14 +382,16 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+                Industries We Work With
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-              Industries We Work With
-            </h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              ChatGPT solutions across diverse industry sectors.
+              Tailored ChatGPT solutions across diverse industry verticals.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
@@ -418,14 +429,16 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+                ChatGPT Integration Platforms
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-              ChatGPT Integration Platforms
-            </h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              Leading platforms for ChatGPT integration and development.
+              Leverage industry-leading platforms for robust ChatGPT implementations.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
@@ -443,12 +456,17 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+                ChatGPT Integration Development Process
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-              ChatGPT Integration Development Process
-            </h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Streamlined approach to implementing ChatGPT solutions with proven methodology.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Define the use case */}
@@ -457,8 +475,8 @@ const ChatGPTIntegrations: React.FC = () => {
                 {/* Target/Bullseye Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Define Your Use Case</span>
-              <p className="text-gray-800 text-center">Pinpoint the business challenge and audience to maximize the value of your ChatGPT integration.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Define Use Case</span>
+              <p className="text-gray-800 text-center">Identify business challenges and target audience for optimal ChatGPT integration.</p>
             </div>
             {/* Data collection & preparation */}
             <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
@@ -466,8 +484,8 @@ const ChatGPTIntegrations: React.FC = () => {
                 {/* Database Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Data Collection & Preparation</span>
-              <p className="text-gray-800 text-center">Curate and refine conversational data to ensure optimal model performance and relevance.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Data Preparation</span>
+              <p className="text-gray-800 text-center">Curate and refine conversational data for optimal model performance.</p>
             </div>
             {/* Development & integration */}
             <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
@@ -475,8 +493,8 @@ const ChatGPTIntegrations: React.FC = () => {
                 {/* Code/Development Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Development & Integration</span>
-              <p className="text-gray-800 text-center">Design, build, and seamlessly embed your chatbot into your digital ecosystem.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Development</span>
+              <p className="text-gray-800 text-center">Design and build your chatbot for seamless digital integration.</p>
             </div>
             {/* Deployment & monitoring */}
             <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
@@ -484,8 +502,8 @@ const ChatGPTIntegrations: React.FC = () => {
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Deployment & Monitoring</span>
-              <p className="text-gray-800 text-center">Launch your solution and track performance with actionable analytics for continuous improvement.</p>
+              <span className="font-semibold text-lg text-gray-900 text-center">Deployment</span>
+              <p className="text-gray-800 text-center">Launch and monitor performance with actionable analytics.</p>
             </div>
           </div>
         </div>
@@ -495,10 +513,15 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Trusted expertise and proven results for your ChatGPT implementation needs.
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Proven Expertise */}
@@ -545,10 +568,15 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+              <div className="flex justify-center">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              </div>
             </div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              Common questions about ChatGPT implementation and our services.
+            </p>
           </div>
           <div className="space-y-4">
             {faqData.map((faq, idx) => (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -184,32 +184,91 @@ const industries = [
 	},
 ];
 
-const AIDevelopment: React.FC = () => {
-	return (
-		<div className="min-h-screen bg-gray-50">
-			<Navbar />
+const platforms = [
+	{ name: "TensorFlow", image: "/image/skills_img/tensorflow.png" },
+	{ name: "PyTorch", image: "/image/skills_img/pytorch.png" },
+	{ name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
+	{ name: "OpenAI", image: "/image/skills_img/openai.jpg" },
+	{ name: "Hugging Face", image: "/image/skills_img/huggingface.png" },
+];
 
-			{/* Section 1: AI Development (Hero Section) */}
+const faqData = [
+	{
+		question: "What is AI Development?",
+		answer: "AI Development involves creating intelligent software systems that can learn, reason, and make decisions. It encompasses machine learning, deep learning, natural language processing, and other AI technologies to solve complex business problems.",
+	},
+	{
+		question: "How can AI Development benefit my business?",
+		answer: "AI Development can automate processes, improve decision-making, enhance customer experiences, reduce costs, and provide competitive advantages through data-driven insights and intelligent automation.",
+	},
+	{
+		question: "What types of AI solutions do you develop?",
+		answer: "We develop custom AI solutions including predictive analytics, computer vision, natural language processing, recommendation systems, anomaly detection, and process automation tailored to your specific needs.",
+	},
+	{
+		question: "How long does it take to develop an AI solution?",
+		answer: "Development time varies based on complexity, ranging from weeks for simple solutions to months for complex enterprise AI systems. We provide detailed timelines during the consultation phase.",
+	},
+	{
+		question: "Do you provide ongoing support for AI solutions?",
+		answer: "Yes, we offer comprehensive maintenance, monitoring, and optimization services to ensure your AI solutions perform optimally and adapt to changing business needs.",
+	},
+];
+
+const onboardingSteps = [
+	{
+		icon: (
+			<svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10.5V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h7.5"/><path d="M16 17l2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+		),
+		title: 'Contact Us',
+		description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
+	},
+	{
+		icon: (
+			<svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
+		),
+		title: 'Consultation & Discovery',
+		description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations tailored to your needs.',
+	},
+	{
+		icon: (
+			<svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+		),
+		title: 'Receive a Detailed Proposal',
+		description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
+	},
+	{
+		icon: (
+			<svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+		),
+		title: 'Project Kickoff & Delivery',
+		description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
+	},
+];
+
+const AIDevelopment: React.FC = () => {
+	const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
+	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+	return (
+		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
+			<Navbar />
+			
+			{/* Hero Section */}
 			<section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-				{/* Background image overlay */}
-				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center"></div>
-				{/* Content Wrapper */}
+				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
 				<div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-					{/* Text Column */}
-					<div className="flex-1 text-white space-y-8 w-full">
+					<div className="flex-1 text-white space-y-8">
 						<div className="w-full">
 							<h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								AI{' '}
-								<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-									Development
-								</span>
+								AI <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Development</span>
 							</h1>
 							<p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
 								Transform your business with AI solutions that automate processes, deliver insights, and spark innovation across industries.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
 								<a
-									href="mailto:sureshbeekhani26@gmail.com"
+									href="/#contact"
 									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
 								>
 									Talk to an Expert
@@ -217,318 +276,185 @@ const AIDevelopment: React.FC = () => {
 							</div>
 						</div>
 					</div>
-					{/* Image Column */}
-					<div className="relative flex-1 flex justify-center lg:justify-end">
-						
+					<div className="flex-1 flex justify-center md:justify-end">
+						{/* Optionally, you can add an image or illustration here if needed */}
 					</div>
 				</div>
 			</section>
 
-			{/* Section 2: Get Accurate Insights with Our AI Development Services */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-				<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-					<div className="flex-1 flex justify-center mb-8 md:mb-0">
-						<img
-							src="/image/pages_img/Tech with Our AI Services.jpg"
-							alt="Get Accurate Insights"
-							className="w-full max-w-xl h-[420px] rounded-2xl shadow-2xl object-cover border-4 border-blue-100"
-						/>
-					</div>
-					<div className="flex-1">
-						<h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">
-							Unlock Actionable Insights with AI Development
-						</h2>
-						<div className="text-gray-800 text-base space-y-4">
-							<p>
-								Transform your data into a strategic asset. Our advanced AI development solutions reveal hidden opportunities, enabling you to make proactive, confident decisions.
+			{/* AI Development Capabilities Section */}
+			<section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+				<div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+						{/* Left: AI Image */}
+						<div className="relative flex justify-center lg:justify-start">
+							<div className="relative">
+								<div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-20"></div>
+								<img
+									src="/image/pages_img/Power-AI-Development.jpg"
+									alt="The Power of AI Development"
+									className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+								/>
+							</div>
+						</div>
+						{/* Right: Content */}
+						<div className="space-y-6">
+							<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+								The Power of AI Development
+							</h2>
+							<p className="text-base text-gray-700 max-w-2xl">
+								Unlock transformative opportunities with advanced AI development. Our tailored solutions enable intelligent automation, predictive insights, and data-driven decision making that fuels business growth.
 							</p>
-							<p>
-								Custom-built AI models streamline your workflows, minimize risk, and maximize ROI—giving your business a decisive edge.
+							<p className="text-base text-gray-700 max-w-2xl">
+								Our dedicated experts seamlessly integrate and customize AI technologies to your unique needs, empowering smarter operations and competitive advantages.
 							</p>
-							<p>
-								Experience seamless integration, expert guidance, and measurable results that fuel sustainable growth.
+							<p className="text-base text-gray-700 max-w-2xl">
+								From healthcare and finance to retail and beyond, AI development redefines how you serve customers and grow your business. Partner with us to stay ahead of the curve.
 							</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Section 3: Key Features of Our AI Development Services */}
+			{/* Services Section */}
 			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-7xl mx-auto">
-					<div className="text-center space-y-6 mb-16">
-						<h3 className="text-2xl font-bold text-center text-gray-900 mb-4">
-							Key Advantages of Our AI Development
-						</h3>
-						<p className="text-center text-gray-800 text-base max-w-3xl mx-auto mb-8">
-							Discover our AI development features.
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+							Advanced AI Development Services
+						</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Intelligent automation solutions for today's dynamic business landscape.
 						</p>
-						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-							{/* Robustness */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-blue-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<rect x="4" y="4" width="16" height="16" rx="4" />
-										<path
-											d="M8 12h8"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Robust Performance
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Reliable AI solutions that adapt to diverse data sources and scale effortlessly.
-								</p>
-							</div>
-							{/* Flexibility */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-green-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path d="M12 8v4l3 3" />
-										<circle cx="12" cy="12" r="10" />
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Flexible Customization
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Tailored AI models that adapt as your business evolves.
-								</p>
-							</div>
-							{/* Transfer Learning */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-yellow-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path d="M12 4v16m0 0H3m9 0h9" />
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Accelerated Development
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Leverage pre-trained models to accelerate deployment and unlock value faster.
-								</p>
-							</div>
-							{/* Interpretable Models */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-purple-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<circle cx="12" cy="12" r="10" />
-										<path d="M8 15h8M8 11h8M8 7h8" />
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Transparent Insights
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Full visibility into AI decisions for trust and confidence.
-								</p>
-							</div>
-							{/* Automated Feature Selection */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-pink-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-pink-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-										<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Automated Intelligence
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Quickly identify impactful AI features to strengthen outcomes.
-								</p>
-							</div>
-							{/* Real-time Scoring */}
-							<div className="bg-transparent rounded-2xl shadow p-6 flex flex-col h-full items-center">
-								<div className="mb-3 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-									<svg
-										className="w-7 h-7 text-cyan-500"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<rect x="3" y="11" width="18" height="7" rx="2" />
-										<path d="M7 11V7a5 5 0 0110 0v4" />
-									</svg>
-								</div>
-								<h4 className="font-semibold text-base text-gray-900 mb-2">
-									Real-Time Processing
-								</h4>
-								<p className="text-gray-800 text-sm">
-									Process data instantly for timely, informed decisions.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* Section 4: AI Development Services */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-				<div className="max-w-7xl mx-auto">
-					<div className="text-center space-y-6 mb-16">
-						<h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-							AI Development Services
-						</h2>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* AI Chatbot Development */}
-						<div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">AI Chatbot Development</h3>
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Intelligent chatbots that enhance customer engagement and deliver personalized experiences.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">AI Chatbot Development</h3>
+							<p className="text-gray-800 text-center">Intelligent conversational AI that enhances customer engagement and delivers personalized experiences.</p>
 						</div>
-
-						{/* NLP */}
-						<div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg border border-green-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">NLP</h3>
+						{/* Natural Language Processing */}
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Help machines understand human language for better communication and decision-making.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Natural Language Processing</h3>
+							<p className="text-gray-800 text-center">Advanced NLP solutions that enable machines to understand and interpret human language.</p>
 						</div>
-
 						{/* Predictive Analytics */}
-						<div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 shadow-lg border border-purple-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">Predictive Analytics</h3>
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Advanced algorithms for accurate predictions and valuable insights to plan future scenarios.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Predictive Analytics</h3>
+							<p className="text-gray-800 text-center">Data-driven forecasting solutions that predict trends and provide actionable insights.</p>
 						</div>
-
 						{/* Machine Learning */}
-						<div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-cyan-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">Machine Learning</h3>
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Data-driven algorithms that unlock actionable insights and provide competitive advantages across industries.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Machine Learning</h3>
+							<p className="text-gray-800 text-center">Custom ML models that analyze data to recognize patterns and provide competitive advantages.</p>
 						</div>
-
 						{/* Computer Vision */}
-						<div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 shadow-lg border border-yellow-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">Computer Vision</h3>
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Comprehensive visual data interpretation with precise image recognition and object detection.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Computer Vision</h3>
+							<p className="text-gray-800 text-center">Advanced image and video analysis for automation and quality control.</p>
 						</div>
-
-						{/* Chat GPT Integration */}
-						<div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 shadow-lg border border-red-100">
-							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
-									<svg
-										className="w-8 h-8 text-red-600"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-										/>
-									</svg>
-								</div>
-								<h3 className="text-lg font-bold text-gray-900">Chat GPT Integration</h3>
+						{/* ChatGPT Integration */}
+						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-red-200 flex flex-col gap-4 items-center">
+							<div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
 							</div>
-							<p className="text-gray-800 leading-relaxed text-center text-sm">
-								Automate responses and engage users in natural conversations for enriched user experiences.
-							</p>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">ChatGPT Integration</h3>
+							<p className="text-gray-800 text-center">Seamless integration of OpenAI's ChatGPT for natural conversational experiences.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Industries We Work With (Updated to match PredictiveModelling style) */}
-			<section className="py-24 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white relative">
-				<div className="absolute inset-0 pointer-events-none">
-					<div className="w-full h-full bg-gradient-to-tr from-cyan-400/10 via-blue-700/10 to-green-400/10 opacity-80"></div>
-				</div>
-				<div className="relative z-10 max-w-7xl mx-auto">
-					<div className="text-center space-y-6 mb-20">
-						<h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 drop-shadow-lg">
-							Industries with AI Development
+			{/* AI Development Benefits Section */}
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-7xl mx-auto">
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Benefits
 						</h2>
-						<p className="text-base md:text-lg text-gray-800/80 max-w-2xl mx-auto font-medium">
-							Empowering organizations across sectors with AI and machine learning.
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Intelligent automation solutions for today's dynamic business landscape.
 						</p>
 					</div>
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl shadow-2xl">
+					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+						{/* Automation */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+							<div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round"/></svg>
+							</div>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Automation</h3>
+							<p className="text-gray-800 text-center">Streamline repetitive tasks and processes for increased efficiency and productivity.</p>
+						</div>
+						{/* Scalability */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+							<div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+							</div>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
+							<p className="text-gray-800 text-center">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
+						</div>
+						{/* Customization */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+							<div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/></svg>
+							</div>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Customization</h3>
+							<p className="text-gray-800 text-center">Tailor every aspect to perfectly align with your business objectives.</p>
+						</div>
+						{/* Innovation */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+							<div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+								<svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+							</div>
+							<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Innovation</h3>
+							<p className="text-gray-800 text-center">Drive innovation and competitive advantage through cutting-edge AI solutions.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Industries Section */}
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-7xl mx-auto">
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+							Industries We Work With
+						</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Tailored AI development solutions across diverse industry verticals.
+						</p>
+					</div>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-2xl">
 						{industries.map((industry) => (
 							<div
 								key={industry.name}
 								className="group relative border-b border-r border-white/30 min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
+								onMouseEnter={() => setHoveredIndustry(industry.name)}
+								onMouseLeave={() => setHoveredIndustry(null)}
 							>
 								<img
 									src={industry.image}
@@ -553,233 +479,202 @@ const AIDevelopment: React.FC = () => {
 				</div>
 			</section>
 
-			{/* AI Development Platforms (New Section) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white relative">
-				<div className="absolute inset-0 pointer-events-none">
-					<div className="w-full h-full bg-gradient-to-tr from-cyan-400/10 via-blue-700/10 to-green-400/10 opacity-80"></div>
-				</div>
-				<div className="relative z-10 max-w-4xl mx-auto">
-					<div className="text-center space-y-6 mb-16">
-						<div className="flex justify-center">
-							<div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
-						</div>
-						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">Leading AI Development Platforms</h2>
-					</div>
-					<div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/tensorflow.png" alt="TensorFlow" className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-3 text-white font-semibold">TensorFlow</span>
-						</div>
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/pytorch.png" alt="PyTorch" className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-3 text-white font-semibold">PyTorch</span>
-						</div>
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/sikitlearn.png" alt="Scikit-learn" className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-3 text-white font-semibold">Scikit-learn</span>
-						</div>
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/openai.jpg" alt="OpenAI" className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-3 text-white font-semibold">OpenAI</span>
-						</div>
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/huggingface.png" alt="Hugging Face" className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-3 text-white font-semibold">Hugging Face</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* AI Development Process (New Section) */}
+			{/* Platforms Section */}
 			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-7xl mx-auto">
-					<div className="text-center mb-10">
-						<h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">
-							Our AI Development Process
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Integration Platforms
 						</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Leverage industry-leading platforms for robust AI development implementations.
+						</p>
+					</div>
+					<div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
+						{platforms.map((platform) => (
+							<div className="flex flex-col items-center" key={platform.name}>
+								<img src={platform.image} alt={platform.name} className="w-24 h-24 object-contain rounded-xl shadow-md bg-white p-2" />
+								<span className="mt-3 text-blue-900 font-semibold">{platform.name}</span>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* AI Development Process Section */}
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-5xl mx-auto">
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Process
+						</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Streamlined approach to implementing AI development solutions with proven methodology.
+						</p>
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{/* Data Preprocessing */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<path d="M12 2v20m10-10H2" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-							</div>
-							<h3 className="text-lg font-semibold text-gray-900 mb-2">Data Preparation</h3>
-							<p className="text-gray-800 text-sm">We collect, cleanse, and transform raw data into a format ready for AI model training and analysis.</p>
+						{/* Define the use case */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Define Use Case</span>
+							<p className="text-gray-800 text-center">Pinpoint your business challenge to maximize AI development impact.</p>
 						</div>
-						{/* Model Selection */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<rect x="4" y="4" width="16" height="16" rx="4" />
-									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-							</div>
-							<h3 className="text-lg font-semibold text-gray-900 mb-2">Model Selection</h3>
-							<p className="text-gray-800 text-sm">We identify the optimal AI model architecture based on your data and business objectives.</p>
+						{/* Data collection & preparation */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Data Collection</span>
+							<p className="text-gray-800 text-center">Curate high-quality data for optimal AI model performance.</p>
 						</div>
-						{/* Model Training */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<path d="M12 8v4l3 3" />
-									<circle cx="12" cy="12" r="10" />
-								</svg>
-							</div>
-							<h3 className="text-lg font-semibold text-gray-900 mb-2">Model Training</h3>
-							<p className="text-gray-800 text-sm">We train and validate your AI model using best-in-class techniques to ensure accuracy and reliability.</p>
+						{/* Development & integration */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Development</span>
+							<p className="text-gray-800 text-center">Embed AI capabilities into your applications and systems.</p>
 						</div>
-						{/* Model Deployment */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<rect x="3" y="11" width="18" height="7" rx="2" />
-									<path d="M7 11V7a5 5 0 0110 0v4" />
-								</svg>
-							</div>
-							<h3 className="text-lg font-semibold text-gray-900 mb-2">Model Deployment</h3>
-							<p className="text-gray-800 text-sm">We seamlessly integrate your AI model into your business systems for real-world impact.</p>
+						{/* Deployment & monitoring */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Deployment</span>
+							<p className="text-gray-800 text-center">Deploy with confidence and monitor performance for improvement.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Why Choose Us for AI Development? (New Section) */}
-			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white relative">
-				<div className="absolute inset-0 pointer-events-none">
-					<div className="w-full h-full bg-gradient-to-tr from-cyan-400/10 via-blue-700/10 to-green-400/10 opacity-80"></div>
-				</div>
-				<div className="relative z-10 max-w-7xl mx-auto">
-					<div className="text-center mb-12">
-						<h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">Why Partner with Us for AI Development?</h2>
-						<p className="text-base text-gray-800 max-w-2xl mx-auto">See why leading organizations trust us for AI development.</p>
+			{/* Why Choose Us Section */}
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-6xl mx-auto">
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Trusted expertise and proven results for your AI development implementation needs.
+						</p>
 					</div>
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 						{/* Expertise */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<circle cx="12" cy="12" r="10" />
-									<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Proven Expertise</h3>
-							<p className="text-gray-800 text-sm">Our team combines deep industry knowledge with advanced AI experience to deliver results you can trust.</p>
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Expertise</span>
+							<p className="text-gray-800 text-center">Work with seasoned professionals ensuring your project's success.</p>
 						</div>
 						{/* Custom Solutions */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<rect x="4" y="4" width="16" height="16" rx="4" />
-									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Tailored Solutions</h3>
-							<p className="text-gray-800 text-sm">Every AI solution is custom-built to align with your business objectives and deliver maximum value.</p>
-						</div>
-						{/* Advanced Technology */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<path d="M12 8v4l3 3" />
-									<circle cx="12" cy="12" r="10" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Cutting-Edge Technology</h3>
-							<p className="text-gray-800 text-sm">We utilize the latest AI tools and algorithms to ensure your solutions are accurate, scalable, and future-ready.</p>
-						</div>
-						{/* Proven Results */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<rect x="3" y="11" width="18" height="7" rx="2" />
-									<path d="M7 11V7a5 5 0 0110 0v4" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Demonstrated Results</h3>
-							<p className="text-gray-800 text-sm">Our AI solutions consistently drive efficiency, smarter decisions, and business growth for our clients.</p>
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Custom Solutions</span>
+							<p className="text-gray-800 text-center">Bespoke AI development integrations for your unique business goals.</p>
 						</div>
 						{/* End-to-End Support */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full">
-								<svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<circle cx="12" cy="12" r="10" />
-									<path d="M8 15h8M8 11h8M8 7h8" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Comprehensive Support</h3>
-							<p className="text-gray-800 text-sm">From initial consultation to deployment and beyond, we provide end-to-end support for your success.</p>
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">End-to-End Support</span>
+							<p className="text-gray-800 text-center">Comprehensive support from strategy to deployment and optimization.</p>
 						</div>
-						{/* Data Security */}
-						<div className="bg-white rounded-xl p-6 shadow-md flex flex-col items-center text-center">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-pink-100 rounded-full">
-								<svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-									<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-									<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
-								</svg>
-							</div>
-							<h3 className="font-semibold text-base text-gray-900 mb-2">Data Security First</h3>
-							<p className="text-gray-800 text-sm">We safeguard your data with industry-leading security practices and strict compliance standards.</p>
+						{/* Proven Results */}
+						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+							<span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+								<svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
+							</span>
+							<span className="font-bold text-gray-900 text-lg text-center">Proven Results</span>
+							<p className="text-gray-800 text-center">Join clients who have achieved measurable business impact.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Frequently Asked Questions (FAQ) Section) */}
+			{/* Onboarding Process Section */}
 			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 				<div className="max-w-6xl mx-auto">
 					<div className="text-center mb-12">
-						<h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">Our Onboarding Process</h2>
+						<div className="flex justify-center mb-4">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-base text-gray-800 max-w-2xl mx-auto">We guide you through the journey of AI development with our proven steps.</p>
 					</div>
-					{/* FAQ Accordion */}
-					<div className="space-y-4">
-						{/* FAQ 1 */}
-						<details className="bg-white rounded-2xl shadow-lg p-4 group">
-							<summary className="cursor-pointer font-semibold text-base text-gray-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								What is AI Development?
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 group-open:hidden">+</span>
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 hidden group-open:inline">-</span>
-							</summary>
-							<div className="pt-3 text-gray-800 text-sm">AI Development involves creating intelligent software systems that can learn, reason, and make decisions. It encompasses machine learning, deep learning, natural language processing, and other AI technologies to solve complex business problems.</div>
-						</details>
-						{/* FAQ 2 */}
-						<details className="bg-white rounded-2xl shadow-lg p-4 group">
-							<summary className="cursor-pointer font-semibold text-base text-gray-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								How can AI Development benefit my business?
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 group-open:hidden">+</span>
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 hidden group-open:inline">-</span>
-							</summary>
-							<div className="pt-3 text-gray-800 text-sm">AI Development can automate processes, improve decision-making, enhance customer experiences, reduce costs, and provide competitive advantages through data-driven insights and intelligent automation.</div>
-						</details>
-						{/* FAQ 3 */}
-						<details className="bg-white rounded-2xl shadow-lg p-4 group">
-							<summary className="cursor-pointer font-semibold text-base text-gray-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								What types of AI solutions do you develop?
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 group-open:hidden">+</span>
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 hidden group-open:inline">-</span>
-							</summary>
-							<div className="pt-3 text-gray-800 text-sm">We develop custom AI solutions including predictive analytics, computer vision, natural language processing, recommendation systems, anomaly detection, and process automation tailored to your specific needs.</div>
-						</details>
-						{/* FAQ 4 */}
-						<details className="bg-white rounded-2xl shadow-lg p-4 group">
-							<summary className="cursor-pointer font-semibold text-base text-gray-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								How long does it take to develop an AI solution?
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 group-open:hidden">+</span>
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 hidden group-open:inline">-</span>
-							</summary>
-							<div className="pt-3 text-gray-800 text-sm">Development time varies based on complexity, ranging from weeks for simple solutions to months for complex enterprise AI systems. We provide detailed timelines during the consultation phase.</div>
-						</details>
-						{/* FAQ 5 */}
-						<details className="bg-white rounded-2xl shadow-lg p-4 group">
-							<summary className="cursor-pointer font-semibold text-base text-gray-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-								Do you provide ongoing support for AI solutions?
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 group-open:hidden">+</span>
-								<span className="ml-2 text-gray-900 group-hover:text-green-700 hidden group-open:inline">-</span>
-							</summary>
-							<div className="pt-3 text-gray-800 text-sm">Yes, we offer comprehensive maintenance, monitoring, and optimization services to ensure your AI solutions perform optimally and adapt to changing business needs.</div>
-						</details>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+						{onboardingSteps.map((step, index) => (
+							<div key={index} className="bg-white rounded-2xl p-6 shadow-md flex items-start gap-4">
+								<div className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
+									{step.icon}
+								</div>
+								<div>
+									<h3 className="font-semibold text-base text-gray-900 mb-2">{step.title}</h3>
+									<p className="text-gray-800 text-sm">{step.description}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* FAQ Section */}
+			<section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-4xl mx-auto">
+					<div className="text-center space-y-4 mb-12">
+						<h2 className="text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+						<div className="flex justify-center">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-xl text-gray-800 max-w-3xl mx-auto">
+							Common questions about AI development implementation and our services.
+						</p>
+					</div>
+					<div className="space-y-3">
+						{faqData.map((faq, idx) => (
+							<div
+								key={idx}
+								className="bg-white rounded-xl shadow-lg p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
+							>
+								<button
+									className="w-full flex items-center justify-between focus:outline-none group"
+									onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
+									aria-expanded={openFAQ === idx}
+								>
+									<span className="font-semibold text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200">
+										{faq.question}
+									</span>
+									<div className="flex items-center justify-center w-5 h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200">
+										{openFAQ === idx ? (
+											<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+												<path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
+											</svg>
+										) : (
+											<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+												<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
+											</svg>
+										)}
+									</div>
+								</button>
+								{openFAQ === idx && (
+									<div className="pt-2 text-gray-800 animate-fade-in text-sm">
+										{faq.answer}
+									</div>
+								)}
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
