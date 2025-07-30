@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -32,8 +32,28 @@ const useCarouselState = (totalItems: number, itemsPerView: number = 3) => {
   return { currentIndex, nextSlide, prevSlide };
 };
 
+// Custom hook for mobile detection and optimization
+const useMobileOptimization = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  return { isMobile, isTablet };
+};
+
 // Custom AI Diagnostics Icon Component
-const AIDiagnosticsIcon: React.FC<{ className?: string }> = React.memo(({ className = "w-32 h-32" }) => (
+const AIDiagnosticsIcon: React.FC<{ className?: string }> = React.memo(({ className = "w-24 h-24 sm:w-32 sm:h-32" }) => (
   <motion.div 
     className={`${className} text-white/90`}
     initial={{ opacity: 0, scale: 0.8 }}
@@ -172,7 +192,7 @@ const FAQ_DATA = [
 const BENEFITS_DATA = [
   {
     icon: (
-      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
         <circle cx="12" cy="12" r="3" />
       </svg>
@@ -185,7 +205,7 @@ const BENEFITS_DATA = [
   },
   {
     icon: (
-      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
       </svg>
     ),
@@ -197,7 +217,7 @@ const BENEFITS_DATA = [
   },
   {
     icon: (
-      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
       </svg>
     ),
@@ -209,7 +229,7 @@ const BENEFITS_DATA = [
   },
   {
     icon: (
-      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
       </svg>
     ),
@@ -221,7 +241,7 @@ const BENEFITS_DATA = [
   },
   {
     icon: (
-      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
       </svg>
     ),
@@ -233,7 +253,7 @@ const BENEFITS_DATA = [
   },
   {
     icon: (
-      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
       </svg>
     ),
@@ -293,112 +313,120 @@ const ICON_COLORS = [
 ];
 
 // Memoized components for better performance
-const HeroSection: React.FC = React.memo(() => (
-  <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-    <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Diagnostics-in.jpg')] bg-cover bg-center" />
-    <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-      <div className="flex-1 text-white space-y-8">
-        <div className="w-full">
-          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-            AI in Diagnostics
-          </h1>
-          <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
-            Empower your business with next-generation AI diagnostics solutions driving innovation in healthcare, medical imaging, predictive analytics, and automated diagnostics for superior accuracy and efficiency.
-          </p>
-          <div className="flex space-x-4 pt-6 w-full">
-            <a
-              href="/#contact"
-              className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
-            >
-              Talk to an Expert
-            </a>
+const HeroSection: React.FC = React.memo(() => {
+  const { isMobile } = useMobileOptimization();
+  
+  return (
+    <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+      <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Diagnostics-in.jpg')] bg-cover bg-center" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
+        <div className="flex-1 text-white space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div className="w-full">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              AI in Diagnostics
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              Empower your business with next-generation AI diagnostics solutions driving innovation in healthcare, medical imaging, predictive analytics, and automated diagnostics for superior accuracy and efficiency.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
+              <a
+                href="/#contact"
+                className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center touch-manipulation"
+                style={{ minHeight: '44px' }} // Touch-friendly minimum size
+              >
+                Talk to an Expert
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
-      <div className="flex-1 flex justify-center md:justify-end">
-        {/* Optionally, you can add an image or illustration here if needed */}
-      </div>
-    </div>
-  </section>
-));
+    </section>
+  );
+});
 
 HeroSection.displayName = 'HeroSection';
 
-const MainContentSection: React.FC = React.memo(() => (
-  <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
-    <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left: Image */}
-        <motion.div 
-          className="flex justify-center lg:justify-start"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
-            <motion.img
-              src="/image/pages_img/Transformin-Diagnostics-with-AI.jpg"
-              alt="Illustration of AI transforming diagnostics"
-              className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-              loading="lazy"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
-        </motion.div>
-        
-        {/* Right: Content */}
-        <motion.div 
-          className="space-y-6"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900">
-            Transformin Diagnostics with AI
-          </h2>
-          <p className="text-lg text-gray-700 max-w-2xl">
-            Our AI-powered platform leverages deep learning and predictive analytics to enable earlier detection, faster diagnostics, and smarter clinical decisions. By analyzing medical data including imaging, lab results, and clinical notes our system delivers accurate, real-time insights. Continuous learning ensures it evolves with new discoveries, improving outcomes and reducing diagnostic errors.
-          </p>
-        </motion.div>
+const MainContentSection: React.FC = React.memo(() => {
+  const { isMobile } = useMobileOptimization();
+  
+  return (
+    <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          {/* Left: Image */}
+          <motion.div 
+            className="flex justify-center lg:justify-start order-2 lg:order-1"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="relative w-full max-w-sm sm:max-w-md">
+              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-30"></div>
+              <motion.img
+                src="/image/pages_img/Transformin-Diagnostics-with-AI.jpg"
+                alt="Illustration of AI transforming diagnostics"
+                className="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border-2 sm:border-4 border-white/20"
+                loading="lazy"
+                whileHover={{ scale: isMobile ? 1.01 : 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </motion.div>
+          
+          {/* Right: Content */}
+          <motion.div 
+            className="space-y-4 sm:space-y-6 order-1 lg:order-2"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              Transforming Diagnostics with AI
+            </h2>
+            <p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
+              Our AI-powered platform leverages deep learning and predictive analytics to enable earlier detection, faster diagnostics, and smarter clinical decisions. By analyzing medical data including imaging, lab results, and clinical notes our system delivers accurate, real-time insights. Continuous learning ensures it evolves with new discoveries, improving outcomes and reducing diagnostic errors.
+            </p>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </AnimatedSection>
-));
+    </AnimatedSection>
+  );
+});
 
 MainContentSection.displayName = 'MainContentSection';
 
 const CapabilitiesSection: React.FC = React.memo(() => {
   const benefits = useMemo(() => BENEFITS_DATA, []);
+  const { isMobile } = useMobileOptimization();
   
   return (
     <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-1">Key Capabilities & Benefits</h2>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Key Capabilities & Benefits</h2>
           <div className="flex justify-center mb-0">
-            <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
           </div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto px-4">
             Unlock AI-powered speed, accuracy, and efficiency in diagnostics
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {benefits.map((benefit, index) => {
             const cardColor = CARD_COLORS[index % CARD_COLORS.length];
             const iconColor = ICON_COLORS[index % ICON_COLORS.length];
             
             return (
-              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col gap-4 items-center`}>
-                <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${iconColor} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] transition-transform duration-300 hover:scale-[1.02] touch-manipulation`}>
+                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${iconColor} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto`}>
                   {benefit.icon}
                 </div>
-                <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{benefit.title}</h3>
-                <p className="text-gray-800 text-center">{benefit.description}</p>
+                <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">{benefit.title}</h3>
+                <p className="text-sm sm:text-base text-gray-800 text-center leading-relaxed">{benefit.description}</p>
               </div>
             );
           })}
@@ -412,32 +440,33 @@ CapabilitiesSection.displayName = 'CapabilitiesSection';
 
 const WhyChooseMeSection: React.FC = React.memo(() => {
   const stats = useMemo(() => STATS_DATA, []);
+  const { isMobile } = useMobileOptimization();
   
   return (
     <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-1">Why Choose Me?</h2>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Why Choose Me?</h2>
           <div className="flex justify-center mb-0">
-            <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
           </div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto px-4">
             Trusted expertise in AI diagnostics for forward-thinking organizations
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8">
           {stats.map((stat, index) => {
             const cardColor = CARD_COLORS[index % CARD_COLORS.length];
             const iconColor = ICON_COLORS[index % ICON_COLORS.length];
             
             return (
-              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col items-center gap-4`}>
-                <span className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${iconColor} text-white mb-2`}>
-                  <span className="text-2xl">{stat.value}</span>
+              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] transition-transform duration-300 hover:scale-[1.02] touch-manipulation`}>
+                <span className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${iconColor} text-white mb-2`}>
+                  <span className="text-lg sm:text-2xl">{stat.value}</span>
                 </span>
-                <span className="font-bold text-gray-900 text-lg text-center">{stat.label}</span>
-                <p className="text-gray-800 text-center">{stat.description}</p>
+                <span className="font-bold text-gray-900 text-base sm:text-lg text-center leading-tight">{stat.label}</span>
+                <p className="text-sm sm:text-base text-gray-800 text-center leading-relaxed">{stat.description}</p>
               </div>
             );
           })}
@@ -453,10 +482,20 @@ const DiagnosticsAI: React.FC = () => {
   // Custom hooks for state management
   const { openFAQ, toggleFAQ } = useFAQState();
   const { currentIndex, nextSlide, prevSlide } = useCarouselState(USE_CASES_DATA.length);
+  const { isMobile } = useMobileOptimization();
   
   // Memoized data to prevent unnecessary re-renders
   const useCases = useMemo(() => USE_CASES_DATA, []);
   const faqData = useMemo(() => FAQ_DATA, []);
+
+  // Performance optimization for mobile
+  useEffect(() => {
+    // Reduce motion for users who prefer it
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      document.documentElement.style.setProperty('--motion-reduce', '1');
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 text-gray-900">
