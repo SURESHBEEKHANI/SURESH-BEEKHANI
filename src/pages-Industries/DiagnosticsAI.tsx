@@ -2,14 +2,38 @@ import React, { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import AnimatedHero from "../components/ui/AnimatedHero";
 import AnimatedSection from "../components/ui/AnimatedSection";
-import AnimatedCard from "../components/ui/AnimatedCard";
 import AnimatedCarousel from "../components/ui/AnimatedCarousel";
 import AnimatedFAQ from "../components/ui/AnimatedFAQ";
 
+// Custom hook for FAQ state management
+const useFAQState = () => {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  
+  const toggleFAQ = useCallback((id: number) => {
+    setOpenFAQ(prev => prev === id ? null : id);
+  }, []);
+  
+  return { openFAQ, toggleFAQ };
+};
+
+// Custom hook for carousel state management
+const useCarouselState = (totalItems: number, itemsPerView: number = 3) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const nextSlide = useCallback(() => {
+    setCurrentIndex(prev => prev === totalItems - itemsPerView ? 0 : prev + 1);
+  }, [totalItems, itemsPerView]);
+  
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(prev => prev === 0 ? totalItems - itemsPerView : prev - 1);
+  }, [totalItems, itemsPerView]);
+  
+  return { currentIndex, nextSlide, prevSlide };
+};
+
 // Custom AI Diagnostics Icon Component
-const AIDiagnosticsIcon: React.FC<{ className?: string }> = ({ className = "w-32 h-32" }) => (
+const AIDiagnosticsIcon: React.FC<{ className?: string }> = React.memo(({ className = "w-32 h-32" }) => (
   <motion.div 
     className={`${className} text-white/90`}
     initial={{ opacity: 0, scale: 0.8 }}
@@ -53,392 +77,410 @@ const AIDiagnosticsIcon: React.FC<{ className?: string }> = ({ className = "w-32
       <path d="M12 20L14 18L16 20L18 18L20 20" stroke="currentColor" strokeWidth="1" opacity="0.7" />
     </svg>
   </motion.div>
-);
+));
+
+AIDiagnosticsIcon.displayName = 'AIDiagnosticsIcon';
+
+// Data constants for better organization
+const USE_CASES_DATA = [
+  {
+    id: 0,
+    title: "Medical Image Analysis",
+    description: "AI analyzes X-rays, MRIs, and CT scans to detect tumors, fractures, and infections with high accuracy.",
+    image: "/image/pages_img/Medical-Image-Analysis.webp",
+    alt: "Medical Image Analysis",
+  },
+  {
+    id: 1,
+    title: "Early Disease Detection",
+    description: "ML models identify early signs of cancer, diabetes, and cardiovascular conditions for timely intervention.",
+    image: "/image/pages_img/Early-Disease-Detection.jpg",
+    alt: "Early Disease Detection",
+  },
+  {
+    id: 2,
+    title: "Predictive Diagnostics",
+    description: "AI predicts patient risk factors by analyzing health records and lifestyle data.",
+    image: "/image/pages_img/Predictive-Diagnostics.avif",
+    alt: "Predictive Diagnostics",
+  },
+  {
+    id: 3,
+    title: "Pathology Automation",
+    description: "Automated pathology slide analysis speeds diagnosis and reduces human error.",
+    image: "/image/pages_img/Pathology-Automation.webp",
+    alt: "Pathology Automation",
+  },
+  {
+    id: 5,
+    title: "Genomic Data Analysis",
+    description: "AI analyzes genetic data to identify mutations and recommend personalized treatments.",
+    image: "/image/pages_img/Genomic-Data-Analysis.jpg",
+    alt: "Genomic Data Analysis",
+  },
+  {
+    id: 6,
+    title: "Clinical Decision Support",
+    description: "AI systems assist doctors with evidence-based recommendations and diagnostic suggestions.",
+    image: "/image/pages_img/Clinical-Decision-Support.jpg",
+    alt: "Clinical Decision Support",
+  },
+  {
+    id: 7,
+    title: "Workflow Optimization",
+    description: "AI streamlines diagnostic workflows and automates administrative tasks in healthcare.",
+    image: "/image/pages_img/Workflow-Optimization.jpg",
+    alt: "Workflow Optimization",
+  },
+  {
+    id: 9,
+    title: "Anomaly Detection in Lab Results",
+    description: "AI flags abnormal lab results and trends for early intervention and better outcomes.",
+    image: "/image/pages_img/Anomaly-Detection.jpg",
+    alt: "Anomaly Detection in Lab Results",
+  },
+];
+
+const FAQ_DATA = [
+  {
+    id: 1,
+    question: "What is AI Diagnostics?",
+    answer: "AI Diagnostics uses artificial intelligence and machine learning to assist in disease detection, analysis, and prediction.",
+  },
+  {
+    id: 2,
+    question: "How does AI improve diagnostic accuracy?",
+    answer: "AI processes vast medical data, recognizes complex patterns, and reduces human error for more accurate diagnoses.",
+  },
+  {
+    id: 3,
+    question: "Is AI Diagnostics safe and reliable?",
+    answer: "When properly validated and used with clinical expertise, AI diagnostics are highly reliable and improve patient safety.",
+  },
+  {
+    id: 4,
+    question: "Can AI replace doctors in diagnostics?",
+    answer: "AI supports healthcare professionals but doesn't replace them. Final diagnoses remain with clinicians.",
+  },
+  {
+    id: 5,
+    question: "What are the challenges of AI in diagnostics?",
+    answer: "Challenges include data privacy, system integration, algorithm transparency, and ensuring unbiased care.",
+  },
+];
+
+const BENEFITS_DATA = [
+  {
+    icon: (
+      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ),
+    title: "Speed & Precision",
+    description: "Deliver rapid, accurate diagnostic results minimizing delays and improving outcomes.",
+    bgColor: "bg-green-300/20",
+    textColor: "text-green-300",
+    borderColor: "hover:border-green-300"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
+      </svg>
+    ),
+    title: "Operational Efficiency",
+    description: "Reduce costs by automating diagnostics and streamlining workflows.",
+    bgColor: "bg-blue-300/20",
+    textColor: "text-blue-300",
+    borderColor: "hover:border-blue-300"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
+      </svg>
+    ),
+    title: "Early Detection",
+    description: "Identify health risks sooner for timely intervention and better outcomes.",
+    bgColor: "bg-green-300/20",
+    textColor: "text-green-300",
+    borderColor: "hover:border-green-300"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
+      </svg>
+    ),
+    title: "Scalability",
+    description: "Deploy AI diagnostics at scale supporting large populations and remote locations.",
+    bgColor: "bg-blue-300/20",
+    textColor: "text-blue-300",
+    borderColor: "hover:border-blue-300"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
+      </svg>
+    ),
+    title: "Consistent Quality",
+    description: "Ensure reliable, standardized diagnostic results across teams and sites.",
+    bgColor: "bg-green-300/20",
+    textColor: "text-green-300",
+    borderColor: "hover:border-green-300"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+      </svg>
+    ),
+    title: "Decision Support",
+    description: "Empower clinicians with data-driven recommendations for confident decisions.",
+    bgColor: "bg-blue-300/20",
+    textColor: "text-blue-300",
+    borderColor: "hover:border-blue-300"
+  }
+];
+
+const STATS_DATA = [
+  {
+    value: "3+",
+    label: "Years of AI Experience",
+    description: "Three years of hands-on success building and deploying AI diagnostics."
+  },
+  {
+    value: "20+",
+    label: "Diagnostics Projects",
+    description: "20+ tailored AI diagnostics solutions for unique business challenges."
+  },
+  {
+    value: "30+",
+    label: "Custom AI Models",
+    description: "30+ advanced AI models for imaging, analytics, and workflow automation."
+  },
+  {
+    value: "10+",
+    label: "Satisfied Clients",
+    description: "10+ organizations with improved accuracy, efficiency, and business value."
+  },
+  {
+    value: "🌍",
+    label: "Global Impact",
+    description: "Scalable AI diagnostics solutions worldwide empowering digital health leadership."
+  }
+];
+
+// Color configuration for better maintainability
+const CARD_COLORS = [
+  "from-cyan-50 to-blue-100 border-cyan-200",
+  "from-green-50 to-emerald-100 border-green-200", 
+  "from-purple-50 to-violet-100 border-purple-200",
+  "from-yellow-50 to-amber-100 border-yellow-200",
+  "from-pink-50 to-rose-100 border-pink-200",
+  "from-indigo-50 to-blue-100 border-indigo-200"
+];
+
+const ICON_COLORS = [
+  "from-cyan-500 to-blue-600",
+  "from-green-500 to-emerald-600",
+  "from-purple-500 to-violet-600", 
+  "from-yellow-500 to-amber-600",
+  "from-pink-500 to-rose-600",
+  "from-indigo-500 to-blue-600"
+];
+
+// Memoized components for better performance
+const HeroSection: React.FC = React.memo(() => (
+  <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+    <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Diagnostics-in.jpg')] bg-cover bg-center" />
+    <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+      <div className="flex-1 text-white space-y-8">
+        <div className="w-full">
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+            AI <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Diagnostics</span>
+          </h1>
+          <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
+            Empower your business with next-generation AI diagnostics solutions driving innovation in healthcare, medical imaging, predictive analytics, and automated diagnostics for superior accuracy and efficiency.
+          </p>
+          <div className="flex space-x-4 pt-6 w-full">
+            <a
+              href="/#contact"
+              className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
+            >
+              Talk to an Expert
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 flex justify-center md:justify-end">
+        {/* Optionally, you can add an image or illustration here if needed */}
+      </div>
+    </div>
+  </section>
+));
+
+HeroSection.displayName = 'HeroSection';
+
+const MainContentSection: React.FC = React.memo(() => (
+  <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+    <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left: Image */}
+        <motion.div 
+          className="flex justify-center lg:justify-start"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
+            <motion.img
+              src="/image/pages_img/Transformin-Diagnostics-with-AI.jpg"
+              alt="Illustration of AI transforming diagnostics"
+              className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+              loading="lazy"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+        </motion.div>
+        
+        {/* Right: Content */}
+        <motion.div 
+          className="space-y-6"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900">
+            Transformin Diagnostics with AI
+          </h2>
+          <p className="text-lg text-gray-700 max-w-2xl">
+            Our AI-powered platform leverages deep learning and predictive analytics to enable earlier detection, faster diagnostics, and smarter clinical decisions. By analyzing medical data including imaging, lab results, and clinical notes our system delivers accurate, real-time insights. Continuous learning ensures it evolves with new discoveries, improving outcomes and reducing diagnostic errors.
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  </AnimatedSection>
+));
+
+MainContentSection.displayName = 'MainContentSection';
+
+const CapabilitiesSection: React.FC = React.memo(() => {
+  const benefits = useMemo(() => BENEFITS_DATA, []);
+  
+  return (
+    <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-1">Key Capabilities & Benefits</h2>
+          <div className="flex justify-center mb-0">
+            <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+          </div>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            Unlock AI-powered speed, accuracy, and efficiency in diagnostics
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit, index) => {
+            const cardColor = CARD_COLORS[index % CARD_COLORS.length];
+            const iconColor = ICON_COLORS[index % ICON_COLORS.length];
+            
+            return (
+              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col gap-4 items-center`}>
+                <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${iconColor} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+                  {benefit.icon}
+                </div>
+                <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{benefit.title}</h3>
+                <p className="text-gray-800 text-center">{benefit.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </AnimatedSection>
+  );
+});
+
+CapabilitiesSection.displayName = 'CapabilitiesSection';
+
+const WhyChooseMeSection: React.FC = React.memo(() => {
+  const stats = useMemo(() => STATS_DATA, []);
+  
+  return (
+    <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-1">Why Choose Me?</h2>
+          <div className="flex justify-center mb-0">
+            <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+          </div>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            Trusted expertise in AI diagnostics for forward-thinking organizations
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {stats.map((stat, index) => {
+            const cardColor = CARD_COLORS[index % CARD_COLORS.length];
+            const iconColor = ICON_COLORS[index % ICON_COLORS.length];
+            
+            return (
+              <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col items-center gap-4`}>
+                <span className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${iconColor} text-white mb-2`}>
+                  <span className="text-2xl">{stat.value}</span>
+                </span>
+                <span className="font-bold text-gray-900 text-lg text-center">{stat.label}</span>
+                <p className="text-gray-800 text-center">{stat.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </AnimatedSection>
+  );
+});
+
+WhyChooseMeSection.displayName = 'WhyChooseMeSection';
 
 const DiagnosticsAI: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  const useCases = useMemo(() => [
-    {
-      id: 0,
-      title: "Medical Image Analysis",
-      description: "AI analyzes X-rays, MRIs, and CT scans to detect tumors, fractures, and infections with high accuracy.",
-      image: "/image/pages_img/Medical-Image-Analysis.webp",
-      alt: "Medical Image Analysis",
-    },
-    {
-      id: 1,
-      title: "Early Disease Detection",
-      description: "ML models identify early signs of cancer, diabetes, and cardiovascular conditions for timely intervention.",
-      image: "/image/pages_img/Early-Disease-Detection.jpg",
-      alt: "Early Disease Detection",
-    },
-    {
-      id: 2,
-      title: "Predictive Diagnostics",
-      description: "AI predicts patient risk factors by analyzing health records and lifestyle data.",
-      image: "/image/pages_img/Predictive-Diagnostics.avif",
-      alt: "Predictive Diagnostics",
-    },
-    {
-      id: 3,
-      title: "Pathology Automation",
-      description: "Automated pathology slide analysis speeds diagnosis and reduces human error.",
-      image: "/image/pages_img/Pathology-Automation.webp",
-      alt: "Pathology Automation",
-    },
-    {
-      id: 5,
-      title: "Genomic Data Analysis",
-      description: "AI analyzes genetic data to identify mutations and recommend personalized treatments.",
-      image: "/image/pages_img/Genomic-Data-Analysis.jpg",
-      alt: "Genomic Data Analysis",
-    },
-    {
-      id: 6,
-      title: "Clinical Decision Support",
-      description: "AI systems assist doctors with evidence-based recommendations and diagnostic suggestions.",
-      image: "/image/pages_img/Clinical-Decision-Support.jpg",
-      alt: "Clinical Decision Support",
-    },
-    {
-      id: 7,
-      title: "Workflow Optimization",
-      description: "AI streamlines diagnostic workflows and automates administrative tasks in healthcare.",
-      image: "/image/pages_img/Workflow-Optimization.jpg",
-      alt: "Workflow Optimization",
-    },
-    {
-      id: 9,
-      title: "Anomaly Detection in Lab Results",
-      description: "AI flags abnormal lab results and trends for early intervention and better outcomes.",
-      image: "/image/pages_img/Anomaly-Detection.jpg",
-      alt: "Anomaly Detection in Lab Results",
-    },
-  ], []);
-
-  const faqData = useMemo(() => [
-    {
-      id: 1,
-      question: "What is AI Diagnostics?",
-      answer: "AI Diagnostics uses artificial intelligence and machine learning to assist in disease detection, analysis, and prediction.",
-    },
-    {
-      id: 2,
-      question: "How does AI improve diagnostic accuracy?",
-      answer: "AI processes vast medical data, recognizes complex patterns, and reduces human error for more accurate diagnoses.",
-    },
-    {
-      id: 3,
-      question: "Is AI Diagnostics safe and reliable?",
-      answer: "When properly validated and used with clinical expertise, AI diagnostics are highly reliable and improve patient safety.",
-    },
-    {
-      id: 4,
-      question: "Can AI replace doctors in diagnostics?",
-      answer: "AI supports healthcare professionals but doesn't replace them. Final diagnoses remain with clinicians.",
-    },
-    {
-      id: 5,
-      question: "What are the challenges of AI in diagnostics?",
-      answer: "Challenges include data privacy, system integration, algorithm transparency, and ensuring unbiased care.",
-    },
-  ], []);
-
-  const benefits = useMemo(() => [
-    {
-      icon: (
-        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 2.25c.38-1.13 2.12-1.13 2.5 0l.2.6a1.25 1.25 0 0 0 1.7.77l.56-.25c1.08-.48 2.13.57 1.65 1.65l-.25.56a1.25 1.25 0 0 0 .77 1.7l.6.2c1.13.38 1.13 2.12 0 2.5l-.6.2a1.25 1.25 0 0 0-.77 1.7l.25.56c.48 1.08-.57 2.13-1.65 1.65l-.56-.25a1.25 1.25 0 0 0-1.7.77l-.2.6c-.38 1.13-2.12 1.13-2.5 0l-.2-.6a1.25 1.25 0 0 0-1.7-.77l-.56.25c-1.08.48-2.13-.57-1.65-1.65l.25-.56a1.25 1.25 0 0 0-.77-1.7l-.6-.2c-1.13-.38-1.13-2.12 0-2.5l.6-.2a1.25 1.25 0 0 0 .77-1.7l-.25-.56c-.48-1.08.57-2.13 1.65-1.65l.56.25a1.25 1.25 0 0 0 1.7-.77l.2-.6z" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-      ),
-      title: "Speed & Precision",
-      description: "Deliver rapid, accurate diagnostic results—minimizing delays and improving outcomes.",
-      bgColor: "bg-green-300/20",
-      textColor: "text-green-300",
-      borderColor: "hover:border-green-300"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-12v2m0 14v-2" />
-        </svg>
-      ),
-      title: "Operational Efficiency",
-      description: "Reduce costs by automating diagnostics and streamlining workflows.",
-      bgColor: "bg-blue-300/20",
-      textColor: "text-blue-300",
-      borderColor: "hover:border-blue-300"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l2-2 4 4 8-8 2 2" />
-        </svg>
-      ),
-      title: "Early Detection",
-      description: "Identify health risks sooner for timely intervention and better outcomes.",
-      bgColor: "bg-green-300/20",
-      textColor: "text-green-300",
-      borderColor: "hover:border-green-300"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
-        </svg>
-      ),
-      title: "Scalability",
-      description: "Deploy AI diagnostics at scale—supporting large populations and remote locations.",
-      bgColor: "bg-blue-300/20",
-      textColor: "text-blue-300",
-      borderColor: "hover:border-blue-300"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9 9 0 1 0 21 12h-9z" />
-        </svg>
-      ),
-      title: "Consistent Quality",
-      description: "Ensure reliable, standardized diagnostic results across teams and sites.",
-      bgColor: "bg-green-300/20",
-      textColor: "text-green-300",
-      borderColor: "hover:border-green-300"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-        </svg>
-      ),
-      title: "Decision Support",
-      description: "Empower clinicians with data-driven recommendations for confident decisions.",
-      bgColor: "bg-blue-300/20",
-      textColor: "text-blue-300",
-      borderColor: "hover:border-blue-300"
-    }
-  ], []);
-
-  const stats = useMemo(() => [
-    {
-      value: "3+",
-      label: "Years of AI Experience",
-      description: "Three years of hands-on success building and deploying AI diagnostics."
-    },
-    {
-      value: "20+",
-      label: "Diagnostics Projects",
-      description: "20+ tailored AI diagnostics solutions for unique business challenges."
-    },
-    {
-      value: "30+",
-      label: "Custom AI Models",
-      description: "30+ advanced AI models for imaging, analytics, and workflow automation."
-    },
-    {
-      value: "10+",
-      label: "Satisfied Clients",
-      description: "10+ organizations with improved accuracy, efficiency, and business value."
-    },
-    {
-      value: "🌍",
-      label: "Global Impact",
-      description: "Scalable AI diagnostics solutions worldwide—empowering digital health leadership."
-    }
-  ], []);
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === useCases.length - 3 ? 0 : prevIndex + 1
-    );
-  }, [useCases.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? useCases.length - 3 : prevIndex - 1
-    );
-  }, [useCases.length]);
-
-  const toggleFAQ = useCallback((id: number) => {
-    setOpenFAQ(openFAQ === id ? null : id);
-  }, [openFAQ]);
+  // Custom hooks for state management
+  const { openFAQ, toggleFAQ } = useFAQState();
+  const { currentIndex, nextSlide, prevSlide } = useCarouselState(USE_CASES_DATA.length);
+  
+  // Memoized data to prevent unnecessary re-renders
+  const useCases = useMemo(() => USE_CASES_DATA, []);
+  const faqData = useMemo(() => FAQ_DATA, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 text-gray-900">
       <Navbar />
       
-      {/* Hero Section */}
-      <AnimatedHero
-        title="AI-Driven Diagnostics"
-        subtitle="Transform your business with cutting-edge AI solutions. Our comprehensive AI development services empower organizations to automate processes, gain insights, and drive innovation across all industries."
-        highlightText="Diagnostics"
-        gradientFrom="from-blue-900"
-        gradientVia="via-cyan-800"
-        gradientTo="to-blue-900"
-        buttonText="Talk to an Expert"
-        buttonLink="mailto:sureshbeekhani26@gmail.com"
-      >
-        <AIDiagnosticsIcon className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48" />
-      </AnimatedHero>
+      <HeroSection />
 
-      {/* AI Development Section */}
-      <AnimatedSection className="py-16 px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center mb-6">
-              <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-green-400 rounded-full"></div>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              AI Development
-            </h2>
-            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Revolutionize your business with advanced AI solutions. Automate tasks, unlock insights, and fuel innovation across industries.
-            </p>
-          </motion.div>
-        </div>
-      </AnimatedSection>
+      <MainContentSection />
 
-      {/* Main Content Section */}
-      <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-white/90 border-b border-blue-100">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Image */}
-            <motion.div 
-              className="flex justify-center lg:justify-start"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
-                <motion.img
-                  src="/image/pages_img/AI-Diagnostics-in.jpg"
-                  alt="Illustration of AI transforming diagnostics"
-                  className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
-                  loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-            </motion.div>
-            
-            {/* Right: Content */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-blue-900">
-                Transforming <span className="text-green-700">Diagnostics</span> with AI
-              </h2>
-              <p className="text-xl text-gray-800 max-w-2xl">
-                <span className="font-semibold text-green-700">Deep learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span> redefine diagnostics—enabling earlier detection and smarter clinical decisions.
-              </p>
-              <p className="text-lg text-gray-700 max-w-2xl">
-                From medical imaging to patient monitoring, AI empowers providers to deliver faster, more accurate, and personalized care at scale.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* Capabilities and Benefits Section */}
-      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/95 via-blue-900/95 to-blue-800/95">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-3xl font-bold text-white">Key Capabilities & Benefits</h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Unlock AI-powered speed, accuracy, and efficiency in diagnostics
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <AnimatedCard
-                key={index}
-                delay={index * 0.1}
-                className="group bg-white/10 backdrop-blur-sm border border-white/20 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
-              >
-                <div className={`flex-shrink-0 w-12 h-12 ${benefit.bgColor} rounded-lg flex items-center justify-center group-hover:bg-opacity-40 transition-colors mb-4`}>
-                  {benefit.icon}
-                </div>
-                <h3 className="font-semibold text-lg text-white mb-2">{benefit.title}</h3>
-                <p className="text-gray-200 leading-relaxed">{benefit.description}</p>
-              </AnimatedCard>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
+      <CapabilitiesSection />
 
       {/* Use Cases Section */}
       <AnimatedCarousel
         useCases={useCases}
-        title="Real-World AI Diagnostics Use Cases"
+        title="AI Diagnostics Use Cases"
         subtitle="See how AI reshapes diagnostics for healthcare and industry leaders"
-        accentColor="green"
       />
 
-      {/* Why Choose Me Section */}
-      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-green-900/95 via-blue-900/95 to-blue-800/95">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-green-300 to-blue-300 rounded-full"></div>
-            </div>
-            <h2 className="text-3xl font-bold text-white">Why Partner with Me?</h2>
-            <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              Trusted expertise in delivering high-impact AI diagnostics for forward-thinking organizations
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {stats.map((stat, index) => (
-              <AnimatedCard
-                key={index}
-                delay={index * 0.1}
-                className="bg-white/90 border border-blue-100 p-6 flex flex-col items-center text-center space-y-3"
-              >
-                <span className="text-4xl font-extrabold text-green-600">{stat.value}</span>
-                <h3 className="text-lg font-bold text-blue-900">{stat.label}</h3>
-                <p className="text-gray-700 text-sm">{stat.description}</p>
-              </AnimatedCard>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
+      <WhyChooseMeSection />
 
       {/* FAQ Section */}
       <AnimatedFAQ
         faqData={faqData}
         title="Frequently Asked Questions"
-        accentColor="green"
       />
       
       <Footer />

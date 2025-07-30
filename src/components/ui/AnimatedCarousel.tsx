@@ -41,31 +41,31 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
   const visibleItems = useCases.slice(currentIndex, currentIndex + itemsPerView);
 
   return (
-    <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50/90 to-green-50/90">
+    <section className="py-20 px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
       <div className="max-w-6xl mx-auto">
-        <motion.div 
-          className="text-center space-y-6 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex justify-center">
-            <div className={`w-16 h-1 bg-gradient-to-r from-${accentColor}-500 to-blue-500 rounded-full`}></div>
-          </div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-blue-900">
-            {title}
-          </h2>
-          <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-            {subtitle}
-          </p>
+                 <motion.div 
+           className="text-center space-y-6 mb-16"
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+         >
+                       <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+              {title}
+            </h2>
+            <div className="flex justify-center mb-0">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              {subtitle}
+            </p>
         </motion.div>
         
         <div className="relative">
           {/* Navigation Arrows */}
           <motion.button
             onClick={prevSlide}
-            className={`absolute left-0 top-24 transform -translate-y-1/2 z-10 bg-${accentColor}-100 hover:bg-${accentColor}-200 text-${accentColor}-800 p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-${accentColor}-400`}
+            className="absolute left-0 top-24 transform -translate-y-1/2 z-10 bg-blue-100 hover:bg-blue-200 text-blue-800 p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Previous use cases"
@@ -77,7 +77,7 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
           
           <motion.button
             onClick={nextSlide}
-            className={`absolute right-0 top-24 transform -translate-y-1/2 z-10 bg-${accentColor}-100 hover:bg-${accentColor}-200 text-${accentColor}-800 p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-${accentColor}-400`}
+            className="absolute right-0 top-24 transform -translate-y-1/2 z-10 bg-blue-100 hover:bg-blue-200 text-blue-800 p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Next use cases"
