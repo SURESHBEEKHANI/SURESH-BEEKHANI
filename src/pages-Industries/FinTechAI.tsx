@@ -8,6 +8,25 @@ import AnimatedCard from "../components/ui/AnimatedCard";
 import AnimatedCarousel from "../components/ui/AnimatedCarousel";
 import AnimatedFAQ from "../components/ui/AnimatedFAQ";
 
+// Color configuration for better maintainability
+const CARD_COLORS = [
+  "from-cyan-50 to-blue-100 border-cyan-200",
+  "from-green-50 to-emerald-100 border-green-200", 
+  "from-purple-50 to-violet-100 border-purple-200",
+  "from-yellow-50 to-amber-100 border-yellow-200",
+  "from-pink-50 to-rose-100 border-pink-200",
+  "from-indigo-50 to-blue-100 border-indigo-200"
+];
+
+const ICON_COLORS = [
+  "from-cyan-500 to-blue-600",
+  "from-green-500 to-emerald-600",
+  "from-purple-500 to-violet-600", 
+  "from-yellow-500 to-amber-600",
+  "from-pink-500 to-rose-600",
+  "from-indigo-500 to-blue-600"
+];
+
 const FinTechAI: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -213,7 +232,7 @@ const FinTechAI: React.FC = () => {
   }, [openFAQ]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 text-gray-900">
       <Navbar />
       
       {/* Hero Section */}
@@ -230,48 +249,43 @@ const FinTechAI: React.FC = () => {
       />
 
       {/* Main Content Section */}
-      <AnimatedSection className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-white/90">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Image */}
             <motion.div 
-              className="relative flex justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-blue-500 rounded-3xl blur-xl opacity-30"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-2xl opacity-30"></div>
                 <motion.img
                   src="/image/pages_img/AI-Financial.jpg"
                   alt="AI-Driven Financial Transformation"
                   className="relative w-full max-w-md h-80 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+                  loading="lazy"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  loading="lazy"
                 />
               </div>
             </motion.div>
             
             {/* Right: Content */}
             <motion.div 
-              className="space-y-8"
+              className="space-y-6"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-blue-900">
-                  AI in <span className="text-yellow-700">Financial Services</span>
-                </h2>
-              </div>
-              <p className="text-xl lg:text-2xl leading-relaxed text-gray-800 max-w-2xl">
-                AI, including <span className="font-semibold text-yellow-700">machine learning</span> and <span className="font-semibold text-blue-700">predictive analytics</span>, is redefining financial services—empowering smarter decisions, automating workflows, and strengthening security at every level.
-              </p>
-              <p className="text-lg lg:text-xl leading-relaxed text-gray-800 max-w-2xl">
-                From advanced fraud detection to bespoke banking, AI enables financial institutions to deliver exceptional service, minimize risk, and accelerate innovation in a rapidly changing market.
+              <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900">
+                AI in Financial Services
+              </h2>
+              <p className="text-lg text-gray-700 max-w-2xl">
+                AI, including machine learning and predictive analytics, is redefining financial services—empowering smarter decisions, automating workflows, and strengthening security at every level. From advanced fraud detection to bespoke banking, AI enables financial institutions to deliver exceptional service, minimize risk, and accelerate innovation in a rapidly changing market.
               </p>
             </motion.div>
           </div>
@@ -279,40 +293,33 @@ const FinTechAI: React.FC = () => {
       </AnimatedSection>
 
       {/* Benefits and Capabilities Section */}
-      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-yellow-900/90 via-blue-900/90 to-blue-800/90">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-blue-300 rounded-full"></div>
+      <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-1">Key Capabilities & Benefits</h2>
+            <div className="flex justify-center mb-0">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Capabilities & Strategic Advantages
-            </h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Explore how AI and machine learning elevate FinTech performance, resilience, and customer value.
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Unlock AI-powered speed, accuracy, and efficiency in financial services
             </p>
-          </motion.div>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <AnimatedCard
-                key={index}
-                delay={index * 0.1}
-                className="group bg-white/10 backdrop-blur-sm border border-white/20 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
-              >
-                <div className={`flex-shrink-0 w-12 h-12 ${benefit.bgColor} rounded-lg flex items-center justify-center group-hover:bg-opacity-40 transition-colors mb-3`}>
-                  {benefit.icon}
+            {benefits.map((benefit, index) => {
+              const cardColor = CARD_COLORS[index % CARD_COLORS.length];
+              const iconColor = ICON_COLORS[index % ICON_COLORS.length];
+              
+              return (
+                <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col gap-4 items-center`}>
+                  <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${iconColor} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+                    {benefit.icon}
+                  </div>
+                  <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{benefit.title}</h3>
+                  <p className="text-gray-800 text-center">{benefit.description}</p>
                 </div>
-                <h3 className="font-semibold text-lg text-white mb-2">{benefit.title}</h3>
-                <p className="text-gray-200 leading-relaxed">{benefit.description}</p>
-              </AnimatedCard>
-            ))}
+              );
+            })}
           </div>
         </div>
       </AnimatedSection>
@@ -326,38 +333,33 @@ const FinTechAI: React.FC = () => {
       />
 
       {/* Why Choose Me Section */}
-      <AnimatedSection className="py-20 px-6 lg:px-8 bg-gradient-to-br from-yellow-900/90 via-blue-900/90 to-blue-800/90">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-yellow-300 to-blue-300 rounded-full"></div>
+      <AnimatedSection className="relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-1">Why Choose Me?</h2>
+            <div className="flex justify-center mb-0">
+              <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">
-              Why Partner With Me
-            </h2>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Trusted expertise and a proven record of delivering transformative AI solutions for the financial sector.
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Trusted expertise in AI FinTech for forward-thinking organizations
             </p>
-          </motion.div>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {stats.map((stat, index) => (
-              <AnimatedCard
-                key={index}
-                delay={index * 0.1}
-                className="bg-white/90 border border-blue-100 p-6 flex flex-col items-center text-center space-y-3"
-              >
-                <span className="text-4xl font-extrabold text-yellow-600">{stat.value}</span>
-                <h3 className="text-lg font-bold text-blue-900">{stat.label}</h3>
-                <p className="text-gray-700 text-sm">{stat.description}</p>
-              </AnimatedCard>
-            ))}
+            {stats.map((stat, index) => {
+              const cardColor = CARD_COLORS[index % CARD_COLORS.length];
+              const iconColor = ICON_COLORS[index % ICON_COLORS.length];
+              
+              return (
+                <div key={index} className={`bg-gradient-to-br ${cardColor} rounded-2xl p-8 shadow-xl border flex flex-col items-center gap-4`}>
+                  <span className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${iconColor} text-white mb-2`}>
+                    <span className="text-2xl">{stat.value}</span>
+                  </span>
+                  <span className="font-bold text-gray-900 text-lg text-center">{stat.label}</span>
+                  <p className="text-gray-800 text-center">{stat.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </AnimatedSection>
@@ -366,7 +368,6 @@ const FinTechAI: React.FC = () => {
       <AnimatedFAQ
         faqData={faqData}
         title="Frequently Asked Questions"
-        accentColor="yellow"
       />
       
       <Footer />
