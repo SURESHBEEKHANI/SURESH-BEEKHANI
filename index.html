@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+    <meta name="theme-color" content="#4285F4" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Suresh Beekhani" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
     <title>ML Engineer</title>
     <meta name="description" content="Welcome to ML Engineer's portfolio website. Explore projects, achievements, and more." />
     <meta name="author" content="ML Engineer" />
@@ -21,6 +27,7 @@
     
     <!-- Favicon and Logo -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234285F4'/><text x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'>ML</text></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234285F4'/><text x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'>ML</text></svg>" />
     <style>
       .logo-circle {
         width: 45px;
@@ -35,6 +42,25 @@
         font-family: Arial, sans-serif;
         font-size: 16px;
         margin-right: 10px;
+      }
+      
+      /* Prevent horizontal scroll on mobile */
+      html, body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      /* Improve touch targets on mobile */
+      @media (max-width: 768px) {
+        button, a, input, select, textarea {
+          min-height: 44px;
+          min-width: 44px;
+        }
+      }
+      
+      /* Optimize for mobile performance */
+      * {
+        -webkit-tap-highlight-color: transparent;
       }
     </style>
   </head>

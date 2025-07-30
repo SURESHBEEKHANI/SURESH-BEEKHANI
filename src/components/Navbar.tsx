@@ -123,117 +123,149 @@ const Navbar = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
   
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-4 sm:px-6 py-3 sm:py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#home" className="text-lg sm:text-xl font-display font-bold text-primary flex items-center transition-opacity duration-500">
-          <div className="logo-circle mr-2">
-            {logos[currentLogoIndex].prefix.replace('-', '')}
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+        : 'bg-white shadow-sm'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
+          {/* Logo */}
+          <a 
+            href="#home" 
+            className="text-lg sm:text-xl lg:text-2xl font-display font-bold text-primary flex items-center transition-opacity duration-500 hover:opacity-80"
+            aria-label="Go to homepage"
+          >
+            <div className="logo-circle mr-2 sm:mr-3">
+              {logos[currentLogoIndex].prefix.replace('-', '')}
+            </div>
+            <span className="text-foreground">{logos[currentLogoIndex].suffix}</span>
+          </a>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            {navLinks.map((link) =>
+              link.label === 'Services' ? (
+                <div key="Services" className="relative group">
+                  <button 
+                    className={`nav-link text-sm font-medium transition-colors touch-button ${
+                      activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
+                    }`}
+                    aria-label="Services dropdown"
+                  >
+                    Services
+                  </button>
+                  <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
+                    {services.map((service) => (
+                      <a
+                        key={service.name}
+                        href={service.page}
+                        className={`block px-4 py-3 text-sm transition-colors duration-150 touch-button ${
+                          currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'
+                        }`}
+                        aria-label={`Navigate to ${service.name}`}
+                      >
+                        {service.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : link.label === 'Industries' ? (
+                <div key="Industries" className="relative group">
+                  <button 
+                    className={`nav-link text-sm font-medium transition-colors touch-button ${
+                      activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
+                    }`}
+                    aria-label="Industries dropdown"
+                  >
+                    Industries
+                  </button>
+                  <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
+                    {industrie.map((industry) => (
+                      <a
+                        key={industry.name}
+                        href={industry.page}
+                        className={`block px-4 py-3 text-sm transition-colors duration-150 touch-button ${
+                          currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'
+                        }`}
+                        aria-label={`Navigate to ${industry.name}`}
+                      >
+                        {industry.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`nav-link text-sm font-medium transition-colors touch-button ${
+                    activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
+                  }`}
+                  aria-label={`Navigate to ${link.label} section`}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
-          <span className="text-foreground">{logos[currentLogoIndex].suffix}</span>
-        </a>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-          {navLinks.map((link) =>
-            link.label === 'Services' ? (
-              <div key="Services" className="relative group">
-                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Services</button>
-                <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
-                  {services.map((service) => (
-                    <a
-                      key={service.name}
-                      href={service.page}
-                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
-                    >
-                      {service.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : link.label === 'Industries' ? (
-              <div key="Industries" className="relative group">
-                <button className={`nav-link text-sm font-medium transition-colors ${activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>Industries</button>
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
-                  {industrie.map((industry) => (
-                    <a
-                      key={industry.name}
-                      href={industry.page}
-                      className={`block px-4 py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'}`}
-                    >
-                      {industry.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`nav-link text-sm font-medium transition-colors ${activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
-              >
-                {link.label}
-              </a>
-            )
-          )}
-        </div>
-        
-        {/* WhatsApp Button - Desktop */}
-        <a 
-          href={whatsappUrl} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6"
-        >
-          <WhatsAppLogo />
-          <span className="font-medium text-sm">{whatsappNumber}</span>
-        </a>
-        
-        {/* Mobile Menu with WhatsApp Button */}
-        <div className="md:hidden flex items-center gap-3">
-          {/* WhatsApp Icon for Mobile */}
+          
+          {/* WhatsApp Button - Desktop */}
           <a 
             href={whatsappUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            className="hidden lg:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6 touch-button"
             aria-label="Contact on WhatsApp"
           >
             <WhatsAppLogo />
+            <span className="font-medium text-sm">{whatsappNumber}</span>
           </a>
           
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="mobile-menu-button"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+          <div className="lg:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="mobile-menu-button touch-button"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-background/80 backdrop-blur-sm transition-all duration-300 overflow-hidden mobile-menu-container ${
-        isMobileMenuOpen ? 'max-h-[70vh] opacity-100 shadow-lg' : 'max-h-0 opacity-0'
+      <div className={`lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md transition-all duration-300 overflow-hidden mobile-menu-container border-t border-gray-200 shadow-lg ${
+        isMobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="px-6 py-4 flex flex-col space-y-3 max-h-[70vh] overflow-y-auto">
+        <div className="px-4 sm:px-6 py-4 flex flex-col space-y-2 max-h-[80vh] overflow-y-auto">
           {navLinks.map((link) =>
             link.label === 'Services' ? (
               <details key="Services" className="group">
-                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Services</summary>
-                <div className="pl-4">
+                <summary className="py-3 px-4 border-b border-gray-100 transition-colors cursor-pointer text-foreground hover:text-primary font-medium touch-button flex items-center justify-between">
+                  <span>Services</span>
+                  <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="pl-4 bg-gray-50/50">
                   {services.map((service) => (
                     <a
                       key={service.name}
                       href={service.page}
-                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
+                      className={`block py-3 px-4 text-sm transition-colors duration-150 touch-button border-b border-gray-100 last:border-b-0 ${
+                        currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
+                      }`}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      aria-label={`Navigate to ${service.name}`}
                     >
                       {service.name}
                     </a>
@@ -242,14 +274,22 @@ const Navbar = () => {
               </details>
             ) : link.label === 'Industries' ? (
               <details key="Industries" className="group">
-                <summary className="py-2.5 border-b border-white/10 transition-colors cursor-pointer text-foreground hover:text-primary font-medium">Industries</summary>
-                <div className="pl-4">
+                <summary className="py-3 px-4 border-b border-gray-100 transition-colors cursor-pointer text-foreground hover:text-primary font-medium touch-button flex items-center justify-between">
+                  <span>Industries</span>
+                  <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="pl-4 bg-gray-50/50">
                   {industrie.map((industry) => (
                     <a
                       key={industry.name}
                       href={industry.page}
-                      className={`block py-2 text-sm transition-colors duration-150 ${currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary'}`}
+                      className={`block py-3 px-4 text-sm transition-colors duration-150 touch-button border-b border-gray-100 last:border-b-0 ${
+                        currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
+                      }`}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      aria-label={`Navigate to ${industry.name}`}
                     >
                       {industry.name}
                     </a>
@@ -260,8 +300,11 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className={`py-2.5 border-b border-white/10 transition-colors ${activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+                className={`py-3 px-4 border-b border-gray-100 transition-colors touch-button ${
+                  activeSection === link.href.substring(1) ? 'text-primary font-semibold bg-primary/5' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-label={`Navigate to ${link.label} section`}
               >
                 {link.label}
               </a>
@@ -273,8 +316,9 @@ const Navbar = () => {
             href={whatsappUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="mt-2 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-md transition-all duration-300"
+            className="mt-4 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-all duration-300 touch-button"
             onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Contact on WhatsApp"
           >
             <WhatsAppLogo />
             <span className="font-medium">Contact on WhatsApp</span>

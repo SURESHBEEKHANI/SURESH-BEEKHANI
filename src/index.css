@@ -42,10 +42,25 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
-    scroll-behavior: smooth;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  @media (max-width: 768px) {
+    body {
+      overflow-x: hidden;
+    }
   }
 
   /* Custom scrollbar */
@@ -79,6 +94,25 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Mobile touch optimizations */
+  @media (max-width: 768px) {
+    button, a, input, select, textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Improve text readability on mobile */
+    p, span, div {
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Optimize images for mobile */
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 }
@@ -174,7 +208,7 @@
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
 @keyframes scaleIn {
@@ -307,7 +341,7 @@
 
 /* Professional section styling */
 .pro-section {
-  @apply py-16 sm:py-20 md:py-24 relative overflow-hidden border-b border-gray-100;
+  @apply py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden border-b border-gray-100;
 }
 
 .pro-section:last-child {
@@ -323,16 +357,16 @@
 }
 
 .pro-section-title {
-  @apply text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-3 sm:mb-4;
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-3 sm:mb-4;
 }
 
 .pro-section-subtitle {
-  @apply text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto;
+  @apply text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 lg:mb-12 max-w-2xl mx-auto;
 }
 
 /* Professional heading styling */
 .pro-heading {
-  @apply mb-10 sm:mb-16 text-center;
+  @apply mb-8 sm:mb-10 lg:mb-16 text-center;
 }
 
 .pro-heading-badge {
@@ -340,46 +374,34 @@
 }
 
 .pro-heading-title {
-  @apply text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-3 sm:mb-4;
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-3 sm:mb-4;
 }
 
 .pro-heading-line {
-  @apply w-16 sm:w-20 h-1 bg-primary mx-auto mb-6 sm:mb-8;
+  @apply w-12 sm:w-16 md:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6 md:mb-8;
 }
 
 /* Professional grid layout */
 .pro-grid {
-  @apply grid gap-4 sm:gap-8;
+  @apply grid gap-3 sm:gap-4 md:gap-6 lg:gap-8;
 }
 
-/* Small tablet and up */
-@screen sm {
-  .pro-grid-2 {
-    @apply grid-cols-2;
-  }
+/* Responsive grid layouts */
+.pro-grid-2 {
+  @apply grid-cols-1 sm:grid-cols-2;
 }
 
-/* Medium screens and up */
-@screen md {
-  .pro-grid-3 {
-    @apply grid-cols-3;
-  }
-  
-  .pro-grid-4 {
-    @apply grid-cols-2;
-  }
+.pro-grid-3 {
+  @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
 }
 
-/* Large screens and up */
-@screen lg {
-  .pro-grid-4 {
-    @apply grid-cols-4;
-  }
+.pro-grid-4 {
+  @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
 }
 
 /* Section dividers and decorations */
 .section-divider {
-  @apply relative py-6 sm:py-8 flex items-center justify-center;
+  @apply relative py-4 sm:py-6 md:py-8 flex items-center justify-center;
 }
 
 .section-divider::before,
@@ -389,11 +411,11 @@
 }
 
 .section-divider::before {
-  @apply mr-4 sm:mr-8;
+  @apply mr-3 sm:mr-4 md:mr-8;
 }
 
 .section-divider::after {
-  @apply ml-4 sm:ml-8;
+  @apply ml-3 sm:ml-4 md:ml-8;
 }
 
 .section-decoration {
@@ -401,26 +423,26 @@
 }
 
 .section-decoration-1 {
-  @apply bg-primary/20 w-48 sm:w-64 h-48 sm:h-64 rounded-full -top-24 sm:-top-32 -left-24 sm:-left-32;
+  @apply bg-primary/20 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 rounded-full -top-16 sm:-top-24 md:-top-32 -left-16 sm:-left-24 md:-left-32;
 }
 
 .section-decoration-2 {
-  @apply bg-blue-300/30 w-64 sm:w-96 h-64 sm:h-96 rounded-full -bottom-32 sm:-bottom-48 -right-32 sm:-right-48;
+  @apply bg-blue-300/30 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 rounded-full -bottom-24 sm:-bottom-32 md:-bottom-48 -right-24 sm:-right-32 md:-right-48;
 }
 
 /* Section container styling */
 .section-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 relative z-10;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10;
 }
 
 /* Section header with consistent styling */
 .section-header {
-  @apply relative mb-10 sm:mb-16 pb-3 sm:pb-4 border-b border-gray-100;
+  @apply relative mb-8 sm:mb-10 lg:mb-16 pb-3 sm:pb-4 border-b border-gray-100;
 }
 
 .section-header::after {
   content: "";
-  @apply absolute bottom-0 left-0 w-16 sm:w-24 h-1 bg-primary;
+  @apply absolute bottom-0 left-0 w-12 sm:w-16 md:w-24 h-1 bg-primary;
 }
 
 /* Avatar glow effect for hero section */
@@ -510,6 +532,33 @@
   @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
 }
 
+/* Mobile-specific utilities */
+.mobile-optimized {
+  @apply text-sm sm:text-base;
+}
+
+.mobile-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.mobile-margin {
+  @apply my-4 sm:my-6 lg:my-8;
+}
+
+/* Touch-friendly button sizes */
+.touch-button {
+  @apply min-h-[44px] min-w-[44px] px-4 py-2;
+}
+
+/* Mobile navigation optimizations */
+.mobile-nav {
+  @apply fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg;
+}
+
+.mobile-menu {
+  @apply absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-lg;
+}
+
 /* Accessibility improvements */
 .sr-only {
   position: absolute;
@@ -547,5 +596,53 @@
   
   .glass-effect {
     @apply bg-white border border-gray-300;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Optimize text sizes for mobile */
+  .mobile-text {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+  
+  .mobile-heading {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+  
+  /* Improve spacing for mobile */
+  .mobile-spacing {
+    @apply px-4 py-6;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Improve mobile navigation */
+  .mobile-nav-item {
+    @apply py-3 px-4 border-b border-gray-100;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-optimized {
+    @apply px-6 py-8;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1025px) {
+  .desktop-optimized {
+    @apply px-8 py-12;
   }
 }
