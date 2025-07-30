@@ -53,32 +53,22 @@ const Portfolio: React.FC = () => {
     <>
       <Navbar />
       {/* Hero Section - Professional Layout */}
-      <section className="relative w-full min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900/90 via-blue-900/90 to-fuchsia-900/90">
-        {/* Background Image Overlay */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <img
-            src="/image/pages_img/Protfilo.jpg" // Use the correct hero image
-            alt="Portfolio Hero Background"
-            className="w-full h-full object-cover object-center"
-            style={{ filter: 'brightness(0.5)' }}
-          />
-          {/* Semi-transparent overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10 z-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236C63FF' fill-opacity='0.08'%3E%3Crect x='25' y='25' width='10' height='10' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-            }}
-          ></div>
-        </div>
-        <div className="relative z-20 max-w-4xl mx-auto px-6 py-20 mt-12 w-full md:w-1/2">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-4 text-left">AI Portfolio</h1>
-          <p className="text-xl md:text-2xl font-semibold text-gray-100 mb-8 max-w-2xl text-left">
-            Explore how innovative AI solutions are transforming industries and driving measurable impact.
-          </p>
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Protfilo.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 text-white space-y-8">
+            <div className="w-full">
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI Portfolio
+              </h1>
+              <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
+                Explore how innovative AI solutions are transforming industries and driving measurable impact. From healthcare diagnostics to legal automation, discover cutting-edge AI projects that showcase the power of artificial intelligence in solving real-world challenges.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            {/* Optionally, you can add an image or illustration here if needed */}
+          </div>
         </div>
       </section>
       {/* Main Content Section */}
