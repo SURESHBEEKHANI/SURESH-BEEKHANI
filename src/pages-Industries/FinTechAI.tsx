@@ -250,8 +250,8 @@ const HeroSection: React.FC = React.memo(() => (
             Unlock the future of finance with AI driving intelligent automation, robust fraud prevention, and hyper-personalized customer experiences.
           </p>
           <div className="flex space-x-4 pt-6 w-full">
-            <a
-              href="mailto:sureshbeekhani@26gmail.com"
+          <a
+              href="/#contact"
               className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
             >
               Talk to an Expert
