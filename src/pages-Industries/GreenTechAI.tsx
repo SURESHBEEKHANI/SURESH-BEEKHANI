@@ -341,7 +341,7 @@ const MainContentSection: React.FC = React.memo(() => (
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900">
-            AI in Environmental Technologyg          </h2>
+            AI in Environmental Technology</h2>
                       <p className="text-lg text-gray-700 max-w-2xl">
               AI, including machine learning and predictive analytics, is revolutionizing environmental sustainability enabling smarter resource management, carbon reduction, and climate action.
             </p>
