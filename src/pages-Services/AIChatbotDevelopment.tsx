@@ -311,8 +311,8 @@ const AIChatbotDevelopment: React.FC = () => {
 								Transform your business with AI chatbot solutions that automate interactions, deliver insights, and drive engagement across all touchpoints.
 							</p>
 							<div className="flex space-x-4 pt-6 w-full">
-								<a
-									href="mailto:sureshbeekhani26@gmail.com"
+							<a
+									href="/#contact"
 									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-lg"
 								>
 									Talk to an Expert
