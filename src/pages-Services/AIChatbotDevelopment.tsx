@@ -377,11 +377,11 @@ const AIChatbotDevelopment: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* AI Chatbot Development Solutions */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-cyan-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -404,11 +404,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Design and Development */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-blue-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -432,11 +432,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Multi-language Chatbot Development */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-green-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -459,11 +459,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Integration */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-yellow-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -487,11 +487,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Natural Language Processing Chatbot Development */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-purple-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -514,11 +514,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Chatbot Maintenance and Support */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
+						<div className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col gap-4 items-center">
 							<div className="flex flex-col items-center text-center space-y-4">
-								<div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-2">
+								<div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-2">
 									<svg
-										className="w-7 h-7 text-pink-500"
+										className="w-7 h-7 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -560,10 +560,10 @@ const AIChatbotDevelopment: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* AI Chatbot Engineering */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200">
+						<div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-4">
+									<svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
 									</svg>
 								</div>
@@ -575,10 +575,10 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* AI Voice Assistant Chatbots */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200">
+						<div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mb-4">
+									<svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 										<circle cx="12" cy="12" r="10" />
 										<path d="M8 15h8M8 11h8M8 7h8" strokeLinecap="round" strokeLinejoin="round" />
 									</svg>
@@ -591,10 +591,10 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Medical AI Chatbots */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200">
+						<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl p-8 shadow-xl border border-purple-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center mb-4">
+									<svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
 									</svg>
 								</div>
@@ -606,10 +606,10 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Legal Chatbots */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200">
+						<div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+									<svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 									</svg>
 								</div>
@@ -621,10 +621,10 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Social Media Chatbot Program */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200">
+						<div className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl p-8 shadow-xl border border-yellow-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-									<svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center mb-4">
+									<svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
 									</svg>
 								</div>
@@ -636,11 +636,11 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 
 						{/* Vision-based Chatbots */}
-						<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200">
+						<div className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-8 shadow-xl border border-pink-200">
 							<div className="flex flex-col items-center text-center mb-6">
-								<div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4">
+								<div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center mb-4">
 									<svg
-										className="w-8 h-8 text-pink-600"
+										className="w-8 h-8 text-white"
 										fill="none"
 										stroke="currentColor"
 										strokeWidth="2"
@@ -759,9 +759,9 @@ const AIChatbotDevelopment: React.FC = () => {
 		</div>
 		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{/* Card 1 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<circle cx="12" cy="12" r="10" />
 						<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
@@ -770,9 +770,9 @@ const AIChatbotDevelopment: React.FC = () => {
 				<p className="text-gray-800">Extensive experience in designing, developing, and deploying robust AI chatbots.</p>
 			</div>
 			{/* Card 2 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<rect x="4" y="4" width="16" height="16" rx="4" />
 						<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
@@ -781,9 +781,9 @@ const AIChatbotDevelopment: React.FC = () => {
 				<p className="text-gray-800">AI chatbot solutions across customer service, e-commerce, healthcare, and diverse industries.</p>
 			</div>
 			{/* Card 3 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round" />
 						<circle cx="12" cy="12" r="10" />
 					</svg>
@@ -792,9 +792,9 @@ const AIChatbotDevelopment: React.FC = () => {
 				<p className="text-gray-800">Advanced NLP and Machine Learning for seamless, human-like interactions.</p>
 			</div>
 			{/* Card 4 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 						<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 					</svg>
@@ -803,9 +803,9 @@ const AIChatbotDevelopment: React.FC = () => {
 				<p className="text-gray-800">Meticulously crafted solutions reflecting your brand identity and business goals.</p>
 			</div>
 			{/* Card 5 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<rect x="3" y="11" width="18" height="7" rx="2" />
 						<path d="M7 11V7a5 5 0 0110 0v4" />
 					</svg>
@@ -814,9 +814,9 @@ const AIChatbotDevelopment: React.FC = () => {
 				<p className="text-gray-800">Engineered for scalability with consistent performance and adaptability.</p>
 			</div>
 			{/* Card 6 */}
-			<div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col items-center text-center gap-4">
-				<div className="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-2">
-					<svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+			<div className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col items-center text-center gap-4">
+				<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-2">
+					<svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 						<path d="M12 8v4l3 3" />
 						<circle cx="12" cy="12" r="10" />
 					</svg>
@@ -842,49 +842,49 @@ const AIChatbotDevelopment: React.FC = () => {
 				</div>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
   {/* Card 1: Operational Cost Reduction */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-cyan-100 rounded-full">
-      <svg className="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v8m0 0c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="10"/></svg>
+  <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v8m0 0c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="10"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Operational Cost Reduction</h3>
     <p className="text-gray-800 text-base leading-relaxed">Automate tasks and reduce costs.</p>
   </div>
   {/* Card 2: Enhanced Efficiency */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-blue-100 rounded-full">
-      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Enhanced Efficiency</h3>
     <p className="text-gray-800 text-base leading-relaxed">Provide 24/7 support and focus on high-value work.</p>
   </div>
   {/* Card 3: Actionable Insights */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-green-100 rounded-full">
-      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10"/></svg>
+  <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Actionable Insights</h3>
     <p className="text-gray-800 text-base leading-relaxed">Gain insights on customer needs for smarter decisions.</p>
   </div>
   {/* Card 4: Sustainable Competitive Edge */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-yellow-100 rounded-full">
-      <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+  <div className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Sustainable Competitive Edge</h3>
     <p className="text-gray-800 text-base leading-relaxed">Show innovation and stand out from competitors.</p>
   </div>
   {/* Card 5: Superior User Engagement */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-purple-100 rounded-full">
-      <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92"/></svg>
+  <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Superior User Engagement</h3>
     <p className="text-gray-800 text-base leading-relaxed">Deliver personalized experiences that boost engagement.</p>
   </div>
   {/* Card 6: Scalable & Future-Ready */}
-  <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col items-center text-center gap-4">
-    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-pink-100 rounded-full">
-      <svg className="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+  <div className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col items-center text-center gap-4">
+    <div className="flex items-center justify-center mb-4 mt-2 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full">
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
     </div>
     <h3 className="font-bold text-xl text-gray-900 mb-3">Scalable & Future-Ready</h3>
     <p className="text-gray-800 text-base leading-relaxed">Scale and adapt as your business grows.</p>

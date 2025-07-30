@@ -311,23 +311,23 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {nlpServices.map((service, index) => {
-              const colors = [
-                { bg: 'bg-blue-50', border: 'border-blue-200', iconBg: 'bg-blue-100', iconColor: 'text-blue-500' },
-                { bg: 'bg-green-50', border: 'border-green-200', iconBg: 'bg-green-100', iconColor: 'text-green-500' },
-                { bg: 'bg-purple-50', border: 'border-purple-200', iconBg: 'bg-purple-100', iconColor: 'text-purple-500' },
-                { bg: 'bg-orange-50', border: 'border-orange-200', iconBg: 'bg-orange-100', iconColor: 'text-orange-500' },
-                { bg: 'bg-pink-50', border: 'border-pink-200', iconBg: 'bg-pink-100', iconColor: 'text-pink-500' },
-                { bg: 'bg-indigo-50', border: 'border-indigo-200', iconBg: 'bg-indigo-100', iconColor: 'text-indigo-500' }
+              const gradients = [
+                { bg: 'bg-gradient-to-br from-cyan-50 to-blue-100', border: 'border-cyan-200', iconBg: 'bg-cyan-100', iconColor: 'text-cyan-600' },
+                { bg: 'bg-gradient-to-br from-blue-50 to-indigo-100', border: 'border-blue-200', iconBg: 'bg-blue-100', iconColor: 'text-blue-600' },
+                { bg: 'bg-gradient-to-br from-green-50 to-emerald-100', border: 'border-green-200', iconBg: 'bg-green-100', iconColor: 'text-green-600' },
+                { bg: 'bg-gradient-to-br from-yellow-50 to-orange-100', border: 'border-yellow-200', iconBg: 'bg-yellow-100', iconColor: 'text-yellow-600' },
+                { bg: 'bg-gradient-to-br from-purple-50 to-violet-100', border: 'border-purple-200', iconBg: 'bg-purple-100', iconColor: 'text-purple-600' },
+                { bg: 'bg-gradient-to-br from-pink-50 to-rose-100', border: 'border-pink-200', iconBg: 'bg-pink-100', iconColor: 'text-pink-600' }
               ];
-              const colorScheme = colors[index % colors.length];
+              const gradientScheme = gradients[index % gradients.length];
               
               return (
                 <div
                   key={service.id}
-                  className={`${colorScheme.bg} rounded-2xl p-8 shadow-xl border ${colorScheme.border} flex flex-col gap-4 items-center hover:shadow-2xl transition-all duration-300`}
+                  className={`${gradientScheme.bg} rounded-2xl p-8 shadow-xl border ${gradientScheme.border} flex flex-col gap-4 items-center hover:shadow-2xl transition-all duration-300`}
                 >
-                  <div className={`flex-shrink-0 w-12 h-12 ${colorScheme.iconBg} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
-                    <div className={colorScheme.iconColor}>
+                  <div className={`flex-shrink-0 w-12 h-12 ${gradientScheme.iconBg} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+                    <div className={gradientScheme.iconColor}>
                       {service.icon}
                     </div>
                   </div>
@@ -360,33 +360,33 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Text Understanding */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
+                <svg className="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
               </div>
               <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Text Understanding</h3>
               <p className="text-gray-800 text-center">NLP enables systems to interpret and reply to queries, resulting in more effective and natural interactions.</p>
             </div>
             {/* Personalization */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
               </div>
               <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Personalization</h3>
               <p className="text-gray-800 text-center">Deliver personalized recommendations, answers, and content based on user interests and context for a rewarding experience.</p>
             </div>
             {/* Scalability */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
               <p className="text-gray-800 text-center">NLP solutions scale to handle high volumes of requests and interactions, suitable for organizations of all sizes and industries.</p>
             </div>
             {/* Time and Cost Savings */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               </div>
               <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">Time and Cost Savings</h3>
               <p className="text-gray-800 text-center">Automate processes like content creation and customer service, saving manual labor expenses and streamlining workflows.</p>
@@ -481,7 +481,7 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Define the use case */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Target/Bullseye Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
@@ -490,7 +490,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Identify the business scenario and audience for NLP integration.</p>
             </div>
             {/* Data collection & preparation */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Database Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
@@ -499,7 +499,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Gather and prepare conversational/text data for model training.</p>
             </div>
             {/* Development & integration */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Code/Development Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
@@ -508,7 +508,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Build and integrate NLP solutions into your application.</p>
             </div>
             {/* Deployment & monitoring */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
@@ -534,7 +534,7 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Expertise */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
                 {/* Star/Expertise Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -543,7 +543,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Seasoned professionals with deep experience in AI and NLP integrations.</p>
             </div>
             {/* Custom Solutions */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
                 {/* Puzzle/Custom Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
@@ -552,7 +552,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Tailored NLP integrations to fit your unique business needs and goals.</p>
             </div>
             {/* End-to-End Support */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
                 {/* Support/Headset Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
@@ -561,7 +561,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <p className="text-gray-800 text-center">Comprehensive guidance from planning to deployment and ongoing optimization.</p>
             </div>
             {/* Proven Results */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
                 {/* Trophy/Results Icon */}
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>

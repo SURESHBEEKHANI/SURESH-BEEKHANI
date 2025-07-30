@@ -10,7 +10,7 @@ const chatGPTServices = [
     description:
       "For websites, applications, and messaging platforms, Chat GPT offers chatbot development services with natural language interactions that give users assistance and support.",
     icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
     ),
   },
   {
@@ -19,7 +19,7 @@ const chatGPTServices = [
     description:
       "We integrate a powerful question-answering capability into your chatbot, enabling it to provide accurate and relevant answers to user queries.",
     icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
   },
   {
@@ -28,7 +28,7 @@ const chatGPTServices = [
     description:
       "Our Chat GPT integration service offers content generation. It empowers your website with engaging and personalized written materials.",
     icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
     ),
   },
   {
@@ -37,7 +37,7 @@ const chatGPTServices = [
     description:
       "We integrate natural language processing capabilities with Chat GPT to offer seamless translation services for users in different countries or regions.",
     icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
   },
   {
@@ -46,7 +46,7 @@ const chatGPTServices = [
     description:
       "Experience the power of personalized recommendations with ChatGPT integrations. It is tailored to enhance user experiences and drive conversions.",
     icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
     ),
   },
   {
@@ -55,7 +55,7 @@ const chatGPTServices = [
     description:
       "This service involves creating compelling prompts. These prompts enable the language model to generate high-quality responses that meet user needs and expectation",
     icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
   },
 ];
@@ -305,20 +305,27 @@ const ChatGPTIntegrations: React.FC = () => {
             {chatGPTServices.map((service, idx) => (
               <div
                 key={service.id}
-                className={`bg-white/95 rounded-2xl p-8 shadow-xl border ${idx % 2 === 0 ? 'border-cyan-200' : 'border-blue-200'} flex flex-col gap-4 items-center`}
+                className={`rounded-2xl p-8 shadow-xl border-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                  idx === 0 ? 'bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 hover:border-purple-400' :
+                  idx === 1 ? 'bg-gradient-to-br from-emerald-50 to-green-50 border-emerald-200 hover:border-emerald-400' :
+                  idx === 2 ? 'bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200 hover:border-blue-400' :
+                  idx === 3 ? 'bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200 hover:border-orange-400' :
+                  idx === 4 ? 'bg-gradient-to-br from-pink-50 to-rose-50 border-pink-200 hover:border-pink-400' :
+                  'bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 hover:border-indigo-400'
+                } flex flex-col gap-4 items-center`}
               >
-                <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mb-2 mx-auto ${
-                  idx === 0 ? 'bg-blue-100' :
-                  idx === 1 ? 'bg-green-100' :
-                  idx === 2 ? 'bg-purple-100' :
-                  idx === 3 ? 'bg-orange-100' :
-                  idx === 4 ? 'bg-pink-100' :
-                  'bg-indigo-100'
+                <div className={`flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-lg ${
+                  idx === 0 ? 'bg-gradient-to-br from-purple-100 to-pink-100' :
+                  idx === 1 ? 'bg-gradient-to-br from-emerald-100 to-green-100' :
+                  idx === 2 ? 'bg-gradient-to-br from-blue-100 to-cyan-100' :
+                  idx === 3 ? 'bg-gradient-to-br from-orange-100 to-yellow-100' :
+                  idx === 4 ? 'bg-gradient-to-br from-pink-100 to-rose-100' :
+                  'bg-gradient-to-br from-indigo-100 to-purple-100'
                 }`}>
                   {service.icon}
                 </div>
-                <h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{service.title}</h3>
-                <p className="text-gray-800 text-center">{service.description}</p>
+                <h3 className="font-bold text-lg text-gray-900 mb-3 text-center w-full">{service.title}</h3>
+                <p className="text-gray-700 text-center leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
@@ -343,36 +350,36 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Advanced Language Understanding */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-cyan-200 hover:shadow-2xl hover:border-cyan-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-cyan-200 transition-colors">
-                <svg className="w-8 h-8 text-cyan-500 group-hover:text-cyan-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 shadow-xl border-2 border-cyan-200 hover:shadow-2xl hover:border-cyan-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
+              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-cyan-200 group-hover:to-blue-200 transition-all duration-300 shadow-lg">
+                <svg className="w-8 h-8 text-cyan-700 group-hover:text-cyan-900 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
               </div>
-              <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-cyan-700 transition-colors">Advanced Language Understanding</h3>
-              <p className="text-blue-900 text-sm">ChatGPT integrations deliver natural, intuitive conversations enabling your business to respond intelligently and efficiently to every customer query.</p>
+              <h3 className="font-bold text-lg text-gray-900 mb-3 group-hover:text-cyan-800 transition-colors">Advanced Language Understanding</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">ChatGPT integrations deliver natural, intuitive conversations enabling your business to respond intelligently and efficiently to every customer query.</p>
             </div>
             {/* Personalized Engagement */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-green-200 hover:shadow-2xl hover:border-green-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-green-200 transition-colors">
-                <svg className="w-8 h-8 text-green-500 group-hover:text-green-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 shadow-xl border-2 border-emerald-200 hover:shadow-2xl hover:border-emerald-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
+              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-emerald-200 group-hover:to-green-200 transition-all duration-300 shadow-lg">
+                <svg className="w-8 h-8 text-emerald-700 group-hover:text-emerald-900 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
               </div>
-              <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-green-700 transition-colors">Personalized Engagement</h3>
-              <p className="text-blue-900 text-sm">Leverage AI-driven personalization to deliver tailored recommendations, answers, and content creating memorable, high-value experiences for every user.</p>
+              <h3 className="font-bold text-lg text-gray-900 mb-3 group-hover:text-emerald-800 transition-colors">Personalized Engagement</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">Leverage AI-driven personalization to deliver tailored recommendations, answers, and content creating memorable, high-value experiences for every user.</p>
             </div>
             {/* Effortless Scalability */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-blue-200 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-blue-200 transition-colors">
-                <svg className="w-8 h-8 text-blue-500 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-xl border-2 border-blue-200 hover:shadow-2xl hover:border-blue-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
+              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300 shadow-lg">
+                <svg className="w-8 h-8 text-blue-700 group-hover:text-blue-900 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-blue-700 transition-colors">Effortless Scalability</h3>
-              <p className="text-blue-900 text-sm">Scale your customer interactions with ease. ChatGPT integrations handle high volumes seamlessly, supporting businesses of any size as you grow.</p>
+              <h3 className="font-bold text-lg text-gray-900 mb-3 group-hover:text-blue-800 transition-colors">Effortless Scalability</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">Scale your customer interactions with ease. ChatGPT integrations handle high volumes seamlessly, supporting businesses of any size as you grow.</p>
             </div>
             {/* Time & Cost Efficiency */}
-            <div className="bg-white/95 rounded-2xl p-8 shadow-xl border border-yellow-200 hover:shadow-2xl hover:border-yellow-400 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
-              <div className="flex-shrink-0 w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-yellow-200 transition-colors">
-                <svg className="w-8 h-8 text-yellow-500 group-hover:text-yellow-700 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 shadow-xl border-2 border-yellow-200 hover:shadow-2xl hover:border-yellow-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4 group">
+              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-yellow-200 group-hover:to-orange-200 transition-all duration-300 shadow-lg">
+                <svg className="w-8 h-8 text-yellow-700 group-hover:text-yellow-900 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               </div>
-              <h3 className="font-semibold text-base text-blue-900 mb-2 group-hover:text-yellow-700 transition-colors">Time & Cost Efficiency</h3>
-              <p className="text-blue-900 text-sm">Automate content creation and customer service to reduce manual workload, optimize resources, and focus on strategic growth initiatives.</p>
+              <h3 className="font-bold text-lg text-gray-900 mb-3 group-hover:text-yellow-800 transition-colors">Time & Cost Efficiency</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">Automate content creation and customer service to reduce manual workload, optimize resources, and focus on strategic growth initiatives.</p>
             </div>
           </div>
         </div>
@@ -470,40 +477,40 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Define the use case */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 shadow-xl border-2 border-cyan-200 hover:shadow-2xl hover:border-cyan-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-100 to-blue-100 text-cyan-700 mb-4 shadow-lg">
                 {/* Target/Bullseye Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Define Use Case</span>
-              <p className="text-gray-800 text-center">Identify business challenges and target audience for optimal ChatGPT integration.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Define Use Case</span>
+              <p className="text-gray-700 text-center leading-relaxed">Identify business challenges and target audience for optimal ChatGPT integration.</p>
             </div>
             {/* Data collection & preparation */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 shadow-xl border-2 border-emerald-200 hover:shadow-2xl hover:border-emerald-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-100 to-green-100 text-emerald-700 mb-4 shadow-lg">
                 {/* Database Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Data Preparation</span>
-              <p className="text-gray-800 text-center">Curate and refine conversational data for optimal model performance.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Data Preparation</span>
+              <p className="text-gray-700 text-center leading-relaxed">Curate and refine conversational data for optimal model performance.</p>
             </div>
             {/* Development & integration */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-xl border-2 border-blue-200 hover:shadow-2xl hover:border-blue-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700 mb-4 shadow-lg">
                 {/* Code/Development Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Development</span>
-              <p className="text-gray-800 text-center">Design and build your chatbot for seamless digital integration.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Development</span>
+              <p className="text-gray-700 text-center leading-relaxed">Design and build your chatbot for seamless digital integration.</p>
             </div>
             {/* Deployment & monitoring */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 shadow-xl border-2 border-yellow-200 hover:shadow-2xl hover:border-yellow-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-100 text-yellow-700 mb-4 shadow-lg">
                 {/* Monitor/Analytics Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-semibold text-lg text-gray-900 text-center">Deployment</span>
-              <p className="text-gray-800 text-center">Launch and monitor performance with actionable analytics.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Deployment</span>
+              <p className="text-gray-700 text-center leading-relaxed">Launch and monitor performance with actionable analytics.</p>
             </div>
           </div>
         </div>
@@ -525,40 +532,40 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Proven Expertise */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-xl border-2 border-purple-200 hover:shadow-2xl hover:border-purple-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 text-purple-700 mb-4 shadow-lg">
                 {/* Star/Expertise Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               </span>
-              <span className="font-semibold text-base text-blue-900 text-center">Proven Expertise</span>
-              <p className="text-gray-700 text-sm text-center">Our team brings deep AI and ChatGPT integration experience to deliver results that matter.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Proven Expertise</span>
+              <p className="text-gray-700 text-sm text-center leading-relaxed">Our team brings deep AI and ChatGPT integration experience to deliver results that matter.</p>
             </div>
             {/* Tailored Solutions */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-2">
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 shadow-xl border-2 border-emerald-200 hover:shadow-2xl hover:border-emerald-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-100 to-green-100 text-emerald-700 mb-4 shadow-lg">
                 {/* Puzzle/Custom Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
               </span>
-              <span className="font-semibold text-base text-blue-900 text-center">Tailored Solutions</span>
-              <p className="text-gray-700 text-sm text-center">We craft ChatGPT integrations precisely aligned with your business objectives and industry needs.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Tailored Solutions</span>
+              <p className="text-gray-700 text-sm text-center leading-relaxed">We craft ChatGPT integrations precisely aligned with your business objectives and industry needs.</p>
             </div>
             {/* End-to-End Partnership */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-2">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-xl border-2 border-blue-200 hover:shadow-2xl hover:border-blue-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 text-blue-700 mb-4 shadow-lg">
                 {/* Support/Headset Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
               </span>
-              <span className="font-semibold text-base text-blue-900 text-center">End-to-End Partnership</span>
-              <p className="text-gray-700 text-sm text-center">From strategy to deployment and beyond, we provide comprehensive support at every stage.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">End-to-End Partnership</span>
+              <p className="text-gray-700 text-sm text-center leading-relaxed">From strategy to deployment and beyond, we provide comprehensive support at every stage.</p>
             </div>
             {/* Measurable Impact */}
-            <div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center text-center gap-4">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 shadow-xl border-2 border-yellow-200 hover:shadow-2xl hover:border-yellow-400 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-100 text-yellow-700 mb-4 shadow-lg">
                 {/* Trophy/Results Icon */}
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
               </span>
-              <span className="font-semibold text-base text-blue-900 text-center">Measurable Impact</span>
-              <p className="text-gray-700 text-sm text-center">We deliver solutions with a proven track record of driving business growth and operational excellence.</p>
+              <span className="font-bold text-lg text-gray-900 text-center">Measurable Impact</span>
+              <p className="text-gray-700 text-sm text-center leading-relaxed">We deliver solutions with a proven track record of driving business growth and operational excellence.</p>
             </div>
           </div>
         </div>
@@ -582,17 +589,17 @@ const ChatGPTIntegrations: React.FC = () => {
             {faqData.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg p-4 group"
+                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg p-6 group hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <details className="group">
                   <summary className="cursor-pointer font-semibold text-base text-blue-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200">
-                    <span className="font-semibold text-lg text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200">
+                    <span className="font-bold text-lg text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200">
                       {faq.question}
                     </span>
-                    <span className="ml-2 text-blue-900 group-hover:text-green-700 group-open:hidden">+</span>
-                    <span className="ml-2 text-blue-900 group-hover:text-green-700 hidden group-open:inline">-</span>
+                    <span className="ml-2 text-blue-900 group-hover:text-green-700 group-open:hidden text-xl">+</span>
+                    <span className="ml-2 text-blue-900 group-hover:text-green-700 hidden group-open:inline text-xl">-</span>
                   </summary>
-                  <div className="pt-3 text-gray-800 animate-fade-in text-sm">
+                  <div className="pt-4 text-gray-700 animate-fade-in text-sm leading-relaxed">
                     {faq.answer}
                   </div>
                 </details>

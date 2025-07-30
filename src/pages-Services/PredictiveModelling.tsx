@@ -70,10 +70,10 @@ const pmServices = [
     description:
       "Unlock precise forecasting and trend analysis with robust regression tools tailored to your business objectives.",
     icon: (
-      <svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
     ),
-    bgColor: "bg-blue-100",
-    iconColor: "text-blue-500",
+    bgColor: "bg-gradient-to-br from-indigo-50 to-purple-50",
+    iconColor: "text-indigo-600",
   },
   {
     id: 2,
@@ -81,10 +81,10 @@ const pmServices = [
     description:
       "Anticipate future trends and seasonality by analyzing time-stamped data for accurate, forward-looking insights.",
     icon: (
-      <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
-    bgColor: "bg-green-100",
-    iconColor: "text-green-500",
+    bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
+    iconColor: "text-emerald-600",
   },
   {
     id: 3,
@@ -92,10 +92,10 @@ const pmServices = [
     description:
       "Empower your business to categorize and interpret complex data, driving smarter segmentation and decision-making.",
     icon: (
-      <svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
     ),
-    bgColor: "bg-purple-100",
-    iconColor: "text-purple-500",
+    bgColor: "bg-gradient-to-br from-violet-50 to-purple-50",
+    iconColor: "text-violet-600",
   },
   {
     id: 4,
@@ -103,10 +103,10 @@ const pmServices = [
     description:
       "Proactively identify outliers and unusual patterns to mitigate risk and ensure operational integrity.",
     icon: (
-      <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
-    bgColor: "bg-red-100",
-    iconColor: "text-red-500",
+    bgColor: "bg-gradient-to-br from-rose-50 to-pink-50",
+    iconColor: "text-rose-600",
   },
   {
     id: 5,
@@ -114,10 +114,10 @@ const pmServices = [
     description:
       "Evaluate and quantify potential risks using advanced statistical models and machine learning algorithms.",
     icon: (
-      <svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
+      <svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
     ),
-    bgColor: "bg-yellow-100",
-    iconColor: "text-yellow-500",
+    bgColor: "bg-gradient-to-br from-amber-50 to-orange-50",
+    iconColor: "text-amber-600",
   },
   {
     id: 6,
@@ -125,10 +125,10 @@ const pmServices = [
     description:
       "Predict customer demand patterns to optimize inventory, production, and resource allocation strategies.",
     icon: (
-      <svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
+      <svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
     ),
-    bgColor: "bg-cyan-100",
-    iconColor: "text-cyan-500",
+    bgColor: "bg-gradient-to-br from-cyan-50 to-blue-50",
+    iconColor: "text-cyan-600",
   },
 ];
 
@@ -191,7 +191,7 @@ const faqData = [
   },
   {
     question: "Will a predictive analytics tool bring value to my company?",
-    answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction—delivering measurable business value.",
+    answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
   },
   {
     question: "What are predictive modeling techniques?",
@@ -307,8 +307,8 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{pmServices.map((service) => (
-							<div key={service.id} className="bg-white/95 rounded-2xl p-8 shadow-xl border border-gray-200 flex flex-col gap-4 items-center">
-								<div className={`flex-shrink-0 w-12 h-12 ${service.bgColor} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+							<div key={service.id} className={`${service.bgColor} rounded-2xl p-8 shadow-xl border border-gray-200/50 flex flex-col gap-4 items-center backdrop-blur-sm`}>
+								<div className={`flex-shrink-0 w-12 h-12 bg-white/80 rounded-xl flex items-center justify-center mb-2 mx-auto shadow-lg`}>
 									{service.icon}
 								</div>
 								<h3 className="font-semibold text-base text-gray-900 mb-2 text-center w-full">{service.title}</h3>
@@ -335,9 +335,9 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* Robust Performance */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-blue-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="4" y="4" width="16" height="16" rx="4" />
 									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
@@ -346,13 +346,13 @@ const PredictiveModelling: React.FC = () => {
 								Robust Performance
 							</h4>
 							<p className="text-gray-800 text-sm">
-								Our solutions are engineered for reliability—adapting to diverse data sources, scaling effortlessly, and delivering consistent results in any environment.
+								Our solutions are engineered for reliability, adapting to diverse data sources, scaling effortlessly, and delivering consistent results in any environment.
 							</p>
 						</div>
 						{/* Flexible Customization */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-emerald-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 8v4l3 3" />
 									<circle cx="12" cy="12" r="10" />
 								</svg>
@@ -365,9 +365,9 @@ const PredictiveModelling: React.FC = () => {
 							</p>
 						</div>
 						{/* Accelerated Model Development */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-amber-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 4v16m0 0H3m9 0h9" />
 								</svg>
 							</div>
@@ -375,13 +375,13 @@ const PredictiveModelling: React.FC = () => {
 								Accelerated Model Development
 							</h4>
 							<p className="text-gray-800 text-sm">
-								Leverage pre-trained models and transfer learning to accelerate deployment and unlock value faster—no need to start from scratch.
+								Leverage pre-trained models and transfer learning to accelerate deployment and unlock value faster, no need to start from scratch.
 							</p>
 						</div>
 						{/* Transparent Insights */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full">
-								<svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-violet-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<circle cx="12" cy="12" r="10" />
 									<path d="M8 15h8M8 11h8M8 7h8" />
 								</svg>
@@ -394,9 +394,9 @@ const PredictiveModelling: React.FC = () => {
 							</p>
 						</div>
 						{/* Automated Feature Discovery */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-pink-100 rounded-full">
-								<svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-rose-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 									<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 								</svg>
@@ -405,13 +405,13 @@ const PredictiveModelling: React.FC = () => {
 								Automated Feature Discovery
 							</h4>
 							<p className="text-gray-800 text-sm">
-								Quickly identify the most impactful data features—saving time, reducing complexity, and strengthening your predictive outcomes.
+								Quickly identify the most impactful data features, saving time, reducing complexity, and strengthening your predictive outcomes.
 							</p>
 						</div>
 						{/* Real-Time Decisioning */}
-						<div className="bg-white/95 rounded-2xl shadow p-6 flex flex-col h-full items-center">
-							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl shadow-lg p-6 flex flex-col h-full items-center border border-cyan-200/30">
+							<div className="mb-3 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="3" y="11" width="18" height="7" rx="2" />
 									<path d="M7 11V7a5 5 0 0110 0v4" />
 								</svg>
@@ -488,9 +488,9 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 						{/* Data Preprocessing */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-xl border border-blue-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 2v20m10-10H2" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</div>
@@ -498,9 +498,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">We collect, cleanse, and transform raw data into a format ready for insightful analysis.</p>
 						</div>
 						{/* Model Selection */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-xl border border-emerald-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="4" y="4" width="16" height="16" rx="4" />
 									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
@@ -509,9 +509,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">We identify the optimal predictive model based on your data and business goals.</p>
 						</div>
 						{/* Model Training */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 shadow-xl border border-amber-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 8v4l3 3" />
 									<circle cx="12" cy="12" r="10" />
 								</svg>
@@ -520,9 +520,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">We train and validate your model using best-in-class techniques to ensure accuracy and reliability.</p>
 						</div>
 						{/* Model Deployment */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 shadow-xl border border-cyan-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="3" y="11" width="18" height="7" rx="2" />
 									<path d="M7 11V7a5 5 0 0110 0v4" />
 								</svg>
@@ -571,9 +571,9 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* Expertise */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
-								<svg className="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-xl border border-blue-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<circle cx="12" cy="12" r="10" />
 									<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
@@ -582,9 +582,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">Our team combines deep industry knowledge with advanced analytics experience to deliver results you can trust.</p>
 						</div>
 						{/* Custom Solutions */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-green-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
-								<svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-xl border border-emerald-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="4" y="4" width="16" height="16" rx="4" />
 									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
@@ -593,9 +593,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">Every solution is custom-built to align with your business objectives and deliver maximum value.</p>
 						</div>
 						{/* Advanced Technology */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-full">
-								<svg className="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 shadow-xl border border-amber-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 8v4l3 3" />
 									<circle cx="12" cy="12" r="10" />
 								</svg>
@@ -604,9 +604,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">We utilize the latest tools and algorithms to ensure your predictive models are accurate, scalable, and future-ready.</p>
 						</div>
 						{/* Proven Results */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-cyan-100 rounded-full">
-								<svg className="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 shadow-xl border border-cyan-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<rect x="3" y="11" width="18" height="7" rx="2" />
 									<path d="M7 11V7a5 5 0 0110 0v4" />
 								</svg>
@@ -615,9 +615,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">Our solutions consistently drive efficiency, smarter decisions, and business growth for our clients.</p>
 						</div>
 						{/* End-to-End Support */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-purple-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full">
-								<svg className="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-8 shadow-xl border border-violet-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<circle cx="12" cy="12" r="10" />
 									<path d="M8 15h8M8 11h8M8 7h8" />
 								</svg>
@@ -626,9 +626,9 @@ const PredictiveModelling: React.FC = () => {
 							<p className="text-gray-700 text-sm">From initial consultation to deployment and beyond, we provide end-to-end support for your success.</p>
 						</div>
 						{/* Data Security */}
-						<div className="bg-transparent rounded-2xl p-8 shadow-xl border border-pink-200 flex flex-col items-center gap-4">
-							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-pink-100 rounded-full">
-								<svg className="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+						<div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-xl border border-rose-200/50 flex flex-col items-center gap-4">
+							<div className="mb-4 w-12 h-12 flex items-center justify-center bg-white/90 rounded-full shadow-md">
+								<svg className="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 									<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 								</svg>
@@ -656,7 +656,7 @@ const PredictiveModelling: React.FC = () => {
 						{faqData.map((faq, idx) => (
 							<div
 								key={idx}
-								className="bg-white rounded-xl shadow-lg p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
+								className="bg-gradient-to-r from-white to-gray-50 rounded-xl shadow-lg p-4 flex flex-col transition-all duration-300 hover:scale-[1.01] border border-gray-200/50"
 							>
 								<button
 									className="w-full flex items-center justify-between focus:outline-none group"
