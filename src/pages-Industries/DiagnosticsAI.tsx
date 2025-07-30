@@ -249,27 +249,27 @@ const STATS_DATA = [
   {
     value: "3+",
     label: "Years of AI Experience",
-    description: "Three years of hands-on success building and deploying AI diagnostics."
+    description: "Hands-on success building and deploying AI diagnostics."
   },
   {
     value: "20+",
     label: "Diagnostics Projects",
-    description: "20+ tailored AI diagnostics solutions for unique business challenges."
+    description: "Tailored AI diagnostics solutions for unique business challenges."
   },
   {
     value: "30+",
     label: "Custom AI Models",
-    description: "30+ advanced AI models for imaging, analytics, and workflow automation."
+    description: "Advanced AI models for imaging, analytics, and workflow automation."
   },
   {
     value: "10+",
     label: "Satisfied Clients",
-    description: "10+ organizations with improved accuracy, efficiency, and business value."
+    description: "Organizations with improved accuracy, efficiency, and business value."
   },
   {
     value: "🌍",
     label: "Global Impact",
-    description: "Scalable AI diagnostics solutions worldwide empowering digital health leadership."
+    description: "Scalable AI diagnostics solutions worldwide."
   }
 ];
 
@@ -300,7 +300,7 @@ const HeroSection: React.FC = React.memo(() => (
       <div className="flex-1 text-white space-y-8">
         <div className="w-full">
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-            AI <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Diagnostics</span>
+            AI in Diagnostics
           </h1>
           <p className="text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-4">
             Empower your business with next-generation AI diagnostics solutions driving innovation in healthcare, medical imaging, predictive analytics, and automated diagnostics for superior accuracy and efficiency.
