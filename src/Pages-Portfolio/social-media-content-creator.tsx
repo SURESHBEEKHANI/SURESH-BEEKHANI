@@ -15,43 +15,43 @@ import {
   ResponsiveGrid
 } from '@/components/ui/portfolio-components';
 
-// Enhanced Icon components with better accessibility
-const AutomationIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+// Enhanced Icon components with better accessibility and mobile optimization
+const AutomationIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-purple-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 6v6l4 2"/>
   </svg>
 );
 
-const AnalyticsIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const AnalyticsIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-blue-400" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="2"/>
     <path d="M7 7h.01M7 11h.01M7 15h.01M11 7h2M11 11h2M11 15h2M15 7h2M15 11h2M15 15h2"/>
   </svg>
 );
 
-const PersonalizationIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const PersonalizationIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-pink-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="8" r="4"/>
     <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
   </svg>
 );
 
-const CalendarIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const CalendarIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-green-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="4" width="18" height="18" rx="2"/>
     <path d="M16 2v4M8 2v4M3 10h18"/>
   </svg>
 );
 
-const DeviceIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const DeviceIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-yellow-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="2" y="7" width="20" height="14" rx="2"/>
     <path d="M8 21h8"/>
   </svg>
 );
 
-const CodeIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const CodeIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-gray-700" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
   </svg>
@@ -94,41 +94,41 @@ const results = [
 ];
 
 // Development steps with enhanced icons
-const AgileIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+const AgileIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-purple-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 6v6l4 2"/>
   </svg>
 );
 
-const FeedbackIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const FeedbackIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-blue-400" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
   </svg>
 );
 
-const ApiIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const ApiIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-green-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="2"/>
     <path d="M7 7h.01M7 11h.01M7 15h.01M11 7h2M11 11h2M11 15h2M15 7h2M15 11h2M15 15h2"/>
   </svg>
 );
 
-const SmartIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const SmartIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-pink-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 8v4l3 3"/>
   </svg>
 );
 
-const PrivacyIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const PrivacyIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-yellow-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
   </svg>
 );
 
-const SustainableIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const SustainableIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-gray-700" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 0v10l6 3"/>
   </svg>
@@ -191,8 +191,8 @@ const SoMeCreator = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -200,10 +200,10 @@ const SoMeCreator = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-3 sm:mb-4 leading-tight">
               What is Social Media Content Creator?
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
               A Social Media Content Creator is a digital tool or platform that empowers users to design, schedule, and manage engaging posts across multiple social channels. It leverages AI to streamline content ideation, automate publishing, and analyze performance, helping brands and individuals grow their online presence efficiently.
             </p>
           </motion.div>
@@ -216,8 +216,8 @@ const SoMeCreator = () => {
       </PortfolioSection>
 
       {/* Enhanced Problem Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
             alt="Problems illustration"
@@ -229,10 +229,10 @@ const SoMeCreator = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-3 sm:mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Manual content creation is time-consuming, inconsistent, and often fails to engage audiences. Marketers struggle to analyze performance and adapt quickly to trends, leading to missed opportunities and lower ROI.
             </p>
           </motion.div>
@@ -240,11 +240,11 @@ const SoMeCreator = () => {
       </PortfolioSection>
 
       {/* Enhanced Main Content Section */}
-      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-12 px-6">
+      <div className="py-12 sm:py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12 px-4 sm:px-6 lg:px-8">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -252,10 +252,10 @@ const SoMeCreator = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 leading-tight">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-3 sm:mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
                   The AI Social Media Content Creator automates content generation, optimizes scheduling, and delivers real-time analytics—saving time, increasing engagement, and maximizing your brand impact.
                 </p>
               </motion.div>
@@ -274,7 +274,7 @@ const SoMeCreator = () => {
               subtitle="Advanced capabilities that transform social media management"
               delay={0.1}
             />
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <PortfolioImage
                 src="/image/pages_img/Key-Features-socal-medui.png"
                 alt="Key Features Social Media illustration"
@@ -285,7 +285,7 @@ const SoMeCreator = () => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
               >
                 {features.map((f, i) => (
                   <FeatureCard
@@ -301,7 +301,7 @@ const SoMeCreator = () => {
 
           {/* Enhanced Development Section */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
                 initial="initial"
@@ -313,7 +313,7 @@ const SoMeCreator = () => {
                   subtitle="Our systematic approach to building AI solutions"
                   delay={0.1}
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
@@ -333,7 +333,7 @@ const SoMeCreator = () => {
 
           {/* Enhanced Results */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <PortfolioImage
                 src="/image/pages_img/result.jpg"
                 alt="Results and impact illustration"
@@ -355,7 +355,7 @@ const SoMeCreator = () => {
                   initial="initial"
                   whileInView="animate"
                   viewport={{ once: true }}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-2xl mx-auto"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full max-w-2xl mx-auto"
                 >
                   {results.map((r, i) => (
                     <ResultCard

@@ -15,43 +15,43 @@ import {
   ResponsiveGrid
 } from '@/components/ui/portfolio-components';
 
-// Enhanced Icon components with better accessibility
-const ChatbotIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+// Enhanced Icon components with better accessibility and mobile optimization
+const ChatbotIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-purple-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="5" width="18" height="14" rx="2"/>
     <path d="M8 9h8M8 13h4"/>
   </svg>
 );
 
-const DiagnosisIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const DiagnosisIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-blue-400" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 8v4l3 3"/>
   </svg>
 );
 
-const ReportIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const ReportIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-pink-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="4" y="4" width="16" height="16" rx="2"/>
     <path d="M8 2v4M16 2v4M4 10h16"/>
   </svg>
 );
 
-const IntegrationIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const IntegrationIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-green-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="2" y="7" width="20" height="14" rx="2"/>
     <path d="M8 21h8"/>
   </svg>
 );
 
-const PrivacyIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const PrivacyIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-yellow-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
   </svg>
 );
 
-const AnalyticsIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const AnalyticsIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-gray-700" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M3 17v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/>
     <circle cx="12" cy="7" r="4"/>
@@ -95,41 +95,41 @@ const results = [
 ];
 
 // Development steps with enhanced icons
-const AgileIcon = ({ className = "w-8 h-8 mb-1 text-purple-500" }) => (
+const AgileIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-purple-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 6v6l4 2"/>
   </svg>
 );
 
-const FeedbackIcon = ({ className = "w-8 h-8 mb-1 text-blue-400" }) => (
+const FeedbackIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-blue-400" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
   </svg>
 );
 
-const ApiIcon = ({ className = "w-8 h-8 mb-1 text-green-500" }) => (
+const ApiIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-green-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="2"/>
     <path d="M7 7h.01M7 11h.01M7 15h.01M11 7h2M11 11h2M11 15h2M15 7h2M15 11h2M15 15h2"/>
   </svg>
 );
 
-const SmartIcon = ({ className = "w-8 h-8 mb-1 text-pink-500" }) => (
+const SmartIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-pink-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 8v4l3 3"/>
   </svg>
 );
 
-const ShieldIcon = ({ className = "w-8 h-8 mb-1 text-yellow-500" }) => (
+const ShieldIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-yellow-500" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" stroke="currentColor" strokeWidth="2"/>
     <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2"/>
   </svg>
 );
 
-const SustainableIcon = ({ className = "w-8 h-8 mb-1 text-gray-700" }) => (
+const SustainableIcon = ({ className = "w-6 h-6 sm:w-8 sm:h-8 mb-1 text-gray-700" }) => (
   <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 0v10l6 3"/>
   </svg>
@@ -198,8 +198,8 @@ const PatientDiagnosticSystem = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -207,10 +207,10 @@ const PatientDiagnosticSystem = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-3 sm:mb-4 leading-tight">
               What is Patient Diagnostic System?
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
               An AI-powered tool that collects symptoms, analyzes data, and provides instant diagnostic suggestions to healthcare professionals.
             </p>
           </motion.div>
@@ -223,8 +223,8 @@ const PatientDiagnosticSystem = () => {
       </PortfolioSection>
 
       {/* Enhanced Problems Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
           <PortfolioImage
             src="/image/pages_img/Problems.jpg"
             alt="Problems illustration"
@@ -236,10 +236,10 @@ const PatientDiagnosticSystem = () => {
             viewport={{ once: true }}
             className="flex-1 text-left"
           >
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-3 sm:mb-4 leading-tight">
               Problems?
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Manual diagnosis is slow, error-prone, and increases clinician workload. Patients face delays and inconsistent care quality.
             </p>
           </motion.div>
@@ -247,11 +247,11 @@ const PatientDiagnosticSystem = () => {
       </PortfolioSection>
 
       {/* Enhanced Main Content Section */}
-      <div className="py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-12 px-6">
+      <div className="py-12 sm:py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12 px-4 sm:px-6 lg:px-8">
           {/* Enhanced Solution */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -259,10 +259,10 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="flex-1 text-left"
               >
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-3 sm:mb-4 leading-tight">
                   Solution
                 </h2>
-                <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
                   The Patient Diagnostic System automates triage, provides instant recommendations, and integrates with EHRs—improving speed, accuracy, and patient outcomes.
                 </p>
               </motion.div>
@@ -281,7 +281,7 @@ const PatientDiagnosticSystem = () => {
               subtitle="Advanced capabilities that transform healthcare diagnostics"
               delay={0.1}
             />
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <PortfolioImage
                 src="/image/pages_img/Key-Features-patient-diagostic.jpg"
                 alt="Key Features & Technologies illustration"
@@ -292,7 +292,7 @@ const PatientDiagnosticSystem = () => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
               >
                 {features.map((f, i) => (
                   <FeatureCard
@@ -308,7 +308,7 @@ const PatientDiagnosticSystem = () => {
 
           {/* Enhanced Development Section */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
                 initial="initial"
@@ -320,7 +320,7 @@ const PatientDiagnosticSystem = () => {
                   subtitle="Our systematic approach to building healthcare AI solutions"
                   delay={0.1}
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                   {steps.map((s, i) => (
                     <FeatureCard
                       key={i}
@@ -340,7 +340,7 @@ const PatientDiagnosticSystem = () => {
 
           {/* Enhanced Results */}
           <PortfolioSection className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
               <PortfolioImage
                 src="/image/pages_img/result.jpg"
                 alt="Results and impact illustration"
@@ -362,7 +362,7 @@ const PatientDiagnosticSystem = () => {
                   initial="initial"
                   whileInView="animate"
                   viewport={{ once: true }}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-2xl mx-auto"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full max-w-2xl mx-auto"
                 >
                   {results.map((r, i) => (
                     <ResultCard

@@ -146,53 +146,53 @@ Sent from your portfolio website`;
   return (
     <section 
       id="contact" 
-      className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white relative overflow-hidden"
       aria-label="Contact Section"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-tr from-indigo-100/30 to-pink-100/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-2xl sm:blur-3xl"></div>
+        <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-tr from-indigo-100/30 to-pink-100/30 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-16 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-12 sm:mb-16 text-center">
           <Badge 
             variant="outline" 
-            className="mb-4 px-4 py-2 bg-primary/10 text-primary font-medium text-sm rounded-full border-primary/20 hover:bg-primary/15 transition-colors duration-300"
+            className="mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary font-medium text-xs sm:text-sm rounded-full border-primary/20 hover:bg-primary/15 transition-colors duration-300"
           >
             Get In Touch
           </Badge>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 leading-tight">
             Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Connect</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
+          <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-6 sm:mb-8 rounded-full"></div>
+          <p className="text-base sm:text-lg text-foreground/70 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
             Have a project in mind or want to discuss a collaboration? I'd love to hear from you! Fill out the form below and it will open WhatsApp with your message.
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* Contact Information */}
-          <div className={`space-y-8 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
-            <Card className="glass-effect rounded-2xl p-8 border border-white/20 backdrop-blur-sm">
+          <div className={`space-y-6 sm:space-y-8 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+            <Card className="glass-effect rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 backdrop-blur-sm">
               <CardContent className="p-0">
-                <h3 className="text-2xl font-display font-semibold mb-6 flex items-center gap-2">
-                  <MessageCircle className="h-6 w-6 text-primary" />
+                <h3 className="text-xl sm:text-2xl font-display font-semibold mb-4 sm:mb-6 flex items-center gap-2">
+                  <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
                   Contact Information
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center gap-4 p-4 rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all duration-300">
-                      <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-12 h-12 flex items-center justify-center border border-primary/20">
+                    <div key={index} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all duration-300">
+                      <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-primary/20 flex-shrink-0">
                         {info.icon}
                       </div>
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-600">{info.label}</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs sm:text-sm font-medium text-gray-600">{info.label}</p>
                         <a 
                           href={info.href} 
-                          className="text-gray-900 font-medium hover:text-primary transition-colors"
+                          className="text-sm sm:text-base text-gray-900 font-medium hover:text-primary transition-colors break-words"
                           aria-label={`Contact via ${info.label.toLowerCase()}`}
                         >
                           {info.value}
@@ -202,16 +202,16 @@ Sent from your portfolio website`;
                   ))}
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-gray-200/50">
-                  <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
-                  <div className="flex gap-4">
+                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200/50">
+                  <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Follow Me</h4>
+                  <div className="flex gap-3 sm:gap-4">
                     {socialLinks.map((social) => (
                       <a
                         key={social.label}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-12 h-12 flex items-center justify-center border border-primary/20 hover:bg-primary/20 transition-all duration-300 hover:scale-110 group"
+                        className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-primary/20 hover:bg-primary/20 transition-all duration-300 hover:scale-110 group touch-manipulation"
                         aria-label={`Visit ${social.label} profile`}
                       >
                         <div className="text-gray-600 group-hover:text-primary transition-colors">
@@ -227,16 +227,16 @@ Sent from your portfolio website`;
 
           {/* Contact Form */}
           <div className={`${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-            <Card className="glass-effect rounded-2xl p-8 border border-white/20 backdrop-blur-sm">
+            <Card className="glass-effect rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 backdrop-blur-sm">
               <CardContent className="p-0">
-                <h3 className="text-2xl font-display font-semibold mb-6 flex items-center gap-2">
-                  <Send className="h-6 w-6 text-primary" />
+                <h3 className="text-xl sm:text-2xl font-display font-semibold mb-4 sm:mb-6 flex items-center gap-2">
+                  <Send className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
                   Send Message
                 </h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-1.5 sm:space-y-2">
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Name *
                       </label>
@@ -248,12 +248,12 @@ Sent from your portfolio website`;
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your name"
-                        className="w-full border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors"
+                        className="w-full h-11 sm:h-12 border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors text-base"
                         aria-describedby="name-error"
                       />
                     </div>
                     
-                    <div className="space-y-2">
+                    <div className="space-y-1.5 sm:space-y-2">
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Email *
                       </label>
@@ -265,14 +265,14 @@ Sent from your portfolio website`;
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors"
+                        className="w-full h-11 sm:h-12 border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors text-base"
                         aria-describedby="email-error"
                       />
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-1.5 sm:space-y-2">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                         Phone Number
                       </label>
@@ -283,11 +283,11 @@ Sent from your portfolio website`;
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+1 (555) 123-4567"
-                        className="w-full border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors"
+                        className="w-full h-11 sm:h-12 border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors text-base"
                       />
                     </div>
                     
-                    <div className="space-y-2">
+                    <div className="space-y-1.5 sm:space-y-2">
                       <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
                         Subject *
                       </label>
@@ -299,13 +299,13 @@ Sent from your portfolio website`;
                         value={formData.subject}
                         onChange={handleInputChange}
                         placeholder="Project inquiry, collaboration, etc."
-                        className="w-full border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors"
+                        className="w-full h-11 sm:h-12 border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors text-base"
                         aria-describedby="subject-error"
                       />
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                       Message *
                     </label>
@@ -316,17 +316,17 @@ Sent from your portfolio website`;
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell me about your project or how I can help you..."
-                      rows={6}
-                      className="w-full resize-none border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors"
+                      rows={5}
+                      className="w-full resize-none border-gray-200 focus:border-primary focus:ring-primary/20 transition-colors text-base min-h-[120px] sm:min-h-[140px]"
                       aria-describedby="message-error"
                     />
                   </div>
                   
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center pt-2">
                     <Button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed group"
+                      className="w-full sm:w-auto bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed group text-base font-medium min-h-[48px] touch-manipulation"
                     >
                       {isSubmitting ? (
                         <>
@@ -335,7 +335,7 @@ Sent from your portfolio website`;
                         </>
                       ) : (
                         <>
-                          <MessageCircle className="h-5 w-5 group-hover:animate-pulse" />
+                          <MessageCircle className="h-5 w-5 group-hover:animate-pulse flex-shrink-0" />
                           Send via WhatsApp
                         </>
                       )}

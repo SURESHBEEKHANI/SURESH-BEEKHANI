@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Enhanced Icon Component with better accessibility
+// Enhanced Icon Component with better accessibility and mobile optimization
 export const PortfolioIcon = ({ 
-  className = "w-8 h-8 mb-1", 
+  className = "w-6 h-6 sm:w-8 sm:h-8 mb-2 sm:mb-1", 
   color = "text-purple-500",
   children,
   ariaLabel = "Feature icon"
@@ -22,7 +22,7 @@ export const PortfolioIcon = ({
   </div>
 );
 
-// Enhanced Feature Card with better animations and accessibility
+// Enhanced Feature Card with better mobile responsiveness and touch targets
 export const FeatureCard = ({ 
   icon: Icon, 
   title, 
@@ -44,6 +44,7 @@ export const FeatureCard = ({
       scale: 1.02,
       transition: { duration: 0.2 }
     }}
+    whileTap={{ scale: 0.98 }}
     transition={{ 
       duration: 0.6, 
       delay,
@@ -51,39 +52,39 @@ export const FeatureCard = ({
       stiffness: 100
     }}
     viewport={{ once: true, margin: "-50px" }}
-    className={`group flex flex-col items-center text-center p-6 transition-all duration-300 ${className}`}
+    className={`group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 min-h-[120px] sm:min-h-[140px] touch-manipulation ${className}`}
     role="article"
     aria-label={`Feature: ${title}`}
   >
-         <motion.div
-       whileHover={{ 
-         rotateY: 15, 
-         rotateX: 10,
-         scale: 1.1,
-         z: 20
-       }}
-       transition={{ duration: 0.3 }}
-       className="transform-style-preserve-3d"
-     >
-       <div className="w-8 h-8 mb-4 text-gradient drop-shadow-lg transform-gpu" style={{ 
-         filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
-         transform: 'perspective(1000px) rotateX(5deg) rotateY(5deg)'
-       }}>
-         <Icon className="w-full h-full" />
-       </div>
-     </motion.div>
-    <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+    <motion.div
+      whileHover={{ 
+        rotateY: 15, 
+        rotateX: 10,
+        scale: 1.1,
+        z: 20
+      }}
+      transition={{ duration: 0.3 }}
+      className="transform-style-preserve-3d"
+    >
+      <div className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4 text-gradient drop-shadow-lg transform-gpu" style={{ 
+        filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+        transform: 'perspective(1000px) rotateX(5deg) rotateY(5deg)'
+      }}>
+        <Icon className="w-full h-full" />
+      </div>
+    </motion.div>
+    <h3 className="font-bold text-sm sm:text-base lg:text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200 leading-tight">
       {title}
     </h3>
     {description && (
-      <p className="text-sm text-gray-600 leading-relaxed">
+      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
         {description}
       </p>
     )}
   </motion.div>
 );
 
-// Enhanced Result Card with better visual hierarchy
+// Enhanced Result Card with better mobile responsiveness
 export const ResultCard = ({ 
   icon, 
   stat, 
@@ -111,6 +112,7 @@ export const ResultCard = ({
       y: -5,
       transition: { duration: 0.2 }
     }}
+    whileTap={{ scale: 0.98 }}
     transition={{ 
       duration: 0.5, 
       delay,
@@ -118,12 +120,12 @@ export const ResultCard = ({
       stiffness: 100
     }}
     viewport={{ once: true, margin: "-30px" }}
-    className={`flex flex-col items-center justify-center ${bgColor} rounded-2xl p-6 shadow-lg w-full transition-all duration-300 ${shadowColor} border ${borderColor} backdrop-blur-sm`}
+    className={`flex flex-col items-center justify-center ${bgColor} rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg w-full transition-all duration-300 ${shadowColor} border ${borderColor} backdrop-blur-sm min-h-[100px] sm:min-h-[120px] touch-manipulation`}
     role="article"
     aria-label={`Result: ${stat} - ${desc}`}
   >
     <motion.div 
-      className="text-3xl mb-3"
+      className="text-2xl sm:text-3xl mb-2 sm:mb-3"
       animate={{ 
         scale: [1, 1.1, 1],
         rotate: [0, 5, -5, 0]
@@ -136,8 +138,8 @@ export const ResultCard = ({
     >
       {icon}
     </motion.div>
-    <div className={`text-2xl font-bold ${textColor} mb-2`}>{stat}</div>
-    <div className="text-gray-700 text-sm text-center leading-relaxed font-medium">{desc}</div>
+    <div className={`text-lg sm:text-xl lg:text-2xl font-bold ${textColor} mb-1 sm:mb-2`}>{stat}</div>
+    <div className="text-gray-700 text-xs sm:text-sm text-center leading-relaxed font-medium">{desc}</div>
   </motion.div>
 );
 
@@ -163,14 +165,14 @@ export const PortfolioSection = ({
       stiffness: 50
     }}
     viewport={{ once: true, margin: "-100px" }}
-    className={`project-section py-16 ${className}`}
+    className={`project-section py-8 sm:py-12 lg:py-16 ${className}`}
     id={id}
   >
     {children}
   </motion.section>
 );
 
-// Enhanced Hero Section with parallax effect
+// Enhanced Hero Section with better mobile responsiveness
 export const PortfolioHero = ({ 
   title, 
   description, 
@@ -184,7 +186,7 @@ export const PortfolioHero = ({
   className?: string;
   backgroundImage?: string;
 }) => (
-  <section className={`relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br ${gradient} animate-fade-in mt-16 ${className}`}>
+  <section className={`relative w-full min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br ${gradient} animate-fade-in mt-16 ${className}`}>
     {backgroundImage && (
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -201,13 +203,13 @@ export const PortfolioHero = ({
         type: "spring",
         stiffness: 50
       }}
-      className="relative z-20 max-w-5xl mx-auto px-6 py-32 w-full text-left"
+      className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 w-full text-left"
     >
       <motion.h1 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-2xl text-left leading-tight"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl text-left leading-tight"
       >
         {title}
       </motion.h1>
@@ -215,7 +217,7 @@ export const PortfolioHero = ({
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-xl md:text-2xl font-normal text-gray-100 mb-8 max-w-4xl animate-fade-in text-left leading-relaxed"
+        className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-gray-100 mb-6 sm:mb-8 max-w-4xl animate-fade-in text-left leading-relaxed"
       >
         {description}
       </motion.p>
@@ -223,7 +225,7 @@ export const PortfolioHero = ({
   </section>
 );
 
-// Enhanced Info Section with better typography and animations
+// Enhanced Info Section with better mobile typography and animations
 export const InfoSection = ({ 
   title, 
   children, 
@@ -239,13 +241,13 @@ export const InfoSection = ({
   className?: string;
   titleColor?: string;
 }) => (
-  <div className={`max-w-6xl mx-auto px-6 mb-12 mt-20 ${className}`}>
+  <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 mt-16 sm:mt-20 ${className}`}>
     <motion.h2 
       initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className={`text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor} mb-10 leading-tight`}
+      className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor} mb-6 sm:mb-10 leading-tight`}
     >
       {title}
     </motion.h2>
@@ -257,7 +259,7 @@ export const InfoSection = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className={`text-lg md:text-xl text-gray-700 max-w-6xl text-left md:text-justify transition-all duration-500 leading-relaxed ${showFullInfo ? '' : 'line-clamp-6'}`}
+          className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-6xl text-left md:text-justify transition-all duration-500 leading-relaxed ${showFullInfo ? '' : 'line-clamp-6'}`}
           style={!showFullInfo ? { 
             WebkitMaskImage: 'linear-gradient(180deg, #000 75%, transparent 100%)', 
             maskImage: 'linear-gradient(180deg, #000 75%, transparent 100%)' 
@@ -267,23 +269,23 @@ export const InfoSection = ({
         </motion.div>
       </AnimatePresence>
       {!showFullInfo && (
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-full h-16 sm:h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
       )}
     </div>
-         <motion.button
-       whileHover={{ scale: 1.05 }}
-       whileTap={{ scale: 0.95 }}
-       className="mt-8 text-blue-600 hover:text-blue-800 font-semibold text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2"
-       onClick={() => setShowFullInfo(!showFullInfo)}
-       aria-expanded={showFullInfo}
-       aria-controls="info-content"
-     >
-       {showFullInfo ? 'Show Less' : 'Read More'}
-     </motion.button>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="mt-6 sm:mt-8 text-blue-600 hover:text-blue-800 font-semibold text-base sm:text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2 min-h-[44px] touch-manipulation"
+      onClick={() => setShowFullInfo(!showFullInfo)}
+      aria-expanded={showFullInfo}
+      aria-controls="info-content"
+    >
+      {showFullInfo ? 'Show Less' : 'Read More'}
+    </motion.button>
   </div>
 );
 
-// Enhanced Image Component with lazy loading and better animations
+// Enhanced Image Component with better mobile responsiveness
 export const PortfolioImage = ({ 
   src, 
   alt, 
@@ -323,7 +325,7 @@ export const PortfolioImage = ({
       width={width}
       height={height}
       loading={priority ? "eager" : "lazy"}
-      className={`w-full h-auto rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 ${className}`}
+      className={`w-full h-auto rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl lg:shadow-2xl group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-all duration-500 ${className}`}
       onLoad={(e) => {
         // Add a subtle animation when image loads
         const target = e.target as HTMLImageElement;
@@ -339,7 +341,7 @@ export const PortfolioImage = ({
   </motion.div>
 );
 
-// Enhanced Call to Action with better visual appeal
+// Enhanced Call to Action with better mobile responsiveness
 export const CallToAction = ({ 
   title, 
   email = "surreshbeekhani26@gmail.com",
@@ -360,15 +362,15 @@ export const CallToAction = ({
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
-    className={`bg-gradient-to-r from-gray-50 to-white rounded-3xl mx-4 md:mx-8 py-16 ${className}`}
+    className={`bg-gradient-to-r from-gray-50 to-white rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 md:mx-8 py-12 sm:py-16 ${className}`}
   >
-    <div className="max-w-4xl mx-auto text-center px-6">
+    <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
       >
         {title}
       </motion.h2>
@@ -378,24 +380,24 @@ export const CallToAction = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
+          className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto"
         >
           {subtitle}
         </motion.p>
       )}
-             <motion.a
-         href={`mailto:${email}`}
-         whileHover={{ 
-           scale: 1.05,
-           y: -2,
-           transition: { duration: 0.2 }
-         }}
-         whileTap={{ scale: 0.95 }}
-         className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-12 py-4 rounded-2xl shadow-xl text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50"
-         aria-label={`Contact us via email: ${email}`}
-       >
-         Contact Us Today
-       </motion.a>
+      <motion.a
+        href={`mailto:${email}`}
+        whileHover={{ 
+          scale: 1.05,
+          y: -2,
+          transition: { duration: 0.2 }
+        }}
+        whileTap={{ scale: 0.95 }}
+        className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl text-lg sm:text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 min-h-[44px] touch-manipulation"
+        aria-label={`Contact us via email: ${email}`}
+      >
+        Contact Us Today
+      </motion.a>
     </div>
   </motion.section>
 );
@@ -422,7 +424,7 @@ export const scaleIn = {
   transition: { duration: 0.6, type: "spring", stiffness: 100 }
 };
 
-// New component for better section headers
+// Enhanced Section Header with better mobile responsiveness
 export const SectionHeader = ({ 
   title, 
   subtitle = "",
@@ -439,20 +441,20 @@ export const SectionHeader = ({
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className={`text-center mb-12`}
+    className={`text-center mb-8 sm:mb-12`}
   >
-    <h2 className={`text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 leading-tight ${className}`}>
+    <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-3 sm:mb-4 leading-tight ${className}`}>
       {title}
     </h2>
     {subtitle && (
-      <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
         {subtitle}
       </p>
     )}
   </motion.div>
 );
 
-// New component for better grid layouts
+// Enhanced Responsive Grid with better mobile layouts
 export const ResponsiveGrid = ({ 
   children, 
   className = "",
@@ -462,7 +464,7 @@ export const ResponsiveGrid = ({
   className?: string;
   cols?: { sm?: number; md?: number; lg?: number };
 }) => (
-  <div className={`grid grid-cols-${cols.sm || 1} md:grid-cols-${cols.md || 2} lg:grid-cols-${cols.lg || 3} gap-6 md:gap-8 ${className}`}>
+  <div className={`grid grid-cols-1 sm:grid-cols-${cols.sm || 1} md:grid-cols-${cols.md || 2} lg:grid-cols-${cols.lg || 3} gap-4 sm:gap-6 md:gap-8 ${className}`}>
     {children}
   </div>
 ); 
