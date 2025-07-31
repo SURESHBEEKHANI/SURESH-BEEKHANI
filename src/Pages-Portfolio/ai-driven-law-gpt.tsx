@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import {
-  PortfolioHero,
   InfoSection,
   PortfolioSection,
   FeatureCard,
@@ -148,28 +147,58 @@ const AiDrivenLawGpt = () => {
   // Memoize content for better performance
   const infoContent = useMemo(() => (
     <>
-      <p>
-        AI-Driven Law GPT is a cutting-edge legal assistant that automates drafting, reviewing, and summarizing legal documents. It understands legal language, adapts to jurisdictional requirements, and ensures compliance with the latest regulations.
+      <p className="mb-3 text-base text-gray-700">
+        AI-Driven Law GPT is a next-generation legal assistant that automates the drafting, reviewing, and summarizing of legal documents using advanced AI. Built to understand the complexity of legal language, it adapts to various jurisdictions and ensures full compliance with ever-evolving legal regulations.
       </p>
-      <p className="mt-4">
-        Unlike traditional tools, it provides context-aware suggestions, reduces manual workload, and minimizes human error. It empowers lawyers, paralegals, and legal teams to focus on strategy rather than paperwork.
+      <p className="mb-3 text-base text-gray-700">
+        Unlike conventional legal tools, this platform offers context-aware recommendations, minimizes manual effort, and significantly reduces the risk of human error. Legal professionals — from law firms to in-house counsel — can focus on strategic tasks, while routine documentation and research are handled seamlessly.
       </p>
-      <p className="mt-4">
-        The platform integrates seamlessly with existing workflows, offering secure, cloud-based access and robust data privacy. It is designed for law firms, in-house counsel, and legal tech innovators seeking efficiency and accuracy.
+      <p className="mb-4 text-base text-gray-700">
+        With secure, cloud-based access and robust privacy safeguards, AI-Driven Law GPT integrates easily into existing legal workflows, empowering legal teams to operate smarter and faster.
       </p>
-      <h3 className="font-semibold text-indigo-800 mt-6 mb-3 text-lg">Key Benefits</h3>
-      <ul className="list-disc pl-6 mb-4 space-y-2 text-base">
-        <li><strong>Automated Drafting:</strong> Instantly generate contracts, briefs, and memos tailored to your needs.</li>
-        <li><strong>Legal Research:</strong> Access up-to-date statutes, case law, and precedents with AI-powered search.</li>
-        <li><strong>Compliance Assurance:</strong> Built-in checks for GDPR, HIPAA, and other legal standards.</li>
-        <li><strong>Collaboration:</strong> Share, edit, and comment in real time with your team.</li>
-        <li><strong>Data Security:</strong> End-to-end encryption and strict access controls.</li>
-        <li><strong>Time Savings:</strong> Reduce document turnaround from days to minutes.</li>
+
+      <h3 className="font-semibold text-indigo-800 mt-4 mb-2 text-base">Key Benefits</h3>
+      
+      <div className="space-y-3 mb-4">
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">Automated Drafting</h4>
+          <p className="text-base text-gray-700">Instantly create contracts, legal briefs, memos, and agreements tailored to specific needs.</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">AI-Powered Legal Research</h4>
+          <p className="text-base text-gray-700">Retrieve statutes, precedents, and case law using intelligent, real-time search.</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">Compliance Built-In</h4>
+          <p className="text-base text-gray-700">Ensure alignment with legal standards like GDPR, HIPAA, and local regulatory frameworks.</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">Real-Time Collaboration</h4>
+          <p className="text-base text-gray-700">Edit, annotate, and share legal documents securely with colleagues and clients.</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">Enterprise-Grade Security</h4>
+          <p className="text-base text-gray-700">Includes end-to-end encryption, role-based access controls, and secure cloud storage.</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-indigo-700 mb-1 text-base">Significant Time Savings</h4>
+          <p className="text-base text-gray-700">Reduce legal document turnaround times from days to minutes, boosting overall efficiency.</p>
+        </div>
+      </div>
+
+      <h3 className="font-semibold text-indigo-800 mt-4 mb-2 text-base">The Growing Legal Tech Market</h3>
+      <p className="text-base text-gray-700 mb-2">The AI in legal industry is forecasted to surpass $37 billion by 2030, fueled by the need for:</p>
+      <ul className="list-disc pl-4 mb-3 space-y-1 text-base text-gray-700">
+        <li>Increased productivity</li>
+        <li>Compliance automation</li>
+        <li>Cost-effective legal services</li>
+        <li>Scalable legal solutions for global markets</li>
       </ul>
-      <h3 className="font-semibold text-indigo-800 mt-6 mb-3 text-lg">Legal Tech Market Growth</h3>
-      <p className="mb-4">The legal AI market is projected to exceed $37 billion by 2030, driven by demand for automation, compliance, and digital transformation in law.</p>
-      <h3 className="font-semibold text-indigo-800 mt-6 mb-3 text-lg">Beyond Automation – A Trusted Legal Partner</h3>
-      <p>AI-Driven Law GPT is more than a tool—it is a digital partner that enhances legal expertise, reduces risk, and delivers better outcomes for clients and firms.</p>
+
+      <h3 className="font-semibold text-indigo-800 mt-4 mb-2 text-base">Beyond Automation: A Digital Legal Partner</h3>
+      <p className="text-base text-gray-700">
+        AI-Driven Law GPT goes beyond automation. It acts as a trusted digital partner, augmenting legal expertise, enhancing client outcomes, and reducing risk. It enables firms to stay competitive in a rapidly evolving legal landscape, embracing the future of legal practice.
+      </p>
     </>
   ), []);
 
@@ -177,41 +206,63 @@ const AiDrivenLawGpt = () => {
     <div className="min-h-screen flex flex-col bg-white" role="main">
       <Navbar />
       
-      {/* Enhanced Hero Section */}
-      <PortfolioHero
-        title="AI-Driven Law GPT"
-        description="AI-Driven Law GPT leverages advanced AI to generate, review, and summarize legal documents with speed and precision empowering legal professionals to work smarter."
-        gradient="from-indigo-900 via-blue-700 to-purple-200"
-        backgroundImage="/image/pages_img/ai-law-gpt-backgoud.png"
-      />
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-law-gpt-backgoud.png')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
+            <div className="w-full">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI-Driven <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Law GPT</span>
+              </h1>
+              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+                AI-Driven Law GPT leverages advanced AI to generate, review, and summarize legal documents with speed and precision empowering legal professionals to work smarter.
+              </p>
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
+                <a
+                  href="/#contact"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            {/* Optionally, you can add an image or illustration here if needed */}
+          </div>
+        </div>
+      </section>
 
-      {/* Enhanced Info Section */}
-      <InfoSection
-        title="AI-Driven Law GPT for Modern Legal Practice"
-        showFullInfo={showFullInfo}
-        setShowFullInfo={setShowFullInfo}
-        titleColor="text-indigo-900"
-      >
+             {/* Enhanced Info Section */}
+       <InfoSection
+         title="AI-Driven Law GPT for Modern Legal Practice"
+         showFullInfo={showFullInfo}
+         setShowFullInfo={setShowFullInfo}
+         titleColor="text-indigo-900"
+       >
         {infoContent}
       </InfoSection>
 
       {/* Enhanced What is Section */}
       <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex-1 text-left"
-          >
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-3 sm:mb-4 leading-tight">
-              What is AI-Driven Law GPT?
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
-              AI-Driven Law GPT is an intelligent legal assistant that drafts, reviews, and summarizes legal documents, saving time and improving accuracy for legal professionals.
-            </p>
-          </motion.div>
+                     <motion.div 
+             initial={{ opacity: 0, x: -30 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.6 }}
+             viewport={{ once: true }}
+             className="flex-1 text-left"
+           >
+             <div className="relative pt-8 sm:pt-10">
+               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-900 mb-4 sm:mb-6 leading-tight">
+                 What Is AI-Driven Law GPT?
+               </h2>
+             </div>
+             <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mb-4 leading-relaxed">
+               AI-Driven Law GPT is an intelligent legal-tech platform that utilizes cutting-edge artificial intelligence to generate, review, and summarize legal documents with exceptional speed and accuracy. Designed to support legal professionals, firms, and corporate legal departments, the platform enhances efficiency while minimizing manual workload.
+             </p>
+           </motion.div>
           <PortfolioImage
             src="/image/pages_img/What-AI-Driven-Law-GPT.webp"
             alt="What is AI-Driven Law GPT illustration"

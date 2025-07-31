@@ -226,7 +226,7 @@ const ComputerVisionPro: React.FC = () => {
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Computer <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Vision</span>
+                Computer Vision
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
               Empower your business with next-generation computer vision solutions driving innovation in security, automation, medical imaging, facial recognition, and quality assurance for superior accuracy and efficiency.

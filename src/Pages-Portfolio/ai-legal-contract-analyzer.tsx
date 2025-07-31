@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import {
-  PortfolioHero,
   InfoSection,
   PortfolioSection,
   FeatureCard,
@@ -175,13 +174,33 @@ const AILegalContractAnalyzer = () => {
     <div className="min-h-screen flex flex-col bg-white" role="main">
       <Navbar />
       
-      {/* Enhanced Hero Section */}
-      <PortfolioHero
-        title="AI Legal Contract Analyzer"
-        description="Automate contract review and boost compliance with AI-powered analysis."
-        gradient="from-indigo-900 via-blue-700 to-purple-200"
-        backgroundImage="/image/pages_img/AI-Legal-Contract-Analyzer-key-feature.jpg"
-      />
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Legal-Contract-Analyzer-key-feature.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
+            <div className="w-full">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                AI Legal <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Contract Analyzer</span>
+              </h1>
+              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+                Automate contract review and boost compliance with AI-powered analysis.
+              </p>
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
+                <a
+                  href="/#contact"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            {/* Optionally, you can add an image or illustration here if needed */}
+          </div>
+        </div>
+      </section>
 
       {/* Enhanced Info Section */}
       <InfoSection

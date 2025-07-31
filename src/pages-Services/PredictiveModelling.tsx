@@ -236,7 +236,7 @@ const PredictiveModelling: React.FC = () => {
 					<div className="flex-1 text-white space-y-6 sm:space-y-8">
 						<div className="w-full">
 							<h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								Predictive <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Modeling</span>
+								Predictive Modeling
 							</h1>
 							<p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
 							The power of data-driven foresight. Our predictive analytics solutions empower organizations to anticipate trends, optimize operations, and drive strategic growth across industries.
