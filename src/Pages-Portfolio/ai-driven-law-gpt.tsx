@@ -211,12 +211,21 @@ const AiDrivenLawGpt = () => {
       {/* Enhanced Challenge Section */}
       <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
+          {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
+          <div className="hidden lg:block order-1">
+            <PortfolioImage
+              src="/image/pages_img/Challenges-Addressed.webp"
+              alt="Problems illustration"
+            />
+          </div>
+          
+          {/* Content - Desktop (right side), Mobile/Tablet (top) */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-left"
+            className="text-left order-2 lg:order-2"
           >
             <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
               Challenges Addressed
@@ -232,10 +241,14 @@ const AiDrivenLawGpt = () => {
               <li>💰 High operational costs for law firms and clients</li>
             </ul>
           </motion.div>
-          <PortfolioImage
-            src="/image/pages_img/Challenges-Addressed.webp"
-            alt="Problems illustration"
-          />
+          
+          {/* Image - Shown on mobile/tablet, hidden on desktop */}
+          <div className="lg:hidden order-3">
+            <PortfolioImage
+              src="/image/pages_img/Challenges-Addressed.webp"
+              alt="Problems illustration"
+            />
+          </div>
         </div>
       </PortfolioSection>
 
