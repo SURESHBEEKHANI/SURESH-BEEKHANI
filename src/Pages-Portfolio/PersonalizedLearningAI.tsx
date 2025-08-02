@@ -120,7 +120,7 @@ const PersonalizedLearningAI = () => {
       </div>
 
       <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">The Growing EdTech Market</h3>
-      <p className="text-base text-gray-700 mb-2">The global personalized learning market is projected to reach $2.7 billion by 2025, driven by:</p>
+      <p className="text-base text-gray-700 mb-2">The global personalized learning market is projected to reach $19.86 billion by 2030, driven by:</p>
       <ul className="list-disc pl-4 mb-3 space-y-1 text-base text-gray-700">
         <li>Increasing demand for personalized education</li>
         <li>Growing adoption of online learning platforms</li>
@@ -188,17 +188,17 @@ const PersonalizedLearningAI = () => {
               className="text-left"
             >
               <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
                   What Is Personalized Learning AI?
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+              <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
                 Personalized Learning AI is a revolutionary educational platform that leverages advanced artificial intelligence to create customized learning experiences for each student. Built with sophisticated machine learning algorithms, it adapts content to individual learning styles.
               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Personalized-Learning-AI.jpg"
+                src="/image/Portfolio-img/What Is Personalized Learning AI.jpg"
                 alt="What is Personalized Learning AI illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
@@ -214,7 +214,7 @@ const PersonalizedLearningAI = () => {
             {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
             <div className="hidden lg:block order-1">
               <PortfolioImage
-                src="/image/pages_img/Challenges-Personalized-Learning-AI.webp"
+                src="/image/pages_img/Challenges-Addressed.webp"
                 alt="Problems illustration"
               />
             </div>
@@ -245,7 +245,7 @@ const PersonalizedLearningAI = () => {
             {/* Image - Shown on mobile/tablet, hidden on desktop */}
             <div className="lg:hidden order-3">
               <PortfolioImage
-                src="/image/pages_img/Challenges-Personalized-Learning-AI.webp"
+                src="/image/pages_img/Challenges-Addressed.webp"
                 alt="Problems illustration"
               />
             </div>
@@ -275,7 +275,7 @@ const PersonalizedLearningAI = () => {
                   {/* Data Point 1 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      🧠 AI improves learning outcomes by 40% on average
+                      🧠 40% better learning outcomes
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
                       <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '40%' }}>
@@ -287,7 +287,7 @@ const PersonalizedLearningAI = () => {
                   {/* Data Point 2 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      📚 95% of students prefer personalized learning paths
+                      📚 95% prefer personalized learning
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
                       <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '95%' }}>
@@ -299,7 +299,7 @@ const PersonalizedLearningAI = () => {
                   {/* Data Point 3 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      ⚡ 60% faster learning progress with AI adaptation
+                      ⚡ 60% faster progress
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
                       <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '60%' }}>
@@ -311,7 +311,7 @@ const PersonalizedLearningAI = () => {
                   {/* Data Point 4 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      🌍 80% of educational institutions plan to adopt AI
+                      🌍 80% plan to adopt AI
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
                       <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '80%' }}>
@@ -322,7 +322,7 @@ const PersonalizedLearningAI = () => {
                 </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/Did-You-Know-Personalized-Learning-AI.webp"
+                src="/image/pages_img/Did-You-Know-AI-Legal-Contract-Analyzer.webp"
                 alt="AI-powered personalized learning solution illustration"
                 delay={0.2}
               />

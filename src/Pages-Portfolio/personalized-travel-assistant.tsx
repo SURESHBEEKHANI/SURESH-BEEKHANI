@@ -122,7 +122,7 @@ const PersonalizedTravelAssistant = () => {
       </div>
 
       <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">The Growing Travel Tech Market</h3>
-              <p className="text-base text-gray-700 mb-2">The global travel technology market is projected to reach $14 billion by 2030, driven by:</p>
+              <p className="text-base text-gray-700 mb-2">The global travel technology market is projected to reach $19.86 billion by 2030, driven by:</p>
       <ul className="list-disc pl-4 mb-3 space-y-1 text-base text-gray-700">
         <li>Increasing demand for personalized travel experiences</li>
         <li>Rising adoption of mobile travel planning</li>
