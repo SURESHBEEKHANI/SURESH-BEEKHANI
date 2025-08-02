@@ -122,7 +122,7 @@ const PersonalizedTravelAssistant = () => {
       </div>
 
       <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">The Growing Travel Tech Market</h3>
-      <p className="text-base text-gray-700 mb-2">The global travel technology market is projected to reach $1.4 trillion by 2030, driven by:</p>
+              <p className="text-base text-gray-700 mb-2">The global travel technology market is projected to reach $14 billion by 2030, driven by:</p>
       <ul className="list-disc pl-4 mb-3 space-y-1 text-base text-gray-700">
         <li>Increasing demand for personalized travel experiences</li>
         <li>Rising adoption of mobile travel planning</li>
@@ -142,27 +142,27 @@ const PersonalizedTravelAssistant = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
-          <div className="flex-1 text-white space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Personalized Travel Assistant
               </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-100 w-full mt-2 sm:mt-3 md:mt-4 leading-relaxed max-w-2xl mx-auto md:mx-0">
+              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
                 AI-powered travel companion that creates personalized itineraries, finds the best deals, and provides real-time support for seamless journeys worldwide.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-3 sm:pt-4 md:pt-6 w-full">
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg text-center min-h-[44px] flex items-center justify-center touch-manipulation"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
                 </a>
               </div>
             </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end w-full md:w-auto">
+          <div className="flex-1 flex justify-center md:justify-end">
             {/* Optionally, you can add an image or illustration here if needed */}
           </div>
         </div>
@@ -190,17 +190,17 @@ const PersonalizedTravelAssistant = () => {
               className="text-left"
             >
               <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
                   What Is Personalized Travel Assistant?
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+              <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
                 Personalized Travel Assistant is an intelligent AI-powered platform that revolutionizes how travelers plan, book, and experience their journeys. Built with advanced machine learning algorithms, it understands individual preferences and delivers truly personalized travel experiences.
               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Personalized-Travel-Assistant.jpg"
+                src="/image/Portfolio-img/what is Personalized Travel Assistant"
                 alt="What is Personalized Travel Assistant illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
@@ -236,11 +236,11 @@ const PersonalizedTravelAssistant = () => {
                 Personalized Travel Assistant addresses critical travel planning challenges:
               </p>
               <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming travel research and planning</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Generic recommendations that don't match preferences</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Difficulty finding personalized experiences</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Lack of real-time updates and flexibility</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Complex booking processes across multiple platforms</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming research</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Generic recommendations</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Hard to find personalized experiences</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> No real-time updates</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Complex booking processes</li>
               </ul>
             </motion.div>
             
