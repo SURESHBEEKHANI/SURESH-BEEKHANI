@@ -386,7 +386,7 @@ export const CallToAction = ({
         </motion.p>
       )}
       <motion.a
-        href={`mailto:${email}`}
+        href="/#contact"
         whileHover={{ 
           scale: 1.05,
           y: -2,
@@ -394,7 +394,7 @@ export const CallToAction = ({
         }}
         whileTap={{ scale: 0.95 }}
         className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl text-lg sm:text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 min-h-[44px] touch-manipulation"
-        aria-label={`Contact us via email: ${email}`}
+        aria-label="Contact us today"
       >
         Contact Us Today
       </motion.a>

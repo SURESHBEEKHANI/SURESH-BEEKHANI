@@ -143,7 +143,6 @@ const PatientDiagnosticSystem = () => {
       
       {/* Hero Section */}
       <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Patient-Diagnostic-System.webp')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
           <div className="flex-1 text-white space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left">
             <div className="w-full">
@@ -180,70 +179,87 @@ const PatientDiagnosticSystem = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                What Is Patient Diagnostic System?
-              </h2>
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left"
+            >
+              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                  What Is Patient Diagnostic System?
+                </h2>
+              </div>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                Patient Diagnostic System is a revolutionary AI-powered healthcare platform that combines advanced machine learning with medical expertise to provide accurate, rapid, and accessible diagnostic support. Built to assist healthcare professionals and improve patient outcomes.
+              </p>
+            </motion.div>
+            <div className="flex justify-center">
+              <img
+                src="/image/pages_img/What-Patient-Diagnostic-System.jpg"
+                alt="What is Patient Diagnostic System illustration"
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+              />
             </div>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-              Patient Diagnostic System is an advanced AI-powered healthcare platform that combines machine learning algorithms with medical expertise to provide accurate, rapid, and accessible diagnostic support. It analyzes symptoms, medical history, and test results to offer intelligent diagnostic suggestions.
-            </p>
-          </motion.div>
-          <div className="flex justify-center">
-            <img
-              src="/image/pages_img/Patient-Diagnostic-System.avif"
-              alt="What is Patient Diagnostic System illustration"
-              className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
-            />
           </div>
-        </div>
-      </PortfolioSection>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Challenge Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
-              Challenges Addressed
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
-              Patient Diagnostic System addresses critical healthcare challenges:
-            </p>
-            <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-              <li>🏥 Long wait times for diagnostic appointments</li>
-              <li>👨‍⚕️ Shortage of healthcare professionals</li>
-              <li>⏱️ Delays in diagnosis and treatment</li>
-              <li>💊 Risk of diagnostic errors and misdiagnosis</li>
-              <li>💰 High healthcare costs and inefficiencies</li>
-            </ul>
-          </motion.div>
-          <PortfolioImage
-            src="/image/pages_img/Problems.jpg"
-            alt="Problems illustration"
-          />
-        </div>
-      </PortfolioSection>
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
+            <div className="hidden lg:block order-1">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-Addressed.webp"
+                alt="Problems illustration"
+              />
+            </div>
+            
+            {/* Content - Desktop (right side), Mobile/Tablet (top) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left order-2 lg:order-2"
+            >
+              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                Challenges Addressed
+              </h2>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
+                Patient Diagnostic System addresses critical healthcare challenges:
+              </p>
+              <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming diagnostic processes</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Risk of human error in medical diagnosis</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Limited access to specialist consultations</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Inconsistent diagnostic accuracy</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> High healthcare costs and resource constraints</li>
+              </ul>
+            </motion.div>
+            
+            {/* Image - Shown on mobile/tablet, hidden on desktop */}
+            <div className="lg:hidden order-3">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-Addressed.webp"
+                alt="Problems illustration"
+              />
+            </div>
+          </div>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Solution Section */}
-      <div className="py-8 sm:py-12 md:py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full bg-gradient-to-tr from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
           {/* Enhanced Solution */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-7xl mx-auto px-8 sm:px-10 lg:px-12 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
@@ -252,19 +268,63 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="text-left"
               >
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
                   Industry Insight: Did You Know?
                 </h2>
-                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-2">📊 The Rise of AI in Healthcare</h3>
-                <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-                  <li>🧠 AI can diagnose conditions 10x faster than traditional methods</li>
-                  <li>🕒 Healthcare professionals spend 50% of their time on administrative tasks</li>
-                  <li>💼 Hospitals using AI diagnostics report 40% reduction in diagnostic errors</li>
-                  <li>💡 AI-powered systems can analyze medical images with 99% accuracy</li>
-                </ul>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-6">📊 The Rise of AI in Healthcare Diagnostics</h3>
+                
+                <div className="space-y-6 sm:space-y-8">
+                  {/* Data Point 1 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🧠 AI diagnoses 10x faster than traditional methods
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '100%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">10x</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 2 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💊 95% accuracy in diagnostic predictions
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '95%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">95%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 3 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💰 40% reduction in healthcare costs with AI
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '40%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">40%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 4 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🌍 80% of healthcare providers plan to adopt AI
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '80%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">80%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/Solutions.jpg"
+                src="/image/pages_img/Did-You-Know.jpg"
                 alt="AI-powered healthcare solution illustration"
                 delay={0.2}
               />
@@ -272,10 +332,10 @@ const PatientDiagnosticSystem = () => {
           </PortfolioSection>
 
           {/* Enhanced Features & Technologies */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <SectionHeader
               title="Core Features of Patient Diagnostic System"
-              subtitle="AI-powered healthcare tools for diagnosis, patient care, and medical decision support"
+              subtitle="AI-powered healthcare tools for diagnostic analysis, risk assessment, and patient care automation"
               delay={0.1}
               className="!text-base sm:!text-lg md:!text-xl lg:!text-2xl xl:!text-3xl !text-black"
             />
@@ -289,38 +349,38 @@ const PatientDiagnosticSystem = () => {
               >
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">🤖</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">AI Diagnosis</h3>
+                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">⚙️</span>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Smart Diagnostics</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>🧠 Advanced ML algorithms for symptom analysis</li>
-                    <li>📊 Pattern recognition in medical data</li>
-                    <li>🔍 Intelligent differential diagnosis</li>
-                    <li>📈 Continuous learning from new cases</li>
+                    <li>🤖 AI-powered symptom analysis and diagnosis</li>
+                    <li>📊 Advanced pattern recognition for medical conditions</li>
+                    <li>🔍 Intelligent risk assessment and prediction</li>
+                    <li>📋 Automated medical report generation</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">👨‍⚕️</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Medical Support</h3>
+                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">🧑‍💼</span>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Professional Tools</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>📋 Evidence-based treatment recommendations</li>
-                    <li>💊 Drug interaction checking</li>
-                    <li>⚠️ Risk assessment and alerts</li>
-                    <li>📚 Medical knowledge database access</li>
+                    <li>📚 Comprehensive medical knowledge database</li>
+                    <li>⚡ Real-time diagnostic recommendations</li>
+                    <li>🔄 Patient history tracking and analysis</li>
+                    <li>💡 Intelligent treatment suggestions</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100 sm:col-span-2 lg:col-span-1">
                   <div className="flex items-center mb-3 sm:mb-4">
                     <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">📊</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Analytics & Reports</h3>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Insight & Analytics</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>📈 Patient outcome tracking</li>
-                    <li>📋 Comprehensive medical reports</li>
-                    <li>🔍 Diagnostic accuracy metrics</li>
-                    <li>👥 Population health insights</li>
+                    <li>📈 Patient outcome analytics and tracking</li>
+                    <li>📋 Diagnostic accuracy reports and summaries</li>
+                    <li>🔎 Advanced search and filtering capabilities</li>
+                    <li>👥 Secure collaboration with healthcare teams</li>
                   </ul>
                 </div>
               </motion.div>
@@ -328,7 +388,7 @@ const PatientDiagnosticSystem = () => {
           </PortfolioSection>
 
           {/* Enhanced Professional Workspace Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <motion.div
               variants={staggerContainer}
               initial="initial"
@@ -337,14 +397,14 @@ const PatientDiagnosticSystem = () => {
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
               <SectionHeader
-                title="Benefits for Healthcare Providers"
-                subtitle="Transform your medical practice with AI-powered diagnostic efficiency"
+                title="Benefits for Healthcare Teams"
+                subtitle="Transform your diagnostic processes with AI-powered efficiency"
                 delay={0.1}
                 className="!text-base sm:!text-lg md:!text-xl lg:!text-2xl xl:!text-3xl !text-black"
               />
             </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -352,8 +412,8 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">⏳</span>
                     </div>
@@ -375,18 +435,18 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">✅</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Higher Accuracy</h3>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Improved Accuracy</h3>
                       <p className="text-xs sm:text-sm text-gray-600">AI-powered precision</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Achieve 95%+ diagnostic accuracy with advanced AI algorithms.
+                    Achieve higher diagnostic accuracy with advanced AI algorithms.
                   </p>
                 </div>
               </motion.div>
@@ -398,18 +458,18 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💼</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Better Workflow</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Streamlined processes</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Better Patient Care</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Enhanced outcomes</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Optimize healthcare processes with intelligent automation.
+                    Improve patient outcomes with faster, more accurate diagnoses.
                   </p>
                 </div>
               </motion.div>
@@ -421,18 +481,18 @@ const PatientDiagnosticSystem = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💸</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
                       <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Cost Reduction</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Efficient operations</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Efficient resource use</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Reduce healthcare costs through intelligent automation.
+                    Reduce healthcare costs through efficient diagnostic processes.
                   </p>
                 </div>
               </motion.div>
@@ -450,12 +510,12 @@ const PatientDiagnosticSystem = () => {
                       <span className="text-lg sm:text-xl md:text-2xl text-white">📈</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Patient Satisfaction</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Better outcomes</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">24/7 Availability</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Always accessible</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Improve patient satisfaction with faster, more accurate care.
+                    Provide diagnostic support around the clock for better patient care.
                   </p>
                 </div>
               </motion.div>
@@ -478,7 +538,7 @@ const PatientDiagnosticSystem = () => {
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Ensure full compliance with healthcare privacy regulations.
+                    Ensure full compliance with healthcare data protection standards.
                   </p>
                 </div>
               </motion.div>
@@ -486,7 +546,7 @@ const PatientDiagnosticSystem = () => {
           </PortfolioSection>
 
           {/* Enhanced Compliance & Security Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-12">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
@@ -497,10 +557,10 @@ const PatientDiagnosticSystem = () => {
               >
                 
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
-                  Security & Compliance
+                  Compliance & Security
                 </h2>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                  Enterprise-grade security and HIPAA compliance for your patient data.
+                  Enterprise-grade security and compliance for your healthcare data.
                 </p>
               </motion.div>
               
@@ -523,7 +583,7 @@ const PatientDiagnosticSystem = () => {
                         </div>
                         <div className="ml-3 sm:ml-4">
                           <h3 className="font-bold text-gray-900 text-sm sm:text-base">HIPAA-Compliant</h3>
-                          <p className="text-xs sm:text-sm text-gray-600">Patient data protection</p>
+                          <p className="text-xs sm:text-sm text-gray-600">Healthcare data protection</p>
                         </div>
                       </div>
                     </div>
@@ -580,8 +640,8 @@ const PatientDiagnosticSystem = () => {
 
           {/* Enhanced Call to Action */}
           <CallToAction
-            title="Ready to Transform Your Healthcare Practice?"
-            subtitle="Let's discuss how AI can revolutionize your diagnostic capabilities"
+            title="Ready to Transform Your Healthcare Diagnostics?"
+            subtitle="Let's discuss how AI can revolutionize your medical practice"
             gradient="from-indigo-500 to-indigo-700"
             hoverGradient="hover:from-indigo-600 hover:to-indigo-800"
           />

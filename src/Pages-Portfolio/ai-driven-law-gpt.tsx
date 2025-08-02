@@ -143,7 +143,6 @@ const AiDrivenLawGpt = () => {
       
       {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-law-gpt-backgoud.png')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
@@ -180,83 +179,87 @@ const AiDrivenLawGpt = () => {
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                What Is AI-Driven Law GPT?
-              </h2>
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left"
+            >
+              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                  What Is AI-Driven Law GPT?
+                </h2>
+              </div>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                AI-Driven Law GPT is an intelligent legal-tech platform that utilizes cutting-edge artificial intelligence to generate, review, and summarize legal documents with exceptional speed and accuracy. Designed to support legal professionals, firms, and corporate legal departments, the platform enhances efficiency while minimizing manual workload.
+              </p>
+            </motion.div>
+            <div className="flex justify-center">
+              <img
+                src="/image/pages_img/What-AI-Driven-Law-GPT.png"
+                alt="What is AI-Driven Law GPT illustration"
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+              />
             </div>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-              AI-Driven Law GPT is an intelligent legal-tech platform that utilizes cutting-edge artificial intelligence to generate, review, and summarize legal documents with exceptional speed and accuracy. Designed to support legal professionals, firms, and corporate legal departments, the platform enhances efficiency while minimizing manual workload.
-            </p>
-          </motion.div>
-          <div className="flex justify-center">
-            <img
-              src="/image/pages_img/What-AI-Driven-Law-GPT.png"
-              alt="What is AI-Driven Law GPT illustration"
-              className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
-            />
           </div>
-        </div>
-      </PortfolioSection>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Challenge Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
-          <div className="hidden lg:block order-1">
-            <PortfolioImage
-              src="/image/pages_img/Challenges-Addressed.webp"
-              alt="Problems illustration"
-            />
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
+            <div className="hidden lg:block order-1">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-Addressed.webp"
+                alt="Problems illustration"
+              />
+            </div>
+            
+            {/* Content - Desktop (right side), Mobile/Tablet (top) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left order-2 lg:order-2"
+            >
+              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                Challenges Addressed
+              </h2>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
+                AI-Driven Law GPT addresses critical legal industry challenges:
+              </p>
+              <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming document creation and review</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Risk of human error in legal analysis</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Delays in contract drafting and summarization</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Lack of standardization in legal documents</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> High operational costs for law firms and clients</li>
+              </ul>
+            </motion.div>
+            
+            {/* Image - Shown on mobile/tablet, hidden on desktop */}
+            <div className="lg:hidden order-3">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-Addressed.webp"
+                alt="Problems illustration"
+              />
+            </div>
           </div>
-          
-          {/* Content - Desktop (right side), Mobile/Tablet (top) */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left order-2 lg:order-2"
-          >
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
-              Challenges Addressed
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
-              AI-Driven Law GPT addresses critical legal industry challenges:
-            </p>
-            <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-              <li>📄 Time-consuming document creation and review</li>
-              <li>⚖️ Risk of human error in legal analysis</li>
-              <li>⏱️ Delays in contract drafting and summarization</li>
-              <li>🧾 Lack of standardization in legal documents</li>
-              <li>💰 High operational costs for law firms and clients</li>
-            </ul>
-          </motion.div>
-          
-          {/* Image - Shown on mobile/tablet, hidden on desktop */}
-          <div className="lg:hidden order-3">
-            <PortfolioImage
-              src="/image/pages_img/Challenges-Addressed.webp"
-              alt="Problems illustration"
-            />
-          </div>
-        </div>
-      </PortfolioSection>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Solution Section */}
-      <div className="py-8 sm:py-12 md:py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full bg-gradient-to-tr from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
           {/* Enhanced Solution */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-7xl mx-auto px-8 sm:px-10 lg:px-12 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
@@ -265,16 +268,60 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="text-left"
               >
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
                   Industry Insight: Did You Know?
                 </h2>
-                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-2">📊 The Rise of AI in Law</h3>
-                <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-                  <li>🧠 Over 35% of legal tasks are estimated to be automatable using AI tools</li>
-                  <li>🕒 Legal professionals spend up to 60% of their time on document drafting and review</li>
-                  <li>💼 Law firms using AI report a 30–40% increase in productivity</li>
-                  <li>💡 AI-powered tools can reduce legal research time by 50% or more</li>
-                </ul>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-6">📊 The Rise of AI in Law</h3>
+                
+                <div className="space-y-6 sm:space-y-8">
+                  {/* Data Point 1 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🧠 Over 35% of legal tasks are estimated to be automatable using AI tools
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '35%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">35%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 2 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🕒 Legal professionals spend up to 60% of their time on document drafting and review
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '60%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">60%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 3 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💼 Law firms using AI report a 30–40% increase in productivity
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '40%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">40%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 4 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💡 AI-powered tools can reduce legal research time by 50% or more
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '50%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">50%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
               <PortfolioImage
                 src="/image/pages_img/Did-You-Know.jpg"
@@ -285,7 +332,7 @@ const AiDrivenLawGpt = () => {
           </PortfolioSection>
 
           {/* Enhanced Features & Technologies */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <SectionHeader
               title="Core Features of AI-Driven Law GPT"
               subtitle="AI-powered legal tools for document processing, contract analysis, and workflow automation"
@@ -341,7 +388,7 @@ const AiDrivenLawGpt = () => {
           </PortfolioSection>
 
           {/* Enhanced Professional Workspace Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <motion.div
               variants={staggerContainer}
               initial="initial"
@@ -357,7 +404,7 @@ const AiDrivenLawGpt = () => {
               />
             </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -365,8 +412,8 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">⏳</span>
                     </div>
@@ -388,8 +435,8 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">✅</span>
                     </div>
@@ -411,8 +458,8 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💼</span>
                     </div>
@@ -434,8 +481,8 @@ const AiDrivenLawGpt = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💸</span>
                     </div>
@@ -499,7 +546,7 @@ const AiDrivenLawGpt = () => {
           </PortfolioSection>
 
           {/* Enhanced Compliance & Security Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-12">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}

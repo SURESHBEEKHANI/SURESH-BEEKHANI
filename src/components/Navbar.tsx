@@ -28,7 +28,7 @@ const Navbar = () => {
   const logos = [
     { prefix: 'ML', suffix: 'Engineer' },
     { prefix: 'AI', suffix: 'Engineer' },
-    { prefix: 'DATA', suffix: 'Scientist' },
+   
   ]
   
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);

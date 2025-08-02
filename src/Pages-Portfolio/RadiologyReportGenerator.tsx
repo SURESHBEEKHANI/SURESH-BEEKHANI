@@ -29,27 +29,25 @@ import {
 } from '@/components/ui/ImageIcon';
 
 // Enhanced features with descriptions using optimized image icons
-
-// Enhanced features with descriptions
 const features = [
   { 
-    title: 'Smart Itineraries', 
-    icon: LegalIcon
-  },
-  { 
-    title: 'Cloud-Based', 
+    title: 'AI-Powered Analysis', 
     icon: AiIcon
   },
   { 
-    title: 'Personalized', 
-    icon: SecurityIcon
-  },
-  { 
-    title: 'Real-Time Updates', 
+    title: 'Medical Imaging', 
     icon: AnalyticsIcon
   },
   { 
-    title: 'Multi-Device', 
+    title: 'HIPAA Compliance', 
+    icon: SecurityIcon
+  },
+  { 
+    title: 'Automated Reports', 
+    icon: AnalyticsIcon
+  },
+  { 
+    title: 'Cloud-Based Processing', 
     icon: CloudIcon
   },
   { 
@@ -60,10 +58,10 @@ const features = [
 
 // Enhanced results with better visual hierarchy
 const results = [
-  { icon: '⚡', stat: '90%', desc: 'Faster planning' },
-  { icon: '✅', stat: '95%', desc: 'User satisfaction' },
-  { icon: '🔒', stat: 'Secure', desc: 'Data protection' },
-  { icon: '🌍', stat: 'Global', desc: 'Worldwide access' },
+  { icon: '⚡', stat: '90%', desc: 'Faster report generation' },
+  { icon: '🎯', stat: '95%', desc: 'Accuracy rate' },
+  { icon: '🔒', stat: 'HIPAA', desc: 'Compliant security' },
+  { icon: '💼', stat: '24/7', desc: 'Available processing' },
 ];
 
 // Development steps with enhanced icons
@@ -71,68 +69,68 @@ const steps = [
   { number: 1, title: 'Agile Development', icon: DevelopmentIcon },
   { number: 2, title: 'Feedback Loops', icon: FeedbackIcon },
   { number: 3, title: 'API Integration', icon: ApiIcon },
-  { number: 4, title: 'Travel Expertise', icon: ExpertiseIcon },
-  { number: 5, title: 'Security', icon: ComplianceIcon },
+  { number: 4, title: 'Medical Expertise', icon: ExpertiseIcon },
+  { number: 5, title: 'HIPAA Compliance', icon: ComplianceIcon },
   { number: 6, title: 'Architecture', icon: ArchitectureIcon },
 ];
 
-const PersonalizedTravelAssistant = () => {
+const RadiologyReportGenerator = () => {
   const [showFullInfo, setShowFullInfo] = useState(false);
 
   // Memoize content for better performance
   const infoContent = useMemo(() => (
     <>
       <p className="mb-3 text-base text-gray-700">
-        The Personalized Travel Assistant is an intelligent AI-powered platform that revolutionizes how travelers plan, book, and experience their journeys. Built with advanced machine learning algorithms, it understands individual preferences, travel patterns, and destination requirements to deliver truly personalized travel experiences.
+        Radiology Report Generator AI is a cutting-edge medical imaging platform that leverages advanced artificial intelligence to automatically analyze radiological images and generate comprehensive diagnostic reports. Built with sophisticated deep learning algorithms, it processes X-rays, CT scans, MRIs, and other medical images to provide accurate, detailed reports for healthcare professionals.
       </p>
       <p className="mb-3 text-base text-gray-700">
-        The system goes beyond simple booking tools to provide comprehensive travel planning, real-time recommendations, and adaptive itineraries that evolve based on user feedback and changing circumstances. It integrates with multiple travel services, accommodation providers, and local experiences to create seamless travel journeys.
+        The system goes beyond traditional radiology workflows by implementing computer vision, natural language processing, and clinical decision support capabilities. It supports hospitals, imaging centers, and healthcare facilities with comprehensive radiological analysis and reporting.
       </p>
       <p className="mb-4 text-base text-gray-700">
-        With cloud-based accessibility and mobile-first design, the Personalized Travel Assistant ensures travelers have access to their plans, recommendations, and support anywhere in the world, making every trip more enjoyable and stress-free.
+        With high accuracy rates and rapid processing times, Radiology Report Generator AI helps healthcare providers improve diagnostic efficiency, reduce reporting time, and enhance patient care while maintaining strict HIPAA compliance and medical standards.
       </p>
 
       <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">Key Benefits</h3>
       
       <div className="space-y-3 mb-4">
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">Personalized Planning</h4>
-          <p className="text-base text-gray-700">AI-driven recommendations based on your travel history, preferences, and budget.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">Automated Report Generation</h4>
+          <p className="text-base text-gray-700">Generate comprehensive radiological reports automatically from medical images with high accuracy and detail.</p>
         </div>
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">Real-Time Updates</h4>
-          <p className="text-base text-gray-700">Instant notifications about flight changes, weather conditions, and local events.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">Advanced Image Analysis</h4>
+          <p className="text-base text-gray-700">Analyze X-rays, CT scans, MRIs, and other medical images using state-of-the-art AI algorithms.</p>
         </div>
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">Seamless Integration</h4>
-          <p className="text-base text-gray-700">Connects with airlines, hotels, car rentals, and local experiences in one platform.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">Clinical Decision Support</h4>
+          <p className="text-base text-gray-700">Provide evidence-based recommendations and clinical insights to support healthcare professionals.</p>
         </div>
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">Cost Optimization</h4>
-          <p className="text-base text-gray-700">Finds the best deals and suggests cost-effective alternatives for your travel budget.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">HIPAA Compliance</h4>
+          <p className="text-base text-gray-700">Ensure full compliance with healthcare data protection regulations and patient privacy standards.</p>
         </div>
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">Local Insights</h4>
-          <p className="text-base text-gray-700">Provides authentic local recommendations for dining, activities, and cultural experiences.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">Workflow Optimization</h4>
+          <p className="text-base text-gray-700">Streamline radiology workflows and reduce reporting time by up to 90%.</p>
         </div>
         <div>
-          <h4 className="font-medium text-slate-700 mb-1 text-base">24/7 Support</h4>
-          <p className="text-base text-gray-700">Round-the-clock assistance for emergencies, changes, and travel questions.</p>
+          <h4 className="font-medium text-slate-700 mb-1 text-base">Quality Assurance</h4>
+          <p className="text-base text-gray-700">Maintain high diagnostic accuracy and consistency across all generated reports.</p>
         </div>
       </div>
 
-      <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">The Growing Travel Tech Market</h3>
-      <p className="text-base text-gray-700 mb-2">The global travel technology market is projected to reach $1.4 trillion by 2030, driven by:</p>
+      <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">The Growing Medical AI Market</h3>
+      <p className="text-base text-gray-700 mb-2">The global medical AI market is projected to reach $120 billion by 2028, driven by:</p>
       <ul className="list-disc pl-4 mb-3 space-y-1 text-base text-gray-700">
-        <li>Increasing demand for personalized travel experiences</li>
-        <li>Rising adoption of mobile travel planning</li>
-        <li>Need for real-time travel information and updates</li>
-        <li>Growing preference for contactless travel solutions</li>
+        <li>Increasing demand for diagnostic imaging services</li>
+        <li>Growing shortage of radiologists worldwide</li>
+        <li>Advancements in AI and machine learning</li>
+        <li>Need for faster, more accurate diagnostics</li>
       </ul>
 
-      <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">Beyond Booking: Your Digital Travel Companion</h3>
+      <h3 className="font-semibold text-slate-800 mt-4 mb-2 text-base">Beyond Reports: An Intelligent Diagnostic Platform</h3>
       <p className="text-base text-gray-700">
-        The Personalized Travel Assistant represents the future of travel technology, combining artificial intelligence with human travel expertise to create journeys that are not just planned, but truly personalized. It transforms the way we explore the world, making every trip more memorable and every destination more accessible.
+        Radiology Report Generator AI represents the future of medical imaging, combining human expertise with artificial intelligence to deliver faster, more accurate diagnostic reports. It empowers healthcare providers to improve patient outcomes through intelligent radiological analysis.
       </p>
     </>
   ), []);
@@ -142,27 +140,27 @@ const PersonalizedTravelAssistant = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
-          <div className="flex-1 text-white space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-cyan-900 via-blue-800 to-cyan-900 overflow-hidden">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Personalized Travel Assistant
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+                Radiology Report Generator AI
               </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-100 w-full mt-2 sm:mt-3 md:mt-4 leading-relaxed max-w-2xl mx-auto md:mx-0">
-                AI-powered travel companion that creates personalized itineraries, finds the best deals, and provides real-time support for seamless journeys worldwide.
+              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+                Advanced AI-powered platform that automatically analyzes medical images and generates comprehensive radiological reports for healthcare professionals.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-3 sm:pt-4 md:pt-6 w-full">
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg text-center min-h-[44px] flex items-center justify-center touch-manipulation"
+                  className="bg-gradient-to-r from-cyan-500 to-cyan-700 hover:from-cyan-600 hover:to-cyan-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
                 </a>
               </div>
             </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end w-full md:w-auto">
+          <div className="flex-1 flex justify-center md:justify-end">
             {/* Optionally, you can add an image or illustration here if needed */}
           </div>
         </div>
@@ -170,7 +168,7 @@ const PersonalizedTravelAssistant = () => {
 
       {/* Enhanced Info Section */}
       <InfoSection
-        title="AI-Powered Personalized Travel Assistant for Modern Travelers"
+        title="Radiology Report Generator AI for Healthcare Excellence"
         showFullInfo={showFullInfo}
         setShowFullInfo={setShowFullInfo}
         titleColor="text-slate-800"
@@ -191,17 +189,17 @@ const PersonalizedTravelAssistant = () => {
             >
               <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                  What Is Personalized Travel Assistant?
+                  What Is Radiology Report Generator AI?
                 </h2>
               </div>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-                Personalized Travel Assistant is an intelligent AI-powered platform that revolutionizes how travelers plan, book, and experience their journeys. Built with advanced machine learning algorithms, it understands individual preferences and delivers truly personalized travel experiences.
+                Radiology Report Generator AI is a cutting-edge medical imaging platform that leverages advanced artificial intelligence to automatically analyze radiological images and generate comprehensive diagnostic reports. Built with sophisticated deep learning algorithms.
               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Personalized-Travel-Assistant.jpg"
-                alt="What is Personalized Travel Assistant illustration"
+                src="/image/pages_img/What-Radiology-Report-Generator-AI.jpg"
+                alt="What is Radiology Report Generator AI illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
@@ -233,14 +231,14 @@ const PersonalizedTravelAssistant = () => {
                 Challenges Addressed
               </h2>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
-                Personalized Travel Assistant addresses critical travel planning challenges:
+                Radiology Report Generator AI addresses critical healthcare and radiology challenges:
               </p>
               <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming travel research and planning</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Generic recommendations that don't match preferences</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Difficulty finding personalized experiences</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Lack of real-time updates and flexibility</li>
-                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Complex booking processes across multiple platforms</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-cyan-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Radiologist shortage and workload pressure</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-cyan-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Slow report generation and turnaround times</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-cyan-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Inconsistent reporting quality and accuracy</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-cyan-500 text-white rounded-full text-xs font-bold mr-2">✓</span> HIPAA compliance and data security concerns</li>
+                <li><span className="inline-flex items-center justify-center w-5 h-5 bg-cyan-500 text-white rounded-full text-xs font-bold mr-2">✓</span> High diagnostic imaging costs</li>
               </ul>
             </motion.div>
             
@@ -271,17 +269,17 @@ const PersonalizedTravelAssistant = () => {
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
                   Industry Insight: Did You Know?
                 </h2>
-                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-6">📊 The Rise of AI in Travel Planning</h3>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-6">📊 The Impact of AI in Radiology</h3>
                 
                 <div className="space-y-6 sm:space-y-8">
                   {/* Data Point 1 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      🧠 AI reduces travel planning time by 70%
+                      ⚡ 90% faster report generation with AI assistance
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '70%' }}>
-                        <span className="text-white text-xs sm:text-sm font-bold">70%</span>
+                      <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '100%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">90%</span>
                       </div>
                     </div>
                   </div>
@@ -289,11 +287,11 @@ const PersonalizedTravelAssistant = () => {
                   {/* Data Point 2 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      💰 85% of travelers prefer personalized recommendations
+                      🎯 95% accuracy in radiological image analysis
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '85%' }}>
-                        <span className="text-white text-xs sm:text-sm font-bold">85%</span>
+                      <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '95%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">95%</span>
                       </div>
                     </div>
                   </div>
@@ -301,11 +299,11 @@ const PersonalizedTravelAssistant = () => {
                   {/* Data Point 3 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      📈 60% increase in travel satisfaction with AI
+                      👨‍⚕️ 40% shortage of radiologists by 2030
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '60%' }}>
-                        <span className="text-white text-xs sm:text-sm font-bold">60%</span>
+                      <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '100%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">40%</span>
                       </div>
                     </div>
                   </div>
@@ -313,11 +311,11 @@ const PersonalizedTravelAssistant = () => {
                   {/* Data Point 4 */}
                   <div className="flex flex-col space-y-3">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                      🌍 90% of travel companies plan to adopt AI
+                      💰 $120B medical AI market by 2028
                     </p>
                     <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '90%' }}>
-                        <span className="text-white text-xs sm:text-sm font-bold">90%</span>
+                      <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '100%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">$120B</span>
                       </div>
                     </div>
                   </div>
@@ -325,7 +323,7 @@ const PersonalizedTravelAssistant = () => {
               </motion.div>
               <PortfolioImage
                 src="/image/pages_img/Did-You-Know.jpg"
-                alt="AI-powered travel solution illustration"
+                alt="AI-powered radiology report solution illustration"
                 delay={0.2}
               />
             </div>
@@ -334,8 +332,8 @@ const PersonalizedTravelAssistant = () => {
           {/* Enhanced Features & Technologies */}
           <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <SectionHeader
-              title="Core Features of Personalized Travel Assistant"
-              subtitle="AI-powered travel planning tools for personalized recommendations, itinerary creation, and booking automation"
+              title="Core Features of Radiology Report Generator AI"
+              subtitle="Advanced AI tools for medical image analysis, automated reporting, and clinical decision support"
               delay={0.1}
               className="!text-base sm:!text-lg md:!text-xl lg:!text-2xl xl:!text-3xl !text-black"
             />
@@ -349,38 +347,38 @@ const PersonalizedTravelAssistant = () => {
               >
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">⚙️</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Smart Planning</h3>
+                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">🤖</span>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">AI-Powered Analysis</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>🤖 AI-powered itinerary creation and optimization</li>
-                    <li>📅 Intelligent scheduling and time management</li>
-                    <li>🎯 Personalized recommendations based on preferences</li>
-                    <li>🔍 Advanced destination and activity matching</li>
+                    <li>🧠 Deep learning algorithms</li>
+                    <li>📊 Computer vision processing</li>
+                    <li>🎯 Pattern recognition</li>
+                    <li>📈 Continuous learning</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">🧑‍💼</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Professional Tools</h3>
+                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">📋</span>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Automated Reports</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>📚 Comprehensive travel database and insights</li>
-                    <li>⚡ Real-time booking and reservation management</li>
-                    <li>🔄 Dynamic itinerary updates and flexibility</li>
-                    <li>💡 Intelligent cost optimization and deals</li>
+                    <li>📝 Natural language generation</li>
+                    <li>⚡ Instant report creation</li>
+                    <li>📊 Structured data output</li>
+                    <li>🔍 Detailed analysis summaries</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg p-4 sm:p-6 border border-gray-100 sm:col-span-2 lg:col-span-1">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">📊</span>
-                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">Insight & Analytics</h3>
+                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">🔒</span>
+                    <h3 className="font-semibold text-slate-800 text-sm sm:text-base md:text-lg">HIPAA Compliance</h3>
                   </div>
                   <ul className="list-disc pl-3 sm:pl-4 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
-                    <li>📈 Travel pattern analysis and insights</li>
-                    <li>📋 Preference tracking and learning</li>
-                    <li>🔎 Advanced search and filtering capabilities</li>
-                    <li>👥 Collaborative planning with travel companions</li>
+                    <li>🛡️ End-to-end encryption</li>
+                    <li>👥 Access controls</li>
+                    <li>📋 Audit trails</li>
+                    <li>🔐 Secure data handling</li>
                   </ul>
                 </div>
               </motion.div>
@@ -397,8 +395,8 @@ const PersonalizedTravelAssistant = () => {
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
               <SectionHeader
-                title="Benefits for Travelers"
-                subtitle="Transform your travel planning with AI-powered efficiency"
+                title="Benefits for Healthcare Teams"
+                subtitle="Transform your radiology workflow with AI-powered efficiency"
                 delay={0.1}
                 className="!text-base sm:!text-lg md:!text-xl lg:!text-2xl xl:!text-3xl !text-black"
               />
@@ -412,18 +410,18 @@ const PersonalizedTravelAssistant = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-cyan-200 hover:border-cyan-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-4 sm:mb-6">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">⏳</span>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">⚡</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Time Saved</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Faster planning</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Faster Reports</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">90% faster generation</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Reduce travel planning time from hours to minutes with AI-powered automation.
+                    Generate comprehensive radiological reports up to 90% faster than traditional methods.
                   </p>
                 </div>
               </motion.div>
@@ -438,15 +436,15 @@ const PersonalizedTravelAssistant = () => {
                 <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">✅</span>
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">🎯</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Personalized Experience</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Tailored recommendations</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">High Accuracy</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">95% accuracy rate</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Get travel recommendations that match your unique preferences and style.
+                    Achieve exceptional accuracy in medical image analysis and diagnostic reporting.
                   </p>
                 </div>
               </motion.div>
@@ -458,18 +456,18 @@ const PersonalizedTravelAssistant = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-4 sm:mb-6">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">💼</span>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">🔒</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Cost Savings</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Best deals and prices</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">HIPAA Compliant</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Full compliance</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Find the best prices and deals with intelligent cost optimization.
+                    Ensure complete HIPAA compliance and data security for all medical information.
                   </p>
                 </div>
               </motion.div>
@@ -484,15 +482,15 @@ const PersonalizedTravelAssistant = () => {
                 <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">💸</span>
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">💼</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Real-Time Updates</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Live information</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Workflow Optimization</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Streamlined processes</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Stay informed with real-time updates on flights, weather, and local conditions.
+                    Optimize radiology workflows and reduce administrative burden on healthcare staff.
                   </p>
                 </div>
               </motion.div>
@@ -507,15 +505,15 @@ const PersonalizedTravelAssistant = () => {
                 <div className="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-teal-200 hover:border-teal-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-3 sm:mb-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">📈</span>
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">👨‍⚕️</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Stress-Free Travel</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Seamless experience</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Clinical Support</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Decision assistance</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Enjoy worry-free travel with comprehensive planning and support.
+                    Provide clinical decision support and evidence-based recommendations for healthcare professionals.
                   </p>
                 </div>
               </motion.div>
@@ -527,18 +525,18 @@ const PersonalizedTravelAssistant = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-indigo-50 to-blue-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-indigo-200 hover:border-indigo-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-indigo-200 hover:border-indigo-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex items-center mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-lg sm:text-xl md:text-2xl text-white">⚖️</span>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-lg sm:text-xl md:text-2xl text-white">📊</span>
                     </div>
                     <div className="ml-3 sm:ml-4">
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Global Access</h3>
-                      <p className="text-xs sm:text-sm text-gray-600">Worldwide coverage</p>
+                      <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Quality Assurance</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">Consistent standards</p>
                     </div>
                   </div>
                   <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
-                    Access travel planning tools from anywhere in the world.
+                    Maintain high quality and consistency across all radiological reports and analyses.
                   </p>
                 </div>
               </motion.div>
@@ -557,10 +555,10 @@ const PersonalizedTravelAssistant = () => {
               >
                 
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
-                  Security & Privacy
+                  Compliance & Security
                 </h2>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                  Enterprise-grade security and privacy for your travel data.
+                  Enterprise-grade security and compliance for your medical data.
                 </p>
               </motion.div>
               
@@ -574,16 +572,16 @@ const PersonalizedTravelAssistant = () => {
                 className="w-full max-w-5xl"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="group relative overflow-hidden bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-indigo-200">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="group relative overflow-hidden bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-cyan-200">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative p-4 sm:p-6">
                       <div className="flex items-center mb-3 sm:mb-4">
-                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg">
                           <span className="text-lg sm:text-xl text-white">✅</span>
                         </div>
                         <div className="ml-3 sm:ml-4">
-                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Data Protection</h3>
-                          <p className="text-xs sm:text-sm text-gray-600">Secure personal information</p>
+                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">HIPAA Compliant</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">Medical data protection</p>
                         </div>
                       </div>
                     </div>
@@ -597,8 +595,8 @@ const PersonalizedTravelAssistant = () => {
                           <span className="text-lg sm:text-xl text-white">🔐</span>
                         </div>
                         <div className="ml-3 sm:ml-4">
-                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Secure Booking</h3>
-                          <p className="text-xs sm:text-sm text-gray-600">Encrypted transactions</p>
+                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">End-to-End Encryption</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">Military-grade security</p>
                         </div>
                       </div>
                     </div>
@@ -612,8 +610,8 @@ const PersonalizedTravelAssistant = () => {
                           <span className="text-lg sm:text-xl text-white">👥</span>
                         </div>
                         <div className="ml-3 sm:ml-4">
-                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Privacy Controls</h3>
-                          <p className="text-xs sm:text-sm text-gray-600">User preference management</p>
+                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Access Controls</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">Role-based permissions</p>
                         </div>
                       </div>
                     </div>
@@ -627,7 +625,7 @@ const PersonalizedTravelAssistant = () => {
                           <span className="text-lg sm:text-xl text-white">🗂️</span>
                         </div>
                         <div className="ml-3 sm:ml-4">
-                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Cloud Storage</h3>
+                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">Secure Storage</h3>
                           <p className="text-xs sm:text-sm text-gray-600">99.9% uptime guarantee</p>
                         </div>
                       </div>
@@ -640,10 +638,10 @@ const PersonalizedTravelAssistant = () => {
 
           {/* Enhanced Call to Action */}
           <CallToAction
-            title="Ready to Transform Your Travel Planning?"
-            subtitle="Let's discuss how AI can revolutionize your travel experience"
-            gradient="from-indigo-500 to-indigo-700"
-            hoverGradient="hover:from-indigo-600 hover:to-indigo-800"
+            title="Ready to Transform Your Radiology Workflow?"
+            subtitle="Let's discuss how AI can revolutionize your medical imaging and reporting"
+            gradient="from-cyan-500 to-cyan-700"
+            hoverGradient="hover:from-cyan-600 hover:to-cyan-800"
           />
         </div>
       </div>
@@ -686,4 +684,4 @@ const PersonalizedTravelAssistant = () => {
   );
 };
 
-export default PersonalizedTravelAssistant;
+export default RadiologyReportGenerator; 

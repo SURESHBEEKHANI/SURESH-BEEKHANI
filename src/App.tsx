@@ -32,6 +32,16 @@ const PatDiag = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system")
 const LegalAI = lazy(() => import("./Pages-Portfolio/ai-legal-contract-analyzer"));
 const PersonalizedTravelAssistant = lazy(() => import("./Pages-Portfolio/personalized-travel-assistant"));
 
+// New Portfolio Components
+const EarlyDiseaseDetectionAI = lazy(() => import("./Pages-Portfolio/EarlyDiseaseDetectionAI"));
+const RealTimeFraudDetection = lazy(() => import("./Pages-Portfolio/RealTimeFraudDetection"));
+const PersonalizedLearningAI = lazy(() => import("./Pages-Portfolio/PersonalizedLearningAI"));
+const SolarOutputForecasting = lazy(() => import("./Pages-Portfolio/SolarOutputForecasting"));
+const DynamicShelfRestocking = lazy(() => import("./Pages-Portfolio/DynamicShelfRestocking"));
+const ProductRecommendationAI = lazy(() => import("./Pages-Portfolio/ProductRecommendationAI"));
+const RadiologyReportGenerator = lazy(() => import("./Pages-Portfolio/RadiologyReportGenerator"));
+const FederatedPrivacyCompliance = lazy(() => import("./Pages-Portfolio/FederatedPrivacyCompliance"));
+
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -88,7 +98,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      cacheTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
       retry: 1,
       refetchOnWindowFocus: false,
     },
@@ -133,6 +143,16 @@ const App = () => (
               <Route path="/portfolio/patient-diagnostic-system" element={<PatDiag />} />
               <Route path="/portfolio/ai-legal-contract-analyzer" element={<LegalAI />} />
               <Route path="/portfolio/personalized-travel-assistant" element={<PersonalizedTravelAssistant />} />
+              
+              {/* New Portfolio Routes */}
+              <Route path="/portfolio/early-disease-detection-ai" element={<EarlyDiseaseDetectionAI />} />
+              <Route path="/portfolio/real-time-fraud-detection" element={<RealTimeFraudDetection />} />
+              <Route path="/portfolio/personalized-learning-ai" element={<PersonalizedLearningAI />} />
+              <Route path="/portfolio/solar-output-forecasting" element={<SolarOutputForecasting />} />
+              <Route path="/portfolio/dynamic-shelf-restocking" element={<DynamicShelfRestocking />} />
+              <Route path="/portfolio/product-recommendation-ai" element={<ProductRecommendationAI />} />
+              <Route path="/portfolio/radiology-report-generator" element={<RadiologyReportGenerator />} />
+              <Route path="/portfolio/federated-privacy-compliance" element={<FederatedPrivacyCompliance />} />
               
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />

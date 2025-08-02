@@ -45,6 +45,62 @@ const projects = [
       "AI Trip Planner creates real-time, personalized itineraries. Plan smarter trips based on your preferences and live data.",
     image: "/image/pages_img/Personalized-Travel-Assistant.webp",
     link: "/portfolio/personalized-travel-assistant"
+  },
+  {
+    title: "Early Disease Detection AI",
+    description:
+      "Advanced AI system for early disease detection using medical imaging and predictive analytics to improve patient outcomes.",
+    image: "/image/pages_img/Early-Disease-Detection.jpg",
+    link: "/portfolio/early-disease-detection-ai"
+  },
+  {
+    title: "Real-Time Fraud Detection",
+    description:
+      "AI-powered platform that detects and prevents fraudulent activities in real-time, protecting businesses from financial losses.",
+    image: "/image/pages_img/Real-Time-Threat-Detection.jpeg",
+    link: "/portfolio/real-time-fraud-detection"
+  },
+  {
+    title: "Personalized Learning AI",
+    description:
+      "Intelligent tutoring system that adapts to individual learning styles and progress levels for enhanced personalized education.",
+    image: "/image/pages_img/Personalize-Learning.jpg",
+    link: "/portfolio/personalized-learning-ai"
+  },
+  {
+    title: "Solar Output Forecasting",
+    description:
+      "AI-driven renewable energy forecasting system that predicts solar power generation for optimal energy management.",
+    image: "/image/pages_img/Renewable-Energy-Forecasting.jpg",
+    link: "/portfolio/solar-output-forecasting"
+  },
+  {
+    title: "Dynamic Shelf Restocking",
+    description:
+      "Smart inventory management system that uses AI to optimize shelf restocking and reduce retail waste efficiently.",
+    image: "/image/pages_img/retail-Inventory-Optimization.jpg",
+    link: "/portfolio/dynamic-shelf-restocking"
+  },
+  {
+    title: "Product Recommendation AI",
+    description:
+      "Intelligent product recommendation system that adapts to user preferences and behavior for enhanced shopping experience.",
+    image: "/image/pages_img/Personalized-Recommendations-retail.webp",
+    link: "/portfolio/product-recommendation-ai"
+  },
+  {
+    title: "Radiology Report Generator",
+    description:
+      "Advanced AI-powered platform that automatically analyzes medical images and generates comprehensive radiological reports accurately.",
+    image: "/image/pages_img/Medical-Image-Analysis.webp",
+    link: "/portfolio/radiology-report-generator"
+  },
+  {
+    title: "Federated Privacy Compliance",
+    description:
+      "Revolutionary privacy-preserving AI platform that enables collaborative model training without data sharing securely and efficiently.",
+    image: "/image/pages_img/Secure-Data-Sharing.jpg",
+    link: "/portfolio/federated-privacy-compliance"
   }
 ];
 

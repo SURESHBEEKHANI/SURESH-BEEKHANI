@@ -142,108 +142,124 @@ const AILegalContractAnalyzer = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Legal-Contract-Analyzer-key-feature.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
-          <div className="flex-1 text-white space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 AI Legal Contract Analyzer
               </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-100 w-full mt-2 sm:mt-3 md:mt-4 leading-relaxed max-w-2xl mx-auto md:mx-0">
+              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
                 AI-powered contract analysis that automates review, detects risks, and ensures compliance with unprecedented speed and accuracy.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-3 sm:pt-4 md:pt-6 w-full">
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg text-center min-h-[44px] flex items-center justify-center touch-manipulation"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
                 </a>
               </div>
             </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end w-full md:w-auto">
+          <div className="flex-1 flex justify-center md:justify-end">
             {/* Optionally, you can add an image or illustration here if needed */}
           </div>
         </div>
       </section>
 
-      {/* Enhanced Info Section */}
-      <InfoSection
-        title="AI Legal Contract Analyzer for Modern Legal Practice"
-        showFullInfo={showFullInfo}
-        setShowFullInfo={setShowFullInfo}
-        titleColor="text-slate-800"
-      >
+             {/* Enhanced Info Section */}
+       <InfoSection
+         title="AI Legal Contract Analyzer for Modern Legal Practice"
+         showFullInfo={showFullInfo}
+         setShowFullInfo={setShowFullInfo}
+         titleColor="text-slate-800"
+       >
         {infoContent}
       </InfoSection>
 
       {/* Enhanced What is Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                What Is AI Legal Contract Analyzer?
-              </h2>
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left"
+            >
+              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                  What Is AI Legal Contract Analyzer?
+                </h2>
+              </div>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                AI Legal Contract Analyzer is an advanced legal-tech platform that leverages cutting-edge artificial intelligence to streamline contract analysis, identify potential risks, and ensure regulatory compliance. Tailored for legal professionals, in-house counsel, and corporate legal teams, it enhances operational efficiency while maintaining uncompromised accuracy and legal integrity.
+              </p>
+            </motion.div>
+            <div className="flex justify-center">
+              <img
+                src="/image/pages_img/What-AI-Legal-Contract-Analyzer.jpg"
+                alt="What is AI Legal Contract Analyzer illustration"
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+              />
             </div>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-              AI Legal Contract Analyzer is an intelligent legal-tech platform that utilizes cutting-edge artificial intelligence to automate contract review, detect potential risks, and ensure regulatory compliance. Designed to support legal professionals, in-house counsel, and corporate legal departments, the platform enhances efficiency while maintaining the highest standards of accuracy.
-            </p>
-          </motion.div>
-          <div className="flex justify-center">
-            <img
-              src="/image/pages_img/What-AI-Legal-Contract-Analyzer.jpg"
-              alt="What is AI Legal Contract Analyzer illustration"
-              className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
-            />
           </div>
-        </div>
-      </PortfolioSection>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Challenge Section */}
-      <PortfolioSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
-              Challenges Addressed
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
-              AI Legal Contract Analyzer addresses critical legal industry challenges:
-            </p>
-            <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-              <li>📄 Time-consuming manual contract review processes</li>
-              <li>⚖️ Risk of missing critical terms and conditions</li>
-              <li>⏱️ Delays in contract negotiation and approval</li>
-              <li>🧾 Inconsistent compliance checking across contracts</li>
-              <li>💰 High costs of manual legal review</li>
-            </ul>
-          </motion.div>
-          <PortfolioImage
-            src="/image/pages_img/Problems.jpg"
-            alt="Problems illustration"
-          />
-        </div>
-      </PortfolioSection>
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+        <PortfolioSection className="w-full rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 p-6 sm:p-8 lg:p-10">
+            {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
+            <div className="hidden lg:block order-1">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-AI-Legal-Contract-Analyzer.webp"
+                alt="Problems illustration"
+              />
+            </div>
+            
+            {/* Content - Desktop (right side), Mobile/Tablet (top) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-left order-2 lg:order-2"
+            >
+              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                Challenges Addressed
+              </h2>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
+                AI Legal Contract Analyzer addresses critical legal industry challenges:
+              </p>
+                              <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
+                  <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming contract review</li>
+                  <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Risk of missing critical terms and conditions</li>
+                  <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Delays in contract negotiation and approval</li>
+                  <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Inconsistent compliance checking</li>
+                  <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> High costs of manual legal review</li>
+                </ul>
+            </motion.div>
+            
+            {/* Image - Shown on mobile/tablet, hidden on desktop */}
+            <div className="lg:hidden order-3">
+              <PortfolioImage
+                src="/image/pages_img/Challenges-AI-Legal-Contract-Analyzer.webp"
+                alt="Problems illustration"
+              />
+            </div>
+          </div>
+        </PortfolioSection>
+      </div>
 
       {/* Enhanced Solution Section */}
-      <div className="py-8 sm:py-12 md:py-16 bg-gradient-to-tr from-gray-50 to-white flex-1">
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full bg-gradient-to-tr from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
           {/* Enhanced Solution */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-7xl mx-auto px-8 sm:px-10 lg:px-12 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
@@ -252,19 +268,63 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="text-left"
               >
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-4 sm:mb-6 leading-tight">
                   Industry Insight: Did You Know?
                 </h2>
-                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-2">📊 The Rise of AI in Legal Contract Analysis</h3>
-                <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
-                  <li>🧠 AI can analyze contracts 10x faster than human reviewers</li>
-                  <li>🕒 Legal teams spend up to 40% of their time on contract review</li>
-                  <li>💼 Companies using AI contract analysis report 60% faster deal closure</li>
-                  <li>💡 AI can identify 95% of standard contract risks automatically</li>
-                </ul>
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-800 mb-6">📊 The Rise of AI in Legal Contract Analysis</h3>
+                
+                <div className="space-y-6 sm:space-y-8">
+                  {/* Data Point 1 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🧠 AI analyzes contracts 10x faster
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '100%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">10x</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 2 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      🕒 40% of time spent on contract review
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '40%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">40%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 3 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💼 60% faster deal closure with AI
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '60%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">60%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Data Point 4 */}
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium">
+                      💡 AI identifies 95% of contract risks
+                    </p>
+                    <div className="relative w-full bg-gray-200 rounded-full h-3 sm:h-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full flex items-center justify-end pr-2" style={{ width: '95%' }}>
+                        <span className="text-white text-xs sm:text-sm font-bold">95%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/Solutions.jpg"
+                src="/image/pages_img/Did-You-Know.jpg"
                 alt="AI-powered legal solution illustration"
                 delay={0.2}
               />
@@ -272,7 +332,7 @@ const AILegalContractAnalyzer = () => {
           </PortfolioSection>
 
           {/* Enhanced Features & Technologies */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <SectionHeader
               title="Core Features of AI Legal Contract Analyzer"
               subtitle="AI-powered contract analysis tools for risk detection, compliance verification, and workflow automation"
@@ -328,7 +388,7 @@ const AILegalContractAnalyzer = () => {
           </PortfolioSection>
 
           {/* Enhanced Professional Workspace Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <motion.div
               variants={staggerContainer}
               initial="initial"
@@ -344,7 +404,7 @@ const AILegalContractAnalyzer = () => {
               />
             </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -352,8 +412,8 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-blue-200 hover:border-blue-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">⏳</span>
                     </div>
@@ -375,8 +435,8 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-green-200 hover:border-green-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">✅</span>
                     </div>
@@ -398,8 +458,8 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-purple-200 hover:border-purple-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💼</span>
                     </div>
@@ -421,8 +481,8 @@ const AILegalContractAnalyzer = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-4 sm:p-6 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-lg sm:rounded-2xl p-6 sm:p-8 h-full border border-orange-200 hover:border-orange-300 hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex items-center mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md sm:shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
                       <span className="text-lg sm:text-xl md:text-2xl text-white">💸</span>
                     </div>
@@ -486,7 +546,7 @@ const AILegalContractAnalyzer = () => {
           </PortfolioSection>
 
           {/* Enhanced Compliance & Security Section */}
-          <PortfolioSection className="max-w-6xl mx-auto">
+          <PortfolioSection className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 py-6 sm:py-8 rounded-xl sm:rounded-2xl border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-12">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
