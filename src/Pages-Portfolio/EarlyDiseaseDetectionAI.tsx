@@ -187,18 +187,18 @@ const EarlyDiseaseDetectionAI = () => {
               viewport={{ once: true }}
               className="text-left"
             >
-              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                  What Is Early Disease Detection AI?
-                </h2>
-              </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-                Early Disease Detection AI is a revolutionary healthcare platform that leverages advanced artificial intelligence to identify potential health risks and diseases at their earliest stages. Built with cutting-edge machine learning algorithms, it analyzes patient data to provide proactive health insights.
-              </p>
+                             <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                   What Is Early Disease Detection AI?
+                 </h2>
+               </div>
+               <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                 Early Disease Detection AI uses advanced artificial intelligence to identify health risks and diseases at their earliest stages, providing proactive health insights through patient data analysis.
+               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Early-Disease-Detection-AI.jpg"
+                src="/image/Portfolio-img/What Is Early Disease Detection AI.jpg"
                 alt="What is Early Disease Detection AI illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
