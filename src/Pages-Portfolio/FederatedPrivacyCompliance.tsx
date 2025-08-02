@@ -144,10 +144,10 @@ const FederatedPrivacyCompliance = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Federated Privacy Compliance AI
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
                 Revolutionary privacy-preserving AI platform that enables collaborative model training without data sharing, ensuring full GDPR compliance and data sovereignty.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
@@ -197,11 +197,11 @@ const FederatedPrivacyCompliance = () => {
               </p>
             </motion.div>
             <div className="flex justify-center">
-              <img
-                src="/image/pages_img/What-Federated-Privacy-Compliance-AI.jpg"
-                alt="What is Federated Privacy Compliance AI illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
-              />
+                             <img
+                 src="/image/Portfolio-img/What Is Federated Privacy Compliance AI.png"
+                 alt="What is Federated Privacy Compliance AI illustration"
+                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+               />
             </div>
           </div>
         </PortfolioSection>
