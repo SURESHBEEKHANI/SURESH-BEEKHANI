@@ -187,18 +187,18 @@ const RadiologyReportGenerator = () => {
               viewport={{ once: true }}
               className="text-left"
             >
-              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                  What Is Radiology Report Generator AI?
-                </h2>
-              </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-                Radiology Report Generator AI is a cutting-edge medical imaging platform that leverages advanced artificial intelligence to automatically analyze radiological images and generate comprehensive diagnostic reports. Built with sophisticated deep learning algorithms.
-              </p>
+                             <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                   What Is Radiology Report Generator AI?
+                 </h2>
+               </div>
+               <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                 Radiology Report Generator AI is a cutting-edge medical imaging platform that leverages advanced artificial intelligence to automatically analyze radiological images and generate comprehensive diagnostic reports. Built with sophisticated deep learning algorithms.
+               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Radiology-Report-Generator-AI.jpg"
+                src="/image/Portfolio-img/What Is Radiology Report Generator AI.png"
                 alt="What is Radiology Report Generator AI illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
