@@ -176,7 +176,7 @@ const SoMeCreator = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Social Media Content Creator
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
@@ -220,17 +220,17 @@ const SoMeCreator = () => {
               className="text-left"
             >
               <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
                   What Is Social Media Content Creator?
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+              <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
                 Social Media Content Creator is an intelligent AI-powered platform that revolutionizes how businesses and creators generate, schedule, and optimize social media content. Built with advanced algorithms, it understands audience preferences and delivers engaging content that drives engagement.
               </p>
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/pages_img/What-Social-Media-Content-Creator.jpg"
+                src="/image/Portfolio-img/Social Media Content Creator.png"
                 alt="What is Social Media Content Creator illustration"
                 className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
@@ -246,7 +246,7 @@ const SoMeCreator = () => {
             {/* Image - Hidden on mobile/tablet, shown on desktop (left side) */}
             <div className="hidden lg:block order-1">
               <PortfolioImage
-                src="/image/pages_img/Challenges-Social-Media-Content-Creator.webp"
+                src="/image/pages_img/Challenges-Addressed.webp"
                 alt="Problems illustration"
               />
             </div>
@@ -259,13 +259,13 @@ const SoMeCreator = () => {
               viewport={{ once: true }}
               className="text-left order-2 lg:order-2"
             >
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+              <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 leading-tight">
                 Challenges Addressed
               </h2>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed mb-3">
+              <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl leading-relaxed mb-3">
                 Social Media Content Creator addresses critical content creation challenges:
               </p>
-              <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600">
+              <ul className="list-none space-y-1.5 sm:space-y-2 text-xs sm:text-xs md:text-sm lg:text-base text-gray-600">
                 <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Time-consuming content creation and curation</li>
                 <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Difficulty maintaining consistent posting schedules</li>
                 <li><span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full text-xs font-bold mr-2">✓</span> Low engagement and poor audience interaction</li>
@@ -277,7 +277,7 @@ const SoMeCreator = () => {
             {/* Image - Shown on mobile/tablet, hidden on desktop */}
             <div className="lg:hidden order-3">
               <PortfolioImage
-                src="/image/pages_img/Challenges-Social-Media-Content-Creator.webp"
+                src="/image/pages_img/Challenges-Addressed.webp"
                 alt="Problems illustration"
               />
             </div>
@@ -354,7 +354,7 @@ const SoMeCreator = () => {
                 </div>
               </motion.div>
               <PortfolioImage
-                src="/image/pages_img/Did-You-Know-Social-Media-Content-Creator.webp"
+                src="/image/pages_img/Did-You-Know.jpg"
                 alt="AI-powered social media solution illustration"
                 delay={0.2}
               />
