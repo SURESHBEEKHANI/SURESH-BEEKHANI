@@ -1,6 +1,15 @@
 # Suresh Beekhani - AI/ML Engineer Portfolio
 
-A modern, responsive portfolio website showcasing expertise in AI, Machine Learning, and Data Science. Built with React, TypeScript, and Tailwind CSS.
+A clean, modern, and professional portfolio website showcasing expertise in AI, Machine Learning, and Data Science. Built with React, TypeScript, and Tailwind CSS, this site features a fully responsive layout, smooth scrolling navigation, interactive elements, and is optimized for fast loading and SEO. Designed for easy maintenance and future updates.
+
+## ✨ Project Highlights
+
+- **Clean, Modern Design**: Professional color scheme, glassmorphism, and beautiful gradients for a polished look
+- **Fully Responsive**: Mobile-first layouts that adapt seamlessly to all devices and screen sizes
+- **Smooth Scrolling Navigation**: Effortless navigation with smooth scroll and active section highlighting
+- **Interactive Elements**: Engaging hover/focus effects and subtle animations throughout
+- **Fast & SEO-Friendly**: Lazy loading, code splitting, optimized images, and semantic HTML for top performance and discoverability
+- **Easy Maintenance**: Modular, well-documented codebase with reusable components and custom hooks
 
 ## 🚀 Recent Enhancements
 

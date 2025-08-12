@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -19,20 +19,13 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
   const isMobile = useIsMobile();
-  
-  // Get current path for active highlighting
+
+  const brand = { prefix: 'Suresh', highlight: 'Beekhani', suffix: 'ML Engineer & Data Scientist' };
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
   
-  const logos = [
-    { prefix: 'ML', suffix: 'Engineer' },
-    { prefix: 'AI', suffix: 'Engineer' },
-   
-  ]
-  
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -41,9 +34,8 @@ const Navbar = () => {
         setIsScrolled(false);
       }
       
-      // Determine active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
-      const scrollPosition = window.scrollY + 100; // Offset
+      const scrollPosition = window.scrollY + 100;
       
       sections.forEach(section => {
         const sectionTop = (section as HTMLElement).offsetTop;
@@ -60,15 +52,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  useEffect(() => {
-    const logoInterval = setInterval(() => {
-      setCurrentLogoIndex((prevIndex) => (prevIndex + 1) % logos.length);
-    }, 3000);
-
-    return () => clearInterval(logoInterval);
-  }, []);
-  
-  // Close mobile menu when clicking outside
   useEffect(() => {
     if (!isMobile) {
       setIsMobileMenuOpen(false);
@@ -93,237 +76,149 @@ const Navbar = () => {
     { label: 'Experience', href: '/#experience' },
     { label: 'Contact', href: '/#contact' },
   ];
-  
-  // Update industries array to reflect actual industry pages in /src/pages
-  const industrie = [
-    
-    { name: "Diagnostics AI", page: "/DiagnosticsAI" },
-    { name: "E-Commerce", page: "/E-Commerce" },
-    { name: "EdTech AI", page: "/EdTechAI" },
-    { name: "FinTech AI", page: "/FinTechAI" },
-    { name: "GreenTech AI", page: "/GreenTechAI" },
-    { name: "HealthTech AI", page: "/HealthTechAI" },
-    { name: "HIPAA Compliance", page: "/HIPAACompliance" },
-    { name: "Retail AI", page: "/RetailAI" },
-  ];
 
-  // Services array for dropdown
-  const services = [
-    {name:"AI Development",page: "/AI-Development"},
-    { name: "AI Chatbot Development", page: "/ai-chatbot-development" },
-    { name: "Predictive Modelling", page: "/predictive-modelling" },
-    { name: "Chat GPT Integrations", page: "/chat-gpt-integrations" },
-    { name: "Natural Language Processing", page: "/natural-language-processing" },
-    { name: "Machine Learning", page: "/machine-learning" },
-    { name: "Computer Vision", page: "/computer-vision" },
+  const servicePages = [
+    { label: 'AI Development', href: '/ai-development' },
+    { label: 'AI Chatbot Development', href: '/ai-chatbot-development' },
+    { label: 'ChatGPT Integration', href: '/chat-gpt-integrations' },
+    { label: 'Machine Learning', href: '/machine-learning' },
+    { label: 'Computer Vision', href: '/computer-vision' },
+    { label: 'Natural Language Processing', href: '/natural-language-processing' },
+    { label: 'Predictive Modeling', href: '/predictive-modelling' },
   ];
   
-  // WhatsApp phone number with international format
-  const whatsappNumber = "+923401213187"; // Replace with your actual WhatsApp number
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const linkColorClass = (linkHref: string) => {
+    const isActive = activeSection === linkHref.replace('/#', '') || (linkHref === '/Portfolio' && currentPath === '/Portfolio');
+    if (isActive) return 'active text-primary';
+    if (isScrolled) return 'nav-link--dark hover:text-primary';
+    return 'nav-link--light hover:text-white/90';
+  };
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-        : 'bg-white shadow-sm'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'glass shadow-lg backdrop-blur-md' 
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto container-padding">
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          
           {/* Logo */}
-          <a 
-            href="#home" 
-            className="text-lg sm:text-xl lg:text-2xl font-display font-bold text-primary flex items-center transition-opacity duration-500 hover:opacity-80"
-            aria-label="Go to homepage"
-          >
-            <div className="logo-circle mr-2 sm:mr-3">
-              {logos[currentLogoIndex].prefix.replace('-', '')}
-            </div>
-            <span className="text-foreground">{logos[currentLogoIndex].suffix}</span>
-          </a>
+          <div className="flex items-center">
+            <span className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-white text-sm sm:text-lg font-semibold bg-primary border border-white/10 shadow mt-0">
+              <svg className="w-5 h-5 sm:w-7 sm:h-7 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.364 17.364l-1.414-1.414M12 21v-2M6.636 17.364l1.414-1.414M3 12h2M6.636 6.636l1.414 1.414"/>
+              </svg>
+              ML Engineer
+            </span>
+          </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            {navLinks.map((link) =>
+          <div className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link) => (
               link.label === 'Services' ? (
-                <div key="Services" className="relative group">
-                  <button 
-                    className={`nav-link text-sm font-medium transition-colors touch-button ${
-                      activeSection === 'services' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
-                    }`}
-                    aria-label="Services dropdown"
-                  >
-                    Services
-                  </button>
-                  <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
-                    {services.map((service) => (
-                      <a
-                        key={service.name}
-                        href={service.page}
-                        className={`block px-4 py-3 text-sm transition-colors duration-150 touch-button ${
-                          currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'
-                        }`}
-                        aria-label={`Navigate to ${service.name}`}
-                      >
-                        {service.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ) : link.label === 'Industries' ? (
-                <div key="Industries" className="relative group">
-                  <button 
-                    className={`nav-link text-sm font-medium transition-colors touch-button ${
-                      activeSection === 'industries' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
-                    }`}
-                    aria-label="Industries dropdown"
-                  >
-                    Industries
-                  </button>
-                  <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto pointer-events-none transition-all duration-200 z-50">
-                    {industrie.map((industry) => (
-                      <a
-                        key={industry.name}
-                        href={industry.page}
-                        className={`block px-4 py-3 text-sm transition-colors duration-150 touch-button ${
-                          currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-gray-700 hover:bg-primary hover:text-white'
-                        }`}
-                        aria-label={`Navigate to ${industry.name}`}
-                      >
-                        {industry.name}
-                      </a>
-                    ))}
+                <div key={link.label} className="relative group">
+                  <a href={link.href} className={`nav-link ${linkColorClass(link.href)}`}>
+                    {link.label}
+                  </a>
+                  <div className="absolute left-0 top-full mt-2 hidden group-hover:block group-focus-within:block z-50 min-w-[220px]">
+                    <div className="bg-white rounded-xl shadow-lg border border-gray-200 py-2">
+                      {servicePages.map((service) => (
+                        <a key={service.href} href={service.href} className="block px-4 py-2 text-gray-800 hover:bg-primary/10 hover:text-primary text-sm whitespace-nowrap">
+                          {service.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className={`nav-link text-sm font-medium transition-colors touch-button ${
-                    activeSection === link.href.substring(1) ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'
-                  }`}
-                  aria-label={`Navigate to ${link.label} section`}
-                >
+                <a key={link.label} href={link.href} className={`nav-link ${linkColorClass(link.href)}`}>
                   {link.label}
                 </a>
               )
-            )}
+            ))}
           </div>
-          
-          {/* WhatsApp Button - Desktop */}
-          <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ml-6 touch-button"
-            aria-label="Contact on WhatsApp"
-          >
-            <WhatsAppLogo />
-            <span className="font-medium text-sm">{whatsappNumber}</span>
-          </a>
-          
+
+          {/* Contact Button - Desktop */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <Button
+              asChild
+              className="bg-primary border border-white/10 shadow text-white rounded-full px-4 sm:px-6 py-2 hover:bg-primary/90 transition"
+            >
+              <a 
+                href="https://wa.me/919876543210" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <WhatsAppLogo />
+                <span>Contact</span>
+              </a>
+            </Button>
+          </div>
+
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="mobile-menu-button touch-button"
+          <div className="lg:hidden mobile-menu-button">
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={toggleMobileMenu}
+              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
               aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
               )}
             </Button>
           </div>
         </div>
-      </div>
-      
-      {/* Mobile Navigation */}
-      <div className={`lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md transition-all duration-300 overflow-hidden mobile-menu-container border-t border-gray-200 shadow-lg ${
-        isMobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div className="px-4 sm:px-6 py-4 flex flex-col space-y-2 max-h-[80vh] overflow-y-auto">
-          {navLinks.map((link) =>
-            link.label === 'Services' ? (
-              <details key="Services" className="group">
-                <summary className="py-3 px-4 border-b border-gray-100 transition-colors cursor-pointer text-foreground hover:text-primary font-medium touch-button flex items-center justify-between">
-                  <span>Services</span>
-                  <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="pl-4 bg-gray-50/50">
-                  {services.map((service) => (
-                    <a
-                      key={service.name}
-                      href={service.page}
-                      className={`block py-3 px-4 text-sm transition-colors duration-150 touch-button border-b border-gray-100 last:border-b-0 ${
-                        currentPath === service.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      aria-label={`Navigate to ${service.name}`}
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mobile-menu-container">
+            <div className="glass border-t border-white/20 mt-2 rounded-b-2xl shadow-xl">
+              <div className="py-4 space-y-1">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={`mobile-nav-item block px-4 py-3 text-base font-medium transition-colors ${
+                      activeSection === link.href.replace('/#', '') || 
+                      (link.href === '/Portfolio' && currentPath === '/Portfolio')
+                        ? 'text-primary bg-primary/10'
+                        : 'text-white hover:text-primary hover:bg-white/10'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                
+                {/* Mobile Contact Button */}
+                <div className="px-4 py-3">
+                  <Button
+                    asChild
+                    className="bg-primary border border-white/10 shadow text-white rounded-full px-4 sm:px-6 py-2 w-full hover:bg-primary/90 transition"
+                  >
+                    <a 
+                      href="https://wa.me/919876543210" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
                     >
-                      {service.name}
+                      <WhatsAppLogo />
+                      <span>Contact via WhatsApp</span>
                     </a>
-                  ))}
+                  </Button>
                 </div>
-              </details>
-            ) : link.label === 'Industries' ? (
-              <details key="Industries" className="group">
-                <summary className="py-3 px-4 border-b border-gray-100 transition-colors cursor-pointer text-foreground hover:text-primary font-medium touch-button flex items-center justify-between">
-                  <span>Industries</span>
-                  <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="pl-4 bg-gray-50/50">
-                  {industrie.map((industry) => (
-                    <a
-                      key={industry.name}
-                      href={industry.page}
-                      className={`block py-3 px-4 text-sm transition-colors duration-150 touch-button border-b border-gray-100 last:border-b-0 ${
-                        currentPath === industry.page ? 'bg-primary text-white font-semibold' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      aria-label={`Navigate to ${industry.name}`}
-                    >
-                      {industry.name}
-                    </a>
-                  ))}
-                </div>
-              </details>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`py-3 px-4 border-b border-gray-100 transition-colors touch-button ${
-                  activeSection === link.href.substring(1) ? 'text-primary font-semibold bg-primary/5' : 'text-foreground hover:text-primary hover:bg-gray-100/50'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label={`Navigate to ${link.label} section`}
-              >
-                {link.label}
-              </a>
-            )
-          )}
-          
-          {/* WhatsApp full button in mobile menu */}
-          <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="mt-4 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-all duration-300 touch-button"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Contact on WhatsApp"
-          >
-            <WhatsAppLogo />
-            <span className="font-medium">Contact on WhatsApp</span>
-          </a>
-        </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

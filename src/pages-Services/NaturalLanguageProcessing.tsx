@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Brain, MessageSquare, FileText, Target, Globe, BarChart3, ArrowRight, CheckCircle, Shield, Users, TrendingUp, Code } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -9,66 +10,48 @@ const nlpServices = [
     title: "Text Analytics & Sentiment Analysis",
     description:
       "Extract insights and measure sentiment from customer feedback, reviews, and social media.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
+    icon: <BarChart3 className="h-7 w-7" />,
+    color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
     title: "Chatbot NLP Integration",
     description:
       "Empower chatbots with advanced NLP for natural, context-aware conversations.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
+    icon: <MessageSquare className="h-7 w-7" />,
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
     title: "Document Classification",
     description:
       "Automatically categorize and organize documents, emails, and support tickets.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-    ),
+    icon: <FileText className="h-7 w-7" />,
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: 4,
     title: "Named Entity Recognition (NER)",
     description:
       "Identify and extract key entities from unstructured text for deeper analysis.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 11h.01M7 15h.01M7 19h.01M11 7h.01M11 11h.01M11 15h.01M11 19h.01M15 7h.01M15 11h.01M15 15h.01M15 19h.01M19 7h.01M19 11h.01M19 15h.01M19 19h.01" />
-      </svg>
-    ),
+    icon: <Target className="h-7 w-7" />,
+    color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
     title: "Language Translation",
     description:
       "Break language barriers with automated, accurate translation for global reach.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-      </svg>
-    ),
+    icon: <Globe className="h-7 w-7" />,
+    color: "from-indigo-500 to-purple-500"
   },
   {
     id: 6,
     title: "Text Summarization",
     description:
       "Automatically generate concise summaries from long documents and articles.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-      </svg>
-    ),
+    icon: <Brain className="h-7 w-7" />,
+    color: "from-teal-500 to-cyan-500"
   },
 ];
 
@@ -226,6 +209,11 @@ const NaturalLanguageProcessing: React.FC = () => {
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("InsightNLP");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const solution = nlpSolutions.find((s) => s.key === activeTab);
 
@@ -233,24 +221,25 @@ const NaturalLanguageProcessing: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
       <Navbar />
       {/* Hero Section - Mobile Optimized */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Natural-Language-Processing.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-12 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
-            <div className="w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+            <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+              <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Natural Language Processing 
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
                 Transform your business with advanced NLP solutions for automation, insights,
                 and engagement across all your digital channels.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+                  className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </div>

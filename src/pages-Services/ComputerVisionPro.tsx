@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Eye, Target, Users, Video, FileText, Brain, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -8,54 +9,48 @@ const cvServices = [
     title: "Image Recognition & Classification",
     description:
       "Automatically identify and classify objects in images for a variety of business applications.",
-    icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <Eye className="h-7 w-7" />,
+    color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
     title: "Object Detection",
     description:
       "Detect and locate multiple objects in images and video streams in real time.",
-    icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Target className="h-7 w-7" />,
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
     title: "Facial Recognition",
     description:
       "Enable secure authentication and personalized experiences with facial recognition technology.",
-    icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <Users className="h-7 w-7" />,
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: 4,
     title: "Video Analytics",
     description:
       "Analyze video feeds for security, safety, and operational insights.",
-    icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Video className="h-7 w-7" />,
+    color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
     title: "Optical Character Recognition (OCR)",
     description:
       "Extract text from images and scanned documents with high accuracy.",
-    icon: (
-      <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <FileText className="h-7 w-7" />,
+    color: "from-indigo-500 to-purple-500"
   },
   {
     id: 6,
     title: "Medical Image Analysis",
     description:
       "Leverage AI to analyze medical images for diagnostics and research.",
-    icon: (
-      <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Brain className="h-7 w-7" />,
+    color: "from-teal-500 to-cyan-500"
   },
 ];
 
@@ -213,6 +208,11 @@ const ComputerVisionPro: React.FC = () => {
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("VisionAI");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const solution = cvSolutions.find((s) => s.key === activeTab);
 
@@ -220,23 +220,24 @@ const ComputerVisionPro: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Computer-Vision.avif')] bg-cover bg-center" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
-            <div className="w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+            <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+              <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Computer Vision
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
               Empower your business with next-generation computer vision solutions driving innovation in security, automation, medical imaging, facial recognition, and quality assurance for superior accuracy and efficiency.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center"
+                  className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </div>

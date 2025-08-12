@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Bot, MessageSquare, Brain, Globe, Target, Zap, ArrowRight, CheckCircle, Shield, Users, TrendingUp, Code } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -9,54 +10,48 @@ const chatGPTServices = [
     title: "Chatbot Development",
     description:
       "For websites, applications, and messaging platforms, Chat GPT offers chatbot development services with natural language interactions that give users assistance and support.",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <Bot className="h-7 w-7" />,
+    color: "from-purple-500 to-pink-500"
   },
   {
     id: 2,
     title: "Question Answering Module",
     description:
       "We integrate a powerful question-answering capability into your chatbot, enabling it to provide accurate and relevant answers to user queries.",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Brain className="h-7 w-7" />,
+    color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
     title: "Content Generation",
     description:
       "Our Chat GPT integration service offers content generation. It empowers your website with engaging and personalized written materials.",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <MessageSquare className="h-7 w-7" />,
+    color: "from-blue-500 to-cyan-500"
   },
   {
     id: 4,
     title: "Language Translation",
     description:
       "We integrate natural language processing capabilities with Chat GPT to offer seamless translation services for users in different countries or regions.",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-orange-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Globe className="h-7 w-7" />,
+    color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
     title: "Personalized Recommendations",
     description:
       "Experience the power of personalized recommendations with ChatGPT integrations. It is tailored to enhance user experiences and drive conversions.",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-pink-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
+    icon: <Target className="h-7 w-7" />,
+    color: "from-pink-500 to-rose-500"
   },
   {
     id: 6,
     title: "Prompt Engineering",
     description:
       "This service involves creating compelling prompts. These prompts enable the language model to generate high-quality responses that meet user needs and expectation",
-    icon: (
-      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
+    icon: <Code className="h-7 w-7" />,
+    color: "from-indigo-500 to-purple-500"
   },
 ];
 
@@ -213,6 +208,11 @@ const ChatGPTIntegrations: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("SupportGPT");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const solution = aiSolutions.find((s) => s.key === activeTab);
 
@@ -220,15 +220,15 @@ const ChatGPTIntegrations: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ChatGPT-Integrations.jpeg')] bg-cover bg-center" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-start gap-8 sm:gap-12">
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-start gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
-            <div className="w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
+            <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+              <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
                 ChatGPT Integration
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 text-left leading-relaxed">
+              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 text-left leading-relaxed">
                 Boost your business with ChatGPT automation.
               
                 Enhance customer engagement and streamline operations.
@@ -238,9 +238,10 @@ const ChatGPTIntegrations: React.FC = () => {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full justify-start">
                 <a
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+                  className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
                   Talk to an Expert
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </div>

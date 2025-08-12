@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/ui/AnimatedSection";
@@ -344,7 +344,7 @@ const HeroSection: React.FC = React.memo(() => (
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
             <a
               href="/#contact"
-              className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+              className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 active:scale-[0.98] text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
             >
               Talk to an Expert
             </a>
@@ -379,6 +379,8 @@ const MainContentSection: React.FC = React.memo(() => (
               alt="Illustration of AI transforming education"
               className="relative w-full h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20"
               loading="lazy"
+              decoding="async"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             />

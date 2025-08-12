@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Award, Brain, Code, Database, Lightbulb, Star, TrendingUp, Users, Clock, Zap } from 'lucide-react';
+import { Award, Brain, Code, Database, Lightbulb, Star, TrendingUp, Users, Clock, Zap, Target, Rocket, Shield, Globe } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 
@@ -46,207 +46,151 @@ const About = () => {
       }
     }, duration / steps);
   };
-
-  const stats = [
+const stats = [
     { 
       label: 'Years Experience', 
       value: animatedStats[0], 
       suffix: '+',
-      icon: <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+      icon: <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
     },
     { 
       label: 'Projects Completed', 
       value: animatedStats[1], 
       suffix: '+',
-      icon: <Code className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+      icon: <Code className="h-4 w-4 sm:h-5 sm:w-5" />
     },
     { 
       label: 'AI Models Built', 
       value: animatedStats[2], 
       suffix: '+',
-      icon: <Brain className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+      icon: <Brain className="h-4 w-4 sm:h-5 sm:w-5" />
     },
     { 
       label: 'Happy Clients', 
       value: animatedStats[3], 
       suffix: '+',
-      icon: <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+      icon: <Users className="h-4 w-4 sm:h-5 sm:w-5" />
     }
   ];
 
   const specializations = [
     {
-      icon: <Brain className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />,
+      icon: <Brain className="h-6 w-6 sm:h-8 sm:w-8" />,
       title: 'Machine Learning',
       description: 'Developing and implementing advanced machine learning models for predictive analysis and decision-making systems.',
-      features: ['Predictive Analytics', 'Model Optimization', 'Feature Engineering']
+      features: ['Predictive Analytics', 'Model Optimization', 'Feature Engineering'],
+      color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <Database className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />,
+      icon: <Database className="h-6 w-6 sm:h-8 sm:w-8" />,
       title: 'Deep Learning',
       description: 'Creating complex neural network architectures for computer vision, NLP, and other AI applications.',
-      features: ['Neural Networks', 'Computer Vision', 'NLP Models']
+      features: ['Neural Networks', 'Computer Vision', 'NLP Models'],
+      color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <Star className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />, 
+      icon: <Star className="h-6 w-6 sm:h-8 sm:w-8" />, 
       title: 'AI Agents',
       description: 'Developing intelligent AI agents that autonomously perceive, reason, and act to accomplish complex tasks.',
-      features: ['Autonomous Systems', 'Multi-Agent Systems', 'Reinforcement Learning']
+      features: ['Autonomous Systems', 'Multi-Agent Systems', 'Reinforcement Learning'],
+      color: 'from-green-500 to-emerald-500'
     },
     {
-      icon: <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />,
+      icon: <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8" />,
       title: 'Generative AI',
       description: 'Developing state-of-the-art generative models for content creation and creative AI applications.',
-      features: ['Text Generation', 'Image Generation', 'Creative AI']
+      features: ['Text Generation', 'Image Generation', 'Creative AI'],
+      color: 'from-orange-500 to-red-500'
+    }
+  ];
+
+  const values = [
+    {
+      icon: <Target className="h-8 w-8" />,
+      title: 'Innovation',
+      description: 'Pushing the boundaries of AI technology with cutting-edge solutions.'
+    },
+    {
+      icon: <Rocket className="h-8 w-8" />,
+      title: 'Excellence',
+      description: 'Delivering high-quality, scalable AI solutions that exceed expectations.'
+    },
+    {
+      icon: <Shield className="h-8 w-8" />,
+      title: 'Reliability',
+      description: 'Building robust and trustworthy AI systems for critical applications.'
+    },
+    {
+      icon: <Globe className="h-8 w-8" />,
+      title: 'Impact',
+      description: 'Creating AI solutions that make a positive difference in the world.'
     }
   ];
 
   return (
-    <section 
-      id="about" 
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-secondary/30 via-blue-50/20 to-secondary/60 relative overflow-hidden"
-      aria-label="About Section"
-    >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-2xl sm:blur-3xl"></div>
-        <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-tr from-indigo-100/30 to-pink-100/30 rounded-full blur-2xl sm:blur-3xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="mb-12 sm:mb-16 text-center">
-          <Badge 
-            variant="outline" 
-            className="mb-4 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 text-primary font-medium text-xs sm:text-sm rounded-full border-primary/20 hover:bg-primary/15 transition-colors duration-300"
-          >
+    <div className="section-padding">
+      <div className="max-w-7xl mx-auto container-padding">
+        {/* Header */}
+        <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <Badge className="mb-4 px-4 py-2 glass text-white border-foreground/20">
+            <Award className="w-4 h-4 mr-2" />
             About Me
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 leading-tight">
-            Passionate About <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">AI & Data Science</span>
+          <h2 className="heading-2 mb-6">
+            Transforming Ideas into{' '}
+            <span className="gradient-text">Intelligent Solutions</span>
           </h2>
-          <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-6 sm:mb-8 rounded-full"></div>
-          <p className="text-base sm:text-lg text-foreground/70 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
-            Transforming complex data into actionable insights and building intelligent solutions that drive business growth.
+          <p className="body-large text-foreground/70 max-w-3xl mx-auto">
+            I'm a passionate Data Scientist and AI/ML Engineer with over 5 years of experience in developing cutting-edge artificial intelligence solutions. 
+            My expertise spans across machine learning, deep learning, natural language processing, and generative AI technologies.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          <div className="order-2 lg:order-1 space-y-6 sm:space-y-8">
-            <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold leading-tight">
-                Creating <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Intelligent Solutions</span> Through AI
-              </h3>
-              <div className="space-y-3 sm:space-y-4 text-foreground/80 leading-relaxed text-sm sm:text-base">
-                <p>
-                  I am a dedicated Data Scientist and AI/ML Engineer with a passion for extracting meaningful insights from complex datasets. 
-                  With expertise in machine learning, deep learning, and natural language processing, I help organizations leverage the power of AI.
-                </p>
-                <p>
-                  My approach combines technical excellence with a deep understanding of business needs, ensuring that the solutions 
-                  I develop deliver real value. I also focus on sharing my knowledge through tutorials and content to help others 
-                  master the exciting field of artificial intelligence.
-                </p>
-              </div>
-            </div>
+        {/* Stats Section removed as requested */}
 
-            {/* Animated stats */}
-            <div id="stats-section" className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-              {stats.map((stat, index) => (
-                <Card
-                  key={index}
-                  className="glass-effect rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-xl border border-white/20 backdrop-blur-sm touch-manipulation"
-                >
-                  <CardContent className="p-0">
-                    <div className="flex justify-center mb-2 sm:mb-3">
-                      {stat.icon}
+        {/* Specializations */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {specializations.map((spec, index) => (
+              <Card 
+                key={spec.title}
+                className={`modern-card hover:scale-105 transition-all duration-500 ${isVisible ? 'slide-up' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${spec.color} text-white`}>
+                      {spec.icon}
                     </div>
-                    <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-primary mb-1 sm:mb-2">
-                      {Math.round(stat.value)}{stat.suffix}
-                    </div>
-                    <div className="text-xs sm:text-sm text-foreground/70 font-medium leading-tight">
-                      {stat.label}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {specializations.map((item, index) => (
-                <Card
-                  key={index}
-                  className={`glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6 transition-all duration-500 hover:shadow-xl hover:translate-y-[-2px] sm:hover:translate-y-[-5px] border-l-4 border-primary/50 backdrop-blur-sm touch-manipulation ${
-                    isVisible ? 'animate-fade-up' : 'opacity-0'
-                  }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-0">
-                    <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4 border border-primary/20">
-                      {item.icon}
-                    </div>
-                    <h4 className="text-base sm:text-lg font-display font-semibold mb-2 sm:mb-3 text-foreground leading-tight">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-foreground/70 mb-3 sm:mb-4 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <div className="space-y-1.5 sm:space-y-2">
-                      {item.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-1.5 sm:gap-2">
-                          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary rounded-full flex-shrink-0"></div>
-                          <span className="text-xs text-foreground/60 font-medium leading-tight">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold mb-3 text-foreground">
+                        {spec.title}
+                      </h4>
+                      <p className="text-foreground/70 mb-4 body-medium">
+                        {spec.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {spec.features.map((feature) => (
+                          <Badge 
+                            key={feature} 
+                            variant="secondary"
+                            className="text-xs bg-primary/10 text-primary border-primary/20"
+                          >
                             {feature}
-                          </span>
-                        </div>
-                      ))}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
 
-        {/* Additional info section */}
-        <div className="mt-12 sm:mt-16 md:mt-20 text-center">
-          <Card className="glass-effect rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="flex items-center justify-center mb-6">
-                <Award className="h-6 w-6 sm:h-8 sm:w-8 text-primary mr-2 sm:mr-3" />
-                <h3 className="text-xl sm:text-2xl font-display font-semibold">
-                  Why Choose My Expertise?
-                </h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div className="space-y-2 sm:space-y-3">
-                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-primary mx-auto" />
-                  <h4 className="font-semibold text-sm sm:text-base">Proven Results</h4>
-                  <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">
-                    Delivered successful AI solutions that drive measurable business outcomes
-                  </p>
-                </div>
-                <div className="space-y-2 sm:space-y-3">
-                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-primary mx-auto" />
-                  <h4 className="font-semibold text-sm sm:text-base">Cutting-Edge Tech</h4>
-                  <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">
-                    Stay updated with the latest AI technologies and best practices
-                  </p>
-                </div>
-                <div className="space-y-2 sm:space-y-3 sm:col-span-2 md:col-span-1">
-                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-primary mx-auto" />
-                  <h4 className="font-semibold text-sm sm:text-base">Client-Focused</h4>
-                  <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">
-                    Understand your business needs and translate them into technical solutions
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Values section removed as requested */}
       </div>
-    </section>
+    </div>
   );
 };
 

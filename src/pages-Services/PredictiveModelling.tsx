@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Brain, BarChart3, Target, Users, TrendingUp, Code, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -69,66 +70,48 @@ const pmServices = [
     title: "Regression Analysis",
     description:
       "Unlock precise forecasting and trend analysis with robust regression tools tailored to your business objectives.",
-    icon: (
-      <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-50 to-purple-50",
-    iconColor: "text-indigo-600",
+    icon: <TrendingUp className="h-7 w-7" />,
+    color: "from-indigo-500 to-purple-500"
   },
   {
     id: 2,
     title: "Time Series Forecasting",
     description:
       "Anticipate future trends and seasonality by analyzing time-stamped data for accurate, forward-looking insights.",
-    icon: (
-      <svg className="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
-    iconColor: "text-emerald-600",
+    icon: <BarChart3 className="h-7 w-7" />,
+    color: "from-emerald-500 to-teal-500"
   },
   {
     id: 3,
     title: "Classification Analysis",
     description:
       "Empower your business to categorize and interpret complex data, driving smarter segmentation and decision-making.",
-    icon: (
-      <svg className="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-violet-50 to-purple-50",
-    iconColor: "text-violet-600",
+    icon: <Target className="h-7 w-7" />,
+    color: "from-violet-500 to-purple-500"
   },
   {
     id: 4,
     title: "Anomaly Detection",
     description:
       "Proactively identify outliers and unusual patterns to mitigate risk and ensure operational integrity.",
-    icon: (
-      <svg className="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-rose-50 to-pink-50",
-    iconColor: "text-rose-600",
+    icon: <Shield className="h-7 w-7" />,
+    color: "from-rose-500 to-pink-500"
   },
   {
     id: 5,
     title: "Risk Assessment",
     description:
       "Evaluate and quantify potential risks using advanced statistical models and machine learning algorithms.",
-    icon: (
-      <svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9M12 4v16m0 0H3" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-amber-50 to-orange-50",
-    iconColor: "text-amber-600",
+    icon: <CheckCircle className="h-7 w-7" />,
+    color: "from-amber-500 to-orange-500"
   },
   {
     id: 6,
     title: "Demand Forecasting",
     description:
       "Predict customer demand patterns to optimize inventory, production, and resource allocation strategies.",
-    icon: (
-      <svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 15h8M8 11h8M8 7h8" /></svg>
-    ),
-    bgColor: "bg-gradient-to-br from-cyan-50 to-blue-50",
-    iconColor: "text-cyan-600",
+    icon: <Brain className="h-7 w-7" />,
+    color: "from-cyan-500 to-blue-500"
   },
 ];
 
