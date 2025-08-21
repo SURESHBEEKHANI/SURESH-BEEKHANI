@@ -86,6 +86,17 @@ const Navbar = () => {
     { label: 'Natural Language Processing', href: '/natural-language-processing' },
     { label: 'Predictive Modeling', href: '/predictive-modelling' },
   ];
+
+  const industriesPages = [
+    { label: 'HealthTech AI', href: '/HealthTechAI' },
+    { label: 'FinTech AI', href: '/FinTechAI' },
+    { label: 'EdTech AI', href: '/EdTechAI' },
+    { label: 'GreenTech AI', href: '/GreenTechAI' },
+    { label: 'Retail AI', href: '/RetailAI' },
+    { label: 'E-Commerce AI', href: '/E-Commerce' },
+    { label: 'Diagnostics AI', href: '/DiagnosticsAI' },
+    { label: 'HIPAA Compliance', href: '/HIPAACompliance' },
+  ];
   
   const linkColorClass = (linkHref: string) => {
     const isActive = activeSection === linkHref.replace('/#', '') || (linkHref === '/Portfolio' && currentPath === '/Portfolio');
@@ -134,9 +145,27 @@ const Navbar = () => {
                   </div>
                 </div>
               ) : (
-                <a key={link.label} href={link.href} className={`nav-link ${linkColorClass(link.href)}`}>
-                  {link.label}
-                </a>
+                // Add Industries dropdown
+                link.label === 'Industries' ? (
+                  <div key={link.label} className="relative group">
+                    <a href={link.href} className={`nav-link ${linkColorClass(link.href)}`}>
+                      {link.label}
+                    </a>
+                    <div className="absolute left-0 top-full mt-2 hidden group-hover:block group-focus-within:block z-50 min-w-[220px]">
+                      <div className="bg-white rounded-xl shadow-lg border border-gray-200 py-2">
+                        {industriesPages.map((page) => (
+                          <a key={page.href} href={page.href} className="block px-4 py-2 text-gray-800 hover:bg-primary/10 hover:text-primary text-sm whitespace-nowrap">
+                            {page.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <a key={link.label} href={link.href} className={`nav-link ${linkColorClass(link.href)}`}>
+                    {link.label}
+                  </a>
+                )
               )
             ))}
           </div>
@@ -197,6 +226,22 @@ const Navbar = () => {
                     {link.label}
                   </a>
                 ))}
+                {/* Industries pages (mobile) */}
+                <div className="px-4">
+                  <div className="mt-1 mb-2 text-sm text-gray-300 font-medium">Industries</div>
+                  <div className="space-y-1">
+                    {industriesPages.map((page) => (
+                      <a
+                        key={page.href}
+                        href={page.href}
+                        className="block px-4 py-2 text-base text-white hover:bg-white/10 hover:text-primary rounded-md"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {page.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
                 
                 {/* Mobile Contact Button */}
                 <div className="px-4 py-3">
