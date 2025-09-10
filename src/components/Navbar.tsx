@@ -137,7 +137,11 @@ const Navbar = () => {
                   <div className="absolute left-0 top-full mt-2 hidden group-hover:block group-focus-within:block z-50 min-w-[220px]">
                     <div className="bg-white rounded-xl shadow-lg border border-gray-200 py-2">
                       {servicePages.map((service) => (
-                        <a key={service.href} href={service.href} className="block px-4 py-2 text-gray-800 hover:bg-primary/10 hover:text-primary text-sm whitespace-nowrap">
+                        <a
+                          key={service.href}
+                          href={service.href}
+                          className={`block px-4 py-2 text-gray-800 hover:bg-primary/10 hover:text-primary whitespace-nowrap ${service.href === '/ai-development' ? 'text-xs' : 'text-sm'}`}
+                        >
                           {service.label}
                         </a>
                       ))}
