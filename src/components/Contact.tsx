@@ -120,14 +120,14 @@ Sent from your portfolio website`;
     {
       icon: <Phone className="h-5 w-5" />,
       title: 'Phone',
-      value: '+91 98765 43210',
-      link: 'tel:+919876543210',
+      value: '+92 3401213187',
+      link: 'tel:+923401213187',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       title: 'Location',
-      value: 'Mumbai, India',
+      value: 'Karachi,Pakistan',
       link: '#',
       color: 'from-purple-500 to-pink-500'
     },
