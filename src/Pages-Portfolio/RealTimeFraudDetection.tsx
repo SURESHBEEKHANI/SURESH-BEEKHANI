@@ -198,9 +198,9 @@ const RealTimeFraudDetection = () => {
             </motion.div>
             <div className="flex justify-center">
               <img
-                src="/image/Portfolio-img/Real-Time Fraud Detection AI.jpg"
+                src="/image/Portfolio-img/Real-Time Fraud Detection AI.png"
                 alt="What is Real-Time Fraud Detection AI illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+                className="w-full max-w-4xl h-auto object-contain rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>

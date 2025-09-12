@@ -198,7 +198,7 @@ const EarlyDiseaseDetectionAI = () => {
             </motion.div>
             <div className="flex justify-center">
               <PortfolioImage
-                src="/image/Portfolio-img/What Is Early Disease Detection AI.jpg"
+                src="/image/Portfolio-img/What Is Early Disease Detection AI.png"
                 alt="What is Early Disease Detection AI illustration"
               />
             </div>

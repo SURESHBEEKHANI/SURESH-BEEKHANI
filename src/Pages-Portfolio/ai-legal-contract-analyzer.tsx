@@ -189,18 +189,26 @@ const AILegalContractAnalyzer = () => {
               viewport={{ once: true }}
               className="text-left"
             >
-              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                  What Is AI Legal Contract Analyzer?
-                </h2>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="relative">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                    What Is AI Legal Contract Analyzer?
+                  </h2>
+                  <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+                </div>
+                <div className="prose prose-gray max-w-none">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4">
+                    AI Legal Contract Analyzer is an advanced legal-tech platform that leverages cutting-edge artificial intelligence to streamline contract analysis, identify potential risks, and ensure regulatory compliance.
+                  </p>
+                  <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+                    Tailored for legal professionals, in-house counsel, and corporate legal teams, it enhances operational efficiency while maintaining uncompromised accuracy and legal integrity.
+                  </p>
+                </div>
               </div>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-                AI Legal Contract Analyzer is an advanced legal-tech platform that leverages cutting-edge artificial intelligence to streamline contract analysis, identify potential risks, and ensure regulatory compliance. Tailored for legal professionals, in-house counsel, and corporate legal teams, it enhances operational efficiency while maintaining uncompromised accuracy and legal integrity.
-              </p>
             </motion.div>
             <div className="flex justify-center">
               <PortfolioImage
-                src="/image/pages_img/What-AI-Legal-Contract-Analyzer.jpg"
+                src="/image/Portfolio-img/What-AI-Legal-Contract-Analyzer.png"
                 alt="What is AI Legal Contract Analyzer illustration"
               />
             </div>
