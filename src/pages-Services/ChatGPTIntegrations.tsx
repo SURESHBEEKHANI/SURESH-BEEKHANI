@@ -229,11 +229,8 @@ const ChatGPTIntegrations: React.FC = () => {
                 ChatGPT Integration
               </h1>
               <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 text-left leading-relaxed">
-                Boost your business with ChatGPT automation.
-              
-                Enhance customer engagement and streamline operations.
-            
-                Leverage AI to scale efficiently and drive growth.
+              Automate with ChatGPT to boost engagement and streamline operations.
+              Scale efficiently with AI-driven growth solutions.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full justify-start">
                 <a
@@ -586,26 +583,53 @@ const ChatGPTIntegrations: React.FC = () => {
               Common questions about ChatGPT implementation and our services.
             </p>
           </div>
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <div
-                key={idx}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 group hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <details className="group">
-                  <summary className="cursor-pointer font-semibold text-sm sm:text-base text-blue-900 flex items-center justify-between group-hover:text-green-700 transition-colors duration-200 min-h-[44px]">
-                    <span className="font-bold text-base sm:text-lg text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-4">
-                      {faq.question}
-                    </span>
-                    <span className="ml-2 text-blue-900 group-hover:text-green-700 group-open:hidden text-lg sm:text-xl flex-shrink-0">+</span>
-                    <span className="ml-2 text-blue-900 group-hover:text-green-700 hidden group-open:inline text-lg sm:text-xl flex-shrink-0">-</span>
-                  </summary>
-                  <div className="pt-3 sm:pt-4 text-gray-700 animate-fade-in text-sm sm:text-base leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </details>
-              </div>
-            ))}
+          {/* FAQ Accordion */}
+          <div className="space-y-3 sm:space-y-4">
+            {/* FAQ 1 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                What is ChatGPT Integration?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">ChatGPT Integration refers to embedding OpenAI's ChatGPT into your digital platforms, enabling conversational AI for automation, support, and engagement.</div>
+            </details>
+            {/* FAQ 2 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                How can ChatGPT benefit my business?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">ChatGPT can automate customer support, streamline workflows, provide 24/7 assistance, and enhance user engagement, saving time and improving satisfaction.</div>
+            </details>
+            {/* FAQ 3 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                Can ChatGPT be customized for my industry?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Yes, ChatGPT can be tailored for healthcare, education, finance, retail, and more, ensuring industry-specific compliance and value.</div>
+            </details>
+            {/* FAQ 4 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                Is my data secure with ChatGPT integrations?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">We implement robust security measures and comply with standards like HIPAA and GDPR to ensure your data is protected.</div>
+            </details>
+            {/* FAQ 5 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                How do I get started with ChatGPT integration?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.</div>
+            </details>
           </div>
         </div>
       </section>

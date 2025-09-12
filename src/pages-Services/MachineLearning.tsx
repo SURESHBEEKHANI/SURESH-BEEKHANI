@@ -212,7 +212,6 @@ const onboardingSteps = [
 const MachineLearning: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("PredictAI");
   const [isVisible, setIsVisible] = useState(false);
 
@@ -236,7 +235,8 @@ const MachineLearning: React.FC = () => {
                 Machine Learning
               </h1>
               <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-                Transform your business with intelligent machine learning solutions that drive innovation in predictive analytics, automation, pattern recognition, and data-driven decision making for superior performance and efficiency.
+              Intelligent ML solutions for predictive analytics, automation, and data-driven decisions.
+              Transform your business with superior performance and efficiency.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
@@ -587,39 +587,53 @@ const MachineLearning: React.FC = () => {
               Common questions about machine learning implementation and our services.
             </p>
           </div>
-          <div className="space-y-3">
-            {faqData.map((faq, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col transition-all duration-300 hover:scale-[1.01]"
-              >
-                <button
-                  className="w-full flex items-center justify-between focus:outline-none group min-h-[44px]"
-                  onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
-                  aria-expanded={openFAQ === idx}
-                >
-                  <span className="font-semibold text-sm sm:text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-4 leading-relaxed">
-                    {faq.question}
-                  </span>
-                  <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200 flex-shrink-0">
-                    {openFAQ === idx ? (
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                        <path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    ) : (
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                        <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    )}
-                  </div>
-                </button>
-                {openFAQ === idx && (
-                  <div className="pt-3 sm:pt-4 text-gray-800 animate-fade-in text-xs sm:text-sm leading-relaxed">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
+          {/* FAQ Accordion */}
+          <div className="space-y-3 sm:space-y-4">
+            {/* FAQ 1 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                What is Machine Learning?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Machine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.</div>
+            </details>
+            {/* FAQ 2 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                How can machine learning benefit my business?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Machine learning can automate processes, predict outcomes, optimize operations, and provide insights that drive better business decisions.</div>
+            </details>
+            {/* FAQ 3 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                Can machine learning solutions be customized for my industry?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Yes, machine learning models can be tailored for healthcare, finance, retail, manufacturing, and more, ensuring industry-specific value.</div>
+            </details>
+            {/* FAQ 4 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                Is my data secure with machine learning integrations?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">We implement robust security measures and comply with standards like GDPR and HIPAA to ensure your data is protected.</div>
+            </details>
+            {/* FAQ 5 */}
+            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                How do I get started with machine learning integration?
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+              </summary>
+              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.</div>
+            </details>
           </div>
         </div>
       </section>

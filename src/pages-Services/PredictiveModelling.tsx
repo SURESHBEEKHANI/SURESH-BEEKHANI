@@ -207,29 +207,35 @@ const onboardingSteps = [
 
 const PredictiveModelling: React.FC = () => {
 	const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
-	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		setIsVisible(true);
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
 			<Navbar />
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Predictive-Modelling.jpg')] bg-cover bg-center" />
-				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+				<div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
 					<div className="flex-1 text-white space-y-6 sm:space-y-8">
-						<div className="w-full">
-							<h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
 								Predictive Modeling
 							</h1>
-							<p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-							The power of data-driven foresight. Our predictive analytics solutions empower organizations to anticipate trends, optimize operations, and drive strategic growth across industries.
+							<p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+							 Harness predictive analytics to anticipate trends and optimize operations.
+							 Our data-driven solutions empower strategic growth across industries.
 							</p>
 							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
 								<a
 									href="/#contact"
-									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+									className="btn-primary text-center min-h-[44px] flex items-center justify-center"
 								>
 									Talk to an Expert
+									<ArrowRight className="ml-2 h-4 w-4" />
 								</a>
 							</div>
 						</div>
@@ -290,7 +296,7 @@ const PredictiveModelling: React.FC = () => {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 						{pmServices.map((service) => (
-							<div key={service.id} className={`${service.bgColor} rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-200/50 flex flex-col gap-4 items-center backdrop-blur-sm min-h-[200px] sm:min-h-[220px]`}>
+							<div key={service.id} className={`bg-gradient-to-br ${service.color} rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-200/50 flex flex-col gap-4 items-center backdrop-blur-sm min-h-[200px] sm:min-h-[220px]`}>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-white/80 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto shadow-lg`}>
 									{service.icon}
 								</div>
@@ -635,39 +641,53 @@ const PredictiveModelling: React.FC = () => {
 							Common questions about predictive modeling implementation and our services.
 						</p>
 					</div>
-					<div className="space-y-3">
-						{faqData.map((faq, idx) => (
-							<div
-								key={idx}
-								className="bg-gradient-to-r from-white to-gray-50 rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-4 flex flex-col transition-all duration-300 hover:scale-[1.01] border border-gray-200/50"
-							>
-								<button
-									className="w-full flex items-center justify-between focus:outline-none group min-h-[44px]"
-									onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
-									aria-expanded={openFAQ === idx}
-								>
-									<span className="font-semibold text-sm sm:text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-4 leading-relaxed">
-										{faq.question}
-									</span>
-									<div className="flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200 flex-shrink-0">
-										{openFAQ === idx ? (
-											<svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-												<path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
-											</svg>
-										) : (
-											<svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-												<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
-											</svg>
-										)}
-									</div>
-								</button>
-								{openFAQ === idx && (
-									<div className="pt-3 sm:pt-2 text-gray-800 animate-fade-in text-xs sm:text-sm leading-relaxed">
-										{faq.answer}
-									</div>
-								)}
-							</div>
-						))}
+					{/* FAQ Accordion */}
+					<div className="space-y-3 sm:space-y-4">
+						{/* FAQ 1 */}
+						<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+							<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								What is predictive modeling and forecasting?
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+							</summary>
+							<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.</div>
+						</details>
+						{/* FAQ 2 */}
+						<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+							<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								Why is predictive analytics important?
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+							</summary>
+							<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.</div>
+						</details>
+						{/* FAQ 3 */}
+						<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+							<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								What is the difference between machine learning and predictive analytics?
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+							</summary>
+							<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.</div>
+						</details>
+						{/* FAQ 4 */}
+						<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+							<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								Will a predictive analytics tool bring value to my company?
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+							</summary>
+							<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.</div>
+						</details>
+						{/* FAQ 5 */}
+						<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+							<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								What are predictive modeling techniques?
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+								<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+							</summary>
+							<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.</div>
+						</details>
 					</div>
 				</div>
 			</section>
