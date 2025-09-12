@@ -225,7 +225,7 @@ const ComputerVisionPro: React.FC = () => {
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Computer Vision
               </h1>
               <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
