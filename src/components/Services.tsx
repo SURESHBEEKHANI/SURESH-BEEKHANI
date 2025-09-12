@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 --------------------------- */
 const SERVICES = [
   'AI Development',
-  'AI Chatbot Development',
+  'Chatbot Development',
   'ChatGPT Integration',
   'Machine & Deep Learning',
   'Computer Vision',
@@ -57,8 +57,8 @@ const SERVICE_DETAILS = {
       },
     ],
   },
-  'AI Chatbot Development': {
-    title: 'AI Chatbot Development',
+  'Chatbot Development': {
+    title: 'Chatbot Development',
     description:
       'Transform customer interactions with intelligent chatbots that understand, learn, and respond naturally to user queries.',
     icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,

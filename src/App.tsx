@@ -17,7 +17,7 @@ const DiagnosticsAI = lazy(() => import("./pages-Industries/DiagnosticsAI"));
 const RetailAI = lazy(() => import("./pages-Industries/RetailAI"));
 const ECommerceAI = lazy(() => import("./pages-Industries/E-Commerce"));
 const HIPAACompliance = lazy(() => import("./pages-Industries/HIPAACompliance"));
-const AIChatbotDevelopment = lazy(() => import("./pages-Services/AIChatbotDevelopment"));
+const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
 const PredictiveModelling = lazy(() => import("./pages-Services/PredictiveModelling"));
 const ChatGPTIntegrations = lazy(() => import("./pages-Services/ChatGPTIntegrations"));
 const NaturalLanguageProcessing = lazy(() => import("./pages-Services/NaturalLanguageProcessing"));
