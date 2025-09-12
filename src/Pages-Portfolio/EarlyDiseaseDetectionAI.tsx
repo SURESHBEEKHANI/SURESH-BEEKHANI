@@ -197,10 +197,9 @@ const EarlyDiseaseDetectionAI = () => {
                </p>
             </motion.div>
             <div className="flex justify-center">
-              <img
+              <PortfolioImage
                 src="/image/Portfolio-img/What Is Early Disease Detection AI.jpg"
                 alt="What is Early Disease Detection AI illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>

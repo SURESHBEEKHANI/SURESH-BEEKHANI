@@ -147,7 +147,7 @@ const AIPoweredImageGenerator = () => {
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className="w-full">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                 Image Generator
+                AI-Powered Image Generator
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
                 Instantly create unique, high-quality images for your content, marketing, or social media - no design skills needed.
@@ -199,11 +199,9 @@ const AIPoweredImageGenerator = () => {
               </p>
             </motion.div>
             <div className="flex justify-center">
-              <img
-                src="/image/Portfolio-img/What-AI-Powered-Image-Generator.jpg.png"
+              <PortfolioImage
+                src="/image/Portfolio-img/What-AI-Powered-Image-Generator.png"
                 alt="What is AI-Powered Image Generator illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
-                loading="lazy"
               />
             </div>
           </div>

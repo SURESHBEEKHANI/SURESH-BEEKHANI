@@ -150,7 +150,7 @@ const AILegalContractAnalyzer = () => {
                 AI Legal Contract Analyzer
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-                AI-powered contract analysis that automates review, detects risks, and ensures compliance with unprecedented speed and accuracy.
+                AI-powered contract analysis that automates review, detects risks, and ensures compliance—with unprecedented speed and accuracy.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
@@ -199,10 +199,9 @@ const AILegalContractAnalyzer = () => {
               </p>
             </motion.div>
             <div className="flex justify-center">
-              <img
+              <PortfolioImage
                 src="/image/pages_img/What-AI-Legal-Contract-Analyzer.jpg"
                 alt="What is AI Legal Contract Analyzer illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
@@ -139,28 +140,22 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* Hero Section - Purple gradient, animated ambient blobs */}
-      <section
-        aria-labelledby="portfolio-heading"
-        className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-700 via-indigo-600 to-fuchsia-600"
-      >
-        {/* Subtle background image overlay for texture */}
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Protfilo.jpg')] bg-cover bg-center mix-blend-overlay" />
-
-        {/* Animated gradient blobs */}
-        <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-fuchsia-500/30 blur-3xl animate-blob" />
-        <div className="pointer-events-none absolute top-20 right-10 w-64 h-64 rounded-full bg-indigo-400/30 blur-3xl animate-blob animation-delay-2000" />
-        <div className="pointer-events-none absolute -bottom-12 left-1/3 w-80 h-80 rounded-full bg-violet-500/20 blur-3xl animate-blob animation-delay-4000" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 text-white space-y-6">
-            <div className="w-full">
-              <h1 id="portfolio-heading" className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-md">
-                AI Portfolio
-              </h1>
-              <p className="text-base md:text-lg text-indigo-50/95 w-full whitespace-pre-line mt-3">
-                Explore how innovative AI solutions are transforming industries and driving measurable impact. From healthcare diagnostics to legal automation, discover cutting-edge AI projects that showcase the power of artificial intelligence in solving real-world challenges.
-              </p>
+      {/* Hero Section - Styled like ChatbotDevelopment hero */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-white space-y-6 sm:space-y-8">
+            <h1 id="portfolio-heading" className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              AI Portfolio
+            </h1>
+            <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              Explore how innovative AI solutions are transforming industries and driving measurable impact. From healthcare diagnostics to legal automation, discover cutting-edge AI projects that showcase the power of artificial intelligence in solving real-world challenges.
+            </p>
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
+              <a href="/#contact" className="btn-primary text-center min-h-[44px] flex items-center justify-center">
+                Talk to an Expert
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </div>
           </div>
           <div className="flex-1 flex justify-center md:justify-end" aria-hidden="true" />
@@ -201,7 +196,7 @@ const Portfolio: React.FC = () => {
                     </p>
                     <Link
                       to={project.link}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white rounded-lg shadow-sm hover:from-indigo-600 hover:to-fuchsia-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white transition-colors duration-300"
+                      className="btn-primary inline-flex items-center gap-2 px-6 py-3 min-h-[44px]"
                       aria-label={`View case study for ${project.title}`}
                     >
                       View Case Study
