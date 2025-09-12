@@ -185,7 +185,7 @@ const AIDevelopment: React.FC = () => {
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
 				<div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
 					<div className="flex-1 text-white space-y-6 sm:space-y-8">
-						<div className={`${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
 								AI Development
 							</h1>
@@ -226,16 +226,16 @@ const AIDevelopment: React.FC = () => {
 						</div>
 						{/* Right: Content */}
 						<div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
-							<h2 className="heading-2 text-foreground">
-								The Power of <span className="gradient-text">AI Development</span>
+							<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+								The Power of AI Development
 							</h2>
-							<p className="body-large text-foreground/70 max-w-2xl leading-relaxed">
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
 								Unlock transformative opportunities with advanced AI development. Our tailored solutions enable intelligent automation, predictive insights, and data-driven decision making that fuels business growth.
 							</p>
-							<p className="body-medium text-foreground/70 max-w-2xl leading-relaxed">
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
 								Our dedicated experts seamlessly integrate and customize AI technologies to your unique needs, empowering smarter operations and competitive advantages.
 							</p>
-							<p className="body-medium text-foreground/70 max-w-2xl leading-relaxed">
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
 								From healthcare and finance to retail and beyond, AI development redefines how you serve customers and grow your business. Partner with us to stay ahead of the curve.
 							</p>
 						</div>
@@ -246,14 +246,14 @@ const AIDevelopment: React.FC = () => {
 			{/* Services Section */}
 			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">
-							Advanced <span className="gradient-text">AI Development</span> Services
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							Advanced AI Development Services
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Intelligent automation solutions for today's dynamic business landscape.
 						</p>
 					</div>
@@ -267,10 +267,10 @@ const AIDevelopment: React.FC = () => {
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
 									{service.icon}
 							</div>
-								<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2 text-center w-full">
+								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
 									{service.title}
 								</h3>
-								<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">
+								<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">
 									{service.description}
 								</p>
 							</div>
@@ -282,14 +282,14 @@ const AIDevelopment: React.FC = () => {
 			{/* AI Development Benefits Section */}
 			<section className="section-padding">
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">
-							AI Development <span className="gradient-text">Benefits</span>
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Benefits
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Intelligent automation solutions for today's dynamic business landscape.
 						</p>
 					</div>
@@ -299,32 +299,32 @@ const AIDevelopment: React.FC = () => {
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Zap className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2 text-center w-full">Automation</h3>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Streamline repetitive tasks and processes for increased efficiency and productivity.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Automation</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Streamline repetitive tasks and processes for increased efficiency and productivity.</p>
 						</div>
 						{/* Scalability */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<TrendingUp className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2 text-center w-full">Scalability</h3>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
 						</div>
 						{/* Customization */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Target className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2 text-center w-full">Customization</h3>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Tailor every aspect to perfectly align with your business objectives.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Customization</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Tailor every aspect to perfectly align with your business objectives.</p>
 						</div>
 						{/* Innovation */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Brain className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2 text-center w-full">Innovation</h3>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Drive innovation and competitive advantage through cutting-edge AI solutions.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Innovation</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Drive innovation and competitive advantage through cutting-edge AI solutions.</p>
 						</div>
 					</div>
 				</div>
@@ -333,14 +333,14 @@ const AIDevelopment: React.FC = () => {
 			{/* Industries Section */}
 			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">
-							Industries We <span className="gradient-text">Work With</span>
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							Industries We Work With
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Tailored AI development solutions across diverse industry verticals.
 						</p>
 					</div>
@@ -379,14 +379,14 @@ const AIDevelopment: React.FC = () => {
 			{/* Platforms Section */}
 			<section className="section-padding">
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">
-							AI Development <span className="gradient-text">Integration Platforms</span>
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Integration Platforms
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Leverage industry-leading platforms for robust AI development implementations.
 						</p>
 					</div>
@@ -394,7 +394,7 @@ const AIDevelopment: React.FC = () => {
 						{platforms.map((platform, index) => (
 							<div className={`flex flex-col items-center ${isVisible ? 'scale-in' : 'opacity-0'}`} key={platform.name} style={{ animationDelay: `${index * 0.1}s` }}>
 								<img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2 modern-card" />
-								<span className="mt-2 sm:mt-3 text-foreground font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
+								<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
 							</div>
 						))}
 					</div>
@@ -404,14 +404,14 @@ const AIDevelopment: React.FC = () => {
 			{/* AI Development Process Section */}
 			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
 				<div className="max-w-5xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">
-							AI Development <span className="gradient-text">Process</span>
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							AI Development Process
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Streamlined approach to implementing AI development solutions with proven methodology.
 						</p>
 					</div>
@@ -455,12 +455,12 @@ const AIDevelopment: React.FC = () => {
 			{/* Why Choose Us Section */}
 			<section className="section-padding">
 				<div className="max-w-6xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">Why <span className="gradient-text">Choose Us</span></h2>
+					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us </h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Trusted expertise and proven results for your AI development implementation needs.
 						</p>
 					</div>
@@ -504,12 +504,12 @@ const AIDevelopment: React.FC = () => {
 			{/* Onboarding Process Section */}
 			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
 				<div className="max-w-6xl mx-auto container-padding">
-					<div className={`text-center mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground mb-3 sm:mb-4">Our <span className="gradient-text">Onboarding Process</span></h2>
+					<div className={`text-center mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Our Onboarding Process</h2>
 						<div className="flex justify-center mb-3 sm:mb-4">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-medium text-foreground/70 max-w-2xl mx-auto">We guide you through the journey of AI development with our proven steps.</p>
+						<p className="text-base sm:text-xl text-gray-800 max-w-2xl mx-auto px-4">We guide you through the journey of AI development with our proven steps.</p>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
 						{onboardingSteps.map((step, index) => (
@@ -532,46 +532,45 @@ const AIDevelopment: React.FC = () => {
 			</section>
 
 			{/* FAQ Section */}
-			<section className="section-padding">
-				<div className="max-w-4xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="heading-2 text-foreground">Frequently Asked <span className="gradient-text">Questions</span></h2>
+			<section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-4xl mx-auto">
+					<div className="text-center space-y-2 mb-8 sm:mb-8">
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="body-large text-foreground/70 max-w-3xl mx-auto">
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Common questions about AI development implementation and our services.
 						</p>
 					</div>
-					<div className="space-y-3 sm:space-y-4">
+					<div className="space-y-3 sm:space-y-3">
 						{faqData.map((faq, idx) => (
 							<div
 								key={idx}
-								className={`modern-card p-4 sm:p-6 flex flex-col transition-all duration-300 hover:scale-[1.01] ${isVisible ? 'slide-up' : 'opacity-0'}`}
-								style={{ animationDelay: `${idx * 0.1}s` }}
+								className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
 							>
 								<button
 									className="w-full flex items-center justify-between focus:outline-none group min-h-[44px]"
 									onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
 									aria-expanded={openFAQ === idx}
 								>
-									<span className="font-semibold text-sm sm:text-base text-foreground text-left group-hover:text-primary transition-colors duration-200 leading-relaxed pr-4">
+									<span className="font-semibold text-sm sm:text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-4 leading-relaxed">
 										{faq.question}
 									</span>
-									<div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors duration-200 flex-shrink-0">
+									<div className="flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200 flex-shrink-0">
 										{openFAQ === idx ? (
-											<svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+											<svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
 												<path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
 											</svg>
 										) : (
-											<svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+											<svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
 												<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
 											</svg>
 										)}
 									</div>
 								</button>
 								{openFAQ === idx && (
-									<div className="pt-3 sm:pt-4 text-foreground/70 animate-fade-in text-xs sm:text-sm leading-relaxed">
+									<div className="pt-3 sm:pt-2 text-gray-800 animate-fade-in text-xs sm:text-sm leading-relaxed">
 										{faq.answer}
 									</div>
 								)}

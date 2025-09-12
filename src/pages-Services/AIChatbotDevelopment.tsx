@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -6,136 +7,44 @@ const chatbotServices = [
 	{
 		id: 1,
 		title: "AI Chatbot Development Solutions",
-		description:
-			"We offer end-to-end AI development services, including design, development, integration, and support. Our intelligent virtual assistants engage users in meaningful conversations 24/7.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-blue-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M12 20h9"
-				/>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M12 4v16m0 0H3"
-				/>
-			</svg>
-		),
+		description: "We offer end-to-end AI development services, including design, development, integration, and support. Our intelligent virtual assistants engage users in meaningful conversations 24/7.",
+		icon: <MessageSquare className="h-7 w-7" />,
+		color: "from-blue-500 to-cyan-500"
 	},
 	{
 		id: 2,
 		title: "Chatbot Design and Development",
-		description:
-			"We specialize in creating chatbots designed for business needs. Our team collaborates to understand the brand, goals, and challenges. We develop chatbots according to your brand personality alignment.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-green-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<circle cx="12" cy="12" r="10" />
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M8 15h8M8 11h8M8 7h8"
-				/>
-			</svg>
-		),
+		description: "We specialize in creating chatbots designed for business needs. Our team collaborates to understand the brand, goals, and challenges. We develop chatbots according to your brand personality alignment.",
+		icon: <Code className="h-7 w-7" />,
+		color: "from-green-500 to-emerald-500"
 	},
 	{
 		id: 3,
 		title: "Multi-language Chatbot Development",
-		description:
-			"We can develop multilingual chatbots that can converse seamlessly in different languages. We provide localized support and enhance customer satisfaction across diverse markets.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-blue-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M12 20h9M12 4v16m0 0H3"
-				/>
-			</svg>
-		),
+		description: "We can develop multilingual chatbots that can converse seamlessly in different languages. We provide localized support and enhance customer satisfaction across diverse markets.",
+		icon: <Globe className="h-7 w-7" />,
+		color: "from-purple-500 to-pink-500"
 	},
 	{
 		id: 4,
 		title: "Chatbot Integration",
-		description:
-			"Our integration experts ensure smooth chatbot integration across websites, apps, and messaging platforms. Our chatbot integration services enhance workflow efficiency, providing a platform for effortless communication.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-green-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<circle cx="12" cy="12" r="10" />
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M8 15h8M8 11h8M8 7h8"
-				/>
-			</svg>
-		),
+		description: "Our integration experts ensure smooth chatbot integration across websites, apps, and messaging platforms. Our chatbot integration services enhance workflow efficiency, providing a platform for effortless communication.",
+		icon: <Zap className="h-7 w-7" />,
+		color: "from-orange-500 to-red-500"
 	},
 	{
 		id: 5,
 		title: "Natural Language Processing Chatbot Development",
-		description:
-			"With advanced NLP capabilities, we create AI chatbots that understand users' complex queries, provide accurate information, provide context-aware interactions, and resolve customer issues effectively.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-blue-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M12 20h9M12 4v16m0 0H3"
-				/>
-			</svg>
-		),
+		description: "With advanced NLP capabilities, we create AI chatbots that understand users' complex queries, provide accurate information, provide context-aware interactions, and resolve customer issues effectively.",
+		icon: <Brain className="h-7 w-7" />,
+		color: "from-indigo-500 to-purple-500"
 	},
 	{
 		id: 6,
 		title: "Chatbot Maintenance and Support",
-		description:
-			"Post-deployment, we ensure chatbots perform optimally through regular updates, upgrades, and issue resolution support. Our dedicated engineers perform monitoring and troubleshooting to optimize performance.",
-		icon: (
-			<svg
-				className="w-7 h-7 text-green-400"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				viewBox="0 0 24 24"
-			>
-				<circle cx="12" cy="12" r="10" />
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M8 15h8M8 11h8M8 7h8"
-				/>
-			</svg>
-		),
+		description: "Post-deployment, we ensure chatbots perform optimally through regular updates, upgrades, and issue resolution support. Our dedicated engineers perform monitoring and troubleshooting to optimize performance.",
+		icon: <Shield className="h-7 w-7" />,
+		color: "from-teal-500 to-cyan-500"
 	},
 ];
 
@@ -237,6 +146,11 @@ const industries = [
 
 const AIChatbotDevelopment: React.FC = () => {
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		setIsVisible(true);
+	}, []);
 
 	const faqData = [
 		{
@@ -290,268 +204,169 @@ const AIChatbotDevelopment: React.FC = () => {
 	];
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
+		<div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
 			<Navbar />
+			
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-900 via-cyan-800 to-blue-900 overflow-hidden">
-				{/* Background image overlay */}
-				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center"></div>
-				{/* Content Wrapper */}
-				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
-					{/* Text Column */}
-					<div className="flex-1 text-white space-y-6 sm:space-y-8 w-full">
-						<div className="w-full">
-							<h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-							
-									Chatbot Development
-								
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
+				<div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+					<div className="flex-1 text-white space-y-6 sm:space-y-8">
+						<div className={`${isVisible ? 'fade-in' : 'opacity-0'}`}>
+							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+								Chatbot Development
 							</h1>
-							<p className="text-sm sm:text-base md:text-lg text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+							<p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
 								Transform your business with AI chatbot solutions that automate interactions, deliver insights, and drive engagement across all touchpoints.
 							</p>
 							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
 								<a
 									href="/#contact"
-									className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg text-center min-h-[44px] flex items-center justify-center"
+									className="btn-primary text-center min-h-[44px] flex items-center justify-center"
 								>
 									Talk to an Expert
+									<ArrowRight className="ml-2 h-4 w-4" />
 								</a>
 							</div>
 						</div>
 					</div>
-					{/* Image Column */}
-					<div className="relative flex-1 flex justify-center lg:justify-end">
-						
+					<div className="flex-1 flex justify-center md:justify-end">
+						{/* Optionally, you can add an image or illustration here if needed */}
 					</div>
 				</div>
 			</section>
 
-			{/* AI Models Leveraged by Our Specialists (Moved Up) */}
-			<section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
-				<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+			{/* AI Chatbot Capabilities Section */}
+			<section className="section-padding">
+				<div className="max-w-7xl mx-auto container-padding">
 					<div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-						<div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
+						{/* Left: AI Image */}
+						<div className={`relative flex justify-center lg:justify-start order-2 lg:order-1 ${isVisible ? 'slide-left' : 'opacity-0'}`}>
 							<div className="relative">
-								<div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
+								<div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-primary to-secondary rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
 								<img
 									src="/image/pages_img/AI-MODEL-LEVERGED.jpg"
-									alt="AI Models Leveraged"
-									className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20"
+									alt="AI Models Powering Our Chatbot Solutions"
+									className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20 modern-card"
 								/>
 							</div>
 						</div>
-						<div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
+						{/* Right: Content */}
+						<div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
 							<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
 								AI Models Powering Our Chatbot Solutions
 							</h2>
-							<div className="text-gray-700 text-sm sm:text-base space-y-3 sm:space-y-4">
-								<p>
-									AI-driven chatbots automate operations and deliver exceptional customer experiences.
-								</p>
-								<p>
-									Our chatbots boost productivity, reduce costs, and provide personalized service at scale.
-								</p>
-								<p>
-									From e-commerce to customer service, our AI chatbots answer questions and automate workflows.
-								</p>
-							</div>
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
+								AI-driven chatbots automate operations and deliver exceptional customer experiences across all touchpoints.
+							</p>
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
+								Our chatbots boost productivity, reduce costs, and provide personalized service at scale with advanced natural language processing.
+							</p>
+							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
+								From e-commerce to customer service, our AI chatbots answer questions and automate workflows seamlessly.
+							</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Comprehensive AI Chatbot Development Services */}
-			<section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-				<div className="max-w-7xl mx-auto">
-					<div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+			{/* Services Section */}
+			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
+				<div className="max-w-7xl mx-auto container-padding">
+					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							AI Chatbot Development Services
+							Advanced AI Chatbot Development Services
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Complete chatbot solutions for your business.
+							Complete chatbot solutions for your business needs.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{/* AI Chatbot Development Solutions */}
-						<div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-cyan-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-										/>
-									</svg>
+						{chatbotServices.map((service, index) => (
+							<div 
+								key={service.id}
+								className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
+								style={{ animationDelay: `${index * 0.1}s` }}
+							>
+								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
+									{service.icon}
 								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									AI Chatbot Development Solutions
+								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
+									{service.title}
 								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									End-to-end AI development services with intelligent virtual assistants for 24/7 engagement.
+								<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">
+									{service.description}
 								</p>
 							</div>
-						</div>
+						))}
 
-						{/* Chatbot Design and Development */}
-						<div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<circle cx="12" cy="12" r="10" />
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8 15h8M8 11h8M8 7h8"
-										/>
-									</svg>
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									Chatbot Design and Development
-								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									Specialized chatbot creation aligned with your brand personality and business goals.
-								</p>
-							</div>
-						</div>
+					</div>
+				</div>
+			</section>
 
-						{/* Multi-language Chatbot Development */}
-						<div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-green-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-										/>
-									</svg>
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									Multi-language Chatbot Development
-								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									Multilingual chatbots for seamless conversations across diverse markets.
-								</p>
-							</div>
+			{/* AI Chatbot Benefits Section */}
+			<section className="section-padding">
+				<div className="max-w-7xl mx-auto container-padding">
+					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							AI Chatbot Development Benefits
+						</h2>
+						<div className="flex justify-center">
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
 						</div>
-
-						{/* Chatbot Integration */}
-						<div className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-yellow-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<circle cx="12" cy="12" r="10" />
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8 15h8M8 11h8M8 7h8"
-										/>
-									</svg>
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									Chatbot Integration
-								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									Smooth integration across websites, apps, and messaging platforms for efficient communication.
-								</p>
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
+							Intelligent automation solutions for today's dynamic business landscape.
+						</p>
+					</div>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+						{/* Automation */}
+						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
+							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+								<Zap className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Automation</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Streamline repetitive tasks and processes for increased efficiency and productivity.</p>
 						</div>
-
-						{/* Natural Language Processing Chatbot Development */}
-						<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-purple-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-										/>
-									</svg>
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									Natural Language Processing Chatbot Development
-								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									Advanced NLP chatbots that understand complex queries and provide context-aware responses.
-								</p>
+						{/* Scalability */}
+						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+								<TrendingUp className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
 						</div>
-
-						{/* Chatbot Maintenance and Support */}
-						<div className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-pink-200 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px]">
-							<div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2">
-									<svg
-										className="w-5 h-5 sm:w-7 sm:h-7 text-white"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										viewBox="0 0 24 24"
-									>
-										<circle cx="12" cy="12" r="10" />
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8 15h8M8 11h8M8 7h8"
-										/>
-									</svg>
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-									Chatbot Maintenance and Support
-								</h3>
-								<p className="text-gray-800 leading-relaxed text-xs sm:text-sm">
-									Post-deployment optimization with regular updates, monitoring, and troubleshooting support.
-								</p>
+						{/* Customization */}
+						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+								<Target className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Customization</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Tailor every aspect to perfectly align with your business objectives.</p>
+						</div>
+						{/* Innovation */}
+						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+								<Brain className="h-7 h-7 sm:w-8 sm:h-8" />
+							</div>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Innovation</h3>
+							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Drive innovation and competitive advantage through cutting-edge AI solutions.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* AI Chatbots We Develop (Moved Down) */}
-			<section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-				<div className="max-w-6xl mx-auto">
-					<div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+			{/* Industries Section */}
+			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
+				<div className="max-w-7xl mx-auto container-padding">
+					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Custom AI Chatbots We Build
+							Industries We Work With
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
 							Tailored chatbot solutions across diverse industry verticals.

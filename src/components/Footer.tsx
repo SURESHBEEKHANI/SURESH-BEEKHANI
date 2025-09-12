@@ -68,7 +68,7 @@ const Footer = () => {
     {
       icon: <Phone size={16} />,
       label: 'Phone',
-      value: '+92340121317',
+      value: '+923401213187',
       href: 'tel:+923401213187'
     },
   ];

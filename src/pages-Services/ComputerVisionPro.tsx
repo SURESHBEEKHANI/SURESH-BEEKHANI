@@ -592,7 +592,7 @@ const ComputerVisionPro: React.FC = () => {
       {/* FAQ Section */}
       <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+          <div className="text-center space-y-2 mb-8 sm:mb-8">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
@@ -601,34 +601,34 @@ const ComputerVisionPro: React.FC = () => {
               Common questions about computer vision implementation and our services.
             </p>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 sm:space-y-3">
             {faqData.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
+                className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-4 flex flex-col transition-all duration-300 hover:scale-[1.01]"
               >
                 <button
-                  className="w-full flex items-center justify-between focus:outline-none group"
+                  className="w-full flex items-center justify-between focus:outline-none group min-h-[44px]"
                   onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
                   aria-expanded={openFAQ === idx}
                 >
-                  <span className="font-semibold text-sm sm:text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-2">
+                  <span className="font-semibold text-sm sm:text-base text-gray-900 text-left group-hover:text-blue-700 transition-colors duration-200 pr-4 leading-relaxed">
                     {faq.question}
                   </span>
-                  <div className="flex items-center justify-center w-5 h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200 flex-shrink-0">
+                  <div className="flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 text-blue-900 group-hover:text-cyan-700 transition-colors duration-200 flex-shrink-0">
                     {openFAQ === idx ? (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                         <path d="M18 12H6" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     ) : (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                         <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )}
                   </div>
                 </button>
                 {openFAQ === idx && (
-                  <div className="pt-2 text-gray-800 animate-fade-in text-xs sm:text-sm leading-relaxed">
+                  <div className="pt-3 sm:pt-2 text-gray-800 animate-fade-in text-xs sm:text-sm leading-relaxed">
                     {faq.answer}
                   </div>
                 )}
