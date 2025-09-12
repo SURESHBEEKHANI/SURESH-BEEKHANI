@@ -133,7 +133,7 @@ const SERVICE_DETAILS = {
 
 const SERVICE_ROUTES = {
   'AI Development': '/ai-development',
-  'AI Chatbot Development': '/ai-chatbot-development',
+  'Chatbot Development': '/ai-chatbot-development',
   'ChatGPT Integration': '/chat-gpt-integrations',
   'Machine & Deep Learning': '/machine-learning',
   'Computer Vision': '/computer-vision',
