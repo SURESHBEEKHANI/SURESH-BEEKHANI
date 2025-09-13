@@ -74,12 +74,12 @@ const Footer = () => {
   ];
 
   const services = [
-    'AI Development',
-    'Machine Learning',
-    'Deep Learning',
-    'NLP Solutions',
-    'Computer Vision',
-    'Predictive AI'
+    { name: 'AI Development', link: '/ai-development' },
+    { name: 'Machine Learning', link: '/machine-learning' },
+    { name: 'Deep Learning', link: '/machine-learning' }, // Deep Learning is part of Machine Learning page
+    { name: 'NLP Solutions', link: '/natural-language-processing' },
+    { name: 'Computer Vision', link: '/computer-vision' },
+    { name: 'Predictive AI', link: '/predictive-modelling' }
   ];
   
   return (
@@ -157,13 +157,18 @@ const Footer = () => {
             </h3>
             <div className="grid grid-cols-2 gap-2">
               {services.map((service) => (
-                <Badge 
-                  key={service}
-                  variant="secondary"
-                  className="bg-white/10 text-white/70 border-white/20 text-xs"
+                <a
+                  key={service.name}
+                  href={service.link}
+                  className="inline-block"
                 >
-                  {service}
-                </Badge>
+                  <Badge 
+                    variant="secondary"
+                    className="bg-white/10 text-white/70 border-white/20 text-xs hover:bg-white/20 hover:text-white transition-all duration-300 cursor-pointer"
+                  >
+                    {service.name}
+                  </Badge>
+                </a>
               ))}
             </div>
           </div>
