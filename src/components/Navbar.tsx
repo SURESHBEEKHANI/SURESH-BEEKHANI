@@ -181,7 +181,7 @@ const Navbar = () => {
               className="bg-primary border border-white/10 shadow text-white rounded-full px-4 sm:px-6 py-2 hover:bg-primary/90 transition"
             >
               <a 
-                href="https://wa.me/919876543210" 
+                href="https://wa.me/923401213187" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -254,7 +254,7 @@ const Navbar = () => {
                     className="bg-primary border border-white/10 shadow text-white rounded-full px-4 sm:px-6 py-2 w-full hover:bg-primary/90 transition"
                   >
                     <a 
-                      href="https://wa.me/919876543210" 
+                      href="https://wa.me/923401213187" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"

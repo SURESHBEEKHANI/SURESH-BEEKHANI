@@ -196,11 +196,11 @@ const PersonalizedLearningAI = () => {
                 Personalized Learning AI is a revolutionary educational platform that leverages advanced artificial intelligence to create customized learning experiences for each student. Built with sophisticated machine learning algorithms, it adapts content to individual learning styles.
               </p>
             </motion.div>
-            <div className="flex justify-center">
+            <div className="w-full">
               <img
-                src="/image/Portfolio-img/What Is Personalized Learning AI.jpg"
+                src="/image/Portfolio-img/What Is Personalized Learning AI.png"
                 alt="What is Personalized Learning AI illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+                className="w-full h-auto object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>

@@ -187,20 +187,20 @@ const ProductRecommendationAI = () => {
               viewport={{ once: true }}
               className="text-left"
             >
-                             <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
-                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
-                   What Is Product Recommendation AI?
-                 </h2>
-               </div>
-               <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
-                 Product Recommendation AI is an intelligent recommendation engine that leverages advanced machine learning algorithms to provide personalized product suggestions to customers. Built with sophisticated collaborative filtering and content-based filtering techniques.
-               </p>
+              <div className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10">
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+                  What Is Product Recommendation AI?
+                </h2>
+              </div>
+              <p className="text-xs sm:text-xs md:text-sm lg:text-base text-gray-600 max-w-xl mb-3 sm:mb-4 leading-relaxed">
+                Product Recommendation AI is an intelligent recommendation engine that leverages advanced machine learning algorithms to provide personalized product suggestions to customers. Built with sophisticated collaborative filtering and content-based filtering techniques, it analyzes user behavior and delivers highly relevant recommendations.
+              </p>
             </motion.div>
-            <div className="flex justify-center">
+            <div className="w-full">
               <img
                 src="/image/Portfolio-img/What Is Product Recommendation AI.png"
                 alt="What is Product Recommendation AI illustration"
-                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+                className="w-full h-auto object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>

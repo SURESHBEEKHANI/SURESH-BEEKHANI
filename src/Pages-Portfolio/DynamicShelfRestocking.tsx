@@ -198,7 +198,7 @@ const DynamicShelfRestocking = () => {
             </motion.div>
             <div className="flex justify-center">
               <PortfolioImage
-                src="/image/Portfolio-img/What-Is-Dynamic-Shelf-Restocking-AI.webp"
+                src="/image/Portfolio-img/What-Is-Dynamic-Shelf-Restocking-AI.png"
                 alt="What is Dynamic Shelf Restocking AI illustration"
               />
             </div>

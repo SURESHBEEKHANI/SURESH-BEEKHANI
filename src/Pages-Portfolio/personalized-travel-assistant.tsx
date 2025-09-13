@@ -198,11 +198,11 @@ const PersonalizedTravelAssistant = () => {
                 Personalized Travel Assistant is an intelligent AI-powered platform that revolutionizes how travelers plan, book, and experience their journeys. Built with advanced machine learning algorithms, it understands individual preferences and delivers truly personalized travel experiences.
               </p>
             </motion.div>
-            <div className="flex justify-center">
+            <div className="w-full">
               <img
                 src="/image/Portfolio-img/what is Personalized Travel Assistant.png"
                 alt="What is Personalized Travel Assistant illustration"
-                className="w-full h-auto object-contain rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
+                className="w-full h-auto object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl transition-all duration-500 hover:shadow-lg sm:hover:shadow-xl md:hover:shadow-2xl touch-manipulation"
               />
             </div>
           </div>
