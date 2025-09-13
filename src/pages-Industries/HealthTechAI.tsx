@@ -424,10 +424,32 @@ const HealthTechAI: React.FC = () => {
       <WhyChooseMeSection />
 
       {/* FAQ Section */}
-      <AnimatedFAQ
-        faqData={faqData}
-        title="Frequently Asked Questions"
-      />
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+            <div className="flex justify-center mb-2">
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+            </div>
+            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
+              Common questions about AI HealthTech implementation and our services.
+            </p>
+          </div>
+          {/* FAQ Accordion */}
+          <div className="space-y-3 sm:space-y-4">
+            {faqData.map((faq, index) => (
+              <details key={faq.id} className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+                <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+                  {faq.question}
+                  <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+                  <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+                </summary>
+                <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">{faq.answer}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
       
       <Footer />
     </div>

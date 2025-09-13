@@ -74,7 +74,7 @@ const Hero = () => {
                   <AvatarImage
                     src="/image/sureshbeekhani.png"
                     alt="Suresh Beekhani - Data Scientist and AI/ML Engineer"
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                     loading="eager"
                   />
                   <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary">
