@@ -129,9 +129,8 @@ const Hero = () => {
             </div>
 
             <p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text">
-              Dedicated to sharing knowledge and expertise in artificial intelligence and data science.
-              Through engaging tutorials and innovative AI solutions, I help learners master Machine Learning,
-              Deep Learning, Natural Language Processing, and Generative AI technologies.
+             Passionate about advancing artificial intelligence, I focus on building intelligent solutions and sharing knowledge. Through practical tutorials, real-world projects, and innovative AI applications, I empower learners and businesses 
+              to harness the power of AI for growth and transformation. 
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
@@ -157,7 +156,7 @@ const Hero = () => {
 
             <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10">
               <div className="text-center">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">3+</div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">3.5</div>
                 <div className="text-xs sm:text-sm text-white/70 mobile-text">Years Experience</div>
               </div>
               <div className="text-center">

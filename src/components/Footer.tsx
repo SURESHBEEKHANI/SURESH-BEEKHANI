@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Heart, Sparkles, Brain, Code, Rocket, Globe, Clock } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Heart, Sparkles, Brain, Code, Rocket, Globe, Clock, Youtube, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 
@@ -28,21 +28,33 @@ const Footer = () => {
   const socialLinks = [
     { 
       name: 'Github', 
-      icon: <Github size={20} />, 
+      icon: <Github size={16} />, 
       url: 'https://github.com/sureshbeekhani',
       color: 'from-gray-600 to-gray-800'
     },
     { 
       name: 'LinkedIn', 
-      icon: <Linkedin size={20} />, 
+      icon: <Linkedin size={16} />, 
       url: 'https://linkedin.com/in/sureshbeekhani',
       color: 'from-blue-600 to-blue-800'
     },
     { 
       name: 'X (Twitter)', 
-      icon: <Twitter size={20} />, 
+      icon: <Twitter size={16} />, 
       url: 'https://x.com/SureshBeekhan',
       color: 'from-black to-gray-800'
+    },
+    {
+      name: 'YouTube',
+      icon: <Youtube size={16} />,
+      url: 'https://www.youtube.com/@sureshbeekhani',
+      color: 'from-red-500 to-red-700'
+    },
+    {
+      name: 'Instagram',
+      icon: <Instagram size={16} />,
+      url: 'https://instagram.com/sureshbeekhani',
+      color: 'from-pink-500 to-purple-600'
     },
   ];
 
@@ -102,12 +114,11 @@ const Footer = () => {
                 <h3 className="text-xl font-bold">
                   Suresh <span className="gradient-text">Beekhani</span>
                 </h3>
-                <p className="text-xs text-white/60">ML Engineer & Data Scientist</p>
+                <p className="text-xs text-white/60">Data Scientist | AI Specialist</p>
               </div>
             </div>
             <p className="text-white/70 leading-relaxed body-small">
-              Transforming ideas into intelligent AI solutions. Specializing in machine learning, 
-              deep learning, and data science to drive innovation and business growth.
+              Transforming ideas into intelligent AI solutions. Specialized in machine learning, deep learning, generative AI, and intelligent agents to drive innovation, automation, and business growth.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (

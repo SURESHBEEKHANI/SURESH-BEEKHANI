@@ -122,7 +122,7 @@ const Navbar = () => {
               <svg className="w-5 h-5 sm:w-7 sm:h-7 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.364 17.364l-1.414-1.414M12 21v-2M6.636 17.364l1.414-1.414M3 12h2M6.636 6.636l1.414 1.414"/>
               </svg>
-              ML Engineer
+              AI Specialist
             </span>
           </div>
           
