@@ -53,7 +53,7 @@ const Footer = () => {
     {
       name: 'Instagram',
       icon: <Instagram size={16} />,
-      url: 'https://instagram.com/sureshbeekhani',
+      url: 'https://www.instagram.com/suresh_beekhani/',
       color: 'from-pink-500 to-purple-600'
     },
   ];

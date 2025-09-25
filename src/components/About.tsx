@@ -89,11 +89,11 @@ const stats = [
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <Star className="h-6 w-6 sm:h-8 sm:w-8" />, 
-      title: 'AI Agents',
-      description: 'Developing intelligent AI agents that autonomously perceive, reason, and act to accomplish complex tasks.',
-      features: ['Autonomous Systems', 'Multi-Agent Systems', 'Reinforcement Learning'],
-      color: 'from-green-500 to-emerald-500'
+      icon: <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: 'Computer Vision',
+      description: 'Developing intelligent systems that leverage computer vision to autonomously perceive, interpret visual data, and make decisions to accomplish complex tasks.',
+      features: ['Object Detection', 'Image Segmentation', 'Image Classification'],
+      color: 'from-indigo-500 to-blue-500'
     },
     {
       icon: <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8" />,
@@ -137,12 +137,10 @@ const stats = [
             About Me
           </Badge>
           <h2 className="heading-2 mb-6">
-            Transforming Ideas into{' '}
-            <span className="gradient-text">Intelligent Solutions</span>
+            Transforming ideas into practical AI solutions
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
-            I'm a passionate Data Scientist and AI/ML Engineer with over 5 years of experience in developing cutting-edge artificial intelligence solutions. 
-            My expertise spans across machine learning, deep learning, natural language processing, and generative AI technologies.
+            I build production-ready AI systems across machine learning, deep learning, natural language processing, Computer Vision and generative AI—focused on real-world impact and scalable deployments.
           </p>
         </div>
 

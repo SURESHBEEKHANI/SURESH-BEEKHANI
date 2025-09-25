@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   ArrowDown, FileText, Github, Linkedin, Twitter,
-  Brain, Cpu, Database, Network
+  Brain, Cpu, Database, Network, Youtube, Instagram
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
@@ -33,6 +33,8 @@ const Hero = () => {
     { icon: <Github size={20} />, href: 'https://github.com/sureshbeekhani', label: 'GitHub' },
     { icon: <Linkedin size={20} />, href: 'https://linkedin.com/in/sureshbeekhani', label: 'LinkedIn' },
     { icon: <Twitter size={20} />, href: 'https://x.com/SureshBeekhan', label: 'Twitter' },
+    { icon: <Youtube size={20} />, href: 'https://www.youtube.com/@sureshbeekhani', label: 'YouTube' },
+    { icon: <Instagram size={20} />, href: 'https://www.instagram.com/suresh_beekhani/', label: 'Instagram' },
   ];
 
   const techIcons = [
@@ -156,7 +158,7 @@ const Hero = () => {
 
             <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10">
               <div className="text-center">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">3.5</div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">4</div>
                 <div className="text-xs sm:text-sm text-white/70 mobile-text">Years Experience</div>
               </div>
               <div className="text-center">
