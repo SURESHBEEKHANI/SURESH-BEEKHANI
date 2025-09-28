@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useToast } from "@/hooks/use-toast";
+// ...existing code...
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -16,45 +16,37 @@ import BackgroundAnimation from '@/components/BackgroundAnimation';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
-  const { toast } = useToast();
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    // Welcome toast when the page loads
-    toast({
-      title: "Welcome to my portfolio",
-      description: "Feel free to explore my projects and services!",
-      duration: isMobile ? 4000 : 5000,
-    });
-    
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (!targetId) return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
-        
+
         // Add offset for mobile to account for the larger header
         const offset = isMobile ? 60 : 80;
-        
+
         window.scrollTo({
           top: targetElement.offsetTop - offset,
           behavior: 'smooth'
         });
       });
     });
-    
+
     // Clean up event listeners
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});
       });
     };
-  }, [toast, isMobile]);
+  }, [isMobile]);
   
   return (
     <div className="min-h-screen overflow-x-hidden">

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "@/components/ui/loading-spinner";
 import Index from "./Index";
 import NotFound from "./pages-Services/NotFound";
+import Chatbot from "@/components/Chatbot";
 
 // Lazy load components for better performance
 const HealthTechAI = lazy(() => import("./pages-Industries/HealthTechAI"));
@@ -158,6 +159,8 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
+          {/* Chatbot widget (draggable) */}
+          <Chatbot />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
