@@ -163,6 +163,7 @@ const Chatbot: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [showWelcome, setShowWelcome] = useState(true);
+  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const quickOptions = useMemo(
     () => [
@@ -214,6 +215,36 @@ const Chatbot: React.FC = () => {
     const scroller = panelRef.current.querySelector('.scroller') as HTMLElement | null;
     scroller?.scrollTo({ top: scroller.scrollHeight, behavior: 'smooth' });
   }, [messages, open]);
+
+  // Auto-close chatbot on scroll
+  useEffect(() => {
+    if (!open) return;
+
+    const handleScroll = () => {
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set new timeout to close chatbot after scroll stops
+      const timeout = setTimeout(() => {
+        setOpen(false);
+      }, 1500); // Close after 1.5 seconds of no scrolling
+
+      setScrollTimeout(timeout);
+    };
+
+    // Add scroll listener to window
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+    };
+  }, [open, scrollTimeout]);
 
   /* ------------------ Handlers ------------------ */
 
