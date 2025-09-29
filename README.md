@@ -113,7 +113,7 @@ git clone <repository-url>
 npm install
 
 # Start development server
-npm run dev
+THUS
 
 # Build for production
 npm run build

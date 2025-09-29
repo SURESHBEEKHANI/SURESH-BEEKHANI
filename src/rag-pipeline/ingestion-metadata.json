@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-09-29T09:09:42.717Z",
+  "totalDocuments": 13,
+  "namespaces": [
+    "pdf"
+  ],
+  "urls": [],
+  "chunkSize": 1000,
+  "chunkOverlap": 200,
+  "embeddingModel": "Xenova/llama-text-embed-v2"
+}
