@@ -25,9 +25,9 @@ type QuickAction = {
 const STORAGE_KEY = 'suresh_chatbot_pos_v2';
 const FIRST_SEEN_KEY = 'suresh_chatbot_seen_v2';
 
-const LAUNCHER_SIZE = 64;
-const PANEL_WIDTH = 420;
-const PANEL_HEIGHT = 580;
+const LAUNCHER_SIZE = 52;
+const PANEL_WIDTH = 360;
+const PANEL_HEIGHT = 500;
 
 const formatTime = (d = new Date()) =>
   d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -55,27 +55,27 @@ const MessageBubble: React.FC<{
 }> = ({ m, reactions = [], onReaction }) => (
   <div className={`flex ${m.from === 'user' ? 'justify-end' : 'justify-start'} group animate-messageSlideIn`}>
     {m.from === 'bot' && (
-      <div className="w-10 mr-3 flex-shrink-0">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg ring-2 ring-white hover:scale-105 transition-transform duration-200">
+      <div className="w-8 mr-3 flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg ring-2 ring-white hover:scale-105 transition-transform duration-200">
           S
         </div>
       </div>
     )}
     <div className="flex flex-col max-w-[85%] sm:max-w-[80%]">
       <div
-        className={`px-4 py-3 max-w-full shadow-lg break-words relative transition-all duration-200 hover:shadow-xl group-hover:scale-[1.02] ${
+        className={`px-3.5 py-2.5 max-w-full shadow-md break-words relative transition-all duration-200 hover:shadow-lg group-hover:scale-[1.01] ${
           m.from === 'user'
-            ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl rounded-br-md'
-            : 'bg-white/90 backdrop-blur-sm text-slate-800 rounded-2xl rounded-bl-md border border-slate-100 hover:border-slate-200'
+            ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl rounded-br-md'
+            : 'bg-white/95 backdrop-blur-sm text-slate-800 rounded-2xl rounded-bl-md border border-slate-200 hover:border-slate-300'
         }`}
         role="article"
         aria-label={`${m.from === 'user' ? 'You' : 'Assistant'} message`}
       >
-        <div className="leading-relaxed whitespace-pre-wrap text-sm">{m.text}</div>
+        <div className="leading-relaxed whitespace-pre-wrap text-[13px]">{m.text}</div>
         <div className="flex items-center justify-between mt-2">
           <div
-            className={`text-xs ${
-              m.from === 'user' ? 'text-blue-100' : 'text-slate-400'
+            className={`text-[11px] ${
+              m.from === 'user' ? 'text-blue-100/90' : 'text-slate-400'
             }`}
           >
             {m.time}
@@ -117,18 +117,18 @@ const TypingIndicator = () => (
     aria-live="polite"
     aria-label="Assistant is typing"
   >
-      <div className="w-10 mr-3 flex-shrink-0">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg ring-2 ring-white">
+      <div className="w-8 mr-3 flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg ring-2 ring-white">
           S
         </div>
       </div>
-    <div className="bg-white text-slate-800 rounded-2xl rounded-bl-md px-4 py-3 max-w-[60%] shadow-lg border border-slate-100">
+    <div className="bg-white text-slate-800 rounded-2xl rounded-bl-md px-3 py-2.5 max-w-[60%] shadow-md border border-slate-200">
       <div className="flex gap-1 items-center">
-        <span className="text-slate-500 text-xs mr-2">AI is typing</span>
+        <span className="text-slate-500 text-[11px] mr-2">typing</span>
         {[0, 200, 400].map((delay) => (
           <span
             key={delay}
-            className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"
+            className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"
             style={{ 
               animationDelay: `${delay}ms`,
               animationDuration: '1.2s'
@@ -143,19 +143,22 @@ const TypingIndicator = () => (
 const QuickReplies: React.FC<{ options: string[]; onClick: (s: string) => void }> = ({
   options,
   onClick,
-}) => (
-  <div className="flex gap-2 mt-3 overflow-x-auto whitespace-nowrap no-scrollbar">
-    {options.map((o) => (
-      <button
-        key={o}
-        onClick={() => onClick(o)}
-        className="text-xs px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 hover:from-blue-100 hover:to-indigo-100 transition-all duration-200 transform hover:scale-105 shadow-sm border border-blue-100 hover:border-blue-200 whitespace-nowrap flex-shrink-0"
-      >
-        {o}
-      </button>
-    ))}
-  </div>
-);
+}) => {
+  if (options.length === 0) return null;
+  return (
+    <div className="flex gap-2 mt-3 overflow-x-auto whitespace-nowrap no-scrollbar">
+      {options.map((o) => (
+        <button
+          key={o}
+          onClick={() => onClick(o)}
+          className="text-xs px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 hover:from-blue-100 hover:to-indigo-100 transition-all duration-200 transform hover:scale-105 shadow-sm border border-blue-100 hover:border-blue-200 whitespace-nowrap flex-shrink-0"
+        >
+          {o}
+        </button>
+      ))}
+    </div>
+  );
+};
 
 const DateSeparator: React.FC<{ date: string }> = ({ date }) => (
   <div className="flex items-center justify-center my-4">
@@ -199,17 +202,17 @@ const FloatingActionMenu: React.FC<{
   if (!isOpen) return null;
 
   return (
-    <div className="absolute bottom-20 right-4 z-50">
-      <div className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-2 animate-slideInUp">
-        <div className="flex flex-col gap-2">
+    <div className="absolute bottom-16 right-3 z-50">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_10px_30px_rgba(2,6,23,0.15)] border border-slate-200/50 p-2 animate-slideInUp">
+        <div className="flex flex-col gap-1.5">
           {actions.map((action) => (
             <button
               key={action.id}
               onClick={action.action}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 hover:scale-105 ${action.color}`}
+              className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.02] ${action.color}`}
             >
-              <span className="text-lg">{action.icon}</span>
-              <span className="text-sm font-medium">{action.label}</span>
+              <span className="text-base">{action.icon}</span>
+              <span className="text-[13px] font-medium text-slate-700">{action.label}</span>
             </button>
           ))}
         </div>
@@ -280,14 +283,7 @@ const Chatbot: React.FC = () => {
   const [selectedNamespace, setSelectedNamespace] = useState<string>("default");
 
   const quickOptions = useMemo(
-    () => [
-      '🚀 View Portfolio', 
-      '💼 AI Services', 
-      '🏢 Industries', 
-      '📊 Experience', 
-      '📞 Contact Info',
-      '❓ Help'
-    ],
+    () => [],
     []
   );
 
@@ -351,7 +347,22 @@ const Chatbot: React.FC = () => {
     'What services do you offer?',
     'Show me your portfolio',
     'How can I contact you?',
-    'What technologies do you use?'
+    'What technologies do you use?',
+    'Do you provide custom AI solutions?',
+    'Can you help with machine learning models?',
+    'Do you offer chatbot development?',
+    'What industries do you specialize in?',
+    'Can you build web and mobile apps?',
+    'What is your project turnaround time?',
+    'Do you provide consultation services?',
+    'Can I see client case studies?',
+    'What is your pricing or hourly rate?',
+    'Do you offer AI deployment support?',
+    'Can you integrate AI into existing systems?',
+    'Do you offer support after project delivery?',
+    'How do you ensure data security?',
+    'Can you help with AI model optimization?',
+    'Do you offer maintenance for projects?'
   ], []);
 
   /* ------------------ Effects ------------------ */
@@ -392,7 +403,7 @@ const Chatbot: React.FC = () => {
       } catch {}
     } else {
       setPos({
-        left: window.innerWidth - LAUNCHER_SIZE - 20,
+        left: window.innerWidth - LAUNCHER_SIZE - 80,
         top: window.innerHeight - LAUNCHER_SIZE - 24,
       });
     }
@@ -528,11 +539,11 @@ const Chatbot: React.FC = () => {
       } catch {}
       setDragging(false);
 
-      // snap horizontally
+      // snap horizontally with a slightly larger right offset to keep icon away from edge
       const centerX = pos.left + LAUNCHER_SIZE / 2;
       const snapToLeft = centerX < window.innerWidth / 2;
       setPos({
-        left: snapToLeft ? 16 : window.innerWidth - LAUNCHER_SIZE - 16,
+        left: snapToLeft ? 16 : window.innerWidth - LAUNCHER_SIZE - 80,
         top: Math.max(8, Math.min(pos.top, window.innerHeight - LAUNCHER_SIZE - 8)),
       });
     },
@@ -661,11 +672,11 @@ const Chatbot: React.FC = () => {
       {open && (
         <div
           ref={panelRef}
-          className="pointer-events-auto bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl text-sm text-slate-800 flex flex-col animate-fadeIn border border-white/20 relative"
+          className="pointer-events-auto bg-white/90 backdrop-blur-2xl rounded-3xl shadow-[0_10px_30px_rgba(2,6,23,0.15)] text-sm text-slate-800 flex flex-col animate-fadeIn border border-slate-200/40 relative"
           style={{
             position: 'fixed',
-            width: Math.min(PANEL_WIDTH, window.innerWidth - 16),
-            height: Math.min(PANEL_HEIGHT, window.innerHeight - 32),
+            width: Math.min(PANEL_WIDTH, window.innerWidth - 12),
+            height: Math.min(PANEL_HEIGHT, window.innerHeight - 24),
             left: window.innerWidth < 640 
               ? 8 
               : Math.min(
@@ -673,26 +684,26 @@ const Chatbot: React.FC = () => {
                     pos.left + LAUNCHER_SIZE / 2 - Math.min(PANEL_WIDTH, window.innerWidth - 32) / 2,
                     16
                   ),
-                  window.innerWidth - Math.min(PANEL_WIDTH, window.innerWidth - 32) - 16
+                  window.innerWidth - Math.min(PANEL_WIDTH, window.innerWidth - 24) - 12
                 ),
             top: window.innerWidth < 640 
               ? 8 
-              : Math.max(16, pos.top - Math.min(PANEL_HEIGHT, window.innerHeight - 48) - 12),
+              : Math.max(12, pos.top - Math.min(PANEL_HEIGHT, window.innerHeight - 36) - 10),
           }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-blue-50 rounded-t-3xl">
+          <div className="flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-b border-slate-200/50 bg-gradient-to-r from-slate-50 to-blue-50/60 rounded-t-3xl">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-lg ring-2 ring-white">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-semibold text-xs sm:text-sm shadow-md ring-2 ring-white/80">
                 S
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-sm sm:text-base font-bold text-slate-800 truncate">Suresh AI Assistant</div>
-                <div className="flex items-center gap-1">
-                  <div className={`w-2 h-2 rounded-full animate-pulse ${
+                <div className="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight truncate">Suresh AI Assistant</div>
+                <div className="flex items-center gap-1.5">
+                  <div className={`w-1.5 h-1.5 rounded-full ${
                     isRagConnected ? 'bg-green-400' : 'bg-red-400'
                   }`}></div>
-                  <div className="text-xs text-slate-500 truncate">
+                  <div className="text-[11px] text-slate-500 truncate">
                     {isRagConnected ? 'AI Ready • Usually replies instantly' : 'AI Offline • Limited responses'}
                   </div>
                 </div>
@@ -702,19 +713,19 @@ const Chatbot: React.FC = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowFloatingMenu(!showFloatingMenu)}
-                className="text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
                 aria-label="More options"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                 </svg>
               </button>
               <button
                 onClick={() => setOpen(false)}
-                className="text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200 flex-shrink-0"
+                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200 flex-shrink-0"
                 aria-label="Close chat panel"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -723,15 +734,15 @@ const Chatbot: React.FC = () => {
 
           {/* Messages */}
           <div
-            className="scroller px-4 sm:px-6 py-3 sm:py-4 overflow-auto flex-1 bg-gradient-to-b from-white to-slate-50"
+            className="scroller px-3 sm:px-4 py-2.5 sm:py-3 overflow-auto flex-1 bg-gradient-to-b from-white to-slate-50"
             style={{ minHeight: 0 }}
             role="log"
             aria-live="polite"
           >
             <div className="space-y-4 sm:space-y-5">
               {showWelcome && (
-                <div className="text-center py-3 sm:py-4">
-                  <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
+                <div className="text-center py-2.5 sm:py-3">
+                  <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-medium">
                     <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
                     Welcome! How can I help you today?
                   </div>
@@ -759,7 +770,7 @@ const Chatbot: React.FC = () => {
           </div>
 
           {/* Composer */}
-          <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-3 sm:pt-4 border-t border-slate-100 bg-white/90 backdrop-blur-sm rounded-b-3xl relative">
+          <div className="px-3 sm:px-4 pb-3.5 sm:pb-5 pt-2.5 sm:pt-3.5 border-t border-slate-100 bg-white/90 backdrop-blur-sm rounded-b-3xl relative">
             {/* Namespace Selector */}
             {databaseInfo && databaseInfo.namespaces.length > 1 && (
               <div className="mb-3">
@@ -787,7 +798,7 @@ const Chatbot: React.FC = () => {
                 e.preventDefault();
                 sendMessage(input);
               }}
-              className="mt-3 sm:mt-4 flex items-end gap-2 sm:gap-3 relative"
+              className="mt-2.5 sm:mt-3.5 flex items-end gap-2 sm:gap-2.5 relative"
             >
               <div className="flex-1 relative">
                 <textarea
@@ -802,7 +813,7 @@ const Chatbot: React.FC = () => {
                       sendMessage(input);
                     }
                   }}
-                  className="w-full resize-none bg-slate-50/80 backdrop-blur-sm border border-slate-200 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-sm min-h-[40px] sm:min-h-[44px] max-h-24 sm:max-h-32 overflow-auto outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300 transition-all duration-200"
+                  className="w-full resize-none bg-white/80 backdrop-blur-sm border border-slate-300 rounded-2xl px-3 sm:px-3.5 py-2 sm:py-2.5 text-[13px] min-h-[36px] sm:min-h-[40px] max-h-24 sm:max-h-32 overflow-auto outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300 transition-all duration-200 placeholder:text-slate-400"
                   aria-label="Chat message input"
                 />
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-xs hidden sm:block">
@@ -816,17 +827,17 @@ const Chatbot: React.FC = () => {
               <button
                 type="submit"
                 disabled={!input.trim() || isTyping}
-                className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-200 transform ${
+                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 transform ${
                   !input.trim() || isTyping
                     ? 'bg-slate-300 cursor-not-allowed scale-95'
-                    : 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl'
+                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl'
                 } text-white`}
                 aria-label="Send message"
               >
                 {isTyping ? (
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 )}
@@ -861,7 +872,7 @@ const Chatbot: React.FC = () => {
               playSound('notification');
             }
           }}
-          className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 relative overflow-hidden ${
+          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 relative overflow-hidden ${
             open 
               ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white' 
               : 'bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 text-white hover:shadow-3xl'
@@ -872,11 +883,11 @@ const Chatbot: React.FC = () => {
           <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
           
           {open ? (
-            <svg className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
           )}
@@ -884,7 +895,7 @@ const Chatbot: React.FC = () => {
         
         {/* Notification badge */}
         {!open && (
-          <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold animate-notificationPulse shadow-lg">
+          <div className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold animate-notificationPulse shadow-lg">
             !
           </div>
         )}

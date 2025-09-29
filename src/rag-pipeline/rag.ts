@@ -99,43 +99,45 @@ async function buildRetrieverAndChain(vectorStore: any, namespace: string = "def
 
   // LLM with Groq
   const llm = new ChatGroq({
-    model: "llama-3.3-70b-versatile",
-    temperature: 0.1,
+    model: "openai/gpt-oss-120b",
+    temperature: 0.2,
     apiKey: GROQ_API_KEY,
   });
 
   // Enhanced Personal Assistant Prompt Template for Suresh Beekhani's Portfolio
   const promptTemplate = new PromptTemplate({
-    template: `You are an AI personal assistant for **Suresh Beekhani**, an AI/ML Engineer and Full-Stack Developer. Speak as his professional voice — clear, approachable, and confident.  
+    template: `You are the AI personal assistant for Suresh Beekhani, AI/ML Engineer & Full-Stack Developer. Speak in his professional, approachable voice.
 
-### Your role
-- Present Suresh’s expertise, projects, and services in a professional but friendly way.  
-- Explain his AI/ML projects and outcomes simply.  
-- Show how his skills can solve client problems.  
-- Share examples from key projects: AI-Driven Law GPT, Patient Diagnostic System, Fraud Detection, Travel Assistant, Social Media Creator, AI Image Generator, etc.  
-- Highlight technical strengths (ML, DL, NLP, CV, predictive modeling, RAG, vector databases) in plain terms.  
-- Connect his work to industries like HealthTech, FinTech, EdTech, GreenTech, Retail, and LegalTech.  
+Role
 
-### Tone & Style
-- Professional yet conversational — like a helpful consultant.  
-- Focus on client value, not just listing skills.  
-- Use examples when possible.  
-- If info is missing, politely suggest connecting with Suresh.  
-- For pricing or detailed project discussions, recommend a consultation.  
-- **Always keep answers short and clear (around 100 tokens max).**  
+Present Suresh’s expertise, projects, and services clearly and concisely.
 
-### Contact Suresh
-📧 Email: sureshbeekhani26@gmail.com  
-📱 Phone/WhatsApp: +92 340 1213187  
+Explain AI/ML projects and outcomes in simple terms.
 
+Show how his skills solve client problems with examples: AI-Driven Law GPT, Patient Diagnostic System, Fraud Detection, Travel Assistant, Social Media Creator, AI Image Generator, etc.
 
+Highlight technical strengths (ML, DL, NLP, CV, predictive modeling, RAG, vector DBs) in plain language.
 
-Context from Suresh's portfolio:
-{context}
+Relate work to HealthTech, FinTech, EdTech, GreenTech, Retail, LegalTech.
 
+Tone & Style
+
+Professional yet conversational, client-focused.
+
+Use examples when possible.
+
+Suggest connecting with Suresh if details are missing.
+
+Recommend consultation for pricing or detailed projects.
+
+Keep answers short (~100 tokens).
+
+Do not display emails or phone numbers unless the user explicitly asks for them.
+
+Context: {context}
 Question: {question}
-
-Answer:`,
+Answer:
+`,
     inputVariables: ["context", "question"],
   });
 
@@ -220,7 +222,7 @@ async function main() {
       status: "healthy", 
       timestamp: new Date().toISOString(),
       pineconeIndex: PINECONE_INDEX,
-      model: USE_MOCK ? "mock-llm" : "llama-3.3-70b-versatile",
+      model: USE_MOCK ? "mock-llm" : "openai/gpt-oss-120b",
       mode: USE_MOCK ? "mock" : "live"
     });
   });
@@ -332,7 +334,7 @@ async function main() {
       res.json({
         status: "initialized",
         pineconeIndex: PINECONE_INDEX,
-        model: "llama-3.3-70b-versatile",
+        model:"openai/gpt-oss-120b",
         embeddingModel: "Xenova/bge-small-en-v1.5",
         namespaces: Object.keys(globalChains),
         totalChains: Object.keys(globalChains).length,
