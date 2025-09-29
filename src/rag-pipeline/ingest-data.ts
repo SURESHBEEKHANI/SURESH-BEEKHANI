@@ -20,7 +20,7 @@ function removeUrls(input: string): string {
   return input.replace(urlRegex, "").replace(/\s+/g, " ").trim();
 }
 
-const PINECONE_INDEX = process.env.PINECONE_INDEX ?? "towering-fir";
+const PINECONE_INDEX = process.env.PINECONE_INDEX;
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const HF_TOKEN = process.env.HUGGING_FACE_HUB_TOKEN || process.env.HF_TOKEN;
 
@@ -30,8 +30,8 @@ if (HF_TOKEN) {
   process.env.HF_TOKEN = HF_TOKEN;
 }
 
-if (!PINECONE_API_KEY) {
-  console.error("Missing PINECONE_API_KEY in environment variables");
+if (!PINECONE_API_KEY || !PINECONE_INDEX) {
+  console.error("Missing PINECONE_API_KEY or PINECONE_INDEX in environment variables");
   process.exit(1);
 }
 

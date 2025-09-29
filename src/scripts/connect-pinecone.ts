@@ -3,7 +3,11 @@ import { Pinecone } from '@pinecone-database/pinecone';
 
 async function main() {
   const apiKey = process.env.PINECONE_API_KEY;
-  const indexName = process.env.PINECONE_INDEX || 'towering';
+  const indexName = process.env.PINECONE_INDEX;
+  if (!indexName) {
+    console.error('Missing PINECONE_INDEX in environment variables');
+    process.exit(1);
+  }
 
   if (!apiKey) {
     console.error('Missing PINECONE_API_KEY in environment variables');

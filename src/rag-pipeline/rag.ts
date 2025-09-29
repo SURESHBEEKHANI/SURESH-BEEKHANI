@@ -14,7 +14,7 @@ import type { Document } from "langchain/document";
 
 // Use dedicated RAG-specific port envs; ignore generic PORT to avoid conflicts with Vite/OS
 const PORT = Number(process.env.RAG_PORT || process.env.VITE_RAG_PORT || 5757);
-const PINECONE_INDEX = process.env.PINECONE_INDEX ?? "towering-fir";
+const PINECONE_INDEX = process.env.PINECONE_INDEX;
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const HF_TOKEN = process.env.HUGGING_FACE_HUB_TOKEN || process.env.HF_TOKEN;
@@ -25,7 +25,7 @@ if (HF_TOKEN) {
   process.env.HF_TOKEN = HF_TOKEN;
 }
 
-const USE_MOCK = !PINECONE_API_KEY || !GROQ_API_KEY;
+const USE_MOCK = !PINECONE_API_KEY || !GROQ_API_KEY || !PINECONE_INDEX;
 if (USE_MOCK) {
   console.warn("⚠️ Missing API keys (PINECONE_API_KEY or GROQ_API_KEY). Starting RAG server in MOCK mode for development.");
 }

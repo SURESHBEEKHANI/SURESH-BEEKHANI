@@ -34,12 +34,12 @@ Make sure your code is pushed to GitHub with all the files we created.
 1. Go to [Railway.app](https://railway.app)
 2. Connect your GitHub repository
 3. Create a new project
-4. Add environment variables:
+4. Add environment variables in the dashboard (do not commit real values):
    ```
-   PINECONE_API_KEY=your_pinecone_key
-   GROQ_API_KEY=your_groq_key
-   PINECONE_INDEX=towering-fir
-   PORT=8080
+   PINECONE_API_KEY=<set in dashboard>
+   GROQ_API_KEY=<set in dashboard>
+   PINECONE_INDEX=<set in dashboard>
+   RAG_PORT=<set in dashboard>
    NODE_ENV=production
    ```
 5. Deploy and get your backend URL (e.g., `https://your-app.railway.app`)
@@ -78,6 +78,7 @@ const RAG_API_BASE_URL = process.env.NODE_ENV === 'production'
    ```
    NODE_ENV=production
    VITE_RAG_API_URL=https://your-backend-url.com
+   # Do NOT set backend secrets (PINECONE_*, GROQ_*, PORT) in the frontend site.
    ```
 6. Deploy
 
@@ -123,10 +124,10 @@ VITE_RAG_API_URL=https://your-backend-url.com
 ### Backend (Railway/Render)
 ```
 NODE_ENV=production
-PINECONE_API_KEY=your_pinecone_key
-GROQ_API_KEY=your_groq_key
-PINECONE_INDEX=towering-fir
-PORT=8080
+PINECONE_API_KEY=<set in dashboard>
+GROQ_API_KEY=<set in dashboard>
+PINECONE_INDEX=<set in dashboard>
+RAG_PORT=<set in dashboard>
 ```
 
 ## 📊 Monitoring

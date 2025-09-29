@@ -13,6 +13,6 @@ services:
       - key: GROQ_API_KEY
         sync: false
       - key: PINECONE_INDEX
-        value: towering-fir
+        sync: false
       - key: PORT
-        value: 10000
+        sync: false
