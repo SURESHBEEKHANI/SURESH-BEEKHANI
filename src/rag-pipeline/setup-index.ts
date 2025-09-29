@@ -48,8 +48,8 @@ async function createPineconeIndex() {
       spec: {
         serverless: {
           cloud: 'aws',
-          // Region should be configured in Pinecone dashboard; avoid hardcoding
-          region: process.env.PINECONE_ENV || 'us-east-1'
+          // Region must be provided via env or provider config
+          region: process.env.PINECONE_ENV as string
         }
       }
     });

@@ -60,7 +60,7 @@ Update the backend URL in `src/services/ragApi.ts`:
 ```typescript
 const RAG_API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? 'https://your-actual-backend-url.com' // Replace with your backend URL
-  : 'http://localhost:8080';
+  : 'http://localhost:<dev-port>';
 ```
 
 ### 4. Deploy Frontend to Netlify
