@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { HuggingFaceTransformersEmbeddings } from "@langchain/community/embeddings/huggingface_transformers";
 
-const PINECONE_INDEX = process.env.PINECONE_INDEX ?? "towering-fir";
+const PINECONE_INDEX = process.env.PINECONE_INDEX || "<unset>";
 const HF_TOKEN = process.env.HUGGING_FACE_HUB_TOKEN || process.env.HF_TOKEN;
 // Ensure both env var names are set for transformers.js compatibility
 if (HF_TOKEN) {
@@ -107,7 +107,7 @@ async function main() {
   if (success) {
     console.log("");
     console.log("🎉 Configuration test passed!");
-    console.log("✅ Your RAG pipeline is ready to use with the towering-fir index");
+    console.log("✅ Your RAG pipeline is ready to use with the configured index");
   } else {
     console.log("");
     console.log("❌ Configuration test failed!");
