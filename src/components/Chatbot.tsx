@@ -260,7 +260,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "👋 Hi! I'm Suresh's AI assistant. I can help you explore his portfolio, discuss AI services, or answer any questions you might have. How can I assist you today?",
+      text: "Hi there! I’m Suresh’s AI Assistant. I’d be happy to walk you through his portfolio, share details about AI services, or answer any questions you have. How can I help today?",
       from: 'bot',
       time: formatTime(),
     },
