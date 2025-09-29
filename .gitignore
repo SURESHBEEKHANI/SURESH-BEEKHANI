@@ -17,7 +17,13 @@ lerna-debug.log*
 
 # Local environment files
 .env
+.env.local
+.env.development
+.env.production
+.env.test
 .env.*.local
+.env.*
+!.env.example
 *.local
 
 # Editor directories and files
@@ -37,3 +43,25 @@ Thumbs.db
 *.tgz
 *.bak
 *.tmp
+
+# Vite cache
+.vite/
+node_modules/.vite/
+
+# ESLint cache
+.eslintcache
+
+# NYC coverage output
+.nyc_output/
+
+# Netlify local state
+.netlify/
+
+# Transformers / HuggingFace caches
+.cache/
+.cache/hf/
+node_modules/@huggingface/transformers/.cache/
+
+# RAG pipeline artifacts
+src/rag-pipeline/ingestion-metadata.json
+src/data/*.pdf
