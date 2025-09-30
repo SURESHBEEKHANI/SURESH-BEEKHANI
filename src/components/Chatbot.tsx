@@ -624,10 +624,10 @@ const Chatbot: React.FC = () => {
       } catch (error) {
         console.error('RAG API Error:', error);
         
-        // Fallback response when RAG is not available
+        // Fallback response when RAG is not available or query failed
         const bid = Date.now() + 1;
         const fallbackResponse = isRagConnected 
-          ? "I'm sorry, I encountered an error processing your request. Please try again."
+          ? (error instanceof Error ? error.message : "I encountered an error processing your request. Please try again.")
           : "I'm currently unable to access my knowledge base. Please make sure the RAG server is running and try again.";
         
         setMessages((m) => [
