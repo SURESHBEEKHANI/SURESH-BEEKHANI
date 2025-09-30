@@ -1,7 +1,9 @@
 // Resolve RAG base URL with env-driven overrides for development
 // Priority: VITE_RAG_BASE_URL -> VITE_RAG_PORT -> default dev port 5757
-const DEFAULT_PROD_URL = 'https://suresh-rag-server.onrender.com';
-const DEFAULT_DEV_PORT = 5757;
+// In production, use Netlify redirect `/api`.
+const DEFAULT_PROD_URL = '/api';
+// In development, default to Netlify dev functions URL
+const DEFAULT_DEV_NETLIFY = 'http://localhost:8888/.netlify/functions';
 
 // Vite exposes envs via import.meta.env
 const viteEnv = (typeof import.meta !== 'undefined' && (import.meta as any).env)
@@ -9,7 +11,8 @@ const viteEnv = (typeof import.meta !== 'undefined' && (import.meta as any).env)
   : {} as any;
 
 const resolvedDevBase = viteEnv.VITE_RAG_BASE_URL
-  || `http://localhost:${viteEnv.VITE_RAG_PORT || DEFAULT_DEV_PORT}`;
+  || viteEnv.VITE_NETLIFY_DEV_URL
+  || DEFAULT_DEV_NETLIFY;
 
 const RAG_API_BASE_URL = (typeof process !== 'undefined' && process.env.NODE_ENV === 'production')
   ? DEFAULT_PROD_URL
