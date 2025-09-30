@@ -10,11 +10,13 @@ const viteEnv = (typeof import.meta !== 'undefined' && (import.meta as any).env)
   ? (import.meta as any).env
   : {} as any;
 
+const isProd = !!viteEnv?.PROD;
+
 const resolvedDevBase = viteEnv.VITE_RAG_BASE_URL
   || viteEnv.VITE_NETLIFY_DEV_URL
   || DEFAULT_DEV_NETLIFY;
 
-const RAG_API_BASE_URL = (typeof process !== 'undefined' && process.env.NODE_ENV === 'production')
+const RAG_API_BASE_URL = isProd
   ? DEFAULT_PROD_URL
   : resolvedDevBase;
 
