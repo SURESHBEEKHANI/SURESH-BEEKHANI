@@ -104,8 +104,9 @@ class RAGApiService {
       });
 
       if (!response.ok) {
-        const errorData: RAGError = await this.parseJsonSafe(response);
-        throw new Error(errorData.error || (errorData.detail as string) || `HTTP error! status: ${response.status}`);
+        const errorData: any = await this.parseJsonSafe(response);
+        const message = (errorData && (errorData.message || errorData.error || errorData.detail)) || `HTTP ${response.status}`;
+        throw new Error(typeof message === 'string' ? message : `HTTP ${response.status}`);
       }
 
       const data: RAGResponse = await this.parseJsonSafe(response);
