@@ -8,11 +8,11 @@ let modelSingleton: ChatGroq | null = null;
 function getModel(): ChatGroq {
 	if (modelSingleton) return modelSingleton;
 	const { GROQ_API_KEY } = getEnv();
-	modelSingleton = new ChatGroq({
-		apiKey: GROQ_API_KEY,
-		model: "openai/gpt-oss-120b",
-		temperature: 0.2,
-	});
+    modelSingleton = new ChatGroq({
+        apiKey: GROQ_API_KEY,
+        model: "llama-3.1-8b-instant",
+        temperature: 0.2,
+    });
 	return modelSingleton;
 }
 
