@@ -1,7 +1,7 @@
 // Resolve RAG base URL with env-driven overrides for development
 // Priority: VITE_RAG_BASE_URL -> VITE_RAG_PORT -> default dev port 5757
 // In production, use Netlify redirect `/api`.
-const DEFAULT_PROD_URL = '/api';
+const DEFAULT_PROD_URL = '/.netlify/functions';
 // In development, default to Netlify dev functions URL
 const DEFAULT_DEV_NETLIFY = 'http://localhost:8888/.netlify/functions';
 
@@ -80,6 +80,19 @@ class RAGApiService {
     throw lastError instanceof Error ? lastError : new Error("Network error");
   }
 
+  private async parseJsonSafe(response: Response): Promise<any> {
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      return await response.json();
+    }
+    const text = await response.text();
+    try {
+      return JSON.parse(text);
+    } catch {
+      throw new Error(text.slice(0, 500) || `HTTP ${response.status}`);
+    }
+  }
+
   async query(question: string, namespace: string = "default"): Promise<RAGResponse> {
     try {
       const response = await this.fetchWithRetry(`${this.baseUrl}/query`, {
@@ -91,11 +104,11 @@ class RAGApiService {
       });
 
       if (!response.ok) {
-        const errorData: RAGError = await response.json();
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        const errorData: RAGError = await this.parseJsonSafe(response);
+        throw new Error(errorData.error || (errorData.detail as string) || `HTTP error! status: ${response.status}`);
       }
 
-      const data: RAGResponse = await response.json();
+      const data: RAGResponse = await this.parseJsonSafe(response);
       return data;
     } catch (error) {
       console.error('RAG API Error:', error);
