@@ -45,14 +45,42 @@ export interface RAGError {
 
 class RAGApiService {
   private baseUrl: string;
+  private readonly defaultRetries: number = 3;
+  private readonly defaultBackoffMs: number = 350;
 
   constructor() {
     this.baseUrl = RAG_API_BASE_URL;
   }
 
+  private async fetchWithRetry(input: RequestInfo | URL, init: RequestInit = {}, retries = this.defaultRetries, backoffMs = this.defaultBackoffMs): Promise<Response> {
+    let attempt = 0;
+    let lastError: unknown = null;
+    while (attempt <= retries) {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+        const resp = await fetch(input, { ...init, signal: controller.signal });
+        clearTimeout(timeout);
+        // Retry on 429/5xx
+        if (resp.status === 429 || (resp.status >= 500 && resp.status < 600)) {
+          throw new Error(`HTTP ${resp.status}`);
+        }
+        return resp;
+      } catch (err) {
+        lastError = err;
+        if (attempt === retries) break;
+        const jitter = Math.floor(Math.random() * 100);
+        const delay = backoffMs * Math.pow(2, attempt) + jitter;
+        await new Promise((r) => setTimeout(r, delay));
+        attempt += 1;
+      }
+    }
+    throw lastError instanceof Error ? lastError : new Error("Network error");
+  }
+
   async query(question: string, namespace: string = "default"): Promise<RAGResponse> {
     try {
-      const response = await fetch(`${this.baseUrl}/query`, {
+      const response = await this.fetchWithRetry(`${this.baseUrl}/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +107,7 @@ class RAGApiService {
 
   async checkHealth(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.baseUrl}/health`);
+      const response = await this.fetchWithRetry(`${this.baseUrl}/health`, {}, 1);
       return response.ok;
     } catch {
       return false;
@@ -88,7 +116,7 @@ class RAGApiService {
 
   async getStats() {
     try {
-      const response = await fetch(`${this.baseUrl}/stats`);
+      const response = await this.fetchWithRetry(`${this.baseUrl}/stats`);
       if (!response.ok) throw new Error('Failed to get stats');
       return await response.json();
     } catch (error) {
@@ -99,7 +127,7 @@ class RAGApiService {
 
   async detectDatabase(): Promise<DatabaseInfo | null> {
     try {
-      const response = await fetch(`${this.baseUrl}/detect-database`);
+      const response = await this.fetchWithRetry(`${this.baseUrl}/detect-database`);
       if (!response.ok) throw new Error('Failed to detect database');
       return await response.json();
     } catch (error) {

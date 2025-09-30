@@ -369,29 +369,40 @@ const Chatbot: React.FC = () => {
 
   // Check RAG API health and database info on mount
   useEffect(() => {
+    let mounted = true;
+    let intervalId: number | undefined;
+
     const checkRagHealth = async () => {
       try {
         const isHealthy = await ragApi.checkHealth();
+        if (!mounted) return;
         setIsRagConnected(isHealthy);
         setRagError(isHealthy ? null : 'RAG server is not available');
-        
+
         if (isHealthy) {
-          // Get database information
           const dbInfo = await ragApi.detectDatabase();
+          if (!mounted) return;
           setDatabaseInfo(dbInfo);
-          
-          // Set default namespace if available
           if (dbInfo && dbInfo.namespaces.length > 0) {
-            setSelectedNamespace(dbInfo.namespaces[0]);
+            setSelectedNamespace((prev) => prev || dbInfo.namespaces[0]);
           }
         }
       } catch (error) {
+        if (!mounted) return;
         setIsRagConnected(false);
         setRagError('Failed to connect to RAG server');
       }
     };
 
+    // initial check
     checkRagHealth();
+    // periodic polling for auto-recovery
+    intervalId = window.setInterval(checkRagHealth, 15000);
+
+    return () => {
+      mounted = false;
+      if (intervalId) window.clearInterval(intervalId);
+    };
   }, []);
 
   // initialize position
