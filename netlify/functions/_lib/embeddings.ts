@@ -31,10 +31,29 @@ async function fetchEmbeddingsFromHF(text: string): Promise<number[]> {
     return vectors;
 }
 
+function localHashEmbedding(text: string, dimension: number = 384): number[] {
+    const vec = new Array<number>(dimension).fill(0);
+    const normalized = text.toLowerCase();
+    for (let i = 0; i < normalized.length; i++) {
+        const code = normalized.charCodeAt(i);
+        const idx = code % dimension;
+        vec[idx] += 1;
+    }
+    // L2 normalize
+    const norm = Math.sqrt(vec.reduce((sum, v) => sum + v * v, 0)) || 1;
+    for (let i = 0; i < dimension; i++) vec[i] = vec[i] / norm;
+    return vec;
+}
+
 export function getTextEmbedder() {
     if (embedderPromise) return embedderPromise;
     embedderPromise = Promise.resolve(async (text: string) => {
-        return await fetchEmbeddingsFromHF(text);
+        try {
+            return await fetchEmbeddingsFromHF(text);
+        } catch (e) {
+            // Fallback to local hash-based embedding so the function never hard-fails
+            return localHashEmbedding(text);
+        }
     });
     return embedderPromise;
 }

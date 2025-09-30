@@ -40,22 +40,23 @@ export const handler: Handler = async (event) => {
 
 		let contexts: Array<{ text: string }> = [];
 		try {
-			const index = getPineconeIndex();
-			const queryRequest: any = {
-				topK: 5,
-				includeValues: false,
-				includeMetadata: true,
-				vector: queryEmbedding,
-			};
-			if (namespace) queryRequest.namespace = namespace;
+            const index = getPineconeIndex();
+            const queryRequest: any = {
+                topK: 5,
+                includeValues: false,
+                includeMetadata: true,
+                vector: queryEmbedding,
+            };
+            if (namespace) queryRequest.namespace = namespace;
 
-			const results = await index.query(queryRequest);
-			contexts = (results.matches || []).map((m: any) => ({
-				text: String(m.metadata?.text || m.metadata?.content || ""),
-			})).filter((c: any) => c.text.length > 0);
-		} catch (e: any) {
-			return jsonError(500, "Pinecone query failed", { detail: e?.message || String(e) });
-		}
+            const results = await index.query(queryRequest);
+            contexts = (results.matches || []).map((m: any) => ({
+                text: String(m.metadata?.text || m.metadata?.content || ""),
+            })).filter((c: any) => c.text.length > 0);
+        } catch (e: any) {
+            // Degrade gracefully: continue with empty context so user still gets an answer
+            contexts = [];
+        }
 
 		try {
 			const answer = await generateAnswer(userQuery, contexts);
