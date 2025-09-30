@@ -383,8 +383,9 @@ const Chatbot: React.FC = () => {
           const dbInfo = await ragApi.detectDatabase();
           if (!mounted) return;
           setDatabaseInfo(dbInfo);
-          if (dbInfo && dbInfo.namespaces.length > 0) {
-            setSelectedNamespace((prev) => prev || dbInfo.namespaces[0]);
+          const ns = Array.isArray(dbInfo?.namespaces) ? dbInfo!.namespaces : [];
+          if (ns.length > 0) {
+            setSelectedNamespace((prev) => prev || ns[0]);
           }
         }
       } catch (error) {
@@ -783,7 +784,7 @@ const Chatbot: React.FC = () => {
           {/* Composer */}
           <div className="px-3 sm:px-4 pb-3.5 sm:pb-5 pt-2.5 sm:pt-3.5 border-t border-slate-100 bg-white/90 backdrop-blur-sm rounded-b-3xl relative">
             {/* Namespace Selector */}
-            {databaseInfo && databaseInfo.namespaces.length > 1 && (
+            {databaseInfo && Array.isArray(databaseInfo.namespaces) && databaseInfo.namespaces.length > 1 && (
               <div className="mb-3">
                 <div className="text-xs text-slate-500 mb-2">Search in:</div>
                 <div className="flex gap-1 flex-wrap">

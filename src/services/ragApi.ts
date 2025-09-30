@@ -144,7 +144,20 @@ class RAGApiService {
     try {
       const response = await this.fetchWithRetry(`${this.baseUrl}/detect-database`);
       if (!response.ok) throw new Error('Failed to detect database');
-      return await response.json();
+      const raw = await this.parseJsonSafe(response);
+      const normalized: DatabaseInfo = {
+        connected: Boolean(raw?.connected),
+        indexName: String(raw?.indexName || ''),
+        totalVectors: Number(raw?.totalVectorCount ?? raw?.totalVectors ?? 0) || 0,
+        namespaces: Array.isArray(raw?.namespaces)
+          ? (raw.namespaces as string[])
+          : (raw && typeof raw.namespaces === 'object' && raw.namespaces !== null)
+            ? Object.keys(raw.namespaces as Record<string, unknown>)
+            : [],
+        dimension: Number(raw?.dimension || 0) || 0,
+        timestamp: String(raw?.timestamp || new Date().toISOString()),
+      };
+      return normalized;
     } catch (error) {
       console.error('Database detection error:', error);
       return null;
