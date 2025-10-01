@@ -28,7 +28,7 @@ export const DEFAULT_RAG_CONFIG: RAGConfig = {
 	generation: {
 		model: 'llama-3.1-8b-instant',
 		temperature: 0.1,
-		maxTokens: 500,
+		maxTokens: 800,
 		topP: 0.9,
 		topK: 40
 	},
