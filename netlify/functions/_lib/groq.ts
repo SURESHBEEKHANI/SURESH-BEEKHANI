@@ -9,20 +9,25 @@ import type {
 	LLMGenerationConfig,
 	RAGError 
 } from "./rag-types";
-import { formatContextsForLLM, createRAGError } from "./rag-utils";
+import { formatContextsForLLM, createRAGError, DEFAULT_RAG_CONFIG } from "./rag-utils";
 
 let modelSingleton: ChatGroq | null = null;
 
 function getModel(config: LLMGenerationConfig): ChatGroq {
 	if (modelSingleton) return modelSingleton;
-	const { GROQ_API_KEY } = getEnv();
-    modelSingleton = new ChatGroq({
-        apiKey: GROQ_API_KEY,
-        model: config.model,
-        temperature: config.temperature,
-        maxTokens: config.maxTokens
-    });
-	return modelSingleton;
+
+	try {
+		const { GROQ_API_KEY } = getEnv();
+		modelSingleton = new ChatGroq({
+			apiKey: GROQ_API_KEY,
+			model: config.model,
+			temperature: config.temperature,
+			maxTokens: config.maxTokens
+		});
+		return modelSingleton;
+	} catch (e: any) {
+		throw new Error(`Groq client failed to initialize: ${e.message}`);
+	}
 }
 
 /**
@@ -80,14 +85,9 @@ export async function generateAnswer(query: string, contexts: Array<{ text: stri
 		score: 0.8, // Default score for legacy calls
 		metadata: {}
 	}));
-	
-	const response = await generateRAGAnswer(query, ragContexts, {
-		embedding: { model: 'Xenova/bge-small-en-v1.5', dimension: 384, timeout: 10000 },
-		retrieval: { topK: 5, similarityThreshold: 0.7 },
-		generation: { model: 'llama-3.1-8b-instant', temperature: 0.1, maxTokens: 600 },
-		context: { maxContextLength: 3000, contextOverlap: 100, includeSource: false }
-	});
-	
+
+	const response = await generateRAGAnswer(query, ragContexts, DEFAULT_RAG_CONFIG);
+
 	return response.text;
 }
 

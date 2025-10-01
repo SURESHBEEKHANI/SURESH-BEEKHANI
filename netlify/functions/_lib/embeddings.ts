@@ -47,14 +47,19 @@ function localHashEmbedding(text: string, dimension: number = 384): number[] {
 
 export function getTextEmbedder() {
     if (embedderPromise) return embedderPromise;
+
     embedderPromise = Promise.resolve(async (text: string) => {
         try {
             return await fetchEmbeddingsFromHF(text);
-        } catch (e) {
-            // Fallback to local hash-based embedding so the function never hard-fails
+        } catch (e: any) {
+            console.warn(
+                `Failed to fetch embeddings from Hugging Face: ${e.message}. ` +
+                'Falling back to a lower-quality local embedding model. Please check your HUGGING_FACE_HUB_TOKEN.'
+            );
             return localHashEmbedding(text);
         }
     });
+
     return embedderPromise;
 }
 
