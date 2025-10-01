@@ -23,12 +23,19 @@ async function fetchEmbeddingsFromHF(text: string): Promise<number[]> {
         throw new Error(`HF Inference API error: ${response.status} ${detail}`);
     }
     const data = await response.json();
-    // API returns number[][] for a single input; pool by mean
-    if (!Array.isArray(data) || !Array.isArray(data[0])) {
-        throw new Error("Unexpected embeddings format from HF API");
+    // API can return different structures. Let's handle the common ones.
+    // It could be `[[...]]` (nested for one input) or `[...]` (flat).
+    if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data[0])) {
+            // This is number[][], e.g. [[...]] or [[...], ...]. Return first embedding.
+            return data[0];
+        }
+        if (typeof data[0] === 'number') {
+            // This is number[], e.g. [...]. Return as is.
+            return data;
+        }
     }
-    const vectors: number[] = data[0];
-    return vectors;
+    throw new Error(`Unexpected embeddings format from HF API: ${JSON.stringify(data).substring(0, 200)}`);
 }
 
 function localHashEmbedding(text: string, dimension: number = 384): number[] {
