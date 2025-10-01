@@ -118,9 +118,16 @@ export const handler: Handler = async (event) => {
 				source: match.metadata?.source || 'pinecone'
 			}));
 		} catch (e: any) {
-			// Log error but continue with empty context for graceful degradation
-			console.warn(`Pinecone retrieval failed: ${e.message}`);
-			rawContexts = [];
+			const error = createRAGError(
+				'PINECONE_RETRIEVAL_FAILED',
+				`Failed to retrieve contexts from Pinecone: ${e.message}`,
+				'retrieval',
+				{ originalError: e.message }
+			);
+			return jsonError(500, "Pinecone retrieval failed", { 
+				detail: error,
+				requestId 
+			});
 		}
 
 		pipelineState = updatePipelineState(pipelineState, 'context_processing', { contexts: rawContexts });
