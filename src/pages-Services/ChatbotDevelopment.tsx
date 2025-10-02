@@ -539,10 +539,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							<img src="/image/skills_img/huggingface.png" alt="HuggingFace" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2" />
 							<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm">HuggingFace</span>
 						</div>
-						<div className="flex flex-col items-center">
-							<img src="/image/skills_img/pinecone.png" alt="Pinecone" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2" />
-							<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm">Pinecone</span>
-						</div>
+
 						<div className="flex flex-col items-center">
 							<img src="/image/skills_img/fastapi.png" alt="FastAPI" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2" />
 							<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm">FastAPI</span>

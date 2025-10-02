@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ragApi, type RAGResponse, type DatabaseInfo } from '../services/ragApi';
+import { chatService, type ChatResponse } from '../services/chatService';
 
 type Pos = { left: number; top: number };
 type Message = { 
@@ -277,10 +277,7 @@ const Chatbot: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [isRagConnected, setIsRagConnected] = useState(false);
-  const [ragError, setRagError] = useState<string | null>(null);
-  const [databaseInfo, setDatabaseInfo] = useState<DatabaseInfo | null>(null);
-  const [selectedNamespace, setSelectedNamespace] = useState<string>("default");
+  const [isOnline, setIsOnline] = useState(true);
 
   const quickOptions = useMemo(
     () => [],
@@ -289,20 +286,13 @@ const Chatbot: React.FC = () => {
 
   const floatingActions = useMemo<QuickAction[]>(() => [
     {
-      id: 'rag-status',
-      icon: isRagConnected ? '🤖' : '⚠️',
-      label: isRagConnected ? 'AI Connected' : 'AI Disconnected',
-      action: async () => {
-        try {
-          const isHealthy = await ragApi.checkHealth();
-          setIsRagConnected(isHealthy);
-          setRagError(isHealthy ? null : 'RAG server is not available');
-        } catch (error) {
-          setIsRagConnected(false);
-          setRagError('Failed to connect to RAG server');
-        }
+      id: 'status',
+      icon: '🤖',
+      label: 'Chat Assistant',
+      action: () => {
+        setIsOnline(true);
       },
-      color: isRagConnected ? 'hover:bg-green-50 text-green-600' : 'hover:bg-red-50 text-red-600'
+      color: 'hover:bg-green-50 text-green-600'
     },
     {
       id: 'search',
@@ -340,7 +330,7 @@ const Chatbot: React.FC = () => {
       action: () => setOpen(false),
       color: 'hover:bg-gray-50 text-gray-600'
     }
-  ], [soundEnabled, showSearch, isRagConnected]);
+  ], [soundEnabled, showSearch]);
 
   const smartSuggestions = useMemo(() => [
     'Tell me about your AI projects',
@@ -367,43 +357,9 @@ const Chatbot: React.FC = () => {
 
   /* ------------------ Effects ------------------ */
 
-  // Check RAG API health and database info on mount
+  // Initialize chat status
   useEffect(() => {
-    let mounted = true;
-    let intervalId: number | undefined;
-
-    const checkRagHealth = async () => {
-      try {
-        const isHealthy = await ragApi.checkHealth();
-        if (!mounted) return;
-        setIsRagConnected(isHealthy);
-        setRagError(isHealthy ? null : 'RAG server is not available');
-
-        if (isHealthy) {
-          const dbInfo = await ragApi.detectDatabase();
-          if (!mounted) return;
-          setDatabaseInfo(dbInfo);
-          const ns = Array.isArray(dbInfo?.namespaces) ? dbInfo!.namespaces : [];
-          if (ns.length > 0) {
-            setSelectedNamespace((prev) => prev || ns[0]);
-          }
-        }
-      } catch (error) {
-        if (!mounted) return;
-        setIsRagConnected(false);
-        setRagError('Failed to connect to RAG server');
-      }
-    };
-
-    // initial check
-    checkRagHealth();
-    // periodic polling for auto-recovery
-    intervalId = window.setInterval(checkRagHealth, 15000);
-
-    return () => {
-      mounted = false;
-      if (intervalId) window.clearInterval(intervalId);
-    };
+    setIsOnline(true);
   }, []);
 
   // initialize position
@@ -594,11 +550,10 @@ const Chatbot: React.FC = () => {
       }, 500);
 
       setIsTyping(true);
-      setRagError(null);
       
-      try {
-        // Call RAG API with selected namespace
-        const response: RAGResponse = await ragApi.query(text, selectedNamespace);
+      // Simulate typing delay
+      setTimeout(() => {
+        const response = chatService.getResponse(text);
         
         const bid = Date.now() + 1;
         setMessages((m) => [
@@ -621,57 +576,9 @@ const Chatbot: React.FC = () => {
         
         setIsTyping(false);
         playSound('receive');
-        
-      } catch (error) {
-        console.error('RAG API Error:', error);
-        
-        // Fallback response when RAG is not available or query failed
-        const bid = Date.now() + 1;
-        let errorMessage = "I encountered an error processing your request. Please try again.";
-        if (error instanceof Error) {
-          errorMessage = error.message;
-        }
-
-        // Check for detailed error from API response
-        if (typeof error === 'object' && error !== null && 'response' in error) {
-          const response = (error as any).response;
-          if (response?.data?.error?.message) {
-            errorMessage = response.data.error.message;
-          } else if (response?.data?.message) {
-            errorMessage = response.data.message;
-          } else if (response?.data?.detail?.message) {
-            errorMessage = response.data.detail.message;
-          }
-        }
-
-        const fallbackResponse = isRagConnected 
-          ? errorMessage
-          : "I'm currently unable to access my knowledge base. Please make sure the RAG server is running and try again.";
-        
-        setMessages((m) => [
-          ...m,
-          {
-            id: bid,
-            text: fallbackResponse,
-            from: 'bot',
-            time: formatTime(),
-            reactions: []
-          },
-        ]);
-        
-        // Update user message status to delivered
-        setMessages((m) => 
-          m.map(msg => 
-            msg.id === id ? { ...msg, status: 'delivered' as const } : msg
-          )
-        );
-        
-        setIsTyping(false);
-        setRagError(error instanceof Error ? error.message : 'Unknown error');
-        playSound('receive');
-      }
+      }, 1000 + Math.random() * 1000);
     },
-    [playSound, isRagConnected]
+    [playSound]
   );
 
   const handleReaction = useCallback((messageId: number, reaction: string) => {
@@ -729,11 +636,9 @@ const Chatbot: React.FC = () => {
               <div className="min-w-0 flex-1">
                 <div className="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight truncate">Suresh AI Assistant</div>
                 <div className="flex items-center gap-1.5">
-                  <div className={`w-1.5 h-1.5 rounded-full ${
-                    isRagConnected ? 'bg-green-400' : 'bg-red-400'
-                  }`}></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
                   <div className="text-[11px] text-slate-500 truncate">
-                    {isRagConnected ? 'AI Ready • Usually replies instantly' : 'AI Offline • Limited responses'}
+                    AI Assistant • Usually replies instantly
                   </div>
                 </div>
                 {/* Database stats hidden intentionally */}
@@ -777,15 +682,7 @@ const Chatbot: React.FC = () => {
                   </div>
                 </div>
               )}
-              {ragError && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                    <div className="text-xs text-red-600 font-medium">Connection Error</div>
-                  </div>
-                  <div className="text-xs text-red-500 mt-1">{ragError}</div>
-                </div>
-              )}
+
               {messages.map((m) => (
                 <MessageBubble 
                   key={m.id} 
@@ -800,27 +697,7 @@ const Chatbot: React.FC = () => {
 
           {/* Composer */}
           <div className="px-3 sm:px-4 pb-3.5 sm:pb-5 pt-2.5 sm:pt-3.5 border-t border-slate-100 bg-white/90 backdrop-blur-sm rounded-b-3xl relative">
-            {/* Namespace Selector */}
-            {databaseInfo && Array.isArray(databaseInfo.namespaces) && databaseInfo.namespaces.length > 1 && (
-              <div className="mb-3">
-                <div className="text-xs text-slate-500 mb-2">Search in:</div>
-                <div className="flex gap-1 flex-wrap">
-                  {databaseInfo.namespaces.map((namespace) => (
-                    <button
-                      key={namespace}
-                      onClick={() => setSelectedNamespace(namespace)}
-                      className={`text-xs px-3 py-1 rounded-full transition-all duration-200 ${
-                        selectedNamespace === namespace
-                          ? 'bg-blue-100 text-blue-700 border border-blue-200'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      {namespace}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+
             <QuickReplies options={quickOptions} onClick={sendMessage} />
             <form
               onSubmit={(e) => {

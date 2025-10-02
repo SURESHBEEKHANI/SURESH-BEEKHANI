@@ -110,7 +110,6 @@ const platforms = [
   { name: "OpenAI", image: "/image/skills_img/openai.jpg" },
   { name: "LangChain", image: "/image/skills_img/langchain.png" },
   { name: "HuggingFace", image: "/image/skills_img/huggingface.png" },
-  { name: "Pinecone", image: "/image/skills_img/pinecone.png" },
   { name: "Gemini", image: "/image/skills_img/Gemini.png" },
 ];
 
