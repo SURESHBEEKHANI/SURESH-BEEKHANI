@@ -13,7 +13,9 @@
     "deploy:frontend": "npm run build:prod",
     "ingest": "node scripts/ingest-data.js",
     "ingest:data": "node scripts/ingest-data.js",
-    "test:functions": "node scripts/test-functions.js"
+    "test:functions": "node scripts/test-functions.js",
+    "dev:full": "node scripts/dev-server.js",
+    "serve": "npm run build && node scripts/dev-server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
