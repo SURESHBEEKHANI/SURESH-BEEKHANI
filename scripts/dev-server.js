@@ -72,8 +72,8 @@ app.all('/.netlify/functions/test-chat', async (req, res) => {
     }
 });
 
-// Catch-all handler for SPA routing
-app.get('*', (req, res) => {
+// Catch-all handler for SPA routing - use middleware instead of route
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 

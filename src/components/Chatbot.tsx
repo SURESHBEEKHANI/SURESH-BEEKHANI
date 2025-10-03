@@ -553,7 +553,7 @@ const Chatbot: React.FC = () => {
         let contextUsed = false;
 
         try {
-          const response = await fetch('/.netlify/functions/test-chat', {
+          const response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -570,12 +570,12 @@ const Chatbot: React.FC = () => {
           }
         } catch (apiError) {
           console.log('Netlify function not available, using local fallback');
-          
+
           // Local fallback responses (same logic as the Netlify function)
           const lowerMessage = text.toLowerCase();
-          
+
           if (lowerMessage.includes('year') || lowerMessage.includes('experience') || lowerMessage.includes('how long')) {
-            botResponse = "Suresh has over 5+ years of experience in AI and machine learning development. He's worked across multiple industries including healthcare, fintech, legal tech, and e-commerce, delivering successful AI solutions.";
+            botResponse = "Suresh has over 4+ years of experience in AI and machine learning development. He's worked across multiple industries including healthcare, fintech, legal tech, and e-commerce, delivering successful AI solutions.";
           } else if (lowerMessage.includes('portfolio') || lowerMessage.includes('project') || lowerMessage.includes('work')) {
             botResponse = "Suresh has worked on diverse AI projects including healthcare diagnostic tools, legal document analysis systems, e-commerce recommendation engines, and financial risk assessment models. Each project showcases his expertise in custom AI solutions.";
           } else if (lowerMessage.includes('service') || lowerMessage.includes('help') || lowerMessage.includes('offer') || lowerMessage.includes('machine learning')) {
@@ -593,7 +593,7 @@ const Chatbot: React.FC = () => {
           } else {
             botResponse = "Thanks for your message! I'm Suresh's AI Assistant. Feel free to ask about his AI services, projects, experience, or how to get in touch. I'm here to help you learn more about his expertise in artificial intelligence and machine learning.";
           }
-          
+
           contextUsed = true;
         }
 
@@ -698,7 +698,7 @@ const Chatbot: React.FC = () => {
                 <div className="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight truncate"> Suresh AI Assistant </div>            <div className="flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
                   <div className="text-[11px] text-slate-500 truncate">
-                     Usually replies instantly
+                    Usually replies instantly
                   </div>
 
                 </div>
