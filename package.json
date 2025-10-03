@@ -11,8 +11,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy:frontend": "npm run build:prod",
-    "ingest": "node data-ingestion/scripts/batch-ingest.js",
-    "ingest:single": "node data-ingestion/scripts/batch-ingest.js"
+    "ingest": "node scripts/ingest-data.js",
+    "ingest:data": "node scripts/ingest-data.js",
+    "test:functions": "node scripts/test-functions.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

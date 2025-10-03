@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { chatService, type ChatResponse } from '../services/chatService';
 
 type Pos = { left: number; top: number };
 type Message = {
@@ -66,8 +65,8 @@ const MessageBubble: React.FC<{
     <div className="flex flex-col max-w-[85%] sm:max-w-[80%]">
       <div
         className={`px-3.5 py-2.5 max-w-full shadow-md break-words relative transition-all duration-200 hover:shadow-lg group-hover:scale-[1.01] ${m.from === 'user'
-            ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl rounded-br-md'
-            : 'bg-white/95 backdrop-blur-sm text-slate-800 rounded-2xl rounded-bl-md border border-slate-200 hover:border-slate-300'
+          ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl rounded-br-md'
+          : 'bg-white/95 backdrop-blur-sm text-slate-800 rounded-2xl rounded-bl-md border border-slate-200 hover:border-slate-300'
           }`}
         role="article"
         aria-label={`${m.from === 'user' ? 'You' : 'Assistant'} message`}
@@ -185,8 +184,8 @@ const MessageReactions: React.FC<{ messageId: number; reactions: string[]; onRea
           key={emoji}
           onClick={() => onReaction(emoji)}
           className={`text-xs px-2 py-1 rounded-full transition-all duration-200 hover:scale-110 ${reactions.includes(emoji)
-              ? 'bg-blue-100 text-blue-600'
-              : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+            ? 'bg-blue-100 text-blue-600'
+            : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
             }`}
         >
           {emoji}
@@ -549,25 +548,33 @@ const Chatbot: React.FC = () => {
       setIsTyping(true);
 
       try {
-        // Get AI response with RAG (always enabled)
-        const response = await chatService.getResponse(text, {
-          useVectorSearch: true,
-          topK: 5,
-          temperature: 0.7,
-          maxTokens: 1000
+        // Call the test chat API first (switch to 'chat' once RAG is set up)
+        const response = await fetch('/.netlify/functions/test-chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: text }),
         });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const botResponse = data.response || "I apologize, but I encountered an issue generating a response. Please try again.";
 
         const bid = Date.now() + 1;
         setMessages((m) => [
           ...m,
           {
             id: bid,
-            text: response.answer,
+            text: botResponse,
             from: 'bot',
             time: formatTime(),
             reactions: [],
-            vectorSearchUsed: response.vectorSearchUsed,
-            contextLength: response.contextLength
+            vectorSearchUsed: data.contextUsed || false,
+            contextLength: data.contextUsed ? 1 : 0
           },
         ]);
 
@@ -589,7 +596,7 @@ const Chatbot: React.FC = () => {
           ...m,
           {
             id: bid,
-            text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Suresh directly through the contact form.",
+            text: "I apologize, but I'm having trouble connecting to my knowledge base right now. Please try again in a moment, or feel free to contact Suresh directly through the contact form.",
             from: 'bot',
             time: formatTime(),
             reactions: []
@@ -755,8 +762,8 @@ const Chatbot: React.FC = () => {
                 type="submit"
                 disabled={!input.trim() || isTyping}
                 className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 transform ${!input.trim() || isTyping
-                    ? 'bg-slate-300 cursor-not-allowed scale-95'
-                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl'
+                  ? 'bg-slate-300 cursor-not-allowed scale-95'
+                  : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl'
                   } text-white`}
                 aria-label="Send message"
               >
@@ -799,8 +806,8 @@ const Chatbot: React.FC = () => {
             }
           }}
           className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 relative overflow-hidden ${open
-              ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white'
-              : 'bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 text-white hover:shadow-3xl'
+            ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white'
+            : 'bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 text-white hover:shadow-3xl'
             }`}
           aria-label={open ? "Close chat" : "Open chat"}
         >
