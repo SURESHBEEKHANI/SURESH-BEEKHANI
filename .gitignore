@@ -64,4 +64,3 @@ node_modules/@huggingface/transformers/.cache/
 
 # RAG pipeline artifacts
 src/rag-pipeline/ingestion-metadata.json
-src/data/*.pdf

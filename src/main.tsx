@@ -2,19 +2,21 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-createRoot(document.getElementById("root")!).render(<App />);
+const root = document.getElementById("root");
+if (!root) throw new Error('Root element not found');
 
-// Lightweight scroll-reveal for elements with .reveal
+createRoot(root).render(<App />);
+
+// Optimized scroll-reveal for elements with .reveal
 const setupScrollReveal = () => {
-  if (typeof window === 'undefined') return;
-  const elements = Array.from(document.querySelectorAll('.reveal')) as HTMLElement[];
+  const elements = document.querySelectorAll('.reveal');
   if (elements.length === 0) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          (entry.target as HTMLElement).classList.add('reveal--visible');
+          entry.target.classList.add('reveal--visible');
           observer.unobserve(entry.target);
         }
       });
@@ -25,5 +27,9 @@ const setupScrollReveal = () => {
   elements.forEach((el) => observer.observe(el));
 };
 
-// Delay until first paint
-window.requestAnimationFrame(() => setupScrollReveal());
+// Setup scroll reveal after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupScrollReveal);
+} else {
+  requestAnimationFrame(setupScrollReveal);
+}

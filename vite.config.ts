@@ -25,10 +25,14 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
+          router: ['react-router-dom'],
+          query: ['@tanstack/react-query'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-tooltip', '@radix-ui/react-toast'],
+          langchain: ['@langchain/core', '@langchain/groq', 'langchain']
         }
       }
-    }
+    },
+    chunkSizeWarningLimit: 1000
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode)

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy, Component, ReactNode, ErrorInfo } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,7 +10,7 @@ import NotFound from "./pages-Services/NotFound";
 import Chatbot from "@/components/Chatbot";
 import ChatbotBoundary from "@/components/ChatbotBoundary";
 
-// Lazy load components for better performance
+// Lazy load components for better performance - Industry Pages
 const HealthTechAI = lazy(() => import("./pages-Industries/HealthTechAI"));
 const EdTechAI = lazy(() => import("./pages-Industries/EdTechAI"));
 const FinTechAI = lazy(() => import("./pages-Industries/FinTechAI"));
@@ -19,6 +19,8 @@ const DiagnosticsAI = lazy(() => import("./pages-Industries/DiagnosticsAI"));
 const RetailAI = lazy(() => import("./pages-Industries/RetailAI"));
 const ECommerceAI = lazy(() => import("./pages-Industries/E-Commerce"));
 const HIPAACompliance = lazy(() => import("./pages-Industries/HIPAACompliance"));
+
+// Service Pages
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
 const PredictiveModelling = lazy(() => import("./pages-Services/PredictiveModelling"));
 const ChatGPTIntegrations = lazy(() => import("./pages-Services/ChatGPTIntegrations"));
@@ -26,6 +28,8 @@ const NaturalLanguageProcessing = lazy(() => import("./pages-Services/NaturalLan
 const MachineLearning = lazy(() => import("./pages-Services/MachineLearning"));
 const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
+
+// Portfolio Pages
 const PortfolioPage = lazy(() => import("./Pages-Portfolio/Portfolio"));
 const AILaw = lazy(() => import("./Pages-Portfolio/ai-driven-law-gpt"));
 const AIImageGen = lazy(() => import("./Pages-Portfolio/ai-powered-image-generator"));
@@ -33,8 +37,6 @@ const SoMeCreator = lazy(() => import("./Pages-Portfolio/social-media-content-cr
 const PatDiag = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system"));
 const LegalAI = lazy(() => import("./Pages-Portfolio/ai-legal-contract-analyzer"));
 const PersonalizedTravelAssistant = lazy(() => import("./Pages-Portfolio/personalized-travel-assistant"));
-
-// New Portfolio Components
 const EarlyDiseaseDetectionAI = lazy(() => import("./Pages-Portfolio/EarlyDiseaseDetectionAI"));
 const RealTimeFraudDetection = lazy(() => import("./Pages-Portfolio/RealTimeFraudDetection"));
 const PersonalizedLearningAI = lazy(() => import("./Pages-Portfolio/PersonalizedLearningAI"));
@@ -44,12 +46,14 @@ const ProductRecommendationAI = lazy(() => import("./Pages-Portfolio/ProductReco
 const RadiologyReportGenerator = lazy(() => import("./Pages-Portfolio/RadiologyReportGenerator"));
 const FederatedPrivacyCompliance = lazy(() => import("./Pages-Portfolio/FederatedPrivacyCompliance"));
 
+// RAG Chat Page - REMOVED
+
 // Error Boundary Component
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
+class ErrorBoundary extends Component<
+  { children: ReactNode },
   { hasError: boolean }
 > {
-  constructor(props: { children: React.ReactNode }) {
+  constructor(props: { children: ReactNode }) {
     super(props);
     this.state = { hasError: false };
   }
@@ -58,7 +62,7 @@ class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
 
@@ -136,6 +140,8 @@ const App = () => (
               <Route path="/machine-learning" element={<MachineLearning />} />
               <Route path="/computer-vision" element={<ComputerVisionPro />} />
               <Route path="/ai-development" element={<AIDevelopment />} />
+              
+              {/* RAG Chat Page - REMOVED */}
               
               {/* Portfolio and Case Study Routes */}
               <Route path="/portfolio" element={<PortfolioPage />} />

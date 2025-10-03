@@ -2,16 +2,18 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { chatService, type ChatResponse } from '../services/chatService';
 
 type Pos = { left: number; top: number };
-type Message = { 
-  id: number; 
-  text: string; 
-  from: 'user' | 'bot'; 
+type Message = {
+  id: number;
+  text: string;
+  from: 'user' | 'bot';
   time?: string;
   status?: 'sending' | 'sent' | 'delivered' | 'read';
   isTyping?: boolean;
   reactions?: string[];
   isLiked?: boolean;
   isPinned?: boolean;
+  vectorSearchUsed?: boolean;
+  contextLength?: number;
 };
 
 type QuickAction = {
@@ -36,7 +38,7 @@ const formatDate = (d = new Date()) => {
   const today = new Date();
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
-  
+
   if (d.toDateString() === today.toDateString()) {
     return 'Today';
   } else if (d.toDateString() === yesterday.toDateString()) {
@@ -48,9 +50,9 @@ const formatDate = (d = new Date()) => {
 
 /* ------------------ Subcomponents ------------------ */
 
-const MessageBubble: React.FC<{ 
-  m: Message; 
-  reactions?: string[]; 
+const MessageBubble: React.FC<{
+  m: Message;
+  reactions?: string[];
   onReaction?: (reaction: string) => void;
 }> = ({ m, reactions = [], onReaction }) => (
   <div className={`flex ${m.from === 'user' ? 'justify-end' : 'justify-start'} group animate-messageSlideIn`}>
@@ -63,22 +65,23 @@ const MessageBubble: React.FC<{
     )}
     <div className="flex flex-col max-w-[85%] sm:max-w-[80%]">
       <div
-        className={`px-3.5 py-2.5 max-w-full shadow-md break-words relative transition-all duration-200 hover:shadow-lg group-hover:scale-[1.01] ${
-          m.from === 'user'
+        className={`px-3.5 py-2.5 max-w-full shadow-md break-words relative transition-all duration-200 hover:shadow-lg group-hover:scale-[1.01] ${m.from === 'user'
             ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl rounded-br-md'
             : 'bg-white/95 backdrop-blur-sm text-slate-800 rounded-2xl rounded-bl-md border border-slate-200 hover:border-slate-300'
-        }`}
+          }`}
         role="article"
         aria-label={`${m.from === 'user' ? 'You' : 'Assistant'} message`}
       >
         <div className="leading-relaxed whitespace-pre-wrap text-[13px]">{m.text}</div>
         <div className="flex items-center justify-between mt-2">
-          <div
-            className={`text-[11px] ${
-              m.from === 'user' ? 'text-blue-100/90' : 'text-slate-400'
-            }`}
-          >
-            {m.time}
+          <div className="flex items-center gap-2">
+            <div
+              className={`text-[11px] ${m.from === 'user' ? 'text-blue-100/90' : 'text-slate-400'
+                }`}
+            >
+              {m.time}
+            </div>
+
           </div>
           {m.from === 'user' && m.status && (
             <div className="ml-2">
@@ -100,10 +103,10 @@ const MessageBubble: React.FC<{
       </div>
       {reactions.length > 0 && onReaction && (
         <div className="mt-1">
-          <MessageReactions 
-            messageId={m.id} 
-            reactions={reactions} 
-            onReaction={onReaction} 
+          <MessageReactions
+            messageId={m.id}
+            reactions={reactions}
+            onReaction={onReaction}
           />
         </div>
       )}
@@ -117,11 +120,11 @@ const TypingIndicator = () => (
     aria-live="polite"
     aria-label="Assistant is typing"
   >
-      <div className="w-8 mr-3 flex-shrink-0">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg ring-2 ring-white">
-          S
-        </div>
+    <div className="w-8 mr-3 flex-shrink-0">
+      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg ring-2 ring-white">
+        S
       </div>
+    </div>
     <div className="bg-white text-slate-800 rounded-2xl rounded-bl-md px-3 py-2.5 max-w-[60%] shadow-md border border-slate-200">
       <div className="flex gap-1 items-center">
         <span className="text-slate-500 text-[11px] mr-2">typing</span>
@@ -129,7 +132,7 @@ const TypingIndicator = () => (
           <span
             key={delay}
             className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"
-            style={{ 
+            style={{
               animationDelay: `${delay}ms`,
               animationDuration: '1.2s'
             }}
@@ -168,24 +171,23 @@ const DateSeparator: React.FC<{ date: string }> = ({ date }) => (
   </div>
 );
 
-const MessageReactions: React.FC<{ messageId: number; reactions: string[]; onReaction: (reaction: string) => void }> = ({ 
-  messageId, 
-  reactions, 
-  onReaction 
+const MessageReactions: React.FC<{ messageId: number; reactions: string[]; onReaction: (reaction: string) => void }> = ({
+  messageId,
+  reactions,
+  onReaction
 }) => {
   const reactionEmojis = ['👍', '❤️', '😂', '😮', '😢', '😡'];
-  
+
   return (
     <div className="flex gap-1 mt-2">
       {reactionEmojis.map((emoji) => (
         <button
           key={emoji}
           onClick={() => onReaction(emoji)}
-          className={`text-xs px-2 py-1 rounded-full transition-all duration-200 hover:scale-110 ${
-            reactions.includes(emoji)
+          className={`text-xs px-2 py-1 rounded-full transition-all duration-200 hover:scale-110 ${reactions.includes(emoji)
               ? 'bg-blue-100 text-blue-600'
               : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-          }`}
+            }`}
         >
           {emoji}
         </button>
@@ -194,10 +196,10 @@ const MessageReactions: React.FC<{ messageId: number; reactions: string[]; onRea
   );
 };
 
-const FloatingActionMenu: React.FC<{ 
-  isOpen: boolean; 
-  onClose: () => void; 
-  actions: QuickAction[] 
+const FloatingActionMenu: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  actions: QuickAction[]
 }> = ({ isOpen, onClose, actions }) => {
   if (!isOpen) return null;
 
@@ -221,9 +223,9 @@ const FloatingActionMenu: React.FC<{
   );
 };
 
-const TypingSuggestions: React.FC<{ 
-  suggestions: string[]; 
-  onSelect: (suggestion: string) => void 
+const TypingSuggestions: React.FC<{
+  suggestions: string[];
+  onSelect: (suggestion: string) => void
 }> = ({ suggestions, onSelect }) => {
   if (suggestions.length === 0) return null;
 
@@ -250,6 +252,7 @@ const TypingSuggestions: React.FC<{
 /* ------------------ Main Chatbot ------------------ */
 
 const Chatbot: React.FC = () => {
+  console.log('Chatbot component is rendering'); // Debug log
   const launcherRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -274,10 +277,10 @@ const Chatbot: React.FC = () => {
   const [showFloatingMenu, setShowFloatingMenu] = useState(false);
   const [messageReactions, setMessageReactions] = useState<Record<number, string[]>>({});
   const [typingSuggestions, setTypingSuggestions] = useState<string[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showSearch, setShowSearch] = useState(false);
+
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isOnline, setIsOnline] = useState(true);
+
 
   const quickOptions = useMemo(
     () => [],
@@ -288,19 +291,13 @@ const Chatbot: React.FC = () => {
     {
       id: 'status',
       icon: '🤖',
-      label: 'Chat Assistant',
+      label: 'Suresh AI Assistant',
       action: () => {
         setIsOnline(true);
       },
       color: 'hover:bg-green-50 text-green-600'
     },
-    {
-      id: 'search',
-      icon: '🔍',
-      label: 'Search Messages',
-      action: () => setShowSearch(!showSearch),
-      color: 'hover:bg-blue-50 text-blue-600'
-    },
+
     {
       id: 'sound',
       icon: soundEnabled ? '🔊' : '🔇',
@@ -315,7 +312,7 @@ const Chatbot: React.FC = () => {
       action: () => {
         setMessages([{
           id: 1,
-          text: "👋 Hi! I'm Suresh's AI assistant. How can I help you today?",
+          text: "👋 Hi! I'm Suresh AI Assistant. How can I help you today?",
           from: 'bot',
           time: formatTime(),
         }]);
@@ -330,7 +327,7 @@ const Chatbot: React.FC = () => {
       action: () => setOpen(false),
       color: 'hover:bg-gray-50 text-gray-600'
     }
-  ], [soundEnabled, showSearch]);
+  ], [soundEnabled]);
 
   const smartSuggestions = useMemo(() => [
     'Tell me about your AI projects',
@@ -368,7 +365,7 @@ const Chatbot: React.FC = () => {
     if (saved) {
       try {
         setPos(JSON.parse(saved) as Pos);
-      } catch {}
+      } catch { }
     } else {
       setPos({
         left: window.innerWidth - LAUNCHER_SIZE - 80,
@@ -432,7 +429,7 @@ const Chatbot: React.FC = () => {
   // Smart typing suggestions
   useEffect(() => {
     if (input.length > 2) {
-      const filtered = smartSuggestions.filter(s => 
+      const filtered = smartSuggestions.filter(s =>
         s.toLowerCase().includes(input.toLowerCase())
       );
       setTypingSuggestions(filtered.slice(0, 3));
@@ -444,21 +441,21 @@ const Chatbot: React.FC = () => {
   // Sound effects
   const playSound = useCallback((type: 'send' | 'receive' | 'notification') => {
     if (!soundEnabled) return;
-    
+
     // Create audio context for sound effects
     const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    
+
     const frequencies = {
       send: [800, 1000],
       receive: [600, 800, 1000],
       notification: [1000, 1200, 800]
     };
-    
+
     const freq = frequencies[type];
     oscillator.frequency.setValueAtTime(freq[0], audioContext.currentTime);
     if (freq.length > 1) {
@@ -467,10 +464,10 @@ const Chatbot: React.FC = () => {
     if (freq.length > 2) {
       oscillator.frequency.setValueAtTime(freq[2], audioContext.currentTime + 0.2);
     }
-    
+
     gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-    
+
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.3);
   }, [soundEnabled]);
@@ -504,7 +501,7 @@ const Chatbot: React.FC = () => {
     (e: React.PointerEvent) => {
       try {
         (e.target as Element).releasePointerCapture(e.pointerId);
-      } catch {}
+      } catch { }
       setDragging(false);
 
       // snap horizontally with a slightly larger right offset to keep icon away from edge
@@ -523,16 +520,16 @@ const Chatbot: React.FC = () => {
       if (!text.trim()) return;
       const id = Date.now();
       const time = formatTime();
-      
+
       // Play send sound
       playSound('send');
-      
+
       // Add user message with sending status
-      setMessages((m) => [...m, { 
-        id, 
-        text, 
-        from: 'user', 
-        time, 
+      setMessages((m) => [...m, {
+        id,
+        text,
+        from: 'user',
+        time,
         status: 'sending',
         reactions: []
       }]);
@@ -542,19 +539,24 @@ const Chatbot: React.FC = () => {
 
       // Update status to sent
       setTimeout(() => {
-        setMessages((m) => 
-          m.map(msg => 
+        setMessages((m) =>
+          m.map(msg =>
             msg.id === id ? { ...msg, status: 'sent' as const } : msg
           )
         );
       }, 500);
 
       setIsTyping(true);
-      
-      // Simulate typing delay
-      setTimeout(() => {
-        const response = chatService.getResponse(text);
-        
+
+      try {
+        // Get AI response with RAG (always enabled)
+        const response = await chatService.getResponse(text, {
+          useVectorSearch: true,
+          topK: 5,
+          temperature: 0.7,
+          maxTokens: 1000
+        });
+
         const bid = Date.now() + 1;
         setMessages((m) => [
           ...m,
@@ -563,20 +565,39 @@ const Chatbot: React.FC = () => {
             text: response.answer,
             from: 'bot',
             time: formatTime(),
-            reactions: []
+            reactions: [],
+            vectorSearchUsed: response.vectorSearchUsed,
+            contextLength: response.contextLength
           },
         ]);
-        
+
         // Update user message status to delivered
-        setMessages((m) => 
-          m.map(msg => 
+        setMessages((m) =>
+          m.map(msg =>
             msg.id === id ? { ...msg, status: 'delivered' as const } : msg
           )
         );
-        
+
         setIsTyping(false);
         playSound('receive');
-      }, 1000 + Math.random() * 1000);
+      } catch (error) {
+        console.error('Error getting AI response:', error);
+
+        // Fallback error message
+        const bid = Date.now() + 1;
+        setMessages((m) => [
+          ...m,
+          {
+            id: bid,
+            text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Suresh directly through the contact form.",
+            from: 'bot',
+            time: formatTime(),
+            reactions: []
+          },
+        ]);
+
+        setIsTyping(false);
+      }
     },
     [playSound]
   );
@@ -587,7 +608,7 @@ const Chatbot: React.FC = () => {
       const updated = current.includes(reaction)
         ? current.filter(r => r !== reaction)
         : [...current, reaction];
-      
+
       return {
         ...prev,
         [messageId]: updated
@@ -613,17 +634,17 @@ const Chatbot: React.FC = () => {
             position: 'fixed',
             width: Math.min(PANEL_WIDTH, window.innerWidth - 12),
             height: Math.min(PANEL_HEIGHT, window.innerHeight - 24),
-            left: window.innerWidth < 640 
-              ? 8 
+            left: window.innerWidth < 640
+              ? 8
               : Math.min(
-                  Math.max(
-                    pos.left + LAUNCHER_SIZE / 2 - Math.min(PANEL_WIDTH, window.innerWidth - 32) / 2,
-                    16
-                  ),
-                  window.innerWidth - Math.min(PANEL_WIDTH, window.innerWidth - 24) - 12
+                Math.max(
+                  pos.left + LAUNCHER_SIZE / 2 - Math.min(PANEL_WIDTH, window.innerWidth - 32) / 2,
+                  16
                 ),
-            top: window.innerWidth < 640 
-              ? 8 
+                window.innerWidth - Math.min(PANEL_WIDTH, window.innerWidth - 24) - 12
+              ),
+            top: window.innerWidth < 640
+              ? 8
               : Math.max(12, pos.top - Math.min(PANEL_HEIGHT, window.innerHeight - 36) - 10),
           }}
         >
@@ -634,12 +655,12 @@ const Chatbot: React.FC = () => {
                 S
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight truncate">Suresh AI Assistant</div>
-                <div className="flex items-center gap-1.5">
+                <div className="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight truncate"> Suresh AI Assistant </div>            <div className="flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
                   <div className="text-[11px] text-slate-500 truncate">
-                    AI Assistant • Usually replies instantly
+                    Context-Aware Intelligence
                   </div>
+
                 </div>
                 {/* Database stats hidden intentionally */}
               </div>
@@ -684,9 +705,9 @@ const Chatbot: React.FC = () => {
               )}
 
               {messages.map((m) => (
-                <MessageBubble 
-                  key={m.id} 
-                  m={m} 
+                <MessageBubble
+                  key={m.id}
+                  m={m}
                   reactions={messageReactions[m.id] || []}
                   onReaction={(reaction) => handleReaction(m.id, reaction)}
                 />
@@ -725,19 +746,18 @@ const Chatbot: React.FC = () => {
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-xs hidden sm:block">
                   Press Enter to send
                 </div>
-                <TypingSuggestions 
-                  suggestions={typingSuggestions} 
-                  onSelect={handleSuggestionSelect} 
+                <TypingSuggestions
+                  suggestions={typingSuggestions}
+                  onSelect={handleSuggestionSelect}
                 />
               </div>
               <button
                 type="submit"
                 disabled={!input.trim() || isTyping}
-                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 transform ${
-                  !input.trim() || isTyping
+                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 transform ${!input.trim() || isTyping
                     ? 'bg-slate-300 cursor-not-allowed scale-95'
                     : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl'
-                } text-white`}
+                  } text-white`}
                 aria-label="Send message"
               >
                 {isTyping ? (
@@ -752,7 +772,7 @@ const Chatbot: React.FC = () => {
           </div>
 
           {/* Floating Action Menu */}
-          <FloatingActionMenu 
+          <FloatingActionMenu
             isOpen={showFloatingMenu}
             onClose={() => setShowFloatingMenu(false)}
             actions={floatingActions}
@@ -778,16 +798,15 @@ const Chatbot: React.FC = () => {
               playSound('notification');
             }
           }}
-          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 relative overflow-hidden ${
-            open 
-              ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white' 
+          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 relative overflow-hidden ${open
+              ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white'
               : 'bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 text-white hover:shadow-3xl'
-          }`}
+            }`}
           aria-label={open ? "Close chat" : "Open chat"}
         >
           {/* Ripple effect */}
           <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-          
+
           {open ? (
             <svg className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -798,7 +817,7 @@ const Chatbot: React.FC = () => {
             </svg>
           )}
         </button>
-        
+
         {/* Notification badge */}
         {!open && (
           <div className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold animate-notificationPulse shadow-lg">
