@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import './ImageIcon.css';
 
 // TypeScript interface for ImageIcon props
 export interface ImageIconProps {
