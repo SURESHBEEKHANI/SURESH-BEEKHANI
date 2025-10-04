@@ -1,14 +1,12 @@
 [build]
   functions = "netlify/functions"
   publish = "dist"
+  command = "npm run build"
 
 [functions]
-  # Python runtime for functions
-  runtime = "python3.9"
+  node_bundler = "esbuild"
 
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
-
-[build.environment]
-  # Python dependencies will be installed from requirements.txt in functions directory
-  PYTHON_VERSION = "3.9"
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  framework = "#custom"

@@ -11,18 +11,19 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy:frontend": "npm run build:prod",
-
     "ingest:python": "python scripts/ingest-data.py",
     "test:python": "python scripts/test-python-functions.py",
     "test:functions": "node scripts/test-functions.js",
+    "test:js-functions": "node scripts/test-js-functions.js",
     "dev:full": "node scripts/dev-server.js",
     "serve": "npm run build && node scripts/dev-server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-
+    "@langchain/core": "^0.3.78",
+    "@langchain/groq": "^0.2.4",
     "@netlify/functions": "^2.8.1",
-
+    "@pinecone-database/pinecone": "^3.0.3",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
@@ -34,11 +35,10 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@tanstack/react-query": "^5.56.2",
-
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.23.9",
-
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
     "pdfjs-dist": "^4.8.69",
