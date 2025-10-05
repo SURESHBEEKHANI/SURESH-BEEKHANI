@@ -1,6 +1,5 @@
-import { vectorStore } from './vector-store.js';
 import { llmService } from './llm-service.js';
-import { serviceHealth } from './service-health.js';
+import { vectorStore } from './vector-store.js';
 
 export const handler = async (event, context) => {
   // CORS headers
@@ -26,6 +25,7 @@ export const handler = async (event, context) => {
   try {
     const body = JSON.parse(event.body);
     const message = body.message;
+    const stream = body.stream || false; // Check if streaming is requested
 
     if (!message || typeof message !== 'string') {
       return {
@@ -35,11 +35,7 @@ export const handler = async (event, context) => {
       };
     }
 
-    // Check service health
-    const health = await serviceHealth.checkServiceHealth();
-    console.log('Service health:', health);
-
-    // Retrieve relevant context (gracefully degrades if unavailable)
+    // Retrieve relevant context from vector store (gracefully degrades if unavailable)
     let contexts = [];
     let vectorStoreStatus = 'unavailable';
     try {
@@ -52,19 +48,27 @@ export const handler = async (event, context) => {
 
     const contextText = contexts.join('\n\n');
 
-    // Generate response (with retry and fallback)
+    // Generate response with context
     let response;
     let llmStatus = 'healthy';
     try {
       response = await llmService.generateResponse(message, contextText);
     } catch (error) {
       console.error('LLM service failed:', error.message);
+      console.error('Error type:', error.constructor.name);
       llmStatus = 'unavailable';
-      response = "I'm sorry, I'm currently unable to connect to my AI services. Please try again later or contact Suresh directly through the contact form on this website.";
+      
+      // Provide specific error messages based on error type
+      if (error.message.includes('API key') || error.message.includes('not configured')) {
+        response = "I'm sorry, the AI service is not properly configured. Please contact the administrator.";
+      } else if (error.message.includes('rate limit') || error.status === 429) {
+        response = "I'm receiving a high volume of requests right now. Please try again in a few moments.";
+      } else if (error.message.includes('timeout')) {
+        response = "The request is taking longer than expected. Please try again.";
+      } else {
+        response = "I'm having trouble generating a response right now. Please try again shortly.";
+      }
     }
-
-    // Determine embedding service status
-    const embeddingStatus = health.huggingface ? 'healthy' : 'degraded';
 
     return {
       statusCode: 200,
@@ -75,11 +79,9 @@ export const handler = async (event, context) => {
         numContexts: contexts.length,
         serviceStatus: {
           vectorStore: vectorStoreStatus,
-          embeddings: embeddingStatus,
           llm: llmStatus
         },
-        timestamp: new Date().toISOString(),
-        fallbackUsed: vectorStoreStatus === 'unavailable' || embeddingStatus === 'degraded'
+        timestamp: new Date().toISOString()
       }),
     };
 

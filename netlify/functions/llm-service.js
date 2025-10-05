@@ -1,7 +1,6 @@
 import Groq from 'groq-sdk';
 import { config } from './config.js';
 import { RetryHandler } from './retry-handler.js';
-import { serviceHealth } from './service-health.js';
 
 class LLMService {
   constructor() {
@@ -13,95 +12,73 @@ class LLMService {
     }
   }
 
-  getErrorMessage(errorType) {
-    const messages = {
-      configuration: "I'm sorry, I'm currently unable to connect to my AI services. Please try again later or contact Suresh directly through the contact form on this website.",
-      temporary: "I'm experiencing a temporary issue. Please try again in a moment.",
-      rate_limit: "I'm receiving a high volume of requests right now. Please try again in a few moments.",
-      timeout: "The request is taking longer than expected. Please try again.",
-      default: "I'm having trouble generating a response right now. Please try again shortly."
-    };
-    return messages[errorType] || messages.default;
-  }
-
-  getFallbackResponse(query) {
-    return "I'm sorry, I'm currently unable to connect to my AI services. Please try again later or contact Suresh directly through the contact form on this website.";
-  }
-
-  async generateResponse(query, context) {
+  async generateResponse(query, context = '') {
     if (!this.client) {
       console.error('Groq client not initialized - missing API key');
-      return this.getErrorMessage('configuration');
+      throw new Error('API key not configured');
     }
 
-    const contextQuality = context && context.trim().length > 0 ? 'with context' : 'without context';
-    
+    console.log('Generating response for query:', query.substring(0, 50) + '...');
+    console.log('Context provided:', context ? 'Yes' : 'No');
+
     const systemPrompt = `
-You are Suresh Beekhani's AI assistant. Respond naturally and professionally, like a knowledgeable colleague.
+I'm Suresh Beekhani's Personal AI Assistant. I provide clear, confident guidance on AI, ML, Generative AI, NLP, Computer Vision, Predictive Analytics, and Chatbots across industries like HealthTech, FinTech, EdTech, GreenTech, Retail, and E-Commerce.
 
-CONTEXT:
-${context || 'No specific context available.'}
+Notable projects include AI-Driven Law GPT, predictive diagnostics, intelligent chatbots, real-time fraud detection, and computer vision solutions.
 
-STYLE:
-- Keep responses short and conversational (2-4 sentences max)
-- Be warm, professional, and human-like
-- Use "I" when referring to Suresh's work (e.g., "I specialize in...")
-- Skip formalities - get straight to the point
-- No bullet points unless listing specific items
-- No "Context Used" or "Next Steps" sections
-- Sound natural, not robotic
+FORMATTING: Use plain text only - no markdown, no asterisks, no bullet points. Write naturally like a human conversation.
 
-CONTENT:
-- Use the context provided to answer accurately
-- If no context, provide brief general AI/ML insights
-- Focus on what matters to the person asking
+${context ? `\n\nCONTEXT:\n${context}\n\nUse this context for accurate answers.` : ''}
 `;
 
     try {
       const response = await this.generateResponseWithRetry(systemPrompt, query);
-      serviceHealth.recordSuccess('groq');
-      console.log(`Generated response ${contextQuality}`);
+      console.log('✅ Generated response successfully');
       return response;
     } catch (error) {
-      console.error('Error generating response with Groq:', error.message);
-      serviceHealth.recordFailure('groq', error);
-      
-      // Determine error type and return appropriate message
-      if (error.message.includes('API key')) {
-        return this.getErrorMessage('configuration');
-      } else if (error.message.includes('rate limit') || error.status === 429) {
-        return this.getErrorMessage('rate_limit');
-      } else if (error.message.includes('timeout')) {
-        return this.getErrorMessage('timeout');
-      } else {
-        return this.getErrorMessage('temporary');
-      }
+      console.error('❌ Error generating response:', error.message);
+      throw error;
     }
   }
 
   async generateResponseWithRetry(systemPrompt, query) {
     const operation = async () => {
-      const completion = await this.client.chat.completions.create({
+      const chatCompletion = await this.client.chat.completions.create({
         messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: query }
+          { role: "user", content: systemPrompt + "\n\nUser: " + query }
         ],
-        model: config.LLM_MODEL,
-        temperature: config.TEMPERATURE,
-        max_tokens: config.MAX_TOKENS
+        model: "deepseek-r1-distill-llama-70b",
+        temperature: 0.6,
+        max_completion_tokens: 4096,
+        top_p: 0.95,
+        stream: true,
+        stop: null
       });
 
-      return completion.choices[0]?.message?.content ||
-        "I encountered an issue generating a response. Please try again.";
+      let fullResponse = '';
+      for await (const chunk of chatCompletion) {
+        const content = chunk.choices[0]?.delta?.content || '';
+        fullResponse += content;
+      }
+
+      // Remove <think> tags
+      fullResponse = fullResponse.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+      fullResponse = fullResponse.replace(/<think>[\s\S]*$/g, '').trim();
+
+      if (!fullResponse || fullResponse.length < 10) {
+        throw new Error('Empty or too short response from model');
+      }
+
+      return fullResponse;
     };
 
     return await RetryHandler.withRetry(operation, {
-      maxRetries: 1,
-      baseDelay: 300,
-      maxDelay: 1000,
-      timeout: 15000,
+      maxRetries: 2,
+      baseDelay: 500,
+      maxDelay: 2000,
+      timeout: 60000,
       onRetry: (attempt, error) => {
-        console.log(`Retrying Groq LLM (attempt ${attempt}): ${error.message}`);
+        console.log(`🔄 Retrying (attempt ${attempt}): ${error.message}`);
       }
     });
   }

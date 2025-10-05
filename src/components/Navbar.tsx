@@ -79,7 +79,7 @@ const Navbar = () => {
 
   const servicePages = [
     { label: 'AI Development', href: '/ai-development' },
-    { label: 'Chatbot Development', href: '/ai-git -development' },
+    { label: 'Chatbot Development', href: '/ai-chatbot-development' },
     { label: 'ChatGPT Integration', href: '/chat-gpt-integrations' },
     { label: 'Machine Learning', href: '/machine-learning' },
     { label: 'Computer Vision', href: '/computer-vision' },

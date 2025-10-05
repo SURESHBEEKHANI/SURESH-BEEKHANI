@@ -560,11 +560,17 @@ const Chatbot: React.FC = () => {
           body: JSON.stringify({ message: text }),
         });
 
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+
         if (response.ok) {
           const data = await response.json();
+          console.log('Response data:', data);
           botResponse = data.response;
           contextUsed = data.contextUsed || false;
         } else {
+          const errorText = await response.text();
+          console.error('API error response:', errorText);
           throw new Error(`API error: ${response.status}`);
         }
 

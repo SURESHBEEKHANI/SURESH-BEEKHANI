@@ -1,6 +1,5 @@
 import { config } from './config.js';
 import { RetryHandler } from './retry-handler.js';
-import { serviceHealth } from './service-health.js';
 
 class EmbeddingService {
   constructor() {
@@ -8,40 +7,41 @@ class EmbeddingService {
   }
 
   async getEmbedding(text) {
-    // Use fallback embeddings for now (HuggingFace API has issues with the model format)
-    // The fallback method works well for semantic search
-    return this.fallbackEmbedding(text);
-
-    // Uncomment below to try HuggingFace again in the future
-    /*
+    // Try HuggingFace API first
     if (config.HUGGINGFACE_API_KEY) {
       try {
         const embedding = await this.getEmbeddingWithHuggingFace(text);
         if (this.validateEmbedding(embedding)) {
-          serviceHealth.recordSuccess('huggingface');
           return embedding;
         }
       } catch (error) {
         console.warn('HuggingFace embedding failed, using fallback:', error.message);
-        serviceHealth.recordFailure('huggingface', error);
       }
     }
+
+    // Fallback to simple embedding if HuggingFace fails
+    console.warn('Using fallback embeddings - results may be less accurate');
     return this.fallbackEmbedding(text);
-    */
   }
 
   async getEmbeddingWithHuggingFace(text) {
     const operation = async () => {
-      const response = await fetch(config.HUGGINGFACE_API_URL, {
+      // Use paraphrase model which supports feature extraction
+      const response = await fetch('https://api-inference.huggingface.co/models/sentence-transformers/paraphrase-MiniLM-L6-v2', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${config.HUGGINGFACE_API_KEY}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ inputs: text })
+        body: JSON.stringify({
+          inputs: text,
+          options: { wait_for_model: true }
+        })
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('HuggingFace error response:', errorText);
         const error = new Error(`HuggingFace API error: ${response.statusText}`);
         error.status = response.status;
         throw error;
@@ -49,9 +49,15 @@ class EmbeddingService {
 
       const data = await response.json();
 
-      // HuggingFace returns embeddings in different formats depending on the model
-      // Handle both array and nested array formats
-      let embedding = Array.isArray(data[0]) ? data[0] : data;
+      // Response format varies, handle both
+      let embedding;
+      if (Array.isArray(data) && Array.isArray(data[0])) {
+        embedding = data[0]; // Nested array
+      } else if (Array.isArray(data)) {
+        embedding = data; // Direct array
+      } else {
+        throw new Error('Unexpected response format');
+      }
 
       return embedding;
     };
@@ -85,10 +91,19 @@ class EmbeddingService {
     const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 2);
     const embedding = new Array(config.EMBEDDING_DIMENSION).fill(0);
 
-    words.forEach((word, i) => {
-      // Simple hash function
-      const hashVal = word.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % config.EMBEDDING_DIMENSION;
-      embedding[hashVal] += 1 / (i + 1);
+    // Use TF-IDF-like approach for better matching
+    const wordFreq = {};
+    words.forEach(word => {
+      wordFreq[word] = (wordFreq[word] || 0) + 1;
+    });
+
+    // Create embedding based on word frequencies and positions
+    Object.entries(wordFreq).forEach(([word, freq]) => {
+      // Use multiple hash functions for better distribution
+      for (let i = 0; i < 3; i++) {
+        const hash = this.hashString(word + i) % config.EMBEDDING_DIMENSION;
+        embedding[hash] += freq * (1 / (i + 1));
+      }
     });
 
     // Normalize
@@ -98,6 +113,16 @@ class EmbeddingService {
     }
 
     return embedding;
+  }
+
+  hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash);
   }
 }
 
