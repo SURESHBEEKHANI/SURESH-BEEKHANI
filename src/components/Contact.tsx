@@ -6,8 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
- 
- 
+import { supabase } from '@/supabaseClient'; // ✅ Import Supabase client
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -35,22 +34,21 @@ const Contact = () => {
 
   const validateForm = () => {
     const errors: string[] = [];
-    
     if (!formData.name.trim()) errors.push('Name is required');
     if (!formData.email.trim()) errors.push('Email is required');
     if (!formData.subject.trim()) errors.push('Subject is required');
     if (!formData.message.trim()) errors.push('Message is required');
-    
+
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.push('Please enter a valid email address');
     }
-    
+
     return errors;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const errors = validateForm();
     if (errors.length > 0) {
       errors.forEach(error => toast.error(error));
@@ -58,41 +56,26 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      // Format the message for WhatsApp
-      const whatsappMessage = `*New Contact Form Submission*
+      // ✅ Insert form data into Supabase table "messages"
+      const { error } = await supabase.from('messages').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      ]);
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone || 'Not provided'}
-*Subject:* ${formData.subject}
+      if (error) throw error;
 
-*Message:*
-${formData.message}
-
----
-Sent from your portfolio website`;
-
-      // Encode the message for WhatsApp URL
-      const encodedMessage = encodeURIComponent(whatsappMessage);
-      
-      // Replace with your WhatsApp number (include country code)
-      const whatsappNumber = '919876543210'; // Your WhatsApp number
-      
-      // Create WhatsApp URL
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
-      // Open WhatsApp
-      window.open(whatsappUrl, '_blank');
-      
-      // Show success toast
-      toast.success('Opening WhatsApp with your message!', {
-        description: 'Your message has been prepared and will open in WhatsApp.',
+      toast.success('Message sent successfully!', {
+        description: 'Your message has been saved for our team’s review.',
         duration: 5000,
       });
-      
-      // Reset form
+
       setFormData({
         name: '',
         email: '',
@@ -101,13 +84,12 @@ Sent from your portfolio website`;
         message: ''
       });
     } catch (error) {
+      console.error(error);
       toast.error('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  
 
   const contactInfo = [
     {
@@ -127,7 +109,7 @@ Sent from your portfolio website`;
     {
       icon: <MapPin className="h-5 w-5" />,
       title: 'Location',
-      value: 'Karachi,Pakistan',
+      value: 'Karachi, Pakistan',
       link: '#',
       color: 'from-purple-500 to-pink-500'
     },
@@ -141,13 +123,11 @@ Sent from your portfolio website`;
     {
       icon: <Clock className="h-5 w-5" />,
       title: 'Quick Response',
-      value: 'I typically respond within 2-4 hours during business hours. For urgent inquiries, WhatsApp is the fastest way to reach me.',
+      value: 'I typically respond within 2–4 hours during business hours.',
       link: '#',
       color: 'from-orange-500 to-red-500'
     }
   ];
-
-  
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -166,12 +146,10 @@ Sent from your portfolio website`;
             Let's Build Something <span className="gradient-text">Amazing</span>
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
-            Ready to transform your ideas into intelligent AI solutions? 
+            Ready to transform your ideas into intelligent AI solutions?
             Let's discuss your project and bring your vision to life.
           </p>
         </div>
-
-        
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
@@ -182,17 +160,13 @@ Sent from your portfolio website`;
                   <div className="p-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white">
                     <Send className="h-6 w-6" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">
-                    Send Message
-                  </h3>
+                  <h3 className="text-2xl font-bold text-foreground">Send Message</h3>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">
-                        Name *
-                      </label>
+                      <label className="block text-sm font-medium mb-2 text-foreground">Name *</label>
                       <Input
                         type="text"
                         name="name"
@@ -204,9 +178,7 @@ Sent from your portfolio website`;
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">
-                        Email *
-                      </label>
+                      <label className="block text-sm font-medium mb-2 text-foreground">Email *</label>
                       <Input
                         type="email"
                         name="email"
@@ -221,9 +193,7 @@ Sent from your portfolio website`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">
-                        Phone
-                      </label>
+                      <label className="block text-sm font-medium mb-2 text-foreground">Phone</label>
                       <Input
                         type="tel"
                         name="phone"
@@ -234,9 +204,7 @@ Sent from your portfolio website`;
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">
-                        Subject *
-                      </label>
+                      <label className="block text-sm font-medium mb-2 text-foreground">Subject *</label>
                       <Input
                         type="text"
                         name="subject"
@@ -250,9 +218,7 @@ Sent from your portfolio website`;
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground">
-                      Message *
-                    </label>
+                    <label className="block text-sm font-medium mb-2 text-foreground">Message *</label>
                     <Textarea
                       name="message"
                       value={formData.message}
@@ -263,11 +229,7 @@ Sent from your portfolio website`;
                     />
                   </div>
 
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="btn-primary w-full group"
-                  >
+                  <Button type="submit" disabled={isSubmitting} className="btn-primary w-full group">
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
@@ -285,42 +247,26 @@ Sent from your portfolio website`;
             </Card>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Info */}
           <div className={`${isVisible ? 'slide-right' : 'opacity-0'}`}>
             <div className="space-y-6">
-              {/* Contact Info Cards */}
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <Card 
-                    key={index}
-                    className="modern-card hover:scale-105 transition-all duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <CardContent className="p-4">
-                      <a 
-                        href={info.link}
-                        className="flex items-center gap-4 group"
-                        target={info.link.startsWith('http') ? '_blank' : undefined}
-                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      >
-                        <div className={`p-3 rounded-xl bg-gradient-to-r text-white ${info.color}`}>
-                          {info.icon}
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                            {info.title}
-                          </h4>
-                          <p className="text-sm text-foreground/70">
-                            {info.value}
-                          </p>
-                        </div>
-                      </a>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              
+              {contactInfo.map((info, index) => (
+                <Card key={index} className="modern-card hover:scale-105 transition-all duration-300">
+                  <CardContent className="p-4">
+                    <a href={info.link} className="flex items-center gap-4 group">
+                      <div className={`p-3 rounded-xl bg-gradient-to-r text-white ${info.color}`}>
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {info.title}
+                        </h4>
+                        <p className="text-sm text-foreground/70">{info.value}</p>
+                      </div>
+                    </a>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
