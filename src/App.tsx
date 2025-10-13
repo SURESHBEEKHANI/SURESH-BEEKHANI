@@ -74,6 +74,7 @@ const NaturalLanguageProcessing = lazy(() => import("./pages-Services/NaturalLan
 const MachineLearning = lazy(() => import("./pages-Services/MachineLearning"));
 const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
+const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./Pages-Portfolio/Portfolio"));
@@ -171,6 +172,7 @@ const AppContent = () => {
         <Route path="/machine-learning" element={<MachineLearning />} />
         <Route path="/computer-vision" element={<ComputerVisionPro />} />
         <Route path="/ai-development" element={<AIDevelopment />} />
+        <Route path="/ai-automation" element={<AIAutomation />} />
 
         {/* Portfolio */}
         <Route path="/portfolio" element={<PortfolioPage />} />

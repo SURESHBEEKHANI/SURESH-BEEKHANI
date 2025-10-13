@@ -37,6 +37,7 @@ const SERVICES = [
   'Computer Vision',
   'Predictive Modeling',
   'Natural Language Processing',
+  'AI Automation',
 ];
 
 const SERVICE_DETAILS = {
@@ -140,6 +141,18 @@ const SERVICE_DETAILS = {
       { title: 'Conversational AI', description: 'Natural language interfaces for chatbots and virtual assistants.' },
     ],
   },
+  'AI Automation': {
+    title: 'AI Automation',
+    description:
+      'Empower your business with intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation across all operations.',
+    icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: '24/7 Operation', description: 'Continuous operation without breaks, ensuring consistent performance around the clock.' },
+      { title: 'Adaptive Intelligence', description: 'Learn and improve from every interaction, becoming more effective over time.' },
+      { title: 'Cost Efficiency', description: 'Reduce operational costs while increasing output and quality of work.' },
+      { title: 'Scalability', description: 'Scale operations instantly without proportional increases in resources or costs.' },
+    ],
+  },
 };
 
 const SERVICE_ROUTES = {
@@ -150,6 +163,7 @@ const SERVICE_ROUTES = {
   'Computer Vision': '/computer-vision',
   'Predictive Modeling': '/predictive-modelling',
   'Natural Language Processing': '/natural-language-processing',
+  'AI Automation': '/ai-automation',
 };
 
 /* --------------------------
@@ -271,11 +285,10 @@ const Services = () => {
                       setSelectedService(service);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 transition-colors ${
-                      selectedService === service
+                    className={`w-full text-left px-4 py-3 transition-colors ${selectedService === service
                         ? 'bg-primary/10 text-primary font-medium'
                         : 'hover:bg-gray-50'
-                    }`}
+                      }`}
                     initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -313,11 +326,10 @@ const Services = () => {
                     <motion.button
                       key={service}
                       onClick={() => setSelectedService(service)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all ${
-                        selectedService === service
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all ${selectedService === service
                           ? 'bg-white/20 text-white shadow-lg'
                           : 'text-white/80 hover:text-white hover:bg-white/10'
-                      }`}
+                        }`}
                       initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.7 + index * 0.05 }}
@@ -330,109 +342,109 @@ const Services = () => {
                 </div>
               </div>
 
-            {/* Main Content */}
-            <div className="lg:col-span-3 p-6 lg:p-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={selectedService}
-                  initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Title */}
+              {/* Main Content */}
+              <div className="lg:col-span-3 p-6 lg:p-8">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    className="flex items-center gap-4 mb-6"
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
+                    key={selectedService}
+                    initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
                   >
+                    {/* Title */}
                     <motion.div
-                      className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-16 h-16 flex items-center justify-center border border-primary/20"
-                      whileHover={prefersReducedMotion ? {} : { scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex items-center gap-4 mb-6"
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
                     >
-                      {currentService.icon}
-                    </motion.div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{currentService.title}</h3>
                       <motion.div
-                        className="w-12 h-1 bg-gradient-to-r from-primary to-blue-600 rounded-full mt-2"
-                        initial={prefersReducedMotion ? false : { width: 0 }}
-                        animate={{ width: 48 }}
-                        transition={{ delay: 0.2, duration: 0.4 }}
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Description */}
-                  <motion.p
-                    className="text-gray-600 mb-8"
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {currentService.description}
-                  </motion.p>
-
-                  {/* Benefits */}
-                  <motion.h4
-                    className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2"
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <Target className="h-5 w-5 text-primary" />
-                    Business Benefits of Choosing Us
-                  </motion.h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                    {currentService.benefits.map((benefit, i) => (
-                      <motion.div
-                        key={i}
-                        custom={i}
-                        variants={benefitVariants}
-                        initial={prefersReducedMotion ? false : "hidden"}
-                        animate="visible"
+                        className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-16 h-16 flex items-center justify-center border border-primary/20"
+                        whileHover={prefersReducedMotion ? {} : { scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <motion.div
-                          whileHover={prefersReducedMotion ? {} : hoverLiftShadow}
-                        >
-                          <Card className="glass-effect rounded-xl p-6 border transition-all h-full">
-                            <CardContent className="p-0">
-                              <h5 className="font-semibold text-gray-900 mb-2">{benefit.title}</h5>
-                              <p className="text-gray-600 text-sm">{benefit.description}</p>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
+                        {currentService.icon}
                       </motion.div>
-                    ))}
-                  </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">{currentService.title}</h3>
+                        <motion.div
+                          className="w-12 h-1 bg-gradient-to-r from-primary to-blue-600 rounded-full mt-2"
+                          initial={prefersReducedMotion ? false : { width: 0 }}
+                          animate={{ width: 48 }}
+                          transition={{ delay: 0.2, duration: 0.4 }}
+                        />
+                      </div>
+                    </motion.div>
 
-                  {/* Learn More Button */}
-                  <motion.div
-                    className="flex justify-end"
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                  >
-                    <motion.div
-                      whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
-                      whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+                    {/* Description */}
+                    <motion.p
+                      className="text-gray-600 mb-8"
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
                     >
-                      <Button
-                        onClick={handleReadMore}
-                        className="bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg transition-all"
+                      {currentService.description}
+                    </motion.p>
+
+                    {/* Benefits */}
+                    <motion.h4
+                      className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2"
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <Target className="h-5 w-5 text-primary" />
+                      Business Benefits of Choosing Us
+                    </motion.h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                      {currentService.benefits.map((benefit, i) => (
+                        <motion.div
+                          key={i}
+                          custom={i}
+                          variants={benefitVariants}
+                          initial={prefersReducedMotion ? false : "hidden"}
+                          animate="visible"
+                        >
+                          <motion.div
+                            whileHover={prefersReducedMotion ? {} : hoverLiftShadow}
+                          >
+                            <Card className="glass-effect rounded-xl p-6 border transition-all h-full">
+                              <CardContent className="p-0">
+                                <h5 className="font-semibold text-gray-900 mb-2">{benefit.title}</h5>
+                                <p className="text-gray-600 text-sm">{benefit.description}</p>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Learn More Button */}
+                    <motion.div
+                      className="flex justify-end"
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <motion.div
+                        whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
+                        whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
                       >
-                        Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
+                        <Button
+                          onClick={handleReadMore}
+                          className="bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg transition-all"
+                        >
+                          Learn More
+                          <ArrowRight className="h-4 w-4" />
+                        </Button>
+                      </motion.div>
                     </motion.div>
                   </motion.div>
-                </motion.div>
-              </AnimatePresence>
+                </AnimatePresence>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
         </motion.div>
       </div>
     </section>

@@ -88,6 +88,8 @@ const Navbar = () => {
     { label: 'Computer Vision', href: '/computer-vision' },
     { label: 'Natural Language Processing', href: '/natural-language-processing' },
     { label: 'Predictive Modeling', href: '/predictive-modelling' },
+    { label: 'AI Automation', href: '/ai-automation' },
+  
   ];
 
   const industriesPages = [
