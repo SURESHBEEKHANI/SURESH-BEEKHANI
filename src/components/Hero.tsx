@@ -312,13 +312,13 @@ const Hero = () => {
               >
                 <Button asChild className="btn-primary w-full sm:w-auto touch-button">
                   <a
-                    href="https://drive.google.com/drive/folders/1nenB6s7mXNZllsPHh2-74QziMBLU-U6b?usp=drive_link"
+                    href="https://calendar.app.google/F63aBoA5vxJdtihj7"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View Suresh Beekhani's resume"
                   >
                     <FileText className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="mobile-text">View Resume</span>
+                    <span className="mobile-text">Book Appointment</span>
                   </a>
                 </Button>
               </motion.div>
