@@ -299,8 +299,7 @@ const Hero = () => {
               className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text"
               variants={staggerItem}
             >
-             Passionate about advancing artificial intelligence, I focus on building intelligent solutions and sharing knowledge. Through practical tutorials, real-world projects, and innovative AI applications, I empower learners and businesses 
-              to harness the power of AI for growth and transformation. 
+             Passionate about advancing artificial intelligence, I create intelligent solutions and share practical knowledge. Through hands-on tutorials, real-world projects, and innovative AI applications, I empower learners and businesses to leverage AI for growth, innovation, and transformation. Open to Remote Projects & Freelance Work – let’s collaborate! 
             </motion.p>
 
             <motion.div
