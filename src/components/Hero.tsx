@@ -299,8 +299,7 @@ const Hero = () => {
               className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text"
               variants={staggerItem}
             >
-             I am passionate about artificial intelligence, creating practical solutions, and sharing knowledge. Through hands-on tutorials, real-world projects, and innovative AI applications, I help learners and businesses harness AI for growth and innovation. Open to remote projects and freelance opportunities – let’s collaborate!
-            </motion.p>
+            I’m passionate about Artificial Intelligence in Healthcare, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative healthcare AI applications, I help learners and organizations harness AI for better patient care, smarter diagnostics, and sustainable innovation. Open to remote projects and freelance collaborations – let’s build the future of intelligent healthcare together!
 
             <motion.div
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
