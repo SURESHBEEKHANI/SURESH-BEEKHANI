@@ -93,14 +93,14 @@ const Navbar = () => {
   ];
 
   const industriesPages = [
-    { label: 'HealthTech AI', href: '/HealthTechAI' },
-    { label: 'FinTech AI', href: '/FinTechAI' },
-    { label: 'EdTech AI', href: '/EdTechAI' },
-    { label: 'GreenTech AI', href: '/GreenTechAI' },
-    { label: 'Retail AI', href: '/RetailAI' },
-    { label: 'E-Commerce AI', href: '/E-Commerce' },
-    { label: 'Diagnostics AI', href: '/DiagnosticsAI' },
-    { label: 'HIPAA Compliance', href: '/HIPAACompliance' },
+    { label: 'Hospitals & Clinics', href: '/HospitalsClinics' },
+    { label: 'Telemedicine & Digital Health', href: '/TelemedicineDigitalHealth' },
+    { label: 'Mental Health & Wellness', href: '/MentalHealthWellness' },
+    { label: 'Medical Imaging & Diagnostics', href: '/MedicalImagingDiagnostics' },
+    { label: 'Drug Discovery & Biotech Labs', href: '/DrugDiscoveryBiotech' },
+    { label: 'Genomics & Personalized Medicine', href: '/GenomicsPersonalizedMedicine' },
+    { label: 'Healthcare IoT & Smart Devices', href: '/HealthcareIoTSmartDevices' },
+    { label: 'Health Data Privacy & Security', href: '/HealthDataPrivacySecurity' },
   ];
 
   const linkColorClass = (linkHref: string) => {

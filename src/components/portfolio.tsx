@@ -6,102 +6,102 @@ import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    title: "AI-Driven Law GPT",
-    description:
-      "Law GPT uses to quickly accurately generate legal text, helping professionals manage complex legal tasks  ease.",
-    image: "/image/pages_img/AI-Driven-Law-GPT.jpg",
-    link: "/portfolio/ai-driven-law-gpt"
-  },
-  {
-    title: "AI-Powered Image Generator",
-    description:
-      "AI Image Generator solves the need for custom graphics. Instantly create unique images for posts without a designer.",
-    image: "/image/pages_img/AI-image-generator.png",
-    link: "/portfolio/ai-powered-image-generator"
-  },
-  {
-    title: "Social Media Content Creator",
-    description:
-      "Social Media Content Creator streamlines content creation and scheduling. Manage multiple platforms and engage audiences easily.",
-    image: "/image/pages_img/Social-Media-Content-Creator.png",
-    link: "/portfolio/social-media-content-creator"
-  },
-  {
     title: "Patient Diagnostic System",
     description:
-      "Patient Diagnostic System uses AI chatbots for faster disease diagnosis. It reduces doctors' workload and improves patient care.",
+      "AI chatbots assist in rapid disease diagnosis, reducing doctor workload and improving patient care.",
     image: "/image/pages_img/Patient-Diagnostic-System.webp",
     link: "/portfolio/patient-diagnostic-system"
   },
   {
-    title: "AI Legal Contract Analyzer",
-    description:
-      "Legal Contract Analyzer automates contract review with AI. Boosts accuracy, efficiency, compliance for legal teams.",
-    image: "/image/pages_img/AI-Legal-Contract-Analyzer.png",
-    link: "/portfolio/ai-legal-contract-analyzer"
-  },
-  {
-    title: "Personalized Travel Assistant",
-    description:
-      "AI Trip Planner creates real-time, personalized itineraries. Plan smarter trips based on your preferences and live data.",
-    image: "/image/pages_img/Personalized-Travel-Assistant.webp",
-    link: "/portfolio/personalized-travel-assistant"
-  },
-  {
     title: "Early Disease Detection AI",
     description:
-      "Advanced AI system for early disease detection using medical imaging and predictive analytics to improve patient outcomes.",
+      "Predictive analytics and medical imaging for early detection of diseases like cancer, cardiovascular, or neurological disorders.",
     image: "/image/pages_img/Early-Disease-Detection.jpg",
     link: "/portfolio/early-disease-detection-ai"
   },
   {
-    title: "Real-Time Fraud Detection",
-    description:
-      "AI-powered platform that detects and prevents fraudulent activities in real-time, protecting businesses from financial losses.",
-    image: "/image/pages_img/Real-Time-Threat-Detection.jpeg",
-    link: "/portfolio/real-time-fraud-detection"
-  },
-  {
-    title: "Personalized Learning AI",
-    description:
-      "Intelligent tutoring system that adapts to individual learning styles and progress levels for enhanced personalized education.",
-    image: "/image/pages_img/Personalize-Learning.jpg",
-    link: "/portfolio/personalized-learning-ai"
-  },
-  {
-    title: "Solar Output Forecasting",
-    description:
-      "AI-driven renewable energy forecasting system that predicts solar power generation for optimal energy management.",
-    image: "/image/pages_img/Renewable-Energy-Forecasting.jpg",
-    link: "/portfolio/solar-output-forecasting"
-  },
-  {
-    title: "Dynamic Shelf Restocking",
-    description:
-      "Smart inventory management system that uses AI to optimize shelf restocking and reduce retail waste efficiently.",
-    image: "/image/pages_img/retail-Inventory-Optimization.jpg",
-    link: "/portfolio/dynamic-shelf-restocking"
-  },
-  {
-    title: "Product Recommendation AI",
-    description:
-      "Intelligent product recommendation system that adapts to user preferences and behavior for enhanced shopping experience.",
-    image: "/image/pages_img/Personalized-Recommendations-retail.webp",
-    link: "/portfolio/product-recommendation-ai"
-  },
-  {
     title: "Radiology Report Generator",
     description:
-      "Advanced AI-powered platform that automatically analyzes medical images and generates comprehensive radiological reports accurately.",
+      "Automatically analyzes X-rays, MRIs, or CT scans to generate accurate radiology reports.",
     image: "/image/pages_img/Medical-Image-Analysis.webp",
     link: "/portfolio/radiology-report-generator"
   },
   {
+    title: "Remote Patient Monitoring",
+    description:
+      "Wearables and sensors continuously track vital signs and alert healthcare providers to abnormalities.",
+    image: "/image/pages_img/remote-patient-monitoring.jpg",
+    link: "/portfolio/remote-patient-monitoring"
+  },
+  {
+    title: "Personalized Wellness AI",
+    description:
+      "AI-driven meditation, stress management, and wellness programs tailored to individual patient needs.",
+    image: "/image/pages_img/wellness-personalized.jpg",
+    link: "/portfolio/personalized-wellness-ai"
+  },
+  {
+    title: "CBT Therapy AI",
+    description:
+      "AI-powered Cognitive Behavioral Therapy applications guide users through mental health exercises and track progress.",
+    image: "/image/pages_img/cbt-therapy.jpg",
+    link: "/portfolio/cbt-therapy-ai"
+  },
+  {
+    title: "Genomic Risk Analysis",
+    description:
+      "AI analyzes genetic data to identify disease susceptibility and provide personalized preventive care.",
+    image: "/image/pages_img/genomic-risk.jpg",
+    link: "/portfolio/genomic-risk-analysis"
+  },
+  {
+    title: "Precision Medicine Support",
+    description:
+      "AI predicts patient-specific treatment plans using genetic and molecular data.",
+    image: "/image/pages_img/Personalized-Medicine.png",
+    link: "/portfolio/precision-medicine-support"
+  },
+  {
+    title: "Drug Discovery & Molecule Prediction AI",
+    description:
+      "AI predicts molecular structures and identifies promising drug candidates faster for research labs.",
+    image: "/image/pages_img/DrugDiscover.jpg",
+    link: "/portfolio/drug-discovery-ai"
+  },
+  {
+    title: "Healthcare IoT & Smart Devices",
+    description:
+      "AI processes IoT medical device data for actionable insights and real-time hospital decision-making.",
+    image: "/image/pages_img/healthcare-iot.jpg",
+    link: "/portfolio/healthcare-iot-smart-devices"
+  },
+  {
+    title: "Healthcare Workflow Automation",
+    description:
+      "AI automates administrative tasks, patient scheduling, and documentation to reduce staff burden.",
+    image: "/image/pages_img/workflow-automation.jpg",
+    link: "/portfolio/healthcare-workflow-automation"
+  },
+  {
+    title: "AI Chatbots for Patient Support",
+    description:
+      "Intelligent AI chatbots handle inquiries, schedule appointments, and provide 24/7 patient assistance.",
+    image: "/image/pages_img/ai-chatbots-hospital.jpg",
+    link: "/portfolio/ai-chatbots-patient-support"
+  },
+  {
     title: "Federated Privacy Compliance",
     description:
-      "Revolutionary privacy-preserving AI platform that enables collaborative model training without data sharing securely and efficiently.",
+      "Privacy-preserving AI trains models across institutions securely without sharing sensitive patient data.",
     image: "/image/pages_img/Secure-Data-Sharing.jpg",
     link: "/portfolio/federated-privacy-compliance"
+  },
+  {
+    title: "Medical Anomaly Detection",
+    description:
+      "AI identifies subtle anomalies in medical imaging or patient data that might be missed by human review.",
+    image: "/image/pages_img/anomaly-detection-imaging.jpg",
+    link: "/portfolio/medical-anomaly-detection"
   }
 ];
 

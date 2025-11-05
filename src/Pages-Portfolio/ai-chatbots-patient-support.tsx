@@ -1,0 +1,59 @@
+import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { ArrowRight, MessageCircle, Clock, Users } from "lucide-react";
+
+const AIChatbotsPatientSupport: React.FC = () => {
+  return (
+    <>
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Patient-Support-Chatbot.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
+          <div className="text-center text-white space-y-6">
+            <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg">
+              AI Chatbots for Patient Support
+            </h1>
+            <p className="body-large text-gray-100 max-w-3xl mx-auto leading-relaxed">
+              Intelligent AI chatbots handle inquiries, schedule appointments, and provide 24/7 patient assistance, improving healthcare accessibility and patient satisfaction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-6">
+          
+          {/* Overview */}
+          <div className="mb-16">
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Support Features</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <MessageCircle className="h-12 w-12 text-sky-600 mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Intelligent Conversations</h3>
+                <p className="text-gray-700">Natural language processing enables human-like conversations for patient inquiries and support needs.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <Clock className="h-12 w-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Availability</h3>
+                <p className="text-gray-700">Round-the-clock patient support ensuring help is always available when patients need it most.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <Users className="h-12 w-12 text-indigo-600 mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Personalized Care</h3>
+                <p className="text-gray-700">Tailored responses based on patient history, preferences, and specific healthcare needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+};
+
+export default AIChatbotsPatientSupport;

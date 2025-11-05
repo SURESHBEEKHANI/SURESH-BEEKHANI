@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Brain, BarChart3, Target, Users, TrendingUp, Code, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Industries from "../components/Industries";
 
 const mlServices = [
   {
@@ -222,21 +223,21 @@ const MachineLearning: React.FC = () => {
   const solution = mlSolutions.find((s) => s.key === activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100 flex flex-col">
+    <div className="min-h-screen ai-section flex flex-col">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Machine-Learning.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full gradient-text-ai neon-text">
                 Machine Learning
               </h1>
-              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-              Intelligent ML solutions for predictive analytics, automation, and data-driven decisions.
-              Transform your business with superior performance and efficiency.
+              <p className="body-large ai-text-primary w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              Intelligent <span className="gradient-text">ML solutions</span> for predictive analytics, automation, and data-driven decisions.
+              Transform your business with <span className="gradient-text">superior performance</span> and efficiency.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
@@ -256,7 +257,7 @@ const MachineLearning: React.FC = () => {
       </section>
 
       {/* Machine Learning Capabilities Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-green-50 to-blue-50">
+      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden ai-section-alt">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left: ML Image */}
@@ -272,17 +273,17 @@ const MachineLearning: React.FC = () => {
             </div>
             {/* Right: Content */}
             <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text">
                 The Power of Machine Learning
               </h2>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                Unlock transformative opportunities with advanced machine learning. Our tailored solutions enable computers to learn from data, identify patterns, and make intelligent predictions fueling smarter automation and actionable insights.
+              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
+                Unlock transformative opportunities with <span className="gradient-text">advanced machine learning</span>. Our tailored solutions enable computers to learn from data, identify patterns, and make intelligent predictions fueling smarter automation and actionable insights.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                Our dedicated experts seamlessly integrate and customize machine learning technologies to your unique needs, empowering data-driven decisions and operational excellence.
+              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
+                Our dedicated experts seamlessly integrate and customize <span className="gradient-text">machine learning technologies</span> to your unique needs, empowering data-driven decisions and operational excellence.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                From healthcare and finance to retail and beyond, machine learning redefines how you serve customers and grow your business. Partner with us to stay ahead of the curve.
+              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
+                From healthcare and finance to retail and beyond, <span className="gradient-text">machine learning redefines</span> how you serve customers and grow your business. Partner with us to stay ahead of the curve.
               </p>
             </div>
           </div>
@@ -290,29 +291,29 @@ const MachineLearning: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 ai-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text-ai">
               Advanced Machine Learning Services
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-ai-purple to-ai-cyan rounded-full ai-glow"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Intelligent automation solutions for today's dynamic business landscape.
+            <p className="text-base sm:text-xl ai-text-primary max-w-3xl mx-auto px-4">
+              Intelligent <span className="gradient-text">automation solutions</span> for today's dynamic business landscape.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                          {mlServices.map((service, index) => (
-               <div key={service.id} className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-300 flex flex-col gap-4 items-center min-h-[200px] sm:min-h-[220px]">
+               <div key={service.id} className="ai-card-glow rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-ai-purple/30 flex flex-col gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-500">
                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto ${
                    index % 2 === 0 ? 'bg-blue-200' : 'bg-indigo-200'
                  }`}>
                    {service.icon}
                  </div>
-                 <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">{service.title}</h3>
-                 <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">{service.description}</p>
+                 <h3 className="font-semibold text-sm sm:text-base ai-heading mb-2 text-center w-full">{service.title}</h3>
+                 <p className="text-xs sm:text-sm ai-text-primary text-center leading-relaxed">{service.description}</p>
                </div>
              ))}
           </div>
@@ -381,51 +382,9 @@ const MachineLearning: React.FC = () => {
           </div>
         </div>
       </section>
+      <Industries />
 
-      {/* Industries Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Industries We Work With
-            </h2>
-            <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-            </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Tailored machine learning solutions across diverse industry verticals.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-xl sm:rounded-2xl">
-            {industries.map((industry) => (
-              <div
-                key={industry.name}
-                className="group relative border-b border-r border-white/30 min-h-[160px] sm:min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
-                onMouseEnter={() => setHoveredIndustry(industry.name)}
-                onMouseLeave={() => setHoveredIndustry(null)}
-              >
-                <img
-                  src={industry.image}
-                  alt={industry.name}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
-                />
-                {/* Default dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
-                {/* Hover overlay with content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
-                  <div className="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4">{industry.name}</div>
-                  <div className="text-white text-xs sm:text-base font-normal mb-3 sm:mb-4 leading-relaxed">{industry.description}</div>
-                  <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-sm sm:text-base">Learn More <span aria-hidden="true">→</span></a>
-                </div>
-                {/* Default industry name (only visible when not hovered) */}
-                <div className="relative z-20 text-base sm:text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300 px-2 text-center">
-                  {industry.name}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Platforms Section */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
@@ -637,6 +596,7 @@ const MachineLearning: React.FC = () => {
           </div>
         </div>
       </section>
+      
       
       <Footer />
     </div>

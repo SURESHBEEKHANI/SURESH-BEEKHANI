@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Bot, MessageSquare, Brain, Globe, Target, Zap, ArrowRight, CheckCircle, Shield, Users, TrendingUp, Code } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Industries from "../components/Industries";
 
 const chatGPTServices = [
   {
@@ -55,56 +56,7 @@ const chatGPTServices = [
   },
 ];
 
-const industries = [
-  {
-    name: "HealthTech",
-    image: "/image/pages_img/healthtechai.jpg",
-    description: "ChatGPT-powered solutions for healthcare automation, patient engagement, and virtual health assistants.",
-    page: "/HealthTechAI",
-  },
-  {
-    name: "EdTech",
-    image: "/image/pages_img/EdTechAI.avif",
-    description: "ChatGPT integrations for personalized learning, automated grading, and real-time student support.",
-    page: "/EdTechAI",
-  },
-  {
-    name: "FinTech",
-    image: "/image/pages_img/fintech.jpg",
-    description: "ChatGPT for banking, financial support, fraud detection, and customer engagement.",
-    page: "/FinTechAI",
-  },
-  {
-    name: "GreenTech",
-    image: "/image/pages_img/greentech.jpg",
-    description: "ChatGPT for sustainability, energy management, and green innovation.",
-    page: "/GreenTechAI",
-  },
-  {
-    name: "Retail",
-    image: "/image/pages_img/retail.jpg",
-    description: "ChatGPT for retail automation, customer engagement, and personalized shopping experiences.",
-    page: "/RetailAI",
-  },
-  {
-    name: "E-Commerce",
-    image: "/image/pages_img/E-Commerce.jpg",
-    description: "ChatGPT for e-commerce: automate inquiries, provide order tracking, and personalize shopping.",
-    page: "/E-Commerce",
-  },
-  {
-    name: "HIPAA Compliance",
-    image: "/image/pages_img/HIPAA.avif",
-    description: "ChatGPT for HIPAA-compliant healthcare communication and data security.",
-    page: "/HIPAACompliance",
-  },
-  {
-    name: "DiagnosticsAI",
-    image: "/image/pages_img/Diagnostics.jpg",
-    description: "ChatGPT for AI-driven diagnostics, predictive analytics, and workflow automation in healthcare and related fields.",
-    page: "/DiagnosticsAI",
-  },
-];
+
 
 const platforms = [
   { name: "OpenAI", image: "/image/skills_img/openai.jpg" },
@@ -205,7 +157,7 @@ const onboardingSteps = [
 
 const ChatGPTIntegrations: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
+
   const [activeTab, setActiveTab] = useState("SupportGPT");
   const [isVisible, setIsVisible] = useState(false);
 
@@ -216,18 +168,18 @@ const ChatGPTIntegrations: React.FC = () => {
   const solution = aiSolutions.find((s) => s.key === activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 flex flex-col">
+    <div className="min-h-screen ai-section flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ChatGPT-Integrations.jpeg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-start gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left">
+              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full text-left gradient-text-ai neon-text">
                 ChatGPT Integration
               </h1>
-              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 text-left leading-relaxed">
+              <p className="body-large ai-text-primary w-full whitespace-pre-line mt-3 sm:mt-4 text-left leading-relaxed">
               Automate with ChatGPT to boost engagement and streamline operations.
               Scale efficiently with AI-driven growth solutions.
               </p>
@@ -247,6 +199,7 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
         </div>
       </section>
+      
 
       {/* AI Capabilities Section */}
       <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 to-green-50/90">
@@ -266,7 +219,7 @@ const ChatGPTIntegrations: React.FC = () => {
             {/* Right: Content */}
             <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text">
                   ChatGPT Models & Seamless Integrations
                 </h2>
               </div>
@@ -288,7 +241,7 @@ const ChatGPTIntegrations: React.FC = () => {
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-3 sm:space-y-2 mb-8 sm:mb-12">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text-ai">
               ChatGPT Integration Services
             </h2>
             <div className="flex justify-center">
@@ -381,53 +334,7 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Industries Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
-            <div className="space-y-2">
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-                Industries We Work With
-              </h2>
-              <div className="flex justify-center">
-                <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-              </div>
-            </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Tailored ChatGPT solutions across diverse industry verticals.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-xl sm:rounded-2xl">
-            {industries.map((industry) => (
-              <div
-                key={industry.name}
-                className="group relative border-b border-r border-white/30 min-h-[140px] sm:min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
-                onMouseEnter={() => setHoveredIndustry(industry.name)}
-                onMouseLeave={() => setHoveredIndustry(null)}
-              >
-                <img
-                  src={industry.image}
-                  alt={industry.name}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
-                />
-                {/* Default dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
-                {/* Hover overlay with content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
-                  <div className="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4">{industry.name}</div>
-                  <div className="text-white text-sm sm:text-base font-normal mb-3 sm:mb-4 leading-relaxed">{industry.description}</div>
-                  <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-sm sm:text-base">Learn More <span aria-hidden="true">→</span></a>
-                </div>
-                {/* Default industry name (only visible when not hovered) */}
-                <div className="relative z-20 text-base sm:text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300 px-2 text-center">
-                  {industry.name}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+       <Industries />
 
       {/* Platforms Section */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
@@ -632,6 +539,7 @@ const ChatGPTIntegrations: React.FC = () => {
           </div>
         </div>
       </section>
+     
       <Footer />
     </div>
   );

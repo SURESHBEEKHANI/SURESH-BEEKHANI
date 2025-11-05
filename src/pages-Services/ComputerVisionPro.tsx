@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Eye, Target, Users, Video, FileText, Brain, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Industries from "../components/Industries";
 
 const cvServices = [
   {
@@ -333,6 +334,7 @@ Superior accuracy through AI-powered recognition and quality assurance.
           </div>
         </div>
       </section>
+      <Industries />
 
       {/* Computer Vision Features Section */}
       <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
@@ -389,50 +391,7 @@ Superior accuracy through AI-powered recognition and quality assurance.
         </div>
       </section>
 
-      {/* Industries Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Industries We Work With
-            </h2>
-            <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-            </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Tailored computer vision solutions across diverse industry verticals.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-xl sm:rounded-2xl">
-            {industries.map((industry) => (
-              <div
-                key={industry.name}
-                className="group relative border-b border-r border-white/30 min-h-[120px] sm:min-h-[150px] md:min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
-                onMouseEnter={() => setHoveredIndustry(industry.name)}
-                onMouseLeave={() => setHoveredIndustry(null)}
-              >
-                <img
-                  src={industry.image}
-                  alt={industry.name}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
-                />
-                {/* Default dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
-                {/* Hover overlay with content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-6 py-4 sm:py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-4">{industry.name}</div>
-                  <div className="text-white text-xs sm:text-sm md:text-base font-normal mb-2 sm:mb-4 px-2">{industry.description}</div>
-                  <a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-sm sm:text-base">Learn More <span aria-hidden="true">→</span></a>
-                </div>
-                {/* Default industry name (only visible when not hovered) */}
-                <div className="relative z-20 text-sm sm:text-lg md:text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300 px-2">
-                  {industry.name}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Platforms Section */}
       <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">

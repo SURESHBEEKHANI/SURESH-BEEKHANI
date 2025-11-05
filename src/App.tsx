@@ -7,12 +7,10 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import LoadingSpinner from "@/components/ui/loading-spinner";
 import Index from "./Index";
 import NotFound from "./pages-Services/NotFound";
-import Chatbot from "@/components/Chatbot";
-import ChatbotBoundary from "@/components/ChatbotBoundary";
 import ReactGA from "react-ga4";
 
 // ✅ Load Measurement ID from .env
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID;
 
 // ✅ Initialize Google Analytics once
 if (GA_MEASUREMENT_ID) {
@@ -47,24 +45,19 @@ function usePageTracking() {
       action: "Visit",
       label: location.pathname,
       nonInteraction: true,
-      user_properties: {
-        userAgent,
-        screenWidth,
-        screenHeight,
-      },
     });
   }, [location]);
 }
 
-// 📦 Lazy-loaded pages
-const HealthTechAI = lazy(() => import("./pages-Industries/HealthTechAI"));
-const EdTechAI = lazy(() => import("./pages-Industries/EdTechAI"));
-const FinTechAI = lazy(() => import("./pages-Industries/FinTechAI"));
-const GreenTechAI = lazy(() => import("./pages-Industries/GreenTechAI"));
-const DiagnosticsAI = lazy(() => import("./pages-Industries/DiagnosticsAI"));
-const RetailAI = lazy(() => import("./pages-Industries/RetailAI"));
-const ECommerceAI = lazy(() => import("./pages-Industries/E-Commerce"));
-const HIPAACompliance = lazy(() => import("./pages-Industries/HIPAACompliance"));
+// 📦 Lazy-loaded pages - AI Healthcare Industries
+const HospitalsClinics = lazy(() => import("./pages-Industries/HospitalsClinics"));
+const TelemedicineDigitalHealth = lazy(() => import("./pages-Industries/TelemedicineDigitalHealth"));
+const MentalHealthWellness = lazy(() => import("./pages-Industries/MentalHealthWellness"));
+const MedicalImagingDiagnostics = lazy(() => import("./pages-Industries/MedicalImagingDiagnostics"));
+const DrugDiscoveryBiotech = lazy(() => import("./pages-Industries/DrugDiscoveryBiotech"));
+const GenomicsPersonalizedMedicine = lazy(() => import("./pages-Industries/GenomicsPersonalizedMedicine"));
+const HealthcareIoTSmartDevicesIndustry = lazy(() => import("./pages-Industries/HealthcareIoTSmartDevices"));
+const HealthDataPrivacySecurity = lazy(() => import("./pages-Industries/HealthDataPrivacySecurity"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
@@ -76,22 +69,22 @@ const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 
-// Portfolio
-const PortfolioPage = lazy(() => import("./Pages-Portfolio/Portfolio"));
-const AILaw = lazy(() => import("./Pages-Portfolio/ai-driven-law-gpt"));
-const AIImageGen = lazy(() => import("./Pages-Portfolio/ai-powered-image-generator"));
-const SoMeCreator = lazy(() => import("./Pages-Portfolio/social-media-content-creator"));
-const PatDiag = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system"));
-const LegalAI = lazy(() => import("./Pages-Portfolio/ai-legal-contract-analyzer"));
-const PersonalizedTravelAssistant = lazy(() => import("./Pages-Portfolio/personalized-travel-assistant"));
-const EarlyDiseaseDetectionAI = lazy(() => import("./Pages-Portfolio/EarlyDiseaseDetectionAI"));
-const RealTimeFraudDetection = lazy(() => import("./Pages-Portfolio/RealTimeFraudDetection"));
-const PersonalizedLearningAI = lazy(() => import("./Pages-Portfolio/PersonalizedLearningAI"));
-const SolarOutputForecasting = lazy(() => import("./Pages-Portfolio/SolarOutputForecasting"));
-const DynamicShelfRestocking = lazy(() => import("./Pages-Portfolio/DynamicShelfRestocking"));
-const ProductRecommendationAI = lazy(() => import("./Pages-Portfolio/ProductRecommendationAI"));
-const RadiologyReportGenerator = lazy(() => import("./Pages-Portfolio/RadiologyReportGenerator"));
-const FederatedPrivacyCompliance = lazy(() => import("./Pages-Portfolio/FederatedPrivacyCompliance"));
+// Portfolio - Healthcare AI Solutions
+const PortfolioPage = lazy(() => import("./components/portfolio"));
+const PatientDiagnosticSystem = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system.tsx"));
+const EarlyDiseaseDetectionAI = lazy(() => import("./Pages-Portfolio/early-disease-detection-ai.tsx"));
+const RadiologyReportGenerator = lazy(() => import("./Pages-Portfolio/radiology-report-generator.tsx"));
+const RemotePatientMonitoring = lazy(() => import("./Pages-Portfolio/remote-patient-monitoring.tsx"));
+const PersonalizedWellnessAI = lazy(() => import("./Pages-Portfolio/personalized-wellness-ai.tsx"));
+const CBTTherapyAI = lazy(() => import("./Pages-Portfolio/cbt-therapy-ai.tsx"));
+const GenomicRiskAnalysis = lazy(() => import("./Pages-Portfolio/genomic-risk-analysis.tsx"));
+const PrecisionMedicineSupport = lazy(() => import("./Pages-Portfolio/precision-medicine-support.tsx"));
+const DrugDiscoveryAI = lazy(() => import("./Pages-Portfolio/drug-discovery-ai.tsx"));
+const HealthcareIoTSmartDevices = lazy(() => import("./Pages-Portfolio/healthcare-iot-smart-devices.tsx"));
+const HealthcareWorkflowAutomation = lazy(() => import("./Pages-Portfolio/healthcare-workflow-automation.tsx"));
+const AIChatbotsPatientSupport = lazy(() => import("./Pages-Portfolio/ai-chatbots-patient-support.tsx"));
+const FederatedPrivacyCompliance = lazy(() => import("./Pages-Portfolio/federated-privacy-compliance.tsx"));
+const MedicalAnomalyDetection = lazy(() => import("./Pages-Portfolio/medical-anomaly-detection.tsx"));
 
 // ⚠️ Error Boundary
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
@@ -154,15 +147,15 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
 
-        {/* Industries */}
-        <Route path="/healthtechai" element={<HealthTechAI />} />
-        <Route path="/edtechai" element={<EdTechAI />} />
-        <Route path="/fintechai" element={<FinTechAI />} />
-        <Route path="/greentechai" element={<GreenTechAI />} />
-        <Route path="/diagnosticsai" element={<DiagnosticsAI />} />
-        <Route path="/retailai" element={<RetailAI />} />
-        <Route path="/e-commerce" element={<ECommerceAI />} />
-        <Route path="/hipaacompliance" element={<HIPAACompliance />} />
+        {/* AI Healthcare Industries */}
+        <Route path="/hospitalsclinics" element={<HospitalsClinics />} />
+        <Route path="/telemedicinedigitalhealth" element={<TelemedicineDigitalHealth />} />
+        <Route path="/mentalhealthwellness" element={<MentalHealthWellness />} />
+        <Route path="/medicalimagingdiagnostics" element={<MedicalImagingDiagnostics />} />
+        <Route path="/drugdiscoverybiotech" element={<DrugDiscoveryBiotech />} />
+        <Route path="/genomicspersonalizedmedicine" element={<GenomicsPersonalizedMedicine />} />
+        <Route path="/healthcareiotsmartdevices" element={<HealthcareIoTSmartDevicesIndustry />} />
+        <Route path="/healthdataprivacysecurity" element={<HealthDataPrivacySecurity />} />
 
         {/* Services */}
         <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
@@ -174,30 +167,25 @@ const AppContent = () => {
         <Route path="/ai-development" element={<AIDevelopment />} />
         <Route path="/ai-automation" element={<AIAutomation />} />
 
-        {/* Portfolio */}
+        {/* Portfolio - Healthcare AI Solutions */}
         <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/portfolio/ai-driven-law-gpt" element={<AILaw />} />
-        <Route path="/portfolio/ai-powered-image-generator" element={<AIImageGen />} />
-        <Route path="/portfolio/social-media-content-creator" element={<SoMeCreator />} />
-        <Route path="/portfolio/patient-diagnostic-system" element={<PatDiag />} />
-        <Route path="/portfolio/ai-legal-contract-analyzer" element={<LegalAI />} />
-        <Route path="/portfolio/personalized-travel-assistant" element={<PersonalizedTravelAssistant />} />
+        <Route path="/portfolio/patient-diagnostic-system" element={<PatientDiagnosticSystem />} />
         <Route path="/portfolio/early-disease-detection-ai" element={<EarlyDiseaseDetectionAI />} />
-        <Route path="/portfolio/real-time-fraud-detection" element={<RealTimeFraudDetection />} />
-        <Route path="/portfolio/personalized-learning-ai" element={<PersonalizedLearningAI />} />
-        <Route path="/portfolio/solar-output-forecasting" element={<SolarOutputForecasting />} />
-        <Route path="/portfolio/dynamic-shelf-restocking" element={<DynamicShelfRestocking />} />
-        <Route path="/portfolio/product-recommendation-ai" element={<ProductRecommendationAI />} />
         <Route path="/portfolio/radiology-report-generator" element={<RadiologyReportGenerator />} />
+        <Route path="/portfolio/remote-patient-monitoring" element={<RemotePatientMonitoring />} />
+        <Route path="/portfolio/personalized-wellness-ai" element={<PersonalizedWellnessAI />} />
+        <Route path="/portfolio/cbt-therapy-ai" element={<CBTTherapyAI />} />
+        <Route path="/portfolio/genomic-risk-analysis" element={<GenomicRiskAnalysis />} />
+        <Route path="/portfolio/precision-medicine-support" element={<PrecisionMedicineSupport />} />
+        <Route path="/portfolio/drug-discovery-ai" element={<DrugDiscoveryAI />} />
+        <Route path="/portfolio/healthcare-iot-smart-devices" element={<HealthcareIoTSmartDevices />} />
+        <Route path="/portfolio/healthcare-workflow-automation" element={<HealthcareWorkflowAutomation />} />
+        <Route path="/portfolio/ai-chatbots-patient-support" element={<AIChatbotsPatientSupport />} />
         <Route path="/portfolio/federated-privacy-compliance" element={<FederatedPrivacyCompliance />} />
+        <Route path="/portfolio/medical-anomaly-detection" element={<MedicalAnomalyDetection />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      {/* Chatbot */}
-      <ChatbotBoundary>
-        <Chatbot />
-      </ChatbotBoundary>
     </Suspense>
   );
 };

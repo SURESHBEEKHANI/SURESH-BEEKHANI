@@ -50,14 +50,14 @@ const Hero = () => {
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepDuration = duration / steps;
-    
+
     const targets = { years: 4, projects: 25, models: 40 };
     let currentStep = 0;
 
     const timer = setInterval(() => {
       currentStep++;
       const progress = currentStep / steps;
-      
+
       setStatsCount({
         years: Math.floor(targets.years * progress),
         projects: Math.floor(targets.projects * progress),
@@ -299,10 +299,11 @@ const Hero = () => {
               className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text"
               variants={staggerItem}
             >
-            I’m passionate about Artificial Intelligence in Healthcare, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative healthcare AI applications, I help learners and organizations harness AI for better patient care, smarter diagnostics, and sustainable innovation. Open to remote projects and freelance collaborations – let’s build the future of intelligent healthcare together!
+              I'm passionate about Artificial Intelligence in Healthcare, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative healthcare AI applications, I help learners and organizations harness AI for better patient care, smarter diagnostics, and sustainable innovation. Open to remote projects and freelance collaborations – let's build the future of intelligent healthcare together!
+            </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
               variants={staggerItem}
             >
               <motion.div

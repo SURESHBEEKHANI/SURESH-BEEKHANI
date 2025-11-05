@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,42 +15,46 @@ interface SolutionDetails {
 }
 
 const ClientSolutions = () => {
-  const [selectedSolution, setSelectedSolution] = useState('AI-Powered Law GPT');
+  const [selectedSolution, setSelectedSolution] = useState('MediPod');
   const navigate = useNavigate();
 
-  const solutions = ['TP-Assist', 'GP-Pod', 'AI-Powered Law GPT'];
+  const solutions = ['MediPod', 'HealthGPT', 'CareAssist'];
 
   const solutionDetails: SolutionDetails = {
-    'TP-Assist': {
-      title: 'AI-Powered TP-Assist',
-      description: 'We developed an AI-powered travel planning platform that transforms personalized trip creation. The solution addresses fragmented travel data, time-consuming itinerary building, and lack of real-time optimization. Our AI assistant delivers smart recommendations, real-time updates, and seamless itinerary management, resulting in enhanced user engagement and operational efficiency.',
-             benefits: [
-         'Time saved on planning and bookings',
-         'Enhanced customer satisfaction and retention',
-         'Smart Itinerary Builder with real-time updates',
-         'Personalized recommendations for activities and dining',
-         'Calendar integration and cost optimization',
-         'Sustainable travel support'
-       ]
-    },
-    'GP-Pod': {
-      title: 'GP-Pod',
-      description: 'Our client needed an intelligent system to assist general practitioners with diagnostic support, patient management, and treatment recommendations. We developed GP-Pod, an AI-powered platform that provides real-time diagnostic assistance, patient history analysis, and evidence-based treatment recommendations.',
+    'MediPod': {
+      title: 'MediPod – AI Assistant for Patient Care',
+      description: 'We developed MediPod, an AI-powered assistant that transforms patient care and monitoring. The solution addresses fragmented patient data, time-consuming care coordination, and lack of real-time health monitoring. Our AI assistant delivers smart health insights, continuous patient monitoring, and seamless care management, resulting in enhanced patient outcomes and operational efficiency.',
       benefits: [
-        'Real-time diagnostic assistance and support',
-        'Comprehensive patient history analysis',
-        'Evidence-based treatment recommendations',
-        'Improved accuracy in medical decision-making'
+        'Real-time patient monitoring and alerts',
+        'Enhanced care coordination and communication',
+        'Smart health insights and trend analysis',
+        'Personalized care recommendations',
+        'Automated documentation and reporting',
+        'Improved patient engagement and satisfaction'
       ]
     },
-    'AI-Powered Law GPT': {
-      title: 'AI-Powered Law GPT',
-      description: 'Our client struggled with data overload, time-consuming legal research tasks, and the need to centralize legal information efficiently. We partnered with them to provide an AI-powered Law GPT solution that alleviates legal professionals\' burdens by streamlining tasks, ensuring compliance, and enabling earlier risk mitigation.',
+    'HealthGPT': {
+      title: 'HealthGPT – AI for Medical Insights',
+      description: 'Our client needed an intelligent system to provide comprehensive medical insights and diagnostic support. We developed HealthGPT, an AI-powered platform that delivers advanced medical analytics, diagnostic assistance, and evidence-based clinical recommendations to healthcare professionals.',
       benefits: [
-        'Streamlined legal research and document analysis',
-        'Enhanced compliance monitoring and risk assessment',
-        'Automated contract review and legal document processing',
-        'Centralized legal knowledge management'
+        'Advanced medical data analysis and insights',
+        'AI-powered diagnostic assistance',
+        'Evidence-based treatment recommendations',
+        'Comprehensive health trend analysis',
+        'Clinical decision support tools',
+        'Improved diagnostic accuracy and efficiency'
+      ]
+    },
+    'CareAssist': {
+      title: 'CareAssist – AI-Powered Clinical Workflow',
+      description: 'Our client struggled with complex clinical workflows, time-consuming administrative tasks, and the need to streamline healthcare operations efficiently. We partnered with them to provide CareAssist, an AI-powered solution that optimizes clinical workflows, automates routine tasks, and enables better resource management.',
+      benefits: [
+        'Streamlined clinical workflow automation',
+        'Enhanced operational efficiency and productivity',
+        'Automated scheduling and resource allocation',
+        'Intelligent task prioritization and management',
+        'Reduced administrative burden on staff',
+        'Improved patient flow and care delivery'
       ]
     }
   };
@@ -59,9 +63,9 @@ const ClientSolutions = () => {
 
   const handleReadMore = () => {
     const pageMap: { [key: string]: string } = {
-      'TP-Assist': '/portfolio/personalized-travel-assistant',
-      'GP-Pod': '/portfolio/patient-diagnostic-system',
-      'AI-Powered Law GPT': '/portfolio/ai-driven-law-gpt'
+      'MediPod': '/portfolio/medipod-patient-care',
+      'HealthGPT': '/portfolio/healthgpt-medical-insights',
+      'CareAssist': '/portfolio/careassist-clinical-workflow'
     };
     navigate(pageMap[selectedSolution] || '/');
   };
@@ -76,7 +80,7 @@ const ClientSolutions = () => {
                 Our Solutions
               </Badge>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight px-2 sm:px-0">
-                Personalized AI Solutions For Clients
+                Healthcare AI Solutions For Clients
               </h2>
             </div>
 
@@ -106,10 +110,12 @@ const ClientSolutions = () => {
                   {currentSolution.description}
                 </p>
                                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                   {selectedSolution === 'AI-Powered Law GPT'
-                     ? 'LawGPT provides cost-effective legal support, offering a comprehensive solution to the challenges faced by our client.'
-                     : selectedSolution === 'TP-Assist'
-                     ? 'TP-Assist delivers cost-effective travel planning with comprehensive AI support.'
+                   {selectedSolution === 'MediPod'
+                     ? 'MediPod provides cost-effective patient care solutions, offering comprehensive AI-powered monitoring and support.'
+                     : selectedSolution === 'HealthGPT'
+                     ? 'HealthGPT delivers cost-effective medical insights with comprehensive AI diagnostic support.'
+                     : selectedSolution === 'CareAssist'
+                     ? 'CareAssist provides cost-effective clinical workflow optimization, offering a comprehensive solution to healthcare operational challenges.'
                      : `${currentSolution.title} provides cost-effective support, offering a comprehensive solution to the challenges faced by our client.`}
                  </p>
               </div>

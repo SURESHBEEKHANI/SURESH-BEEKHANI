@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Brain, BarChart3, Target, Users, TrendingUp, Code, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Industries from "../components/Industries";
 
 // Industries for Predictive Modelling
 const industries = [
@@ -65,144 +66,144 @@ const industries = [
 
 // Predictive Modelling Services
 const pmServices = [
-  {
-    id: 1,
-    title: "Regression Analysis",
-    description:
-      "Unlock precise forecasting and trend analysis with robust regression tools tailored to your business objectives.",
-    icon: <TrendingUp className="h-7 w-7" />,
-    color: "from-indigo-500 to-purple-500"
-  },
-  {
-    id: 2,
-    title: "Time Series Forecasting",
-    description:
-      "Anticipate future trends and seasonality by analyzing time-stamped data for accurate, forward-looking insights.",
-    icon: <BarChart3 className="h-7 w-7" />,
-    color: "from-emerald-500 to-teal-500"
-  },
-  {
-    id: 3,
-    title: "Classification Analysis",
-    description:
-      "Empower your business to categorize and interpret complex data, driving smarter segmentation and decision-making.",
-    icon: <Target className="h-7 w-7" />,
-    color: "from-violet-500 to-purple-500"
-  },
-  {
-    id: 4,
-    title: "Anomaly Detection",
-    description:
-      "Proactively identify outliers and unusual patterns to mitigate risk and ensure operational integrity.",
-    icon: <Shield className="h-7 w-7" />,
-    color: "from-rose-500 to-pink-500"
-  },
-  {
-    id: 5,
-    title: "Risk Assessment",
-    description:
-      "Evaluate and quantify potential risks using advanced statistical models and machine learning algorithms.",
-    icon: <CheckCircle className="h-7 w-7" />,
-    color: "from-amber-500 to-orange-500"
-  },
-  {
-    id: 6,
-    title: "Demand Forecasting",
-    description:
-      "Predict customer demand patterns to optimize inventory, production, and resource allocation strategies.",
-    icon: <Brain className="h-7 w-7" />,
-    color: "from-cyan-500 to-blue-500"
-  },
+	{
+		id: 1,
+		title: "Regression Analysis",
+		description:
+			"Unlock precise forecasting and trend analysis with robust regression tools tailored to your business objectives.",
+		icon: <TrendingUp className="h-7 w-7" />,
+		color: "from-indigo-500 to-purple-500"
+	},
+	{
+		id: 2,
+		title: "Time Series Forecasting",
+		description:
+			"Anticipate future trends and seasonality by analyzing time-stamped data for accurate, forward-looking insights.",
+		icon: <BarChart3 className="h-7 w-7" />,
+		color: "from-emerald-500 to-teal-500"
+	},
+	{
+		id: 3,
+		title: "Classification Analysis",
+		description:
+			"Empower your business to categorize and interpret complex data, driving smarter segmentation and decision-making.",
+		icon: <Target className="h-7 w-7" />,
+		color: "from-violet-500 to-purple-500"
+	},
+	{
+		id: 4,
+		title: "Anomaly Detection",
+		description:
+			"Proactively identify outliers and unusual patterns to mitigate risk and ensure operational integrity.",
+		icon: <Shield className="h-7 w-7" />,
+		color: "from-rose-500 to-pink-500"
+	},
+	{
+		id: 5,
+		title: "Risk Assessment",
+		description:
+			"Evaluate and quantify potential risks using advanced statistical models and machine learning algorithms.",
+		icon: <CheckCircle className="h-7 w-7" />,
+		color: "from-amber-500 to-orange-500"
+	},
+	{
+		id: 6,
+		title: "Demand Forecasting",
+		description:
+			"Predict customer demand patterns to optimize inventory, production, and resource allocation strategies.",
+		icon: <Brain className="h-7 w-7" />,
+		color: "from-cyan-500 to-blue-500"
+	},
 ];
 
 const platforms = [
-  { name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
-  { name: "TensorFlow", image: "/image/skills_img/tensorflow.png" },
-  { name: "PyTorch", image: "/image/skills_img/pytorch.png" },
-  { name: "Seaborn", image: "/image/skills_img/seaborn.svg" },
-  { name: "Pandas", image: "/image/skills_img/pandas.png" },
+	{ name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
+	{ name: "TensorFlow", image: "/image/skills_img/tensorflow.png" },
+	{ name: "PyTorch", image: "/image/skills_img/pytorch.png" },
+	{ name: "Seaborn", image: "/image/skills_img/seaborn.svg" },
+	{ name: "Pandas", image: "/image/skills_img/pandas.png" },
 ];
 
 const pmSolutions = [
-  {
-    key: "PredictAI",
-    name: "PredictAI",
-    description: (
-      <>
-        PredictAI delivers advanced predictive analytics, enabling businesses to forecast trends, optimize operations, and make data-driven decisions with confidence.
-      </>
-    ),
-    cta: "Book a Demo",
-    image: "/image/pages_img/Predictive-Analytics-Services.jpg",
-  },
-  {
-    key: "ForecastPro",
-    name: "ForecastPro",
-    description: (
-      <>
-        ForecastPro provides comprehensive time series forecasting and demand prediction capabilities for strategic planning and resource optimization.
-      </>
-    ),
-    cta: "Book a Demo",
-    image: "/image/pages_img/Predictive-Modelling.jpg",
-  },
-  {
-    key: "RiskGuard",
-    name: "RiskGuard",
-    description: (
-      <>
-        RiskGuard offers sophisticated risk assessment and anomaly detection to protect your business from potential threats and operational disruptions.
-      </>
-    ),
-    cta: "Book a Demo",
-    image: "/image/pages_img/PredictiveAnalytics.jpg",
-  },
+	{
+		key: "PredictAI",
+		name: "PredictAI",
+		description: (
+			<>
+				PredictAI delivers advanced predictive analytics, enabling businesses to forecast trends, optimize operations, and make data-driven decisions with confidence.
+			</>
+		),
+		cta: "Book a Demo",
+		image: "/image/pages_img/Predictive-Analytics-Services.jpg",
+	},
+	{
+		key: "ForecastPro",
+		name: "ForecastPro",
+		description: (
+			<>
+				ForecastPro provides comprehensive time series forecasting and demand prediction capabilities for strategic planning and resource optimization.
+			</>
+		),
+		cta: "Book a Demo",
+		image: "/image/pages_img/Predictive-Modelling.jpg",
+	},
+	{
+		key: "RiskGuard",
+		name: "RiskGuard",
+		description: (
+			<>
+				RiskGuard offers sophisticated risk assessment and anomaly detection to protect your business from potential threats and operational disruptions.
+			</>
+		),
+		cta: "Book a Demo",
+		image: "/image/pages_img/PredictiveAnalytics.jpg",
+	},
 ];
 
 const faqData = [
-  {
-    question: "What is predictive modeling and forecasting?",
-    answer: "Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.",
-  },
-  {
-    question: "Why is predictive analytics important?",
-    answer: "Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.",
-  },
-  {
-    question: "What is the difference between machine learning and predictive analytics?",
-    answer: "Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.",
-  },
-  {
-    question: "Will a predictive analytics tool bring value to my company?",
-    answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
-  },
-  {
-    question: "What are predictive modeling techniques?",
-    answer: "Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.",
-  },
+	{
+		question: "What is predictive modeling and forecasting?",
+		answer: "Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.",
+	},
+	{
+		question: "Why is predictive analytics important?",
+		answer: "Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.",
+	},
+	{
+		question: "What is the difference between machine learning and predictive analytics?",
+		answer: "Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.",
+	},
+	{
+		question: "Will a predictive analytics tool bring value to my company?",
+		answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
+	},
+	{
+		question: "What are predictive modeling techniques?",
+		answer: "Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.",
+	},
 ];
 
 const onboardingSteps = [
-  {
-    icon: "📞",
-    title: 'Contact Us',
-    description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
-  },
-  {
-    icon: "💼",
-    title: 'Consultation & Discovery',
-    description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations tailored to your needs.',
-  },
-  {
-    icon: "📋",
-    title: 'Receive a Detailed Proposal',
-    description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
-  },
-  {
-    icon: "🚀",
-    title: 'Project Kickoff & Delivery',
-    description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
-  },
+	{
+		icon: "📞",
+		title: 'Contact Us',
+		description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
+	},
+	{
+		icon: "💼",
+		title: 'Consultation & Discovery',
+		description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations tailored to your needs.',
+	},
+	{
+		icon: "📋",
+		title: 'Receive a Detailed Proposal',
+		description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
+	},
+	{
+		icon: "🚀",
+		title: 'Project Kickoff & Delivery',
+		description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
+	},
 ];
 
 const PredictiveModelling: React.FC = () => {
@@ -226,8 +227,8 @@ const PredictiveModelling: React.FC = () => {
 								Predictive Modeling
 							</h1>
 							<p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-							 Harness predictive analytics to anticipate trends and optimize operations.
-							 Our data-driven solutions empower strategic growth across industries.
+								Harness predictive analytics to anticipate trends and optimize operations.
+								Our data-driven solutions empower strategic growth across industries.
 							</p>
 							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
 								<a
@@ -302,6 +303,55 @@ const PredictiveModelling: React.FC = () => {
 								</div>
 								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">{service.title}</h3>
 								<p className="text-gray-800 text-center text-sm sm:text-base leading-relaxed">{service.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* AI Healthcare Industries Section */}
+			<section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+				<div className="max-w-7xl mx-auto">
+					<div className="text-center space-y-2 mb-8 sm:mb-8">
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">
+							AI Healthcare Industries
+						</h2>
+						<div className="flex justify-center mb-2">
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+						</div>
+						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
+							Specialized predictive modeling solutions for healthcare transformation.
+						</p>
+					</div>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-xl sm:rounded-2xl">
+						{industries.filter(industry => 
+							industry.name === "HealthTech" || 
+							industry.name === "AI Diagnostics" || 
+							industry.name === "HIPAA Compliance"
+						).map((industry) => (
+							<div
+								key={industry.name}
+								className="group relative border-b border-r border-white/30 min-h-[140px] sm:min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
+								onMouseEnter={() => setHoveredIndustry(industry.name)}
+								onMouseLeave={() => setHoveredIndustry(null)}
+							>
+								<img
+									src={industry.image}
+									alt={industry.name}
+									className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
+								/>
+								{/* Default dark overlay */}
+								<div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
+								{/* Hover overlay with content */}
+								<div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(23, 37, 84, 0.9)' }}>
+									<div className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4">{industry.name}</div>
+									<div className="text-white text-xs sm:text-base font-normal mb-3 sm:mb-4 leading-relaxed">{industry.description}</div>
+									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-sm sm:text-base">Learn More <span aria-hidden="true">→</span></a>
+								</div>
+								{/* Default industry name (only visible when not hovered) */}
+								<div className="relative z-20 text-base sm:text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300 text-center px-2">
+									{industry.name}
+								</div>
 							</div>
 						))}
 					</div>
@@ -416,50 +466,7 @@ const PredictiveModelling: React.FC = () => {
 				</div>
 			</section>
 
-			{/* Industries Section */}
-			<section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-				<div className="max-w-7xl mx-auto">
-					<div className="text-center space-y-2 mb-8 sm:mb-8">
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">
-							Industries We Work With
-						</h2>
-						<div className="flex justify-center mb-2">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Tailored predictive modeling solutions across diverse industry verticals.
-						</p>
-					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-white/30 overflow-hidden rounded-xl sm:rounded-2xl">
-						{industries.map((industry) => (
-							<div
-								key={industry.name}
-								className="group relative border-b border-r border-white/30 min-h-[140px] sm:min-h-[180px] flex items-center justify-center cursor-pointer overflow-hidden"
-								onMouseEnter={() => setHoveredIndustry(industry.name)}
-								onMouseLeave={() => setHoveredIndustry(null)}
-							>
-								<img
-									src={industry.image}
-									alt={industry.name}
-									className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 z-0"
-								/>
-								{/* Default dark overlay */}
-								<div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/10 z-10 transition-all duration-300 group-hover:opacity-0"></div>
-								{/* Hover overlay with content */}
-								<div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'rgba(23, 37, 84, 0.9)'}}>
-									<div className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4">{industry.name}</div>
-									<div className="text-white text-xs sm:text-base font-normal mb-3 sm:mb-4 leading-relaxed">{industry.description}</div>
-									<a href={industry.page} className="inline-flex items-center gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-sm sm:text-base">Learn More <span aria-hidden="true">→</span></a>
-								</div>
-								{/* Default industry name (only visible when not hovered) */}
-								<div className="relative z-20 text-base sm:text-xl font-semibold text-white group-hover:opacity-0 transition-opacity duration-300 text-center px-2">
-									{industry.name}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+
 
 			{/* Predictive Modelling Development Process (New Section) */}
 			<section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
@@ -692,6 +699,7 @@ const PredictiveModelling: React.FC = () => {
 				</div>
 			</section>
 
+			<Industries />
 			<Footer />
 		</div>
 	);

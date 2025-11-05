@@ -190,13 +190,13 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden"
       aria-label="Our AI Services"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-2xl sm:blur-3xl"
+          className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-2xl sm:blur-3xl"
           animate={prefersReducedMotion ? {} : {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -204,7 +204,7 @@ const Services = () => {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-tr from-indigo-100/30 to-pink-100/30 rounded-full blur-2xl sm:blur-3xl"
+          className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-2xl sm:blur-3xl"
           animate={prefersReducedMotion ? {} : {
             scale: [1, 1.3, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -225,24 +225,24 @@ const Services = () => {
           <motion.div variants={staggerItem}>
             <Badge
               variant="outline"
-              className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary font-medium text-xs sm:text-sm rounded-full border-primary/20"
+              className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-ai-purple font-medium text-xs sm:text-sm rounded-full border-ai-purple/30"
             >
               <Check className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
               Services We Offer
             </Badge>
           </motion.div>
           <motion.h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 text-white"
             variants={staggerItem}
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Services</span>
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-ai-purple to-ai-cyan">Services</span>
           </motion.h2>
           <motion.div
             className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-6 sm:mb-8 rounded-full"
             variants={staggerItem}
           />
           <motion.p
-            className="text-base sm:text-lg text-foreground/70 max-w-3xl mx-auto"
+            className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto"
             variants={staggerItem}
           >
             Comprehensive AI solutions tailored to transform your business and drive innovation across all industries.
@@ -258,7 +258,7 @@ const Services = () => {
         >
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-full bg-gradient-to-r from-primary to-blue-600 text-white px-4 py-3 rounded-xl flex items-center justify-between shadow-lg"
+            className="w-full bg-gradient-to-r from-ai-purple to-ai-cyan text-white px-4 py-3 rounded-xl flex items-center justify-between shadow-lg"
             whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
           >
             <span className="font-medium">{selectedService}</span>
@@ -272,7 +272,7 @@ const Services = () => {
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
-                className="absolute mt-2 w-full bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border max-h-60 overflow-y-auto z-50"
+                className="absolute mt-2 w-full bg-gray-800/95 backdrop-blur-xl rounded-xl shadow-2xl border border-ai-purple/20 max-h-60 overflow-y-auto z-50"
                 initial={prefersReducedMotion ? {} : { opacity: 0, y: -10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -286,8 +286,8 @@ const Services = () => {
                       setIsMobileMenuOpen(false);
                     }}
                     className={`w-full text-left px-4 py-3 transition-colors ${selectedService === service
-                        ? 'bg-primary/10 text-primary font-medium'
-                        : 'hover:bg-gray-50'
+                      ? 'bg-ai-purple/20 text-ai-purple font-medium'
+                      : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
                       }`}
                     initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -308,10 +308,10 @@ const Services = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Card className="glass-effect rounded-xl sm:rounded-2xl shadow-xl border border-white/20 backdrop-blur-sm overflow-hidden">
+          <Card className="ai-card-glow rounded-xl sm:rounded-2xl shadow-xl border border-ai-purple/20 backdrop-blur-sm overflow-hidden bg-gray-800/50">
             <div className="grid lg:grid-cols-4">
               {/* Sidebar (Desktop) */}
-              <div className="hidden lg:block bg-gradient-to-br from-primary via-blue-600 to-indigo-600 p-8">
+              <div className="hidden lg:block bg-gradient-to-br from-ai-purple via-ai-purple-light to-ai-cyan p-8">
                 <motion.h3
                   className="text-white text-xl font-semibold mb-8 flex items-center gap-2"
                   initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
@@ -327,8 +327,8 @@ const Services = () => {
                       key={service}
                       onClick={() => setSelectedService(service)}
                       className={`w-full text-left px-4 py-3 rounded-xl transition-all ${selectedService === service
-                          ? 'bg-white/20 text-white shadow-lg'
-                          : 'text-white/80 hover:text-white hover:bg-white/10'
+                        ? 'bg-white/20 text-white shadow-lg'
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
                         }`}
                       initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -360,16 +360,16 @@ const Services = () => {
                       transition={{ delay: 0.1 }}
                     >
                       <motion.div
-                        className="bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full w-16 h-16 flex items-center justify-center border border-primary/20"
+                        className="bg-gradient-to-br from-ai-purple/20 to-ai-cyan/10 rounded-full w-16 h-16 flex items-center justify-center border border-ai-purple/30 text-ai-purple"
                         whileHover={prefersReducedMotion ? {} : { scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         {currentService.icon}
                       </motion.div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900">{currentService.title}</h3>
+                        <h3 className="text-2xl font-bold text-white">{currentService.title}</h3>
                         <motion.div
-                          className="w-12 h-1 bg-gradient-to-r from-primary to-blue-600 rounded-full mt-2"
+                          className="w-12 h-1 bg-gradient-to-r from-ai-purple to-ai-cyan rounded-full mt-2"
                           initial={prefersReducedMotion ? false : { width: 0 }}
                           animate={{ width: 48 }}
                           transition={{ delay: 0.2, duration: 0.4 }}
@@ -379,7 +379,7 @@ const Services = () => {
 
                     {/* Description */}
                     <motion.p
-                      className="text-gray-600 mb-8"
+                      className="text-gray-300 mb-8"
                       initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
@@ -389,12 +389,12 @@ const Services = () => {
 
                     {/* Benefits */}
                     <motion.h4
-                      className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2"
+                      className="text-xl font-semibold text-white mb-6 flex items-center gap-2"
                       initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <Target className="h-5 w-5 text-primary" />
+                      <Target className="h-5 w-5 text-ai-purple" />
                       Business Benefits of Choosing Us
                     </motion.h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -409,10 +409,10 @@ const Services = () => {
                           <motion.div
                             whileHover={prefersReducedMotion ? {} : hoverLiftShadow}
                           >
-                            <Card className="glass-effect rounded-xl p-6 border transition-all h-full">
+                            <Card className="ai-card rounded-xl p-6 border transition-all h-full bg-gray-800/30">
                               <CardContent className="p-0">
-                                <h5 className="font-semibold text-gray-900 mb-2">{benefit.title}</h5>
-                                <p className="text-gray-600 text-sm">{benefit.description}</p>
+                                <h5 className="font-semibold text-white mb-2">{benefit.title}</h5>
+                                <p className="text-gray-300 text-sm">{benefit.description}</p>
                               </CardContent>
                             </Card>
                           </motion.div>
@@ -433,7 +433,7 @@ const Services = () => {
                       >
                         <Button
                           onClick={handleReadMore}
-                          className="bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg transition-all"
+                          className="btn-primary px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg transition-all"
                         >
                           Learn More
                           <ArrowRight className="h-4 w-4" />

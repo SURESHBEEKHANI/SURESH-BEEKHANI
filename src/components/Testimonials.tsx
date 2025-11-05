@@ -131,26 +131,27 @@ const Testimonials = () => {
 
   return (
     <section 
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden"
       aria-label="Client Testimonials"
     >
-      {/* Background decorative elements */}
+      {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-blue-100/40 to-purple-100/40 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-indigo-100/40 to-pink-100/40 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <Badge 
             variant="outline" 
-            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary font-medium text-xs sm:text-sm rounded-full border-primary/20 hover:bg-primary/15 transition-colors duration-300"
+            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-ai-cyan font-medium text-xs sm:text-sm rounded-full border-ai-purple/30 hover:bg-ai-purple/25 transition-all duration-300 ai-glow backdrop-blur-sm"
           >
             Client Testimonials
           </Badge>
           <div className="mb-4 sm:mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
-              Trusted by <span className="text-primary">Innovators</span> Worldwide
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ai-heading mb-3 sm:mb-4 leading-tight">
+              Trusted by <span className="gradient-text-ai neon-text">Innovators</span> Worldwide
             </h2>
             
             {/* Dots indicator moved under title */}
@@ -159,10 +160,10 @@ const Testimonials = () => {
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ai-purple/50 ${
                     index === currentIndex
-                      ? 'bg-primary scale-125 shadow-lg'
-                      : 'bg-gray-300 hover:bg-gray-400 hover:scale-110'
+                      ? 'bg-ai-cyan scale-125 shadow-lg ai-glow'
+                      : 'bg-ai-gray/30 hover:bg-ai-purple/50 hover:scale-110'
                   }`}
                   role="tab"
                   aria-selected={index === currentIndex}
@@ -171,8 +172,8 @@ const Testimonials = () => {
               ))}
             </div>
             
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
-              Discover what our clients say about working with us on their AI and machine learning projects.
+            <p className="text-base sm:text-lg ai-text-primary max-w-2xl mx-auto px-4 sm:px-0 font-medium">
+              Discover what our clients say about working with us on their <span className="gradient-text">AI and machine learning projects</span>.
             </p>
           </div>
         </div>
@@ -184,10 +185,10 @@ const Testimonials = () => {
               variant="outline"
               size="icon"
               onClick={goToPrevious}
-              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="w-12 h-12 rounded-full bg-ai-dark/80 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-primary transition-colors" />
+              <ChevronLeft className="w-5 h-5 text-ai-cyan group-hover:text-ai-purple transition-colors" />
             </Button>
           </div>
 
@@ -196,10 +197,10 @@ const Testimonials = () => {
               variant="outline"
               size="icon"
               onClick={goToNext}
-              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="w-12 h-12 rounded-full bg-ai-dark/80 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-primary transition-colors" />
+              <ChevronRight className="w-5 h-5 text-ai-cyan group-hover:text-ai-purple transition-colors" />
             </Button>
           </div>
 
@@ -209,19 +210,19 @@ const Testimonials = () => {
               variant="outline"
               size="icon"
               onClick={goToPrevious}
-              className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border-gray-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="w-10 h-10 rounded-full bg-ai-dark/90 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-4 h-4 text-gray-600 group-hover:text-primary transition-colors" />
+              <ChevronLeft className="w-4 h-4 text-ai-cyan group-hover:text-ai-purple transition-colors" />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={goToNext}
-              className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border-gray-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="w-10 h-10 rounded-full bg-ai-dark/90 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-primary transition-colors" />
+              <ChevronRight className="w-4 h-4 text-ai-cyan group-hover:text-ai-purple transition-colors" />
             </Button>
           </div>
 
@@ -237,7 +238,7 @@ const Testimonials = () => {
                 key={`${testimonials[currentIndex].id}-${currentIndex}`}
                 className="relative transform transition-all duration-700 ease-out scale-100 z-30 translate-x-0 opacity-100"
               >
-                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-white/10 backdrop-blur-sm">
+                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6C63FF 0%, #00C2FF 50%, #8B5CF6 100%)'}}>
                   {/* Rating stars */}
                   <div className="flex items-center gap-1 mb-3 sm:mb-4" aria-label={`${testimonials[currentIndex].rating} out of 5 stars`}>
                     {renderStars(testimonials[currentIndex].rating)}
@@ -292,7 +293,7 @@ const Testimonials = () => {
                     transform: `perspective(1000px) rotateY(${index * 6 - 6}deg) translateZ(${index * 8}px)`
                   }}
                 >
-                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 rounded-3xl p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-white/10 backdrop-blur-sm">
+                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-3xl p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6C63FF 0%, #00C2FF 50%, #8B5CF6 100%)'}}>
                     {/* Rating stars */}
                     <div className="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
                       {renderStars(testimonial.rating)}
