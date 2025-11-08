@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Shield, Lock, Network } from "lucide-react";
+import { ArrowRight, Shield, Lock, Network, Download } from "lucide-react";
 
 const FederatedPrivacyCompliance: React.FC = () => {
   return (
@@ -122,9 +122,9 @@ const FederatedPrivacyCompliance: React.FC = () => {
             <div className="bg-gradient-to-r from-slate-600 to-gray-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Secure Collaborative AI Research</h2>
               <p className="text-lg mb-6 opacity-90">Enable multi-institutional AI development while maintaining the highest standards of data privacy and security.</p>
-              <a href="/#contact" className="btn-primary bg-white text-slate-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Secure Your Data
-                <ArrowRight className="h-5 w-5" />
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>

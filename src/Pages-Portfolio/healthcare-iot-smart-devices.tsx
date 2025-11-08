@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Wifi, Activity, Database } from "lucide-react";
+import { ArrowRight, Wifi, Activity, Database, Download } from "lucide-react";
 
 const HealthcareIoTSmartDevices: React.FC = () => {
   return (
@@ -104,9 +104,9 @@ const HealthcareIoTSmartDevices: React.FC = () => {
             <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Connect Your Healthcare Ecosystem</h2>
               <p className="text-lg mb-6 opacity-90">Implement smart IoT solutions to optimize healthcare operations and improve patient outcomes.</p>
-              <a href="/#contact" className="btn-primary bg-white text-cyan-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Learn More & Connect Devices
-                <ArrowRight className="h-5 w-5" />
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>

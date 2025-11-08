@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Workflow, Clock, FileText } from "lucide-react";
+import { ArrowRight, Workflow, Clock, FileText, Download } from "lucide-react";
 
 const HealthcareWorkflowAutomation: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ const HealthcareWorkflowAutomation: React.FC = () => {
           
           {/* Overview */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Automation Solutions</h2>
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">System Overview</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <Workflow className="h-12 w-12 text-orange-600 mb-4" />
@@ -49,36 +49,54 @@ const HealthcareWorkflowAutomation: React.FC = () => {
             </div>
           </div>
 
-          {/* Automation Areas */}
+          {/* Key Features */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Key Automation Areas</h2>
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Key Features</h2>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Administrative Tasks</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Administrative Automation</h3>
                   <ul className="space-y-3 text-gray-700">
-                    <li>• Patient registration and check-in</li>
-                    <li>• Insurance verification and billing</li>
-                    <li>• Appointment scheduling and reminders</li>
-                    <li>• Medical record management</li>
+                    <li>• Automated patient registration and check-in</li>
+                    <li>• Insurance verification and pre-authorization</li>
+                    <li>• Intelligent appointment scheduling and reminders</li>
+                    <li>• Electronic medical record management</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Clinical Workflows</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Clinical Workflow Optimization</h3>
                   <ul className="space-y-3 text-gray-700">
-                    <li>• Clinical decision support systems</li>
-                    <li>• Medication management and alerts</li>
+                    <li>• Clinical decision support integration</li>
+                    <li>• Medication ordering and management</li>
                     <li>• Lab result processing and routing</li>
-                    <li>• Discharge planning automation</li>
+                    <li>• Automated discharge planning</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Revenue Cycle Management</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Automated billing and claims processing</li>
+                    <li>• Payment posting and reconciliation</li>
+                    <li>• Denial management and appeals</li>
+                    <li>• Financial reporting and analytics</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Staff Coordination</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Automated staff scheduling and shift management</li>
+                    <li>• Task assignment and tracking</li>
+                    <li>• Inter-departmental communication</li>
+                    <li>• Resource allocation optimization</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Efficiency Gains */}
+          {/* Benefits */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Efficiency Improvements</h2>
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Benefits</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center p-6 bg-orange-50 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600 mb-2">70%</div>
@@ -104,9 +122,9 @@ const HealthcareWorkflowAutomation: React.FC = () => {
             <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Streamline Healthcare Operations</h2>
               <p className="text-lg mb-6 opacity-90">Automate workflows to reduce administrative burden and focus on patient care.</p>
-              <a href="/#contact" className="btn-primary bg-white text-orange-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Automate Workflows
-                <ArrowRight className="h-5 w-5" />
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>

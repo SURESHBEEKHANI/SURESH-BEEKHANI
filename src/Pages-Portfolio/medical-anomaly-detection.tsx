@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Search, AlertCircle, Target } from "lucide-react";
+import { ArrowRight, Search, AlertCircle, Target, Download } from "lucide-react";
 
 const MedicalAnomalyDetection: React.FC = () => {
   return (
@@ -48,6 +48,69 @@ const MedicalAnomalyDetection: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* Detection Areas */}
+          <div className="mb-16">
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Anomaly Detection Areas</h2>
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Medical Imaging Anomalies</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Tumor and lesion detection</li>
+                    <li>• Fracture identification</li>
+                    <li>• Organ abnormalities</li>
+                    <li>• Vascular irregularities</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Patient Data Anomalies</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Vital sign irregularities</li>
+                    <li>• Lab result outliers</li>
+                    <li>• Medication interactions</li>
+                    <li>• Treatment response deviations</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Performance Metrics */}
+          <div className="mb-16">
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Detection Performance</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center p-6 bg-red-50 rounded-xl">
+                <div className="text-3xl font-bold text-red-600 mb-2">97%</div>
+                <p className="text-gray-700">Detection accuracy</p>
+              </div>
+              <div className="text-center p-6 bg-rose-50 rounded-xl">
+                <div className="text-3xl font-bold text-rose-600 mb-2">85%</div>
+                <p className="text-gray-700">Reduced false positives</p>
+              </div>
+              <div className="text-center p-6 bg-pink-50 rounded-xl">
+                <div className="text-3xl font-bold text-pink-600 mb-2">70%</div>
+                <p className="text-gray-700">Earlier detection</p>
+              </div>
+              <div className="text-center p-6 bg-orange-50 rounded-xl">
+                <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+                <p className="text-gray-700">Continuous monitoring</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-8 text-white">
+              <h2 className="text-2xl font-bold mb-4">Enhance Diagnostic Accuracy</h2>
+              <p className="text-lg mb-6 opacity-90">Implement AI-powered anomaly detection to catch critical issues that might be missed by human review.</p>
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
 

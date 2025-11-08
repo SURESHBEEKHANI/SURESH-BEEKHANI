@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Target, Microscope, Users } from "lucide-react";
+import { ArrowRight, Target, Microscope, Users, Download } from "lucide-react";
 
 const PrecisionMedicineSupport: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ const PrecisionMedicineSupport: React.FC = () => {
           
           {/* Overview */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Precision Medicine Features</h2>
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">System Overview</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <Target className="h-12 w-12 text-teal-600 mb-4" />
@@ -49,15 +49,15 @@ const PrecisionMedicineSupport: React.FC = () => {
             </div>
           </div>
 
-          {/* Treatment Areas */}
+          {/* Key Features */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Treatment Specializations</h2>
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Key Features</h2>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Oncology Precision Medicine</h3>
                   <ul className="space-y-3 text-gray-700">
-                    <li>• Tumor genetic profiling and analysis</li>
+                    <li>• Comprehensive tumor genetic profiling</li>
                     <li>• Immunotherapy response prediction</li>
                     <li>• Chemotherapy sensitivity testing</li>
                     <li>• Targeted cancer therapy selection</li>
@@ -66,12 +66,53 @@ const PrecisionMedicineSupport: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Pharmacogenomics</h3>
                   <ul className="space-y-3 text-gray-700">
-                    <li>• Drug metabolism prediction</li>
+                    <li>• Drug metabolism prediction analysis</li>
                     <li>• Adverse reaction risk assessment</li>
                     <li>• Optimal dosage recommendations</li>
                     <li>• Alternative medication suggestions</li>
                   </ul>
                 </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Biomarker Discovery</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Disease-specific biomarker identification</li>
+                    <li>• Treatment response biomarkers</li>
+                    <li>• Prognostic marker analysis</li>
+                    <li>• Companion diagnostic development</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Treatment Optimization</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• Personalized treatment protocol design</li>
+                    <li>• Combination therapy optimization</li>
+                    <li>• Treatment efficacy monitoring</li>
+                    <li>• Adaptive therapy adjustments</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits */}
+          <div className="mb-16">
+            <h2 className="heading-2 text-gray-900 mb-8 text-center">Benefits</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center p-6 bg-teal-50 rounded-xl">
+                <div className="text-3xl font-bold text-teal-600 mb-2">85%</div>
+                <p className="text-gray-700">Treatment effectiveness</p>
+              </div>
+              <div className="text-center p-6 bg-cyan-50 rounded-xl">
+                <div className="text-3xl font-bold text-cyan-600 mb-2">60%</div>
+                <p className="text-gray-700">Reduced adverse effects</p>
+              </div>
+              <div className="text-center p-6 bg-blue-50 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 mb-2">70%</div>
+                <p className="text-gray-700">Improved patient outcomes</p>
+              </div>
+              <div className="text-center p-6 bg-sky-50 rounded-xl">
+                <div className="text-3xl font-bold text-sky-600 mb-2">50%</div>
+                <p className="text-gray-700">Lower treatment costs</p>
               </div>
             </div>
           </div>
@@ -81,9 +122,9 @@ const PrecisionMedicineSupport: React.FC = () => {
             <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Revolutionize Patient Treatment</h2>
               <p className="text-lg mb-6 opacity-90">Implement precision medicine to deliver personalized treatments with better outcomes.</p>
-              <a href="/#contact" className="btn-primary bg-white text-teal-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Personalize Medicine
-                <ArrowRight className="h-5 w-5" />
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>

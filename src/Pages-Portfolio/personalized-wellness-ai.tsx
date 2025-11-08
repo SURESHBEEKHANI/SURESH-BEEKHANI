@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Brain, Leaf, Smile } from "lucide-react";
+import { ArrowRight, Brain, Leaf, Smile, Download } from "lucide-react";
 
 const PersonalizedWellnessAI: React.FC = () => {
   return (
@@ -122,9 +122,9 @@ const PersonalizedWellnessAI: React.FC = () => {
             <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Transform Wellness with AI</h2>
               <p className="text-lg mb-6 opacity-90">Implement personalized wellness programs to improve patient mental health and overall well-being.</p>
-              <a href="/#contact" className="btn-primary bg-white text-green-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Start Wellness Journey
-                <ArrowRight className="h-5 w-5" />
+              <a href="/#contact" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>
