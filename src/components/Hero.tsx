@@ -199,14 +199,14 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl relative z-10 bg-gradient-to-br from-white to-gray-50 modern-card">
+                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl relative z-10 bg-gradient-to-br from-white to-gray-50 rounded-full overflow-hidden">
                   <AvatarImage
                     src="/image/sureshbeekhani.png"
                     alt="Suresh Beekhani - Data Scientist and AI/ML Engineer"
-                    className="object-cover w-full h-full"
+                    className="object-cover object-center w-full h-full rounded-full"
                     loading="eager"
                   />
-                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary">
+                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary rounded-full">
                     SB
                   </AvatarFallback>
                 </Avatar>

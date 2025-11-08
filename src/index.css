@@ -1138,3 +1138,18 @@
     }
   }
 }
+
+  /* Circular Image Utility - Ensures perfect circles on all devices */
+  .avatar-circle {
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .avatar-circle img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 50% !important;
+  }
