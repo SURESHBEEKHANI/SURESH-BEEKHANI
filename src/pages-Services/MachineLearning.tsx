@@ -7,43 +7,43 @@ import Industries from "../components/Industries";
 const mlServices = [
   {
     id: 1,
-    title: "Predictive Analytics",
-    description: "Build models to forecast trends and make data-driven decisions.",
+    title: "Patient Risk Prediction",
+    description: "Forecast patient outcomes, readmission risks, and disease progression with advanced predictive models.",
     icon: <BarChart3 className="h-7 w-7" />,
     color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
-    title: "Classification Models",
-    description: "Automate categorization and decision-making processes.",
+    title: "Medical Diagnosis Classification",
+    description: "Automate disease classification, symptom analysis, and diagnostic decision support systems.",
     icon: <Target className="h-7 w-7" />,
     color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
-    title: "Regression Analysis",
-    description: "Predict continuous outcomes and numerical values.",
+    title: "Treatment Outcome Analysis",
+    description: "Predict treatment effectiveness, recovery timelines, and personalized care recommendations.",
     icon: <TrendingUp className="h-7 w-7" />,
     color: "from-purple-500 to-pink-500"
   },
   {
     id: 4,
-    title: "Clustering & Segmentation",
-    description: "Discover patterns and group similar data points.",
+    title: "Patient Segmentation",
+    description: "Group patients by risk factors, conditions, and care needs for targeted interventions.",
     icon: <Users className="h-7 w-7" />,
     color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
-    title: "Natural Language Processing",
-    description: "Process and understand human language with AI.",
+    title: "Clinical NLP",
+    description: "Extract insights from medical records, clinical notes, and patient communications with AI.",
     icon: <MessageSquare className="h-7 w-7" />,
     color: "from-indigo-500 to-purple-500"
   },
   {
     id: 6,
-    title: "Deep Learning",
-    description: "Build neural networks for complex pattern recognition.",
+    title: "Medical Imaging AI",
+    description: "Analyze X-rays, MRIs, and CT scans with deep learning for accurate diagnostic support.",
     icon: <Brain className="h-7 w-7" />,
     color: "from-teal-500 to-cyan-500"
   },
@@ -146,24 +146,24 @@ const mlSolutions = [
 
 const faqData = [
   {
-    question: "What is Machine Learning?",
-    answer: "Machine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.",
+    question: "What is Healthcare Machine Learning?",
+    answer: "Healthcare machine learning uses AI algorithms to analyze medical data, predict patient outcomes, support clinical decisions, and automate healthcare workflows while maintaining HIPAA compliance and patient safety standards.",
   },
   {
-    question: "How can machine learning benefit my business?",
-    answer: "Machine learning can automate processes, predict outcomes, optimize operations, and provide insights that drive better business decisions.",
+    question: "How can machine learning benefit my healthcare practice?",
+    answer: "Healthcare ML reduces administrative burden, improves diagnostic accuracy, enables early disease detection, predicts patient risks, personalizes treatment plans, and optimizes resource allocation—all while maintaining compliance.",
   },
   {
-    question: "Can machine learning solutions be customized for my industry?",
-    answer: "Yes, machine learning models can be tailored for healthcare, finance, retail, manufacturing, and more, ensuring industry-specific value.",
+    question: "Can ML solutions be customized for my medical specialty?",
+    answer: "Yes, machine learning models can be tailored for cardiology, oncology, radiology, primary care, and any medical specialty, ensuring clinical relevance and specialty-specific value.",
   },
   {
-    question: "Is my data secure with machine learning integrations?",
-    answer: "We implement robust security measures and comply with standards like GDPR and HIPAA to ensure your data is protected.",
+    question: "Is patient data secure with ML integrations?",
+    answer: "Absolutely. We implement HIPAA-compliant architecture with robust encryption, access controls, audit trails, and security measures to protect patient data and ensure regulatory compliance.",
   },
   {
-    question: "How do I get started with machine learning integration?",
-    answer: "Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.",
+    question: "How do I get started with healthcare ML integration?",
+    answer: "Contact us for a clinical consultation. We'll assess your workflows, identify ML opportunities, propose HIPAA-compliant solutions, and guide you through seamless integration into your practice.",
   },
 ];
 
@@ -223,28 +223,28 @@ const MachineLearning: React.FC = () => {
   const solution = mlSolutions.find((s) => s.key === activeTab);
 
   return (
-    <div className="min-h-screen ai-section flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Machine-Learning.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full gradient-text-ai neon-text">
+              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
                 Machine Learning
               </h1>
-              <p className="body-large ai-text-primary w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-              Intelligent <span className="gradient-text">ML solutions</span> for predictive analytics, automation, and data-driven decisions.
-              Transform your business with <span className="gradient-text">superior performance</span> and efficiency.
+              <p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+              Transform patient care with intelligent ML solutions for clinical predictions, diagnostic support, and data-driven healthcare decisions.
+              Improve outcomes with HIPAA-compliant machine learning technology.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
                   className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
-                  Talk to an Expert
+                  Talk to AI Expert
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -257,33 +257,33 @@ const MachineLearning: React.FC = () => {
       </section>
 
       {/* Machine Learning Capabilities Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden ai-section-alt">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left: ML Image */}
-            <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
+            <div className={`relative flex justify-center lg:justify-start order-2 lg:order-1 ${isVisible ? 'slide-left' : 'opacity-0'}`}>
               <div className="relative">
-                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
+                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-primary to-secondary rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
                 <img
                   src="/image/pages_img/Machine-Learning-power.jpg"
                   alt="The Power of Machine Learning"
-                  className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20"
+                  className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20 modern-card"
                 />
               </div>
             </div>
             {/* Right: Content */}
-            <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text">
-                The Power of Machine Learning
+            <div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+                The Power of Healthcare Machine Learning
               </h2>
-              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
-                Unlock transformative opportunities with <span className="gradient-text">advanced machine learning</span>. Our tailored solutions enable computers to learn from data, identify patterns, and make intelligent predictions fueling smarter automation and actionable insights.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                Revolutionize patient care with advanced machine learning designed for healthcare. Our HIPAA-compliant solutions analyze medical data, identify clinical patterns, and generate intelligent predictions that enhance diagnostic accuracy and treatment outcomes.
               </p>
-              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
-                Our dedicated experts seamlessly integrate and customize <span className="gradient-text">machine learning technologies</span> to your unique needs, empowering data-driven decisions and operational excellence.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                Our healthcare AI specialists seamlessly integrate machine learning into clinical workflows, empowering providers with predictive analytics, automated risk assessment, and personalized treatment recommendations that improve patient outcomes.
               </p>
-              <p className="text-sm sm:text-base ai-text-primary max-w-2xl leading-relaxed">
-                From healthcare and finance to retail and beyond, <span className="gradient-text">machine learning redefines</span> how you serve customers and grow your business. Partner with us to stay ahead of the curve.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                From hospitals and clinics to telehealth platforms and medical research, healthcare machine learning transforms how you deliver care, reduce costs, and save lives. Partner with us to lead the future of medicine.
               </p>
             </div>
           </div>
@@ -291,94 +291,100 @@ const MachineLearning: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 ai-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold ai-heading gradient-text-ai">
-              Advanced Machine Learning Services
+      <section className="section-padding ai-section">
+        <div className="max-w-7xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
+              Healthcare Machine Learning Solutions
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-ai-purple to-ai-cyan rounded-full ai-glow"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl ai-text-primary max-w-3xl mx-auto px-4">
-              Intelligent <span className="gradient-text">automation solutions</span> for today's dynamic business landscape.
+            <p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+              HIPAA-compliant ML solutions transforming clinical decision-making and patient care.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                         {mlServices.map((service, index) => (
-               <div key={service.id} className="ai-card-glow rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-ai-purple/30 flex flex-col gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-500">
-                 <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto ${
-                   index % 2 === 0 ? 'bg-blue-200' : 'bg-indigo-200'
-                 }`}>
-                   {service.icon}
-                 </div>
-                 <h3 className="font-semibold text-sm sm:text-base ai-heading mb-2 text-center w-full">{service.title}</h3>
-                 <p className="text-xs sm:text-sm ai-text-primary text-center leading-relaxed">{service.description}</p>
-               </div>
-             ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {mlServices.map((service, index) => (
+              <div 
+                key={service.id}
+                className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
+                  {service.icon}
+                </div>
+                <h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">
+                  {service.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Machine Learning Features Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Machine Learning Benefits
+              Healthcare ML Benefits
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Intelligent automation solutions for today's dynamic business landscape.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Delivering better patient outcomes and clinical excellence through healthcare ML innovation.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                         {/* Accuracy */}
-             <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-purple-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-purple-200 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                 <svg className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <circle cx="12" cy="12" r="10"/>
-                   <circle cx="12" cy="12" r="6"/>
-                   <circle cx="12" cy="12" r="2"/>
-                 </svg>
-               </div>
-               <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Accuracy</h3>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">High-precision predictions and classifications for reliable decision-making.</p>
-             </div>
-             {/* Scalability */}
-             <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-blue-200 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                 <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <rect x="4" y="4" width="16" height="16" rx="4"/>
-                   <path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/>
-                 </svg>
-               </div>
-               <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Scale from pilot projects to enterprise-wide deployments seamlessly.</p>
-             </div>
-             {/* Flexibility */}
-             <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-green-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-green-200 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                 <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <circle cx="12" cy="12" r="3"/>
-                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/>
-                 </svg>
-               </div>
-               <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Flexibility</h3>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Customize every aspect to perfectly align with your business objectives.</p>
-             </div>
-             {/* Automation */}
-             <div className="bg-gradient-to-br from-orange-50 to-amber-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-orange-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-orange-200 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                 <svg className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                 </svg>
-               </div>
-               <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Automation</h3>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Automate complex processes and decision-making workflows.</p>
-             </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {/* Accuracy */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Accuracy</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">High-precision diagnostic predictions and risk assessments for reliable clinical decisions.</p>
+            </div>
+            {/* Scalability */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <rect x="4" y="4" width="16" height="16" rx="4"/>
+                  <path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Healthcare Scalability</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Scale from single departments to hospital-wide and multi-facility deployments seamlessly.</p>
+            </div>
+            {/* Flexibility */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Flexibility</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Customize models to align with your clinical workflows and specialty-specific requirements.</p>
+            </div>
+            {/* Automation */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Automation</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate patient triage, risk assessment, and clinical documentation workflows.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -387,23 +393,23 @@ const MachineLearning: React.FC = () => {
 
 
       {/* Platforms Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Machine Learning Integration Platforms
+              Healtne re ML Technology Stack
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Leverage industry-leading platforms for robust machine learning implementations.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Industry-leading platforms optimized for HIPAA-compliant healthcare ML applications.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
-            {platforms.map((platform) => (
-              <div className="flex flex-col items-center" key={platform.name}>
-                <img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2" />
+            {platforms.map((platform, index) => (
+              <div className={`flex flex-col items-center ${isVisible ? 'scale-in' : 'opacity-0'}`} key={platform.name} style={{ animationDelay: `${index * 0.1}s` }}>
+                <img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2 modern-card" />
                 <span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
               </div>
             ))}
@@ -412,138 +418,115 @@ const MachineLearning: React.FC = () => {
       </section>
 
       {/* Development Process Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Machine Learning Development Process
+      <section className="section-padding ai-section">
+        <div className="max-w-5xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
+              Healthcare ML Implementation Process
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Streamlined approach to implementing machine learning solutions with proven methodology.
+            <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+              Proven methodology for deploying HIPAA-compliant ML solutions in healthcare environments.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                         {/* Define the use case */}
-             <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-indigo-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-indigo-200 text-indigo-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <circle cx="12" cy="12" r="10"/>
-                   <circle cx="12" cy="12" r="6"/>
-                   <circle cx="12" cy="12" r="2"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Define Use Case</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Pinpoint your business challenge to maximize machine learning impact.</p>
-             </div>
-             {/* Data collection & preparation */}
-             <div className="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-teal-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-teal-200 text-teal-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <ellipse cx="12" cy="6" rx="8" ry="3"/>
-                   <path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/>
-                   <path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Data Collection</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Curate high-quality data for optimal model performance.</p>
-             </div>
-             {/* Development & integration */}
-             <div className="bg-gradient-to-br from-blue-50 to-sky-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-200 text-blue-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M16 18l6-6-6-6"/>
-                   <path d="M8 6l-6 6 6 6"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Development</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Build and train machine learning models for your applications.</p>
-             </div>
-             {/* Deployment & monitoring */}
-             <div className="bg-gradient-to-br from-amber-50 to-yellow-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-amber-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-amber-200 text-amber-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <rect x="3" y="4" width="18" height="16" rx="2"/>
-                   <path d="M9 10v4M15 8v8"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Deployment</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Deploy with confidence and monitor performance for improvement.</p>
-             </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {/* Define the use case */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
+                <Target className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Assessment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify clinical workflows and patient care challenges where ML delivers maximum impact.</p>
+            </div>
+            {/* Data collection & preparation */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
+                <Shield className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Secure Data Integration</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">HIPAA-compliant medical data preparation and EHR integration for training robust models.</p>
+            </div>
+            {/* Development & integration */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
+                <Code className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">ML Model Development</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Build and validate clinical ML models with healthcare professionals and regulatory standards.</p>
+            </div>
+            {/* Deployment & monitoring */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
+                <Zap className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and optimization.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
+      <section className="section-padding">
+        <div className="max-w-6xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Healthcare ML</h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Trusted expertise and proven results for your machine learning implementation needs.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Healthcare-focused ML expertise with proven results in clinical environments.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                         {/* Expertise */}
-             <div className="bg-gradient-to-br from-violet-50 to-purple-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-violet-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-violet-200 text-violet-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Expertise</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Work with seasoned professionals ensuring your project's success.</p>
-             </div>
-             {/* Custom Solutions */}
-             <div className="bg-gradient-to-br from-emerald-50 to-green-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-emerald-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-emerald-200 text-emerald-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Custom Solutions</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Bespoke machine learning integrations for your unique business goals.</p>
-             </div>
-             {/* End-to-End Support */}
-             <div className="bg-gradient-to-br from-sky-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-sky-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-sky-200 text-sky-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">End-to-End Support</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Comprehensive support from strategy to deployment and optimization.</p>
-             </div>
-             {/* Proven Results */}
-             <div className="bg-gradient-to-br from-rose-50 to-pink-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl border border-rose-300 flex flex-col items-center gap-4 min-h-[200px] sm:min-h-[220px]">
-               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-rose-200 text-rose-600 mb-2">
-                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                   <path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/>
-                   <path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/>
-                 </svg>
-               </span>
-               <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Proven Results</span>
-               <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Join clients who have achieved measurable business impact.</p>
-             </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {/* Expertise */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
+                <Brain className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Healthcare Expertise</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Specialized team with deep understanding of clinical workflows and healthcare regulations.</p>
+            </div>
+            {/* Custom Solutions */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
+                <Target className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Clinical-Grade Solutions</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Custom ML solutions designed for healthcare environments with patient safety as priority.</p>
+            </div>
+            {/* End-to-End Support */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
+                <Shield className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">HIPAA Compliance</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">HIPAA-compliant architecture with robust security measures protecting patient data.</p>
+            </div>
+            {/* Proven Results */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
+                <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+              </span>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Clinical Impact</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare organizations achieving improved patient outcomes and operational efficiency.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
-            <div className="flex justify-center">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+            <div className="flex justify-center mb-2">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Common questions about machine learning implementation and our services.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Common questions about healthcare ML implementation and our clinical AI services.
             </p>
           </div>
           {/* FAQ Accordion */}
@@ -555,7 +538,7 @@ const MachineLearning: React.FC = () => {
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
               </summary>
-              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Machine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.</div>
+              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Machine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.</div>
             </details>
             {/* FAQ 2 */}
             <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
@@ -564,7 +547,7 @@ const MachineLearning: React.FC = () => {
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
               </summary>
-              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Machine learning can automate processes, predict outcomes, optimize operations, and provide insights that drive better business decisions.</div>
+              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Machine learning can automate processes, predict outcomes, optimize operations, and provide insights that drive better business decisions.</div>
             </details>
             {/* FAQ 3 */}
             <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
@@ -573,7 +556,7 @@ const MachineLearning: React.FC = () => {
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
               </summary>
-              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Yes, machine learning models can be tailored for healthcare, finance, retail, manufacturing, and more, ensuring industry-specific value.</div>
+              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Yes, machine learning models can be tailored for healthcare, finance, retail, manufacturing, and more, ensuring industry-specific value.</div>
             </details>
             {/* FAQ 4 */}
             <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
@@ -582,7 +565,7 @@ const MachineLearning: React.FC = () => {
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
               </summary>
-              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">We implement robust security measures and comply with standards like GDPR and HIPAA to ensure your data is protected.</div>
+              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">We implement robust security measures and comply with standards like GDPR and HIPAA to ensure your data is protected.</div>
             </details>
             {/* FAQ 5 */}
             <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
@@ -591,7 +574,7 @@ const MachineLearning: React.FC = () => {
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                 <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
               </summary>
-              <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.</div>
+              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.</div>
             </details>
           </div>
         </div>
