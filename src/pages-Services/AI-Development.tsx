@@ -187,7 +187,7 @@ const AIDevelopment: React.FC = () => {
 					<div className="flex-1 text-white space-y-6 sm:space-y-8">
 						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								Healthcare AI Development
+							AI Development
 							</h1>
 							<p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
 								Transform patient care with AI solutions that enhance diagnostics, streamline clinical workflows, and improve health outcomes through intelligent automation.
