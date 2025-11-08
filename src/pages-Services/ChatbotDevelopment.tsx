@@ -211,35 +211,29 @@ const AIChatbotDevelopment: React.FC = () => {
 			{/* Hero Section */}
 			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
-				<div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
-					<div className="flex-1 text-white space-y-6 sm:space-y-8">
-						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								Chatbot Development
-							</h1>
-							<p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-								Transform healthcare delivery with AI-powered chatbots that enhance patient care, streamline clinical workflows, and provide 24/7 medical support across all healthcare touchpoints.
-							</p>
-							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
-								<a
-									href="/#contact"
-									className="btn-primary text-center min-h-[44px] flex items-center justify-center"
-								>
-									Talk to an Expert
-									<ArrowRight className="ml-2 h-4 w-4" />
-								</a>
-							</div>
+				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
+					<div className="text-white space-y-6 sm:space-y-8">
+						<h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+							AI-Powered Chatbot Development
+						</h1>
+						<p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 leading-relaxed max-w-3xl">
+							Transform healthcare delivery with enterprise-grade AI chatbots that enhance patient care, streamline clinical workflows, and provide 24/7 medical support across all healthcare touchpoints.
+						</p>
+						<div className="flex flex-col sm:flex-row gap-4">
+							<a
+								href="/#contact"
+								className="inline-block text-center bg-gradient-to-r from-blue-500 to-indigo-700 hover:from-blue-600 hover:to-indigo-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+							>
+								Talk to AI Expert
+							</a>
 						</div>
-					</div>
-					<div className="flex-1 flex justify-center md:justify-end">
-						{/* Optionally, you can add an image or illustration here if needed */}
 					</div>
 				</div>
 			</section>
 
 			{/* AI Chatbot Capabilities Section */}
-			<section className="section-padding">
-				<div className="max-w-7xl mx-auto container-padding">
+			<section className="py-12 sm:py-20 px-4 sm:px-6">
+				<div className="max-w-7xl mx-auto">
 					<div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 						{/* Left: AI Image */}
 						<div className={`relative flex justify-center lg:justify-start order-2 lg:order-1 ${isVisible ? 'slide-left' : 'opacity-0'}`}>
@@ -254,16 +248,16 @@ const AIChatbotDevelopment: React.FC = () => {
 						</div>
 						{/* Right: Content */}
 						<div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
-							<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+							<h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
 								AI Models Powering Our Chatbot Solutions
 							</h2>
-							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
 								Healthcare AI chatbots revolutionize patient care by automating clinical workflows, providing instant medical information, and delivering personalized health support across all healthcare touchpoints.
 							</p>
-							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
 								Our HIPAA-compliant chatbots enhance patient engagement, reduce administrative burden, and enable 24/7 healthcare access with advanced medical NLP and diagnostic capabilities.
 							</p>
-							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
 								From telemedicine to hospital management, our healthcare AI chatbots improve patient outcomes, streamline operations, and transform healthcare delivery.
 							</p>
 						</div>
@@ -272,16 +266,16 @@ const AIChatbotDevelopment: React.FC = () => {
 			</section>
 
 			{/* Services Section */}
-			<section className="section-padding ai-section">
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
+			<section className="py-12 sm:py-20 px-4 sm:px-6 ai-section">
+				<div className="max-w-7xl mx-auto">
+					<div className={`text-center space-y-2 mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
 							Healthcare AI Chatbot Development Services
 						</h2>
-						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
+						<div className="flex justify-center mb-4">
+							<div className="w-16 h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+						<p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
 							Comprehensive healthcare chatbot solutions for hospitals, clinics, and telehealth platforms.
 						</p>
 					</div>
