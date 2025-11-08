@@ -71,16 +71,22 @@ const ClientSolutions = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
+      {/* AI Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              <Badge variant="outline" className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 bg-primary/10 text-primary font-medium text-sm sm:text-base">
+              <Badge variant="outline" className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 bg-ai-purple/20 text-ai-cyan font-medium text-sm sm:text-base border-ai-purple/30">
                 Our Solutions
               </Badge>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight px-2 sm:px-0">
-                Healthcare AI Solutions For Clients
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0">
+                Healthcare AI Solutions For <span className="gradient-text-ai">Clients</span>
               </h2>
             </div>
 
@@ -91,8 +97,8 @@ const ClientSolutions = () => {
                   onClick={() => setSelectedSolution(solution)}
                   className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${
                     selectedSolution === solution
-                      ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
+                      ? 'bg-gradient-to-r from-ai-purple to-ai-cyan text-white shadow-lg ai-glow'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
                   }`}
                 >
                   {solution}
@@ -101,15 +107,15 @@ const ClientSolutions = () => {
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
                 {currentSolution.title}
               </h3>
 
               <div className="space-y-3 sm:space-y-4">
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
                   {currentSolution.description}
                 </p>
-                                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
                    {selectedSolution === 'MediPod'
                      ? 'MediPod provides cost-effective patient care solutions, offering comprehensive AI-powered monitoring and support.'
                      : selectedSolution === 'HealthGPT'
@@ -123,15 +129,15 @@ const ClientSolutions = () => {
               <div className="space-y-2.5 sm:space-y-3">
                 {currentSolution.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
-                                         <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <p className="text-gray-700 text-sm sm:text-base">{benefit}</p>
+                    <div className="w-2 h-2 bg-gradient-to-r from-ai-cyan to-ai-purple rounded-full mt-2 mr-3 flex-shrink-0 shadow-lg"></div>
+                    <p className="text-white/90 text-sm sm:text-base">{benefit}</p>
                   </div>
                 ))}
               </div>
 
               <Button
                 onClick={handleReadMore}
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center"
+                className="bg-gradient-to-r from-ai-purple to-ai-cyan hover:from-ai-purple-light hover:to-ai-cyan text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg ai-glow text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
               >
                 Read More
                 <ArrowRight className="h-4 w-4" />

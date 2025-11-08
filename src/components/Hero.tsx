@@ -91,7 +91,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding ai-section text-white"
       aria-label="Hero Section"
     >
       {/* Background animations */}

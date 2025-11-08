@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import { lazyLoadImages, requestIdleCallback } from './lib/performance'
 
 const root = document.getElementById("root");
 if (!root) throw new Error('Root element not found');
@@ -32,4 +33,18 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', setupScrollReveal);
 } else {
   requestAnimationFrame(setupScrollReveal);
+}
+
+// Initialize lazy loading for images
+requestIdleCallback(() => {
+  lazyLoadImages();
+});
+
+// Service Worker registration for PWA capabilities (optional)
+if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Service worker registration failed - this is optional
+    });
+  });
 }

@@ -2,17 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-    <meta name="theme-color" content="#4285F4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+    <meta name="theme-color" content="#4285F4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Suresh Beekhani" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
-    <title>ML Engineer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Suresh Beekhani - ML Engineer & AI Specialist</title>
     <meta name="description" content="Portfolio of Suresh Beekhani, Machine Learning Engineer specializing in AI, NLP, LLMs, and chatbots. Explore projects, skills, and experience." />
     <meta name="author" content="Suresh Beekhani" />
-    <meta name="keywords" content="Suresh Beekhani, ML Engineer, Machine Learning, AI, NLP, LLM, Data Scientist, Portfolio" />
+    <meta name="keywords" content="Suresh Beekhani, ML Engineer, Machine Learning, AI, NLP, LLM, Data Scientist, Portfolio, Healthcare AI" />
     <link rel="canonical" href="https://sureshbeekhani.netlify.app/" />
 
     <meta property="og:title" content="Suresh Beekhani — ML Engineer & AI/ML Developer" />
@@ -32,9 +34,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234285F4'/><text x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'>ML</text></svg>" />
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234285F4'/><text x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'>ML</text></svg>" />
     
-    <!-- Performance: Preconnect for fonts -->
+    <!-- Performance: Preconnect for fonts and CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
     
     <!-- Structured Data: Person -->
     <script type="application/ld+json">
@@ -53,6 +61,7 @@
       }
     </script>
     <style>
+      /* Critical CSS for initial render */
       .logo-circle {
         width: 45px;
         height: 45px;
@@ -68,10 +77,19 @@
         margin-right: 10px;
       }
       
-      /* Prevent horizontal scroll on mobile */
+      /* Prevent horizontal scroll and layout shift */
       html, body {
+        margin: 0;
+        padding: 0;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
+        width: 100%;
+        min-height: 100vh;
+      }
+      
+      /* Loading state */
+      #root {
+        min-height: 100vh;
       }
       
       /* Improve touch targets on mobile */
@@ -84,7 +102,39 @@
       
       /* Optimize for mobile performance */
       * {
-        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+      
+      /* Prevent FOUC (Flash of Unstyled Content) */
+      body {
+        opacity: 0;
+        animation: fadeIn 0.3s ease-in forwards;
+      }
+      
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #4285F4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
       }
     </style>
   </head>

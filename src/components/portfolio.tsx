@@ -163,8 +163,14 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-16 bg-gradient-to-tr from-purple-50 to-white min-h-screen">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="py-16 ai-section min-h-screen relative overflow-hidden">
+        {/* AI Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
+          <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 mt-8 justify-center">
             {projects.map((project, idx) => {
               const isVisible = visibleStates[idx];

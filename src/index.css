@@ -108,6 +108,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
   }
 
   body {
@@ -118,6 +119,20 @@
     line-height: 1.6;
     background: #0B0C10;
     color: #E6E6E6;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Prevent layout shift */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Optimize for mobile performance */
+  @media (max-width: 768px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 
   /* Modern Scrollbar */
@@ -591,29 +606,32 @@
     background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #1F2937 100%);
   }
 
-  /* Typography */
+  /* Typography - Mobile-optimized */
   .heading-1 {
-    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight;
+    word-wrap: break-word;
   }
 
   .heading-2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
+    word-wrap: break-word;
   }
 
   .heading-3 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-tight;
+    word-wrap: break-word;
   }
 
   .body-large {
-    @apply text-lg md:text-xl leading-relaxed;
+    @apply text-base sm:text-lg md:text-xl leading-relaxed;
   }
 
   .body-medium {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-sm sm:text-base md:text-lg leading-relaxed;
   }
 
   .body-small {
-    @apply text-sm md:text-base leading-relaxed;
+    @apply text-xs sm:text-sm md:text-base leading-relaxed;
   }
 
   /* Code Font */
@@ -1027,32 +1045,82 @@
     }
   }
 
-  /* Mobile Optimizations */
+  /* Mobile Optimizations - Enhanced */
   @media (max-width: 768px) {
+    /* Touch-friendly targets */
     button, a, input, select, textarea {
       min-height: 44px;
       min-width: 44px;
     }
     
+    .touch-button {
+      min-height: 48px;
+      padding: 12px 20px;
+    }
+    
+    .touch-manipulation {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+    
     .mobile-text {
-      @apply text-sm;
+      @apply text-sm leading-relaxed;
     }
     
     .mobile-heading {
-      @apply text-2xl md:text-3xl;
+      @apply text-xl sm:text-2xl md:text-3xl;
     }
     
     .mobile-spacing {
-      @apply py-8 md:py-12;
+      @apply py-6 sm:py-8 md:py-12;
     }
     
+    /* Responsive images */
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
     
     .mobile-nav-item {
-      @apply py-3 px-4 text-lg;
+      @apply py-3 px-4 text-base sm:text-lg;
+      min-height: 48px;
+    }
+    
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    
+    /* Optimize font sizes for mobile */
+    html {
+      font-size: 16px;
+    }
+    
+    /* Better spacing for mobile cards */
+    .modern-card {
+      @apply p-4 sm:p-6;
+    }
+    
+    /* Mobile-friendly sections */
+    .section-padding {
+      @apply py-8 sm:py-12 md:py-16 lg:py-20;
+    }
+    
+    .container-padding {
+      @apply px-4 sm:px-6;
+    }
+  }
+  
+  /* Tablet Optimizations */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .touch-button {
+      min-height: 44px;
+    }
+    
+    .touch-manipulation {
+      touch-action: manipulation;
     }
   }
 

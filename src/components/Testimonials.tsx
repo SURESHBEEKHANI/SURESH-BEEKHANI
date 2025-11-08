@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { Check, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
@@ -145,7 +145,7 @@ const Testimonials = () => {
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <Badge 
             variant="outline" 
-            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-ai-cyan font-medium text-xs sm:text-sm rounded-full border-ai-purple/30 hover:bg-ai-purple/25 transition-all duration-300 ai-glow backdrop-blur-sm"
+            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-white font-medium text-xs sm:text-sm rounded-full border-ai-purple/30 hover:bg-ai-purple/25 transition-all duration-300 ai-glow backdrop-blur-sm"
           >
             Client Testimonials
           </Badge>
@@ -172,8 +172,8 @@ const Testimonials = () => {
               ))}
             </div>
             
-            <p className="text-base sm:text-lg ai-text-primary max-w-2xl mx-auto px-4 sm:px-0 font-medium">
-              Discover what our clients say about working with us on their <span className="gradient-text">AI and machine learning projects</span>.
+            <p className="body-large text-white/90 max-w-3xl mx-auto">
+              Discover what our clients say about working with us on their <span className="gradient-text-ai">AI and machine learning projects</span>.
             </p>
           </div>
         </div>

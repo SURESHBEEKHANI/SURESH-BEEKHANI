@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Award, Brain, Code, Database, Lightbulb, Star, TrendingUp, Users, Clock, Zap, Target, Rocket, Shield, Globe } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Award, Brain, Code, Database, Lightbulb, TrendingUp, Users, Clock } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 
@@ -104,42 +104,27 @@ const stats = [
     }
   ];
 
-  const values = [
-    {
-      icon: <Target className="h-8 w-8" />,
-      title: 'Innovation',
-      description: 'Pushing the boundaries of AI technology with cutting-edge solutions.'
-    },
-    {
-      icon: <Rocket className="h-8 w-8" />,
-      title: 'Excellence',
-      description: 'Delivering high-quality, scalable AI solutions that exceed expectations.'
-    },
-    {
-      icon: <Shield className="h-8 w-8" />,
-      title: 'Reliability',
-      description: 'Building robust and trustworthy AI systems for critical applications.'
-    },
-    {
-      icon: <Globe className="h-8 w-8" />,
-      title: 'Impact',
-      description: 'Creating AI solutions that make a positive difference in the world.'
-    }
-  ];
+
 
   return (
-    <div className="section-padding">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
+      {/* AI Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-          <Badge className="mb-4 px-4 py-2 glass text-white border-foreground/20">
+          <Badge className="mb-4 px-4 py-2 bg-ai-purple/20 text-white border-ai-purple/30 font-medium">
             <Award className="w-4 h-4 mr-2" />
             About Me
           </Badge>
-          <h2 className="heading-2 mb-6">
-            Transforming ideas into practical AI solutions
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+            Transforming ideas into practical <span className="gradient-text-ai">AI solutions</span>
           </h2>
-          <p className="body-large text-foreground/70 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
             I build production-ready AI systems across machine learning, deep learning, natural language processing, Computer Vision and generative AI—focused on real-world impact and scalable deployments.
           </p>
         </div>
@@ -152,19 +137,19 @@ const stats = [
             {specializations.map((spec, index) => (
               <Card 
                 key={spec.title}
-                className={`modern-card hover:scale-105 transition-all duration-500 ${isVisible ? 'slide-up' : 'opacity-0'}`}
+                className={`ai-card-glow hover:scale-105 transition-all duration-500 bg-gray-800/50 backdrop-blur-sm border border-ai-purple/20 ${isVisible ? 'slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${spec.color} text-white`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${spec.color} text-white shadow-lg`}>
                       {spec.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-semibold mb-3 text-foreground">
+                      <h4 className="text-xl font-semibold mb-3 text-white">
                         {spec.title}
                       </h4>
-                      <p className="text-foreground/70 mb-4 body-medium">
+                      <p className="text-white/80 mb-4 text-sm sm:text-base leading-relaxed">
                         {spec.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -172,7 +157,7 @@ const stats = [
                           <Badge 
                             key={feature} 
                             variant="secondary"
-                            className="text-xs bg-primary/10 text-primary border-primary/20"
+                            className="text-xs bg-ai-purple/20 text-ai-cyan border-ai-purple/30"
                           >
                             {feature}
                           </Badge>
@@ -188,7 +173,7 @@ const stats = [
 
         {/* Values section removed as requested */}
       </div>
-    </div>
+    </section>
   );
 };
 

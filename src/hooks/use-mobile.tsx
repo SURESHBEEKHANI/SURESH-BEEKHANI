@@ -4,17 +4,98 @@ export const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if window is defined (SSR safety)
+    if (typeof window === 'undefined') return;
+
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    // Initial check
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
 
-    return () => window.removeEventListener('resize', checkIsMobile);
+    // Debounced resize handler for better performance
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkIsMobile, 150);
+    };
+
+    window.addEventListener('resize', debouncedCheck, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', debouncedCheck);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return isMobile;
+};
+
+export const useIsTablet = () => {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkIsTablet = () => {
+      const width = window.innerWidth;
+      setIsTablet(width >= 768 && width < 1024);
+    };
+
+    checkIsTablet();
+
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkIsTablet, 150);
+    };
+
+    window.addEventListener('resize', debouncedCheck, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', debouncedCheck);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return isTablet;
+};
+
+export const useDeviceType = () => {
+  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkDeviceType = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setDeviceType('mobile');
+      } else if (width >= 768 && width < 1024) {
+        setDeviceType('tablet');
+      } else {
+        setDeviceType('desktop');
+      }
+    };
+
+    checkDeviceType();
+
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkDeviceType, 150);
+    };
+
+    window.addEventListener('resize', debouncedCheck, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', debouncedCheck);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return deviceType;
 };
 
 export const useIntersectionObserver = (

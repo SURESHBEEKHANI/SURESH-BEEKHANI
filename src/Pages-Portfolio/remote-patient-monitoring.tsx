@@ -9,54 +9,54 @@ const RemotePatientMonitoring: React.FC = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-rose-600 via-pink-600 to-red-700 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center hero-bg overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/remote-patient-monitoring.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
-            <h1 className="heading-1 font-extrabold leading-tight tracking-tight drop-shadow-lg">
+            <h1 className="heading-1 font-extrabold leading-tight tracking-tight gradient-text-ai neon-text">
               Remote Patient Monitoring
             </h1>
-            <p className="body-large text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Wearables and sensors continuously track vital signs and alert healthcare providers to abnormalities, enabling proactive care and early intervention.
+            <p className="body-large ai-text-primary max-w-3xl mx-auto leading-relaxed">
+              Wearables and sensors continuously track <span className="gradient-text">vital signs</span> and alert healthcare providers to abnormalities, enabling proactive care and early intervention.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-16 ai-section">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Overview */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Monitoring Capabilities</h2>
+            <h2 className="heading-2 ai-heading mb-8 text-center">Monitoring Capabilities</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <Heart className="h-12 w-12 text-rose-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Vital Signs Tracking</h3>
-                <p className="text-gray-700">Continuous monitoring of heart rate, blood pressure, oxygen saturation, and other critical vital signs.</p>
+              <div className="ai-card-glow p-6 rounded-xl border border-ai-purple/30 hover:scale-105 transition-all duration-500">
+                <Heart className="h-12 w-12 text-ai-purple mb-4 ai-glow" />
+                <h3 className="text-xl font-bold ai-heading mb-3">Vital Signs Tracking</h3>
+                <p className="ai-text-primary">Continuous monitoring of heart rate, blood pressure, oxygen saturation, and other critical vital signs.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <Smartphone className="h-12 w-12 text-pink-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Devices Integration</h3>
-                <p className="text-gray-700">Seamless integration with wearables, smartphones, and IoT medical devices for comprehensive health monitoring.</p>
+              <div className="ai-card-glow p-6 rounded-xl border border-ai-cyan/30 hover:scale-105 transition-all duration-500">
+                <Smartphone className="h-12 w-12 text-ai-cyan mb-4 ai-glow" />
+                <h3 className="text-xl font-bold ai-heading mb-3">Smart Devices Integration</h3>
+                <p className="ai-text-primary">Seamless integration with wearables, smartphones, and IoT medical devices for comprehensive health monitoring.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <AlertTriangle className="h-12 w-12 text-red-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Real-time Alerts</h3>
-                <p className="text-gray-700">Instant notifications to healthcare providers when abnormal readings or emergency situations are detected.</p>
+              <div className="ai-card-glow p-6 rounded-xl border border-ai-purple/30 hover:scale-105 transition-all duration-500">
+                <AlertTriangle className="h-12 w-12 text-ai-purple mb-4 ai-glow" />
+                <h3 className="text-xl font-bold ai-heading mb-3">Real-time Alerts</h3>
+                <p className="ai-text-primary">Instant notifications to healthcare providers when abnormal readings or emergency situations are detected.</p>
               </div>
             </div>
           </div>
 
           {/* Monitoring Parameters */}
           <div className="mb-16">
-            <h2 className="heading-2 text-gray-900 mb-8 text-center">Monitored Parameters</h2>
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="heading-2 ai-heading mb-8 text-center">Monitored Parameters</h2>
+            <div className="ai-card-glow rounded-2xl p-8 border border-ai-purple/20">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Cardiovascular Monitoring</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold ai-heading mb-4 gradient-text">Cardiovascular Monitoring</h3>
+                  <ul className="space-y-3 ai-text-primary">
                     <li>• Heart rate and rhythm analysis</li>
                     <li>• Blood pressure tracking</li>
                     <li>• ECG continuous monitoring</li>
@@ -64,8 +64,8 @@ const RemotePatientMonitoring: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Respiratory Health</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold ai-heading mb-4 gradient-text">Respiratory Health</h3>
+                  <ul className="space-y-3 ai-text-primary">
                     <li>• Oxygen saturation (SpO2)</li>
                     <li>• Respiratory rate monitoring</li>
                     <li>• Sleep apnea detection</li>
@@ -73,8 +73,8 @@ const RemotePatientMonitoring: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Metabolic Indicators</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold ai-heading mb-4 gradient-text">Metabolic Indicators</h3>
+                  <ul className="space-y-3 ai-text-primary">
                     <li>• Blood glucose levels</li>
                     <li>• Body temperature monitoring</li>
                     <li>• Weight and BMI tracking</li>
@@ -82,8 +82,8 @@ const RemotePatientMonitoring: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Activity & Wellness</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold ai-heading mb-4 gradient-text">Activity & Wellness</h3>
+                  <ul className="space-y-3 ai-text-primary">
                     <li>• Physical activity levels</li>
                     <li>• Sleep quality analysis</li>
                     <li>• Stress level monitoring</li>

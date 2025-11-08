@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { ArrowRight, Brain, Clock, Users } from "lucide-react";
+import { ArrowRight, Brain, Clock, Users, Download } from "lucide-react";
 
 const PatientDiagnosticSystem: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const PatientDiagnosticSystem: React.FC = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Patient-Diagnostic-System.webp')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
@@ -32,17 +32,17 @@ const PatientDiagnosticSystem: React.FC = () => {
             <h2 className="heading-2 text-gray-900 mb-8 text-center">System Overview</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <Brain className="h-12 w-12 text-blue-600 mb-4" />
+                <Brain className="h-12 w-12 text-purple-600 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">AI-Powered Analysis</h3>
                 <p className="text-gray-700">Advanced machine learning algorithms analyze patient symptoms and medical history for accurate diagnostic suggestions.</p>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <Clock className="h-12 w-12 text-purple-600 mb-4" />
+                <Clock className="h-12 w-12 text-indigo-600 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Rapid Response</h3>
                 <p className="text-gray-700">Instant diagnostic assistance available 24/7, reducing wait times and improving patient satisfaction.</p>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <Users className="h-12 w-12 text-indigo-600 mb-4" />
+                <Users className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Healthcare Support</h3>
                 <p className="text-gray-700">Reduces physician workload while maintaining high-quality patient care and diagnostic accuracy.</p>
               </div>
@@ -80,20 +80,20 @@ const PatientDiagnosticSystem: React.FC = () => {
           <div className="mb-16">
             <h2 className="heading-2 text-gray-900 mb-8 text-center">Benefits</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center p-6 bg-blue-50 rounded-xl">
-                <div className="text-3xl font-bold text-blue-600 mb-2">85%</div>
+              <div className="text-center p-6 bg-purple-50 rounded-xl">
+                <div className="text-3xl font-bold text-purple-600 mb-2">85%</div>
                 <p className="text-gray-700">Reduction in diagnostic time</p>
               </div>
-              <div className="text-center p-6 bg-purple-50 rounded-xl">
-                <div className="text-3xl font-bold text-purple-600 mb-2">92%</div>
+              <div className="text-center p-6 bg-indigo-50 rounded-xl">
+                <div className="text-3xl font-bold text-indigo-600 mb-2">92%</div>
                 <p className="text-gray-700">Diagnostic accuracy rate</p>
               </div>
-              <div className="text-center p-6 bg-indigo-50 rounded-xl">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">60%</div>
+              <div className="text-center p-6 bg-blue-50 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 mb-2">60%</div>
                 <p className="text-gray-700">Reduced physician workload</p>
               </div>
-              <div className="text-center p-6 bg-green-50 rounded-xl">
-                <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
+              <div className="text-center p-6 bg-cyan-50 rounded-xl">
+                <div className="text-3xl font-bold text-cyan-600 mb-2">24/7</div>
                 <p className="text-gray-700">Availability for patients</p>
               </div>
             </div>
@@ -101,12 +101,12 @@ const PatientDiagnosticSystem: React.FC = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Ready to Transform Patient Care?</h2>
               <p className="text-lg mb-6 opacity-90">Implement our AI diagnostic system to enhance healthcare delivery and patient outcomes.</p>
-              <a href="/#contact" className="btn-primary bg-white text-blue-600 hover:bg-gray-100 inline-flex items-center gap-2">
-                Get Started Today
-                <ArrowRight className="h-5 w-5" />
+              <a href="https://drive.google.com/uc?export=download&id=10JBNB6cSGBNS_Gbm2CGqMUXotInMlpnG" className="btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 inline-flex items-center gap-2 font-bold shadow-xl px-8 py-4 text-lg">
+                <Download className="h-5 w-5" />
+                Download Case Study
               </a>
             </div>
           </div>

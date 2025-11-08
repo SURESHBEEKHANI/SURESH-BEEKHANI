@@ -190,7 +190,7 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden"
       aria-label="Our AI Services"
     >
       {/* Decorative background elements */}

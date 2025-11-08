@@ -115,33 +115,41 @@ const Navbar = () => {
       initial={prefersReducedMotion ? false : "hidden"}
       animate={prefersReducedMotion ? false : "visible"}
       variants={navbarVariants}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-xl border-b border-gray-200/50'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
           : 'bg-transparent'
         }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto container-padding">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
 
-          {/* Logo */}
+          {/* Logo - Optimized for mobile */}
           <motion.div
-            className="flex items-center"
-            whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+            className="flex items-center flex-shrink-0"
+            whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
             transition={{ duration: 0.2 }}
           >
-            <a href="/#home" className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-white text-sm sm:text-lg font-semibold bg-gradient-to-r from-primary to-blue-600 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <a 
+              href="/#home" 
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold bg-gradient-to-r from-primary to-blue-600 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
+              aria-label="AI Specialist - Home"
+            >
               <motion.svg
-                className="w-5 h-5 sm:w-7 sm:h-7"
+                className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 viewBox="0 0 24 24"
                 animate={prefersReducedMotion ? {} : { rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                aria-hidden="true"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.364 17.364l-1.414-1.414M12 21v-2M6.636 17.364l1.414-1.414M3 12h2M6.636 6.636l1.414 1.414" />
               </motion.svg>
-              AI Specialist
+              <span className="hidden xs:inline">AI Specialist</span>
+              <span className="xs:hidden">AI</span>
             </a>
           </motion.div>
 
@@ -241,22 +249,23 @@ const Navbar = () => {
             >
               <Button
                 asChild
-                className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-6 py-2 hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
               >
                 <a
                   href="https://wa.me/923401213187"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
+                  aria-label="Contact via WhatsApp"
                 >
                   <WhatsAppLogo />
-                  <span>Contact</span>
+                  <span className="text-sm lg:text-base">Contact</span>
                 </a>
               </Button>
             </motion.div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Improved touch target */}
           <div className="lg:hidden mobile-menu-button">
             <motion.div
               whileTap={prefersReducedMotion ? {} : { scale: 0.9 }}
@@ -265,8 +274,12 @@ const Navbar = () => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                aria-label="Toggle mobile menu"
+                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
+                  isScrolled ? 'text-gray-900' : 'text-white'
+                }`}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <AnimatePresence mode="wait">
                   {isMobileMenuOpen ? (
@@ -277,7 +290,7 @@ const Navbar = () => {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="h-6 w-6" />
+                      <X className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -287,7 +300,7 @@ const Navbar = () => {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="h-6 w-6" />
+                      <Menu className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -296,29 +309,32 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Improved accessibility and touch targets */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-menu"
               className="lg:hidden mobile-menu-container"
               initial={prefersReducedMotion ? {} : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
+              role="menu"
+              aria-label="Mobile navigation menu"
             >
               <motion.div
-                className="glass border-t border-white/20 mt-2 rounded-b-2xl shadow-xl overflow-hidden"
+                className="glass border-t border-white/20 mt-2 rounded-b-2xl shadow-xl overflow-hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
                 initial={prefersReducedMotion ? {} : { y: -20 }}
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="py-4 space-y-1">
+                <div className="py-3 sm:py-4 space-y-1">
                   {navLinks.map((link, index) => (
                     <motion.a
                       key={link.label}
                       href={link.href}
-                      className={`mobile-nav-item block px-4 py-3 text-base font-medium transition-colors ${activeSection === link.href.replace('/#', '') ||
+                      className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation ${activeSection === link.href.replace('/#', '') ||
                           (link.href === '/Portfolio' && currentPath === '/Portfolio')
                           ? 'text-primary bg-primary/10'
                           : 'text-white hover:text-primary hover:bg-white/10'
@@ -329,29 +345,31 @@ const Navbar = () => {
                       initial={prefersReducedMotion ? {} : "hidden"}
                       animate="visible"
                       exit="hidden"
+                      role="menuitem"
                     >
                       {link.label}
                     </motion.a>
                   ))}
 
-                  {/* Industries pages (mobile) */}
+                  {/* Industries pages (mobile) - Improved touch targets */}
                   <motion.div
-                    className="px-4"
+                    className="px-4 sm:px-6 pt-2"
                     initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navLinks.length * 0.1, duration: 0.3 }}
                   >
-                    <div className="mt-1 mb-2 text-sm text-gray-300 font-medium">Industries</div>
+                    <div className="mt-1 mb-2 text-xs sm:text-sm text-gray-300 font-semibold uppercase tracking-wide">Industries</div>
                     <div className="space-y-1">
                       {industriesPages.map((page, index) => (
                         <motion.a
                           key={page.href}
                           href={page.href}
-                          className="block px-4 py-2 text-base text-white hover:bg-white/10 hover:text-primary rounded-md transition-colors"
+                          className="block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white hover:bg-white/10 hover:text-primary rounded-md transition-colors min-h-[44px] flex items-center touch-manipulation"
                           onClick={() => setIsMobileMenuOpen(false)}
                           initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: (navLinks.length + index) * 0.05, duration: 0.2 }}
+                          role="menuitem"
                         >
                           {page.label}
                         </motion.a>
@@ -359,9 +377,9 @@ const Navbar = () => {
                     </div>
                   </motion.div>
 
-                  {/* Mobile Contact Button */}
+                  {/* Mobile Contact Button - Improved touch target */}
                   <motion.div
-                    className="px-4 py-3"
+                    className="px-4 sm:px-6 py-3 sm:py-4"
                     initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: (navLinks.length + industriesPages.length) * 0.05, duration: 0.3 }}
@@ -371,13 +389,14 @@ const Navbar = () => {
                     >
                       <Button
                         asChild
-                        className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-2 w-full hover:shadow-xl transition-all duration-300"
+                        className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
                       >
                         <a
                           href="https://wa.me/923401213187"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2"
+                          className="flex items-center justify-center gap-2 text-sm sm:text-base font-semibold"
+                          role="menuitem"
                         >
                           <WhatsAppLogo />
                           <span>Contact via WhatsApp</span>
