@@ -4,47 +4,47 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
 
-// AI Autonomous Agent Services
+// Healthcare AI Automation Services
 const autonomousServices = [
 	{
 		id: 1,
-		title: "Intelligent Task Automation",
-		description: "Deploy autonomous agents that handle complex workflows, make decisions, and execute tasks without human intervention, increasing efficiency and reducing operational costs.",
+		title: "Clinical Workflow Automation",
+		description: "Deploy HIPAA-compliant AI agents that automate patient intake, appointment scheduling, insurance verification, and clinical documentation, reducing administrative burden and improving care delivery.",
 		icon: <Workflow className="h-7 w-7" />,
 		color: "from-blue-500 to-cyan-500"
 	},
 	{
 		id: 2,
-		title: "Multi-Agent Systems",
-		description: "Coordinate multiple AI agents working together to solve complex problems, each specializing in different tasks while communicating seamlessly to achieve common goals.",
+		title: "Multi-Agent Care Coordination",
+		description: "Coordinate multiple AI agents across departments—from triage and diagnostics to treatment planning and follow-up—ensuring seamless patient care and communication between clinical teams.",
 		icon: <Network className="h-7 w-7" />,
 		color: "from-green-500 to-emerald-500"
 	},
 	{
 		id: 3,
-		title: "Adaptive Learning Agents",
-		description: "Self-improving agents that learn from interactions, adapt to changing environments, and continuously optimize their performance based on real-world feedback.",
+		title: "Adaptive Clinical Intelligence",
+		description: "Self-learning AI agents that continuously improve diagnostic accuracy, treatment recommendations, and patient engagement strategies based on clinical outcomes and medical literature.",
 		icon: <Brain className="h-7 w-7" />,
 		color: "from-purple-500 to-pink-500"
 	},
 	{
 		id: 4,
-		title: "Decision-Making Agents",
-		description: "Autonomous systems that analyze data, evaluate options, and make informed decisions in real-time, enabling faster response times and better outcomes.",
+		title: "Clinical Decision Support",
+		description: "Autonomous AI systems that analyze patient data, medical history, and evidence-based guidelines to provide real-time clinical recommendations, reducing diagnostic errors and improving outcomes.",
 		icon: <Target className="h-7 w-7" />,
 		color: "from-orange-500 to-red-500"
 	},
 	{
 		id: 5,
-		title: "Process Orchestration",
-		description: "Intelligent agents that coordinate complex business processes, manage resources, and optimize workflows across multiple systems and departments.",
+		title: "Healthcare Process Orchestration",
+		description: "Intelligent agents that coordinate complex healthcare workflows—from patient admission to discharge—managing resources, optimizing bed allocation, and ensuring regulatory compliance.",
 		icon: <Cpu className="h-7 w-7" />,
 		color: "from-indigo-500 to-purple-500"
 	},
 	{
 		id: 6,
-		title: "Autonomous Monitoring",
-		description: "24/7 intelligent monitoring agents that detect anomalies, predict issues, and take corrective actions automatically to maintain system health and performance.",
+		title: "Patient Monitoring & Alerts",
+		description: "24/7 AI-powered patient monitoring agents that track vital signs, detect clinical deterioration, predict adverse events, and automatically alert care teams for timely intervention.",
 		icon: <Eye className="h-7 w-7" />,
 		color: "from-teal-500 to-cyan-500"
 	},
@@ -120,24 +120,24 @@ const platforms = [
 
 const faqData = [
 	{
-		question: "What are AI Autonomous Agents?",
-		answer: "AI Autonomous Agents are intelligent software systems that can perceive their environment, make decisions, and take actions independently to achieve specific goals without constant human supervision.",
+		question: "What are Healthcare AI Automation Agents?",
+		answer: "Healthcare AI Automation Agents are HIPAA-compliant intelligent systems that autonomously handle clinical workflows, patient monitoring, documentation, and care coordination—making decisions and taking actions to improve patient outcomes without constant human supervision.",
 	},
 	{
-		question: "How do autonomous agents differ from traditional automation?",
-		answer: "Unlike traditional automation that follows fixed rules, autonomous agents can adapt to new situations, learn from experience, and make complex decisions based on changing conditions and objectives.",
+		question: "How do AI agents differ from traditional healthcare automation?",
+		answer: "Unlike traditional rule-based automation, healthcare AI agents use machine learning to adapt to clinical scenarios, learn from patient outcomes, and make complex medical decisions based on real-time data, evidence-based guidelines, and changing patient conditions.",
 	},
 	{
-		question: "What industries benefit most from autonomous agents?",
-		answer: "Healthcare, finance, manufacturing, logistics, retail, and customer service industries see significant benefits from autonomous agents through improved efficiency, reduced costs, and enhanced decision-making.",
+		question: "What healthcare workflows can AI agents automate?",
+		answer: "AI agents can automate patient triage, appointment scheduling, clinical documentation, medication management, lab result analysis, care plan coordination, patient monitoring, insurance verification, and post-discharge follow-up—all while maintaining HIPAA compliance.",
 	},
 	{
-		question: "Are autonomous agents safe and reliable?",
-		answer: "Yes, when properly designed with safety constraints, monitoring systems, and human oversight mechanisms. We implement robust testing, validation, and fail-safe protocols to ensure reliable operation.",
+		question: "Are healthcare AI agents safe and HIPAA compliant?",
+		answer: "Yes, our healthcare AI agents are built with patient safety as the top priority. They include clinical validation, human oversight mechanisms, audit trails, and full HIPAA compliance with encrypted data handling, access controls, and regulatory adherence.",
 	},
 	{
-		question: "How long does it take to deploy autonomous agents?",
-		answer: "Deployment timelines vary from weeks for simple agents to several months for complex multi-agent systems. We provide phased implementations to deliver value incrementally.",
+		question: "How long does it take to deploy healthcare AI automation?",
+		answer: "Deployment timelines range from 8-12 weeks for focused solutions like patient intake automation to 4-6 months for comprehensive multi-agent clinical systems. We provide phased implementations with clinical validation at each stage to ensure safety and effectiveness.",
 	},
 ];
 
@@ -145,25 +145,25 @@ const onboardingSteps = [
 	{
 		icon: <Mail className="h-8 w-8" />,
 		title: 'Contact Us',
-		description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
+		description: 'Reach out to start the conversation. Share your clinical workflows and automation needs so we can understand how AI can transform your patient care delivery.',
 		color: "from-green-500 to-emerald-500"
 	},
 	{
 		icon: <Brain className="h-8 w-8" />,
-		title: 'Consultation & Discovery',
-		description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations tailored to your needs.',
+		title: 'Clinical Consultation',
+		description: 'Schedule a consultation with our healthcare AI experts. We\'ll assess your clinical workflows, discuss HIPAA compliance requirements, and provide strategic recommendations.',
 		color: "from-blue-500 to-indigo-500"
 	},
 	{
 		icon: <Target className="h-8 w-8" />,
-		title: 'Receive a Detailed Proposal',
-		description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate so you know exactly what to expect.',
+		title: 'Receive Clinical Proposal',
+		description: 'Based on your clinical requirements, we\'ll deliver a comprehensive proposal outlining the AI automation scope, implementation timeline, compliance measures, and transparent cost estimate.',
 		color: "from-yellow-500 to-amber-500"
 	},
 	{
 		icon: <Zap className="h-8 w-8" />,
-		title: 'Project Kickoff & Delivery',
-		description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring a smooth, successful delivery from start to finish.',
+		title: 'Clinical Deployment',
+		description: 'Once approved, our healthcare AI specialists launch your project with clinical validation, staff training, and seamless EHR integration ensuring safe, successful deployment.',
 		color: "from-purple-500 to-violet-500"
 	},
 ];
@@ -187,17 +187,17 @@ const AIAutonomous: React.FC = () => {
 					<div className="flex-1 text-white space-y-6 sm:space-y-8">
 						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								AI Autonomous Agents
+								 AI Automation
 							</h1>
-							<p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-								Empower your business with intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation.
+							<p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+								Transform patient care with HIPAA-compliant AI agents that automate clinical workflows, enhance diagnostics, and improve health outcomes through intelligent automation.
 							</p>
 							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
 								<a
 									href="/#contact"
 									className="btn-primary text-center min-h-[44px] flex items-center justify-center"
 								>
-									Talk to an Expert
+									Talk to AI Expert
 									<ArrowRight className="ml-2 h-4 w-4" />
 								</a>
 							</div>
@@ -227,16 +227,16 @@ const AIAutonomous: React.FC = () => {
 						{/* Right: Content */}
 						<div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
 							<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-								The Power of AI Autonomous Agents
+								The Power of Healthcare AI Automation
 							</h2>
-							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-								Revolutionize your operations with AI autonomous agents that work tirelessly, make intelligent decisions, and adapt to changing conditions without constant human oversight.
+							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+								Revolutionize patient care with HIPAA-compliant AI agents that work tirelessly to automate clinical workflows, enhance diagnostic accuracy, and improve patient outcomes without constant human oversight.
 							</p>
-							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-								Our autonomous agents leverage advanced machine learning, natural language processing, and decision-making algorithms to handle complex tasks, coordinate with other systems, and continuously improve their performance.
+							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+								Our healthcare AI agents leverage advanced machine learning, medical natural language processing, and clinical decision support algorithms to handle complex medical tasks, coordinate care teams, and continuously improve based on patient outcomes.
 							</p>
-							<p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-								From customer service and data analysis to process automation and predictive maintenance, autonomous agents transform how businesses operate, enabling 24/7 productivity and unprecedented scalability.
+							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+								From patient triage and clinical documentation to predictive diagnostics and care coordination, healthcare AI automation transforms how providers deliver care, enabling 24/7 patient monitoring, reduced administrative burden, and improved clinical efficiency.
 							</p>
 						</div>
 					</div>
@@ -244,17 +244,17 @@ const AIAutonomous: React.FC = () => {
 			</section>
 
 			{/* Services Section */}
-			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
+			<section className="section-padding ai-section">
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Advanced Autonomous Agent Services
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
+							Healthcare AI Automation Solutions
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Intelligent autonomous solutions that transform how your business operates.
+						<p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+							HIPAA-compliant AI automation that transforms clinical workflows and patient care delivery.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -266,11 +266,11 @@ const AIAutonomous: React.FC = () => {
 							>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
 									{service.icon}
-								</div>
-								<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
+							</div>
+								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">
 									{service.title}
 								</h3>
-								<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">
+								<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">
 									{service.description}
 								</p>
 							</div>
@@ -279,20 +279,18 @@ const AIAutonomous: React.FC = () => {
 				</div>
 			</section>
 
-			<Industries />
-
 			{/* AI Autonomous Benefits Section */}
 			<section className="section-padding">
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Autonomous Agent Benefits
+							Healthcare AI Automation Benefits
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Transform your business with intelligent agents that work smarter, not harder.
+						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+							Deliver better patient outcomes and operational excellence through intelligent healthcare automation.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -301,36 +299,38 @@ const AIAutonomous: React.FC = () => {
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Clock className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">24/7 Operation</h3>
-							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Continuous operation without breaks, ensuring consistent performance around the clock.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">24/7 Patient Care</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Continuous patient monitoring and clinical support without breaks, ensuring consistent care quality around the clock.</p>
 						</div>
 						{/* Adaptive Intelligence */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Brain className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Adaptive Intelligence</h3>
-							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Learn and improve from every interaction, becoming more effective over time.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Intelligence</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Learn from patient outcomes and medical evidence, continuously improving diagnostic accuracy and treatment recommendations.</p>
 						</div>
 						{/* Cost Efficiency */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<TrendingUp className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Cost Efficiency</h3>
-							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Reduce operational costs while increasing output and quality of work.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Operational Efficiency</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Reduce administrative costs, minimize readmissions, and optimize resource allocation while improving care quality.</p>
 						</div>
 						{/* Scalability */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Zap className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
-							<p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Scale operations instantly without proportional increases in resources or costs.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Healthcare Scalability</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Scale patient care capacity instantly without proportional increases in clinical staff or infrastructure costs.</p>
 						</div>
 					</div>
 				</div>
 			</section>
+
+			<Industries />
 
 			
 
@@ -339,13 +339,13 @@ const AIAutonomous: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Autonomous Agent Platforms
+							 AI Technology Stack
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Leverage cutting-edge platforms for robust autonomous agent implementations.
+						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+							Industry-leading AI platforms optimized for HIPAA-compliant healthcare automation and clinical applications.
 						</p>
 					</div>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
@@ -360,17 +360,17 @@ const AIAutonomous: React.FC = () => {
 			</section>
 
 			{/* AI Autonomous Process Section */}
-			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
+			<section className="section-padding ai-section">
 				<div className="max-w-5xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Autonomous Agent Development Process
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
+							Healthcare AI Implementation Process
 						</h2>
 						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Streamlined approach to implementing autonomous agent solutions with proven methodology.
+						<p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+							Proven methodology for deploying secure, HIPAA-compliant AI automation in healthcare environments.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -379,32 +379,32 @@ const AIAutonomous: React.FC = () => {
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
 								<Target className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Define Objectives</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Identify tasks and goals for autonomous agents to maximize business impact.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Assessment</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify clinical workflows and patient care challenges where AI automation delivers maximum impact.</p>
 						</div>
 						{/* Design agent architecture */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
 								<Brain className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Design Architecture</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Create intelligent agent architecture with decision-making capabilities.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">HIPAA-Compliant Design</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Design secure AI architecture with clinical decision support and full HIPAA compliance.</p>
 						</div>
 						{/* Train & test */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
 								<Code className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Train & Test</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Train agents with real-world scenarios and validate performance.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Validation</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Train AI with clinical data and validate with healthcare professionals for safety and accuracy.</p>
 						</div>
 						{/* Deploy & monitor */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
 								<Zap className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Deploy & Monitor</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Launch agents and continuously monitor for optimal performance.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and optimization.</p>
 						</div>
 					</div>
 				</div>
@@ -414,12 +414,12 @@ const AIAutonomous: React.FC = () => {
 			<section className="section-padding">
 				<div className="max-w-6xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us </h2>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Healthcare AI</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Trusted expertise and proven results for your autonomous agent implementation needs.
+						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+							Healthcare-focused AI expertise with proven results in clinical environments and patient care.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -428,46 +428,46 @@ const AIAutonomous: React.FC = () => {
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
 								<Brain className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Expertise</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Work with seasoned professionals ensuring your project's success.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Healthcare Expertise</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Specialized team with deep understanding of clinical workflows and healthcare regulations.</p>
 						</div>
 						{/* Custom Solutions */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
 								<Target className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Custom Solutions</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Bespoke autonomous agent integrations for your unique business goals.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Clinical-Grade Solutions</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Custom AI automation designed for healthcare environments with patient safety as priority.</p>
 						</div>
 						{/* End-to-End Support */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
 								<Shield className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">End-to-End Support</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Comprehensive support from strategy to deployment and optimization.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">HIPAA Compliance</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Full HIPAA compliance with robust security measures protecting patient data and privacy.</p>
 						</div>
 						{/* Proven Results */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
 								<CheckCircle className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-foreground text-sm sm:text-lg text-center">Proven Results</span>
-							<p className="text-xs sm:text-sm text-foreground/70 text-center leading-relaxed">Join clients who have achieved measurable business impact.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Clinical Impact</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare organizations achieving improved patient outcomes and operational efficiency.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Onboarding Process Section */}
-			<section className="section-padding bg-gradient-to-tr from-muted/50 to-background">
+			<section className="section-padding ai-section">
 				<div className="max-w-6xl mx-auto container-padding">
 					<div className={`text-center mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Our Onboarding Process</h2>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Healthcare AI Onboarding Process</h2>
 						<div className="flex justify-center mb-3 sm:mb-4">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-2xl mx-auto px-4">We guide you through the journey of autonomous agent implementation with our proven steps.</p>
+						<p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">Your journey to transforming patient care with AI automation starts here.</p>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
 						{onboardingSteps.map((step, index) => (
@@ -480,8 +480,8 @@ const AIAutonomous: React.FC = () => {
 									{step.icon}
 								</div>
 								<div className="flex-1">
-									<h3 className="font-semibold text-sm sm:text-base text-foreground mb-2">{step.title}</h3>
-									<p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">{step.description}</p>
+									<h3 className="font-semibold text-sm sm:text-base text-white mb-2">{step.title}</h3>
+									<p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{step.description}</p>
 								</div>
 							</div>
 						))}
@@ -497,8 +497,8 @@ const AIAutonomous: React.FC = () => {
 						<div className="flex justify-center mb-2">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
-						<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-							Common questions about autonomous agent implementation and our services.
+						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+							Common questions about healthcare AI automation implementation and our services.
 						</p>
 					</div>
 					{/* FAQ Accordion */}

@@ -188,7 +188,7 @@ const NaturalLanguageProcessing: React.FC = () => {
                   href="/#contact"
                   className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
-                  Talk to Healthcare AI Expert
+                  Talk to  AI Expert
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
