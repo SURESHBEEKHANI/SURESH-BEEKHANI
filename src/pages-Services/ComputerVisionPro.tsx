@@ -434,55 +434,55 @@ Transform healthcare delivery with AI-powered visual intelligence and clinical d
       </section>
 
       {/* The development process of Computer Vision integration */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+      <section className="section-padding ai-section">
+        <div className="max-w-5xl mx-auto container-padding">
+          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
               Healthcare AI Implementation Process
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
+            <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Proven methodology for deploying secure, compliant medical AI in clinical environments.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {/* Define the use case */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-cyan-200 flex flex-col items-center gap-3 sm:gap-4">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 text-white mb-2">
+            {/* Clinical Assessment */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
                 {/* Target/Bullseye Icon */}
                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Clinical Assessment</span>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Identify clinical workflows and diagnostic challenges where AI delivers maximum patient impact.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Assessment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify clinical workflows and diagnostic challenges where AI delivers maximum patient impact.</p>
             </div>
-            {/* Data collection & preparation */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-green-200 flex flex-col items-center gap-3 sm:gap-4">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 text-white mb-2">
+            {/* Medical Data Integration */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
                 {/* Database Icon */}
                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Medical Data Integration</span>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">HIPAA-compliant integration with PACS, EHR systems, and medical imaging databases for model training.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Medical Data Integration</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">HIPAA-compliant integration with PACS, EHR systems, and medical imaging databases for model training.</p>
             </div>
-            {/* Development & integration */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-blue-200 flex flex-col items-center gap-3 sm:gap-4">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 text-white mb-2">
+            {/* AI Model Development */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
                 {/* Code/Development Icon */}
                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-base sm:text-lg text-center">AI Model Development</span>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Build and validate clinical AI models with healthcare professionals and regulatory standards.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">AI Model Development</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Build and validate clinical AI models with healthcare professionals and regulatory standards.</p>
             </div>
-            {/* Deployment & monitoring */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-yellow-200 flex flex-col items-center gap-3 sm:gap-4">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-white mb-2">
+            {/* Clinical Deployment */}
+            <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-base sm:text-lg text-center">Clinical Deployment</span>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and performance optimization.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and performance optimization.</p>
             </div>
           </div>
         </div>

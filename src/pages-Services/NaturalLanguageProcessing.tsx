@@ -8,49 +8,49 @@ import Industries from "../components/Industries";
 const nlpServices = [
   {
     id: 1,
-    title: "Text Analytics & Sentiment Analysis",
+    title: "Clinical Text Analytics & Sentiment Analysis",
     description:
-      "Extract insights and measure sentiment from customer feedback, reviews, and social media.",
+      "Extract insights from patient feedback, clinical notes, and healthcare surveys to improve care quality and patient satisfaction.",
     icon: <BarChart3 className="h-7 w-7" />,
     color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
-    title: "Chatbot NLP Integration",
+    title: "Healthcare Chatbot NLP",
     description:
-      "Empower chatbots with advanced NLP for natural, context-aware conversations.",
+      "HIPAA-compliant conversational AI for patient triage, appointment scheduling, and 24/7 health inquiries with empathetic responses.",
     icon: <MessageSquare className="h-7 w-7" />,
     color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
-    title: "Document Classification",
+    title: "Medical Document Classification",
     description:
-      "Automatically categorize and organize documents, emails, and support tickets.",
+      "Automatically categorize clinical documents, lab reports, discharge summaries, and medical records for efficient EHR management.",
     icon: <FileText className="h-7 w-7" />,
     color: "from-purple-500 to-pink-500"
   },
   {
     id: 4,
-    title: "Named Entity Recognition (NER)",
+    title: "Medical Entity Recognition (NER)",
     description:
-      "Identify and extract key entities from unstructured text for deeper analysis.",
+      "Extract medications, diagnoses, symptoms, and clinical entities from unstructured medical text for accurate documentation.",
     icon: <Target className="h-7 w-7" />,
     color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
-    title: "Language Translation",
+    title: "Medical Language Translation",
     description:
-      "Break language barriers with automated, accurate translation for global reach.",
+      "Break language barriers in healthcare with accurate medical translation for multilingual patient care and global health initiatives.",
     icon: <Globe className="h-7 w-7" />,
     color: "from-indigo-500 to-purple-500"
   },
   {
     id: 6,
-    title: "Text Summarization",
+    title: "Clinical Note Summarization",
     description:
-      "Automatically generate concise summaries from long documents and articles.",
+      "Automatically generate concise summaries from lengthy clinical notes, research papers, and patient histories to save clinician time.",
     icon: <Brain className="h-7 w-7" />,
     color: "from-teal-500 to-cyan-500"
   },
@@ -104,24 +104,24 @@ const nlpSolutions = [
 
 const faqData = [
   {
-    question: "What is Natural Language Processing (NLP)?",
-    answer: "NLP is a field of AI that enables computers to understand, interpret, and generate human language, powering applications like chatbots, sentiment analysis, and translation.",
+    question: "What is Healthcare NLP?",
+    answer: "Healthcare NLP is a specialized field of AI that enables computers to understand, interpret, and generate medical language from clinical notes, patient records, and healthcare communications while maintaining HIPAA compliance and medical accuracy.",
   },
   {
-    question: "How can NLP benefit my business?",
-    answer: "NLP can automate customer support, extract insights from text data, streamline workflows, and enhance user engagement, saving time and improving satisfaction.",
+    question: "How can Healthcare NLP benefit my practice or hospital?",
+    answer: "Healthcare NLP automates clinical documentation, extracts insights from patient data, streamlines medical coding, enhances patient engagement through intelligent chatbots, and improves diagnostic accuracy—saving clinician time and improving patient outcomes.",
   },
   {
-    question: "Can NLP solutions be customized for my industry?",
-    answer: "Yes, NLP can be tailored for healthcare, education, finance, retail, and more, ensuring industry-specific compliance and value.",
+    question: "Can NLP solutions be customized for specific medical specialties?",
+    answer: "Yes, our NLP solutions can be tailored for specific specialties like radiology, oncology, cardiology, mental health, and more, ensuring specialty-specific terminology, workflows, and compliance requirements are met.",
   },
   {
-    question: "Is my data secure with NLP integrations?",
-    answer: "We implement robust security measures and comply with standards like HIPAA and GDPR to ensure your data is protected.",
+    question: "Is patient data secure with Healthcare NLP integrations?",
+    answer: "Absolutely. We implement HIPAA-compliant security measures including end-to-end encryption, secure data storage, access controls, and audit trails to protect sensitive patient health information (PHI).",
   },
   {
-    question: "How do I get started with NLP integration?",
-    answer: "Contact us for a consultation. We'll assess your needs, propose a solution, and guide you through seamless integration.",
+    question: "How do I get started with Healthcare NLP integration?",
+    answer: "Contact us for a consultation with our healthcare AI specialists. We'll assess your clinical workflows, identify NLP opportunities, and propose a HIPAA-compliant solution tailored to your practice or hospital needs.",
   },
 ];
 
@@ -177,18 +177,18 @@ const NaturalLanguageProcessing: React.FC = () => {
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
               <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Natural Language Processing 
+                Natural Language Processing
               </h1>
-              <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-                Transform your business with advanced NLP solutions for automation, insights,
-                and engagement across all your digital channels.
+              <p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
+                Transform patient care with HIPAA-compliant NLP solutions for clinical documentation, 
+                medical insights, and intelligent patient engagement across your healthcare systems.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
                 <a
                   href="/#contact"
                   className="btn-primary text-center min-h-[44px] flex items-center justify-center"
                 >
-                  Talk to an Expert
+                  Talk to Healthcare AI Expert
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -201,33 +201,33 @@ const NaturalLanguageProcessing: React.FC = () => {
       </section>
 
       {/* NLP Capabilities Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 to-white">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left: NLP Image */}
             <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
               <div className="relative">
-                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
+                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-primary to-secondary rounded-2xl sm:rounded-3xl blur-xl opacity-20"></div>
                 <img
                   src="/image/pages_img/NLP-power.jpeg"
                   alt="The Power of Natural Language Processing"
-                  className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20"
+                  className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl shadow-2xl border-4 border-white/20 modern-card"
                 />
               </div>
             </div>
             {/* Right: Content */}
             <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
               <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-                The Power of Natural Language Processing
+                The Power of Healthcare NLP
               </h2>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                Unlock new possibilities for your business with advanced Natural Language Processing (NLP) solutions. Our services help computers better understand, analyze, and generate human language, enabling smarter chatbots, accurate language translation, and much more.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                Revolutionize patient care with advanced Healthcare NLP solutions designed specifically for medical environments. Our HIPAA-compliant systems help clinicians better understand, analyze, and generate medical documentation, enabling intelligent clinical decision support, accurate medical coding, and enhanced patient communication.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                Our NLP specialists will seamlessly integrate and tailor these solutions to your unique needs. This empowers you to make informed, data-driven decisions and improve your organization's efficiency.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                Our healthcare NLP specialists seamlessly integrate these solutions into your EHR systems and clinical workflows. This empowers providers to make informed, evidence-based decisions, reduce documentation burden, and improve patient outcomes while maintaining the highest standards of data security.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
-                Whether in healthcare, finance, education, or beyond, NLP can transform how you work and serve your customers. Rely on our expertise to help your business grow and stay ahead.
+              <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
+                From hospitals and clinics to telehealth platforms and medical research institutions, Healthcare NLP transforms how you deliver care, streamline operations, and advance medical knowledge. Partner with us to lead the future of intelligent healthcare.
               </p>
             </div>
           </div>
@@ -235,126 +235,111 @@ const NaturalLanguageProcessing: React.FC = () => {
       </section>
 
       {/* Advanced NLP Services Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 ai-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Advanced NLP Services
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
+              Healthcare NLP Solutions
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Intelligent language processing solutions for today's dynamic business landscape.
+            <p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+              HIPAA-compliant intelligent language processing for modern healthcare delivery.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {nlpServices.map((service, index) => {
-              const gradients = [
-                { bg: 'bg-gradient-to-br from-cyan-50 to-blue-100', border: 'border-cyan-200', iconBg: 'bg-cyan-100', iconColor: 'text-cyan-600' },
-                { bg: 'bg-gradient-to-br from-blue-50 to-indigo-100', border: 'border-blue-200', iconBg: 'bg-blue-100', iconColor: 'text-blue-600' },
-                { bg: 'bg-gradient-to-br from-green-50 to-emerald-100', border: 'border-green-200', iconBg: 'bg-green-100', iconColor: 'text-green-600' },
-                { bg: 'bg-gradient-to-br from-yellow-50 to-orange-100', border: 'border-yellow-200', iconBg: 'bg-yellow-100', iconColor: 'text-yellow-600' },
-                { bg: 'bg-gradient-to-br from-purple-50 to-violet-100', border: 'border-purple-200', iconBg: 'bg-purple-100', iconColor: 'text-purple-600' },
-                { bg: 'bg-gradient-to-br from-pink-50 to-rose-100', border: 'border-pink-200', iconBg: 'bg-pink-100', iconColor: 'text-pink-600' }
-              ];
-              const gradientScheme = gradients[index % gradients.length];
-              
-              return (
-                <div
-                  key={service.id}
-                  className={`${gradientScheme.bg} rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border ${gradientScheme.border} flex flex-col gap-3 sm:gap-4 items-center hover:shadow-2xl transition-all duration-300 min-h-[200px] sm:min-h-[220px]`}
-                >
-                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${gradientScheme.iconBg} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto`}>
-                    <div className={`${gradientScheme.iconColor} w-5 h-5 sm:w-6 sm:h-6`}>
-                      {service.icon}
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">
-                    {service.description}
-                  </p>
+            {nlpServices.map((service, index) => (
+              <div 
+                key={service.id}
+                className="modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300"
+              >
+                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
+                  {service.icon}
                 </div>
-              );
-            })}
+                <h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">
+                  {service.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-        <Industries />
-      {/* NLP Features Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
+      {/* Healthcare NLP Benefits Section */}
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              NLP Solution Features
+              Healthcare NLP Benefits
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Intelligent language processing solutions for today's dynamic business landscape.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Delivering better patient outcomes and clinical excellence through intelligent NLP.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {/* Text Understanding */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-cyan-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-cyan-100 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
+            {/* Clinical Language Understanding */}
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4v16m0 0H3"/></svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Text Understanding</h3>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">NLP enables systems to interpret and reply to queries, resulting in more effective and natural interactions.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Language Understanding</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare NLP interprets medical terminology, clinical notes, and patient queries for accurate, context-aware responses.</p>
             </div>
-            {/* Personalization */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-green-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
+            {/* Personalized Patient Care */}
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Personalization</h3>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Deliver personalized recommendations, answers, and content based on user interests and context for a rewarding experience.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Personalized Patient Care</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Deliver personalized treatment recommendations, health education, and care plans based on patient history and clinical context.</p>
             </div>
-            {/* Scalability */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-blue-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            {/* Healthcare Scalability */}
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Scalability</h3>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">NLP solutions scale to handle high volumes of requests and interactions, suitable for organizations of all sizes and industries.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Healthcare Scalability</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare NLP scales from small clinics to large hospital systems, handling millions of patient records and clinical interactions.</p>
             </div>
-            {/* Time and Cost Savings */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-yellow-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-yellow-100 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            {/* Clinical Efficiency */}
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Time and Cost Savings</h3>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Automate processes like content creation and customer service, saving manual labor expenses and streamlining workflows.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Efficiency</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate clinical documentation, medical coding, and administrative tasks, reducing clinician burnout and operational costs.</p>
             </div>
           </div>
         </div>
       </section>
 
-
+      <Industries />
 
       {/* Platforms Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              NLP Integration Platforms
+             NLP Technology Stack
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Leverage industry-leading platforms for robust NLP implementations.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Industry-leading NLP platforms optimized for healthcare applications and HIPAA compliance.
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center justify-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
             {platforms.map((platform) => (
               <div className="flex flex-col items-center" key={platform.name}>
-                <img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2" />
+                <img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2 modern-card" />
                 <span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
               </div>
             ))}
@@ -363,123 +348,123 @@ const NaturalLanguageProcessing: React.FC = () => {
       </section>
 
       {/* The development process of NLP integration */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-5xl mx-auto">
+      <section className="section-padding ai-section">
+        <div className="max-w-5xl mx-auto container-padding">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              NLP Development Process
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
+              Healthcare NLP Implementation Process
             </h2>
             <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Streamlined approach to implementing NLP solutions with proven methodology.
+            <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+              Proven methodology for deploying secure, HIPAA-compliant NLP in healthcare environments.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {/* Define the use case */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-cyan-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
                 {/* Target/Bullseye Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Define Use Case</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Identify the business scenario and audience for NLP integration.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Assessment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify clinical workflows and patient care challenges where NLP delivers maximum impact.</p>
             </div>
             {/* Data collection & preparation */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-green-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-green-100 text-green-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
                 {/* Database Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/><path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Data Collection</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Gather and prepare conversational/text data for model training.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Secure Data Integration</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">HIPAA-compliant data preparation and EHR integration for training robust medical NLP models.</p>
             </div>
             {/* Development & integration */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-blue-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-100 text-blue-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
                 {/* Code/Development Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Development</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Build and integrate NLP solutions into your application.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">NLP Model Development</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Build and validate healthcare NLP models with medical professionals and regulatory standards.</p>
             </div>
             {/* Deployment & monitoring */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-yellow-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
                 {/* Monitor/Analytics Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10v4M15 8v8"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Deployment</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Deploy the NLP solution and monitor performance with analytics.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and optimization.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="section-padding">
+        <div className="max-w-6xl mx-auto container-padding">
           <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us</h2>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Healthcare NLP</h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Trusted expertise and proven results for your NLP implementation needs.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Healthcare-focused NLP expertise with proven results in clinical environments.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {/* Expertise */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-cyan-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-cyan-100 text-cyan-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
                 {/* Star/Expertise Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Expertise</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Seasoned professionals with deep experience in AI and NLP integrations.</p>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Healthcare Expertise</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Specialized team with deep understanding of clinical workflows, medical terminology, and healthcare regulations.</p>
             </div>
             {/* Custom Solutions */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-green-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-green-100 text-green-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
                 {/* Puzzle/Custom Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 13.255V7a2 2 0 0 0-2-2h-6.255a2 2 0 0 1-3.49 0H5a2 2 0 0 0-2 2v6.255a2 2 0 0 1 0 3.49V19a2 2 0 0 0 2 2h6.255a2 2 0 0 1 3.49 0H19a2 2 0 0 0 2-2v-6.255a2 2 0 0 1 0-3.49z"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Custom Solutions</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Tailored NLP integrations to fit your unique business needs and goals.</p>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Clinical-Grade Solutions</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Custom healthcare NLP solutions designed for clinical environments with patient safety as priority.</p>
             </div>
             {/* End-to-End Support */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-blue-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-100 text-blue-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
                 {/* Support/Headset Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1a10 10 0 0 0-10 10v4a4 4 0 0 0 4 4h1v-6H5v-2a7 7 0 0 1 14 0v2h-2v6h1a4 4 0 0 0 4-4v-4A10 10 0 0 0 12 1z"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">End-to-End Support</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">Comprehensive guidance from planning to deployment and ongoing optimization.</p>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">HIPAA Compliance & Security</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">HIPAA-compliant architecture with robust security measures protecting patient health information (PHI).</p>
             </div>
             {/* Proven Results */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-xl border border-yellow-200 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px]">
-              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-yellow-100 text-yellow-600 mb-2">
+            <div className="modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
                 {/* Trophy/Results Icon */}
                 <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5h5v2zM3 7a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V5H3v2z"/></svg>
               </span>
-              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Results</span>
-              <p className="text-xs sm:text-sm text-gray-800 text-center leading-relaxed">A track record of successful projects and measurable business impact.</p>
+              <span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Clinical Impact</span>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare organizations achieving improved patient outcomes, reduced costs, and enhanced clinical efficiency.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-2 mb-8 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
-            <div className="flex justify-center">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+            <div className="flex justify-center mb-2">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-              Common questions about NLP implementation and our services.
+            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+              Common questions about Healthcare NLP implementation and our services.
             </p>
           </div>
           {/* FAQ Accordion */}
@@ -491,7 +476,7 @@ const NaturalLanguageProcessing: React.FC = () => {
                   <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
                   <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
                 </summary>
-                <div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">{faq.answer}</div>
+                <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">{faq.answer}</div>
               </details>
             ))}
           </div>

@@ -338,7 +338,7 @@ const AIDevelopment: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Healthcare AI Technology Stack
+							 AI Technology Stack
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
