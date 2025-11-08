@@ -668,57 +668,57 @@ const AIChatbotDevelopment: React.FC = () => {
   {(() => {
 	const aiSolutions = [
 	  {
-		key: "GP-Pod",
-		name: "GP-Pod",
+		key: "MedGPT",
+		name: "🩺 MedGPT",
 		description: (
 		  <>
-			The GP POD is a disease-diagnostic AI chatbot software that utilizes machine learning and NLP to analyze patient data and provide accurate diagnoses. It assists doctors in making informed treatment decisions and improves patient care. It is a hospital appointment chatbot that simplifies patient appointments, the diagnosis process, gathering patient information, and using AI to identify potential diseases.
+			MedGPT is a personalized health companion that helps users understand symptoms, track health, and manage appointments. Using advanced LLM and medical embeddings, it provides symptom analysis, personalized health and medication reminders, and seamless integration with wearable devices and telemedicine platforms.
 			<br /><br />
-			The GP POD system uses AI in healthcare that streamlines patient diagnosis, enhances patient care, saves resources, and prioritizes patient-centered care.
+			Designed for hospitals, digital clinics, and health apps, MedGPT delivers 24/7 AI-driven telehealth support and patient self-diagnosis tools, making healthcare more accessible and efficient.
 		  </>
 		),
 		cta: "Book a Demo",
-	image: "/image/pages_img/GP-Pod.webp",
+		image: "/image/pages_img/MedGPT.jpg",
 	  },
 	  {
-		key: "InfluencerGPT",
-		name: "InfluencerGPT",
+		key: "NeuroCareGPT",
+		name: "🧠 NeuroCareGPT",
 		description: (
 		  <>
-			Influencer GPT is a chatbot designed to help influencers, content creators, and speakers connect more effectively and informally with their followers. It enables followers to get direct answers from their favorite influencers, alleviating the burden of handling numerous questions and requests.
+			NeuroCareGPT is a mental health and wellness assistant providing 24/7 emotional support and mood tracking. It offers conversational CBT-style therapy responses, emotion recognition via text tone analysis, and personalized journaling, self-help, and mindfulness prompts.
 			<br /><br />
-			Influencer GPT utilizes data preprocessing, embedding generation, vector store, and indexing to efficiently store and retrieve relevant information, fostering meaningful connections between creators and their audiences.
+			Perfect for mental health startups, HR wellness programs, and individuals seeking accessible mental wellness support. NeuroCareGPT addresses the booming demand for AI-driven emotional support tools in today's fast-paced world.
 		  </>
 		),
 		cta: "Book a Demo",
-	image: "/image/pages_img/InfluencerGPT.webp",
+		image: "/image/pages_img/NeuroCareGPT.jpg",
 	  },
 	  {
-		key: "LawGPT",
-		name: "Law GPT",
+		key: "PharmaGPT",
+		name: "💊 PharmaGPT",
 		description: (
 		  <>
-			Law Chat GPT is an AI-powered app that generates accurate legal content with natural precision. Initially focused on drafting essential documents, Law Chat GPT has demonstrated significant productivity and scalability gains.
+			PharmaGPT provides instant access to pharmaceutical insights, drug data, interactions, and the latest research. With semantic search capabilities over drug and clinical data, it offers side-effect analysis, dosage comparison, and seamless integration for doctors, researchers, and pharmacists.
 			<br /><br />
-			The platform also assists with legal research and analysis, expanding its potential to empower legal practitioners. With continuous learning, Law Chat GPT promises to transform the legal landscape and enable lawyers to handle a broader range of work more efficiently.
+			Designed for pharma companies, healthcare researchers, and hospitals, PharmaGPT simplifies complex pharmaceutical data interpretation, reducing manual effort and improving decision-making in the pharmaceutical industry.
 		  </>
 		),
 		cta: "Book a Demo",
-	image: "/image/pages_img/law-gpt.jpg",
+		image: "/image/pages_img/PharmaGPT.png",
 	  },
 	];
-	const [activeTab, setActiveTab] = React.useState("LawGPT");
+	const [activeTab, setActiveTab] = React.useState("MedGPT");
 	const solution = aiSolutions.find((s) => s.key === activeTab);
 	return (
 	  <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
 		<div className="max-w-6xl mx-auto">
 		  <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12">
-			<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Personalized Digital AI Solutions</h2>
+			<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Healthcare AI Chatbot Solutions</h2>
 			<div className="flex justify-center">
 			  <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 			</div>
 			<p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
-				Tailored chatbot solutions across diverse industry verticals.
+				Advanced AI-powered chatbots transforming healthcare delivery and patient care.
 			</p>
 		  </div>
 		  <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
@@ -828,47 +828,47 @@ const AIChatbotDevelopment: React.FC = () => {
 		{/* FAQ 1 */}
 		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
 			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-				What are AI chatbots?
+				What are AI chatbots and how do they work?
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
 			</summary>
-			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">AI chatbots use artificial intelligence to simulate human-like conversations and automate tasks.</div>
+			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm leading-relaxed">AI chatbots are intelligent virtual assistants powered by artificial intelligence, natural language processing (NLP), and machine learning. They simulate human-like conversations, understand context, learn from interactions, and provide automated responses to user queries 24/7. Our chatbots can handle complex queries, integrate with multiple platforms, and continuously improve through data analysis.</div>
 		</details>
 		{/* FAQ 2 */}
 		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
 			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-				How can your AI chatbot development services solutions help my business?
+				How can AI chatbot development services benefit my business?
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
 			</summary>
-			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Our AI chatbot solutions automate support, streamline workflows, and provide 24/7 assistance.</div>
+			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm leading-relaxed">Our AI chatbot solutions deliver significant business value by automating customer support, reducing operational costs by up to 30%, providing 24/7 availability, streamlining workflows, improving response times, enhancing customer satisfaction, and freeing your team to focus on high-value tasks. They also provide valuable insights through conversation analytics and help scale your operations efficiently.</div>
 		</details>
 		{/* FAQ 3 */}
 		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
 			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-				What industries can benefit from AI chatbot solutions?
+				Can AI chatbots be customized to suit my specific business needs?
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
 			</summary>
-			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Healthcare, education, finance, retail, e-commerce, and legal industries benefit from AI chatbots.</div>
+			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm leading-relaxed">Absolutely! Our AI chatbots are fully customizable to align with your unique business goals, brand personality, industry requirements, and user expectations. We tailor conversation flows, integrate with your existing systems (CRM, databases, APIs), customize the UI/UX to match your branding, configure language preferences, and implement specific features that address your business challenges. Every chatbot is designed from the ground up to meet your exact specifications.</div>
 		</details>
 		{/* FAQ 4 */}
-		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-				Can AI chatbots be customized to suit my business needs?
-				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-			</summary>
-			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">Yes, AI chatbots are fully customizable to align with your business goals and branding.</div>
-		</details>
-		{/* FAQ 5 */}
 		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
 			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
 				What data privacy and security measures are in place for your AI chatbots?
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
 				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
 			</summary>
-			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm">We implement encryption, secure data storage, and compliance with HIPAA and GDPR standards.</div>
+			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm leading-relaxed">Security and privacy are our top priorities. We implement end-to-end encryption, secure data storage with regular backups, role-based access controls, and full compliance with industry standards including HIPAA (healthcare), GDPR (data protection), and SOC 2. All data transmissions are encrypted, user information is anonymized where appropriate, and we conduct regular security audits. We also provide detailed audit trails and ensure your chatbot meets all regulatory requirements for your industry.</div>
+		</details>
+		{/* FAQ 5 */}
+		<details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
+			<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+				How long does it take to develop and deploy an AI chatbot?
+				<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
+				<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+			</summary>
+			<div className="pt-2 sm:pt-3 text-gray-800 text-xs sm:text-sm leading-relaxed">Development timelines vary based on complexity and requirements. A basic chatbot can be deployed in 2-4 weeks, while more sophisticated solutions with advanced NLP, multiple integrations, and custom features typically take 6-12 weeks. Our agile development process includes discovery and planning (1-2 weeks), design and development (3-8 weeks), testing and refinement (1-2 weeks), and deployment with training (1 week). We provide regular updates throughout the process and can expedite timelines for urgent projects.</div>
 		</details>
 	  </div>
 	</div>
