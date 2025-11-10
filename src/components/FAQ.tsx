@@ -94,13 +94,19 @@ const FAQ = () => {
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-8 text-center">
-          <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
+          <div 
+            className="inline-block mb-2 px-3 py-1 rounded-full text-sm font-medium border border-[#00C2CB]/30"
+            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+          >
             FAQ
           </div>
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
-            Frequently Asked Questions
+            Frequently Asked <span className="gradient-text">Questions</span>
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto mb-6"></div>
+          <div 
+            className="w-16 h-1 mx-auto mb-6"
+            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+          ></div>
           <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
             Find answers to common questions about my services, process, and what you can expect when working with me.
           </p>
@@ -159,7 +165,8 @@ const FAQ = () => {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm"
+            className="text-white text-sm hover:shadow-xl transition-all duration-300"
+            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
           >
             Get In Touch
           </Button>

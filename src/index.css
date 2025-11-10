@@ -247,15 +247,15 @@
     animation: gradient-flow 4s ease-in-out infinite;
   }
 
-  /* Tech & AI Healthcare Buttons */
+  /* Tech & AI Healthcare Buttons - Beekhani Gradient */
   .btn-primary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
     border: 1px solid rgba(30, 90, 255, 0.3);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.4), 0 0 30px rgba(30, 90, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.5), 0 0 30px rgba(0, 194, 203, 0.4), 0 0 20px rgba(113, 239, 163, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -276,12 +276,12 @@
 
   .btn-secondary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: var(--gradient-secondary);
+    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
     border: 1px solid rgba(0, 194, 203, 0.3);
   }
 
   .btn-secondary:hover {
-    box-shadow: 0 20px 40px rgba(0, 194, 203, 0.4), 0 0 30px rgba(0, 194, 203, 0.3);
+    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.5), 0 0 30px rgba(0, 194, 203, 0.4), 0 0 20px rgba(113, 239, 163, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -293,9 +293,9 @@
   }
 
   .btn-outline:hover {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
     border-color: rgba(30, 90, 255, 0.8);
-    box-shadow: 0 15px 30px rgba(30, 90, 255, 0.3), 0 0 20px rgba(30, 90, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(30, 90, 255, 0.4), 0 0 20px rgba(0, 194, 203, 0.3), 0 0 15px rgba(113, 239, 163, 0.2);
     transform: translateY(-2px) scale(1.05);
   }
 

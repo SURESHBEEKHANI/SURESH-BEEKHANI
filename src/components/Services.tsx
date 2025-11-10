@@ -225,7 +225,8 @@ const Services = () => {
           <motion.div variants={staggerItem}>
             <Badge
               variant="outline"
-              className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-ai-purple font-medium text-xs sm:text-sm rounded-full border-ai-purple/30"
+              className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 font-medium text-xs sm:text-sm rounded-full border-[#00C2CB]/30"
+              style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
             >
               <Check className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
               Services We Offer
@@ -235,10 +236,11 @@ const Services = () => {
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 text-white"
             variants={staggerItem}
           >
-            Our Services
+            Our <span className="gradient-text">Services</span>
           </motion.h2>
           <motion.div
-            className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-6 sm:mb-8 rounded-full"
+            className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
             variants={staggerItem}
           />
           <motion.p

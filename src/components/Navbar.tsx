@@ -133,7 +133,8 @@ const Navbar = () => {
           >
             <a 
               href="/#home" 
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold bg-gradient-to-r from-primary to-blue-600 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
+              style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
               aria-label="AI Specialist - Home"
             >
               <motion.svg
@@ -249,7 +250,8 @@ const Navbar = () => {
             >
               <Button
                 asChild
-                className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
+                className="border border-white/10 shadow-lg text-white rounded-full px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
               >
                 <a
                   href="https://wa.me/923401213187"
@@ -389,7 +391,8 @@ const Navbar = () => {
                     >
                       <Button
                         asChild
-                        className="bg-gradient-to-r from-primary to-blue-600 border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
+                        className="border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
+                        style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
                       >
                         <a
                           href="https://wa.me/923401213187"

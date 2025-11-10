@@ -6,13 +6,20 @@ const Approach = () => {
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <Badge variant="outline" className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 bg-ai-purple/20 text-ai-purple font-medium text-sm sm:text-base border-ai-purple/30">
+          <Badge 
+            variant="outline" 
+            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
+            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+          >
             Our Approach
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Our Proven Approach to Achieve Your Objectives
+            Our Proven <span className="gradient-text">Approach to Achieve</span> Your Objectives
           </h2>
-          <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-ai-purple mx-auto mb-6 sm:mb-8"></div>
+          <div 
+            className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
+            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+          ></div>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
             Achieve your business goals with our successful Methodology, renowned for its structured planning and consistent results.
           </p>

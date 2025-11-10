@@ -82,7 +82,11 @@ const ClientSolutions = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              <Badge variant="outline" className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 bg-ai-purple/20 text-ai-cyan font-medium text-sm sm:text-base border-ai-purple/30">
+              <Badge 
+                variant="outline" 
+                className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
+                style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+              >
                 Our Solutions
               </Badge>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0">
@@ -97,9 +101,10 @@ const ClientSolutions = () => {
                   onClick={() => setSelectedSolution(solution)}
                   className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${
                     selectedSolution === solution
-                      ? 'bg-gradient-to-r from-ai-purple to-ai-cyan text-white shadow-lg'
+                      ? 'text-white shadow-lg'
                       : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
                   }`}
+                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' } : {}}
                 >
                   {solution}
                 </button>
@@ -137,7 +142,8 @@ const ClientSolutions = () => {
 
               <Button
                 onClick={handleReadMore}
-                className="bg-gradient-to-r from-ai-purple to-ai-cyan hover:from-ai-purple hover:to-ai-cyan text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
+                className="text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
               >
                 <span>Read More</span>
                 <ArrowRight className="h-4 w-4 flex-shrink-0" />

@@ -117,12 +117,15 @@ const stats = [
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-          <Badge className="mb-4 px-4 py-2 bg-ai-purple/20 text-white border-ai-purple/30 font-medium">
+          <Badge 
+            className="mb-4 px-4 py-2 font-medium border-[#00C2CB]/30"
+            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+          >
             <Award className="w-4 h-4 mr-2" />
             About Me
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            Transforming ideas into practical <span className="gradient-text-ai">AI solutions</span>
+            Transforming ideas into practical <span className="gradient-text">AI solutions</span>
           </h2>
           <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
             I build production-ready AI systems across machine learning, deep learning, natural language processing, Computer Vision and generative AI—focused on real-world impact and scalable deployments.

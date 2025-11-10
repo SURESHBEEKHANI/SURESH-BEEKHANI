@@ -78,13 +78,20 @@ const Industries = () => {
         <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative rounded-2xl sm:rounded-3xl ai-section">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12">
-              <Badge variant="outline" className="mb-2 px-3 sm:px-4 py-1 bg-ai-purple/20 text-ai-purple font-medium text-sm sm:text-base border-ai-purple/30">
+              <Badge 
+                variant="outline" 
+                className="mb-2 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
+                style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+              >
                 Industries
               </Badge>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">
-                AI Healthcare Industries
+                AI Healthcare <span className="gradient-text">Industries</span>
               </h2>
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-ai-purple mx-auto mb-6 sm:mb-8"></div>
+              <div 
+                className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+              ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
                 Transforming healthcare with cutting-edge AI solutions across diagnostics, patient care, drug discovery, and secure data management.
               </p>
