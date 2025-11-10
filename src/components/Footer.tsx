@@ -169,7 +169,7 @@ const Footer = () => {
               <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
               Services
             </h3>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-wrap gap-2">
               {services.map((service) => (
                 <a
                   key={service.name}
@@ -178,7 +178,7 @@ const Footer = () => {
                 >
                   <Badge 
                     variant="secondary"
-                    className="border text-xs transition-all duration-300 cursor-pointer"
+                    className="border text-xs transition-all duration-300 cursor-pointer whitespace-nowrap"
                     style={{ 
                       background: 'rgba(0, 194, 203, 0.1)', 
                       color: 'rgba(255, 255, 255, 0.7)',
