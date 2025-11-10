@@ -100,13 +100,14 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				ai: {
-					purple: '#6C63FF',
-					cyan: '#00C2FF',
-					dark: '#0B0C10',
-					gray: '#E6E6E6',
-					'purple-light': '#8B5CF6',
-					'cyan-light': '#0EA5E9',
-					'dark-light': '#1F2937'
+					'tech-blue': '#1E5AFF',
+					'aqua-cyan': '#00C2CB',
+					'mint-green': '#71EFA3',
+					'soft-white': '#F7FAFC',
+					'charcoal': '#1E1E2F',
+					'tech-blue-light': '#4A7FFF',
+					'aqua-cyan-light': '#33D4DD',
+					'charcoal-light': '#2A2A3F'
 				}
 			},
 			borderRadius: {
@@ -170,18 +171,18 @@ export default {
 				},
 				'neon-pulse': {
 					'0%, 100%': { 
-						textShadow: '0 0 5px rgba(108, 99, 255, 0.5), 0 0 10px rgba(108, 99, 255, 0.3), 0 0 15px rgba(108, 99, 255, 0.2)' 
+						textShadow: '0 0 5px rgba(30, 90, 255, 0.5), 0 0 10px rgba(30, 90, 255, 0.3), 0 0 15px rgba(30, 90, 255, 0.2)' 
 					},
 					'50%': { 
-						textShadow: '0 0 10px rgba(108, 99, 255, 0.8), 0 0 20px rgba(108, 99, 255, 0.5), 0 0 30px rgba(108, 99, 255, 0.3), 0 0 40px rgba(0, 194, 255, 0.2)' 
+						textShadow: '0 0 10px rgba(30, 90, 255, 0.8), 0 0 20px rgba(30, 90, 255, 0.5), 0 0 30px rgba(30, 90, 255, 0.3), 0 0 40px rgba(0, 194, 203, 0.2)' 
 					}
 				},
 				'ai-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 20px rgba(108, 99, 255, 0.3), inset 0 0 20px rgba(108, 99, 255, 0.1)' 
+						boxShadow: '0 0 20px rgba(30, 90, 255, 0.3), inset 0 0 20px rgba(30, 90, 255, 0.1)' 
 					},
 					'50%': { 
-						boxShadow: '0 0 40px rgba(108, 99, 255, 0.5), 0 0 60px rgba(0, 194, 255, 0.3), inset 0 0 30px rgba(108, 99, 255, 0.2)' 
+						boxShadow: '0 0 40px rgba(30, 90, 255, 0.5), 0 0 60px rgba(0, 194, 203, 0.3), inset 0 0 30px rgba(30, 90, 255, 0.2)' 
 					}
 				}
 			},

@@ -7,35 +7,35 @@
 
 @layer base {
   :root {
-    /* AI-Inspired Color Palette */
-    --background: 220 15% 95%;
-    --foreground: 230 15% 90%;
+    /* Tech & AI in Healthcare Color Palette */
+    --background: 210 20% 98%;
+    --foreground: 225 15% 18%;
 
-    --card: 220 20% 98%;
-    --card-foreground: 230 15% 15%;
+    --card: 210 20% 99%;
+    --card-foreground: 225 15% 18%;
 
-    --popover: 220 20% 98%;
-    --popover-foreground: 230 15% 15%;
+    --popover: 210 20% 99%;
+    --popover-foreground: 225 15% 18%;
 
-    /* Primary: AI Purple */
-    --primary: 248 53% 70%;
+    /* Primary: Deep Tech Blue #1E5AFF */
+    --primary: 221 100% 56%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Cyan */
-    --secondary: 191 100% 50%;
+    /* Secondary: Aqua Cyan #00C2CB */
+    --secondary: 184 100% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent: Electric Blue */
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Mint Green #71EFA3 */
+    --accent: 146 79% 69%;
+    --accent-foreground: 225 15% 18%;
 
-    /* Muted: Dark Gray */
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 50%;
+    /* Muted: Soft White */
+    --muted: 210 20% 97%;
+    --muted-foreground: 225 10% 50%;
 
-    /* Success: Emerald Green */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
+    /* Success: Mint Green (wellness signals) */
+    --success: 146 79% 69%;
+    --success-foreground: 225 15% 18%;
 
     /* Warning: Amber */
     --warning: 38 92% 50%;
@@ -46,56 +46,61 @@
     --destructive-foreground: 0 0% 100%;
 
     /* Border: Subtle Gray */
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 248 53% 70%;
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 221 100% 56%;
 
     /* Radius */
     --radius: 0.75rem;
 
-    /* AI-Inspired Gradients */
-    --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #4F46E5 100%);
-    --gradient-secondary: linear-gradient(135deg, #00C2FF 0%, #0EA5E9 100%);
-    --gradient-accent: linear-gradient(90deg, #6C63FF 0%, #00C2FF 100%);
-    --gradient-ai: linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #00C2FF 100%);
-    --gradient-dark: linear-gradient(135deg, #0B0C10 0%, #1F2937 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(108, 99, 255, 0.2) 0%, rgba(0, 194, 255, 0.2) 100%);
+    /* Tech & AI Healthcare Gradients */
+    --gradient-primary: linear-gradient(135deg, #1E5AFF 0%, #0047E1 100%);
+    --gradient-secondary: linear-gradient(135deg, #00C2CB 0%, #00A3AC 100%);
+    --gradient-accent: linear-gradient(90deg, #1E5AFF 0%, #00C2CB 100%);
+    --gradient-wellness: linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%);
+    --gradient-ai: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
+    --gradient-dark: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 100%);
   }
 
   .dark {
-    /* AI Dark Theme */
-    --background: 220 27% 4%;
-    --foreground: 0 0% 90%;
+    /* Tech & AI Healthcare Dark Theme */
+    --background: 225 15% 12%;
+    --foreground: 210 20% 98%;
 
-    --card: 220 25% 6%;
-    --card-foreground: 0 0% 90%;
+    --card: 225 15% 14%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 220 25% 6%;
-    --popover-foreground: 0 0% 90%;
+    --popover: 225 15% 14%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 248 53% 70%;
+    /* Primary: Deep Tech Blue */
+    --primary: 221 100% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 191 100% 50%;
+    /* Secondary: Aqua Cyan */
+    --secondary: 184 100% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Mint Green */
+    --accent: 146 79% 69%;
+    --accent-foreground: 225 15% 18%;
 
-    --muted: 220 25% 8%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 225 15% 16%;
+    --muted-foreground: 210 10% 60%;
 
-    --border: 220 25% 12%;
-    --input: 220 25% 12%;
-    --ring: 248 53% 70%;
+    --border: 225 15% 20%;
+    --input: 225 15% 20%;
+    --ring: 221 100% 56%;
 
     /* Dark Mode Gradients */
-    --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #4F46E5 100%);
-    --gradient-secondary: linear-gradient(135deg, #00C2FF 0%, #0EA5E9 100%);
-    --gradient-accent: linear-gradient(90deg, #6C63FF 0%, #00C2FF 100%);
-    --gradient-ai: linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #00C2FF 100%);
-    --gradient-dark: linear-gradient(135deg, #0B0C10 0%, #1F2937 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(108, 99, 255, 0.3) 0%, rgba(0, 194, 255, 0.3) 100%);
+    --gradient-primary: linear-gradient(135deg, #1E5AFF 0%, #0047E1 100%);
+    --gradient-secondary: linear-gradient(135deg, #00C2CB 0%, #00A3AC 100%);
+    --gradient-accent: linear-gradient(90deg, #1E5AFF 0%, #00C2CB 100%);
+    --gradient-wellness: linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%);
+    --gradient-ai: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
+    --gradient-dark: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(30, 90, 255, 0.3) 0%, rgba(0, 194, 203, 0.3) 100%);
   }
 
   * {
@@ -115,12 +120,22 @@
     @apply bg-background text-foreground dark;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     line-height: 1.6;
-    background: #0B0C10;
-    color: #E6E6E6;
+    background: #1E1E2F;
+    color: #F7FAFC;
     min-height: 100vh;
     position: relative;
+  }
+  
+  /* Hide horizontal scrollbar completely */
+  body::-webkit-scrollbar-horizontal {
+    display: none;
+  }
+  
+  html {
+    overflow-x: hidden;
   }
   
   /* Prevent layout shift */
@@ -135,23 +150,30 @@
     }
   }
 
-  /* Modern Scrollbar */
+  /* Modern Scrollbar - Vertical Only */
   ::-webkit-scrollbar {
     width: 10px;
+    height: 0; /* Hide horizontal scrollbar */
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
+    background: #1E1E2F;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(180deg, #1E5AFF 0%, #00C2CB 100%);
     border-radius: 5px;
-    border: 2px solid hsl(var(--background));
+    border: 2px solid #1E1E2F;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, hsl(var(--secondary)) 0%, hsl(var(--accent)) 100%);
+    background: linear-gradient(180deg, #00C2CB 0%, #71EFA3 100%);
+  }
+  
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1E5AFF #1E1E2F;
   }
 
   /* Focus styles */
@@ -172,21 +194,21 @@
 }
 
 @layer components {
-  /* AI-Inspired Card Styles */
+  /* Tech & AI Healthcare Card Styles */
   .modern-card {
     @apply bg-card/80 border border-border/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500;
     backdrop-filter: blur(20px);
-    background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 194, 255, 0.05) 100%);
-    border: 1px solid rgba(108, 99, 255, 0.2);
+    background: linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.05) 100%);
+    border: 1px solid rgba(30, 90, 255, 0.2);
   }
 
   .modern-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(108, 99, 255, 0.3), 0 0 30px rgba(0, 194, 255, 0.2);
-    border-color: rgba(108, 99, 255, 0.4);
+    box-shadow: 0 25px 50px rgba(30, 90, 255, 0.3), 0 0 30px rgba(0, 194, 203, 0.2);
+    border-color: rgba(30, 90, 255, 0.4);
   }
 
-  /* AI Gradient Text */
+  /* Tech & AI Healthcare Gradient Text */
   .gradient-text {
     background: var(--gradient-ai);
     -webkit-background-clip: text;
@@ -210,7 +232,7 @@
   }
 
   .gradient-text-ai {
-    background: linear-gradient(90deg, #6C63FF, #00C2FF, #8B5CF6, #6C63FF);
+    background: linear-gradient(90deg, #1E5AFF, #00C2CB, #71EFA3, #1E5AFF);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -218,15 +240,15 @@
     animation: gradient-flow 4s ease-in-out infinite;
   }
 
-  /* AI-Inspired Buttons */
+  /* Tech & AI Healthcare Buttons */
   .btn-primary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
     background: var(--gradient-primary);
-    border: 1px solid rgba(108, 99, 255, 0.3);
+    border: 1px solid rgba(30, 90, 255, 0.3);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 20px 40px rgba(108, 99, 255, 0.4), 0 0 30px rgba(108, 99, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.4), 0 0 30px rgba(30, 90, 255, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -248,25 +270,25 @@
   .btn-secondary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
     background: var(--gradient-secondary);
-    border: 1px solid rgba(0, 194, 255, 0.3);
+    border: 1px solid rgba(0, 194, 203, 0.3);
   }
 
   .btn-secondary:hover {
-    box-shadow: 0 20px 40px rgba(0, 194, 255, 0.4), 0 0 30px rgba(0, 194, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 194, 203, 0.4), 0 0 30px rgba(0, 194, 203, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
   .btn-outline {
     @apply border-2 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    border-color: rgba(108, 99, 255, 0.5);
-    background: rgba(108, 99, 255, 0.1);
+    border-color: rgba(30, 90, 255, 0.5);
+    background: rgba(30, 90, 255, 0.1);
     backdrop-filter: blur(10px);
   }
 
   .btn-outline:hover {
     background: var(--gradient-primary);
-    border-color: rgba(108, 99, 255, 0.8);
-    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.3), 0 0 20px rgba(108, 99, 255, 0.2);
+    border-color: rgba(30, 90, 255, 0.8);
+    box-shadow: 0 15px 30px rgba(30, 90, 255, 0.3), 0 0 20px rgba(30, 90, 255, 0.2);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -409,9 +431,9 @@
     color: hsl(var(--foreground));
   }
 
-  /* AI Hero Section */
+  /* Tech & AI Healthcare Hero Section */
   .hero-bg {
-    background: linear-gradient(135deg, #0B0C10 0%, #1F2937 50%, #0B0C10 100%);
+    background: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 50%, #1E1E2F 100%);
     position: relative;
     overflow: hidden;
   }
@@ -424,9 +446,9 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(0, 194, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(30, 90, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 194, 203, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(113, 239, 163, 0.08) 0%, transparent 50%);
     pointer-events: none;
     animation: aurora 8s ease-in-out infinite;
   }
@@ -439,26 +461,26 @@
     right: 0;
     bottom: 0;
     background: 
-      linear-gradient(45deg, transparent 30%, rgba(108, 99, 255, 0.03) 50%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(0, 194, 255, 0.02) 50%, transparent 70%);
+      linear-gradient(45deg, transparent 30%, rgba(30, 90, 255, 0.03) 50%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, rgba(0, 194, 203, 0.02) 50%, transparent 70%);
     pointer-events: none;
   }
 
-  /* AI Project Cards */
+  /* Tech & AI Healthcare Project Cards */
   .project-card {
     @apply relative overflow-hidden rounded-2xl transition-all duration-700;
-    background: linear-gradient(135deg, rgba(108, 99, 255, 0.08) 0%, rgba(0, 194, 255, 0.04) 100%);
-    border: 1px solid rgba(108, 99, 255, 0.2);
+    background: linear-gradient(135deg, rgba(30, 90, 255, 0.08) 0%, rgba(0, 194, 203, 0.04) 100%);
+    border: 1px solid rgba(30, 90, 255, 0.2);
     backdrop-filter: blur(20px);
   }
 
   .project-card:hover {
     transform: translateY(-12px) scale(1.03);
     box-shadow: 
-      0 30px 60px rgba(108, 99, 255, 0.25),
-      0 0 40px rgba(0, 194, 255, 0.15),
+      0 30px 60px rgba(30, 90, 255, 0.25),
+      0 0 40px rgba(0, 194, 203, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border-color: rgba(108, 99, 255, 0.4);
+    border-color: rgba(30, 90, 255, 0.4);
   }
 
   .project-card::before {
@@ -468,7 +490,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.1), rgba(0, 194, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(30, 90, 255, 0.1), rgba(0, 194, 203, 0.1), transparent);
     transition: left 0.7s;
   }
 
@@ -483,7 +505,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(108, 99, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(30, 90, 255, 0.05) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.5s;
   }
@@ -519,7 +541,7 @@
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
   }
 
-  /* AI Floating Elements */
+  /* Tech & AI Healthcare Floating Elements */
   .floating {
     animation: float 6s ease-in-out infinite;
   }
@@ -536,7 +558,7 @@
     animation-delay: 3s;
   }
 
-  /* AI Glow Effects */
+  /* Tech & AI Healthcare Glow Effects */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite alternate;
   }
@@ -549,43 +571,43 @@
     animation: neon-pulse 2s ease-in-out infinite;
   }
 
-  /* AI Card Variants */
+  /* Tech & AI Healthcare Card Variants */
   .ai-card {
     @apply relative overflow-hidden rounded-2xl transition-all duration-500;
-    background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 194, 255, 0.05) 100%);
-    border: 1px solid rgba(108, 99, 255, 0.2);
+    background: linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.05) 100%);
+    border: 1px solid rgba(30, 90, 255, 0.2);
     backdrop-filter: blur(20px);
   }
 
   .ai-card:hover {
     transform: translateY(-5px);
     box-shadow: 
-      0 20px 40px rgba(108, 99, 255, 0.2),
-      0 0 30px rgba(0, 194, 255, 0.1);
-    border-color: rgba(108, 99, 255, 0.4);
+      0 20px 40px rgba(30, 90, 255, 0.2),
+      0 0 30px rgba(0, 194, 203, 0.1);
+    border-color: rgba(30, 90, 255, 0.4);
   }
 
   .ai-card-glow {
     @apply ai-card;
     box-shadow: 
-      0 0 20px rgba(108, 99, 255, 0.15),
+      0 0 20px rgba(30, 90, 255, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .ai-card-glow:hover {
     box-shadow: 
-      0 20px 40px rgba(108, 99, 255, 0.3),
-      0 0 40px rgba(0, 194, 255, 0.2),
+      0 20px 40px rgba(30, 90, 255, 0.3),
+      0 0 40px rgba(0, 194, 203, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
-  /* AI Text Utilities */
+  /* Tech & AI Healthcare Text Utilities */
   .ai-text-primary {
-    color: #E6E6E6;
+    color: #F7FAFC;
   }
 
   .ai-text-secondary {
-    color: #B3B3B3;
+    color: #D1D5DB;
   }
 
   .ai-text-muted {
@@ -599,11 +621,11 @@
 
   /* Section Background Utilities */
   .ai-section {
-    background: linear-gradient(135deg, #0B0C10 0%, #1F2937 50%, #0B0C10 100%);
+    background: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 50%, #1E1E2F 100%);
   }
 
   .ai-section-alt {
-    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #1F2937 100%);
+    background: linear-gradient(135deg, #F7FAFC 0%, #E5E7EB 50%, #F7FAFC 100%);
   }
 
   /* Typography - Mobile-optimized */
@@ -652,7 +674,7 @@
 
   .brand-badge {
     @apply inline-flex items-center rounded-full px-2.5 py-1 text-[11px] sm:text-xs font-medium text-white shadow;
-    background: var(--gradient-primary);
+    background: var(--gradient-accent);
   }
 }
 
@@ -733,10 +755,10 @@
 
   @keyframes pulseGlow {
     from {
-      box-shadow: 0 0 20px rgba(108, 99, 255, 0.4);
+      box-shadow: 0 0 20px rgba(30, 90, 255, 0.4);
     }
     to {
-      box-shadow: 0 0 40px rgba(108, 99, 255, 0.8), 0 0 60px rgba(0, 194, 255, 0.4);
+      box-shadow: 0 0 40px rgba(30, 90, 255, 0.8), 0 0 60px rgba(0, 194, 203, 0.4);
     }
   }
 
@@ -776,30 +798,30 @@
   @keyframes neon-pulse {
     0%, 100% {
       text-shadow: 
-        0 0 5px rgba(108, 99, 255, 0.5),
-        0 0 10px rgba(108, 99, 255, 0.3),
-        0 0 15px rgba(108, 99, 255, 0.2);
+        0 0 5px rgba(30, 90, 255, 0.5),
+        0 0 10px rgba(30, 90, 255, 0.3),
+        0 0 15px rgba(30, 90, 255, 0.2);
     }
     50% {
       text-shadow: 
-        0 0 10px rgba(108, 99, 255, 0.8),
-        0 0 20px rgba(108, 99, 255, 0.5),
-        0 0 30px rgba(108, 99, 255, 0.3),
-        0 0 40px rgba(0, 194, 255, 0.2);
+        0 0 10px rgba(30, 90, 255, 0.8),
+        0 0 20px rgba(30, 90, 255, 0.5),
+        0 0 30px rgba(30, 90, 255, 0.3),
+        0 0 40px rgba(0, 194, 203, 0.2);
     }
   }
 
   @keyframes ai-glow {
     0%, 100% {
       box-shadow: 
-        0 0 20px rgba(108, 99, 255, 0.3),
-        inset 0 0 20px rgba(108, 99, 255, 0.1);
+        0 0 20px rgba(30, 90, 255, 0.3),
+        inset 0 0 20px rgba(30, 90, 255, 0.1);
     }
     50% {
       box-shadow: 
-        0 0 40px rgba(108, 99, 255, 0.5),
-        0 0 60px rgba(0, 194, 255, 0.3),
-        inset 0 0 30px rgba(108, 99, 255, 0.2);
+        0 0 40px rgba(30, 90, 255, 0.5),
+        0 0 60px rgba(0, 194, 203, 0.3),
+        inset 0 0 30px rgba(30, 90, 255, 0.2);
     }
   }
 
