@@ -63,11 +63,11 @@ const ClientSolutions = () => {
 
   const handleReadMore = () => {
     const pageMap: { [key: string]: string } = {
-      'MediPod': '/portfolio/medipod-patient-care',
-      'HealthGPT': '/portfolio/healthgpt-medical-insights',
-      'CareAssist': '/portfolio/careassist-clinical-workflow'
+      'MediPod': '/portfolio/ai-chatbots-patient-support',
+      'HealthGPT': '/portfolio/patient-diagnostic-system',
+      'CareAssist': '/portfolio/healthcare-workflow-automation'
     };
-    navigate(pageMap[selectedSolution] || '/');
+    navigate(pageMap[selectedSolution] || '/portfolio');
   };
 
   return (
@@ -97,7 +97,7 @@ const ClientSolutions = () => {
                   onClick={() => setSelectedSolution(solution)}
                   className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${
                     selectedSolution === solution
-                      ? 'bg-gradient-to-r from-ai-purple to-ai-cyan text-white shadow-lg ai-glow'
+                      ? 'bg-gradient-to-r from-ai-purple to-ai-cyan text-white shadow-lg'
                       : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
                   }`}
                 >
@@ -137,10 +137,10 @@ const ClientSolutions = () => {
 
               <Button
                 onClick={handleReadMore}
-                className="bg-gradient-to-r from-ai-purple to-ai-cyan hover:from-ai-purple-light hover:to-ai-cyan text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg ai-glow text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
+                className="bg-gradient-to-r from-ai-purple to-ai-cyan hover:from-ai-purple hover:to-ai-cyan text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
               >
-                Read More
-                <ArrowRight className="h-4 w-4" />
+                <span>Read More</span>
+                <ArrowRight className="h-4 w-4 flex-shrink-0" />
               </Button>
             </div>
           </div>

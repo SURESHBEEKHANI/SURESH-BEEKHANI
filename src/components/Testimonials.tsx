@@ -143,15 +143,9 @@ const Testimonials = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <Badge 
-            variant="outline" 
-            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-white font-medium text-xs sm:text-sm rounded-full border-ai-purple/30 hover:bg-ai-purple/25 transition-all duration-300 ai-glow backdrop-blur-sm"
-          >
-            Client Testimonials
-          </Badge>
           <div className="mb-4 sm:mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ai-heading mb-3 sm:mb-4 leading-tight">
-              Trusted by <span className="gradient-text-ai neon-text">Innovators</span> Worldwide
+              Client Testimonials
             </h2>
             
             {/* Dots indicator moved under title */}
