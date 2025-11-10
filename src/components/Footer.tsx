@@ -91,7 +91,9 @@ const Footer = () => {
     { name: 'Deep Learning', link: '/machine-learning' }, // Deep Learning is part of Machine Learning page
     { name: 'NLP Solutions', link: '/natural-language-processing' },
     { name: 'Computer Vision', link: '/computer-vision' },
-    { name: 'Predictive AI', link: '/predictive-modelling' }
+    { name: 'Predictive AI', link: '/predictive-modelling' },
+    { name: 'Chatbot Development', link: '/ai-chatbot-development' },
+    { name: 'AI Automation', link: '/ai-automation' }
   ];
   
   return (
@@ -108,14 +110,14 @@ const Footer = () => {
           {/* Brand Section */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-primary to-secondary rounded-full w-12 h-12 flex items-center justify-center">
+              <div className="rounded-full w-12 h-12 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}>
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-xl font-bold">
                   Suresh <span className="gradient-text">Beekhani</span>
                 </h3>
-                <p className="text-xs text-white/60">Data Scientist | AI Specialist</p>
+                <p className="text-xs" style={{ color: '#00C2CB' }}>Data Scientist | AI Specialist</p>
               </div>
             </div>
             <p className="text-white/70 leading-relaxed body-small">
@@ -140,7 +142,7 @@ const Footer = () => {
           {/* Navigation Section */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
             <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -151,10 +153,10 @@ const Footer = () => {
                     className="flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 group"
                     aria-label={`Navigate to ${item.name} section`}
                   >
-                    <div className="text-primary group-hover:scale-110 transition-transform">
+                    <div className="group-hover:scale-110 transition-transform" style={{ color: '#00C2CB' }}>
                       {item.icon}
                     </div>
-                    <span className="group-hover:text-primary transition-colors">{item.name}</span>
+                    <span className="transition-colors" style={{ color: 'rgba(255, 255, 255, 0.7)' }} onMouseEnter={(e) => e.currentTarget.style.color = '#00C2CB'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}>{item.name}</span>
                   </a>
                 </li>
               ))}
@@ -164,7 +166,7 @@ const Footer = () => {
           {/* Services Section */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
             <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
               Services
             </h3>
             <div className="grid grid-cols-2 gap-2">
@@ -176,7 +178,20 @@ const Footer = () => {
                 >
                   <Badge 
                     variant="secondary"
-                    className="bg-white/10 text-white/70 border-white/20 text-xs hover:bg-white/20 hover:text-white transition-all duration-300 cursor-pointer"
+                    className="border text-xs transition-all duration-300 cursor-pointer"
+                    style={{ 
+                      background: 'rgba(0, 194, 203, 0.1)', 
+                      color: 'rgba(255, 255, 255, 0.7)',
+                      borderColor: 'rgba(0, 194, 203, 0.2)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 194, 203, 0.2)';
+                      e.currentTarget.style.color = '#00C2CB';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 194, 203, 0.1)';
+                      e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
+                    }}
                   >
                     {service.name}
                   </Badge>
@@ -188,27 +203,34 @@ const Footer = () => {
           {/* Contact Section */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
             <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
               Contact Info
             </h3>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
                 <li key={index} className="flex items-center gap-3 group">
-                  <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full w-8 h-8 flex items-center justify-center border border-primary/30">
+                  <div className="rounded-full w-8 h-8 flex items-center justify-center border" style={{ 
+                    background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 100%)',
+                    borderColor: 'rgba(0, 194, 203, 0.3)',
+                    color: '#00C2CB'
+                  }}>
                     {info.icon}
                   </div>
                   <div>
-                    <p className="text-white/50 text-xs">{info.label}</p>
+                    <p className="text-xs" style={{ color: 'rgba(0, 194, 203, 0.7)' }}>{info.label}</p>
                     {info.href ? (
                       <a 
                         href={info.href}
-                        className="text-white/70 hover:text-white transition-colors font-medium text-sm"
+                        className="transition-colors font-medium text-sm"
+                        style={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#00C2CB'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
                         aria-label={`Contact via ${info.label.toLowerCase()}`}
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-white/70 font-medium text-sm">{info.value}</p>
+                      <p className="font-medium text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>{info.value}</p>
                     )}
                   </div>
                 </li>
@@ -229,11 +251,11 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+              <Badge variant="outline" className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
                 <Brain className="w-3 h-3 mr-1" />
                 AI/ML Engineer
               </Badge>
-              <Badge variant="outline" className="bg-secondary/10 text-secondary border-secondary/20">
+              <Badge variant="outline" className="border" style={{ background: 'rgba(113, 239, 163, 0.1)', color: '#71EFA3', borderColor: 'rgba(113, 239, 163, 0.2)' }}>
                 <Code className="w-3 h-3 mr-1" />
                 Data Scientist
               </Badge>
