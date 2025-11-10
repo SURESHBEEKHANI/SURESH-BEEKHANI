@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-// ...existing code...
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -60,73 +59,55 @@ const Index = () => {
         
         <section id="about" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <About />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="services" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Services />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="industries" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Industries />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="client-solutions" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <ClientSolutions />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="approach" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Approach />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="testimonials" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Testimonials />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="experience" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Experience />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="contact" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <Contact />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
         
         <section id="faq" className="pro-section">
           <div className="section-container">
-            <div className="section-decoration section-decoration-1"></div>
             <FAQ />
-            <div className="section-decoration section-decoration-2"></div>
           </div>
         </section>
       </main>

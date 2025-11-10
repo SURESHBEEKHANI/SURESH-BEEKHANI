@@ -114,28 +114,32 @@
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 16px;
+    overflow: hidden;
+    height: 100%;
   }
 
   body {
     @apply bg-background text-foreground dark;
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
     line-height: 1.6;
     background: #1E1E2F;
     color: #F7FAFC;
-    min-height: 100vh;
+    height: 100%;
     position: relative;
   }
   
-  /* Hide horizontal scrollbar completely */
-  body::-webkit-scrollbar-horizontal {
-    display: none;
+  /* Force scrollbar to always show on body only */
+  body::-webkit-scrollbar {
+    width: 16px !important;
+    display: block !important;
   }
   
-  html {
-    overflow-x: hidden;
+  /* Hide scrollbar on html */
+  html::-webkit-scrollbar {
+    display: none !important;
   }
   
   /* Prevent layout shift */
@@ -150,30 +154,33 @@
     }
   }
 
-  /* Modern Scrollbar - Vertical Only */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 0; /* Hide horizontal scrollbar */
+  /* Custom Scrollbar - Right Side (body only) - Matches Beekhani gradient */
+  body::-webkit-scrollbar-track {
+    background: rgba(30, 30, 47, 0.8);
+    border-radius: 8px;
   }
 
-  ::-webkit-scrollbar-track {
-    background: #1E1E2F;
+  body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
+    border-radius: 8px;
+    border: 3px solid rgba(30, 30, 47, 0.8);
+    box-shadow: 0 0 15px rgba(30, 90, 255, 0.4), 0 0 10px rgba(0, 194, 203, 0.3);
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #1E5AFF 0%, #00C2CB 100%);
-    border-radius: 5px;
-    border: 2px solid #1E1E2F;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #00C2CB 0%, #71EFA3 100%);
+  body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0047E1 0%, #00A3AC 50%, #5DD68D 100%);
+    box-shadow: 0 0 25px rgba(30, 90, 255, 0.7), 0 0 35px rgba(0, 194, 203, 0.5), 0 0 20px rgba(113, 239, 163, 0.3);
+    border: 3px solid rgba(30, 30, 47, 0.6);
   }
   
-  /* Firefox scrollbar */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #1E5AFF #1E1E2F;
+  /* Firefox scrollbar - styled (body only) */
+  body {
+    scrollbar-width: auto !important;
+    scrollbar-color: #00C2CB rgba(30, 30, 47, 0.8) !important;
+  }
+  
+  html {
+    scrollbar-width: none !important;
   }
 
   /* Focus styles */
@@ -1184,4 +1191,26 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Remove any section decorations */
+  .section-decoration,
+  .section-decoration-1,
+  .section-decoration-2 {
+    display: none !important;
+  }
+
+  /* Scroll Sidebar Responsive Adjustments */
+  @media (max-width: 1024px) {
+    /* Hide scroll sidebar on tablets and mobile */
+    .scroll-sidebar {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    /* Adjust position for smaller desktop screens */
+    .scroll-sidebar {
+      right: 1rem;
+    }
   }

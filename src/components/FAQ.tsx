@@ -132,9 +132,15 @@ const FAQ = () => {
               {openIndex === index && (
                 <div className="px-4 pb-4">
                   <div className="pt-2 border-t border-border/30">
-                    <p className="text-foreground/80 leading-relaxed text-sm">
-                      {faq.answer}
-                    </p>
+                    {typeof faq.answer === 'string' ? (
+                      <p className="text-foreground/80 leading-relaxed text-sm">
+                        {faq.answer}
+                      </p>
+                    ) : (
+                      <div className="text-foreground/80 leading-relaxed text-sm">
+                        {faq.answer}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}

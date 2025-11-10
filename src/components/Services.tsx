@@ -235,7 +235,7 @@ const Services = () => {
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 text-white"
             variants={staggerItem}
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-ai-purple to-ai-cyan">Services</span>
+            Our Services
           </motion.h2>
           <motion.div
             className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-6 sm:mb-8 rounded-full"
