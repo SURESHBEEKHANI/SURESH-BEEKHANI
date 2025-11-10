@@ -116,7 +116,7 @@ const Industries = () => {
 
                   {/* Hover overlay with content - enhanced for touch */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-4 md:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'rgba(59, 130, 246, 0.95)' }}>
+                    style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.95) 0%, rgba(0, 194, 203, 0.95) 50%, rgba(113, 239, 163, 0.95) 100%)' }}>
                     <div className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 leading-tight">{industry.name}</div>
                     <div className="text-white text-xs sm:text-sm font-normal mb-3 sm:mb-4 leading-relaxed px-1 sm:px-0">{industry.description}</div>
                     <a

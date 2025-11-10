@@ -287,10 +287,24 @@ const Services = () => {
                       setSelectedService(service);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 transition-colors ${selectedService === service
-                      ? 'bg-ai-purple/20 text-ai-purple font-medium'
-                      : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedService === service
+                      ? 'text-white font-medium shadow-lg'
+                      : 'text-gray-300 hover:text-white hover:shadow-md'
                       }`}
+                    style={selectedService === service 
+                      ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }
+                      : {}
+                    }
+                    onMouseEnter={(e) => {
+                      if (selectedService !== service) {
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selectedService !== service) {
+                        e.currentTarget.style.background = '';
+                      }
+                    }}
                     initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -328,10 +342,24 @@ const Services = () => {
                     <motion.button
                       key={service}
                       onClick={() => setSelectedService(service)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all ${selectedService === service
-                        ? 'bg-white/20 text-white shadow-lg'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${selectedService === service
+                        ? 'text-white shadow-lg'
+                        : 'text-white/80 hover:text-white hover:shadow-md'
                         }`}
+                      style={selectedService === service 
+                        ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }
+                        : {}
+                      }
+                      onMouseEnter={(e) => {
+                        if (selectedService !== service) {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (selectedService !== service) {
+                          e.currentTarget.style.background = '';
+                        }
+                      }}
                       initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.7 + index * 0.05 }}
