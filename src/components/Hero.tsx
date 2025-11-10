@@ -248,13 +248,25 @@ const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 sm:p-2.5 glass rounded-full hover:bg-white/20 transition-all duration-300 group touch-button"
+                  className="p-2 sm:p-2.5 rounded-full transition-all duration-300 group touch-button"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)',
+                    border: '1px solid rgba(0, 194, 203, 0.3)'
+                  }}
                   aria-label={`Visit ${social.label} profile`}
                   variants={staggerItem}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.15, y: -4 }}
                   whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 194, 203, 0.6)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 194, 203, 0.3)';
+                  }}
                 >
-                  <div className="text-white/70 group-hover:text-primary transition-colors">
+                  <div style={{ color: '#00C2CB' }} className="transition-colors group-hover:brightness-125">
                     {social.icon}
                   </div>
                 </motion.a>
@@ -280,11 +292,11 @@ const Hero = () => {
               className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden"
               variants={staggerItem}
             >
-              <span className="body-medium text-white/70 mr-2 mobile-text">Specializing in</span>
+              <span className="body-medium mr-2 mobile-text" style={{ color: '#00C2CB' }}>Specializing in</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentSkill}
-                  className="body-medium font-semibold gradient-text-primary min-w-[180px] sm:min-w-[200px] text-left mobile-text"
+                  className="body-medium font-semibold gradient-text-ai min-w-[180px] sm:min-w-[200px] text-left mobile-text"
                   initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -347,10 +359,10 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">
+                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
                   {statsCount.years}
                 </div>
-                <div className="text-xs sm:text-sm text-white/70 mobile-text">Years Experience</div>
+                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>Years Experience</div>
               </motion.div>
               <motion.div
                 className="text-center"
@@ -359,10 +371,10 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">
+                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
                   {statsCount.projects}+
                 </div>
-                <div className="text-xs sm:text-sm text-white/70 mobile-text">Projects Completed</div>
+                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>Projects Completed</div>
               </motion.div>
               <motion.div
                 className="text-center"
@@ -371,10 +383,10 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold gradient-text-primary mobile-text">
+                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
                   {statsCount.models}+
                 </div>
-                <div className="text-xs sm:text-sm text-white/70 mobile-text">AI Models Built</div>
+                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>AI Models Built</div>
               </motion.div>
             </motion.div>
           </motion.div>

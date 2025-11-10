@@ -127,9 +127,20 @@ const Experience = () => {
               onClick={() => setActiveTab('work')}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'work'
-                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
-                  : 'text-foreground/70 hover:text-primary'
+                  ? 'text-white shadow-lg'
+                  : 'text-foreground/70'
               }`}
+              style={activeTab === 'work' ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' } : {}}
+              onMouseEnter={(e) => {
+                if (activeTab !== 'work') {
+                  e.currentTarget.style.color = '#00C2CB';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeTab !== 'work') {
+                  e.currentTarget.style.color = '';
+                }
+              }}
             >
               <Briefcase className="w-4 h-4 inline mr-2" />
               Work Experience
@@ -138,9 +149,20 @@ const Experience = () => {
               onClick={() => setActiveTab('education')}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'education'
-                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
-                  : 'text-foreground/70 hover:text-primary'
+                  ? 'text-white shadow-lg'
+                  : 'text-foreground/70'
               }`}
+              style={activeTab === 'education' ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' } : {}}
+              onMouseEnter={(e) => {
+                if (activeTab !== 'education') {
+                  e.currentTarget.style.color = '#00C2CB';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeTab !== 'education') {
+                  e.currentTarget.style.color = '';
+                }
+              }}
             >
               <GraduationCap className="w-4 h-4 inline mr-2" />
               Education
@@ -159,7 +181,7 @@ const Experience = () => {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 to-transparent"></div>
+                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 194, 203, 0.5), transparent)' }}></div>
                   
                   <div className="flex gap-6">
                     {/* Icon */}
@@ -177,13 +199,13 @@ const Experience = () => {
                             <h3 className="text-xl font-bold text-foreground">
                               {exp.title}
                             </h3>
-                            <Badge className="bg-primary/10 text-primary border-primary/20">
+                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
                               <Calendar className="w-3 h-3 mr-1" />
                               {exp.period}
                             </Badge>
                           </div>
                           
-                          <div className="flex items-center mb-4 text-primary/80">
+                          <div className="flex items-center mb-4" style={{ color: 'rgba(0, 194, 203, 0.8)' }}>
                             <Building className="w-4 h-4 mr-2" />
                             <span className="font-medium">{exp.company}</span>
                           </div>
@@ -195,7 +217,7 @@ const Experience = () => {
                           <div className="space-y-2">
                             {exp.achievements.map((achievement, idx) => (
                               <div key={idx} className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#00C2CB' }}></div>
                                 <span className="text-sm text-foreground/60">{achievement}</span>
                               </div>
                             ))}
@@ -218,7 +240,7 @@ const Experience = () => {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 to-transparent"></div>
+                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 194, 203, 0.5), transparent)' }}></div>
                   
                   <div className="flex gap-6">
                     {/* Icon */}
@@ -236,13 +258,13 @@ const Experience = () => {
                             <h3 className="text-xl font-bold text-foreground">
                               {edu.degree}
                             </h3>
-                            <Badge className="bg-primary/10 text-primary border-primary/20">
+                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
                               <Calendar className="w-3 h-3 mr-1" />
                               {edu.period}
                             </Badge>
                           </div>
                           
-                          <div className="flex items-center mb-4 text-primary/80">
+                          <div className="flex items-center mb-4" style={{ color: 'rgba(0, 194, 203, 0.8)' }}>
                             <Building className="w-4 h-4 mr-2" />
                             <span className="font-medium">{edu.institution}</span>
                           </div>
@@ -256,7 +278,8 @@ const Experience = () => {
                               <Badge 
                                 key={idx} 
                                 variant="secondary"
-                                className="text-xs bg-primary/10 text-primary border-primary/20"
+                                className="text-xs border"
+                                style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}
                               >
                                 {highlight}
                               </Badge>

@@ -152,21 +152,29 @@ const ClientSolutions = () => {
           </div>
 
           <div className="relative lg:order-last">
-            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/10 via-blue-400/10 to-blue-300/10">
-                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-400/20 to-blue-300/20 rounded-2xl"></div>
+            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)' }}>
+              <div className="absolute inset-0 rounded-2xl"
+                style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)' }}></div>
               
               {/* Decorative elements - responsive sizing */}
-                             <div className="absolute top-4 sm:top-6 md:top-10 right-4 sm:right-6 md:right-10 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full opacity-60"></div>
-              <div className="absolute bottom-8 sm:bottom-12 md:bottom-20 left-2 sm:left-4 md:left-8 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-50"></div>
-              <div className="absolute top-12 sm:top-20 md:top-32 left-4 sm:left-8 md:left-16 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-400 to-pink-400 transform rotate-45 opacity-70"></div>
-              <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 right-4 sm:right-8 md:right-16 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-gradient-to-r from-purple-400 to-pink-400 transform rotate-45 opacity-60 text-[#00BFFF]"></div>
-              <div className="absolute top-8 sm:top-12 md:top-20 right-12 sm:right-20 md:right-32 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-50"></div>
+              <div className="absolute top-4 sm:top-6 md:top-10 right-4 sm:right-6 md:right-10 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full opacity-60"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 100%)' }}></div>
+              <div className="absolute bottom-8 sm:bottom-12 md:bottom-20 left-2 sm:left-4 md:left-8 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full opacity-50"
+                style={{ background: 'linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%)' }}></div>
+              <div className="absolute top-12 sm:top-20 md:top-32 left-4 sm:left-8 md:left-16 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 transform rotate-45 opacity-70"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #71EFA3 100%)' }}></div>
+              <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 right-4 sm:right-8 md:right-16 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 transform rotate-45 opacity-60"
+                style={{ background: 'linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%)' }}></div>
+              <div className="absolute top-8 sm:top-12 md:top-20 right-12 sm:right-20 md:right-32 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 rounded-full opacity-50"
+                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 100%)' }}></div>
 
               {/* Main card - responsive sizing */}
               <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-6">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-white/90 backdrop-blur-sm rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl">
                   <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center"
+                      style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}>
                       <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-white rounded-full"></div>
                     </div>
                     <div className="text-xs sm:text-sm md:text-base font-semibold text-gray-800">
@@ -175,15 +183,20 @@ const ClientSolutions = () => {
                   </div>
 
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
-                    <div className="h-1.5 sm:h-2 md:h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded"></div>
-                    <div className="h-1.5 sm:h-2 md:h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded w-3/4"></div>
-                    <div className="h-1.5 sm:h-2 md:h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded w-1/2"></div>
+                    <div className="h-1.5 sm:h-2 md:h-3 rounded"
+                      style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.3) 0%, rgba(0, 194, 203, 0.3) 100%)' }}></div>
+                    <div className="h-1.5 sm:h-2 md:h-3 rounded w-3/4"
+                      style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.3) 0%, rgba(0, 194, 203, 0.3) 100%)' }}></div>
+                    <div className="h-1.5 sm:h-2 md:h-3 rounded w-1/2"
+                      style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.3) 0%, rgba(0, 194, 203, 0.3) 100%)' }}></div>
                   </div>
 
-                  <div className="absolute -top-1 sm:-top-2 md:-top-4 -right-1 sm:-right-2 md:-right-4 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-[#00BFFF]">
+                  <div className="absolute -top-1 sm:-top-2 md:-top-4 -right-1 sm:-right-2 md:-right-4 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center"
+                    style={{ background: 'linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%)' }}>
                     <div className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-white rounded-full"></div>
                   </div>
-                  <div className="absolute -bottom-0.5 sm:-bottom-1 md:-bottom-2 -left-0.5 sm:-left-1 md:-left-2 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                  <div className="absolute -bottom-0.5 sm:-bottom-1 md:-bottom-2 -left-0.5 sm:-left-1 md:-left-2 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 rounded-full"
+                    style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 100%)' }}></div>
                 </div>
               </div>
             </div>

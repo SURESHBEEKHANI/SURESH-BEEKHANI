@@ -232,7 +232,7 @@ const Testimonials = () => {
                 key={`${testimonials[currentIndex].id}-${currentIndex}`}
                 className="relative transform transition-all duration-700 ease-out scale-100 z-30 translate-x-0 opacity-100"
               >
-                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6C63FF 0%, #00C2FF 50%, #8B5CF6 100%)'}}>
+                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)'}}>
                   {/* Rating stars */}
                   <div className="flex items-center gap-1 mb-3 sm:mb-4" aria-label={`${testimonials[currentIndex].rating} out of 5 stars`}>
                     {renderStars(testimonials[currentIndex].rating)}
@@ -287,7 +287,7 @@ const Testimonials = () => {
                     transform: `perspective(1000px) rotateY(${index * 6 - 6}deg) translateZ(${index * 8}px)`
                   }}
                 >
-                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-3xl p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6C63FF 0%, #00C2FF 50%, #8B5CF6 100%)'}}>
+                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-3xl p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)'}}>
                     {/* Rating stars */}
                     <div className="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
                       {renderStars(testimonial.rating)}
