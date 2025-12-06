@@ -69,6 +69,9 @@ const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 
+// Blogs
+const Blogs = lazy(() => import("./pages-Blogs/Blogs"));
+
 // Portfolio - Healthcare AI Solutions
 const PortfolioPage = lazy(() => import("./components/portfolio"));
 const PatientDiagnosticSystem = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system.tsx"));
@@ -156,6 +159,9 @@ const AppContent = () => {
         <Route path="/genomicspersonalizedmedicine" element={<GenomicsPersonalizedMedicine />} />
         <Route path="/healthcareiotsmartdevices" element={<HealthcareIoTSmartDevicesIndustry />} />
         <Route path="/healthdataprivacysecurity" element={<HealthDataPrivacySecurity />} />
+
+        {/* Blogs */}
+        <Route path="/blogs" element={<Blogs />} />
 
         {/* Services */}
         <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useReducedMotion } from '@/hooks/useAnimations';
-import { navbarVariants, menuItemVariants, fadeInDown, hoverScale } from '@/lib/animations';
+import { navbarVariants, menuItemVariants } from '@/lib/animations';
 
 const WhatsAppLogo = () => (
   <svg
@@ -77,7 +77,7 @@ const Navbar = () => {
     { label: 'Services', href: '/#services' },
     { label: 'Industries', href: '/#industries' },
     { label: 'Experience', href: '/#experience' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Resources', href: '#' },
   ];
 
   const servicePages = [
@@ -103,11 +103,14 @@ const Navbar = () => {
     { label: 'Health Data Privacy & Security', href: '/HealthDataPrivacySecurity' },
   ];
 
-  const linkColorClass = (linkHref: string) => {
-    const isActive = activeSection === linkHref.replace('/#', '') || (linkHref === '/Portfolio' && currentPath === '/Portfolio');
-    if (isActive) return 'active text-primary';
-    if (isScrolled) return 'nav-link--dark hover:text-primary';
-    return 'nav-link--light hover:text-white/90';
+  const resourcesPages = [
+    { label: 'Blogs', href: '/blogs' },
+    { label: 'Contact', href: '/#contact' },
+  ];
+
+  // Prevent default click on Resources link since it's just a dropdown trigger
+  const handleResourcesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
   };
 
   return (
@@ -156,23 +159,23 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link, index) => {
+            {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('/#', '') || (link.href === '/Portfolio' && currentPath === '/Portfolio');
-              const hasDropdown = link.label === 'Services' || link.label === 'Industries';
-              const dropdownItems = link.label === 'Services' ? servicePages : link.label === 'Industries' ? industriesPages : [];
+              const hasDropdown = link.label === 'Services' || link.label === 'Industries' || link.label === 'Resources';
+              const dropdownItems = link.label === 'Services' ? servicePages : link.label === 'Industries' ? industriesPages : link.label === 'Resources' ? resourcesPages : [];
 
               if (hasDropdown) {
                 return (
                   <div key={link.label} className="relative group">
                     <motion.a
                       href={link.href}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium flex items-center gap-1 ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/90'
+                      onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/90'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
                       {link.label}
-                      <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 duration-300" />
                       {/* Animated underline */}
                       <motion.span
                         className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-primary to-blue-600"
@@ -207,7 +210,6 @@ const Navbar = () => {
                               initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: i * 0.05, duration: 0.2 }}
-                              whileHover={prefersReducedMotion ? {} : { x: 4 }}
                             >
                               {item.label}
                             </motion.a>
@@ -362,7 +364,7 @@ const Navbar = () => {
                   >
                     <div className="mt-1 mb-2 text-xs sm:text-sm text-gray-300 font-semibold uppercase tracking-wide">Industries</div>
                     <div className="space-y-1">
-                      {industriesPages.map((page, index) => (
+                      {industriesPages.map((page, i) => (
                         <motion.a
                           key={page.href}
                           href={page.href}
@@ -370,7 +372,33 @@ const Navbar = () => {
                           onClick={() => setIsMobileMenuOpen(false)}
                           initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (navLinks.length + index) * 0.05, duration: 0.2 }}
+                          transition={{ delay: (navLinks.length + i) * 0.05, duration: 0.2 }}
+                          role="menuitem"
+                        >
+                          {page.label}
+                        </motion.a>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Resources pages (mobile) - Improved touch targets */}
+                  <motion.div
+                    className="px-4 sm:px-6 pt-2"
+                    initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (navLinks.length + industriesPages.length) * 0.05, duration: 0.3 }}
+                  >
+                    <div className="mt-1 mb-2 text-xs sm:text-sm text-gray-300 font-semibold uppercase tracking-wide">Resources</div>
+                    <div className="space-y-1">
+                      {resourcesPages.map((page, i) => (
+                        <motion.a
+                          key={page.href}
+                          href={page.href}
+                          className="block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white hover:bg-white/10 hover:text-primary rounded-md transition-colors min-h-[44px] flex items-center touch-manipulation"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: (navLinks.length + industriesPages.length + i) * 0.05, duration: 0.2 }}
                           role="menuitem"
                         >
                           {page.label}
@@ -384,7 +412,7 @@ const Navbar = () => {
                     className="px-4 sm:px-6 py-3 sm:py-4"
                     initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (navLinks.length + industriesPages.length) * 0.05, duration: 0.3 }}
+                    transition={{ delay: (navLinks.length + industriesPages.length + resourcesPages.length) * 0.05, duration: 0.3 }}
                   >
                     <motion.div
                       whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
