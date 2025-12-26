@@ -15,7 +15,8 @@ interface BlogPost {
   author: string;
 }
 
-const blogPosts: BlogPost[] = [
+// Default sample blogs
+const defaultBlogPosts: BlogPost[] = [
   {
     id: 1,
     title: 'The Future of AI in Healthcare: Transforming Patient Care',
@@ -62,6 +63,14 @@ const categories = [
 const Blogs = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Get blogs from localStorage or use default
+  const blogPosts = (() => {
+    const saved = localStorage.getItem('blogPosts');
+    const adminBlogs = saved ? JSON.parse(saved) : [];
+    // Combine admin blogs with default blogs
+    return [...adminBlogs, ...defaultBlogPosts];
+  })();
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = selectedCategory === '' || post.category === selectedCategory;

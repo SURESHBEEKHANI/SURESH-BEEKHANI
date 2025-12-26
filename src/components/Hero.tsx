@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
-  ArrowDown, FileText, Github, Linkedin, Twitter,
-  Brain, Cpu, Database, Network, Youtube, Instagram
+  ArrowDown, FileText,
+  Brain, Cpu, Database, Network
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -72,14 +72,6 @@ const Hero = () => {
 
     return () => clearInterval(timer);
   }, []);
-
-  const socialLinks = [
-    { icon: <Github size={20} />, href: 'https://github.com/sureshbeekhani', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, href: 'https://linkedin.com/in/sureshbeekhani', label: 'LinkedIn' },
-    { icon: <Twitter size={20} />, href: 'https://x.com/SureshBeekhan', label: 'Twitter' },
-    { icon: <Youtube size={20} />, href: 'https://www.youtube.com/@sureshbeekhani', label: 'YouTube' },
-    { icon: <Instagram size={20} />, href: 'https://www.instagram.com/suresh_beekhani/', label: 'Instagram' },
-  ];
 
   const techIcons = [
     { icon: <Cpu className="w-6 h-6" />, color: 'text-blue-500' },
@@ -236,42 +228,6 @@ const Hero = () => {
                 ))}
               </motion.div>
             </div>
-            <motion.div
-              className="flex justify-center lg:justify-start gap-3 sm:gap-4 mt-6"
-              variants={staggerContainer}
-              initial={prefersReducedMotion ? false : "hidden"}
-              animate={prefersReducedMotion ? false : "visible"}
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 sm:p-2.5 rounded-full transition-all duration-300 group touch-button"
-                  style={{ 
-                    background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)',
-                    border: '1px solid rgba(0, 194, 203, 0.3)'
-                  }}
-                  aria-label={`Visit ${social.label} profile`}
-                  variants={staggerItem}
-                  whileHover={prefersReducedMotion ? {} : { scale: 1.15, y: -4 }}
-                  whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)';
-                    e.currentTarget.style.borderColor = 'rgba(0, 194, 203, 0.6)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)';
-                    e.currentTarget.style.borderColor = 'rgba(0, 194, 203, 0.3)';
-                  }}
-                >
-                  <div style={{ color: '#00C2CB' }} className="transition-colors group-hover:brightness-125">
-                    {social.icon}
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* Text Content (on right for desktop) */}

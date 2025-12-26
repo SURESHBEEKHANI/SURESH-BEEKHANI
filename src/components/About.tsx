@@ -90,9 +90,9 @@ const stats = [
     },
     {
       icon: <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: 'Computer Vision',
-      description: 'Developing intelligent systems that leverage computer vision to autonomously perceive, interpret visual data, and make decisions to accomplish complex tasks.',
-      features: ['Object Detection', 'Image Segmentation', 'Image Classification'],
+      title: 'Natural Language Processing',
+      description: 'Building NLP systems that understand, interpret, and generate human language for tasks such as summarization, question answering, and information extraction.',
+      features: ['Text Classification', 'Named Entity Recognition', 'Language Generation'],
       color: 'from-indigo-500 to-blue-500'
     },
     {
@@ -128,7 +128,7 @@ const stats = [
             Transforming ideas into practical <span className="gradient-text">AI solutions</span>
           </h2>
           <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
-            I build production-ready AI systems across machine learning, deep learning, natural language processing, Computer Vision and generative AI—focused on real-world impact and scalable deployments.
+            I build production-ready AI systems across machine learning, deep learning, natural language processing (NLP), and generative AI—focused on real-world impact and scalable deployments.
           </p>
         </div>
 

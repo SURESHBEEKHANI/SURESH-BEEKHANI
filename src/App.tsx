@@ -71,6 +71,7 @@ const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 
 // Blogs
 const Blogs = lazy(() => import("./pages-Blogs/Blogs"));
+const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio - Healthcare AI Solutions
 const PortfolioPage = lazy(() => import("./components/portfolio"));
@@ -162,6 +163,7 @@ const AppContent = () => {
 
         {/* Blogs */}
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog-admin" element={<BlogAdmin />} />
 
         {/* Services */}
         <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
