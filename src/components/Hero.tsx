@@ -241,7 +241,7 @@ const Hero = () => {
               className="heading-1 font-bold leading-tight"
               variants={staggerItem}
             >
-              I'm <span className="gradient-text">Suresh Beekhani</span>
+              ( Data Scientist ) <span className="gradient-text">Suresh Beekhani</span>
             </motion.h1>
 
             <motion.div
