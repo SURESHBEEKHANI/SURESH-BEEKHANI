@@ -74,8 +74,8 @@ const Footer = () => {
     {
       icon: <Mail size={16} />,
       label: 'Email',
-      value: 'sureshbeekhani@gmail.com',
-      href: 'mailto:sureshbeekhani@gmail.com'
+      value: 'sureshbeekhani26@gmail.com',
+      href: 'mailto:sureshbeekhani26@gmail.com'
     },
     {
       icon: <Phone size={16} />,
