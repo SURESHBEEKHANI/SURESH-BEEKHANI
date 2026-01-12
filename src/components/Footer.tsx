@@ -35,7 +35,7 @@ const Footer = () => {
     { 
       name: 'LinkedIn', 
       icon: <Linkedin size={16} />, 
-      url: 'https://linkedin.com/in/sureshbeekhani',
+      url: 'https://www.linkedin.com/in/suresh-beekhani/',
       color: 'from-blue-600 to-blue-800'
     },
     { 
