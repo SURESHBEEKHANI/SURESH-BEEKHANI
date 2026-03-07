@@ -7,7 +7,7 @@ const Industries = () => {
   const industries = [
     {
       id: 1,
-      name: "FinTech – Finance & Banking",
+      name: "FinTech",
       description: "Fraud detection, automated compliance, intelligent chatbots, and predictive analytics.",
       image: "/image/pages_img/workflow-automation.jpg",
       link: "/fintech",
@@ -15,7 +15,7 @@ const Industries = () => {
     },
     {
       id: 2,
-      name: "HealthTech – Healthcare",
+      name: "HealthTech",
       description: "Patient scheduling, workflow automation, AI diagnostics, and predictive health insights.",
       image: "/image/pages_img/hospitals-clinics.jpg",
       link: "/healthtech",
@@ -23,7 +23,7 @@ const Industries = () => {
     },
     {
       id: 3,
-      name: "RetailTech – Retail & E-Commerce",
+      name: "RetailTech",
       description: "Personalized recommendations, demand forecasting, AI shopping assistants, and visual search.",
       image: "/image/pages_img/predictive-analytics-hospital.jpg",
       link: "/retailtech",
@@ -31,7 +31,7 @@ const Industries = () => {
     },
     {
       id: 4,
-      name: "EdTech – Education Technology",
+      name: "EdTech",
       description: "Personalized learning paths, AI tutoring, automated grading, and predictive analytics.",
       image: "/image/pages_img/wellness-personalized.jpg",
       link: "/edtech",
@@ -39,7 +39,7 @@ const Industries = () => {
     },
     {
       id: 5,
-      name: "FitTech – Fitness & Wellness",
+      name: "FitTech",
       description: "Personalized workouts, wearable analytics, AI coaches, and nutrition optimization.",
       image: "/image/pages_img/wellness-personalized.jpg",
       link: "/fittech",
@@ -47,7 +47,7 @@ const Industries = () => {
     },
     {
       id: 6,
-      name: "LegalTech – Legal & Compliance",
+      name: "LegalTech",
       description: "Contract analysis, legal document search, compliance monitoring, and AI assistants.",
       image: "/image/pages_img/workflow-automation.jpg",
       link: "/legaltech",
@@ -55,7 +55,7 @@ const Industries = () => {
     },
     {
       id: 7,
-      name: "WealthTech – Wealth Management",
+      name: "WealthTech",
       description: "Robo-advisory, client onboarding, predictive analytics, and wealth management chatbots.",
       image: "/image/pages_img/workflow-automation.jpg",
       link: "/wealthtech",
@@ -63,7 +63,7 @@ const Industries = () => {
     },
     {
       id: 8,
-      name: "IT & Software – Technology Solutions",
+      name: "IT & Software",
       description: "AI dev tools, intelligent IT support, DevOps automation, and enterprise software.",
       image: "/image/pages_img/workflow-automation.jpg",
       link: "/it-software",
