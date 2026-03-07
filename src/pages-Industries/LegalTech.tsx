@@ -29,7 +29,7 @@ const HeroSection: React.FC = React.memo(() => (
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/workflow-automation.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">LegalTech – Legal & Compliance</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">LegalTech</h1>
         <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform legal operations with AI-powered contract analysis, document search, compliance monitoring, and intelligent assistants. Enhance efficiency and accuracy.</p>
         <a href="/#contact" className="inline-block bg-gradient-to-r from-slate-600 to-gray-800 hover:from-slate-500 hover:to-gray-700 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300">Talk to an Expert</a>
       </div>

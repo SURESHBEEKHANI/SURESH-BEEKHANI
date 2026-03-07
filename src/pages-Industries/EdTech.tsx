@@ -29,7 +29,7 @@ const HeroSection: React.FC = React.memo(() => (
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/wellness-personalized.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">EdTech – Education Technology</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">EdTech</h1>
         <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform education with AI-powered personalized learning, intelligent tutoring, automated grading, and predictive analytics. Enhance student engagement and outcomes.</p>
         <a href="/#contact" className="inline-block bg-gradient-to-r from-violet-500 to-purple-700 hover:from-violet-600 hover:to-purple-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300">Talk to an Expert</a>
       </div>

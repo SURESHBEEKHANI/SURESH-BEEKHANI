@@ -31,7 +31,7 @@ const HeroSection: React.FC = React.memo(() => (
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/hospitals-clinics.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">HealthTech – Healthcare</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">HealthTech</h1>
         <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform healthcare with AI-powered diagnostics, patient scheduling, workflow automation, and predictive analytics. Enhance patient outcomes and operational efficiency.</p>
         <a href="/#contact" className="inline-block bg-gradient-to-r from-blue-500 to-indigo-700 hover:from-blue-600 hover:to-indigo-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300">Talk to an Expert</a>
       </div>
