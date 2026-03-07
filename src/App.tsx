@@ -49,15 +49,15 @@ function usePageTracking() {
   }, [location]);
 }
 
-// 📦 Lazy-loaded pages - AI Healthcare Industries
-const HospitalsClinics = lazy(() => import("./pages-Industries/HospitalsClinics"));
-const TelemedicineDigitalHealth = lazy(() => import("./pages-Industries/TelemedicineDigitalHealth"));
-const MentalHealthWellness = lazy(() => import("./pages-Industries/MentalHealthWellness"));
-const MedicalImagingDiagnostics = lazy(() => import("./pages-Industries/MedicalImagingDiagnostics"));
-const DrugDiscoveryBiotech = lazy(() => import("./pages-Industries/DrugDiscoveryBiotech"));
-const GenomicsPersonalizedMedicine = lazy(() => import("./pages-Industries/GenomicsPersonalizedMedicine"));
-const HealthcareIoTSmartDevicesIndustry = lazy(() => import("./pages-Industries/HealthcareIoTSmartDevices"));
-const HealthDataPrivacySecurity = lazy(() => import("./pages-Industries/HealthDataPrivacySecurity"));
+// 📦 Lazy-loaded pages - Industries
+const FinTech = lazy(() => import("./pages-Industries/FinTech"));
+const HealthTech = lazy(() => import("./pages-Industries/HealthTech"));
+const RetailTech = lazy(() => import("./pages-Industries/RetailTech"));
+const EdTech = lazy(() => import("./pages-Industries/EdTech"));
+const FitTech = lazy(() => import("./pages-Industries/FitTech"));
+const LegalTech = lazy(() => import("./pages-Industries/LegalTech"));
+const WealthTech = lazy(() => import("./pages-Industries/WealthTech"));
+const ITSoftware = lazy(() => import("./pages-Industries/ITSoftware"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
@@ -151,15 +151,15 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
 
-        {/* AI Healthcare Industries */}
-        <Route path="/hospitalsclinics" element={<HospitalsClinics />} />
-        <Route path="/telemedicinedigitalhealth" element={<TelemedicineDigitalHealth />} />
-        <Route path="/mentalhealthwellness" element={<MentalHealthWellness />} />
-        <Route path="/medicalimagingdiagnostics" element={<MedicalImagingDiagnostics />} />
-        <Route path="/drugdiscoverybiotech" element={<DrugDiscoveryBiotech />} />
-        <Route path="/genomicspersonalizedmedicine" element={<GenomicsPersonalizedMedicine />} />
-        <Route path="/healthcareiotsmartdevices" element={<HealthcareIoTSmartDevicesIndustry />} />
-        <Route path="/healthdataprivacysecurity" element={<HealthDataPrivacySecurity />} />
+        {/* Industries */}
+        <Route path="/fintech" element={<FinTech />} />
+        <Route path="/healthtech" element={<HealthTech />} />
+        <Route path="/retailtech" element={<RetailTech />} />
+        <Route path="/edtech" element={<EdTech />} />
+        <Route path="/fittech" element={<FitTech />} />
+        <Route path="/legaltech" element={<LegalTech />} />
+        <Route path="/wealthtech" element={<WealthTech />} />
+        <Route path="/it-software" element={<ITSoftware />} />
 
         {/* Blogs */}
         <Route path="/blogs" element={<Blogs />} />

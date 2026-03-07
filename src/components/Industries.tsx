@@ -7,67 +7,67 @@ const Industries = () => {
   const industries = [
     {
       id: 1,
-      name: "Hospitals & Clinics",
-      description: "Patient scheduling, workflow automation, AI chatbots, and predictive analytics.",
-      image: "/image/pages_img/hospitals-clinics.jpg",
-      link: "/HospitalsClinics",
-      features: ["Patient Scheduling", "Workflow Automation", "AI Chatbots", "Predictive Analytics"]
+      name: "FinTech – Finance & Banking",
+      description: "Fraud detection, automated compliance, intelligent chatbots, and predictive analytics.",
+      image: "/image/pages_img/workflow-automation.jpg",
+      link: "/fintech",
+      features: ["Fraud Detection", "Compliance", "AI Chatbots", "Predictive Analytics"]
     },
     {
       id: 2,
-      name: "Telemedicine & Digital Health",
-      description: "Symptom triage, remote monitoring dashboards, and predictive health insights.",
-      image: "/image/pages_img/telemedicine-digital.jpg",
-      link: "/TelemedicineDigitalHealth",
-      features: ["Symptom Triage", "Remote Monitoring", "Predictive Health Insights"]
+      name: "HealthTech – Healthcare",
+      description: "Patient scheduling, workflow automation, AI diagnostics, and predictive health insights.",
+      image: "/image/pages_img/hospitals-clinics.jpg",
+      link: "/healthtech",
+      features: ["Patient Scheduling", "Workflow Automation", "AI Diagnostics", "Predictive Analytics"]
     },
     {
       id: 3,
-      name: "Mental Health & Wellness",
-      description: "AI counseling chatbots, sentiment analysis, and personalized wellness solutions.",
-      image: "/image/pages_img/mental-wellness.jpg",
-      link: "/MentalHealthWellness",
-      features: ["AI Counseling Chatbots", "Sentiment Analysis", "Personalized Wellness"]
+      name: "RetailTech – Retail & E-Commerce",
+      description: "Personalized recommendations, demand forecasting, AI shopping assistants, and visual search.",
+      image: "/image/pages_img/predictive-analytics-hospital.jpg",
+      link: "/retailtech",
+      features: ["Recommendations", "Demand Forecasting", "AI Assistants", "Visual Search"]
     },
     {
       id: 4,
-      name: "Medical Imaging & Diagnostics",
-      description: "AI-assisted X-ray/MRI/CT analysis, anomaly detection, and radiologist workflow integration.",
-      image: "/image/pages_img/medical-diagnostics.jpg",
-      link: "/MedicalImagingDiagnostics",
-      features: ["X-ray/MRI/CT Analysis", "Anomaly Detection", "Workflow Integration"]
+      name: "EdTech – Education Technology",
+      description: "Personalized learning paths, AI tutoring, automated grading, and predictive analytics.",
+      image: "/image/pages_img/wellness-personalized.jpg",
+      link: "/edtech",
+      features: ["Personalized Learning", "AI Tutors", "Auto Grading", "Learning Analytics"]
     },
     {
       id: 5,
-      name: "Drug Discovery & Biotech Labs",
-      description: "Molecule prediction models, clinical trial analytics, and precision medicine support.",
-      image: "/image/pages_img/drug-biotech.jpg",
-      link: "/DrugDiscoveryBiotech",
-      features: ["Molecule Prediction", "Clinical Trial Analytics", "Precision Medicine"]
+      name: "FitTech – Fitness & Wellness",
+      description: "Personalized workouts, wearable analytics, AI coaches, and nutrition optimization.",
+      image: "/image/pages_img/wellness-personalized.jpg",
+      link: "/fittech",
+      features: ["Personalized Workouts", "Wearable Analytics", "AI Coaches", "Nutrition AI"]
     },
     {
       id: 6,
-      name: "Genomics & Personalized Medicine",
-      description: "Genomic risk analysis, disease prediction, and AI-driven treatment recommendations.",
-      image: "/image/pages_img/genomics-personalized.jpg",
-      link: "/GenomicsPersonalizedMedicine",
-      features: ["Genomic Risk Analysis", "Disease Prediction", "Treatment Recommendations"]
+      name: "LegalTech – Legal & Compliance",
+      description: "Contract analysis, legal document search, compliance monitoring, and AI assistants.",
+      image: "/image/pages_img/workflow-automation.jpg",
+      link: "/legaltech",
+      features: ["Contract Analysis", "Legal Search", "Compliance", "AI Assistants"]
     },
     {
       id: 7,
-      name: "Healthcare IoT & Smart Devices",
-      description: "IoT data analytics, edge AI for hospitals, and home care device integration.",
-      image: "/image/pages_img/healthcare-iot.jpg",
-      link: "/HealthcareIoTSmartDevices",
-      features: ["IoT Data Analytics", "Edge AI", "Home Care Integration"]
+      name: "WealthTech – Wealth Management",
+      description: "Robo-advisory, client onboarding, predictive analytics, and wealth management chatbots.",
+      image: "/image/pages_img/workflow-automation.jpg",
+      link: "/wealthtech",
+      features: ["Robo-Advisory", "Client Onboarding", "Predictive Analytics", "AI Chatbots"]
     },
     {
       id: 8,
-      name: "Health Data Privacy & Security",
-      description: "Federated learning, anomaly detection, and HIPAA-compliant AI platforms.",
-      image: "/image/pages_img/health-privacy-security.jpg",
-      link: "/HealthDataPrivacySecurity",
-      features: ["Federated Learning", "Anomaly Detection", "HIPAA Compliance"]
+      name: "IT & Software – Technology Solutions",
+      description: "AI dev tools, intelligent IT support, DevOps automation, and enterprise software.",
+      image: "/image/pages_img/workflow-automation.jpg",
+      link: "/it-software",
+      features: ["AI Dev Tools", "IT Support", "DevOps", "Enterprise Solutions"]
     }
   ];
 
@@ -86,14 +86,14 @@ const Industries = () => {
                 Industries
               </Badge>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">
-                AI Healthcare <span className="gradient-text">Industries</span>
+                AI <span className="gradient-text">Industries</span>
               </h2>
               <div 
                 className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
                 style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
               ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
-                Transforming healthcare with cutting-edge AI solutions across diagnostics, patient care, drug discovery, and secure data management.
+                Transforming industries with cutting-edge AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
               </p>
             </div>
 

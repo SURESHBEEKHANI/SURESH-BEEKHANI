@@ -93,14 +93,14 @@ const Navbar = () => {
   ];
 
   const industriesPages = [
-    { label: 'Hospitals & Clinics', href: '/HospitalsClinics' },
-    { label: 'Telemedicine & Digital Health', href: '/TelemedicineDigitalHealth' },
-    { label: 'Mental Health & Wellness', href: '/MentalHealthWellness' },
-    { label: 'Medical Imaging & Diagnostics', href: '/MedicalImagingDiagnostics' },
-    { label: 'Drug Discovery & Biotech Labs', href: '/DrugDiscoveryBiotech' },
-    { label: 'Genomics & Personalized Medicine', href: '/GenomicsPersonalizedMedicine' },
-    { label: 'Healthcare IoT & Smart Devices', href: '/HealthcareIoTSmartDevices' },
-    { label: 'Health Data Privacy & Security', href: '/HealthDataPrivacySecurity' },
+    { label: 'FinTech – Finance & Banking', href: '/fintech' },
+    { label: 'HealthTech – Healthcare', href: '/healthtech' },
+    { label: 'RetailTech – Retail & E-Commerce', href: '/retailtech' },
+    { label: 'EdTech – Education Technology', href: '/edtech' },
+    { label: 'FitTech – Fitness & Wellness', href: '/fittech' },
+    { label: 'LegalTech – Legal & Compliance', href: '/legaltech' },
+    { label: 'WealthTech – Wealth Management', href: '/wealthtech' },
+    { label: 'IT & Software – Technology Solutions', href: '/it-software' },
   ];
 
   const resourcesPages = [
