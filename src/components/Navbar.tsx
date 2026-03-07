@@ -93,14 +93,14 @@ const Navbar = () => {
   ];
 
   const industriesPages = [
-    { label: 'FinTech – Finance & Banking', href: '/fintech' },
-    { label: 'HealthTech – Healthcare', href: '/healthtech' },
-    { label: 'RetailTech – Retail & E-Commerce', href: '/retailtech' },
-    { label: 'EdTech – Education Technology', href: '/edtech' },
-    { label: 'FitTech – Fitness & Wellness', href: '/fittech' },
-    { label: 'LegalTech – Legal & Compliance', href: '/legaltech' },
-    { label: 'WealthTech – Wealth Management', href: '/wealthtech' },
-    { label: 'IT & Software – Technology Solutions', href: '/it-software' },
+    { label: 'FinTech', href: '/fintech' },
+    { label: 'HealthTech', href: '/healthtech' },
+    { label: 'RetailTech', href: '/retailtech' },
+    { label: 'EdTech', href: '/edtech' },
+    { label: 'FitTech', href: '/fittech' },
+    { label: 'LegalTech', href: '/legaltech' },
+    { label: 'WealthTech', href: '/wealthtech' },
+    { label: 'IT & Software', href: '/it-software' },
   ];
 
   const resourcesPages = [
