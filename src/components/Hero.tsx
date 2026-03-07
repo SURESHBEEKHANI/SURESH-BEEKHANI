@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  ArrowDown, FileText,
-  Brain, Cpu, Database, Network
-} from 'lucide-react';
+import { ArrowDown, FileText, Brain, Cpu, Database, Network } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
@@ -24,6 +21,7 @@ import {
 const Hero = () => {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
+
   const [isVisible, setIsVisible] = useState(false);
   const [currentSkill, setCurrentSkill] = useState(0);
   const [statsCount, setStatsCount] = useState({ years: 0, projects: 0, models: 0 });
@@ -34,23 +32,28 @@ const Hero = () => {
     'Natural Language Processing',
     'Computer Vision',
     'AI Development',
-    'Generative AI'
+    'Generative AI',
   ];
 
+  const techIcons = [
+    { icon: <Cpu className="w-6 h-6" />, color: 'text-blue-500' },
+    { icon: <Database className="w-6 h-6" />, color: 'text-purple-500' },
+    { icon: <Network className="w-6 h-6" />, color: 'text-green-500' },
+    { icon: <Brain className="w-6 h-6" />, color: 'text-orange-500' },
+  ];
+
+  // Cycle skills every 3 seconds
   useEffect(() => {
     setIsVisible(true);
-    const skillInterval = setInterval(() => {
-      setCurrentSkill(prev => (prev + 1) % skills.length);
-    }, 3000);
-    return () => clearInterval(skillInterval);
+    const interval = setInterval(() => setCurrentSkill(prev => (prev + 1) % skills.length), 3000);
+    return () => clearInterval(interval);
   }, [skills.length]);
 
-  // Animated counter for stats
+  // Animate stats count
   useEffect(() => {
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
-
     const targets = { years: 4, projects: 25, models: 40 };
     let currentStep = 0;
 
@@ -73,13 +76,6 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const techIcons = [
-    { icon: <Cpu className="w-6 h-6" />, color: 'text-blue-500' },
-    { icon: <Database className="w-6 h-6" />, color: 'text-purple-500' },
-    { icon: <Network className="w-6 h-6" />, color: 'text-green-500' },
-    { icon: <Brain className="w-6 h-6" />, color: 'text-orange-500' },
-  ];
-
   return (
     <section
       id="home"
@@ -88,83 +84,58 @@ const Hero = () => {
     >
       {/* Background animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating particles */}
+        {/** Floating particles **/}
         <motion.div
           className="absolute top-20 left-10 w-3 h-3 bg-primary/40 rounded-full"
-          animate={prefersReducedMotion ? {} : {
-            y: [-20, 20, -20],
-            opacity: [0.4, 0.8, 0.4],
-          }}
+          animate={prefersReducedMotion ? {} : { y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute top-40 right-20 w-2 h-2 bg-secondary/50 rounded-full"
-          animate={prefersReducedMotion ? {} : {
-            y: [20, -20, 20],
-            opacity: [0.5, 1, 0.5],
-            scale: [1, 1.5, 1],
-          }}
+          animate={prefersReducedMotion ? {} : { y: [20, -20, 20], opacity: [0.5, 1, 0.5], scale: [1, 1.5, 1] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
         <motion.div
           className="absolute bottom-40 left-20 w-4 h-4 bg-accent/30 rounded-full"
-          animate={prefersReducedMotion ? {} : {
-            y: [-15, 15, -15],
-            x: [-10, 10, -10],
-            opacity: [0.3, 0.6, 0.3],
-          }}
+          animate={prefersReducedMotion ? {} : { y: [-15, 15, -15], x: [-10, 10, -10], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
         <motion.div
           className="absolute top-60 left-1/3 w-3 h-3 bg-secondary/40 rounded-full"
-          animate={prefersReducedMotion ? {} : {
-            y: [15, -15, 15],
-            opacity: [0.4, 0.7, 0.4],
-          }}
+          animate={prefersReducedMotion ? {} : { y: [15, -15, 15], opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }}
         />
 
-        {/* Large gradient orbs */}
+        {/** Large gradient orbs **/}
         <motion.div
           className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl"
-          animate={prefersReducedMotion ? {} : {
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
+          animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-accent/10 to-primary/10 rounded-full blur-3xl"
-          animate={prefersReducedMotion ? {} : {
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
+          animate={prefersReducedMotion ? {} : { scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
 
-        {/* Animated lines */}
+        {/** Animated lines **/}
         <motion.div
           className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-          animate={prefersReducedMotion ? {} : {
-            scaleX: [0, 1, 0],
-            opacity: [0, 1, 0],
-          }}
+          animate={prefersReducedMotion ? {} : { scaleX: [0, 1, 0], opacity: [0, 1, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute bottom-1/4 right-0 w-32 h-px bg-gradient-to-l from-transparent via-secondary/30 to-transparent"
-          animate={prefersReducedMotion ? {} : {
-            scaleX: [0, 1, 0],
-            opacity: [0, 1, 0],
-          }}
+          animate={prefersReducedMotion ? {} : { scaleX: [0, 1, 0], opacity: [0, 1, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
       </div>
 
+      {/* Main content */}
       <div className="z-10 max-w-7xl mx-auto container-padding py-8 sm:py-12 lg:py-0">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 xl:gap-16">
 
-          {/* Avatar + Social Links (now always on left on desktop) */}
+          {/* Avatar */}
           <motion.div
             className="relative mt-16 sm:mt-0 w-full lg:w-auto"
             variants={fadeInLeft}
@@ -175,15 +146,8 @@ const Hero = () => {
             <div className="relative flex justify-center lg:justify-start">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-primary/40 via-secondary/30 to-accent/30 rounded-full blur-2xl opacity-60"
-                animate={prefersReducedMotion ? {} : {
-                  scale: [1, 1.1, 1],
-                  opacity: [0.6, 0.8, 0.6],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={prefersReducedMotion ? {} : { scale: [1, 1.1, 1], opacity: [0.6, 0.8, 0.6] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
                 className="relative"
@@ -194,34 +158,20 @@ const Hero = () => {
                 <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl relative z-10 bg-gradient-to-br from-white to-gray-50 rounded-full overflow-hidden">
                   <AvatarImage
                     src="/image/sureshbeekhani.png"
-                    alt="Suresh Beekhani - Data Scientist and AI/ML Engineer"
+                    alt="Suresh Beekhani - AI/ML Engineer"
                     className="object-cover object-center w-full h-full rounded-full"
                     loading="eager"
                   />
-                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary rounded-full">
-                    SB
-                  </AvatarFallback>
+                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary rounded-full">SB</AvatarFallback>
                 </Avatar>
                 {techIcons.map((tech, index) => (
                   <motion.div
                     key={index}
                     className={`absolute ${tech.color}`}
-                    style={{
-                      top: `${20 + (index * 60)}%`,
-                      left: index % 2 === 0 ? '-20px' : 'auto',
-                      right: index % 2 === 1 ? '-20px' : 'auto',
-                    }}
+                    style={{ top: `${20 + index * 60}%`, left: index % 2 === 0 ? '-20px' : 'auto', right: index % 2 === 1 ? '-20px' : 'auto' }}
                     initial={prefersReducedMotion ? {} : { scale: 0, opacity: 0 }}
-                    animate={prefersReducedMotion ? {} : {
-                      scale: [1, 1.2, 1],
-                      opacity: [0.7, 1, 0.7],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.5,
-                      ease: "easeInOut"
-                    }}
+                    animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.5, ease: "easeInOut" }}
                   >
                     {tech.icon}
                   </motion.div>
@@ -230,24 +180,19 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Text Content (on right for desktop) */}
+          {/* Text */}
           <motion.div
             className="flex flex-col items-center lg:items-start gap-4 text-center lg:text-left"
             variants={staggerContainer}
             initial={prefersReducedMotion ? false : "hidden"}
             animate={prefersReducedMotion ? false : "visible"}
           >
-            <motion.h1
-              className="heading-1 font-bold leading-tight"
-              variants={staggerItem}
-            >
+            <motion.h1 className="heading-1 font-bold leading-tight" variants={staggerItem}>
               <span className="gradient-text">Suresh Beekhani</span>
             </motion.h1>
 
-            <motion.div
-              className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden"
-              variants={staggerItem}
-            >
+            {/* Skills carousel */}
+            <motion.div className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden" variants={staggerItem}>
               <span className="body-medium mr-2 mobile-text" style={{ color: '#00C2CB' }}>Specializing in</span>
               <AnimatePresence mode="wait">
                 <motion.span
@@ -263,93 +208,49 @@ const Hero = () => {
               </AnimatePresence>
             </motion.div>
 
-            <motion.p
-              className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text"
-              variants={staggerItem}
-            >
-              I'm passionate about Artificial Intelligence in Healthcare, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative healthcare AI applications, I help learners and organizations harness AI for better patient care, smarter diagnostics, and sustainable innovation. Open to remote projects and freelance collaborations – let's build the future of intelligent healthcare together!
+            {/* Description */}
+            <motion.p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
+              I’m passionate about Artificial Intelligence, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative AI applications, I help learners and organizations harness AI for smarter decision-making, efficiency, and sustainable innovation. Open to remote projects and freelance collaborations – let’s build the future of intelligent AI together!
             </motion.p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
-              variants={staggerItem}
-            >
-              <motion.div
-                whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
-                whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-              >
-                <Button asChild className="btn-primary w-full sm:w-auto touch-button">
-                  <a
-                    href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="View Suresh Beekhani's resume"
-                  >
-                    <FileText className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="mobile-text">Book Appointment</span>
-                  </a>
-                </Button>
-              </motion.div>
-
-              <motion.div
-                whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
-                whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-              >
-                <Button asChild variant="outline" className="btn-outline w-full sm:w-auto group touch-button">
-                  <a href="#about" aria-label="Learn more about Suresh Beekhani">
-                    <span className="mobile-text">Learn More</span>
-                    <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-y-1" />
-                  </a>
-                </Button>
-              </motion.div>
+            {/* Buttons */}
+            <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" variants={staggerItem}>
+              <ButtonWrapper href="https://calendar.app.google/F63aBoA5vxJdtihj7" icon={<FileText />} text="Book Appointment" />
+              <ButtonWrapper href="#about" icon={<ArrowDown />} text="Learn More" outline />
             </motion.div>
 
-            <motion.div
-              className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10 w-full"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="text-center"
-                custom={0}
-                variants={statsVariants}
-                initial={prefersReducedMotion ? false : "hidden"}
-                animate={prefersReducedMotion ? false : "visible"}
-              >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
-                  {statsCount.years}
-                </div>
-                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>Years Experience</div>
-              </motion.div>
-              <motion.div
-                className="text-center"
-                custom={1}
-                variants={statsVariants}
-                initial={prefersReducedMotion ? false : "hidden"}
-                animate={prefersReducedMotion ? false : "visible"}
-              >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
-                  {statsCount.projects}+
-                </div>
-                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>Projects Completed</div>
-              </motion.div>
-              <motion.div
-                className="text-center"
-                custom={2}
-                variants={statsVariants}
-                initial={prefersReducedMotion ? false : "hidden"}
-                animate={prefersReducedMotion ? false : "visible"}
-              >
-                <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">
-                  {statsCount.models}+
-                </div>
-                <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>AI Models Built</div>
-              </motion.div>
+            {/* Stats */}
+            <motion.div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10 w-full" variants={staggerItem}>
+              {[
+                { label: 'Years Experience', value: statsCount.years },
+                { label: 'Projects Completed', value: statsCount.projects + '+' },
+                { label: 'AI Models Built', value: statsCount.models + '+' }
+              ].map((stat, idx) => (
+                <motion.div key={idx} className="text-center" custom={idx} variants={statsVariants} initial={prefersReducedMotion ? false : "hidden"} animate={prefersReducedMotion ? false : "visible"}>
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">{stat.value}</div>
+                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>{stat.label}</div>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
 
         </div>
       </div>
     </section>
+  );
+};
+
+const ButtonWrapper = ({ href, icon, text, outline }) => {
+  const prefersReducedMotion = useReducedMotion();
+  return (
+    <motion.div whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }} whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}>
+      <Button asChild variant={outline ? 'outline' : 'primary'} className="w-full sm:w-auto group touch-button">
+        <a href={href} target={outline ? '_self' : '_blank'} rel="noopener noreferrer" aria-label={text}>
+          {icon && <span className="mr-2">{icon}</span>}
+          <span className="mobile-text">{text}</span>
+        </a>
+      </Button>
+    </motion.div>
   );
 };
 
