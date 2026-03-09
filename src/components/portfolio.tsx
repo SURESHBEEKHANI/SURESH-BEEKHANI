@@ -6,102 +6,118 @@ import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Patient Diagnostic System",
+    title: "AI Fraud Detection System",
     description:
-      "AI chatbots assist in rapid disease diagnosis, reducing doctor workload and improving patient care.",
-    image: "/image/pages_img/Patient-Diagnostic-System.webp",
-    link: "/portfolio/patient-diagnostic-system"
+      "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
+    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
+    link: "/portfolio/ai-fraud-detection-system",
+    heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
   },
   {
-    title: "Early Disease Detection AI",
+    title: "AI Personal Finance Advisor",
     description:
-      "Predictive analytics and medical imaging for early detection of diseases like cancer, cardiovascular, or neurological disorders.",
-    image: "/image/pages_img/Early-Disease-Detection.jpg",
-    link: "/portfolio/early-disease-detection-ai"
+      "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
+    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    link: "/portfolio/ai-personal-finance-advisor"
   },
   {
-    title: "Radiology Report Generator",
+    title: "AI-Powered Electronic Health Record",
     description:
-      "Automatically analyzes X-rays, MRIs, or CT scans to generate accurate radiology reports.",
-    image: "/image/pages_img/Medical-Image-Analysis.webp",
-    link: "/portfolio/radiology-report-generator"
+      "Streamline healthcare data management and improve patient outcomes with AI-powered EHR systems.",
+    image: "/image/Portfolio-img/ai-powered-ehr.jpg",
+    link: "/portfolio/ai-powered-electronic-health-record",
+    heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
   },
   {
-    title: "Remote Patient Monitoring",
+    title: "AI Medical Imaging Assistant",
     description:
-      "Wearables and sensors continuously track vital signs and alert healthcare providers to abnormalities.",
-    image: "/image/pages_img/remote-patient-monitoring.jpg",
-    link: "/portfolio/remote-patient-monitoring"
+      "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
+    image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
+    link: "/portfolio/ai-medical-imaging-assistant"
   },
   {
-    title: "Personalized Wellness AI",
+    title: "AI Product Recommendation Engine",
     description:
-      "AI-driven meditation, stress management, and wellness programs tailored to individual patient needs.",
-    image: "/image/pages_img/wellness-personalized.jpg",
-    link: "/portfolio/personalized-wellness-ai"
+      "Personalized product recommendations powered by user behavior, purchase history, and real-time context for higher conversions.",
+    image: "/image/Portfolio-img/ai-product-recommendation-engine.jpg",
+    link: "/portfolio/ai-product-recommendation-engine"
   },
   {
-    title: "CBT Therapy AI",
+    title: "AI Demand Forecasting System",
     description:
-      "AI-powered Cognitive Behavioral Therapy applications guide users through mental health exercises and track progress.",
-    image: "/image/pages_img/cbt-therapy.jpg",
-    link: "/portfolio/cbt-therapy-ai"
+      "Predictive models forecast demand across SKUs, locations, and time to optimize inventory, pricing, and supply chain decisions.",
+    image: "/image/Portfolio-img/ai-demand-forecasting-system.jpg",
+    link: "/portfolio/ai-demand-forecasting-system"
   },
   {
-    title: "Genomic Risk Analysis",
+    title: "AI Personalized Learning Platform",
     description:
-      "AI analyzes genetic data to identify disease susceptibility and provide personalized preventive care.",
-    image: "/image/pages_img/genomic-risk.jpg",
-    link: "/portfolio/genomic-risk-analysis"
+      "Adaptive learning experiences that dynamically adjust content difficulty and pacing to each learner’s performance.",
+    image: "/image/Portfolio-img/ai-personalized-learning-platform.jpg",
+    link: "/portfolio/ai-personalized-learning-platform"
   },
   {
-    title: "Precision Medicine Support",
+    title: "AI Automated Grading System",
     description:
-      "AI predicts patient-specific treatment plans using genetic and molecular data.",
-    image: "/image/pages_img/Personalized-Medicine.png",
-    link: "/portfolio/precision-medicine-support"
+      "Automated evaluation of assignments, quizzes, and free‑text answers with explainable scoring and instant feedback.",
+    image: "/image/Portfolio-img/ai-automated-grading-system.jpg",
+    link: "/portfolio/ai-automated-grading-system"
   },
   {
-    title: "Drug Discovery & Molecule Prediction AI",
+    title: "AI Personal Fitness Coach",
     description:
-      "AI predicts molecular structures and identifies promising drug candidates faster for research labs.",
-    image: "/image/pages_img/DrugDiscover.jpg",
-    link: "/portfolio/drug-discovery-ai"
+      "Computer vision and analytics track workouts, posture, and progress to deliver personalized coaching and training plans.",
+    image: "/image/Portfolio-img/ai-personal-fitness-coach.jpg",
+    link: "/portfolio/ai-personal-fitness-coach"
   },
   {
-    title: "Healthcare IoT & Smart Devices",
+    title: "AI Nutrition Planner",
     description:
-      "AI processes IoT medical device data for actionable insights and real-time hospital decision-making.",
-    image: "/image/pages_img/healthcare-iot.jpg",
-    link: "/portfolio/healthcare-iot-smart-devices"
+      "Meal plans tailored to health goals, dietary restrictions, and biometrics, with continuous AI optimization.",
+    image: "/image/Portfolio-img/ai-nutrition-planner.jpg",
+    link: "/portfolio/ai-nutrition-planner"
   },
   {
-    title: "Healthcare Workflow Automation",
+    title: "AI Contract Analysis System",
     description:
-      "AI automates administrative tasks, patient scheduling, and documentation to reduce staff burden.",
-    image: "/image/pages_img/workflow-automation.jpg",
-    link: "/portfolio/healthcare-workflow-automation"
+      "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
+    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
+    link: "/portfolio/ai-contract-analysis-system"
   },
   {
-    title: "AI Chatbots for Patient Support",
+    title: "AI Legal Research Assistant",
     description:
-      "Intelligent AI chatbots handle inquiries, schedule appointments, and provide 24/7 patient assistance.",
-    image: "/image/pages_img/ai-chatbots-hospital.jpg",
-    link: "/portfolio/ai-chatbots-patient-support"
+      "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
+    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
+    link: "/portfolio/ai-legal-research-assistant"
   },
   {
-    title: "Federated Privacy Compliance",
+    title: "AI Robo-Advisor",
     description:
-      "Privacy-preserving AI trains models across institutions securely without sharing sensitive patient data.",
-    image: "/image/pages_img/Secure-Data-Sharing.jpg",
-    link: "/portfolio/federated-privacy-compliance"
+      "Automated portfolio allocation and rebalancing driven by risk profiles, goals, and real-time market signals.",
+    image: "/image/Portfolio-img/ai-robo-advisor.jpg",
+    link: "/portfolio/ai-robo-advisor"
   },
   {
-    title: "Medical Anomaly Detection",
+    title: "AI Portfolio Risk Analyzer",
     description:
-      "AI identifies subtle anomalies in medical imaging or patient data that might be missed by human review.",
-    image: "/image/pages_img/anomaly-detection-imaging.jpg",
-    link: "/portfolio/medical-anomaly-detection"
+      "Scenario analysis, stress testing, and VaR-style insights to quantify and manage portfolio risk.",
+    image: "/image/Portfolio-img/ai-portfolio-risk-analyzer.jpg",
+    link: "/portfolio/ai-portfolio-risk-analyzer"
+  },
+  {
+    title: "AI DevOps Monitoring Assistant",
+    description:
+      "Intelligent alerts and anomaly detection across logs, metrics, and traces to prevent outages and reduce MTTR.",
+    image: "/image/Portfolio-img/ai-devops-monitoring-assistant.jpg",
+    link: "/portfolio/ai-devops-monitoring-assistant"
+  },
+  {
+    title: "AI IT Support Chatbot",
+    description:
+      "Self-service IT support that resolves tickets, answers questions, and integrates with enterprise ITSM tools.",
+    image: "/image/Portfolio-img/ai-it-support-chatbot.jpg",
+    link: "/portfolio/ai-it-support-chatbot"
   }
 ];
 
@@ -140,9 +156,12 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* Hero Section - Styled like ChatbotDevelopment hero */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
+      {/* Hero Section - gradient overlay with portfolio background image */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="w-full h-full bg-[url('/image/Portfolio-img/ai-fraud-detection.jpg')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95" />
+        </div>
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
           <div className="flex-1 text-white space-y-6 sm:space-y-8">
             <h1 id="portfolio-heading" className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
@@ -162,21 +181,23 @@ const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      {/* Main Content Section */}
-      <section className="py-16 ai-section min-h-screen relative overflow-hidden">
-        {/* AI Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-          <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
-        </div>
+      {/* Main Content Section - white background, cards keep gradient accents */}
+      <section className="py-16 bg-white min-h-screen relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 mt-8 justify-center">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="heading-4 font-semibold text-gray-900">
+              Real-world AI case studies
+            </h2>
+            <p className="body text-gray-700 mt-3">
+              Browse a curated selection of AI products we can help you build—from concept to production-ready systems.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 mt-10 justify-center">
             {projects.map((project, idx) => {
               const isVisible = visibleStates[idx];
               return (
                 <div
-                  key={idx}
+                  key={project.link}
                   ref={(el) => (cardRefs.current[idx] = el)}
                   data-index={idx}
                   className={`group bg-gradient-to-br from-indigo-500 to-fuchsia-500 p-[1px] rounded-2xl transition-all duration-700 ease-out will-change-transform ${
@@ -194,10 +215,10 @@ const Portfolio: React.FC = () => {
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    <h3 className="mt-5 text-xl md:text-2xl font-bold text-gray-900 tracking-tight transition-colors duration-300 group-hover:text-indigo-700">
+                    <h3 className="mt-5 text-base md:text-lg font-bold text-gray-900 tracking-tight transition-colors duration-300 group-hover:text-indigo-700">
                       {project.title}
                     </h3>
-                    <p className="text-gray-700 mt-2 mb-6 text-base md:text-lg leading-relaxed transition-colors duration-300 group-hover:text-gray-800">
+                    <p className="text-gray-700 mt-2 mb-6 text-xs md:text-sm leading-relaxed transition-colors duration-300 group-hover:text-gray-800">
                       {project.description}
                     </p>
                     <Link
@@ -228,16 +249,7 @@ const Portfolio: React.FC = () => {
 
       {/* Component-scoped styles for subtle animations */}
       <style>{`
-        .animate-blob {
-          animation: blob 8s ease-in-out infinite;
-        }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-        @keyframes blob {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(20px, -12px) scale(1.05); }
-          66% { transform: translate(-18px, 12px) scale(0.98); }
-        }
+        /* Reserved for optional, component-scoped micro-animations */
       `}</style>
     </>
   );

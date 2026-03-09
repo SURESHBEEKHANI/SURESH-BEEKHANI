@@ -73,22 +73,24 @@ const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 const Blogs = lazy(() => import("./pages-Blogs/Blogs"));
 const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
-// Portfolio - Healthcare AI Solutions
+// Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
-const PatientDiagnosticSystem = lazy(() => import("./Pages-Portfolio/patient-diagnostic-system.tsx"));
-const EarlyDiseaseDetectionAI = lazy(() => import("./Pages-Portfolio/early-disease-detection-ai.tsx"));
-const RadiologyReportGenerator = lazy(() => import("./Pages-Portfolio/radiology-report-generator.tsx"));
-const RemotePatientMonitoring = lazy(() => import("./Pages-Portfolio/remote-patient-monitoring.tsx"));
-const PersonalizedWellnessAI = lazy(() => import("./Pages-Portfolio/personalized-wellness-ai.tsx"));
-const CBTTherapyAI = lazy(() => import("./Pages-Portfolio/cbt-therapy-ai.tsx"));
-const GenomicRiskAnalysis = lazy(() => import("./Pages-Portfolio/genomic-risk-analysis.tsx"));
-const PrecisionMedicineSupport = lazy(() => import("./Pages-Portfolio/precision-medicine-support.tsx"));
-const DrugDiscoveryAI = lazy(() => import("./Pages-Portfolio/drug-discovery-ai.tsx"));
-const HealthcareIoTSmartDevices = lazy(() => import("./Pages-Portfolio/healthcare-iot-smart-devices.tsx"));
-const HealthcareWorkflowAutomation = lazy(() => import("./Pages-Portfolio/healthcare-workflow-automation.tsx"));
-const AIChatbotsPatientSupport = lazy(() => import("./Pages-Portfolio/ai-chatbots-patient-support.tsx"));
-const FederatedPrivacyCompliance = lazy(() => import("./Pages-Portfolio/federated-privacy-compliance.tsx"));
-const MedicalAnomalyDetection = lazy(() => import("./Pages-Portfolio/medical-anomaly-detection.tsx"));
+const AIFraudDetectionSystem = lazy(() => import("./Pages-Portfolio/ai-fraud-detection-system"));
+const AIPersonalFinanceAdvisor = lazy(() => import("./Pages-Portfolio/ai-personal-finance-advisor"));
+const AIPoweredElectronicHealthRecord = lazy(() => import("./Pages-Portfolio/AI-Powered-Electronic Health Record"));
+const AIMedicalImagingAssistant = lazy(() => import("./Pages-Portfolio/ai-medical-imaging-assistant"));
+const AIProductRecommendationEngine = lazy(() => import("./Pages-Portfolio/ai-product-recommendation-engine"));
+const AIDemandForecastingSystem = lazy(() => import("./Pages-Portfolio/ai-demand-forecasting-system"));
+const AIPersonalizedLearningPlatform = lazy(() => import("./Pages-Portfolio/ai-personalized-learning-platform"));
+const AIAutomatedGradingSystem = lazy(() => import("./Pages-Portfolio/ai-automated-grading-system"));
+const AIPersonalFitnessCoach = lazy(() => import("./Pages-Portfolio/ai-personal-fitness-coach"));
+const AINutritionPlanner = lazy(() => import("./Pages-Portfolio/ai-nutrition-planner"));
+const AIContractAnalysisSystem = lazy(() => import("./Pages-Portfolio/ai-contract-analysis-system"));
+const AILegalResearchAssistant = lazy(() => import("./Pages-Portfolio/ai-legal-research-assistant"));
+const AIRoboAdvisor = lazy(() => import("./Pages-Portfolio/ai-robo-advisor"));
+const AIPortfolioRiskAnalyzer = lazy(() => import("./Pages-Portfolio/ai-portfolio-risk-analyzer"));
+const AIDevOpsMonitoringAssistant = lazy(() => import("./Pages-Portfolio/ai-devops-monitoring-assistant"));
+const AIITSupportChatbot = lazy(() => import("./Pages-Portfolio/ai-it-support-chatbot"));
 
 // ⚠️ Error Boundary
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
@@ -175,22 +177,24 @@ const AppContent = () => {
         <Route path="/ai-development" element={<AIDevelopment />} />
         <Route path="/ai-automation" element={<AIAutomation />} />
 
-        {/* Portfolio - Healthcare AI Solutions */}
+        {/* Portfolio */}
         <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/portfolio/patient-diagnostic-system" element={<PatientDiagnosticSystem />} />
-        <Route path="/portfolio/early-disease-detection-ai" element={<EarlyDiseaseDetectionAI />} />
-        <Route path="/portfolio/radiology-report-generator" element={<RadiologyReportGenerator />} />
-        <Route path="/portfolio/remote-patient-monitoring" element={<RemotePatientMonitoring />} />
-        <Route path="/portfolio/personalized-wellness-ai" element={<PersonalizedWellnessAI />} />
-        <Route path="/portfolio/cbt-therapy-ai" element={<CBTTherapyAI />} />
-        <Route path="/portfolio/genomic-risk-analysis" element={<GenomicRiskAnalysis />} />
-        <Route path="/portfolio/precision-medicine-support" element={<PrecisionMedicineSupport />} />
-        <Route path="/portfolio/drug-discovery-ai" element={<DrugDiscoveryAI />} />
-        <Route path="/portfolio/healthcare-iot-smart-devices" element={<HealthcareIoTSmartDevices />} />
-        <Route path="/portfolio/healthcare-workflow-automation" element={<HealthcareWorkflowAutomation />} />
-        <Route path="/portfolio/ai-chatbots-patient-support" element={<AIChatbotsPatientSupport />} />
-        <Route path="/portfolio/federated-privacy-compliance" element={<FederatedPrivacyCompliance />} />
-        <Route path="/portfolio/medical-anomaly-detection" element={<MedicalAnomalyDetection />} />
+        <Route path="/portfolio/ai-fraud-detection-system" element={<AIFraudDetectionSystem />} />
+        <Route path="/portfolio/ai-personal-finance-advisor" element={<AIPersonalFinanceAdvisor />} />
+        <Route path="/portfolio/ai-powered-electronic-health-record" element={<AIPoweredElectronicHealthRecord />} />
+        <Route path="/portfolio/ai-medical-imaging-assistant" element={<AIMedicalImagingAssistant />} />
+        <Route path="/portfolio/ai-product-recommendation-engine" element={<AIProductRecommendationEngine />} />
+        <Route path="/portfolio/ai-demand-forecasting-system" element={<AIDemandForecastingSystem />} />
+        <Route path="/portfolio/ai-personalized-learning-platform" element={<AIPersonalizedLearningPlatform />} />
+        <Route path="/portfolio/ai-automated-grading-system" element={<AIAutomatedGradingSystem />} />
+        <Route path="/portfolio/ai-personal-fitness-coach" element={<AIPersonalFitnessCoach />} />
+        <Route path="/portfolio/ai-nutrition-planner" element={<AINutritionPlanner />} />
+        <Route path="/portfolio/ai-contract-analysis-system" element={<AIContractAnalysisSystem />} />
+        <Route path="/portfolio/ai-legal-research-assistant" element={<AILegalResearchAssistant />} />
+        <Route path="/portfolio/ai-robo-advisor" element={<AIRoboAdvisor />} />
+        <Route path="/portfolio/ai-portfolio-risk-analyzer" element={<AIPortfolioRiskAnalyzer />} />
+        <Route path="/portfolio/ai-devops-monitoring-assistant" element={<AIDevOpsMonitoringAssistant />} />
+        <Route path="/portfolio/ai-it-support-chatbot" element={<AIITSupportChatbot />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

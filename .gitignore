@@ -26,6 +26,9 @@ lerna-debug.log*
 !.env.example
 *.local
 
+# Ignore additional environment files
+.env.*
+
 # Editor directories and files
 .vscode/
 .idea/
