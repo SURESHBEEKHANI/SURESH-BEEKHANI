@@ -14,14 +14,10 @@ const AIMedicalImagingAssistant: React.FC = () => {
     company: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,37 +29,50 @@ const AIMedicalImagingAssistant: React.FC = () => {
     }
 
     setIsSubmitting(true);
-    setError("");
 
     try {
-      const { error: insertError } = await supabase.from("case_study_downloads").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          job_title: formData.jobTitle,
-          company: formData.company,
-          case_study: "ai-medical-imaging-assistant",
-        },
-      ]);
+      // Try saving details in Supabase
+      const { error } = await supabase
+        .from("case_study_downloads")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            job_title: formData.jobTitle || null,
+            company: formData.company || null,
+            case_study: "ai-medical-imaging-assistant",
+          },
+        ]);
 
-      if (insertError) {
-        console.error("Supabase Insert Error:", insertError);
-        toast.error("Download started, but we could not save your details.");
-        setError(insertError.message || "Something went wrong");
+      if (error) {
+        console.error("Supabase Insert Error:", error.message);
+        toast.error(
+          "Download started, but we could not save your details."
+        );
       } else {
-        toast.success("Thank you! Your details were saved and the PDF download has started.");
-        window.open(
-          "https://drive.google.com/uc?export=download&id=YOUR_MEDICAL_IMAGING_CASE_STUDY_ID",
-          "_blank"
+        toast.success(
+          "Thank you! Your details were saved and the PDF download has started."
         );
       }
     } catch (err: any) {
       console.error("Unexpected Error:", err);
       toast.error("Download started, but we could not save your details.");
-      setError(err.message || "Something went wrong");
     } finally {
       setIsSubmitting(false);
+      // Always start download, even if saving fails
+      window.open(
+        "https://drive.google.com/file/d/1aR7qBfUMhsncq0hpwnf7iQj4o8BwkZ1s/view?usp=sharing",
+        "_blank"
+      );
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        jobTitle: "",
+        company: "",
+      });
     }
   };
 
@@ -80,8 +89,8 @@ const AIMedicalImagingAssistant: React.FC = () => {
               AI Medical Imaging Assistant
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Computer vision models that analyze radiology images to surface anomalies, prioritize worklists, and help
-              radiologists deliver faster, more accurate diagnosis.
+              Computer vision models that analyze radiology images to surface anomalies, prioritize worklists, and
+              help radiologists deliver faster, more accurate diagnosis.
             </p>
           </div>
         </div>
@@ -127,9 +136,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
           <div className="bg-[#0a0435] text-white rounded-2xl shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-                Download Case Study Now!
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
               <p className="text-sm text-indigo-100 mb-6">
                 Fill in your details to access the clinical use cases, architecture overview, and real-world outcome
                 metrics.
@@ -146,6 +153,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       onChange={handleChange}
                       className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
                       placeholder="Enter your name"
+                      required
                     />
                   </div>
                   <div>
@@ -211,7 +219,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                     <a href="/privacy" className="underline underline-offset-2 hover:text-fuchsia-300">
                       Privacy Policy
                     </a>{" "}
-                    and Terms &amp; Conditions.
+                    and Terms & Conditions.
                   </label>
                 </div>
 
@@ -232,13 +240,6 @@ const AIMedicalImagingAssistant: React.FC = () => {
                     </>
                   )}
                 </button>
-
-                {error && (
-                  <div className="mt-4 text-center text-red-500">
-                    <p>Something went wrong</p>
-                    <p>Please try refreshing the page.</p>
-                  </div>
-                )}
               </form>
             </div>
           </div>
@@ -251,4 +252,3 @@ const AIMedicalImagingAssistant: React.FC = () => {
 };
 
 export default AIMedicalImagingAssistant;
-
