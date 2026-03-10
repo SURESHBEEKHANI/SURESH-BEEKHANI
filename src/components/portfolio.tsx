@@ -5,21 +5,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const projects = [
-  {
-    title: "AI Fraud Detection System",
-    description:
-      "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
-    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
-    link: "/portfolio/ai-fraud-detection-system",
-    heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
-  },
-  {
-    title: "AI Personal Finance Advisor",
-    description:
-      "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
-    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
-    link: "/portfolio/ai-personal-finance-advisor"
-  },
+
   {
     title: "AI-Powered Electronic Health Record",
     description:
@@ -34,6 +20,20 @@ const projects = [
       "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
     image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
     link: "/portfolio/ai-medical-imaging-assistant"
+  },
+  {
+    title: "AI Contract Analysis System",
+    description:
+      "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
+    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
+    link: "/portfolio/ai-contract-analysis-system"
+  },
+  {
+    title: "AI Legal Research Assistant",
+    description:
+      "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
+    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
+    link: "/portfolio/ai-legal-research-assistant"
   },
   {
     title: "AI Product Recommendation Engine",
@@ -78,20 +78,6 @@ const projects = [
     link: "/portfolio/ai-nutrition-planner"
   },
   {
-    title: "AI Contract Analysis System",
-    description:
-      "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
-    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
-    link: "/portfolio/ai-contract-analysis-system"
-  },
-  {
-    title: "AI Legal Research Assistant",
-    description:
-      "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
-    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
-    link: "/portfolio/ai-legal-research-assistant"
-  },
-  {
     title: "AI Robo-Advisor",
     description:
       "Automated portfolio allocation and rebalancing driven by risk profiles, goals, and real-time market signals.",
@@ -104,6 +90,21 @@ const projects = [
       "Scenario analysis, stress testing, and VaR-style insights to quantify and manage portfolio risk.",
     image: "/image/Portfolio-img/ai-portfolio-risk-analyzer.jpg",
     link: "/portfolio/ai-portfolio-risk-analyzer"
+  },
+  {
+    title: "AI Fraud Detection System",
+    description:
+      "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
+    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
+    link: "/portfolio/ai-fraud-detection-system",
+    heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
+  },
+  {
+    title: "AI Personal Finance Advisor",
+    description:
+      "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
+    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    link: "/portfolio/ai-personal-finance-advisor"
   },
   {
     title: "AI DevOps Monitoring Assistant",
