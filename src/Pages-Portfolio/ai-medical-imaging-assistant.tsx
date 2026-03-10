@@ -14,6 +14,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
     company: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,12 +24,15 @@ const AIMedicalImagingAssistant: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let saveFailed = false;
+
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
     }
 
     setIsSubmitting(true);
+    setError("");
 
     try {
       // Try saving details in Supabase
@@ -50,6 +54,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
         toast.error(
           "Download started, but we could not save your details."
         );
+        saveFailed = true;
       } else {
         toast.success(
           "Thank you! Your details were saved and the PDF download has started."
@@ -58,11 +63,15 @@ const AIMedicalImagingAssistant: React.FC = () => {
     } catch (err: any) {
       console.error("Unexpected Error:", err);
       toast.error("Download started, but we could not save your details.");
+      saveFailed = true;
     } finally {
       setIsSubmitting(false);
+      if (saveFailed) {
+        setError("Download started, but we could not save your details.");
+      }
       // Always start download, even if saving fails
       window.open(
-        "https://drive.google.com/file/d/1aR7qBfUMhsncq0hpwnf7iQj4o8BwkZ1s/view?usp=sharing",
+        "https://drive.google.com/uc?export=download&id=1aR7qBfUMhsncq0hpwnf7iQj4o8BwkZ1s",
         "_blank"
       );
       // Reset form
@@ -240,6 +249,12 @@ const AIMedicalImagingAssistant: React.FC = () => {
                     </>
                   )}
                 </button>
+
+                {error && (
+                  <div className="mt-4 text-center text-red-500">
+                    <p>{error}</p>
+                  </div>
+                )}
               </form>
             </div>
           </div>

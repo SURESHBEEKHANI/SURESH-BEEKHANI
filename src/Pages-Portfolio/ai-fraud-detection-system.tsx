@@ -27,6 +27,8 @@ const AIFraudDetectionSystem: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let saveFailed = false;
+
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
@@ -50,20 +52,23 @@ const AIFraudDetectionSystem: React.FC = () => {
       if (insertError) {
         console.error("Supabase Insert Error:", insertError);
         toast.error("Download started, but we could not save your details.");
-        setError(insertError.message || "Something went wrong");
+        saveFailed = true;
       } else {
         toast.success("Thank you! Your details were saved and the PDF download has started.");
-        window.open(
-          "https://drive.google.com/uc?export=download&id=1w12L8u8Po182QWNO2oitNlVtm5npMJgE",
-          "_blank"
-        );
       }
     } catch (err: any) {
       console.error("Unexpected Error:", err);
       toast.error("Download started, but we could not save your details.");
-      setError(err.message || "Something went wrong");
+      saveFailed = true;
     } finally {
       setIsSubmitting(false);
+      if (saveFailed) {
+        setError("Download started, but we could not save your details.");
+      }
+      window.open(
+        "https://drive.google.com/uc?export=download&id=1fqKQhwmcWUAiWjWMQfknrE49jg8-nxDv",
+        "_blank"
+      );
     }
   };
 
@@ -233,8 +238,7 @@ const AIFraudDetectionSystem: React.FC = () => {
 
                 {error && (
                   <div className="mt-4 text-center text-red-500">
-                    <p>Something went wrong</p>
-                    <p>Please try refreshing the page.</p>
+                    <p>{error}</p>
                   </div>
                 )}
               </form>

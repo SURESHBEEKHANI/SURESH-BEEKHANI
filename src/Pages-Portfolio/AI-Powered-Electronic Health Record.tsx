@@ -167,7 +167,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
-                      placeholder="CTO, Head of IT..."
+                      placeholder="CTO, Head of IT.."
                     />
                   </div>
                 </div>
