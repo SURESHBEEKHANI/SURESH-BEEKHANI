@@ -1,3 +1,4 @@
+// src/components/Contact.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, MapPin, Phone, Send, Clock, MessageSquare, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { supabase } from '@/supabaseClient'; // ✅ Import Supabase client
+import { supabase } from '@/supabaseClient'; // Supabase client
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // ✅ Insert form data into Supabase table "messages"
+      // Insert form data into Supabase table "messages"
       const { error } = await supabase.from('messages').insert([
         {
           name: formData.name,
@@ -71,11 +72,13 @@ const Contact = () => {
 
       if (error) throw error;
 
+      // Show success message
       toast.success('Message sent successfully!', {
         description: 'Your message has been saved for our team’s review.',
         duration: 5000,
       });
 
+      // Reset form fields
       setFormData({
         name: '',
         email: '',
@@ -83,6 +86,7 @@ const Contact = () => {
         subject: '',
         message: ''
       });
+
     } catch (error) {
       console.error(error);
       toast.error('Something went wrong. Please try again.');
@@ -135,12 +139,13 @@ const Contact = () => {
 
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
-      {/* AI Background decorative elements */}
+      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
         <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
       </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
@@ -181,7 +186,6 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="contact-input"
                         placeholder="Your name"
                         required
                       />
@@ -193,7 +197,6 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="contact-input"
                         placeholder="your.email@example.com"
                         required
                       />
@@ -208,7 +211,6 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="contact-input"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -219,7 +221,6 @@ const Contact = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleInputChange}
-                        className="contact-input"
                         placeholder="Project inquiry"
                         required
                       />
@@ -232,7 +233,7 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="contact-input min-h-[120px] resize-none"
+                      className="min-h-[120px] resize-none"
                       placeholder="Tell me about your project..."
                       required
                     />
