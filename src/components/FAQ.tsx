@@ -170,24 +170,6 @@ const FAQ = () => {
             </div>
           ))}
         </div>
-
-        <div className="mt-8 text-center">
-          <p className="text-foreground/70 mb-3 text-sm">
-            Still have questions? I'm here to help!
-          </p>
-          <Button
-            onClick={() => {
-              const contactSection = document.getElementById('contact');
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="text-white text-sm hover:shadow-xl transition-all duration-300"
-            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
-          >
-            Get In Touch
-          </Button>
-        </div>
       </div>
     </section>
   );
