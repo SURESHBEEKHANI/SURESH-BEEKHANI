@@ -9,29 +9,125 @@ const USE_CASES_DATA = [
   { id: 1, title: "AI-Powered Development Tools", description: "Code generation, automated testing, and intelligent debugging to accelerate development by 40%.", image: "/image/pages_img/workflow-automation.jpg", alt: "Dev Tools" },
   { id: 2, title: "Intelligent IT Support", description: "AI chatbots for ticketing, incident resolution, and 24/7 IT helpdesk automation.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "IT Support" },
   { id: 3, title: "DevOps & Infrastructure", description: "Predictive monitoring, automated scaling, and anomaly detection for reliable operations.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "DevOps" },
-  { id: 4, title: "Enterprise Software Solutions", description: "Custom AI integrations for ERP, CRM, and business systems—driving efficiency and insights.", image: "/image/pages_img/patient-scheduling.jpg", alt: "Enterprise Software" }
+  { id: 4, title: "Enterprise Software Solutions", description: "Custom AI integrations for ERP, CRM, and business systems—driving efficiency and insights.", image: "/image/pages_img/patient-scheduling.jpg", alt: "Enterprise Software" },
+  { id: 5, title: "Code Quality & Security", description: "AI-powered code review, vulnerability detection, and automated security testing for safer software.", image: "/image/pages_img/Automated-Compliance-Monitoring.jpg", alt: "Code Security" },
+  { id: 6, title: "Intelligent Documentation", description: "Auto-generate technical documentation, API specs, and code comments with AI assistance.", image: "/image/pages_img/AIconten.jpg", alt: "Documentation" }
 ];
 
 const PORTFOLIO_DATA = [
-  { id: 1, title: "Healthcare Workflow Automation", description: "Enterprise workflow automation and process optimization for IT operations.", image: "/image/pages_img/workflow-automation.jpg", link: "/portfolio/healthcare-workflow-automation" },
-  { id: 2, title: "AI Chatbots for Patient Support", description: "Intelligent IT support chatbots for helpdesk and customer success.", image: "/image/pages_img/ai-chatbots-hospital.jpg", link: "/portfolio/ai-chatbots-patient-support" },
-  { id: 3, title: "Medical Anomaly Detection", description: "Anomaly detection and predictive monitoring for IT infrastructure.", image: "/image/pages_img/Early-Disease-Detection.jpg", link: "/portfolio/medical-anomaly-detection" }
+  {
+    title: "AI-Powered Electronic Health Record",
+    description: "Streamline healthcare data management and improve patient outcomes with AI-powered EHR systems.",
+    image: "/image/Portfolio-img/ai-powered-ehr.jpg",
+    link: "/portfolio/ai-powered-electronic-health-record"
+  },
+  {
+    title: "AI Medical Imaging Assistant",
+    description: "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
+    image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
+    link: "/portfolio/ai-medical-imaging-assistant"
+  },
+  {
+    title: "AI Contract Analysis System",
+    description: "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
+    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
+    link: "/portfolio/ai-contract-analysis-system"
+  },
+  {
+    title: "AI Legal Research Assistant",
+    description: "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
+    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
+    link: "/portfolio/ai-legal-research-assistant"
+  },
+  {
+    title: "AI Product Recommendation Engine",
+    description: "Personalized product recommendations powered by user behavior, purchase history, and real-time context for higher conversions.",
+    image: "/image/Portfolio-img/ai-product-recommendation-engine.jpg",
+    link: "/portfolio/ai-product-recommendation-engine"
+  },
+  {
+    title: "AI Demand Forecasting System",
+    description: "Predictive models forecast demand across SKUs, locations, and time to optimize inventory, pricing, and supply chain decisions.",
+    image: "/image/Portfolio-img/ai-demand-forecasting-system.jpg",
+    link: "/portfolio/ai-demand-forecasting-system"
+  },
+  {
+    title: "AI Personalized Learning Platform",
+    description: "Adaptive learning experiences that dynamically adjust content difficulty and pacing to each learner's performance.",
+    image: "/image/Portfolio-img/ai-personalized-learning-platform.jpg",
+    link: "/portfolio/ai-personalized-learning-platform"
+  },
+  {
+    title: "AI Automated Grading System",
+    description: "Automated evaluation of assignments, quizzes, and free‑text answers with explainable scoring and instant feedback.",
+    image: "/image/Portfolio-img/ai-automated-grading-system.jpg",
+    link: "/portfolio/ai-automated-grading-system"
+  },
+  {
+    title: "AI Personal Fitness Coach",
+    description: "Computer vision and analytics track workouts, posture, and progress to deliver personalized coaching and training plans.",
+    image: "/image/Portfolio-img/ai-personal-fitness-coach.jpg",
+    link: "/portfolio/ai-personal-fitness-coach"
+  },
+  {
+    title: "AI Nutrition Planner",
+    description: "Meal plans tailored to health goals, dietary restrictions, and biometrics, with continuous AI optimization.",
+    image: "/image/Portfolio-img/ai-nutrition-planner.jpg",
+    link: "/portfolio/ai-nutrition-planner"
+  },
+  {
+    title: "AI Robo-Advisor",
+    description: "Automated portfolio allocation and rebalancing driven by risk profiles, goals, and real-time market signals.",
+    image: "/image/Portfolio-img/ai-robo-advisor.jpg",
+    link: "/portfolio/ai-robo-advisor"
+  },
+  {
+    title: "AI Portfolio Risk Analyzer",
+    description: "Scenario analysis, stress testing, and VaR-style insights to quantify and manage portfolio risk.",
+    image: "/image/Portfolio-img/ai-portfolio-risk-analyzer.jpg",
+    link: "/portfolio/ai-portfolio-risk-analyzer"
+  },
+  {
+    title: "AI Fraud Detection System",
+    description: "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
+    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
+    link: "/portfolio/ai-fraud-detection-system"
+  },
+  {
+    title: "AI Personal Finance Advisor",
+    description: "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
+    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    link: "/portfolio/ai-personal-finance-advisor"
+  },
+  {
+    title: "AI DevOps Monitoring Assistant",
+    description: "Intelligent alerts and anomaly detection across logs, metrics, and traces to prevent outages and reduce MTTR.",
+    image: "/image/Portfolio-img/ai-devops-monitoring-assistant.jpg",
+    link: "/portfolio/ai-devops-monitoring-assistant"
+  },
+  {
+    title: "AI IT Support Chatbot",
+    description: "Self-service IT support that resolves tickets, answers questions, and integrates with enterprise ITSM tools.",
+    image: "/image/Portfolio-img/ai-it-support-chatbot.jpg",
+    link: "/portfolio/ai-it-support-chatbot"
+  }
 ];
 
 const FAQ_DATA = [
   { id: 1, question: "How does AI enhance IT and software development?", answer: "AI accelerates development with code assist, automated testing, and intelligent operations. IT teams see 30-50% productivity gains and improved system reliability." },
   { id: 2, question: "Can AI solutions integrate with existing tech stacks?", answer: "Yes, we build solutions that integrate with your current tools—cloud providers, CI/CD, ticketing systems, and enterprise software." },
-  { id: 3, question: "What types of technology solutions do you build?", answer: "We build custom AI solutions: chatbots, automation, predictive analytics, computer vision, NLP, and integrations for ERP, CRM, and internal systems." }
+  { id: 3, question: "What types of technology solutions do you build?", answer: "We build custom AI solutions: chatbots, automation, predictive analytics, computer vision, NLP, and integrations for ERP, CRM, and internal systems." },
+  { id: 4, question: "What is the ROI of implementing AI in IT operations?", answer: "IT teams typically see 30-50% reduction in incident response time, 40-60% decrease in manual tasks, and significant cost savings through automation. Most implementations achieve ROI within 4-8 months." },
+  { id: 5, question: "How do you ensure AI solutions are secure and compliant?", answer: "We implement enterprise-grade security, SOC 2 compliance, end-to-end encryption, and strict access controls. All solutions undergo security audits and penetration testing before deployment." }
 ];
 
 const HeroSection: React.FC = React.memo(() => (
-  <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-sky-900 via-blue-800 to-sky-900 overflow-hidden">
+  <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/workflow-automation.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">IT & Software</h1>
         <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform your technology stack with AI-powered development tools, intelligent IT support, DevOps automation, and enterprise software solutions. Scale smarter.</p>
-        <a href="/#contact" className="inline-block bg-gradient-to-r from-sky-500 to-blue-700 hover:from-sky-600 hover:to-blue-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300">Talk to an Expert</a>
       </div>
     </div>
   </section>
@@ -50,7 +146,7 @@ const ITSoftware: React.FC = () => {
   const checkScrollButtons = useCallback(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      setCanScrollLeft(container.scrollLeft > 0);
+      setCanScrollLeft(container.scrollLeft > 10);
       setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
     }
   }, []);
@@ -58,20 +154,31 @@ const ITSoftware: React.FC = () => {
   const scroll = useCallback((direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollAmount = 400;
-      const targetScroll = direction === 'left' ? container.scrollLeft - scrollAmount : container.scrollLeft + scrollAmount;
+      const cardWidth = 400;
+      const targetScroll = direction === 'left' 
+        ? Math.max(0, container.scrollLeft - cardWidth)
+        : Math.min(container.scrollWidth - container.clientWidth, container.scrollLeft + cardWidth);
       container.scrollTo({ left: targetScroll, behavior: 'smooth' });
       setIsAutoScrolling(false);
+      setTimeout(() => setIsAutoScrolling(true), 10000);
     }
   }, []);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container || !isAutoScrolling) return;
+    
     const autoScrollInterval = setInterval(() => {
-      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) container.scrollTo({ left: 0, behavior: 'smooth' });
-      else container.scrollTo({ left: container.scrollLeft + 400, behavior: 'smooth' });
-    }, 3000);
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const currentScroll = container.scrollLeft;
+      
+      if (currentScroll >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollTo({ left: currentScroll + 400, behavior: 'smooth' });
+      }
+    }, 4000);
+    
     return () => clearInterval(autoScrollInterval);
   }, [isAutoScrolling]);
 
@@ -85,51 +192,134 @@ const ITSoftware: React.FC = () => {
   }, [checkScrollButtons]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-violet-100">
       <Navbar />
       <HeroSection />
       <AnimatedCarousel useCases={useCases} title="IT & Software AI Solutions" subtitle="AI technology for modern software and IT" />
-      <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-sky-900 via-blue-800 to-sky-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">AI Portfolio Showcase</h2>
-            <p className="text-base text-gray-300 max-w-3xl mx-auto">Explore our AI solutions for IT and software</p>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 hero-bg relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-500 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16 sm:mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-lg">
+                Portfolio
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
+              Real-World AI Solutions
+            </h2>
+            <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Discover how we've transformed businesses across healthcare, finance, education, and more with cutting-edge AI technology
+            </p>
           </div>
-          <div className="relative">
-            <button onClick={() => scroll('left')} disabled={!canScrollLeft} className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-sky-900 p-3 rounded-full shadow-2xl transition-all duration-300 ${!canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''}`} aria-label="Scroll left"><ChevronLeft className="w-6 h-6" /></button>
-            <button onClick={() => scroll('right')} disabled={!canScrollRight} className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-sky-900 p-3 rounded-full shadow-2xl transition-all duration-300 ${!canScrollRight ? 'opacity-50 cursor-not-allowed' : ''}`} aria-label="Scroll right"><ChevronRight className="w-6 h-6" /></button>
-            <div ref={scrollContainerRef} className="overflow-x-auto pb-8 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} onMouseEnter={() => setIsAutoScrolling(false)} onMouseLeave={() => setIsAutoScrolling(true)}>
-              <div className="flex gap-6 px-4" style={{ width: 'max-content' }}>
-                {portfolioData.map((project) => (
-                  <div key={project.id} className="flex-shrink-0 w-80 sm:w-96 bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 border border-white/20">
-                    <div className="relative h-48 sm:h-56 overflow-hidden">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          
+          <div className="relative group">
+            {/* Navigation Buttons */}
+            <button 
+              onClick={() => scroll('left')} 
+              disabled={!canScrollLeft} 
+              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            
+            <button 
+              onClick={() => scroll('right')} 
+              disabled={!canScrollRight} 
+              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            
+            {/* Scroll Container */}
+            <div 
+              ref={scrollContainerRef} 
+              className="overflow-x-auto pb-8 scrollbar-hide scroll-smooth" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
+              onMouseEnter={() => setIsAutoScrolling(false)} 
+              onMouseLeave={() => setIsAutoScrolling(true)}
+              onTouchStart={() => setIsAutoScrolling(false)}
+            >
+              <div className="flex gap-6 sm:gap-8 px-4 sm:px-8" style={{ width: 'max-content' }}>
+                {portfolioData.map((project, idx) => (
+                  <div 
+                    key={project.link} 
+                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-white/20 hover:border-white/40 group/card transform hover:-translate-y-2"
+                  >
+                    <div className="relative h-52 sm:h-64 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     </div>
-                    <div className="p-6 space-y-4">
-                      <h3 className="text-base font-bold text-white">{project.title}</h3>
-                      <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">{project.description}</p>
-                      <Link to={project.link} className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow-lg transition-all duration-300 text-sm">View Case Study <ArrowRight className="w-4 h-4" /></Link>
+                    <div className="p-6 sm:p-7 space-y-4">
+                      <h3 className="text-base sm:text-lg font-bold text-white leading-tight group-hover/card:text-violet-200 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                      <Link 
+                        to={project.link} 
+                        className="inline-flex items-center gap-2 bg-white text-violet-900 hover:bg-violet-50 font-semibold px-5 py-2.5 rounded-lg shadow-lg transition-all duration-300 text-sm group/btn"
+                      >
+                        View Case Study 
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </Link>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            
+            {/* Scroll Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: Math.ceil(portfolioData.length / 3) }).map((_, idx) => (
+                <div 
+                  key={idx} 
+                  className="h-1.5 rounded-full bg-white/30 transition-all duration-300"
+                  style={{ width: idx === 0 ? '32px' : '8px' }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-            <div className="flex justify-center mb-2"><div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-sky-500 to-blue-700 rounded-full" /></div>
-            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">Common questions about AI in IT and software.</p>
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-block mb-4">
+              <span className="bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold border border-violet-200">
+                FAQ
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Everything you need to know about AI-powered IT solutions
+            </p>
           </div>
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4">
             {faqData.map((faq) => (
-              <details key={faq.id} className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-                <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-sky-700 transition-colors duration-200">{faq.question}<span className="ml-2 text-gray-900 group-hover:text-sky-700 group-open:hidden">+</span><span className="ml-2 text-gray-900 group-hover:text-sky-700 hidden group-open:inline">-</span></summary>
-                <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">{faq.answer}</div>
+              <details key={faq.id} className="bg-white rounded-xl shadow-md border border-gray-200 p-5 sm:p-6 group hover:shadow-lg transition-all duration-300">
+                <summary className="cursor-pointer font-semibold text-base sm:text-lg text-gray-900 flex items-center justify-between group-hover:text-violet-700 transition-colors duration-200">
+                  <span className="pr-4">{faq.question}</span>
+                  <span className="flex-shrink-0 ml-2 text-violet-600 group-hover:text-violet-700 group-open:rotate-45 transition-transform duration-300 text-2xl font-light">+</span>
+                </summary>
+                <div className="pt-4 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-gray-100 mt-4">
+                  {faq.answer}
+                </div>
               </details>
             ))}
           </div>

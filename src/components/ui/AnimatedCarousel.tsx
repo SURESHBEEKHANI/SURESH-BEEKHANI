@@ -41,102 +41,111 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
   const visibleItems = useCases.slice(currentIndex, currentIndex + itemsPerView);
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-cyan-50/20 to-transparent pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div 
-          className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16"
+          className="text-center space-y-3 mb-10 sm:mb-14"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+          <div className="inline-block mb-2">
+            <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-cyan-200">
+              Solutions
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
             {title}
           </h2>
-          <div className="flex justify-center mb-0">
-            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-          </div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto px-4">
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
             {subtitle}
           </p>
         </motion.div>
         
         <div className="relative">
-          {/* Navigation Arrows - Hidden on mobile, visible on larger screens */}
+          {/* Navigation Arrows */}
           <motion.button
             onClick={prevSlide}
-            className="hidden sm:block absolute left-0 top-24 transform -translate-y-1/2 z-10 bg-blue-100 hover:bg-blue-200 text-blue-800 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="hidden lg:flex absolute -left-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 items-center justify-center border border-cyan-300"
+            whileHover={{ scale: 1.1, x: -4 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="Previous use cases"
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
             </svg>
           </motion.button>
           
           <motion.button
             onClick={nextSlide}
-            className="hidden sm:block absolute right-0 top-24 transform -translate-y-1/2 z-10 bg-blue-100 hover:bg-blue-200 text-blue-800 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="hidden lg:flex absolute -right-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 items-center justify-center border border-cyan-300"
+            whileHover={{ scale: 1.1, x: 4 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="Next use cases"
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
             </svg>
           </motion.button>
           
-          {/* Mobile Navigation Dots */}
-          <div className="flex justify-center space-x-2 mb-6 sm:hidden">
-            {Array.from({ length: Math.ceil(useCases.length / itemsPerView) }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i * itemsPerView)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === i * itemsPerView ? 'bg-blue-600' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-          
           {/* Content Carousel */}
-          <div className="flex space-x-4 sm:space-x-6 lg:space-x-8 px-4 sm:px-8 lg:px-16 overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             <AnimatePresence mode="wait">
               {visibleItems.map((useCase, index) => (
                 <motion.div
                   key={`${useCase.id}-${currentIndex}`}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex-shrink-0 w-full sm:w-80 space-y-3 sm:space-y-4"
+                  className="group"
                 >
-                  <motion.div 
-                    className="relative h-32 sm:h-40 lg:h-48 overflow-hidden rounded-lg sm:rounded-xl"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <img
-                      src={useCase.image}
-                      alt={useCase.alt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </motion.div>
-                  <div className="px-2 sm:px-0">
-                    <h3 className="font-semibold text-base sm:text-lg text-gray-900 mb-2 leading-tight">{useCase.title}</h3>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{useCase.description}</p>
+                  <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-cyan-300 h-full flex flex-col">
+                    <motion.div 
+                      className="relative h-44 sm:h-48 overflow-hidden"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img
+                        src={useCase.image}
+                        alt={useCase.alt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </motion.div>
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3 className="font-bold text-base text-gray-900 mb-2 leading-snug group-hover:text-cyan-600 transition-colors duration-300">
+                        {useCase.title}
+                      </h3>
+                      <p className="text-xs text-gray-600 leading-relaxed flex-1">
+                        {useCase.description}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
           </div>
           
-          {/* Mobile Swipe Instructions */}
-          <div className="text-center mt-6 sm:hidden">
-            <p className="text-sm text-gray-500">Swipe to see more</p>
+          {/* Navigation Dots */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: Math.ceil(useCases.length / itemsPerView) }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i * itemsPerView)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  currentIndex === i * itemsPerView 
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 w-6' 
+                    : 'bg-gray-300 w-1.5 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

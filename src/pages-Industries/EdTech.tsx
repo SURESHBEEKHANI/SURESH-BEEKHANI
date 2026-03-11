@@ -9,29 +9,125 @@ const USE_CASES_DATA = [
   { id: 1, title: "Personalized Learning Paths", description: "AI adapts content to each learner's pace, style, and goals—increasing engagement and completion rates by 40%.", image: "/image/pages_img/wellness-personalized.jpg", alt: "Personalized Learning" },
   { id: 2, title: "Intelligent Tutoring Systems", description: "AI tutors provide instant feedback, explain concepts, and offer 24/7 support to enhance student outcomes.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "AI Tutors" },
   { id: 3, title: "Automated Grading & Assessment", description: "Reduce grading time by 70% with AI that evaluates essays, assignments, and assessments with consistency.", image: "/image/pages_img/workflow-automation.jpg", alt: "Automated Grading" },
-  { id: 4, title: "Predictive Analytics", description: "Identify at-risk students early, recommend interventions, and optimize curriculum with data-driven insights.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Learning Analytics" }
+  { id: 4, title: "Predictive Analytics", description: "Identify at-risk students early, recommend interventions, and optimize curriculum with data-driven insights.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Learning Analytics" },
+  { id: 5, title: "Content Generation & Curation", description: "AI creates customized learning materials, quizzes, and study guides tailored to curriculum standards.", image: "/image/pages_img/AIconten.jpg", alt: "Content Generation" },
+  { id: 6, title: "Virtual Learning Assistants", description: "24/7 AI assistants answer student questions, provide study tips, and guide learners through complex topics.", image: "/image/pages_img/AI-Travel-Assistant-bg.jpg", alt: "Virtual Assistants" }
 ];
 
 const PORTFOLIO_DATA = [
-  { id: 1, title: "Patient Diagnostic System", description: "AI-powered assessment and feedback systems for educational outcomes.", image: "/image/pages_img/Patient-Diagnostic-System.webp", link: "/portfolio/patient-diagnostic-system" },
-  { id: 2, title: "Personalized Wellness AI", description: "Adaptive learning and personalized content recommendations for education.", image: "/image/pages_img/wellness-personalized.jpg", link: "/portfolio/personalized-wellness-ai" },
-  { id: 3, title: "AI Chatbots for Patient Support", description: "Intelligent tutoring and student support chatbots for 24/7 assistance.", image: "/image/pages_img/ai-chatbots-hospital.jpg", link: "/portfolio/ai-chatbots-patient-support" }
+  {
+    title: "AI-Powered Electronic Health Record",
+    description: "Streamline healthcare data management and improve patient outcomes with AI-powered EHR systems.",
+    image: "/image/Portfolio-img/ai-powered-ehr.jpg",
+    link: "/portfolio/ai-powered-electronic-health-record"
+  },
+  {
+    title: "AI Medical Imaging Assistant",
+    description: "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
+    image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
+    link: "/portfolio/ai-medical-imaging-assistant"
+  },
+  {
+    title: "AI Contract Analysis System",
+    description: "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
+    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
+    link: "/portfolio/ai-contract-analysis-system"
+  },
+  {
+    title: "AI Legal Research Assistant",
+    description: "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
+    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
+    link: "/portfolio/ai-legal-research-assistant"
+  },
+  {
+    title: "AI Product Recommendation Engine",
+    description: "Personalized product recommendations powered by user behavior, purchase history, and real-time context for higher conversions.",
+    image: "/image/Portfolio-img/ai-product-recommendation-engine.jpg",
+    link: "/portfolio/ai-product-recommendation-engine"
+  },
+  {
+    title: "AI Demand Forecasting System",
+    description: "Predictive models forecast demand across SKUs, locations, and time to optimize inventory, pricing, and supply chain decisions.",
+    image: "/image/Portfolio-img/ai-demand-forecasting-system.jpg",
+    link: "/portfolio/ai-demand-forecasting-system"
+  },
+  {
+    title: "AI Personalized Learning Platform",
+    description: "Adaptive learning experiences that dynamically adjust content difficulty and pacing to each learner's performance.",
+    image: "/image/Portfolio-img/ai-personalized-learning-platform.jpg",
+    link: "/portfolio/ai-personalized-learning-platform"
+  },
+  {
+    title: "AI Automated Grading System",
+    description: "Automated evaluation of assignments, quizzes, and free‑text answers with explainable scoring and instant feedback.",
+    image: "/image/Portfolio-img/ai-automated-grading-system.jpg",
+    link: "/portfolio/ai-automated-grading-system"
+  },
+  {
+    title: "AI Personal Fitness Coach",
+    description: "Computer vision and analytics track workouts, posture, and progress to deliver personalized coaching and training plans.",
+    image: "/image/Portfolio-img/ai-personal-fitness-coach.jpg",
+    link: "/portfolio/ai-personal-fitness-coach"
+  },
+  {
+    title: "AI Nutrition Planner",
+    description: "Meal plans tailored to health goals, dietary restrictions, and biometrics, with continuous AI optimization.",
+    image: "/image/Portfolio-img/ai-nutrition-planner.jpg",
+    link: "/portfolio/ai-nutrition-planner"
+  },
+  {
+    title: "AI Robo-Advisor",
+    description: "Automated portfolio allocation and rebalancing driven by risk profiles, goals, and real-time market signals.",
+    image: "/image/Portfolio-img/ai-robo-advisor.jpg",
+    link: "/portfolio/ai-robo-advisor"
+  },
+  {
+    title: "AI Portfolio Risk Analyzer",
+    description: "Scenario analysis, stress testing, and VaR-style insights to quantify and manage portfolio risk.",
+    image: "/image/Portfolio-img/ai-portfolio-risk-analyzer.jpg",
+    link: "/portfolio/ai-portfolio-risk-analyzer"
+  },
+  {
+    title: "AI Fraud Detection System",
+    description: "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
+    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
+    link: "/portfolio/ai-fraud-detection-system"
+  },
+  {
+    title: "AI Personal Finance Advisor",
+    description: "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
+    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    link: "/portfolio/ai-personal-finance-advisor"
+  },
+  {
+    title: "AI DevOps Monitoring Assistant",
+    description: "Intelligent alerts and anomaly detection across logs, metrics, and traces to prevent outages and reduce MTTR.",
+    image: "/image/Portfolio-img/ai-devops-monitoring-assistant.jpg",
+    link: "/portfolio/ai-devops-monitoring-assistant"
+  },
+  {
+    title: "AI IT Support Chatbot",
+    description: "Self-service IT support that resolves tickets, answers questions, and integrates with enterprise ITSM tools.",
+    image: "/image/Portfolio-img/ai-it-support-chatbot.jpg",
+    link: "/portfolio/ai-it-support-chatbot"
+  }
 ];
 
 const FAQ_DATA = [
   { id: 1, question: "How does AI enhance education and learning?", answer: "AI enables personalized learning paths, intelligent tutoring, automated grading, and predictive analytics. Institutions typically see improved engagement, higher completion rates, and more efficient teaching workflows." },
   { id: 2, question: "Can EdTech AI integrate with LMS platforms?", answer: "Yes, we integrate with major Learning Management Systems (Canvas, Moodle, Blackboard, etc.) and custom platforms via APIs." },
-  { id: 3, question: "How does AI ensure fairness in grading?", answer: "Our AI grading systems use rubrics, human-in-the-loop validation, and bias detection to ensure consistent, fair, and transparent assessment." }
+  { id: 3, question: "How does AI ensure fairness in grading?", answer: "Our AI grading systems use rubrics, human-in-the-loop validation, and bias detection to ensure consistent, fair, and transparent assessment." },
+  { id: 4, question: "What is the ROI of implementing AI in education?", answer: "Educational institutions typically see 40-70% reduction in administrative time, 30-50% improvement in student engagement, and significant cost savings through automation. Most implementations achieve ROI within 6-12 months." },
+  { id: 5, question: "Is student data secure with AI-powered EdTech solutions?", answer: "Absolutely. We implement enterprise-grade security, FERPA compliance, end-to-end encryption, and strict data privacy protocols. Student data is never shared with third parties and remains fully under your institution's control." }
 ];
 
 const HeroSection: React.FC = React.memo(() => (
-  <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 overflow-hidden">
+  <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/wellness-personalized.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">EdTech</h1>
         <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform education with AI-powered personalized learning, intelligent tutoring, automated grading, and predictive analytics. Enhance student engagement and outcomes.</p>
-        <a href="/#contact" className="inline-block bg-gradient-to-r from-violet-500 to-purple-700 hover:from-violet-600 hover:to-purple-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-transform duration-300">Talk to an Expert</a>
       </div>
     </div>
   </section>
@@ -50,7 +146,7 @@ const EdTech: React.FC = () => {
   const checkScrollButtons = useCallback(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      setCanScrollLeft(container.scrollLeft > 0);
+      setCanScrollLeft(container.scrollLeft > 10);
       setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
     }
   }, []);
@@ -58,20 +154,31 @@ const EdTech: React.FC = () => {
   const scroll = useCallback((direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollAmount = 400;
-      const targetScroll = direction === 'left' ? container.scrollLeft - scrollAmount : container.scrollLeft + scrollAmount;
+      const cardWidth = 400;
+      const targetScroll = direction === 'left' 
+        ? Math.max(0, container.scrollLeft - cardWidth)
+        : Math.min(container.scrollWidth - container.clientWidth, container.scrollLeft + cardWidth);
       container.scrollTo({ left: targetScroll, behavior: 'smooth' });
       setIsAutoScrolling(false);
+      setTimeout(() => setIsAutoScrolling(true), 10000);
     }
   }, []);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container || !isAutoScrolling) return;
+    
     const autoScrollInterval = setInterval(() => {
-      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) container.scrollTo({ left: 0, behavior: 'smooth' });
-      else container.scrollTo({ left: container.scrollLeft + 400, behavior: 'smooth' });
-    }, 3000);
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const currentScroll = container.scrollLeft;
+      
+      if (currentScroll >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollTo({ left: currentScroll + 400, behavior: 'smooth' });
+      }
+    }, 4000);
+    
     return () => clearInterval(autoScrollInterval);
   }, [isAutoScrolling]);
 
@@ -89,47 +196,130 @@ const EdTech: React.FC = () => {
       <Navbar />
       <HeroSection />
       <AnimatedCarousel useCases={useCases} title="EdTech AI Solutions" subtitle="AI technology for modern education" />
-      <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">AI Portfolio Showcase</h2>
-            <p className="text-base text-gray-300 max-w-3xl mx-auto">Explore our AI solutions for education technology</p>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 hero-bg relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-500 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16 sm:mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-lg">
+                Portfolio
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
+              Real-World AI Solutions
+            </h2>
+            <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Discover how we've transformed businesses across healthcare, finance, education, and more with cutting-edge AI technology
+            </p>
           </div>
-          <div className="relative">
-            <button onClick={() => scroll('left')} disabled={!canScrollLeft} className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-violet-900 p-3 rounded-full shadow-2xl transition-all duration-300 ${!canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''}`} aria-label="Scroll left"><ChevronLeft className="w-6 h-6" /></button>
-            <button onClick={() => scroll('right')} disabled={!canScrollRight} className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-violet-900 p-3 rounded-full shadow-2xl transition-all duration-300 ${!canScrollRight ? 'opacity-50 cursor-not-allowed' : ''}`} aria-label="Scroll right"><ChevronRight className="w-6 h-6" /></button>
-            <div ref={scrollContainerRef} className="overflow-x-auto pb-8 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} onMouseEnter={() => setIsAutoScrolling(false)} onMouseLeave={() => setIsAutoScrolling(true)}>
-              <div className="flex gap-6 px-4" style={{ width: 'max-content' }}>
-                {portfolioData.map((project) => (
-                  <div key={project.id} className="flex-shrink-0 w-80 sm:w-96 bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 border border-white/20">
-                    <div className="relative h-48 sm:h-56 overflow-hidden">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          
+          <div className="relative group">
+            {/* Navigation Buttons */}
+            <button 
+              onClick={() => scroll('left')} 
+              disabled={!canScrollLeft} 
+              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            
+            <button 
+              onClick={() => scroll('right')} 
+              disabled={!canScrollRight} 
+              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            
+            {/* Scroll Container */}
+            <div 
+              ref={scrollContainerRef} 
+              className="overflow-x-auto pb-8 scrollbar-hide scroll-smooth" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
+              onMouseEnter={() => setIsAutoScrolling(false)} 
+              onMouseLeave={() => setIsAutoScrolling(true)}
+              onTouchStart={() => setIsAutoScrolling(false)}
+            >
+              <div className="flex gap-6 sm:gap-8 px-4 sm:px-8" style={{ width: 'max-content' }}>
+                {portfolioData.map((project, idx) => (
+                  <div 
+                    key={project.link} 
+                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-white/20 hover:border-white/40 group/card transform hover:-translate-y-2"
+                  >
+                    <div className="relative h-52 sm:h-64 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     </div>
-                    <div className="p-6 space-y-4">
-                      <h3 className="text-base font-bold text-white">{project.title}</h3>
-                      <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">{project.description}</p>
-                      <Link to={project.link} className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white font-semibold px-4 py-2 rounded-lg shadow-lg transition-all duration-300 text-sm">View Case Study <ArrowRight className="w-4 h-4" /></Link>
+                    <div className="p-6 sm:p-7 space-y-4">
+                      <h3 className="text-base sm:text-lg font-bold text-white leading-tight group-hover/card:text-violet-200 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                      <Link 
+                        to={project.link} 
+                        className="inline-flex items-center gap-2 bg-white text-violet-900 hover:bg-violet-50 font-semibold px-5 py-2.5 rounded-lg shadow-lg transition-all duration-300 text-sm group/btn"
+                      >
+                        View Case Study 
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </Link>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            
+            {/* Scroll Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: Math.ceil(portfolioData.length / 3) }).map((_, idx) => (
+                <div 
+                  key={idx} 
+                  className="h-1.5 rounded-full bg-white/30 transition-all duration-300"
+                  style={{ width: idx === 0 ? '32px' : '8px' }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-            <div className="flex justify-center mb-2"><div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-violet-500 to-purple-700 rounded-full" /></div>
-            <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">Common questions about AI in education.</p>
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-block mb-4">
+              <span className="bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold border border-violet-200">
+                FAQ
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Everything you need to know about AI-powered education solutions
+            </p>
           </div>
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4">
             {faqData.map((faq) => (
-              <details key={faq.id} className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-                <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-violet-700 transition-colors duration-200">{faq.question}<span className="ml-2 text-gray-900 group-hover:text-violet-700 group-open:hidden">+</span><span className="ml-2 text-gray-900 group-hover:text-violet-700 hidden group-open:inline">-</span></summary>
-                <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">{faq.answer}</div>
+              <details key={faq.id} className="bg-white rounded-xl shadow-md border border-gray-200 p-5 sm:p-6 group hover:shadow-lg transition-all duration-300">
+                <summary className="cursor-pointer font-semibold text-base sm:text-lg text-gray-900 flex items-center justify-between group-hover:text-violet-700 transition-colors duration-200">
+                  <span className="pr-4">{faq.question}</span>
+                  <span className="flex-shrink-0 ml-2 text-violet-600 group-hover:text-violet-700 group-open:rotate-45 transition-transform duration-300 text-2xl font-light">+</span>
+                </summary>
+                <div className="pt-4 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-gray-100 mt-4">
+                  {faq.answer}
+                </div>
               </details>
             ))}
           </div>
