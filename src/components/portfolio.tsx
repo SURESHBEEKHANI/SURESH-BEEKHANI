@@ -158,27 +158,17 @@ const Portfolio: React.FC = () => {
     <>
       <Navbar />
       {/* Hero Section - gradient overlay with portfolio background image */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="w-full h-full bg-[url('/image/Portfolio-img/ai-fraud-detection.jpg')] bg-cover bg-center" />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95" />
-        </div>
-        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
-          <div className="flex-1 text-white space-y-6 sm:space-y-8">
-            <h1 id="portfolio-heading" className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
+          <div className="text-white space-y-6 sm:space-y-8">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
               AI Portfolio
             </h1>
-            <p className="body-large text-gray-100 w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-              Explore how innovative AI solutions are transforming industries and driving measurable impact. From healthcare diagnostics to legal automation, discover cutting-edge AI projects that showcase the power of artificial intelligence in solving real-world challenges.
+            <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
+              Explore how AI is transforming industries and driving real-world impact—from healthcare diagnostics to legal automation—through innovative, cutting-edge projects.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
-              <a href="/#contact" className="btn-primary text-center min-h-[44px] flex items-center justify-center">
-                Talk to an Expert
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end" aria-hidden="true" />
         </div>
       </section>
 
