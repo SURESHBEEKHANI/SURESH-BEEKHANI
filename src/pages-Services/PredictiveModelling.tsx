@@ -10,7 +10,7 @@ const industries = [
 		name: "HealthTech",
 		image: "/image/pages_img/healthtechai.jpg",
 		description:
-			"Predictive analytics for patient outcomes, resource allocation, and diagnostics.",
+			"Predictive analytics for healthcare outcomes, resource optimization, and diagnostic support.",
 		page: "/HealthTechAI",
 	},
 	{
@@ -45,7 +45,7 @@ const industries = [
 		name: "AI Diagnostics",
 		image: "/image/pages_img/Diagnostics.jpg",
 		description:
-			"Predictive analytics for healthcare diagnostics and workflow automation.",
+			"Predictive analytics for diagnostic support and workflow automation.",
 		page: "/DiagnosticsAI",
 	},
 	{
@@ -59,7 +59,7 @@ const industries = [
 		name: "HIPAA Compliance",
 		image: "/image/pages_img/HIPAA.avif",
 		description:
-			"Predictive analytics for HIPAA-compliant healthcare communication and data security.",
+			"Predictive analytics for secure and compliant data communication and security.",
 		page: "/HIPAACompliance",
 	},
 ];
@@ -68,49 +68,49 @@ const industries = [
 const pmServices = [
 	{
 		id: 1,
-		title: "Patient Outcome Prediction",
+		title: "Demand Forecasting",
 		description:
-			"Forecast patient recovery trajectories, readmission risks, and treatment responses using advanced regression models tailored to clinical data.",
+			"Predict customer demand, sales trends, and market fluctuations using advanced time series analysis and regression models for optimal inventory and resource planning.",
 		icon: <TrendingUp className="h-7 w-7" />,
 		color: "from-indigo-500 to-purple-500"
 	},
 	{
 		id: 2,
-		title: "Disease Progression Forecasting",
+		title: "Customer Behavior Prediction",
 		description:
-			"Anticipate disease progression patterns and seasonal health trends by analyzing longitudinal patient data for proactive care planning.",
+			"Anticipate customer preferences, churn risks, and purchasing patterns by analyzing behavioral data for targeted marketing and retention strategies.",
 		icon: <BarChart3 className="h-7 w-7" />,
 		color: "from-emerald-500 to-teal-500"
 	},
 	{
 		id: 3,
-		title: "Diagnostic Classification",
+		title: "Risk Assessment & Classification",
 		description:
-			"Enhance diagnostic accuracy by categorizing medical images, lab results, and patient symptoms using AI-powered classification models.",
+			"Classify and assess business risks, credit scores, and investment opportunities using AI-powered classification models for informed decision-making.",
 		icon: <Target className="h-7 w-7" />,
 		color: "from-violet-500 to-purple-500"
 	},
 	{
 		id: 4,
-		title: "Clinical Anomaly Detection",
+		title: "Anomaly & Fraud Detection",
 		description:
-			"Identify critical health anomalies, adverse events, and unusual patient vitals in real-time to enable rapid clinical intervention.",
+			"Identify unusual patterns, fraudulent activities, and operational anomalies in real-time to protect your business and ensure compliance.",
 		icon: <Shield className="h-7 w-7" />,
 		color: "from-rose-500 to-pink-500"
 	},
 	{
 		id: 5,
-		title: "Patient Risk Stratification",
+		title: "Market Trend Analysis",
 		description:
-			"Assess and stratify patient risk levels for chronic conditions, complications, and adverse outcomes using predictive healthcare models.",
+			"Analyze market trends, competitor movements, and industry shifts to forecast opportunities and threats for strategic business planning.",
 		icon: <CheckCircle className="h-7 w-7" />,
 		color: "from-amber-500 to-orange-500"
 	},
 	{
 		id: 6,
-		title: "Healthcare Resource Forecasting",
+		title: "Operational Optimization",
 		description:
-			"Predict patient admission volumes, staffing needs, and medical supply requirements to optimize hospital operations and care delivery.",
+			"Predict resource requirements, staffing needs, and operational bottlenecks to optimize business processes and improve efficiency.",
 		icon: <Brain className="h-7 w-7" />,
 		color: "from-cyan-500 to-blue-500"
 	},
@@ -162,24 +162,24 @@ const pmSolutions = [
 
 const faqData = [
 	{
-		question: "What is healthcare predictive modeling?",
-		answer: "Healthcare predictive modeling uses patient data, clinical history, and advanced AI algorithms to forecast health outcomes, disease progression, and treatment responses. These methods empower healthcare providers to deliver proactive, personalized care and improve patient outcomes.",
+		question: "What is predictive modeling and forecasting?",
+		answer: "Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.",
 	},
 	{
-		question: "Why is predictive analytics important in healthcare?",
-		answer: "Predictive analytics enables healthcare organizations to identify at-risk patients early, optimize treatment plans, reduce hospital readmissions, improve resource allocation, and ultimately deliver better patient care while reducing costs.",
+		question: "Why is predictive analytics important?",
+		answer: "Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.",
 	},
 	{
-		question: "What is the difference between machine learning and predictive analytics in healthcare?",
-		answer: "Machine learning is a core component of healthcare predictive analytics. While predictive analytics uses statistical methods and patient history to forecast outcomes, machine learning algorithms continuously learn from new clinical data, improving diagnostic accuracy and treatment recommendations over time.",
+		question: "What is the difference between machine learning and predictive analytics?",
+		answer: "Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.",
 	},
 	{
-		question: "Will predictive analytics bring value to my healthcare organization?",
-		answer: "Absolutely. Healthcare predictive analytics identifies high-risk patients, predicts disease progression, optimizes clinical workflows, reduces adverse events, improves care quality, and delivers measurable improvements in patient outcomes and operational efficiency.",
+		question: "Will a predictive analytics tool bring value to my company?",
+		answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
 	},
 	{
-		question: "What are healthcare predictive modeling techniques?",
-		answer: "Key healthcare predictive modeling techniques include clinical risk scoring, survival analysis, disease classification models, patient readmission prediction, treatment response forecasting, and population health analytics. Each technique is tailored to address specific clinical challenges and patient populations.",
+		question: "What are predictive modeling techniques?",
+		answer: "Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.",
 	},
 ];
 
@@ -218,31 +218,16 @@ const PredictiveModelling: React.FC = () => {
 		<div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
 			<Navbar />
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Predictive-Modelling.jpg')] bg-cover bg-center" />
-				<div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
-					<div className="flex-1 text-white space-y-6 sm:space-y-8">
-						<div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-								 Predictive Modeling
-							</h1>
-							<p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-								Transform patient care with AI-powered predictive analytics. Anticipate health outcomes, 
-								optimize clinical workflows, and improve patient outcomes through data-driven healthcare intelligence.
-							</p>
-							<div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
-								<a
-									href="/#contact"
-									className="btn-primary text-center min-h-[44px] flex items-center justify-center"
-								>
-									Talk to an Expert
-									<ArrowRight className="ml-2 h-4 w-4" />
-								</a>
-							</div>
-						</div>
-					</div>
-					<div className="flex-1 flex justify-center md:justify-end">
-						{/* Optionally, you can add an image or illustration here if needed */}
+				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
+					<div className="text-white space-y-6 sm:space-y-8">
+						<h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+							Predictive Modeling
+						</h1>
+						<p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
+							Transform your business with AI-powered predictive analytics. Anticipate trends, optimize operations, and make data-driven decisions through intelligent forecasting.
+						</p>
 					</div>
 				</div>
 			</section>
@@ -265,16 +250,16 @@ const PredictiveModelling: React.FC = () => {
 						{/* Right: Content */}
 						<div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
 							<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-								The Power of Healthcare Predictive AI
+								The Power of Predictive Analytics
 							</h2>
 							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-								Revolutionize patient care with AI-driven predictive modeling. Our healthcare-focused solutions enable medical professionals to forecast patient outcomes, identify at-risk populations, and optimize treatment plans for better clinical results.
+								Transform your business with AI-driven predictive modeling. Our industry-agnostic solutions enable organizations to forecast trends, identify opportunities, and optimize operations for better business results.
 							</p>
 							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-								Our healthcare AI experts seamlessly integrate predictive analytics into clinical workflows, empowering providers with actionable insights for early intervention, resource allocation, and personalized patient care strategies.
+								Our AI experts seamlessly integrate predictive analytics into business workflows, empowering decision-makers with actionable insights for strategic planning, resource allocation, and data-driven strategies.
 							</p>
 							<p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-								From hospital systems and diagnostic centers to telehealth platforms and research institutions, our predictive modeling transforms how healthcare organizations deliver care and improve patient outcomes. Partner with us to advance the future of medicine.
+								From retail and finance to manufacturing and technology, our predictive modeling transforms how organizations operate and compete. Partner with us to advance the future of your business.
 							</p>
 						</div>
 					</div>
@@ -286,13 +271,13 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
-							Healthcare AI Predictive Services
+							Predictive Analytics Services
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
-							Clinical intelligence solutions for modern healthcare delivery and patient outcomes.
+							Intelligent forecasting solutions for modern business operations and data-driven decisions.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -318,17 +303,17 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Healthcare AI Key Features
+							Predictive Analytics Key Features
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-							Clinical intelligence features that enhance patient care and operational efficiency.
+							Intelligent forecasting features that enhance business operations and decision-making.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{/* Clinical-Grade Reliability */}
+						{/* Enterprise-Grade Reliability */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -337,13 +322,13 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								Clinical-Grade Reliability
+								Enterprise-Grade Reliability
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								Our healthcare AI models are validated for clinical accuracy, integrating seamlessly with EHR systems and delivering consistent, trustworthy predictions across diverse patient populations.
+								Our AI models are validated for business accuracy, integrating seamlessly with enterprise systems and delivering consistent, trustworthy predictions across diverse data sources.
 							</p>
 						</div>
-						{/* HIPAA-Compliant Customization */}
+						{/* Industry-Specific Customization */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -352,13 +337,13 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								HIPAA-Compliant Customization
+								Industry-Specific Customization
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								We tailor predictive models to your clinical workflows and specialty needs while maintaining strict HIPAA compliance and patient data security standards.
+								We tailor predictive models to your business workflows and industry needs while maintaining strict data security and compliance standards.
 							</p>
 						</div>
-						{/* Rapid Clinical Deployment */}
+						{/* Rapid Business Deployment */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -366,13 +351,13 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								Rapid Clinical Deployment
+								Rapid Business Deployment
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								Leverage pre-trained medical AI models and transfer learning to accelerate implementation, enabling faster time-to-value for patient care improvements.
+								Leverage pre-trained business AI models and transfer learning to accelerate implementation, enabling faster time-to-value for operational improvements.
 							</p>
 						</div>
-						{/* Explainable Clinical AI */}
+						{/* Explainable Business AI */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -381,13 +366,13 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								Explainable Clinical AI
+								Explainable Business AI
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								Understand exactly how clinical predictions are generated. Our transparent models provide clear reasoning that clinicians can trust and validate.
+								Understand exactly how business predictions are generated. Our transparent models provide clear reasoning that decision-makers can trust and validate.
 							</p>
 						</div>
-						{/* Automated Clinical Feature Engineering */}
+						{/* Automated Feature Engineering */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -396,13 +381,13 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								Automated Clinical Feature Engineering
+								Automated Feature Engineering
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								Automatically identify the most predictive clinical indicators from lab values, vitals, and patient history to enhance diagnostic accuracy.
+								Automatically identify the most predictive business indicators from customer data, sales metrics, and operational history to enhance forecasting accuracy.
 							</p>
 						</div>
-						{/* Real-Time Clinical Alerts */}
+						{/* Real-Time Business Insights */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -411,10 +396,10 @@ const PredictiveModelling: React.FC = () => {
 								</svg>
 							</div>
 							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">
-								Real-Time Clinical Alerts
+								Real-Time Business Insights
 							</h3>
 							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">
-								Receive instant predictions on patient data as it's captured, enabling timely interventions and proactive care management for better outcomes.
+								Receive instant predictions on business data as it's captured, enabling timely decisions and proactive management for better outcomes.
 							</p>
 						</div>
 					</div>
@@ -427,13 +412,13 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							 AI Technology Stack
+							Predictive Analytics Technology Stack
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-							Industry-leading AI platforms optimized for healthcare applications and compliance.
+							Industry-leading AI platforms optimized for business applications and intelligent forecasting.
 						</p>
 					</div>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
@@ -452,27 +437,27 @@ const PredictiveModelling: React.FC = () => {
 				<div className="max-w-5xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-							Healthcare AI Implementation Process
+							Predictive Analytics Implementation Process
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-							Proven methodology for deploying secure, compliant AI solutions in healthcare environments.
+							Proven methodology for deploying secure, intelligent forecasting solutions in business environments.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-						{/* Clinical Data Integration */}
+						{/* Business Data Integration */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
 									<path d="M12 2v20m10-10H2" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</span>
-							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Data Integration</span>
-							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Securely integrate with your EHR systems, cleanse patient data, and prepare clinical datasets for AI analysis.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Business Data Integration</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Securely integrate with your business systems, cleanse operational data, and prepare enterprise datasets for AI analysis.</p>
 						</div>
-						{/* Clinical Model Selection */}
+						{/* Business Model Selection */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -480,10 +465,10 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 								</svg>
 							</span>
-							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Model Selection</span>
-							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Select the optimal AI model architecture based on your clinical use case, patient population, and care objectives.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Business Model Selection</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Select the optimal AI model architecture based on your business use case, industry requirements, and strategic objectives.</p>
 						</div>
-						{/* Clinical Validation */}
+						{/* Business Validation */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white mb-2">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -491,10 +476,10 @@ const PredictiveModelling: React.FC = () => {
 									<circle cx="12" cy="12" r="10" />
 								</svg>
 							</span>
-							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Validation</span>
-							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Rigorously train and validate models with clinical experts to ensure diagnostic accuracy and patient safety.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Business Validation</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Rigorously train and validate models with business experts to ensure predictive accuracy and operational reliability.</p>
 						</div>
-						{/* Clinical Deployment */}
+						{/* Business Deployment */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
 								<svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -502,8 +487,8 @@ const PredictiveModelling: React.FC = () => {
 									<path d="M7 11V7a5 5 0 0110 0v4" />
 								</svg>
 							</span>
-							<span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
-							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamlessly deploy AI models into your clinical workflows with real-time monitoring and continuous improvement.</p>
+							<span className="font-bold text-white text-sm sm:text-lg text-center">Business Deployment</span>
+							<p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamlessly deploy AI models into your business workflows with real-time monitoring and continuous improvement.</p>
 						</div>
 					</div>
 				</div>
@@ -513,30 +498,30 @@ const PredictiveModelling: React.FC = () => {
 			<section className="section-padding">
 				<div className="max-w-6xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Healthcare AI</h2>
+						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Predictive Analytics</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-							Healthcare-focused AI expertise with proven results in clinical environments.
+							Industry expertise with proven results across multiple sectors and use cases.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-						{/* Clinical AI Expertise */}
+						{/* Industry Expertise */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
 								<Brain className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Healthcare Expertise</span>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Specialized team with deep understanding of clinical workflows and healthcare regulations.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Industry Expertise</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Specialized team with deep understanding of business workflows and industry regulations.</p>
 						</div>
-						{/* Custom Clinical Solutions */}
+						{/* Custom Business Solutions */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-2">
 								<Target className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Clinical-Grade Solutions</span>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Custom AI solutions designed for healthcare environments with patient safety as priority.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Enterprise-Grade Solutions</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Custom AI solutions designed for business environments with operational excellence as priority.</p>
 						</div>
 						{/* Compliance & Security */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
@@ -544,15 +529,15 @@ const PredictiveModelling: React.FC = () => {
 								<Shield className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
 							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Compliance & Security</span>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">HIPAA-compliant architecture with robust security measures protecting patient data.</p>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Enterprise-compliant architecture with robust security measures protecting business data.</p>
 						</div>
-						{/* Proven Clinical Impact */}
+						{/* Proven Business Impact */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
 								<CheckCircle className="w-6 h-6 sm:w-7 sm:h-7" />
 							</span>
-							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Clinical Impact</span>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Healthcare organizations achieving improved outcomes and operational efficiency.</p>
+							<span className="font-bold text-gray-900 text-sm sm:text-lg text-center">Proven Business Impact</span>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Organizations achieving improved outcomes and operational efficiency across industries.</p>
 						</div>
 					</div>
 				</div>
@@ -567,7 +552,7 @@ const PredictiveModelling: React.FC = () => {
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-							Common questions about Healthcare AI implementation and our services.
+							Common questions about Predictive Analytics implementation and our services.
 						</p>
 					</div>
 					{/* FAQ Accordion */}

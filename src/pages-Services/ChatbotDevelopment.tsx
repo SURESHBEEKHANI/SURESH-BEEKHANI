@@ -7,43 +7,43 @@ import Industries from "../components/Industries";
 const chatbotServices = [
 	{
 		id: 1,
-		title: "Healthcare AI Chatbot Development",
-		description: "End-to-end healthcare AI chatbot solutions for hospitals, clinics, and telehealth platforms. Our intelligent virtual assistants provide 24/7 patient support, appointment scheduling, and medical information.",
+		title: "AI Chatbot Development",
+		description: "End-to-end AI chatbot solutions for businesses across all industries. Our intelligent virtual assistants provide 24/7 customer support, automate inquiries, and enhance user engagement.",
 		icon: <MessageSquare className="h-7 w-7" />,
 		color: "from-blue-500 to-cyan-500"
 	},
 	{
 		id: 2,
-		title: "Patient Engagement Chatbots",
-		description: "AI-powered chatbots designed to enhance patient engagement through personalized health reminders, medication tracking, symptom assessment, and post-treatment follow-ups for improved health outcomes.",
+		title: "Customer Engagement Chatbots",
+		description: "AI-powered chatbots designed to enhance customer engagement through personalized interactions, proactive support, automated follow-ups, and improved customer satisfaction.",
 		icon: <Code className="h-7 w-7" />,
 		color: "from-green-500 to-emerald-500"
 	},
 	{
 		id: 3,
-		title: "HIPAA-Compliant Chatbot Solutions",
-		description: "Secure, HIPAA-compliant healthcare chatbots that protect patient data while delivering seamless communication. Ensure privacy and regulatory compliance across all patient interactions.",
+		title: "Secure Chatbot Solutions",
+		description: "Enterprise-grade secure chatbots that protect sensitive data while delivering seamless communication. Ensure privacy and regulatory compliance across all customer interactions.",
 		icon: <Shield className="h-7 w-7" />,
 		color: "from-purple-500 to-pink-500"
 	},
 	{
 		id: 4,
-		title: "Medical Diagnosis & Triage Chatbots",
-		description: "AI chatbots that assist with preliminary symptom assessment, medical triage, and patient routing to appropriate care providers. Reduce wait times and improve emergency response efficiency.",
+		title: "Intelligent Support & Triage Chatbots",
+		description: "AI chatbots that assist with customer inquiry assessment, intelligent routing, and automated support. Reduce response times and improve service efficiency.",
 		icon: <Brain className="h-7 w-7" />,
 		color: "from-orange-500 to-red-500"
 	},
 	{
 		id: 5,
-		title: "Telemedicine & Virtual Care Chatbots",
-		description: "Enable remote healthcare delivery with AI chatbots that facilitate virtual consultations, prescription refills, lab result notifications, and continuous patient monitoring for chronic conditions.",
+		title: "E-Commerce & Sales Chatbots",
+		description: "Enable seamless online shopping with AI chatbots that facilitate product discovery, order tracking, personalized recommendations, and automated sales support.",
 		icon: <Zap className="h-7 w-7" />,
 		color: "from-indigo-500 to-purple-500"
 	},
 	{
 		id: 6,
-		title: "Mental Health & Wellness Chatbots",
-		description: "Compassionate AI chatbots providing mental health support, mood tracking, CBT-based therapy responses, crisis intervention, and wellness resources for accessible mental healthcare.",
+		title: "Multi-Channel Chatbots",
+		description: "Omnichannel AI chatbots providing consistent support across websites, mobile apps, social media, and messaging platforms for unified customer experiences.",
 		icon: <Globe className="h-7 w-7" />,
 		color: "from-teal-500 to-cyan-500"
 	},
@@ -209,24 +209,16 @@ const AIChatbotDevelopment: React.FC = () => {
 			<Navbar />
 			
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
 				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
 					<div className="text-white space-y-6 sm:space-y-8">
-						<h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-							AI-Powered Chatbot Development
+						<h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+							Chatbot Development
 						</h1>
-						<p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 leading-relaxed max-w-3xl">
-							Transform healthcare delivery with enterprise-grade AI chatbots that enhance patient care, streamline clinical workflows, and provide 24/7 medical support across all healthcare touchpoints.
+						<p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
+							Transform customer engagement with enterprise-grade AI chatbots that enhance user experiences, automate support, and provide 24/7 assistance across all business touchpoints.
 						</p>
-						<div className="flex flex-col sm:flex-row gap-4">
-							<a
-								href="/#contact"
-								className="inline-block text-center bg-gradient-to-r from-blue-500 to-indigo-700 hover:from-blue-600 hover:to-indigo-800 text-white font-semibold px-6 sm:px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
-							>
-								Talk to AI Expert
-							</a>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -252,13 +244,13 @@ const AIChatbotDevelopment: React.FC = () => {
 								AI Models Powering Our Chatbot Solutions
 							</h2>
 							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
-								Healthcare AI chatbots revolutionize patient care by automating clinical workflows, providing instant medical information, and delivering personalized health support across all healthcare touchpoints.
+								AI chatbots revolutionize customer engagement by automating support workflows, providing instant responses, and delivering personalized experiences across all business touchpoints.
 							</p>
 							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
-								Our HIPAA-compliant chatbots enhance patient engagement, reduce administrative burden, and enable 24/7 healthcare access with advanced medical NLP and diagnostic capabilities.
+								Our intelligent chatbots enhance customer satisfaction, reduce operational costs, and enable 24/7 availability with advanced NLP and conversational AI capabilities.
 							</p>
 							<p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
-								From telemedicine to hospital management, our healthcare AI chatbots improve patient outcomes, streamline operations, and transform healthcare delivery.
+								From e-commerce to customer service, our AI chatbots improve engagement, streamline operations, and transform how businesses interact with customers.
 							</p>
 						</div>
 					</div>
@@ -270,13 +262,13 @@ const AIChatbotDevelopment: React.FC = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className={`text-center space-y-2 mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-							Healthcare AI Chatbot Development Services
+							AI Chatbot Development Services
 						</h2>
 						<div className="flex justify-center mb-4">
 							<div className="w-16 h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 						</div>
 						<p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-							Comprehensive healthcare chatbot solutions for hospitals, clinics, and telehealth platforms.
+							Comprehensive chatbot solutions for businesses across all industries.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -307,13 +299,13 @@ const AIChatbotDevelopment: React.FC = () => {
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							Healthcare AI Chatbot Benefits
+							AI Chatbot Benefits
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 						</div>
 						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-							Transform patient care and clinical operations with intelligent healthcare automation.
+							Transform customer engagement and business operations with intelligent automation.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -322,32 +314,32 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Zap className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Automation</h3>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate patient intake, appointment scheduling, and administrative tasks to reduce staff workload and improve efficiency.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Business Automation</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate customer inquiries, support tickets, and routine tasks to reduce workload and improve efficiency.</p>
 						</div>
 						{/* Scalability */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<TrendingUp className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">24/7 Patient Support</h3>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Provide round-the-clock patient assistance, medical information, and emergency triage without staff limitations.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">24/7 Customer Support</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Provide round-the-clock customer assistance and instant responses without staff limitations.</p>
 						</div>
 						{/* Customization */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Target className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">HIPAA Compliance</h3>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Ensure patient data security and regulatory compliance with HIPAA-certified healthcare chatbot solutions.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Data Security</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Ensure customer data security and regulatory compliance with enterprise-grade chatbot solutions.</p>
 						</div>
 						{/* Innovation */}
 						<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
 							<div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white">
 								<Brain className="h-7 h-7 sm:w-8 sm:h-8" />
 							</div>
-							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Better Patient Outcomes</h3>
-							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Improve health outcomes through proactive care, medication adherence, and continuous patient monitoring.</p>
+							<h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Better Customer Experience</h3>
+							<p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Improve customer satisfaction through instant responses, personalized interactions, and seamless support.</p>
 						</div>
 					</div>
 				</div>
@@ -359,57 +351,57 @@ const AIChatbotDevelopment: React.FC = () => {
   {(() => {
 	const aiSolutions = [
 	  {
-		key: "MedGPT",
-		name: "🩺 MedGPT",
+		key: "CustomerSupport",
+		name: "💬 Customer Support Bot",
 		description: (
 		  <>
-			MedGPT is a personalized health companion that helps users understand symptoms, track health, and manage appointments. Using advanced LLM and medical embeddings, it provides symptom analysis, personalized health and medication reminders, and seamless integration with wearable devices and telemedicine platforms.
+			Our Customer Support Bot provides instant, intelligent responses to customer inquiries 24/7. Using advanced NLP and machine learning, it handles FAQs, troubleshooting, order tracking, and seamlessly escalates complex issues to human agents.
 			<br /><br />
-			Designed for hospitals, digital clinics, and health apps, MedGPT delivers 24/7 AI-driven telehealth support and patient self-diagnosis tools, making healthcare more accessible and efficient.
+			Perfect for e-commerce, SaaS companies, and service businesses seeking to reduce support costs while improving customer satisfaction and response times.
 		  </>
 		),
 		cta: "Book a Demo",
 		image: "/image/pages_img/MedGPT.jpg",
 	  },
 	  {
-		key: "NeuroCareGPT",
-		name: "🧠 NeuroCareGPT",
+		key: "SalesAssistant",
+		name: "🛍️ Sales Assistant Bot",
 		description: (
 		  <>
-			NeuroCareGPT is a mental health and wellness assistant providing 24/7 emotional support and mood tracking. It offers conversational CBT-style therapy responses, emotion recognition via text tone analysis, and personalized journaling, self-help, and mindfulness prompts.
+			Our Sales Assistant Bot engages visitors, qualifies leads, and guides customers through the sales funnel. It offers personalized product recommendations, answers pricing questions, and schedules demos with your sales team.
 			<br /><br />
-			Perfect for mental health startups, HR wellness programs, and individuals seeking accessible mental wellness support. NeuroCareGPT addresses the booming demand for AI-driven emotional support tools in today's fast-paced world.
+			Designed for B2B and B2C businesses, this bot increases conversion rates, captures more leads, and provides valuable insights into customer preferences and buying behavior.
 		  </>
 		),
 		cta: "Book a Demo",
 		image: "/image/pages_img/NeuroCareGPT.jpg",
 	  },
 	  {
-		key: "PharmaGPT",
-		name: "💊 PharmaGPT",
+		key: "InternalAssistant",
+		name: "🏢 Internal Operations Bot",
 		description: (
 		  <>
-			PharmaGPT provides instant access to pharmaceutical insights, drug data, interactions, and the latest research. With semantic search capabilities over drug and clinical data, it offers side-effect analysis, dosage comparison, and seamless integration for doctors, researchers, and pharmacists.
+			Our Internal Operations Bot streamlines employee workflows by automating HR inquiries, IT support tickets, policy questions, and internal knowledge base searches. It integrates with your existing tools and systems for seamless operations.
 			<br /><br />
-			Designed for pharma companies, healthcare researchers, and hospitals, PharmaGPT simplifies complex pharmaceutical data interpretation, reducing manual effort and improving decision-making in the pharmaceutical industry.
+			Ideal for enterprises and growing companies looking to improve employee productivity, reduce internal support burden, and provide instant access to company information and resources.
 		  </>
 		),
 		cta: "Book a Demo",
 		image: "/image/pages_img/PharmaGPT.png",
 	  },
 	];
-	const [activeTab, setActiveTab] = React.useState("MedGPT");
+	const [activeTab, setActiveTab] = React.useState("CustomerSupport");
 	const solution = aiSolutions.find((s) => s.key === activeTab);
 	return (
 	  <section className="section-padding">
 		<div className="max-w-6xl mx-auto container-padding">
 		  <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-			<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Healthcare AI Chatbot Solutions</h2>
+			<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">AI Chatbot Solutions</h2>
 			<div className="flex justify-center">
 			  <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
 			</div>
 			<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-				Advanced AI-powered chatbots transforming healthcare delivery and patient care.
+				Advanced AI-powered chatbots transforming customer engagement and business operations.
 			</p>
 		  </div>
 		  <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
@@ -455,7 +447,7 @@ const AIChatbotDevelopment: React.FC = () => {
 				<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
 			</div>
 			<p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
-				Trusted healthcare AI expertise and proven results for transforming patient care delivery.
+				Trusted AI expertise and proven results for transforming customer engagement.
 			</p>
 		</div>
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -467,8 +459,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Healthcare AI Expertise</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Extensive experience in healthcare AI, medical NLP, and HIPAA-compliant chatbot development for hospitals and clinics.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">AI Chatbot Expertise</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Extensive experience in conversational AI, NLP, and intelligent chatbot development across multiple industries.</p>
 			</div>
 			{/* Card 2 */}
 			<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
@@ -478,8 +470,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Clinical Specialization</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Specialized healthcare chatbots for telemedicine, patient engagement, diagnostics, mental health, and hospital management.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Industry Specialization</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Specialized chatbots for e-commerce, customer service, sales, support, and internal operations.</p>
 			</div>
 			{/* Card 3 */}
 			<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
@@ -489,8 +481,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<circle cx="12" cy="12" r="10" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Medical NLP & AI</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Advanced medical NLP, clinical decision support, and diagnostic AI for accurate healthcare interactions.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Advanced NLP & AI</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Advanced natural language processing and machine learning for accurate, context-aware interactions.</p>
 			</div>
 			{/* Card 4 */}
 			<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
@@ -500,8 +492,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.42 1.42M6.34 17.66l-1.42 1.42m12.02 0l-1.42-1.42M6.34 6.34L4.92 4.92" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Patient-Centric Design</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Compassionate, patient-friendly chatbots designed for accessibility, empathy, and optimal healthcare experiences.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">User-Centric Design</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Intuitive, user-friendly chatbots designed for accessibility, engagement, and optimal user experiences.</p>
 			</div>
 			{/* Card 5 */}
 			<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
@@ -511,8 +503,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<path d="M7 11V7a5 5 0 0110 0v4" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Enterprise Healthcare Scale</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Scalable solutions from single clinics to multi-hospital networks with consistent performance and reliability.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Enterprise Scale</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">Scalable solutions from startups to enterprises with consistent performance and reliability.</p>
 			</div>
 			{/* Card 6 */}
 			<div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
@@ -522,8 +514,8 @@ const AIChatbotDevelopment: React.FC = () => {
 						<circle cx="12" cy="12" r="10" />
 					</svg>
 				</div>
-				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">HIPAA & Security First</h3>
-				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">End-to-end encryption, HIPAA compliance, and healthcare-grade security protecting sensitive patient data.</p>
+				<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">Security First</h3>
+				<p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">End-to-end encryption and enterprise-grade security protecting sensitive customer data.</p>
 			</div>
 		</div>
 

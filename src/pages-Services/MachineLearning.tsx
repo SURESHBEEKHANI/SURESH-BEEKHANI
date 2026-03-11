@@ -7,43 +7,43 @@ import Industries from "../components/Industries";
 const mlServices = [
   {
     id: 1,
-    title: "Patient Risk Prediction",
-    description: "Forecast patient outcomes, readmission risks, and disease progression with advanced predictive models.",
+    title: "Predictive Analytics",
+    description: "Forecast business outcomes, customer behavior, and market trends with advanced predictive models for data-driven decision-making.",
     icon: <BarChart3 className="h-7 w-7" />,
     color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
-    title: "Medical Diagnosis Classification",
-    description: "Automate disease classification, symptom analysis, and diagnostic decision support systems.",
+    title: "Classification & Categorization",
+    description: "Automate data classification, content categorization, and intelligent decision support systems across your operations.",
     icon: <Target className="h-7 w-7" />,
     color: "from-green-500 to-emerald-500"
   },
   {
     id: 3,
-    title: "Treatment Outcome Analysis",
-    description: "Predict treatment effectiveness, recovery timelines, and personalized care recommendations.",
+    title: "Recommendation Systems",
+    description: "Deliver personalized product recommendations, content suggestions, and tailored experiences based on user behavior and preferences.",
     icon: <TrendingUp className="h-7 w-7" />,
     color: "from-purple-500 to-pink-500"
   },
   {
     id: 4,
-    title: "Patient Segmentation",
-    description: "Group patients by risk factors, conditions, and care needs for targeted interventions.",
+    title: "Customer Segmentation",
+    description: "Group customers by behavior, preferences, and value for targeted marketing campaigns and personalized engagement strategies.",
     icon: <Users className="h-7 w-7" />,
     color: "from-orange-500 to-red-500"
   },
   {
     id: 5,
-    title: "Clinical NLP",
-    description: "Extract insights from medical records, clinical notes, and patient communications with AI.",
+    title: "Natural Language Processing",
+    description: "Extract insights from text data, automate document processing, and enable intelligent text analysis with advanced NLP.",
     icon: <MessageSquare className="h-7 w-7" />,
     color: "from-indigo-500 to-purple-500"
   },
   {
     id: 6,
-    title: "Medical Imaging AI",
-    description: "Analyze X-rays, MRIs, and CT scans with deep learning for accurate diagnostic support.",
+    title: "Anomaly Detection",
+    description: "Identify unusual patterns, detect fraud, monitor system health, and prevent issues with intelligent anomaly detection.",
     icon: <Brain className="h-7 w-7" />,
     color: "from-teal-500 to-cyan-500"
   },
@@ -146,24 +146,24 @@ const mlSolutions = [
 
 const faqData = [
   {
-    question: "What is Healthcare Machine Learning?",
-    answer: "Healthcare machine learning uses AI algorithms to analyze medical data, predict patient outcomes, support clinical decisions, and automate healthcare workflows while maintaining HIPAA compliance and patient safety standards.",
+    question: "What is Machine Learning?",
+    answer: "Machine learning uses AI algorithms to analyze data, identify patterns, make predictions, and automate decision-making processes. It powers applications across industries for forecasting, optimization, and intelligent automation.",
   },
   {
-    question: "How can machine learning benefit my healthcare practice?",
-    answer: "Healthcare ML reduces administrative burden, improves diagnostic accuracy, enables early disease detection, predicts patient risks, personalizes treatment plans, and optimizes resource allocation—all while maintaining compliance.",
+    question: "How can machine learning benefit my business?",
+    answer: "ML reduces operational costs, improves accuracy in predictions and analysis, enables data-driven decision-making, automates repetitive tasks, identifies opportunities and risks, and optimizes resource allocation across your organization.",
   },
   {
-    question: "Can ML solutions be customized for my medical specialty?",
-    answer: "Yes, machine learning models can be tailored for cardiology, oncology, radiology, primary care, and any medical specialty, ensuring clinical relevance and specialty-specific value.",
+    question: "Can ML solutions be customized for my industry?",
+    answer: "Yes, machine learning models can be tailored for finance, retail, manufacturing, healthcare, logistics, and any industry, ensuring relevance to your specific business challenges and requirements.",
   },
   {
-    question: "Is patient data secure with ML integrations?",
-    answer: "Absolutely. We implement HIPAA-compliant architecture with robust encryption, access controls, audit trails, and security measures to protect patient data and ensure regulatory compliance.",
+    question: "Is my data secure with ML integrations?",
+    answer: "Absolutely. We implement enterprise-grade security with robust encryption, access controls, audit trails, and compliance with standards like GDPR and SOC 2 to protect your business data.",
   },
   {
-    question: "How do I get started with healthcare ML integration?",
-    answer: "Contact us for a clinical consultation. We'll assess your workflows, identify ML opportunities, propose HIPAA-compliant solutions, and guide you through seamless integration into your practice.",
+    question: "How do I get started with ML integration?",
+    answer: "Contact us for a consultation. We'll assess your workflows, identify ML opportunities, propose secure solutions, and guide you through seamless integration into your business operations.",
   },
 ];
 
@@ -227,31 +227,16 @@ const MachineLearning: React.FC = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Machine-Learning.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 sm:gap-12">
-          <div className="flex-1 text-white space-y-6 sm:space-y-8">
-            <div className={`w-full ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <h1 className="heading-2 font-extrabold leading-tight tracking-tight drop-shadow-lg w-full">
-                Machine Learning
-              </h1>
-              <p className="body-large text-white w-full whitespace-pre-line mt-3 sm:mt-4 leading-relaxed">
-              Transform patient care with intelligent ML solutions for clinical predictions, diagnostic support, and data-driven healthcare decisions.
-              Improve outcomes with HIPAA-compliant machine learning technology.
-              </p>
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 sm:pt-6 w-full">
-                <a
-                  href="/#contact"
-                  className="btn-primary text-center min-h-[44px] flex items-center justify-center"
-                >
-                  Talk to AI Expert
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 flex justify-center md:justify-end">
-            {/* Optionally, you can add an image or illustration here if needed */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
+          <div className="text-white space-y-6 sm:space-y-8">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+              Machine Learning
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
+              Transform your business with intelligent machine learning solutions for predictions, automation, and data-driven decision-making across all industries.
+            </p>
           </div>
         </div>
       </section>
@@ -274,16 +259,16 @@ const MachineLearning: React.FC = () => {
             {/* Right: Content */}
             <div className={`space-y-4 sm:space-y-6 order-1 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
               <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-                The Power of Healthcare Machine Learning
+                The Power of Machine Learning
               </h2>
               <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-                Revolutionize patient care with advanced machine learning designed for healthcare. Our HIPAA-compliant solutions analyze medical data, identify clinical patterns, and generate intelligent predictions that enhance diagnostic accuracy and treatment outcomes.
+                Revolutionize your business operations with advanced machine learning technology. Our intelligent solutions analyze data, identify patterns, and generate accurate predictions that enhance decision-making, automate processes, and drive innovation across your organization.
               </p>
               <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-                Our healthcare AI specialists seamlessly integrate machine learning into clinical workflows, empowering providers with predictive analytics, automated risk assessment, and personalized treatment recommendations that improve patient outcomes.
+                Our ML specialists seamlessly integrate machine learning into your workflows, empowering teams with predictive analytics, automated insights, and intelligent recommendations that improve outcomes and operational efficiency.
               </p>
               <p className="text-sm sm:text-base text-gray-900 max-w-2xl leading-relaxed">
-                From hospitals and clinics to telehealth platforms and medical research, healthcare machine learning transforms how you deliver care, reduce costs, and save lives. Partner with us to lead the future of medicine.
+                From startups to enterprises, across finance, retail, manufacturing, and beyond—machine learning transforms how you operate, reduce costs, and stay competitive. Partner with us to unlock the power of intelligent automation.
               </p>
             </div>
           </div>
@@ -295,13 +280,13 @@ const MachineLearning: React.FC = () => {
         <div className="max-w-7xl mx-auto container-padding">
           <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
-              Healthcare Machine Learning Solutions
+              Machine Learning Solutions
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
             <p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
-              HIPAA-compliant ML solutions transforming clinical decision-making and patient care.
+              Intelligent ML solutions transforming business operations and decision-making across all industries.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -331,13 +316,13 @@ const MachineLearning: React.FC = () => {
         <div className="max-w-7xl mx-auto container-padding">
           <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-              Healthcare ML Benefits
+              Machine Learning Benefits
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
             <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-              Delivering better patient outcomes and clinical excellence through healthcare ML innovation.
+              Delivering measurable business value and competitive advantage through ML innovation.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -350,8 +335,8 @@ const MachineLearning: React.FC = () => {
                   <circle cx="12" cy="12" r="2"/>
                 </svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Accuracy</h3>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">High-precision diagnostic predictions and risk assessments for reliable clinical decisions.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Enhanced Accuracy</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">High-precision predictions and data-driven insights for reliable business decisions.</p>
             </div>
             {/* Scalability */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
@@ -361,8 +346,8 @@ const MachineLearning: React.FC = () => {
                   <path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Healthcare Scalability</h3>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Scale from single departments to hospital-wide and multi-facility deployments seamlessly.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Enterprise Scalability</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Scale from single departments to enterprise-wide deployments seamlessly.</p>
             </div>
             {/* Flexibility */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
@@ -372,8 +357,8 @@ const MachineLearning: React.FC = () => {
                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 12.9V12a2 2 0 1 1 0-4v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1.51 1c.26 0 .52-.09.74-.26l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09A1.65 1.65 0 0 0 21 12v.09a1.65 1.65 0 0 0-1 1.51z"/>
                 </svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Flexibility</h3>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Customize models to align with your clinical workflows and specialty-specific requirements.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Business Flexibility</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Customize models to align with your workflows and industry-specific requirements.</p>
             </div>
             {/* Automation */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
@@ -382,8 +367,8 @@ const MachineLearning: React.FC = () => {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
               </div>
-              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Clinical Automation</h3>
-              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate patient triage, risk assessment, and clinical documentation workflows.</p>
+              <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-2 text-center w-full">Intelligent Automation</h3>
+              <p className="text-xs sm:text-sm text-gray-900 text-center leading-relaxed">Automate data processing, analysis, and decision-making workflows.</p>
             </div>
           </div>
         </div>
@@ -403,7 +388,7 @@ const MachineLearning: React.FC = () => {
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
             <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-              Industry-leading platforms optimized for HIPAA-compliant healthcare ML applications.
+              Industry-leading platforms optimized for enterprise ML applications.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
@@ -422,23 +407,23 @@ const MachineLearning: React.FC = () => {
         <div className="max-w-5xl mx-auto container-padding">
           <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-              Healthcare ML Implementation Process
+              ML Implementation Process
             </h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
             </div>
             <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-              Proven methodology for deploying HIPAA-compliant ML solutions in healthcare environments.
+              Proven methodology for deploying secure ML solutions in business environments.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {/* Define the use case */}
+            {/* Business Assessment */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}>
               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-2">
                 <Target className="w-6 h-6 sm:w-7 sm:h-7" />
               </span>
-              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Assessment</span>
-              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify clinical workflows and patient care challenges where ML delivers maximum impact.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Business Assessment</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Identify workflows and business challenges where ML delivers maximum operational impact.</p>
             </div>
             {/* Data collection & preparation */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
@@ -446,7 +431,7 @@ const MachineLearning: React.FC = () => {
                 <Shield className="w-6 h-6 sm:w-7 sm:h-7" />
               </span>
               <span className="font-bold text-white text-sm sm:text-lg text-center">Secure Data Integration</span>
-              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">HIPAA-compliant medical data preparation and EHR integration for training robust models.</p>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Secure data preparation and system integration for training robust ML models.</p>
             </div>
             {/* Development & integration */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
@@ -454,15 +439,15 @@ const MachineLearning: React.FC = () => {
                 <Code className="w-6 h-6 sm:w-7 sm:h-7" />
               </span>
               <span className="font-bold text-white text-sm sm:text-lg text-center">ML Model Development</span>
-              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Build and validate clinical ML models with healthcare professionals and regulatory standards.</p>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Build and validate ML models with stakeholders and industry standards.</p>
             </div>
             {/* Deployment & monitoring */}
             <div className={`modern-card p-6 sm:p-8 flex flex-col items-center gap-3 sm:gap-4 min-h-[180px] sm:min-h-[200px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
               <span className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 text-white mb-2">
                 <Zap className="w-6 h-6 sm:w-7 sm:h-7" />
               </span>
-              <span className="font-bold text-white text-sm sm:text-lg text-center">Clinical Deployment</span>
-              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into clinical workflows with ongoing monitoring and optimization.</p>
+              <span className="font-bold text-white text-sm sm:text-lg text-center">Deployment & Optimization</span>
+              <p className="text-xs sm:text-sm text-gray-300 text-center leading-relaxed">Seamless integration into workflows with ongoing monitoring and optimization.</p>
             </div>
           </div>
         </div>
@@ -472,12 +457,12 @@ const MachineLearning: React.FC = () => {
       <section className="section-padding">
         <div className="max-w-6xl mx-auto container-padding">
           <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Healthcare ML</h2>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Why Choose Us for Machine Learning</h2>
             <div className="flex justify-center">
               <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
             </div>
             <p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
-              Healthcare-focused ML expertise with proven results in clinical environments.
+              Industry expertise with proven results across multiple sectors and use cases.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
