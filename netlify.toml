@@ -3,9 +3,9 @@
   publish = "dist"
   command = "npm run build"
 
-  # Allow the frontend-safe anon key to appear in build output
-  [build.environment]
-    SECRETS_SCAN_OMIT_KEYS = ["VITE_SUPABASE_ANON_KEY"]
+[build.environment]
+  # For frontend-safe anon key
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_ANON_KEY"
 
 [[redirects]]
   from = "/*"
