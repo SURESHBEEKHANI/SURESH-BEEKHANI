@@ -37,7 +37,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
     try {
       // Try saving details in Supabase
       const { error } = await supabase
-        .from("case_study_downloads")
+        .from("case_study_downloads_data")
         .insert([
           {
             name: formData.name,

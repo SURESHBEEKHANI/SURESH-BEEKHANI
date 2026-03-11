@@ -33,7 +33,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("case_study_downloads").insert([
+      const { error } = await supabase.from("case_study_downloads_data").insert([
         {
           name: formData.name,
           email: formData.email,

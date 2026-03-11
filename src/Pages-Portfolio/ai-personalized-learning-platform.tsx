@@ -38,7 +38,7 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
     setError("");
 
     try {
-      const { error: insertError } = await supabase.from("case_study_downloads").insert([
+      const { error: insertError } = await supabase.from("case_study_downloads_data").insert([
         {
           name: formData.name,
           email: formData.email,
