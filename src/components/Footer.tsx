@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Heart, Sparkles, Brain, Code, Rocket, Globe, Clock, Youtube, Instagram } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Heart, Brain, Code, Rocket, Globe, Youtube, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import { Input } from './ui/input';
+import { toast } from 'sonner';
+import { supabase } from '@/supabaseClient';
 
 const Footer = () => {
+
   const [isVisible, setIsVisible] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
     };
@@ -18,262 +24,266 @@ const Footer = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isValidEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const email = newsletterEmail.trim();
+
+    if (!email) {
+      toast.error('Email is required');
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsNewsletterSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_signups')
+        .insert([{ email }]);
+
+      if (error) {
+        const code = (error as { code?: string } | null)?.code;
+
+        if (code === '23505') {
+          toast.success('You’re already subscribed!', {
+            description: 'Thanks — we’ve got you.',
+          });
+          setNewsletterEmail('');
+          return;
+        }
+
+        throw error;
+      }
+
+      toast.success('Subscribed successfully!', {
+        description: 'You will receive our latest updates.',
+      });
+
+      setNewsletterEmail('');
+
+    } catch (err) {
+      console.error(err);
+      toast.error('Could not subscribe right now. Please try again.');
+    } finally {
+      setIsNewsletterSubmitting(false);
+    }
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
-  
+
   const socialLinks = [
-    { 
-      name: 'Github', 
-      icon: <Github size={16} />, 
-      url: 'https://github.com/sureshbeekhani',
-      color: 'from-gray-600 to-gray-800'
-    },
-    { 
-      name: 'LinkedIn', 
-      icon: <Linkedin size={16} />, 
-      url: 'https://www.linkedin.com/in/suresh-beekhani/',
-      color: 'from-blue-600 to-blue-800'
-    },
-    { 
-      name: 'X (Twitter)', 
-      icon: <Twitter size={16} />, 
-      url: 'https://x.com/SureshBeekhan',
-      color: 'from-black to-gray-800'
-    },
-    {
-      name: 'YouTube',
-      icon: <Youtube size={16} />,
-      url: 'https://www.youtube.com/@sureshbeekhani',
-      color: 'from-red-500 to-red-700'
-    },
-    {
-      name: 'Instagram',
-      icon: <Instagram size={16} />,
-      url: 'https://www.instagram.com/sureshbeekhani/',
-      color: 'from-pink-500 to-purple-600'
-    },
+    { name: 'Github', icon: <Github size={16} />, url: 'https://github.com/sureshbeekhani', color: 'from-gray-600 to-gray-800' },
+    { name: 'LinkedIn', icon: <Linkedin size={16} />, url: 'https://www.linkedin.com/in/suresh-beekhani/', color: 'from-blue-600 to-blue-800' },
+    { name: 'X', icon: <Twitter size={16} />, url: 'https://x.com/SureshBeekhan', color: 'from-black to-gray-800' },
+    { name: 'YouTube', icon: <Youtube size={16} />, url: 'https://www.youtube.com/@sureshbeekhani', color: 'from-red-500 to-red-700' },
+    { name: 'Instagram', icon: <Instagram size={16} />, url: 'https://www.instagram.com/sureshbeekhani/', color: 'from-pink-500 to-purple-600' },
   ];
 
-  const navigationLinks = [
-    { name: 'About', id: 'about', icon: <Brain className="h-4 w-4" /> },
-    { name: 'Services', id: 'services', icon: <Code className="h-4 w-4" /> },
-    { name: 'Experience', id: 'experience', icon: <Rocket className="h-4 w-4" /> },
-    { name: 'Contact', id: 'contact', icon: <Globe className="h-4 w-4" /> }
-  ];
-
-  const contactInfo = [
-    {
-      icon: <MapPin size={16} />,
-      label: 'Location',
-      value: 'Karachi, Pakistan'
-    },
-    {
-      icon: <Mail size={16} />,
-      label: 'Email',
-      value: 'sureshbeekhani26@gmail.com',
-      href: 'mailto:sureshbeekhani26@gmail.com'
-    },
-    {
-      icon: <Phone size={16} />,
-      label: 'Phone',
-      value: '+923401213187',
-      href: 'tel:+923401213187'
-    },
-  ];
-
-  const services = [
-    { name: 'AI Development', link: '/ai-development' },
-    { name: 'Machine Learning', link: '/machine-learning' },
-    { name: 'Deep Learning', link: '/machine-learning' }, // Deep Learning is part of Machine Learning page
-    { name: 'NLP Solutions', link: '/natural-language-processing' },
-    { name: 'Computer Vision', link: '/computer-vision' },
-    { name: 'Predictive AI', link: '/predictive-modelling' },
-    { name: 'Chatbot Development', link: '/ai-chatbot-development' },
-    { name: 'AI Automation', link: '/ai-automation' }
-  ];
-  
   return (
-    <footer className="ai-section text-white py-16 overflow-x-hidden w-full relative">
-      {/* AI Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-tech-blue/20 to-ai-aqua-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-aqua-cyan/15 to-ai-mint-green/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-tech-blue/5 to-ai-aqua-cyan/5 rounded-full blur-3xl"></div>
-      </div>
+    <footer className="ai-section text-white py-16 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+
         <div className="grid lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
+
+          {/* Brand */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+
             <div className="flex items-center gap-3">
-              <div className="rounded-full w-12 h-12 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}>
+
+              <div
+                className="rounded-full w-12 h-12 flex items-center justify-center"
+                style={{
+                  background:
+                    'linear-gradient(135deg,#1E5AFF 0%,#00C2CB 50%,#71EFA3 100%)',
+                }}
+              >
                 <Brain className="h-6 w-6 text-white" />
               </div>
+
               <div>
                 <h3 className="text-xl font-bold">
                   Suresh <span className="gradient-text">Beekhani</span>
                 </h3>
-                <p className="text-xs" style={{ color: '#00C2CB' }}>Data Scientist | AI Specialist</p>
+
+                <p className="text-xs text-cyan-400">
+                  Data Scientist | AI Specialist
+                </p>
               </div>
+
             </div>
-            <p className="text-white/70 leading-relaxed body-small">
-              Transforming ideas into intelligent AI solutions. Specialized in machine learning, deep learning, generative AI, and intelligent agents to drive innovation, automation, and business growth.
+
+            <p className="text-white/70 text-sm leading-relaxed">
+              Transforming ideas into intelligent AI solutions using
+              Machine Learning, Deep Learning, Generative AI, and intelligent
+              automation.
             </p>
+
             <div className="flex space-x-3">
+
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-xl bg-gradient-to-r text-white hover:scale-110 transition-all duration-300 ${social.color}`}
-                  aria-label={`Visit ${social.name} profile`}
+                  className={`p-3 rounded-xl bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
                 >
                   {social.icon}
                 </a>
               ))}
+
             </div>
-          </div>
-          
-          {/* Navigation Section */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
-            <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {navigationLinks.map((item) => (
-                <li key={item.name}>
-                  <a 
-                    href={`/#${item.id}`} 
-                    className="flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 group"
-                    aria-label={`Navigate to ${item.name} section`}
-                  >
-                    <div className="group-hover:scale-110 transition-transform" style={{ color: '#00C2CB' }}>
-                      {item.icon}
-                    </div>
-                    <span className="transition-colors" style={{ color: 'rgba(255, 255, 255, 0.7)' }} onMouseEnter={(e) => e.currentTarget.style.color = '#00C2CB'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}>{item.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+
           </div>
 
-          {/* Services Section */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
-              Services
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {services.map((service) => (
-                <a
-                  key={service.name}
-                  href={service.link}
-                  className="inline-block"
-                >
-                  <Badge 
-                    variant="secondary"
-                    className="border text-xs transition-all duration-300 cursor-pointer whitespace-nowrap"
-                    style={{ 
-                      background: 'rgba(0, 194, 203, 0.1)', 
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      borderColor: 'rgba(0, 194, 203, 0.2)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(0, 194, 203, 0.2)';
-                      e.currentTarget.style.color = '#00C2CB';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(0, 194, 203, 0.1)';
-                      e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
-                    }}
-                  >
-                    {service.name}
-                  </Badge>
-                </a>
-              ))}
-            </div>
-          </div>
-          
-          {/* Contact Section */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
-            <h3 className="text-lg font-semibold flex items-center gap-2">
-              <div className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #1E5AFF, #00C2CB)' }}></div>
-              Contact Info
-            </h3>
-            <ul className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-center gap-3 group">
-                  <div className="rounded-full w-8 h-8 flex items-center justify-center border" style={{ 
-                    background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 100%)',
-                    borderColor: 'rgba(0, 194, 203, 0.3)',
-                    color: '#00C2CB'
-                  }}>
-                    {info.icon}
-                  </div>
-                  <div>
-                    <p className="text-xs" style={{ color: 'rgba(0, 194, 203, 0.7)' }}>{info.label}</p>
-                    {info.href ? (
-                      <a 
-                        href={info.href}
-                        className="transition-colors font-medium text-sm"
-                        style={{ color: 'rgba(255, 255, 255, 0.7)' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = '#00C2CB'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
-                        aria-label={`Contact via ${info.label.toLowerCase()}`}
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="font-medium text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>{info.value}</p>
-                    )}
-                  </div>
-                </li>
-              ))}
+          {/* Quick Links */}
+          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+
+            <h3 className="text-lg font-semibold">Quick Links</h3>
+
+            <ul className="space-y-3 text-white/70">
+
+              <li><a href="/#about" className="hover:text-cyan-400">About</a></li>
+              <li><a href="/#services" className="hover:text-cyan-400">Services</a></li>
+              <li><a href="/#experience" className="hover:text-cyan-400">Experience</a></li>
+              <li><a href="/#contact" className="hover:text-cyan-400">Contact</a></li>
+
             </ul>
+
           </div>
-        </div>
-        
-        {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 text-white/70 text-sm">
-              <span>© {new Date().getFullYear()} Suresh Beekhani. All rights reserved.</span>
-              <span className="hidden sm:inline">•</span>
-              <span className="flex items-center gap-1">
-                Made with <Heart className="h-3 w-3 text-red-400 fill-current" /> and lots of ☕
-              </span>
+
+          {/* Services */}
+          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+
+            <h3 className="text-lg font-semibold">Services</h3>
+
+            <div className="flex flex-wrap gap-2">
+
+              {[
+                "AI Development",
+                "Machine Learning",
+                "Deep Learning",
+                "NLP Solutions",
+                "Computer Vision",
+                "Predictive AI",
+                "Chatbot Development",
+                "AI Automation"
+              ].map((service) => (
+                <Badge
+                  key={service}
+                  variant="secondary"
+                  className="text-xs bg-cyan-500/10 text-white/70 border border-cyan-500/20"
+                >
+                  {service}
+                </Badge>
+              ))}
+
             </div>
-            
-            <div className="flex items-center gap-4">
-              <Badge variant="outline" className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
-                <Brain className="w-3 h-3 mr-1" />
-                AI/ML Engineer
-              </Badge>
-              <Badge variant="outline" className="border" style={{ background: 'rgba(113, 239, 163, 0.1)', color: '#71EFA3', borderColor: 'rgba(113, 239, 163, 0.2)' }}>
-                <Code className="w-3 h-3 mr-1" />
-                Data Scientist
-              </Badge>
-            </div>
+
           </div>
+
+          {/* Contact + Newsletter */}
+          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+
+            <h3 className="text-lg font-semibold">Contact</h3>
+
+            <ul className="space-y-3 text-white/70 text-sm">
+
+              <li className="flex items-center gap-2">
+                <MapPin size={16} /> Karachi, Pakistan
+              </li>
+
+              <li className="flex items-center gap-2">
+                <Mail size={16} /> sureshbeekhani26@gmail.com
+              </li>
+
+              <li className="flex items-center gap-2">
+                <Phone size={16} /> +923401213187
+              </li>
+
+            </ul>
+
+            {/* Newsletter */}
+            <div className="pt-6">
+
+              <h4 className="text-sm font-semibold mb-3">
+                Join Our Newsletter
+              </h4>
+
+              <form
+                onSubmit={handleNewsletterSubmit}
+                className="flex w-full overflow-hidden rounded-full border border-white/15"
+              >
+
+                <Input
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  type="email"
+                  placeholder="Enter your email"
+                  className="border-0 bg-transparent text-white placeholder:text-white/50 focus-visible:ring-0 px-4 py-3"
+                />
+
+                <Button
+                  type="submit"
+                  disabled={isNewsletterSubmitting}
+                  className="px-6 font-semibold text-white"
+                  style={{
+                    background:
+                      "linear-gradient(90deg,#3B82F6 0%,#34D399 100%)"
+                  }}
+                >
+                  {isNewsletterSubmitting ? "Submitting..." : "Subscribe"}
+                </Button>
+
+              </form>
+
+            </div>
+
+          </div>
+
         </div>
+
+        {/* Bottom */}
+        <div className="border-t border-white/10 pt-8 flex justify-between items-center flex-col md:flex-row gap-4">
+
+          <p className="text-white/70 text-sm">
+            © {new Date().getFullYear()} Suresh Beekhani. All rights reserved.
+          </p>
+
+          <div className="flex gap-4">
+
+            <Badge variant="outline">AI/ML Engineer</Badge>
+            <Badge variant="outline">Data Scientist</Badge>
+
+          </div>
+
+        </div>
+
       </div>
 
-      {/* Scroll to top button */}
+      {/* Scroll Button */}
       <Button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 btn-primary p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 ${
-          showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+        className={`fixed bottom-8 right-8 rounded-full p-3 ${
+          showScrollTop ? "opacity-100" : "opacity-0"
         }`}
-        aria-label="Scroll to top"
       >
-        <ArrowUp className="h-5 w-5" />
+        <ArrowUp size={18} />
       </Button>
+
     </footer>
   );
 };
