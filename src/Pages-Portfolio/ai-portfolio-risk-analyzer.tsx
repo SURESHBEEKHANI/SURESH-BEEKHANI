@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { supabase } from "@/supabaseClient";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
 const AIPortfolioRiskAnalyzer: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const AIPortfolioRiskAnalyzer: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,8 +28,6 @@ const AIPortfolioRiskAnalyzer: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let saveFailed = false;
-
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
@@ -36,39 +35,36 @@ const AIPortfolioRiskAnalyzer: React.FC = () => {
 
     setIsSubmitting(true);
     setError("");
+    setSuccess("");
+    let result:
+      | Awaited<ReturnType<typeof saveCaseStudyLead>>
+      | undefined;
 
     try {
-      const { error: insertError } = await supabase.from("case_study_downloads_data").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          job_title: formData.jobTitle,
-          company: formData.company,
-          case_study: "ai-portfolio-risk-analyzer",
-        },
-      ]);
-
-      if (insertError) {
-        console.error("Supabase Insert Error:", insertError);
-        toast.error("Download started, but we could not save your details.");
-        saveFailed = true;
-      } else {
-        toast.success("Thank you! Your details were saved and the PDF download has started.");
-      }
-    } catch (err: any) {
-      console.error("Unexpected Error:", err);
-      toast.error("Download started, but we could not save your details.");
-      saveFailed = true;
+      result = await saveCaseStudyLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        caseStudy: "ai-portfolio-risk-analyzer",
+      });
     } finally {
       setIsSubmitting(false);
-      if (saveFailed) {
-        setError("Download started, but we could not save your details.");
-      }
       window.open(
         "https://drive.google.com/uc?export=download&id=1HQolboMT97bHkkCPpHbRcoLdFaaFYy0A",
         "_blank"
       );
+
+      if (result?.savedInDatabase) {
+        toast.success("Download started. Details saved.");
+        setSuccess("Saved successfully. Download started.");
+      } else if (result?.queuedLocally) {
+        toast.info("Download started. Details not saved.");
+      } else {
+        toast.error("Download started. Save failed.");
+        setError("Download started. Save failed.");
+      }
     }
   };
 
@@ -238,6 +234,11 @@ const AIPortfolioRiskAnalyzer: React.FC = () => {
                 {error && (
                   <div className="mt-4 text-center text-red-500">
                     <p>{error}</p>
+                  </div>
+                )}
+                {success && (
+                  <div className="mt-4 text-center text-green-600">
+                    <p>{success}</p>
                   </div>
                 )}
               </form>

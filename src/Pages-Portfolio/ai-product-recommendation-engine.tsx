@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { supabase } from "@/supabaseClient";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
 const AIProductRecommendationEngine: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +27,6 @@ const AIProductRecommendationEngine: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let saveFailed = false;
-
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
@@ -37,38 +35,31 @@ const AIProductRecommendationEngine: React.FC = () => {
     setIsSubmitting(true);
     setError("");
 
-    try {
-      const { error: insertError } = await supabase.from("case_study_downloads_data").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          job_title: formData.jobTitle,
-          company: formData.company,
-          case_study: "ai-product-recommendation-engine",
-        },
-      ]);
+    window.open(
+      "https://drive.google.com/uc?export=download&id=1aypLTqst7kzj-8bmLlt0dVmCxOhvxQTy",
+      "_blank"
+    );
 
-      if (insertError) {
-        console.error("Supabase Insert Error:", insertError);
-        toast.error("Download started, but we could not save your details.");
-        saveFailed = true;
+    try {
+      const result = await saveCaseStudyLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        caseStudy: "ai-product-recommendation-engine",
+      });
+
+      if (result.savedInDatabase) {
+        toast.success("Download started. Details saved.");
+      } else if (result.queuedLocally) {
+        toast.info("Download started. Details not saved.");
       } else {
-        toast.success("Thank you! Your details were saved and the PDF download has started.");
+        toast.error("Download started. Save failed.");
+        setError("Download started. Save failed.");
       }
-    } catch (err: any) {
-      console.error("Unexpected Error:", err);
-      toast.error("Download started, but we could not save your details.");
-      saveFailed = true;
     } finally {
       setIsSubmitting(false);
-      if (saveFailed) {
-        setError("Download started, but we could not save your details.");
-      }
-      window.open(
-        "https://drive.google.com/uc?export=download&id=1aypLTqst7kzj-8bmLlt0dVmCxOhvxQTy",
-        "_blank"
-      );
     }
   };
 

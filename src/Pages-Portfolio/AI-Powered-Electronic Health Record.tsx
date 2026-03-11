@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { supabase } from "@/supabaseClient";
 import { toast } from "sonner";
+import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
 const AIPoweredElectronicHealthRecord: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -33,32 +33,29 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("case_study_downloads_data").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          job_title: formData.jobTitle,
-          company: formData.company,
-          case_study: "ai-powered-electronic-health-record",
-        },
-      ]);
-
-      if (error) {
-        console.error(error);
-        toast.error("Download started, but we could not save your details.");
-      } else {
-        toast.success("Thank you! Your details were saved and the PDF download has started.");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Download started, but we could not save your details.");
-    } finally {
-      setIsSubmitting(false);
       window.open(
         "https://drive.google.com/uc?export=download&id=1w12L8u8Po182QWNO2oitNlVtm5npMJgE",
         "_blank"
       );
+
+      const result = await saveCaseStudyLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        caseStudy: "ai-powered-electronic-health-record",
+      });
+
+      if (result.savedInDatabase) {
+        toast.success("Download started. Details saved.");
+      } else if (result.queuedLocally) {
+        toast.info("Download started. Details not saved.");
+      } else {
+        toast.error("Download started. Save failed.");
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

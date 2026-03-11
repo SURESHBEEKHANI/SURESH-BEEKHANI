@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { supabase } from "@/supabaseClient";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
 const AIMedicalImagingAssistant: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -24,8 +24,6 @@ const AIMedicalImagingAssistant: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let saveFailed = false;
-
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
@@ -35,45 +33,30 @@ const AIMedicalImagingAssistant: React.FC = () => {
     setError("");
 
     try {
-      // Try saving details in Supabase
-      const { error } = await supabase
-        .from("case_study_downloads_data")
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || null,
-            job_title: formData.jobTitle || null,
-            company: formData.company || null,
-            case_study: "ai-medical-imaging-assistant",
-          },
-        ]);
-
-      if (error) {
-        console.error("Supabase Insert Error:", error.message);
-        toast.error(
-          "Download started, but we could not save your details."
-        );
-        saveFailed = true;
-      } else {
-        toast.success(
-          "Thank you! Your details were saved and the PDF download has started."
-        );
-      }
-    } catch (err: any) {
-      console.error("Unexpected Error:", err);
-      toast.error("Download started, but we could not save your details.");
-      saveFailed = true;
-    } finally {
-      setIsSubmitting(false);
-      if (saveFailed) {
-        setError("Download started, but we could not save your details.");
-      }
-      // Always start download, even if saving fails
       window.open(
         "https://drive.google.com/uc?export=download&id=1aR7qBfUMhsncq0hpwnf7iQj4o8BwkZ1s",
         "_blank"
       );
+
+      const result = await saveCaseStudyLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        caseStudy: "ai-medical-imaging-assistant",
+      });
+
+      if (result.savedInDatabase) {
+        toast.success("Download started. Details saved.");
+      } else if (result.queuedLocally) {
+        toast.info("Download started. Details not saved.");
+      } else {
+        toast.error("Download started. Save failed.");
+        setError("Download started. Save failed.");
+      }
+    } finally {
+      setIsSubmitting(false);
       // Reset form
       setFormData({
         name: "",

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { supabase } from "@/supabaseClient";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
 const AINutritionPlanner: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +27,6 @@ const AINutritionPlanner: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let saveFailed = false;
-
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in at least your name and email.");
       return;
@@ -36,39 +34,34 @@ const AINutritionPlanner: React.FC = () => {
 
     setIsSubmitting(true);
     setError("");
+    let result:
+      | Awaited<ReturnType<typeof saveCaseStudyLead>>
+      | undefined;
 
     try {
-      const { error: insertError } = await supabase.from("case_study_downloads_data").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          job_title: formData.jobTitle,
-          company: formData.company,
-          case_study: "ai-nutrition-planner",
-        },
-      ]);
-
-      if (insertError) {
-        console.error("Supabase Insert Error:", insertError);
-        toast.error("Download started, but we could not save your details.");
-        saveFailed = true;
-      } else {
-        toast.success("Thank you! Your details were saved and the PDF download has started.");
-      }
-    } catch (err: any) {
-      console.error("Unexpected Error:", err);
-      toast.error("Download started, but we could not save your details.");
-      saveFailed = true;
+      result = await saveCaseStudyLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        caseStudy: "ai-nutrition-planner",
+      });
     } finally {
       setIsSubmitting(false);
-      if (saveFailed) {
-        setError("Download started, but we could not save your details.");
-      }
       window.open(
         "https://drive.google.com/uc?export=download&id=115V0Vd7tf2-I7SlH9CEOa3WAbXcYaeGO",
         "_blank"
       );
+
+      if (result?.savedInDatabase) {
+        toast.success("Download started. Details saved.");
+      } else if (result?.queuedLocally) {
+        toast.info("Download started. Details not saved.");
+      } else {
+        toast.error("Download started. Save failed.");
+        setError("Download started. Save failed.");
+      }
     }
   };
 
