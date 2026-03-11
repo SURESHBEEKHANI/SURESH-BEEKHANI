@@ -124,13 +124,167 @@ const HeroSection: React.FC = React.memo(() => (
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/wellness-personalized.jpg')] bg-cover bg-center" />
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
       <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">FitTech</h1>
-        <p className="text-sm sm:text-base md:text-lg text-gray-100 leading-relaxed max-w-3xl">Transform fitness with AI-powered personalized workouts, wearable analytics, virtual coaches, and nutrition optimization. Enhance user engagement and outcomes.</p>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">FitTech</h1>
+        <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">Transform fitness with AI-powered personalized workouts, wearable analytics, virtual coaches, and nutrition optimization. Enhance user engagement and outcomes.</p>
       </div>
     </div>
   </section>
 ));
 HeroSection.displayName = 'HeroSection';
+
+const ProfessionalSection: React.FC = React.memo(() => (
+  <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Left Content */}
+        <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+              AI-Driven Fitness Technology Innovation
+            </h2>
+          </div>
+          
+          <div className="space-y-5 text-gray-800 text-sm sm:text-base lg:text-lg leading-relaxed font-medium">
+            <p>
+              We are revolutionizing fitness and wellness with the power of Artificial Intelligence. By combining machine learning, computer vision, and wearable data analytics, we create intelligent fitness solutions that support personalized workouts, real-time form correction, nutrition optimization, and progress tracking.
+            </p>
+            <p>
+              Our mission is to help fitness platforms and wellness apps deliver more engaging, effective, and personalized experiences that drive user retention and achieve better health outcomes.
+            </p>
+          </div>
+          
+          <div className="pt-4">
+            <Link 
+              to="/#contact" 
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400 hover:from-blue-600 hover:via-cyan-600 hover:to-emerald-500 text-white font-bold text-sm sm:text-base px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            >
+              Schedule a Demo
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+        
+        {/* Right Image with Modern Design */}
+        <div className="relative max-w-xl mx-auto lg:mx-0">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            {/* Decorative Elements */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl transform rotate-12 z-0 opacity-80" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-cyan-500 to-emerald-400 rounded-3xl transform -rotate-12 z-0 opacity-80" />
+            
+            {/* Main Image Container */}
+            <div className="relative z-10 bg-white p-2 rounded-3xl">
+              <div className="relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
+                <img 
+                  src="/image/pages_img/wellness-personalized.jpg" 
+                  alt="People using AI-powered fitness technology" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+));
+ProfessionalSection.displayName = 'ProfessionalSection';
+
+const CapabilitiesSection: React.FC = React.memo(() => {
+  const capabilities = [
+    {
+      icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+      title: "Personalized Workout Programs",
+      description: "AI analyzes fitness levels, goals, and preferences to create customized workout plans that adapt in real-time. This increases workout completion rates by 45% and improves user retention significantly.",
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+      title: "Wearable Data Intelligence",
+      description: "AI processes data from fitness trackers and smartwatches to provide actionable insights on heart rate, sleep quality, activity patterns, and recovery metrics for optimized performance.",
+      gradient: "from-emerald-500 to-teal-500"
+    },
+    {
+      icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+      title: "AI Form Correction & Coaching",
+      description: "Computer vision analyzes exercise form in real-time, providing instant feedback and corrections. This reduces injury risk by 60% while improving exercise effectiveness and user confidence.",
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
+      title: "Nutrition & Meal Planning",
+      description: "AI creates personalized meal plans based on fitness goals, dietary restrictions, and biometric data. Continuous optimization ensures users meet their nutritional targets while enjoying their meals.",
+      gradient: "from-orange-500 to-red-500"
+    },
+    {
+      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+      title: "24/7 Virtual Fitness Assistants",
+      description: "AI-powered chatbots and voice assistants provide round-the-clock motivation, answer fitness questions, track progress, and adjust workout plans based on user feedback and performance data.",
+      gradient: "from-indigo-500 to-violet-500"
+    },
+    {
+      icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+      title: "Enhanced User Engagement",
+      description: "Fitness platforms using AI see 40-60% improvement in user retention, 50% increase in workout completion rates, and 45% boost in premium subscriptions through personalized, data-driven experiences.",
+      gradient: "from-amber-500 to-yellow-500"
+    }
+  ];
+
+  return (
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 hero-bg relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-1000" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-start gap-3 mb-4">
+            <div className="w-2 h-10 bg-gradient-to-b from-blue-400 via-cyan-400 to-emerald-400 rounded-full shadow-lg" />
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight drop-shadow-lg">
+              Capabilities and Benefits of AI and ML in FitTech
+            </h2>
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          {capabilities.map((capability, index) => (
+            <div 
+              key={index}
+              className="group bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl border border-white/20 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              {/* Icon */}
+              <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${capability.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <svg 
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d={capability.icon} />
+                </svg>
+              </div>
+
+              {/* Content */}
+              <h3 className="text-base sm:text-lg font-bold text-white mb-4 group-hover:text-cyan-200 transition-colors duration-300">
+                {capability.title}
+              </h3>
+              <p className="text-xs sm:text-sm lg:text-base text-gray-100 leading-relaxed font-medium">
+                {capability.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+});
+CapabilitiesSection.displayName = 'CapabilitiesSection';
 
 const FitTech: React.FC = () => {
   const useCases = useMemo(() => USE_CASES_DATA, []);
@@ -193,6 +347,8 @@ const FitTech: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-violet-100">
       <Navbar />
       <HeroSection />
+      <ProfessionalSection />
+      <CapabilitiesSection />
       <AnimatedCarousel useCases={useCases} title="FitTech AI Solutions" subtitle="AI technology for fitness and wellness" />
       <section className="py-16 sm:py-24 px-4 sm:px-6 hero-bg relative overflow-hidden">
         {/* Animated background elements */}
@@ -204,14 +360,14 @@ const FitTech: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-block mb-4">
-              <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-lg">
+              <span className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-400/30 shadow-lg">
                 Portfolio
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 drop-shadow-lg">
               Real-World AI Solutions
             </h2>
-            <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-white font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
               Discover how we've transformed businesses across healthcare, finance, education, and more with cutting-edge AI technology
             </p>
           </div>
@@ -221,7 +377,7 @@ const FitTech: React.FC = () => {
             <button 
               onClick={() => scroll('left')} 
               disabled={!canScrollLeft} 
-              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -230,7 +386,7 @@ const FitTech: React.FC = () => {
             <button 
               onClick={() => scroll('right')} 
               disabled={!canScrollRight} 
-              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-violet-900 p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -249,7 +405,7 @@ const FitTech: React.FC = () => {
                 {portfolioData.map((project, idx) => (
                   <div 
                     key={project.link} 
-                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-white/20 hover:border-white/40 group/card transform hover:-translate-y-2"
+                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 border border-white/20 hover:border-cyan-400/50 group/card transform hover:-translate-y-2"
                   >
                     <div className="relative h-52 sm:h-64 overflow-hidden">
                       <img 
@@ -261,15 +417,15 @@ const FitTech: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     </div>
                     <div className="p-6 sm:p-7 space-y-4">
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-tight group-hover/card:text-violet-200 transition-colors duration-300">
+                      <h3 className="text-sm sm:text-base font-bold text-white leading-tight group-hover/card:text-cyan-200 transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-gray-100 font-medium leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
                       <Link 
                         to={project.link} 
-                        className="inline-flex items-center gap-2 bg-white text-violet-900 hover:bg-violet-50 font-semibold px-5 py-2.5 rounded-lg shadow-lg transition-all duration-300 text-sm group/btn"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400 hover:from-blue-600 hover:via-cyan-600 hover:to-emerald-500 text-white font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-xs sm:text-sm group/btn transform hover:scale-105"
                       >
                         View Case Study 
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -285,7 +441,7 @@ const FitTech: React.FC = () => {
               {Array.from({ length: Math.ceil(portfolioData.length / 3) }).map((_, idx) => (
                 <div 
                   key={idx} 
-                  className="h-1.5 rounded-full bg-white/30 transition-all duration-300"
+                  className="h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300"
                   style={{ width: idx === 0 ? '32px' : '8px' }}
                 />
               ))}
@@ -294,28 +450,28 @@ const FitTech: React.FC = () => {
         </div>
       </section>
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold border border-violet-200">
+              <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200">
                 FAQ
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-5">
               Frequently Asked Questions
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-700 font-medium max-w-2xl mx-auto">
               Everything you need to know about AI-powered fitness solutions
             </p>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {faqData.map((faq) => (
-              <details key={faq.id} className="bg-white rounded-xl shadow-md border border-gray-200 p-5 sm:p-6 group hover:shadow-lg transition-all duration-300">
-                <summary className="cursor-pointer font-semibold text-base sm:text-lg text-gray-900 flex items-center justify-between group-hover:text-violet-700 transition-colors duration-200">
+              <details key={faq.id} className="bg-white rounded-xl shadow-md border border-gray-200 p-3 sm:p-4 group hover:shadow-lg hover:border-cyan-300 transition-all duration-300">
+                <summary className="cursor-pointer font-bold text-sm sm:text-base lg:text-lg text-gray-900 flex items-center justify-between group-hover:text-cyan-600 transition-colors duration-200">
                   <span className="pr-4">{faq.question}</span>
-                  <span className="flex-shrink-0 ml-2 text-violet-600 group-hover:text-violet-700 group-open:rotate-45 transition-transform duration-300 text-2xl font-light">+</span>
+                  <span className="flex-shrink-0 ml-2 text-blue-600 group-hover:text-cyan-600 group-open:rotate-45 transition-transform duration-300 text-xl font-light">+</span>
                 </summary>
-                <div className="pt-4 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-gray-100 mt-4">
+                <div className="pt-3 text-gray-800 text-xs sm:text-sm lg:text-base font-medium leading-relaxed border-t border-gray-100 mt-3">
                   {faq.answer}
                 </div>
               </details>
