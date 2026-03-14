@@ -113,7 +113,7 @@ const industries = [
 const platforms = [
 	{ name: "LangChain", image: "/image/skills_img/tensorflow.png" },
 	{ name: "AutoGPT", image: "/image/skills_img/pytorch.png" },
-	{ name: "CrewAI", image: "/image/skills_img/sikitlearn.png" },
+	{ name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
 	{ name: "OpenAI", image: "/image/skills_img/openai.jpg" },
 	{ name: "Hugging Face", image: "/image/skills_img/huggingface.png" },
 ];
@@ -179,7 +179,7 @@ const AIAutonomous: React.FC = () => {
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
 			<Navbar />
-			
+
 			{/* Hero Section */}
 			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
 				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
@@ -245,14 +245,14 @@ const AIAutonomous: React.FC = () => {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 						{autonomousServices.map((service, index) => (
-							<div 
+							<div
 								key={service.id}
 								className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.1}s` }}
 							>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
 									{service.icon}
-							</div>
+								</div>
 								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full">
 									{service.title}
 								</h3>
@@ -318,14 +318,14 @@ const AIAutonomous: React.FC = () => {
 
 			<Industries />
 
-			
+
 
 			{/* Platforms Section */}
 			<section className="section-padding">
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
-							 AI Technology Stack
+							AI Technology Stack
 						</h2>
 						<div className="flex justify-center">
 							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
@@ -457,8 +457,8 @@ const AIAutonomous: React.FC = () => {
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
 						{onboardingSteps.map((step, index) => (
-							<div 
-								key={index} 
+							<div
+								key={index}
 								className={`modern-card p-4 sm:p-6 flex items-start gap-3 sm:gap-4 min-h-[120px] sm:min-h-[140px] hover:scale-105 transition-all duration-300 ${isVisible ? 'slide-up' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.1}s` }}
 							>
