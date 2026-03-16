@@ -226,7 +226,7 @@ const Services = () => {
             <Badge
               variant="outline"
               className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 font-medium text-xs sm:text-sm rounded-full border-[#00C2CB]/30"
-              style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+              style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
             >
               <Check className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
               Services We Offer
@@ -240,7 +240,7 @@ const Services = () => {
           </motion.h2>
           <motion.div
             className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8 rounded-full"
-            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
             variants={staggerItem}
           />
           <motion.p
@@ -292,12 +292,12 @@ const Services = () => {
                       : 'text-gray-300 hover:text-white hover:shadow-md'
                       }`}
                     style={selectedService === service 
-                      ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }
+                      ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
                       : {}
                     }
                     onMouseEnter={(e) => {
                       if (selectedService !== service) {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)';
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -347,12 +347,12 @@ const Services = () => {
                         : 'text-white/80 hover:text-white hover:shadow-md'
                         }`}
                       style={selectedService === service 
-                        ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }
+                        ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
                         : {}
                       }
                       onMouseEnter={(e) => {
                         if (selectedService !== service) {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)';
+                          e.currentTarget.style.background = 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)';
                         }
                       }}
                       onMouseLeave={(e) => {

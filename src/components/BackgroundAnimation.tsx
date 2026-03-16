@@ -8,15 +8,11 @@ const useGradientAnimation = (elementId: string) => {
     if (!gradientElement) return;
 
     const colors = [
-      { r: 41, g: 128, b: 240 },    // Blue
-      { r: 138, g: 76, b: 210 },    // Purple
-      { r: 225, g: 73, b: 152 },    // Pink
-      { r: 255, g: 102, b: 102 },   // Coral
-      { r: 255, g: 159, b: 64 },    // Orange
-      { r: 241, g: 196, b: 15 },    // Yellow
-      { r: 46, g: 204, b: 113 },    // Green
-      { r: 52, g: 152, b: 219 },    // Light Blue
-      { r: 41, g: 128, b: 240 }     // Back to Blue
+      { r: 109, g: 40, b: 217 },    // Purple
+      { r: 168, g: 85, b: 247 },    // Violet
+      { r: 236, g: 72, b: 153 },    // Pink
+      { r: 99, g: 102, b: 241 },     // Indigo
+      { r: 109, g: 40, b: 217 }     // Back to Purple
     ];
     
     let step = 0;
@@ -233,7 +229,7 @@ const BackgroundAnimation = () => {
         id="gradient-background"
         className="absolute inset-0 transition-colors duration-1000 ease-in-out"
         style={{
-          background: 'linear-gradient(135deg, rgba(0, 110, 255, 0.35) 0%, rgba(240,41,128,0.2) 100%)'
+          background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.35) 0%, rgba(236,72,153,0.2) 100%)'
         }}
       ></div>
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-10" />

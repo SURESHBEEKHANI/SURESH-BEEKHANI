@@ -8,96 +8,87 @@
 @layer base {
   :root {
     /* Tech & AI in Healthcare Color Palette */
-    --background: 210 20% 98%;
-    --foreground: 225 15% 18%;
+    /* Brand Navy Background #0a0435 */
+    --background: 247 86% 11%;
+    --foreground: 210 20% 98%;
 
-    --card: 210 20% 99%;
-    --card-foreground: 225 15% 18%;
+    --card: 247 86% 13%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 210 20% 99%;
-    --popover-foreground: 225 15% 18%;
+    --popover: 247 86% 13%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Primary: Deep Tech Blue #1E5AFF */
-    --primary: 221 100% 56%;
+    /* Primary: Violet #a855f7 */
+    --primary: 270 91% 65%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Aqua Cyan #00C2CB */
-    --secondary: 184 100% 40%;
+    /* Secondary: Pink #ec4899 */
+    --secondary: 335 83% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent: Mint Green #71EFA3 */
-    --accent: 146 79% 69%;
-    --accent-foreground: 225 15% 18%;
+    /* Accent: Purple #6D28D9 */
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Muted: Soft White */
-    --muted: 210 20% 97%;
-    --muted-foreground: 225 10% 50%;
+    /* Muted */
+    --muted: 247 40% 15%;
+    --muted-foreground: 210 10% 70%;
 
-    /* Success: Mint Green (wellness signals) */
-    --success: 146 79% 69%;
-    --success-foreground: 225 15% 18%;
+    /* Border & Ring */
+    --border: 247 40% 20%;
+    --input: 247 40% 20%;
+    --ring: 270 91% 65%;
 
-    /* Warning: Amber */
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-
-    /* Destructive: Red */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Border: Subtle Gray */
-    --border: 210 15% 88%;
-    --input: 210 15% 88%;
-    --ring: 221 100% 56%;
-
-    /* Radius */
-    --radius: 0.75rem;
-
-    /* Tech & AI Healthcare Gradients */
-    --gradient-primary: linear-gradient(135deg, #1E5AFF 0%, #0047E1 100%);
-    --gradient-secondary: linear-gradient(135deg, #00C2CB 0%, #00A3AC 100%);
-    --gradient-accent: linear-gradient(90deg, #1E5AFF 0%, #00C2CB 100%);
-    --gradient-wellness: linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%);
-    --gradient-ai: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
-    --gradient-dark: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 100%);
+    /* Brand Gradients */
+    --gradient-primary: linear-gradient(135deg, #6D28D9 0%, #a855f7 100%);
+    --gradient-secondary: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-accent: linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    --gradient-wellness: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-ai: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    --gradient-dark: linear-gradient(135deg, #0a0435 0%, #150a50 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
   }
 
   .dark {
-    /* Tech & AI Healthcare Dark Theme */
-    --background: 225 15% 12%;
+    /* Brand Navy Background #0a0435 */
+    --background: 247 86% 11%;
     --foreground: 210 20% 98%;
 
-    --card: 225 15% 14%;
+    --card: 247 86% 13%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 225 15% 14%;
+    --popover: 247 86% 13%;
     --popover-foreground: 210 20% 98%;
 
-    /* Primary: Deep Tech Blue */
-    --primary: 221 100% 56%;
+    /* Primary: Violet */
+    --primary: 270 91% 65%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Aqua Cyan */
-    --secondary: 184 100% 40%;
+    /* Secondary: Pink */
+    --secondary: 335 83% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent: Mint Green */
-    --accent: 146 79% 69%;
-    --accent-foreground: 225 15% 18%;
+    /* Accent: Purple */
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 225 15% 16%;
-    --muted-foreground: 210 10% 60%;
+    /* Muted */
+    --muted: 247 40% 15%;
+    --muted-foreground: 210 10% 70%;
 
-    --border: 225 15% 20%;
-    --input: 225 15% 20%;
-    --ring: 221 100% 56%;
+    /* Border & Ring */
+    --border: 247 40% 20%;
+    --input: 247 40% 20%;
+    --ring: 270 91% 65%;
 
     /* Dark Mode Gradients */
-    --gradient-primary: linear-gradient(135deg, #1E5AFF 0%, #0047E1 100%);
-    --gradient-secondary: linear-gradient(135deg, #00C2CB 0%, #00A3AC 100%);
-    --gradient-accent: linear-gradient(90deg, #1E5AFF 0%, #00C2CB 100%);
-    --gradient-wellness: linear-gradient(135deg, #00C2CB 0%, #71EFA3 100%);
+    --gradient-primary: linear-gradient(135deg, #6D28D9 0%, #a855f7 100%);
+    --gradient-secondary: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-accent: linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    --gradient-wellness: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-ai: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    --gradient-dark: linear-gradient(135deg, #0a0435 0%, #150a50 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
     --gradient-ai: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
     --gradient-dark: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 100%);
     --gradient-glow: linear-gradient(135deg, rgba(30, 90, 255, 0.3) 0%, rgba(0, 194, 203, 0.3) 100%);
@@ -125,7 +116,7 @@
     overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
     line-height: 1.6;
-    background: #1E1E2F;
+    background: #0a0435;
     color: #F7FAFC;
     height: 100%;
     position: relative;
@@ -156,27 +147,27 @@
 
   /* Custom Scrollbar - Right Side (body only) - Matches Beekhani gradient */
   body::-webkit-scrollbar-track {
-    background: rgba(30, 30, 47, 0.8);
+    background: rgba(10, 4, 53, 0.8);
     border-radius: 8px;
   }
 
   body::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
+    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
     border-radius: 8px;
-    border: 3px solid rgba(30, 30, 47, 0.8);
-    box-shadow: 0 0 15px rgba(30, 90, 255, 0.4), 0 0 10px rgba(0, 194, 203, 0.3);
+    border: 3px solid rgba(10, 4, 53, 0.8);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 10px rgba(236, 72, 153, 0.3);
   }
 
   body::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #0047E1 0%, #00A3AC 50%, #5DD68D 100%);
-    box-shadow: 0 0 25px rgba(30, 90, 255, 0.7), 0 0 35px rgba(0, 194, 203, 0.5), 0 0 20px rgba(113, 239, 163, 0.3);
-    border: 3px solid rgba(30, 30, 47, 0.6);
+    background: linear-gradient(135deg, #5b21b6 0%, #a855f7 50%, #db2777 100%);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.7), 0 0 35px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
+    border: 3px solid rgba(10, 4, 53, 0.6);
   }
   
   /* Firefox scrollbar - styled (body only) */
   body {
     scrollbar-width: auto !important;
-    scrollbar-color: #00C2CB rgba(30, 30, 47, 0.8) !important;
+    scrollbar-color: #a855f7 rgba(10, 4, 53, 0.8) !important;
   }
   
   html {
@@ -205,14 +196,14 @@
   .modern-card {
     @apply bg-card/80 border border-border/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500;
     backdrop-filter: blur(20px);
-    background: linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.05) 100%);
-    border: 1px solid rgba(30, 90, 255, 0.2);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.2);
   }
 
   .modern-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(30, 90, 255, 0.3), 0 0 30px rgba(0, 194, 203, 0.2);
-    border-color: rgba(30, 90, 255, 0.4);
+    box-shadow: 0 25px 50px rgba(168, 85, 247, 0.3), 0 0 30px rgba(236, 72, 153, 0.2);
+    border-color: rgba(168, 85, 247, 0.4);
   }
 
   /* Tech & AI Healthcare Gradient Text */
@@ -239,7 +230,7 @@
   }
 
   .gradient-text-ai {
-    background: linear-gradient(90deg, #1E5AFF, #00C2CB, #71EFA3, #1E5AFF);
+    background: linear-gradient(90deg, #6D28D9, #a855f7, #ec4899, #6D28D9);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -250,12 +241,12 @@
   /* Tech & AI Healthcare Buttons - Beekhani Gradient */
   .btn-primary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
-    border: 1px solid rgba(30, 90, 255, 0.3);
+    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    border: 1px solid rgba(168, 85, 247, 0.3);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.5), 0 0 30px rgba(0, 194, 203, 0.4), 0 0 20px rgba(113, 239, 163, 0.3);
+    box-shadow: 0 20px 40px rgba(109, 40, 217, 0.5), 0 0 30px rgba(168, 85, 247, 0.4), 0 0 20px rgba(236, 72, 153, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -276,26 +267,26 @@
 
   .btn-secondary {
     @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
-    border: 1px solid rgba(0, 194, 203, 0.3);
+    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    border: 1px solid rgba(168, 85, 247, 0.3);
   }
 
   .btn-secondary:hover {
-    box-shadow: 0 20px 40px rgba(30, 90, 255, 0.5), 0 0 30px rgba(0, 194, 203, 0.4), 0 0 20px rgba(113, 239, 163, 0.3);
+    box-shadow: 0 20px 40px rgba(109, 40, 217, 0.5), 0 0 30px rgba(168, 85, 247, 0.4), 0 0 20px rgba(236, 72, 153, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
   .btn-outline {
     @apply border-2 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    border-color: rgba(30, 90, 255, 0.5);
-    background: rgba(30, 90, 255, 0.1);
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(109, 40, 217, 0.1);
     backdrop-filter: blur(10px);
   }
 
   .btn-outline:hover {
-    background: linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%);
-    border-color: rgba(30, 90, 255, 0.8);
-    box-shadow: 0 15px 30px rgba(30, 90, 255, 0.4), 0 0 20px rgba(0, 194, 203, 0.3), 0 0 15px rgba(113, 239, 163, 0.2);
+    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    border-color: rgba(168, 85, 247, 0.8);
+    box-shadow: 0 15px 30px rgba(109, 40, 217, 0.4), 0 0 20px rgba(168, 85, 247, 0.3), 0 0 15px rgba(236, 72, 153, 0.2);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -628,7 +619,7 @@
 
   /* Section Background Utilities */
   .ai-section {
-    background: linear-gradient(135deg, #1E1E2F 0%, #2A2A3F 50%, #1E1E2F 100%);
+    background: #0a0435;
   }
 
   .ai-section-alt {
@@ -672,7 +663,7 @@
     @apply inline-flex items-center justify-center rounded-full text-white shadow-lg ring-1 ring-white/20 transition-transform duration-300;
     width: 44px;
     height: 44px;
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
   }
 
   @media (min-width: 640px) {
@@ -742,6 +733,19 @@
     }
   }
 
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
   @keyframes shimmer {
     0% {
       transform: translateX(-100%);
@@ -762,10 +766,10 @@
 
   @keyframes pulseGlow {
     from {
-      box-shadow: 0 0 20px rgba(30, 90, 255, 0.4);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
     }
     to {
-      box-shadow: 0 0 40px rgba(30, 90, 255, 0.8), 0 0 60px rgba(0, 194, 203, 0.4);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.8), 0 0 60px rgba(236, 72, 153, 0.4);
     }
   }
 
@@ -805,30 +809,30 @@
   @keyframes neon-pulse {
     0%, 100% {
       text-shadow: 
-        0 0 5px rgba(30, 90, 255, 0.5),
-        0 0 10px rgba(30, 90, 255, 0.3),
-        0 0 15px rgba(30, 90, 255, 0.2);
+        0 0 5px rgba(168, 85, 247, 0.5),
+        0 0 10px rgba(168, 85, 247, 0.3),
+        0 0 15px rgba(168, 85, 247, 0.2);
     }
     50% {
       text-shadow: 
-        0 0 10px rgba(30, 90, 255, 0.8),
-        0 0 20px rgba(30, 90, 255, 0.5),
-        0 0 30px rgba(30, 90, 255, 0.3),
-        0 0 40px rgba(0, 194, 203, 0.2);
+        0 0 10px rgba(168, 85, 247, 0.8),
+        0 0 20px rgba(168, 85, 247, 0.5),
+        0 0 30px rgba(168, 85, 247, 0.3),
+        0 0 40px rgba(236, 72, 153, 0.3);
     }
   }
 
   @keyframes ai-glow {
     0%, 100% {
       box-shadow: 
-        0 0 20px rgba(30, 90, 255, 0.3),
-        inset 0 0 20px rgba(30, 90, 255, 0.1);
+        0 0 20px rgba(168, 85, 247, 0.3),
+        inset 0 0 20px rgba(168, 85, 247, 0.1);
     }
     50% {
       box-shadow: 
-        0 0 40px rgba(30, 90, 255, 0.5),
-        0 0 60px rgba(0, 194, 203, 0.3),
-        inset 0 0 30px rgba(30, 90, 255, 0.2);
+        0 0 40px rgba(168, 85, 247, 0.5),
+        0 0 60px rgba(236, 72, 153, 0.3),
+        inset 0 0 30px rgba(168, 85, 247, 0.2);
     }
   }
 

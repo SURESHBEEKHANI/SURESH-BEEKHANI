@@ -107,10 +107,10 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boole
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0435' }}>
           <div className="text-center p-8">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Something went wrong</h1>
-            <p className="text-gray-600 mb-6">Please try refreshing the page.</p>
+            <h1 className="text-2xl font-bold text-white mb-4">Something went wrong</h1>
+            <p className="text-indigo-200 mb-6">Please try refreshing the page.</p>
             <button
               onClick={() => window.location.reload()}
               className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
@@ -127,8 +127,8 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boole
 
 // Loader
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
-    <LoadingSpinner size="lg" text="Loading..." />
+  <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0435' }}>
+    <LoadingSpinner size="lg" text="Loading..." className="text-primary" />
   </div>
 );
 

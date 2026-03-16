@@ -111,11 +111,53 @@ const industries = [
 ];
 
 const platforms = [
-	{ name: "LangChain", image: "/image/skills_img/tensorflow.png" },
-	{ name: "AutoGPT", image: "/image/skills_img/pytorch.png" },
-	{ name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
 	{ name: "OpenAI", image: "/image/skills_img/openai.jpg" },
+	{ name: "Claude", image: "/image/skills_img/Claude.png" },
+	{ name: "Gemini", image: "/image/skills_img/Gemini.png" },
+	{ name: "DeepSeek", image: "/image/skills_img/deepseek.png" },
+	{ name: "Groq", image: "/image/skills_img/groq.png" },
+	{ name: "Llama", image: "/image/skills_img/llama.png" },
+	{ name: "Mistral", image: "/image/skills_img/mistral.png" },
 	{ name: "Hugging Face", image: "/image/skills_img/huggingface.png" },
+	{ name: "Transformers", image: "/image/skills_img/transformers.png" },
+	{ name: "LangChain", image: "/image/skills_img/langchain.png" },
+	{ name: "LangGraph", image: "/image/skills_img/langgraph.png" },
+	{ name: "LangSmith", image: "/image/skills_img/Langsimth.png" },
+	{ name: "CrewAI", image: "/image/skills_img/crewai.png" },
+	{ name: "AutoGen", image: "/image/skills_img/autogen.png" },
+	{ name: "TensorFlow", image: "/image/skills_img/tensorflow.png" },
+	{ name: "PyTorch", image: "/image/skills_img/pytorch.png" },
+	{ name: "Scikit-learn", image: "/image/skills_img/sikitlearn.png" },
+	{ name: "Pinecone", image: "/image/skills_img/pinecone.png" },
+	{ name: "Qdrant", image: "/image/skills_img/quadrant.png" },
+	{ name: "AWS", image: "/image/skills_img/aws.png" },
+	{ name: "Docker", image: "/image/skills_img/docker.png" },
+	{ name: "Linux", image: "/image/skills_img/liunx.png" },
+	{ name: "Git", image: "/image/skills_img/git.png" },
+	{ name: "GitHub", image: "/image/skills_img/GitHub.jpg" },
+	{ name: "FastAPI", image: "/image/skills_img/fastapi.png" },
+	{ name: "MLflow", image: "/image/skills_img/mlflow.svg" },
+	{ name: "DVC", image: "/image/skills_img/dvc.png" },
+	{ name: "NumPy", image: "/image/skills_img/numpy.png" },
+	{ name: "Pandas", image: "/image/skills_img/pandas.png" },
+	{ name: "Matplotlib", image: "/image/skills_img/matplot.png" },
+	{ name: "Seaborn", image: "/image/skills_img/seaborn.svg" },
+	{ name: "Plotly", image: "/image/skills_img/plotly.jpg" },
+	{ name: "Power BI", image: "/image/skills_img/Powerbi.png" },
+	{ name: "Tableau", image: "/image/skills_img/tableau.png" },
+	{ name: "OpenCV", image: "/image/skills_img/opencv.png" },
+	{ name: "YOLOv5", image: "/image/skills_img/yolov5.png" },
+	{ name: "Ultralytics", image: "/image/skills_img/Ultratics.png" },
+	{ name: "Detectron2", image: "/image/skills_img/detectron2.png" },
+	{ name: "Roboflow", image: "/image/skills_img/roboflow.png" },
+	{ name: "PaddleOCR", image: "/image/skills_img/paddleocr.png" },
+	{ name: "Tesseract", image: "/image/skills_img/tesseract.png" },
+	{ name: "BERT", image: "/image/skills_img/bert.png" },
+	{ name: "NLTK", image: "/image/skills_img/nltk.png" },
+	{ name: "spaCy", image: "/image/skills_img/spacy.png" },
+	{ name: "Gensim", image: "/image/skills_img/gensim.jpg" },
+	{ name: "TextBlob", image: "/image/skills_img/textblob.jpg" },
+	{ name: "MCP", image: "/image/skills_img/mcp.png" },
 ];
 
 const faqData = [
@@ -334,13 +376,18 @@ const AIAutonomous: React.FC = () => {
 							Industry-leading AI platforms optimized for business automation and intelligent operations.
 						</p>
 					</div>
-					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-center">
-						{platforms.map((platform, index) => (
-							<div className={`flex flex-col items-center ${isVisible ? 'scale-in' : 'opacity-0'}`} key={platform.name} style={{ animationDelay: `${index * 0.1}s` }}>
-								<img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2 modern-card" />
-								<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
-							</div>
-						))}
+					<div className="relative w-full overflow-hidden py-4">
+						<div className="flex w-max animate-marquee gap-6 sm:gap-8 items-center">
+							{[...platforms, ...platforms].map((platform, index) => (
+								<div className="flex flex-col items-center flex-shrink-0 w-24 sm:w-28 lg:w-32" key={`${platform.name}-${index}`}>
+									<img src={platform.image} alt={platform.name} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-lg sm:rounded-xl shadow-md bg-white p-2 modern-card" />
+									<span className="mt-2 sm:mt-3 text-blue-900 font-semibold text-xs sm:text-sm text-center">{platform.name}</span>
+								</div>
+							))}
+						</div>
+						{/* Optional: Add gradient overlays for smooth fading edges */}
+						<div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-gray-50/90 to-transparent pointer-events-none z-10" />
+						<div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-gray-50/90 to-transparent pointer-events-none z-10" />
 					</div>
 				</div>
 			</section>

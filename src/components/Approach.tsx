@@ -8,8 +8,8 @@ const Approach = () => {
         <div className="text-center mb-12 sm:mb-16">
           <Badge 
             variant="outline" 
-            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#a855f7]/30"
+            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
           >
             Our Approach
           </Badge>
@@ -18,7 +18,7 @@ const Approach = () => {
           </h2>
           <div 
             className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
-            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
           ></div>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
             Achieve your business goals with our successful Methodology, renowned for its structured planning and consistent results.
@@ -33,13 +33,13 @@ const Approach = () => {
             <div className="flex flex-col items-center text-center max-w-full sm:max-w-xs">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-lg">
                 <div className="grid grid-cols-2 gap-0.5 sm:gap-1 w-5 h-5 sm:w-6 sm:h-6">
-                  <div className="rounded-sm" style={{ background: '#1E5AFF' }}></div>
-                  <div className="rounded-sm" style={{ background: '#00C2CB' }}></div>
-                  <div className="rounded-sm" style={{ background: '#00C2CB' }}></div>
-                  <div className="rounded-sm" style={{ background: '#71EFA3' }}></div>
+                  <div className="rounded-sm" style={{ background: '#a855f7' }}></div>
+                  <div className="rounded-sm" style={{ background: '#ec4899' }}></div>
+                  <div className="rounded-sm" style={{ background: '#ec4899' }}></div>
+                  <div className="rounded-sm" style={{ background: '#a855f7' }}></div>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm mb-2" style={{ color: '#00C2CB' }}>Step 1</div>
+              <div className="text-xs sm:text-sm mb-2" style={{ color: '#a855f7' }}>Step 1</div>
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 leading-tight">Understand pattern identification</h3>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
                 Our Methodology revolves around understanding pattern identification. It involves analyzing data to identify and extract significant patterns.
@@ -49,12 +49,12 @@ const Approach = () => {
             {/* Step 2 */}
             <div className="flex flex-col items-center text-center max-w-full sm:max-w-xs">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-lg">
-                <div className="w-5 h-6 sm:w-6 sm:h-8 border-2 rounded-sm relative" style={{ borderColor: '#1E5AFF' }}>
-                  <div className="absolute top-1 sm:top-1.5 left-0.5 right-0.5 h-0.5" style={{ background: '#00C2CB' }}></div>
-                  <div className="absolute top-2.5 sm:top-3.5 left-0.5 right-0.5 h-0.5" style={{ background: '#71EFA3' }}></div>
+                <div className="w-5 h-6 sm:w-6 sm:h-8 border-2 rounded-sm relative" style={{ borderColor: '#a855f7' }}>
+                  <div className="absolute top-1 sm:top-1.5 left-0.5 right-0.5 h-0.5" style={{ background: '#ec4899' }}></div>
+                  <div className="absolute top-2.5 sm:top-3.5 left-0.5 right-0.5 h-0.5" style={{ background: '#a855f7' }}></div>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm mb-2" style={{ color: '#00C2CB' }}>Step 2</div>
+              <div className="text-xs sm:text-sm mb-2" style={{ color: '#ec4899' }}>Step 2</div>
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 leading-tight">Pattern mapping user stories</h3>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
                 Pattern mapping user stories is the second step in our Methodology. It involves categorizing user stories according to recognized patterns.
@@ -64,14 +64,14 @@ const Approach = () => {
             {/* Step 3 */}
             <div className="flex flex-col items-center text-center max-w-full sm:max-w-xs">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-lg">
-                <div className="w-5 h-6 sm:w-6 sm:h-8 border-2 rounded-sm relative" style={{ borderColor: '#1E5AFF' }}>
-                  <div className="absolute top-0.5 sm:top-1 left-0.5 right-0.5 h-0.5" style={{ background: '#1E5AFF' }}></div>
-                  <div className="absolute top-2 sm:top-2.5 left-0.5 right-0.5 h-0.5" style={{ background: '#00C2CB' }}></div>
-                  <div className="absolute top-3.5 sm:top-4 left-0.5 right-0.5 h-0.5" style={{ background: '#71EFA3' }}></div>
-                  <div className="absolute bottom-0.5 right-0.5 w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-sm" style={{ background: '#00C2CB' }}></div>
+                <div className="w-5 h-6 sm:w-6 sm:h-8 border-2 rounded-sm relative" style={{ borderColor: '#a855f7' }}>
+                  <div className="absolute top-0.5 sm:top-1 left-0.5 right-0.5 h-0.5" style={{ background: '#a855f7' }}></div>
+                  <div className="absolute top-2 sm:top-2.5 left-0.5 right-0.5 h-0.5" style={{ background: '#ec4899' }}></div>
+                  <div className="absolute top-3.5 sm:top-4 left-0.5 right-0.5 h-0.5" style={{ background: '#a855f7' }}></div>
+                  <div className="absolute bottom-0.5 right-0.5 w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-sm" style={{ background: '#ec4899' }}></div>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm mb-2" style={{ color: '#00C2CB' }}>Step 3</div>
+              <div className="text-xs sm:text-sm mb-2" style={{ color: '#ec4899' }}>Step 3</div>
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 leading-tight">Wireframe and front end</h3>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
                 After pattern mapping, Our dedicated team creates wireframes and front-end designs. They align with the identified patterns and user stories.
@@ -81,11 +81,11 @@ const Approach = () => {
             {/* Step 4 */}
             <div className="flex flex-col items-center text-center max-w-full sm:max-w-xs">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-lg">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 rounded-sm flex items-center justify-center" style={{ borderColor: '#1E5AFF' }}>
-                  <span className="text-xs font-mono" style={{ color: '#00C2CB' }}>&lt; /&gt;</span>
+                <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 rounded-sm flex items-center justify-center" style={{ borderColor: '#a855f7' }}>
+                  <span className="text-xs font-mono" style={{ color: '#ec4899' }}>&lt; /&gt;</span>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm mb-2" style={{ color: '#00C2CB' }}>Step 4</div>
+              <div className="text-xs sm:text-sm mb-2" style={{ color: '#ec4899' }}>Step 4</div>
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 leading-tight">Model development and training</h3>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
                 Model development and training involves the development of machine learning models and training using the identified patterns and data.
@@ -96,12 +96,12 @@ const Approach = () => {
             <div className="flex flex-col items-center text-center max-w-full sm:max-w-xs">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-lg">
                 <div className="relative">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 rounded-sm transform rotate-45" style={{ borderColor: '#1E5AFF' }}></div>
-                  <div className="absolute -top-0.5 -right-0.5 w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full" style={{ background: '#00C2CB' }}></div>
-                  <div className="absolute -bottom-0.5 -left-0.5 w-0.5 sm:w-1 h-0.5 sm:h-1 rounded-full" style={{ background: '#71EFA3' }}></div>
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 rounded-sm transform rotate-45" style={{ borderColor: '#a855f7' }}></div>
+                  <div className="absolute -top-0.5 -right-0.5 w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full" style={{ background: '#ec4899' }}></div>
+                  <div className="absolute -bottom-0.5 -left-0.5 w-0.5 sm:w-1 h-0.5 sm:h-1 rounded-full" style={{ background: '#a855f7' }}></div>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm mb-2" style={{ color: '#00C2CB' }}>Step 5</div>
+              <div className="text-xs sm:text-sm mb-2" style={{ color: '#ec4899' }}>Step 5</div>
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 leading-tight">Development and deployment</h3>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
                 Development and deployment is the final step in our Methodology. The developed models are integrated into the software and deployed for use.

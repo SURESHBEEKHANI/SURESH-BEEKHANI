@@ -81,7 +81,7 @@ const Industries = () => {
               <Badge 
                 variant="outline" 
                 className="mb-2 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
-                style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+                style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
               >
                 Industries
               </Badge>
@@ -90,7 +90,7 @@ const Industries = () => {
               </h2>
               <div 
                 className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
-                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
                 Transforming industries with cutting-edge AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
@@ -116,7 +116,7 @@ const Industries = () => {
 
                   {/* Hover overlay with content - enhanced for touch */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-4 md:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.95) 0%, rgba(0, 194, 203, 0.95) 50%, rgba(113, 239, 163, 0.95) 100%)' }}>
+                    style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.95) 0%, rgba(168, 85, 247, 0.95) 50%, rgba(236, 72, 153, 0.95) 100%)' }}>
                     <div className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 leading-tight">{industry.name}</div>
                     <div className="text-white text-xs sm:text-sm font-normal mb-3 sm:mb-4 leading-relaxed px-1 sm:px-0">{industry.description}</div>
                     <a

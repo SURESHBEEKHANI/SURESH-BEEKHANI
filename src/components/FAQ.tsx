@@ -96,7 +96,7 @@ const FAQ = () => {
         <div className="mb-8 text-center">
           <div 
             className="inline-block mb-2 px-3 py-1 rounded-full text-sm font-medium border border-[#00C2CB]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
           >
             FAQ
           </div>
@@ -105,7 +105,7 @@ const FAQ = () => {
           </h2>
           <div 
             className="w-16 h-1 mx-auto mb-6"
-            style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
           ></div>
           <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
             Find answers to common questions about my services, process, and what you can expect when working with me.
@@ -127,11 +127,11 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full h-auto p-4 text-left transition-all duration-300"
                 style={openIndex === index ? {
-                  background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.1) 0%, rgba(0, 194, 203, 0.1) 50%, rgba(113, 239, 163, 0.1) 100%)'
+                  background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%)'
                 } : {}}
                 onMouseEnter={(e) => {
                   if (openIndex !== index) {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(30, 90, 255, 0.05) 0%, rgba(0, 194, 203, 0.05) 50%, rgba(113, 239, 163, 0.05) 100%)';
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(109, 40, 217, 0.05) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(236, 72, 153, 0.05) 100%)';
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -145,7 +145,7 @@ const FAQ = () => {
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
-                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#00C2CB' }} />
+                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#a855f7' }} />
                   ) : (
                     <Plus className="h-4 w-4 text-muted-foreground flex-shrink-0 transition-colors duration-300 hover:text-ai-cyan" />
                   )}

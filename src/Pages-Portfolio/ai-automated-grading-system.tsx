@@ -88,7 +88,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           {/* Left content */}
           <div>
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-indigo-600 mb-3">
+            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-primary mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
@@ -135,7 +135,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -146,7 +146,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="you@example.com"
                       required
                     />
@@ -161,7 +161,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -172,7 +172,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       name="jobTitle"
                       value={formData.jobTitle}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="CTO, Head of IT..."
                     />
                   </div>
@@ -185,7 +185,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Educational institution "
                   />
                 </div>
@@ -194,7 +194,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                   <input
                     id="ehr-consent"
                     type="checkbox"
-                    className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-fuchsia-400 focus:ring-fuchsia-400"
+                    className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
                   <label htmlFor="ehr-consent" className="text-xs text-indigo-100 leading-relaxed">

@@ -193,7 +193,7 @@ const Hero = () => {
 
             {/* Skills carousel */}
             <motion.div className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden" variants={staggerItem}>
-              <span className="body-medium mr-2 mobile-text" style={{ color: '#00C2CB' }}>Specializing in</span>
+              <span className="body-medium mr-2 mobile-text" style={{ color: '#a855f7' }}>Specializing in</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentSkill}
@@ -228,7 +228,7 @@ const Hero = () => {
               ].map((stat, idx) => (
                 <motion.div key={idx} className="text-center" custom={idx} variants={statsVariants} initial={prefersReducedMotion ? false : "hidden"} animate={prefersReducedMotion ? false : "visible"}>
                   <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">{stat.value}</div>
-                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#00C2CB' }}>{stat.label}</div>
+                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#a855f7' }}>{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -21,6 +21,7 @@ const WhatsAppLogo = () => (
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('home');
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
@@ -130,14 +131,14 @@ const Navbar = () => {
 
           {/* Logo - Optimized for mobile */}
           <motion.div
-            className="flex items-center flex-shrink-0"
+            className="hidden lg:flex items-center flex-shrink-0"
             whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
             transition={{ duration: 0.2 }}
           >
             <a 
               href="/#home" 
               className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
-              style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               aria-label="AI Specialist - Home"
             >
               <motion.svg
@@ -152,8 +153,8 @@ const Navbar = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.364 17.364l-1.414-1.414M12 21v-2M6.636 17.364l1.414-1.414M3 12h2M6.636 6.636l1.414 1.414" />
               </motion.svg>
-              <span className="hidden xs:inline">AI Specialist</span>
-              <span className="xs:hidden">AI</span>
+              <span className="hidden sm:inline">AI Specialist</span>
+              <span className="sm:hidden">AI</span>
             </a>
           </motion.div>
 
@@ -253,7 +254,7 @@ const Navbar = () => {
               <Button
                 asChild
                 className="border border-white/10 shadow-lg text-white rounded-full px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
-                style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               >
                 <a
                   href="https://wa.me/923401213187"
@@ -317,7 +318,6 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              id="mobile-menu"
               className="lg:hidden mobile-menu-container"
               initial={prefersReducedMotion ? {} : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -327,114 +327,125 @@ const Navbar = () => {
               aria-label="Mobile navigation menu"
             >
               <motion.div
-                className="glass border-t border-white/20 mt-2 rounded-b-2xl shadow-xl overflow-hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
+                className="border-t border-white/20 mt-2 rounded-b-2xl shadow-2xl overflow-hidden max-h-[calc(100vh-4rem)] overflow-y-auto relative"
+                style={{ background: '#0a0435' }}
                 initial={prefersReducedMotion ? {} : { y: -20 }}
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
                 transition={{ duration: 0.3 }}
               >
+                {/* Subtle fuchsia glow blob for mobile menu */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/10 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/10 blur-3xl pointer-events-none" />
                 <div className="py-3 sm:py-4 space-y-1">
-                  {navLinks.map((link, index) => (
-                    <motion.a
-                      key={link.label}
-                      href={link.href}
-                      className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation ${activeSection === link.href.replace('/#', '') ||
+                  {navLinks.map((link, index) => {
+                    // Skip 'Resources' as a top-level link in mobile mode to fulfill "remved Resources under Experience"
+                    if (link.label === 'Resources') return null;
+
+                    const hasDropdown = link.label === 'Services' || link.label === 'Industries';
+                    let dropdownItems = link.label === 'Services' ? servicePages : industriesPages;
+                    
+                    // Add 'Resources' as an option inside Industries dropdown as per user list
+                    if (link.label === 'Industries') {
+                      dropdownItems = [...industriesPages, { label: 'Resources', href: '/blogs' }];
+                    }
+
+                    const isExpanded = expandedSection === link.label;
+
+                    if (hasDropdown) {
+                      return (
+                        <div key={link.label} className="border-b border-white/5 last:border-0">
+                          <button
+                            onClick={() => setExpandedSection(isExpanded ? null : link.label)}
+                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${
+                              isExpanded ? 'text-primary bg-primary/5' : 'text-white hover:text-primary'
+                            }`}
+                          >
+                            <span>{link.label}</span>
+                            <motion.div
+                              animate={{ rotate: isExpanded ? 180 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <ChevronDown className="h-5 w-5 opacity-70" />
+                            </motion.div>
+                          </button>
+
+                          <AnimatePresence>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                className="overflow-hidden bg-white/5"
+                              >
+                                <div className="py-2 pl-8 sm:pl-10 pr-4 space-y-1">
+                                  {dropdownItems.map((item, i) => (
+                                    <motion.a
+                                      key={item.href}
+                                      href={item.href}
+                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-primary transition-colors border-l border-white/10 pl-4"
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      initial={{ opacity: 0, x: -10 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: i * 0.05 }}
+                                    >
+                                      {item.label}
+                                    </motion.a>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <motion.a
+                        key={link.label}
+                        href={link.href}
+                        className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${
+                          activeSection === link.href.replace('/#', '') ||
                           (link.href === '/Portfolio' && currentPath === '/Portfolio')
-                          ? 'text-primary bg-primary/10'
-                          : 'text-white hover:text-primary hover:bg-white/10'
+                            ? 'text-primary bg-primary/10'
+                            : 'text-white hover:text-primary hover:bg-white/10'
                         }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      custom={index}
-                      variants={menuItemVariants}
-                      initial={prefersReducedMotion ? {} : "hidden"}
-                      animate="visible"
-                      exit="hidden"
-                      role="menuitem"
-                    >
-                      {link.label}
-                    </motion.a>
-                  ))}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        custom={index}
+                        variants={menuItemVariants}
+                        initial={prefersReducedMotion ? {} : "hidden"}
+                        animate="visible"
+                        exit="hidden"
+                        role="menuitem"
+                      >
+                        {link.label}
+                      </motion.a>
+                    );
+                  })}
 
-                  {/* Industries pages (mobile) - Improved touch targets */}
-                  <motion.div
-                    className="px-4 sm:px-6 pt-2"
-                    initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navLinks.length * 0.1, duration: 0.3 }}
-                  >
-                    <div className="mt-1 mb-2 text-xs sm:text-sm text-gray-300 font-semibold uppercase tracking-wide">Industries</div>
-                    <div className="space-y-1">
-                      {industriesPages.map((page, i) => (
-                        <motion.a
-                          key={page.href}
-                          href={page.href}
-                          className="block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white hover:bg-white/10 hover:text-primary rounded-md transition-colors min-h-[44px] flex items-center touch-manipulation"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (navLinks.length + i) * 0.05, duration: 0.2 }}
-                          role="menuitem"
-                        >
-                          {page.label}
-                        </motion.a>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Resources pages (mobile) - Improved touch targets */}
-                  <motion.div
-                    className="px-4 sm:px-6 pt-2"
-                    initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (navLinks.length + industriesPages.length) * 0.05, duration: 0.3 }}
-                  >
-                    <div className="mt-1 mb-2 text-xs sm:text-sm text-gray-300 font-semibold uppercase tracking-wide">Resources</div>
-                    <div className="space-y-1">
-                      {resourcesPages.map((page, i) => (
-                        <motion.a
-                          key={page.href}
-                          href={page.href}
-                          className="block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white hover:bg-white/10 hover:text-primary rounded-md transition-colors min-h-[44px] flex items-center touch-manipulation"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (navLinks.length + industriesPages.length + i) * 0.05, duration: 0.2 }}
-                          role="menuitem"
-                        >
-                          {page.label}
-                        </motion.a>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Mobile Contact Button - Improved touch target */}
-                  <motion.div
-                    className="px-4 sm:px-6 py-3 sm:py-4"
-                    initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (navLinks.length + industriesPages.length + resourcesPages.length) * 0.05, duration: 0.3 }}
-                  >
+                  {/* Mobile Contact Button */}
+                  <div className="px-4 sm:px-6 py-6 sm:py-8">
                     <motion.div
                       whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
                     >
                       <Button
                         asChild
                         className="border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
-                        style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' }}
+                        style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
                       >
                         <a
                           href="https://wa.me/923401213187"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 text-sm sm:text-base font-semibold"
-                          role="menuitem"
                         >
                           <WhatsAppLogo />
                           <span>Contact via WhatsApp</span>
                         </a>
                       </Button>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

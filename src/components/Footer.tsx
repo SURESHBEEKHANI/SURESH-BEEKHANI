@@ -92,7 +92,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="ai-section text-white py-16 relative overflow-hidden">
+    <footer
+      className="text-white py-16 relative overflow-hidden"
+      style={{ background: '#0a0435' }}
+    >
+      {/* Fuchsia glow blobs — matching EHR hero */}
+      <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
@@ -102,37 +109,33 @@ const Footer = () => {
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <div className="flex items-center gap-3">
-
               <div
-                className="rounded-full w-12 h-12 flex items-center justify-center"
+                className="rounded-full w-12 h-12 flex items-center justify-center shadow-lg shadow-fuchsia-500/30"
                 style={{
                   background:
-                    'linear-gradient(135deg,#1E5AFF 0%,#00C2CB 50%,#71EFA3 100%)',
+                    'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
                 }}
               >
                 <Brain className="h-6 w-6 text-white" />
               </div>
 
               <div>
-                <h3 className="text-xl font-bold">
-                  Suresh <span className="gradient-text">Beekhani</span>
+                <h3 className="text-xl font-bold text-white">
+                  Suresh <span style={{ color: '#a855f7' }}>Beekhani</span>
                 </h3>
-
-                <p className="text-xs text-cyan-400">
+                <p className="text-xs text-indigo-300">
                   Data Scientist | AI Specialist
                 </p>
               </div>
-
             </div>
 
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-indigo-100/70 text-sm leading-relaxed">
               Transforming ideas into intelligent AI solutions using
               Machine Learning, Deep Learning, Generative AI, and intelligent
               automation.
             </p>
 
             <div className="flex space-x-3">
-
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -144,7 +147,6 @@ const Footer = () => {
                   {social.icon}
                 </a>
               ))}
-
             </div>
 
           </div>
@@ -152,15 +154,13 @@ const Footer = () => {
           {/* Quick Links */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
 
-            <ul className="space-y-3 text-white/70">
-
-              <li><a href="/#about" className="hover:text-cyan-400">About</a></li>
-              <li><a href="/#services" className="hover:text-cyan-400">Services</a></li>
-              <li><a href="/#experience" className="hover:text-cyan-400">Experience</a></li>
-              <li><a href="/#contact" className="hover:text-cyan-400">Contact</a></li>
-
+            <ul className="space-y-3 text-indigo-100/70">
+              <li><a href="/#about"      className="hover:text-fuchsia-400 transition-colors">About</a></li>
+              <li><a href="/#services"   className="hover:text-fuchsia-400 transition-colors">Services</a></li>
+              <li><a href="/#experience" className="hover:text-fuchsia-400 transition-colors">Experience</a></li>
+              <li><a href="/#contact"    className="hover:text-fuchsia-400 transition-colors">Contact</a></li>
             </ul>
 
           </div>
@@ -168,10 +168,9 @@ const Footer = () => {
           {/* Services */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <h3 className="text-lg font-semibold">Services</h3>
+            <h3 className="text-lg font-semibold text-white">Services</h3>
 
             <div className="flex flex-wrap gap-2">
-
               {[
                 "AI Development",
                 "Machine Learning",
@@ -185,12 +184,11 @@ const Footer = () => {
                 <Badge
                   key={service}
                   variant="secondary"
-                  className="text-xs bg-cyan-500/10 text-white/70 border border-cyan-500/20"
+                  className="text-xs bg-fuchsia-500/10 text-indigo-100/80 border border-fuchsia-500/25"
                 >
                   {service}
                 </Badge>
               ))}
-
             </div>
 
           </div>
@@ -198,88 +196,85 @@ const Footer = () => {
           {/* Contact + Newsletter */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <h3 className="text-lg font-semibold">Contact</h3>
+            <h3 className="text-lg font-semibold text-white">Contact</h3>
 
-            <ul className="space-y-3 text-white/70 text-sm">
-
+            <ul className="space-y-3 text-indigo-100/70 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} /> Karachi, Pakistan
+                <MapPin size={16} className="text-fuchsia-400" /> Karachi, Pakistan
               </li>
-
               <li className="flex items-center gap-2">
-                <Mail size={16} /> sureshbeekhani26@gmail.com
+                <Mail size={16} className="text-fuchsia-400" /> sureshbeekhani26@gmail.com
               </li>
-
               <li className="flex items-center gap-2">
-                <Phone size={16} /> +923401213187
+                <Phone size={16} className="text-fuchsia-400" /> +923401213187
               </li>
-
             </ul>
 
             {/* Newsletter */}
             <div className="pt-6">
-
-              <h4 className="text-sm font-semibold mb-3">
+              <h4 className="text-sm font-semibold text-white mb-3">
                 Join Our Newsletter
               </h4>
 
               <form
                 onSubmit={handleNewsletterSubmit}
-                className="flex w-full overflow-hidden rounded-full border border-white/15"
+                className="flex w-full overflow-hidden rounded-full border border-white/15 bg-white/5"
               >
-
                 <Input
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   type="email"
                   placeholder="Enter your email"
-                  className="border-0 bg-transparent text-white placeholder:text-white/50 focus-visible:ring-0 px-4 py-3"
+                  className="border-0 bg-transparent text-white placeholder:text-indigo-200/50 focus-visible:ring-0 px-4 py-3"
                 />
-
                 <Button
                   type="submit"
                   disabled={isNewsletterSubmitting}
-                  className="px-6 font-semibold text-white"
+                  className="px-6 font-semibold text-white rounded-full"
                   style={{
                     background:
-                      "linear-gradient(90deg,#3B82F6 0%,#34D399 100%)"
+                      'linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
                   }}
                 >
                   {isNewsletterSubmitting ? "Submitting..." : "Subscribe"}
                 </Button>
-
               </form>
-
             </div>
 
           </div>
 
         </div>
 
-        {/* Bottom */}
+        {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex justify-between items-center flex-col md:flex-row gap-4">
-
-          <p className="text-white/70 text-sm">
+          <p className="text-indigo-100/60 text-sm">
             © {new Date().getFullYear()} Suresh Beekhani. All rights reserved.
           </p>
-
           <div className="flex gap-4">
-
-            <Badge variant="outline">AI/ML Engineer</Badge>
-            <Badge variant="outline">Data Scientist</Badge>
-
+            <Badge
+              variant="outline"
+              className="border-fuchsia-500/40 text-indigo-100/70"
+            >
+              AI/ML Engineer
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-fuchsia-500/40 text-indigo-100/70"
+            >
+              Data Scientist
+            </Badge>
           </div>
-
         </div>
 
       </div>
 
-      {/* Scroll Button */}
+      {/* Scroll-to-top Button */}
       <Button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 rounded-full p-3 ${
-          showScrollTop ? "opacity-100" : "opacity-0"
+        className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${
+          showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
+        style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}
       >
         <ArrowUp size={18} />
       </Button>

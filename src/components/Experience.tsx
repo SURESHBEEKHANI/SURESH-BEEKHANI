@@ -103,8 +103,8 @@ const Experience = () => {
         {/* Header */}
         <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
           <Badge 
-            className="mb-4 px-4 py-2 border-[#00C2CB]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.2) 0%, rgba(0, 194, 203, 0.2) 50%, rgba(113, 239, 163, 0.2) 100%)', color: '#00C2CB' }}
+            className="mb-4 px-4 py-2 border-[#a855f7]/30"
+            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
           >
             <Award className="w-4 h-4 mr-2" />
             My Journey
@@ -130,7 +130,7 @@ const Experience = () => {
                   ? 'text-white shadow-lg'
                   : 'text-foreground/70'
               }`}
-              style={activeTab === 'work' ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' } : {}}
+              style={activeTab === 'work' ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' } : {}}
               onMouseEnter={(e) => {
                 if (activeTab !== 'work') {
                   e.currentTarget.style.color = '#00C2CB';
@@ -152,7 +152,7 @@ const Experience = () => {
                   ? 'text-white shadow-lg'
                   : 'text-foreground/70'
               }`}
-              style={activeTab === 'education' ? { background: 'linear-gradient(135deg, #1E5AFF 0%, #00C2CB 50%, #71EFA3 100%)' } : {}}
+              style={activeTab === 'education' ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' } : {}}
               onMouseEnter={(e) => {
                 if (activeTab !== 'education') {
                   e.currentTarget.style.color = '#00C2CB';
@@ -181,7 +181,7 @@ const Experience = () => {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 194, 203, 0.5), transparent)' }}></div>
+                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(168, 85, 247, 0.5), transparent)' }}></div>
                   
                   <div className="flex gap-6">
                     {/* Icon */}
@@ -199,7 +199,7 @@ const Experience = () => {
                             <h3 className="text-xl font-bold text-foreground">
                               {exp.title}
                             </h3>
-                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
+                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#a855f7', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
                               <Calendar className="w-3 h-3 mr-1" />
                               {exp.period}
                             </Badge>
@@ -240,7 +240,7 @@ const Experience = () => {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 194, 203, 0.5), transparent)' }}></div>
+                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(168, 85, 247, 0.5), transparent)' }}></div>
                   
                   <div className="flex gap-6">
                     {/* Icon */}
