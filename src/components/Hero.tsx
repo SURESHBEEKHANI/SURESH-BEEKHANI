@@ -188,7 +188,7 @@ const Hero = () => {
             animate={prefersReducedMotion ? false : "visible"}
           >
             <motion.h1 className="heading-1 font-bold leading-tight" variants={staggerItem}>
-              <span className="gradient-text">Suresh Beekhani</span>
+              Suresh <span style={{ color: '#a855f7' }}>Beekhani</span>
             </motion.h1>
 
             {/* Skills carousel */}
