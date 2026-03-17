@@ -14,7 +14,7 @@ const Approach = () => {
             Our Approach
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Our Proven <span className="gradient-text">Approach to Achieve</span> Your Objectives
+            Our Proven <span style={{ color: '#a855f7' }}>Approach to Achieve</span> Your Objectives
           </h2>
           <div 
             className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"

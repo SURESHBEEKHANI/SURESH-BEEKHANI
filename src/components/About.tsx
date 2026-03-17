@@ -125,7 +125,7 @@ const stats = [
             About Me
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            Transforming ideas into practical <span className="gradient-text">AI solutions</span>
+            Transforming ideas into practical <span style={{ color: '#a855f7' }}>AI solutions</span>
           </h2>
           <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
             I build production-ready AI systems across machine learning, deep learning, natural language processing (NLP), and generative AI—focused on real-world impact and scalable deployments.

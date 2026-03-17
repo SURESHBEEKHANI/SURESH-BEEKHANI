@@ -145,7 +145,7 @@ const Testimonials = () => {
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="mb-4 sm:mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
-              Client <span className="gradient-text">Testimonials</span>
+              Client <span style={{ color: '#a855f7' }}>Testimonials</span>
             </h2>
             
             {/* Dots indicator moved under title */}

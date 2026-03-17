@@ -11,82 +11,11 @@ const Experience = () => {
     setIsVisible(true);
   }, []);
 
-  const workExperience = [
-    {
-      title: 'Machine Learning Engineer',
-      company: 'Upwork Freelancer',
-      period: '2021 - Present',
-      description: 'Leading ML projects and building AI solutions for enterprise clients, with a focus on NLP and deep learning applications.',
-      achievements: ['Delivered 25+ AI solutions', '99% client satisfaction', 'Expert in NLP & Deep Learning'],
-      icon: <TrendingUp className="h-5 w-5" />,
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: 'Machine Learning Engineer',
-      company: 'AtliQ',
-      period: 'December 2022 - December 2024',
-      description: 'Developing and deploying AI-driven solutions using ML, DL, and NLP, focused on predictive analytics and automation.',
-      achievements: ['Built 15+ production models', 'Improved accuracy by 40%', 'Led team of 5 engineers'],
-      icon: <Zap className="h-5 w-5" />,
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      title: 'Associate Machine Learning Engineer',
-      company: 'Avanza Solutions',
-      period: 'October 2020 - December 2021',
-      description: 'Led advanced ML initiatives and contributed to the development of cutting-edge AI solutions.',
-      achievements: ['Implemented 10+ ML models', 'Reduced processing time by 60%', 'Mentored junior developers'],
-      icon: <Target className="h-5 w-5" />,
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      title: 'Intern Machine Learning Engineer',
-      company: 'TechData Labs',
-      period: '2019 - 2020',
-      description: 'Implemented ML models for predictive analytics and developed data visualization tools.',
-      achievements: ['Created 5 predictive models', 'Built data visualization dashboard', 'Learned production workflows'],
-      icon: <Users className="h-5 w-5" />,
-      color: 'from-orange-500 to-red-500'
-    },
-  ];
-
-  const education = [
-    {
-      degree: 'BSc in Computer Science',
-      institution: 'Sir Syed University of Engineering & Technology (SSUET)',
-      period: '2018 - 2022',
-      description: 'Focused on algorithms, software engineering, and mathematics foundations.',
-      highlights: ['Algorithms & Data Structures', 'Software Engineering', 'Mathematics & Statistics'],
-      icon: <Award className="h-5 w-5" />,
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      degree: 'Machine Learning Engineer',
-      institution: 'IBM',
-      period: '2022-06-12',
-      description: 'Completed specialization in ML/AI through self-paced learning on YouTube, Coursera, edX.',
-      highlights: ['ML Fundamentals', 'Deep Learning', 'AI Applications'],
-      icon: <Brain className="h-5 w-5" />,
-      color: 'from-teal-500 to-cyan-500'
-    },
-    {
-      degree: 'Generative AI Engineer',
-      institution: 'NVIDIA',
-      period: '2024',
-      description: 'Self-trained on generative models and AI concepts using online platforms.',
-      highlights: ['Generative Models', 'Neural Networks', 'Creative AI'],
-      icon: <Star className="h-5 w-5" />,
-      color: 'from-rose-500 to-pink-500'
-    },
-    {
-      degree: 'Self-Learning in ML & AI',
-      institution: 'Coursera, edX, YouTube & more',
-      period: '2022 - 2025',
-      description: 'Built strong expertise through independent online learning and real-world projects.',
-      highlights: ['Continuous Learning', 'Real-world Projects', 'Industry Best Practices'],
-      icon: <Globe className="h-5 w-5" />,
-      color: 'from-amber-500 to-orange-500'
-    },
+  const stats = [
+    { number: '4+', label: 'Years of Experience' },
+    { number: '10+', label: 'Happy Clients' },
+    { number: '25+', label: 'Projects Completed' },
+    { number: '04', label: 'Global Connections' },
   ];
 
   // Stats section removed as requested
@@ -101,201 +30,61 @@ const Experience = () => {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+        <div className={`text-center mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
           <Badge 
             className="mb-4 px-4 py-2 border-[#a855f7]/30"
             style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
           >
-            <Award className="w-4 h-4 mr-2" />
-            My Journey
+            <Star className="w-4 h-4 mr-2" />
+            Our Impact
           </Badge>
-          <h2 className="heading-2 mb-6">
-            Experience & <span className="gradient-text">Education</span>
+          <h2 className="heading-2 mb-4">
+            Why <span className="gradient-text">Choose Us</span>
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
-            My professional journey in machine learning and artificial intelligence, 
-            from academic foundations to real-world applications.
+            Delivering excellence in AI, machine learning, and data solutions with a proven track record of worldwide success.
           </p>
         </div>
 
-        {/* Stats Section removed */}
-
-        {/* Tab Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="flex glass rounded-xl p-1">
-            <button
-              onClick={() => setActiveTab('work')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                activeTab === 'work'
-                  ? 'text-white shadow-lg'
-                  : 'text-foreground/70'
-              }`}
-              style={activeTab === 'work' ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' } : {}}
-              onMouseEnter={(e) => {
-                if (activeTab !== 'work') {
-                  e.currentTarget.style.color = '#00C2CB';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== 'work') {
-                  e.currentTarget.style.color = '';
-                }
-              }}
-            >
-              <Briefcase className="w-4 h-4 inline mr-2" />
-              Work Experience
-            </button>
-            <button
-              onClick={() => setActiveTab('education')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                activeTab === 'education'
-                  ? 'text-white shadow-lg'
-                  : 'text-foreground/70'
-              }`}
-              style={activeTab === 'education' ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' } : {}}
-              onMouseEnter={(e) => {
-                if (activeTab !== 'education') {
-                  e.currentTarget.style.color = '#00C2CB';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== 'education') {
-                  e.currentTarget.style.color = '';
-                }
-              }}
-            >
-              <GraduationCap className="w-4 h-4 inline mr-2" />
-              Education
-            </button>
+        {/* Premium Stats Glass Card */}
+        <div className={`bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 sm:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.2)] relative overflow-hidden group ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+          {/* Subtle animated background gradients */}
+          <div className="absolute -top-32 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
+          <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-fuchsia-500/20 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
+          
+          <div className="mb-10 relative z-10">
+            <p className="text-gray-300 text-base sm:text-lg font-medium text-center max-w-2xl mx-auto italic">
+              "This highlights our skills, experience, and quality of work, demonstrating our commitment to excellence."
+            </p>
           </div>
-        </div>
-
-        {/* Timeline Content */}
-        <div className={`${isVisible ? 'fade-in' : 'opacity-0'}`}>
-          {activeTab === 'work' && (
-            <div className="space-y-8">
-              {workExperience.map((exp, index) => (
-                <div 
-                  key={index}
-                  className={`relative ${isVisible ? 'slide-up' : 'opacity-0'}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(168, 85, 247, 0.5), transparent)' }}></div>
-                  
-                  <div className="flex gap-6">
-                    {/* Icon */}
-                    <div className="relative z-10">
-                      <div className={`p-4 rounded-xl bg-gradient-to-r text-white shadow-lg ${exp.color}`}>
-                        {exp.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1">
-                      <Card className="modern-card hover:scale-105 transition-all duration-500">
-                        <CardContent className="p-6">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
-                            <h3 className="text-xl font-bold text-foreground">
-                              {exp.title}
-                            </h3>
-                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#a855f7', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
-                              <Calendar className="w-3 h-3 mr-1" />
-                              {exp.period}
-                            </Badge>
-                          </div>
-                          
-                          <div className="flex items-center mb-4" style={{ color: 'rgba(0, 194, 203, 0.8)' }}>
-                            <Building className="w-4 h-4 mr-2" />
-                            <span className="font-medium">{exp.company}</span>
-                          </div>
-                          
-                          <p className="text-foreground/70 mb-4 body-medium">
-                            {exp.description}
-                          </p>
-                          
-                          <div className="space-y-2">
-                            {exp.achievements.map((achievement, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#00C2CB' }}></div>
-                                <span className="text-sm text-foreground/60">{achievement}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 relative z-10">
+            {stats.map((stat, index) => (
+              <div 
+                key={index}
+                className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group/stat transition-transform duration-500 hover:-translate-y-2 rounded-2xl
+                  ${index !== stats.length - 1 ? 'lg:border-r border-white/10 lg:rounded-r-none' : ''} 
+                  ${index !== 0 ? 'lg:rounded-l-none' : ''}`}
+                style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)' }}
+              >
+                {/* Hover glow effect for each stat */}
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300 rounded-2xl lg:rounded-none"></div>
+                
+                <div className="text-5xl sm:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 via-primary to-fuchsia-400 mb-4 tracking-tighter group-hover/stat:scale-110 transition-transform duration-500 drop-shadow-lg">
+                  {stat.number}
                 </div>
-              ))}
-            </div>
-          )}
-
-          {activeTab === 'education' && (
-            <div className="space-y-8">
-              {education.map((edu, index) => (
-                <div 
-                  key={index}
-                  className={`relative ${isVisible ? 'slide-up' : 'opacity-0'}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {/* Timeline Line */}
-                  <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-gradient-to-b to-transparent" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(168, 85, 247, 0.5), transparent)' }}></div>
-                  
-                  <div className="flex gap-6">
-                    {/* Icon */}
-                    <div className="relative z-10">
-                      <div className={`p-4 rounded-xl bg-gradient-to-r text-white shadow-lg ${edu.color}`}>
-                        {edu.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1">
-                      <Card className="modern-card hover:scale-105 transition-all duration-500">
-                        <CardContent className="p-6">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
-                            <h3 className="text-xl font-bold text-foreground">
-                              {edu.degree}
-                            </h3>
-                            <Badge className="border" style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}>
-                              <Calendar className="w-3 h-3 mr-1" />
-                              {edu.period}
-                            </Badge>
-                          </div>
-                          
-                          <div className="flex items-center mb-4" style={{ color: 'rgba(0, 194, 203, 0.8)' }}>
-                            <Building className="w-4 h-4 mr-2" />
-                            <span className="font-medium">{edu.institution}</span>
-                          </div>
-                          
-                          <p className="text-foreground/70 mb-4 body-medium">
-                            {edu.description}
-                          </p>
-                          
-                          <div className="flex flex-wrap gap-2">
-                            {edu.highlights.map((highlight, idx) => (
-                              <Badge 
-                                key={idx} 
-                                variant="secondary"
-                                className="text-xs border"
-                                style={{ background: 'rgba(0, 194, 203, 0.1)', color: '#00C2CB', borderColor: 'rgba(0, 194, 203, 0.2)' }}
-                              >
-                                {highlight}
-                              </Badge>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
+                <div className="text-sm sm:text-base text-gray-300 font-semibold text-center uppercase tracking-wider flex items-center justify-center gap-2 w-full">
+                  <span className="w-6 h-px bg-primary/50 relative hidden lg:block"></span>
+                  <span className="relative z-10 drop-shadow-md">{stat.label}</span>
+                  <span className="w-6 h-px bg-primary/50 relative hidden lg:block"></span>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+
   );
 };
 

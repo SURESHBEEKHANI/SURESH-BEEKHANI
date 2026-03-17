@@ -90,7 +90,7 @@ const Navbar = () => {
     { label: 'Natural Language Processing', href: '/natural-language-processing' },
     { label: 'Predictive Modeling', href: '/predictive-modelling' },
     { label: 'AI Automation', href: '/ai-automation' },
-  
+
   ];
 
   const industriesPages = [
@@ -120,8 +120,8 @@ const Navbar = () => {
       animate={prefersReducedMotion ? false : "visible"}
       variants={navbarVariants}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
-          : 'bg-transparent'
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
+        : 'bg-transparent'
         }`}
       role="navigation"
       aria-label="Main navigation"
@@ -135,8 +135,8 @@ const Navbar = () => {
             whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
             transition={{ duration: 0.2 }}
           >
-            <a 
-              href="/#home" 
+            <a
+              href="/#home"
               className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
               style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               aria-label="AI Specialist - Home"
@@ -171,7 +171,7 @@ const Navbar = () => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/90'
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-blue-600' : 'text-white hover:text-cyan-400'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -206,7 +206,7 @@ const Navbar = () => {
                             <motion.a
                               key={item.href}
                               href={item.href}
-                              className={`block px-4 py-2 text-gray-800 hover:bg-primary/10 hover:text-primary whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
+                              className={`block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
                                 }`}
                               initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -226,7 +226,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/90'
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-blue-600' : 'text-white hover:text-cyan-400'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -279,9 +279,8 @@ const Navbar = () => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
-                  isScrolled ? 'text-gray-900' : 'text-white'
-                }`}
+                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${isScrolled ? 'text-gray-900' : 'text-white'
+                  }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
@@ -344,7 +343,7 @@ const Navbar = () => {
 
                     const hasDropdown = link.label === 'Services' || link.label === 'Industries';
                     let dropdownItems = link.label === 'Services' ? servicePages : industriesPages;
-                    
+
                     // Add 'Resources' as an option inside Industries dropdown as per user list
                     if (link.label === 'Industries') {
                       dropdownItems = [...industriesPages, { label: 'Resources', href: '/blogs' }];
@@ -357,9 +356,8 @@ const Navbar = () => {
                         <div key={link.label} className="border-b border-white/5 last:border-0">
                           <button
                             onClick={() => setExpandedSection(isExpanded ? null : link.label)}
-                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${
-                              isExpanded ? 'text-primary bg-primary/5' : 'text-white hover:text-primary'
-                            }`}
+                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-primary bg-primary/5' : 'text-white hover:text-cyan-400'
+                              }`}
                           >
                             <span>{link.label}</span>
                             <motion.div
@@ -384,7 +382,7 @@ const Navbar = () => {
                                     <motion.a
                                       key={item.href}
                                       href={item.href}
-                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-primary transition-colors border-l border-white/10 pl-4"
+                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-cyan-400 transition-colors border-l border-white/10 pl-4"
                                       onClick={() => setIsMobileMenuOpen(false)}
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
@@ -405,12 +403,11 @@ const Navbar = () => {
                       <motion.a
                         key={link.label}
                         href={link.href}
-                        className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${
-                          activeSection === link.href.replace('/#', '') ||
-                          (link.href === '/Portfolio' && currentPath === '/Portfolio')
+                        className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${activeSection === link.href.replace('/#', '') ||
+                            (link.href === '/Portfolio' && currentPath === '/Portfolio')
                             ? 'text-primary bg-primary/10'
-                            : 'text-white hover:text-primary hover:bg-white/10'
-                        }`}
+                            : 'text-white hover:text-cyan-400 hover:bg-white/10'
+                          }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         custom={index}
                         variants={menuItemVariants}

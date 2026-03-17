@@ -236,7 +236,7 @@ const Services = () => {
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 text-white"
             variants={staggerItem}
           >
-            Our <span className="gradient-text">Services</span>
+            Our <span style={{ color: '#a855f7' }}>Services</span>
           </motion.h2>
           <motion.div
             className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8 rounded-full"
@@ -291,7 +291,7 @@ const Services = () => {
                       ? 'text-white font-medium shadow-lg'
                       : 'text-gray-300 hover:text-white hover:shadow-md'
                       }`}
-                    style={selectedService === service 
+                    style={selectedService === service
                       ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
                       : {}
                     }
@@ -346,7 +346,7 @@ const Services = () => {
                         ? 'text-white shadow-lg'
                         : 'text-white/80 hover:text-white hover:shadow-md'
                         }`}
-                      style={selectedService === service 
+                      style={selectedService === service
                         ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
                         : {}
                       }
