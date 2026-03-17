@@ -122,10 +122,14 @@ const FAQ_DATA = [
 const HeroSection: React.FC = React.memo(() => (
   <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
     <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/workflow-automation.jpg')] bg-cover bg-center" />
-    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
+    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">FinTech</h1>
-        <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">Transform finance and banking with AI-powered fraud detection, automated compliance, intelligent chatbots, and predictive analytics. Enhance customer experience and operational efficiency.</p>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+          FinTech
+        </h1>
+        <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
+          Transform finance and banking with AI-powered fraud detection, automated compliance, intelligent chatbots, and predictive analytics. Enhance customer experience and operational efficiency.
+        </p>
       </div>
     </div>
   </section>
@@ -139,28 +143,18 @@ const ProfessionalSection: React.FC = React.memo(() => (
         {/* Left Content */}
         <div className="space-y-6 sm:space-y-8">
           <div className="space-y-4">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
-              AI-Driven Financial Technology Innovation
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+              AI-Driven Financial <span style={{ color: '#a855f7' }}>Technology Innovation</span>
             </h2>
           </div>
           
-          <div className="space-y-5 text-gray-800 text-sm sm:text-base lg:text-lg leading-relaxed font-medium">
+          <div className="space-y-5 text-slate-600 text-lg leading-relaxed">
             <p>
               We are revolutionizing financial services with the power of Artificial Intelligence. By combining machine learning, predictive analytics, and advanced automation, we create intelligent financial solutions that support fraud detection, risk assessment, automated compliance, and personalized customer experiences.
             </p>
             <p>
               Our mission is to help financial institutions deliver more secure, efficient, and customer-centric services through innovative digital solutions.
             </p>
-          </div>
-          
-          <div className="pt-4">
-            <Link 
-              to="/#contact" 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400 hover:from-blue-600 hover:via-cyan-600 hover:to-emerald-500 text-white font-bold text-sm sm:text-base px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-            >
-              Schedule a Demo
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
         
@@ -232,56 +226,56 @@ const CapabilitiesSection: React.FC = React.memo(() => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 hero-bg relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-1000" />
+  <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#01010c] relative overflow-hidden">
+    {/* High-Tech Background Layers */}
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+    <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
+    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
+    
+    <div className="max-w-7xl mx-auto relative z-10">
+      {/* Header */}
+      <div className="text-center space-y-4 mb-20 animate-fade-in">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+          Capabilities and Benefits of <span style={{ color: '#a855f7' }}>AI and ML in FinTech</span>
+        </h2>
+        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
+          Delivering excellence in <span className="text-gray-100 font-bold">financial intelligence</span> and secure automated banking.
+        </p>
+        <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mt-4 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
       </div>
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="mb-12 sm:mb-16">
-          <div className="flex items-start gap-3 mb-4">
-            <div className="w-2 h-10 bg-gradient-to-b from-blue-400 via-cyan-400 to-emerald-400 rounded-full shadow-lg" />
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight drop-shadow-lg">
-              Capabilities and Benefits of AI and ML in FinTech
-            </h2>
-          </div>
-        </div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {capabilities.map((capability, index) => (
-            <div 
-              key={index}
-              className="group bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl border border-white/20 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              {/* Icon */}
-              <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${capability.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                <svg 
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d={capability.icon} />
-                </svg>
-              </div>
-
-              {/* Content */}
-              <h3 className="text-base sm:text-lg font-bold text-white mb-4 group-hover:text-cyan-200 transition-colors duration-300">
-                {capability.title}
-              </h3>
-              <p className="text-xs sm:text-sm lg:text-base text-gray-100 leading-relaxed font-medium">
-                {capability.description}
-              </p>
+      {/* Grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        {capabilities.map((capability, index) => (
+          <div 
+            key={index}
+            className="modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300"
+          >
+            <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${capability.gradient} rounded-xl flex items-center justify-center mb-2 mx-auto text-white shadow-lg`}>
+              <svg 
+                className="w-7 h-7 text-white" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d={capability.icon} />
+              </svg>
             </div>
-          ))}
-        </div>
+
+            {/* Content */}
+            <h3 className="font-bold text-sm sm:text-base text-white mb-1.5 text-center w-full">
+              {capability.title}
+            </h3>
+            <p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">
+              {capability.description}
+            </p>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
   );
 });
 CapabilitiesSection.displayName = 'CapabilitiesSection';
@@ -344,31 +338,27 @@ const FinTech: React.FC = () => {
   }, [checkScrollButtons]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-violet-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
       <HeroSection />
       <ProfessionalSection />
       <CapabilitiesSection />
       <AnimatedCarousel useCases={useCases} title="FinTech AI Solutions" subtitle="AI technology for modern finance and banking" />
-      <section className="py-16 sm:py-24 px-4 sm:px-6 hero-bg relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-500 rounded-full blur-3xl animate-pulse delay-1000" />
-        </div>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-400/30 shadow-lg">
-                Portfolio
+              <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200 shadow-sm">
+                Success Stories
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 drop-shadow-lg">
-              Real-World AI Solutions
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
+              Real-World <span style={{ color: '#a855f7' }}>AI Solutions</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-white font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-              Discover how we've transformed businesses across healthcare, finance, education, and more with cutting-edge AI technology
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
+              Discover how our cutting-edge AI technology has transformed <span className="text-slate-900 font-bold">financial institutions</span> and banking platforms worldwide.
             </p>
           </div>
           
@@ -377,7 +367,7 @@ const FinTech: React.FC = () => {
             <button 
               onClick={() => scroll('left')} 
               disabled={!canScrollLeft} 
-              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -386,7 +376,7 @@ const FinTech: React.FC = () => {
             <button 
               onClick={() => scroll('right')} 
               disabled={!canScrollRight} 
-              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -405,7 +395,7 @@ const FinTech: React.FC = () => {
                 {portfolioData.map((project, idx) => (
                   <div 
                     key={project.link} 
-                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 border border-white/20 hover:border-cyan-400/50 group/card transform hover:-translate-y-2"
+                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-purple-200 group/card transform hover:-translate-y-2"
                   >
                     <div className="relative h-52 sm:h-64 overflow-hidden">
                       <img 
@@ -417,19 +407,19 @@ const FinTech: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     </div>
                     <div className="p-6 sm:p-7 space-y-4">
-                      <h3 className="text-sm sm:text-base font-bold text-white leading-tight group-hover/card:text-cyan-200 transition-colors duration-300">
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover/card:text-[#a855f7] transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-gray-100 font-medium leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
-                      <Link 
-                        to={project.link} 
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400 hover:from-blue-600 hover:via-cyan-600 hover:to-emerald-500 text-white font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-xs sm:text-sm group/btn transform hover:scale-105"
-                      >
-                        View Case Study 
-                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </Link>
+              <Link 
+                to={project.link} 
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-xs sm:text-sm group/btn transform hover:scale-105"
+              >
+                View Case Study 
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+              </Link>
                     </div>
                   </div>
                 ))}
@@ -449,19 +439,20 @@ const FinTech: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-block mb-4">
               <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200">
-                FAQ
+                Knowledge Base
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-5">
-              Frequently Asked Questions
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5">
+              Frequently Asked <span style={{ color: '#a855f7' }}>Questions</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-700 font-medium max-w-2xl mx-auto">
-              Everything you need to know about AI-powered finance solutions
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-2xl mx-auto">
+              Everything you need to know about our <span className="text-slate-900 font-bold">AI-powered finance</span> solutions and process.
             </p>
           </div>
           <div className="space-y-3">

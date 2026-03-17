@@ -58,10 +58,10 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
               Solutions
             </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             {title}
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
             {subtitle}
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
           {/* Navigation Arrows */}
           <motion.button
             onClick={prevSlide}
-            className="hidden lg:flex absolute -left-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 items-center justify-center border border-cyan-300"
+            className="hidden lg:flex absolute -left-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 items-center justify-center border border-purple-300"
             whileHover={{ scale: 1.1, x: -4 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Previous use cases"
@@ -82,7 +82,7 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
           
           <motion.button
             onClick={nextSlide}
-            className="hidden lg:flex absolute -right-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 items-center justify-center border border-cyan-300"
+            className="hidden lg:flex absolute -right-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 items-center justify-center border border-purple-300"
             whileHover={{ scale: 1.1, x: 4 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Next use cases"
