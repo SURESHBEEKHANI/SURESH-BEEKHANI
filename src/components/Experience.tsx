@@ -39,7 +39,7 @@ const Experience = () => {
             Our Impact
           </Badge>
           <h2 className="heading-2 mb-4">
-            Why <span className="gradient-text">Choose Us</span>
+            Why <span style={{ color: '#a855f7' }}>Choose Us</span>
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
             Delivering excellence in AI, machine learning, and data solutions with a proven track record of worldwide success.

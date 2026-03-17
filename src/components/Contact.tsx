@@ -157,7 +157,7 @@ const Contact = () => {
             <span>Get In Touch</span>
           </Badge>
           <h2 className="heading-2 mb-6">
-            Let's Build Something <span className="gradient-text">Amazing</span>
+            Let's Build Something <span style={{ color: '#a855f7' }}>Amazing</span>
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
             Ready to transform your ideas into intelligent AI solutions?

@@ -101,7 +101,7 @@ const FAQ = () => {
             FAQ
           </div>
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
-            Frequently Asked <span className="gradient-text">Questions</span>
+            Frequently Asked <span style={{ color: '#a855f7' }}>Questions</span>
           </h2>
           <div 
             className="w-16 h-1 mx-auto mb-6"
