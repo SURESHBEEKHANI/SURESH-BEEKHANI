@@ -78,19 +78,12 @@ const Industries = () => {
         <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative rounded-2xl sm:rounded-3xl ai-section">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12">
-              <Badge 
-                variant="outline" 
-                className="mb-2 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
-                style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-              >
-                Industries
-              </Badge>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">
-                AI <span className="gradient-text">Industries</span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white leading-tight">
+                AI <span className="gradient-text-ai">Industries</span>
               </h2>
-              <div 
-                className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
+              <div
+                className="w-20 sm:w-24 h-1 sm:h-1.5 mx-auto mb-8 sm:mb-10 rounded-full"
+                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #0891b2 100%)' }}
               ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
                 Transforming industries with cutting-edge AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
@@ -115,10 +108,10 @@ const Industries = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30 z-10 transition-all duration-300 group-hover:opacity-0 group-active:opacity-0"></div>
 
                   {/* Hover overlay with content - enhanced for touch */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-4 md:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.95) 0%, rgba(168, 85, 247, 0.95) 50%, rgba(236, 72, 153, 0.95) 100%)' }}>
-                    <div className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 leading-tight">{industry.name}</div>
-                    <div className="text-white text-xs sm:text-sm font-normal mb-3 sm:mb-4 leading-relaxed px-1 sm:px-0">{industry.description}</div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
+                    style={{ background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.98) 0%, rgba(79, 70, 229, 0.98) 50%, rgba(6, 182, 212, 0.98) 100%)' }}>
+                    <div className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-4 leading-tight tracking-tight">{industry.name}</div>
+                    <div className="text-white text-sm sm:text-base font-bold mb-4 sm:mb-6 leading-relaxed px-2 sm:px-0 drop-shadow-sm">{industry.description}</div>
                     <a
                       href={industry.link}
                       className="inline-flex items-center gap-1 sm:gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-xs sm:text-sm py-1 px-2 sm:py-2 sm:px-3 rounded-md hover:bg-white/20 active:scale-95 touch-manipulation"
