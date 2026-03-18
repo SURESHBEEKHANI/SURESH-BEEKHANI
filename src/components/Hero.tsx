@@ -210,9 +210,7 @@ const Hero = () => {
 
             {/* Description */}
             <motion.p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
-              I’m passionate about Artificial Intelligence, creating practical AI solutions that drive real-world impact. Through hands-on projects, tutorials, and innovative AI applications, I help learners and organizations harness AI for smarter decision-making, efficiency, and sustainable innovation. Open to remote projects and freelance collaborations – let’s build the future of intelligent AI together!
-            </motion.p>
-
+            I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging the gap between data science and business strategy.
             {/* Buttons */}
             <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" variants={staggerItem}>
               <ButtonWrapper href="https://calendar.app.google/F63aBoA5vxJdtihj7" icon={<FileText />} text="Book Appointment" />
