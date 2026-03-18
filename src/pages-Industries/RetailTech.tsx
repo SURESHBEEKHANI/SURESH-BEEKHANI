@@ -417,10 +417,10 @@ const RetailTech: React.FC = () => {
                       </p>
               <Link 
                 to={project.link} 
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-xs sm:text-sm group/btn transform hover:scale-105"
+                className="inline-flex items-center gap-1.5 text-[#a855f7] font-bold text-sm hover:translate-x-1 transition-transform"
               >
-                View Case Study 
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                Learn More 
+                <ArrowRight className="w-4 h-4" />
               </Link>
                     </div>
                   </div>
@@ -478,3 +478,4 @@ const RetailTech: React.FC = () => {
 };
 
 export default RetailTech;
+
