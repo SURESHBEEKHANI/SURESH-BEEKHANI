@@ -12,8 +12,11 @@ const PrivacyPolicy = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center hero-bg overflow-hidden pt-20">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center" />
+      <section className="relative w-full min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center bg-[#0a0435] overflow-hidden pt-20">
+        {/* Ambient Blurs to match footer */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="text-white space-y-4 sm:space-y-6 text-left">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
