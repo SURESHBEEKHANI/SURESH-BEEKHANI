@@ -22,7 +22,6 @@ const Hero = () => {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  const [isVisible, setIsVisible] = useState(false);
   const [currentSkill, setCurrentSkill] = useState(0);
   const [statsCount, setStatsCount] = useState({ years: 0, projects: 0, models: 0 });
 
@@ -42,14 +41,15 @@ const Hero = () => {
     { icon: <Brain className="w-6 h-6" />, color: 'text-orange-500' },
   ];
 
-  // Cycle skills every 3 seconds
+  // Cycle skills
   useEffect(() => {
-    setIsVisible(true);
-    const interval = setInterval(() => setCurrentSkill(prev => (prev + 1) % skills.length), 3000);
+    const interval = setInterval(() => {
+      setCurrentSkill(prev => (prev + 1) % skills.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, [skills.length]);
 
-  // Animate stats count
+  // Animate stats
   useEffect(() => {
     const duration = 2000;
     const steps = 60;
@@ -67,10 +67,7 @@ const Hero = () => {
         models: Math.floor(targets.models * progress),
       });
 
-      if (currentStep >= steps) {
-        setStatsCount(targets);
-        clearInterval(timer);
-      }
+      if (currentStep >= steps) clearInterval(timer);
     }, stepDuration);
 
     return () => clearInterval(timer);
@@ -85,56 +82,54 @@ const Hero = () => {
       {/* Background animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/** Floating particles **/}
-        <motion.div
-          className="absolute top-20 left-10 w-3 h-3 bg-primary/40 rounded-full"
-          animate={prefersReducedMotion ? {} : { y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-2 h-2 bg-secondary/50 rounded-full"
-          animate={prefersReducedMotion ? {} : { y: [20, -20, 20], opacity: [0.5, 1, 0.5], scale: [1, 1.5, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-        <motion.div
-          className="absolute bottom-40 left-20 w-4 h-4 bg-accent/30 rounded-full"
-          animate={prefersReducedMotion ? {} : { y: [-15, 15, -15], x: [-10, 10, -10], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div
-          className="absolute top-60 left-1/3 w-3 h-3 bg-secondary/40 rounded-full"
-          animate={prefersReducedMotion ? {} : { y: [15, -15, 15], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        />
+        {[{
+          top: 'top-20 left-10', size: 'w-3 h-3', color: 'bg-primary/40', y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4], duration: 6
+        }, {
+          top: 'top-40 right-20', size: 'w-2 h-2', color: 'bg-secondary/50', y: [20, -20, 20], opacity: [0.5,1,0.5], scale: [1,1.5,1], duration:4, delay:1
+        }, {
+          top: 'bottom-40 left-20', size: 'w-4 h-4', color: 'bg-accent/30', y: [-15,15,-15], x:[-10,10,-10], opacity:[0.3,0.6,0.3], duration:5, delay:2
+        }, {
+          top: 'top-60 left-1/3', size: 'w-3 h-3', color: 'bg-secondary/40', y:[15,-15,15], opacity:[0.4,0.7,0.4], duration:7, delay:3
+        }].map((p, idx) => (
+          <motion.div
+            key={idx}
+            className={`absolute ${p.top} ${p.size} ${p.color} rounded-full`}
+            animate={prefersReducedMotion ? {} : { y: p.y, x: p.x || 0, opacity: p.opacity, scale: p.scale || 1 }}
+            transition={{ duration: p.duration, repeat: Infinity, ease: 'easeInOut', delay: p.delay || 0 }}
+          />
+        ))}
 
         {/** Large gradient orbs **/}
-        <motion.div
-          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl"
-          animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-accent/10 to-primary/10 rounded-full blur-3xl"
-          animate={prefersReducedMotion ? {} : { scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
+        {[{
+          position: '-top-40 -right-40', size: 'w-96 h-96', gradient: 'bg-gradient-to-br from-primary/10 to-secondary/10', duration: 8
+        },{
+          position: '-bottom-40 -left-40', size: 'w-96 h-96', gradient: 'bg-gradient-to-tr from-accent/10 to-primary/10', duration: 10, delay:2
+        }].map((orb, idx) => (
+          <motion.div
+            key={idx}
+            className={`absolute ${orb.position} ${orb.size} ${orb.gradient} rounded-full blur-3xl`}
+            animate={prefersReducedMotion ? {} : { scale: [1, idx===0?1.2:1.3,1], opacity: [0.3, idx===0?0.5:0.6,0.3] }}
+            transition={{ duration: orb.duration, repeat: Infinity, ease:'easeInOut', delay: orb.delay || 0 }}
+          />
+        ))}
 
         {/** Animated lines **/}
         <motion.div
           className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-          animate={prefersReducedMotion ? {} : { scaleX: [0, 1, 0], opacity: [0, 1, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          animate={prefersReducedMotion ? {} : { scaleX: [0,1,0], opacity: [0,1,0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute bottom-1/4 right-0 w-32 h-px bg-gradient-to-l from-transparent via-secondary/30 to-transparent"
-          animate={prefersReducedMotion ? {} : { scaleX: [0, 1, 0], opacity: [0, 1, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          animate={prefersReducedMotion ? {} : { scaleX: [0,1,0], opacity: [0,1,0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
       </div>
 
       {/* Main content */}
       <div className="z-10 max-w-7xl mx-auto container-padding py-8 sm:py-12 lg:py-0">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 xl:gap-16">
-
+          
           {/* Avatar */}
           <motion.div
             className="relative mt-16 sm:mt-0 w-full lg:w-auto"
@@ -146,8 +141,8 @@ const Hero = () => {
             <div className="relative flex justify-center lg:justify-start">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-primary/40 via-secondary/30 to-accent/30 rounded-full blur-2xl opacity-60"
-                animate={prefersReducedMotion ? {} : { scale: [1, 1.1, 1], opacity: [0.6, 0.8, 0.6] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                animate={prefersReducedMotion ? {} : { scale: [1,1.1,1], opacity:[0.6,0.8,0.6] }}
+                transition={{ duration: 3, repeat: Infinity, ease:'easeInOut' }}
               />
               <motion.div
                 className="relative"
@@ -155,23 +150,24 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl relative z-10 bg-gradient-to-br from-white to-gray-50 rounded-full overflow-hidden">
+                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl bg-gradient-to-br from-white to-gray-50 rounded-full overflow-hidden">
                   <AvatarImage
                     src="/image/sureshbeekhani.png"
                     alt="Suresh Beekhani - AI/ML Engineer"
-                    className="object-cover object-center w-full h-full rounded-full"
+                    className="object-cover w-full h-full"
                     loading="eager"
                   />
-                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary rounded-full">SB</AvatarFallback>
+                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary">SB</AvatarFallback>
                 </Avatar>
-                {techIcons.map((tech, index) => (
+
+                {techIcons.map((tech, idx) => (
                   <motion.div
-                    key={index}
+                    key={idx}
                     className={`absolute ${tech.color}`}
-                    style={{ top: `${20 + index * 60}%`, left: index % 2 === 0 ? '-20px' : 'auto', right: index % 2 === 1 ? '-20px' : 'auto' }}
+                    style={{ top: `${20 + idx * 60}%`, left: idx % 2 === 0 ? '-20px' : 'auto', right: idx % 2 === 1 ? '-20px' : 'auto' }}
                     initial={prefersReducedMotion ? {} : { scale: 0, opacity: 0 }}
-                    animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.5, ease: "easeInOut" }}
+                    animate={prefersReducedMotion ? {} : { scale: [1,1.2,1], opacity: [0.7,1,0.7] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5, ease:'easeInOut' }}
                   >
                     {tech.icon}
                   </motion.div>
@@ -208,9 +204,10 @@ const Hero = () => {
               </AnimatePresence>
             </motion.div>
 
-            {/* Description */}
             <motion.p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
-            I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging the gap between data science and business strategy.
+              I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging the gap between data science and business strategy.
+            </motion.p>
+
             {/* Buttons */}
             <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" variants={staggerItem}>
               <ButtonWrapper href="https://calendar.app.google/F63aBoA5vxJdtihj7" icon={<FileText />} text="Book Appointment" />
@@ -231,7 +228,6 @@ const Hero = () => {
               ))}
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>
