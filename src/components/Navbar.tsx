@@ -106,7 +106,7 @@ const Navbar = () => {
 
   const resourcesPages = [
     { label: 'Blogs', href: '/blogs' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   // Prevent default click on Resources link since it's just a dropdown trigger
@@ -137,7 +137,7 @@ const Navbar = () => {
           >
             <a
               href="/#home"
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-xl text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
               style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               aria-label="AI Specialist - Home"
             >
@@ -253,7 +253,7 @@ const Navbar = () => {
             >
               <Button
                 asChild
-                className="border border-white/10 shadow-lg text-white rounded-full px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
+                className="border border-white/10 shadow-lg text-white rounded-xl px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
                 style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
               >
                 <a
@@ -428,7 +428,7 @@ const Navbar = () => {
                     >
                       <Button
                         asChild
-                        className="border border-white/10 shadow-lg text-white rounded-full px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
+                        className="border border-white/10 shadow-lg text-white rounded-xl px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
                         style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
                       >
                         <a

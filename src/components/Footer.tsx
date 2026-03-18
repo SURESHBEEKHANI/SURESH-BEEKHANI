@@ -12,6 +12,7 @@ const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -67,6 +68,7 @@ const Footer = () => {
       });
 
       setNewsletterEmail('');
+      setIsSubscribed(true);
 
     } catch (err) {
       console.error(err);
@@ -103,7 +105,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-        <div className="grid lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid lg:grid-cols-3 gap-12 mb-12">
 
           {/* Brand */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
@@ -151,26 +153,11 @@ const Footer = () => {
 
           </div>
 
-          {/* Quick Links */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-
-            <ul className="space-y-3 text-indigo-100/70">
-              <li><a href="/#about"      className="hover:text-fuchsia-400 transition-colors">About</a></li>
-              <li><a href="/#services"   className="hover:text-fuchsia-400 transition-colors">Services</a></li>
-              <li><a href="/#experience" className="hover:text-fuchsia-400 transition-colors">Experience</a></li>
-              <li><a href="/#contact"    className="hover:text-fuchsia-400 transition-colors">Contact</a></li>
-            </ul>
-
-          </div>
-
           {/* Services */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <h3 className="text-lg font-semibold text-white">Services</h3>
-
-            <div className="flex flex-wrap gap-2">
+            <ul className="space-y-3 text-indigo-100/70 text-sm">
               {[
                 "AI Development",
                 "Machine Learning",
@@ -181,26 +168,22 @@ const Footer = () => {
                 "Chatbot Development",
                 "AI Automation"
               ].map((service) => (
-                <Badge
-                  key={service}
-                  variant="secondary"
-                  className="text-xs bg-fuchsia-500/10 text-indigo-100/80 border border-fuchsia-500/25"
-                >
+                <li key={service} className="hover:text-fuchsia-400 transition-colors cursor-pointer">
                   {service}
-                </Badge>
+                </li>
               ))}
-            </div>
+            </ul>
 
           </div>
 
           {/* Contact + Newsletter */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <h3 className="text-lg font-semibold text-white">Contact</h3>
+            <h3 className="text-lg font-semibold text-white">Get In Touch</h3>
 
             <ul className="space-y-3 text-indigo-100/70 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} className="text-fuchsia-400" /> Karachi, Pakistan
+                <MapPin size={16} className="text-fuchsia-400" /> Pakistan
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-fuchsia-400" /> sureshbeekhani26@gmail.com
@@ -216,29 +199,37 @@ const Footer = () => {
                 Join Our Newsletter
               </h4>
 
-              <form
-                onSubmit={handleNewsletterSubmit}
-                className="flex w-full overflow-hidden rounded-full border border-white/15 bg-white/5"
-              >
-                <Input
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  type="email"
-                  placeholder="Enter your email"
-                  className="border-0 bg-transparent text-white placeholder:text-indigo-200/50 focus-visible:ring-0 px-4 py-3"
-                />
-                <Button
-                  type="submit"
-                  disabled={isNewsletterSubmitting}
-                  className="px-6 font-semibold text-white rounded-full"
-                  style={{
-                    background:
-                      'linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
-                  }}
+              {isSubscribed ? (
+                <div className="bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-xl p-4 animate-fadeIn">
+                  <p className="text-sm text-indigo-100/90 font-medium">
+                    Thank you! You've successfully joined our community.
+                  </p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleNewsletterSubmit}
+                  className="flex w-full max-w-xs overflow-hidden rounded-xl border border-white/15 bg-white/5 focus-within:border-fuchsia-500/50 transition-colors"
                 >
-                  {isNewsletterSubmitting ? "Submitting..." : "Subscribe"}
-                </Button>
-              </form>
+                  <Input
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    type="email"
+                    placeholder="Enter your email"
+                    className="border-0 bg-transparent text-white placeholder:text-indigo-200/50 focus-visible:ring-0 px-4 py-3"
+                  />
+                  <Button
+                    type="submit"
+                    disabled={isNewsletterSubmitting}
+                    className="px-6 font-semibold text-white rounded-xl"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
+                    }}
+                  >
+                    {isNewsletterSubmitting ? "..." : "Subscribe"}
+                  </Button>
+                </form>
+              )}
             </div>
 
           </div>
@@ -251,12 +242,14 @@ const Footer = () => {
             © {new Date().getFullYear()} Suresh Beekhani. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Badge
-              variant="outline"
-              className="border-fuchsia-500/40 text-indigo-100/70"
-            >
-              AI/ML Engineer
-            </Badge>
+            <a href="/privacy-policy">
+              <Badge
+                variant="outline"
+                className="border-fuchsia-500/40 text-indigo-100/70 hover:bg-fuchsia-500/10 transition-colors cursor-pointer"
+              >
+                Privacy Policy
+              </Badge>
+            </a>
             <Badge
               variant="outline"
               className="border-fuchsia-500/40 text-indigo-100/70"
@@ -271,9 +264,8 @@ const Footer = () => {
       {/* Scroll-to-top Button */}
       <Button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${
-          showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}
       >
         <ArrowUp size={18} />

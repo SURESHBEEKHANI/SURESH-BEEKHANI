@@ -8,7 +8,6 @@ import ClientSolutions from '@/components/ClientSolutions';
 import Approach from '@/components/Approach';
 import Testimonials from '@/components/Testimonials';
 import Experience from '@/components/Experience';
-import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import BackgroundAnimation from '@/components/BackgroundAnimation';
@@ -99,11 +98,6 @@ const Index = () => {
           </div>
         </section>
         
-        <section id="contact" className="pro-section">
-          <div className="section-container">
-            <Contact />
-          </div>
-        </section>
         
         <section id="faq" className="pro-section">
           <div className="section-container">

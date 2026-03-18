@@ -1,44 +1,66 @@
 // src/components/Contact.tsx
-import React, { useState, useEffect, useRef } from 'react';
-import { Mail, MapPin, Phone, Send, Clock, MessageSquare, Globe } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { supabase } from '@/supabaseClient'; // Supabase client
+import Navbar from './Navbar';
+import Footer from './Footer';
+import BackgroundAnimation from './BackgroundAnimation';
+
+const HeroSection = () => (
+  <section className="relative w-full min-h-[40vh] flex items-center justify-center overflow-hidden"
+    style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}>
+    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
+    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg mb-6">
+        Contact Us
+      </h1>
+      <p className="text-xs sm:text-sm md:text-base text-gray-200 font-medium leading-relaxed max-w-2xl drop-shadow-md">
+        We appreciate your interest in services. Please fill out the form so we can provide you with the right help and support.
+      </p>
+    </div>
+  </section>
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    helpType: '',
+    industry: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
-    subject: '',
-    message: ''
+    country: '',
+    company: '',
+    message: '',
+    newsletter: false,
+    terms: false
   });
-  const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData(prev => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const validateForm = () => {
     const errors: string[] = [];
-    if (!formData.name.trim()) errors.push('Name is required');
+    if (!formData.firstName.trim()) errors.push('First Name is required');
+    if (!formData.lastName.trim()) errors.push('Last Name is required');
     if (!formData.email.trim()) errors.push('Email is required');
-    if (!formData.subject.trim()) errors.push('Subject is required');
-    if (!formData.message.trim()) errors.push('Message is required');
+    if (!formData.phone.trim()) errors.push('Phone is required');
+    if (!formData.helpType) errors.push('Please select how we can help you');
+    if (!formData.industry) errors.push('Please select your industry');
+    if (!formData.terms) errors.push('You must agree to the Privacy Policy and Terms and Conditions');
 
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.push('Please enter a valid email address');
@@ -59,18 +81,29 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Insert form data into Supabase table "messages"
-      const { error } = await supabase.from('messages').insert([
+      // Insert form data into Supabase table "Contact Us"
+      // Note: Using the exact name from the screenshot
+      const { error } = await supabase.from('Contact Us').insert([
         {
-          name: formData.name,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
           email: formData.email,
           phone: formData.phone,
-          subject: formData.subject,
+          subject: formData.helpType,
           message: formData.message,
+          help_topic: formData.helpType,
+          industry: formData.industry,
+          country: formData.country,
+          company_organization: formData.company,
+          newsletter_signup: formData.newsletter,
+          agree_terms: formData.terms
         }
       ]);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase Error:', error);
+        throw error;
+      }
 
       // Show success message
       toast.success('Message sent successfully!', {
@@ -78,13 +111,21 @@ const Contact = () => {
         duration: 5000,
       });
 
+      setIsSubmitted(true);
+
       // Reset form fields
       setFormData({
-        name: '',
+        helpType: '',
+        industry: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
-        subject: '',
-        message: ''
+        country: '',
+        company: '',
+        message: '',
+        newsletter: false,
+        terms: false
       });
 
     } catch (error) {
@@ -95,193 +136,254 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-5 w-5" />,
-      title: 'Email',
-      value: 'sureshbeekhani@gmail.com',
-      link: 'mailto:sureshbeekhani@gmail.com',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: <Phone className="h-5 w-5" />,
-      title: 'Phone',
-      value: '+92 3401213187',
-      link: 'tel:+923401213187',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: <MapPin className="h-5 w-5" />,
-      title: 'Location',
-      value: 'Karachi, Pakistan',
-      link: '#',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: <Globe className="h-5 w-5" />,
-      title: 'Work Remotely',
-      value: 'Global — Available for remote work worldwide across time zones.',
-      link: '#',
-      color: 'from-teal-500 to-blue-500'
-    },
-    {
-      icon: <Clock className="h-5 w-5" />,
-      title: 'Quick Response',
-      value: 'I typically respond within 2–4 hours during business hours.',
-      link: '#',
-      color: 'from-orange-500 to-red-500'
-    }
-  ];
-
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen overflow-x-hidden flex flex-col">
+      <BackgroundAnimation />
+      <Navbar />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-          <Badge 
-            className="mb-4 px-4 py-2 border-[#00C2CB]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-          >
-            <MessageSquare className="w-4 h-4 mr-2" />
-            <span>Get In Touch</span>
-          </Badge>
-          <h2 className="heading-2 mb-6">
-            Let's Build Something <span style={{ color: '#a855f7' }}>Amazing</span>
-          </h2>
-          <p className="body-large text-foreground/70 max-w-3xl mx-auto">
-            Ready to transform your ideas into intelligent AI solutions?
-            Let's discuss your project and bring your vision to life.
-          </p>
-        </div>
+      <HeroSection />
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div ref={formRef} className={`${isVisible ? 'slide-left' : 'opacity-0'}`}>
-            <Card className="modern-card">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white">
-                    <Send className="h-6 w-6" />
+      <main className="flex-grow relative z-10">
+        <section id="contact" className="py-12 sm:py-24 px-4 sm:px-6 bg-white overflow-hidden">
+          <div className="max-w-4xl mx-auto">
+            {isSubmitted ? (
+              <div className="relative rounded-3xl p-8 sm:p-16 text-center space-y-8 animate-in fade-in zoom-in duration-500 overflow-hidden shadow-2xl"
+                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}>
+                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-6 border border-white/30">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">Send Message</h3>
+                  <div className="space-y-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-md">
+                      Thank You for Your Interest!
+                    </h3>
+                    <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed drop-shadow-sm font-medium">
+                      We've received your message and our team will get back to you within 24 hours. We're excited to help you transform your ideas into intelligent AI solutions.
+                    </p>
+                  </div>
+                  <div className="pt-10">
+                    <Button 
+                      onClick={() => setIsSubmitted(false)}
+                      variant="outline"
+                      className="px-8 py-6 rounded-xl border-white/40 bg-white/10 text-white hover:bg-white hover:text-purple-600 transition-all font-bold backdrop-blur-sm border-2"
+                    >
+                      Send Another Message
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* How can we help you */}
+                <div className="space-y-2">
+                  <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
+                  <select
+                    id="helpType"
+                    name="helpType"
+                    value={formData.helpType}
+                    onChange={handleInputChange}
+                    className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                    required
+                  >
+                    <option value="" disabled>Please Select One</option>
+                    <option value="ai-development">AI Development</option>
+                    <option value="chatbot-development">Chatbot Development</option>
+                    <option value="chatgpt-integration">ChatGPT Integration</option>
+                    <option value="machine-deep-learning">Machine & Deep Learning</option>
+                    <option value="computer-vision">Computer Vision</option>
+                    <option value="predictive-modeling">Predictive Modeling</option>
+                    <option value="nlp">Natural Language Processing</option>
+                    <option value="ai-automation">AI Automation</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">Name *</label>
-                      <Input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Your name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">Email *</label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="your.email@example.com"
-                        required
-                      />
-                    </div>
-                  </div>
+                {/* Select your Industry */}
+                <div className="space-y-2">
+                  <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
+                  <select
+                    id="industry"
+                    name="industry"
+                    value={formData.industry}
+                    onChange={handleInputChange}
+                    className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                    required
+                  >
+                    <option value="" disabled>Please Select One</option>
+                    <option value="fintech">FinTech</option>
+                    <option value="healthtech">HealthTech</option>
+                    <option value="retailtech">RetailTech</option>
+                    <option value="edtech">EdTech</option>
+                    <option value="fittech">FitTech</option>
+                    <option value="legaltech">LegalTech</option>
+                    <option value="wealthtech">WealthTech</option>
+                    <option value="it-software">IT & Software</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">Phone</label>
-                      <Input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="+1 (555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-foreground">Subject *</label>
-                      <Input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        placeholder="Project inquiry"
-                        required
-                      />
-                    </div>
-                  </div>
+                {/* First Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name*</Label>
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="First Name"
+                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                    required
+                  />
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground">Message *</label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="min-h-[120px] resize-none"
-                      placeholder="Tell me about your project..."
-                      required
-                    />
-                  </div>
+                {/* Last Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name*</Label>
+                  <Input
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  placeholder="Last Name"
+                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                  required
+                />
+                </div>
 
-                  <Button type="submit" disabled={isSubmitting} className="btn-primary w-full group">
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+                {/* Email */}
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email*</Label>
+                  <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email"
+                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                  required
+                />
+                </div>
 
-          {/* Contact Info */}
-          <div className={`${isVisible ? 'slide-right' : 'opacity-0'}`}>
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="modern-card hover:scale-105 transition-all duration-300">
-                  <CardContent className="p-4">
-                    <a href={info.link} className="flex items-center gap-4 group">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r text-white ${info.color}`}>
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                          {info.title}
-                        </h4>
-                        <p className="text-sm text-foreground/70">{info.value}</p>
-                      </div>
-                    </a>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+                {/* Phone */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-semibold text-gray-700">Phone*</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone"
+                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                    required
+                  />
+                </div>
+
+                {/* Country */}
+                <div className="space-y-2">
+                  <Label htmlFor="country" className="text-sm font-semibold text-gray-700">Country*</Label>
+                  <Input
+                    id="country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleInputChange}
+                    placeholder="Country"
+                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                    required
+                  />
+                </div>
+
+                {/* Company/Organization */}
+                <div className="space-y-2">
+                  <Label htmlFor="company" className="text-sm font-semibold text-gray-700">Company/Organization*</Label>
+                  <Input
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Company Name"
+                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                  required
+                /></div>
+              </div>
+
+              {/* Message */}
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</Label>
+                <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="How can we help you?"
+                className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all resize-none px-4 py-3"
+                required
+              />
+              </div>
+
+              {/* Checkboxes */}
+              <div className="space-y-4 pt-4">
+                <div className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    name="newsletter"
+                    checked={formData.newsletter}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                  />
+                  <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
+                    I agree to sign up for the newsletter
+                  </label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    checked={formData.terms}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                    required
+                  />
+                  <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
+                    I agree to the <a href="/privacy-policy" target="_blank" className="text-purple-600 font-medium hover:underline">Privacy policy</a> and Terms and conditions.*
+                  </label>
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-6 flex justify-center sm:justify-start">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  variant="primary"
+                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Submitting...
+                    </>
+                  ) : (
+                    'Submit Message'
+                  )}
+                </Button>
+              </div>
+            </form>
+          )}
         </div>
-      </div>
-    </section>
+      </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 };
 

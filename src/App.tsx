@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import LoadingSpinner from "@/components/ui/loading-spinner";
 import Index from "./Index";
+import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
 import ReactGA from "react-ga4";
 
@@ -91,39 +92,10 @@ const AIRoboAdvisor = lazy(() => import("./Pages-Portfolio/ai-robo-advisor"));
 const AIPortfolioRiskAnalyzer = lazy(() => import("./Pages-Portfolio/ai-portfolio-risk-analyzer"));
 const AIDevOpsMonitoringAssistant = lazy(() => import("./Pages-Portfolio/ai-devops-monitoring-assistant"));
 const AIITSupportChatbot = lazy(() => import("./Pages-Portfolio/ai-it-support-chatbot"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 // ⚠️ Error Boundary
-class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
-  constructor(props: { children: ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0435' }}>
-          <div className="text-center p-8">
-            <h1 className="text-2xl font-bold text-white mb-4">Something went wrong</h1>
-            <p className="text-indigo-200 mb-6">Please try refreshing the page.</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Refresh Page
-            </button>
-          </div>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 // Loader
 const PageLoader = () => (
@@ -195,6 +167,9 @@ const AppContent = () => {
         <Route path="/portfolio/ai-portfolio-risk-analyzer" element={<AIPortfolioRiskAnalyzer />} />
         <Route path="/portfolio/ai-devops-monitoring-assistant" element={<AIDevOpsMonitoringAssistant />} />
         <Route path="/portfolio/ai-it-support-chatbot" element={<AIITSupportChatbot />} />
+        
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
