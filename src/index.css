@@ -663,7 +663,7 @@
     @apply inline-flex items-center justify-center rounded-full text-white shadow-lg ring-1 ring-white/20 transition-transform duration-300;
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    background: linear-gradient(135deg, #1E5AFF 0%, #a855f7 50%, #ec4899 100%);
   }
 
   @media (min-width: 640px) {

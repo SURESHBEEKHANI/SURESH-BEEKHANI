@@ -86,7 +86,7 @@ const Industries = () => {
                 style={{ background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #0891b2 100%)' }}
               ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
-                Transforming industries with cutting-edge AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
+                Transforming industries with AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
               </p>
             </div>
 
@@ -109,15 +109,15 @@ const Industries = () => {
 
                   {/* Hover overlay with content - enhanced for touch */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.98) 0%, rgba(79, 70, 229, 0.98) 50%, rgba(6, 182, 212, 0.98) 100%)' }}>
+                    style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.95) 0%, rgba(168, 85, 247, 0.95) 50%, rgba(236, 72, 153, 0.95) 100%)' }}>
                     <div className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-4 leading-tight tracking-tight">{industry.name}</div>
                     <div className="text-white text-sm sm:text-base font-bold mb-4 sm:mb-6 leading-relaxed px-2 sm:px-0 drop-shadow-sm">{industry.description}</div>
                     <a
                       href={industry.link}
-                      className="inline-flex items-center gap-1 sm:gap-2 text-white font-semibold hover:translate-x-1 transition-transform text-xs sm:text-sm py-1 px-2 sm:py-2 sm:px-3 rounded-md hover:bg-white/20 active:scale-95 touch-manipulation"
+                      className="flex items-center gap-1.5 text-white font-bold text-sm sm:text-base hover:translate-x-1 transition-transform cursor-pointer"
                       aria-label={`Learn more about ${industry.name}`}
                     >
-                      Learn More <span aria-hidden="true">→</span>
+                      Learn More <ArrowRight className="w-4 h-4" />
                     </a>
                   </div>
 
