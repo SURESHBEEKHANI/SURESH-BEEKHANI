@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
@@ -73,7 +73,7 @@ const Testimonials = () => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
@@ -96,10 +96,10 @@ const Testimonials = () => {
 
   // Memoized display testimonials - mobile shows only current, desktop shows 3
   const displayTestimonials = useMemo(() => {
+    const prev = testimonials[(currentIndex - 1 + testimonials.length) % testimonials.length];
     const current = testimonials[currentIndex];
     const next = testimonials[(currentIndex + 1) % testimonials.length];
-    const nextNext = testimonials[(currentIndex + 2) % testimonials.length];
-    return [current, next, nextNext];
+    return [prev, current, next];
   }, [testimonials, currentIndex]);
 
   // Keyboard navigation
@@ -121,107 +121,60 @@ const Testimonials = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-3 h-3 sm:w-4 sm:h-4 ${
-          i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-        }`}
+        className={`w-3 h-3 sm:w-4 sm:h-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+          }`}
         aria-hidden="true"
       />
     ));
   };
 
   return (
-    <section 
+    <section
       className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden"
       aria-label="Client Testimonials"
     >
       {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/20 to-[#ff0ea3]/15 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-[#ff0ea3]/15 to-[#ff0ea3]/20 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#ff0ea3]/5 to-[#ff0ea3]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="mb-4 sm:mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
-              Client <span style={{ color: '#f12588' }}>Testimonials</span>
+              Client <span style={{ color: '#ff0ea3' }}>Testimonials</span>
             </h2>
-            
+
             {/* Dots indicator moved under title */}
             <div className="flex justify-center gap-2 sm:gap-3 mb-4 sm:mb-6" role="tablist" aria-label="Testimonial navigation">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ai-purple/50 ${
-                    index === currentIndex
-                      ? 'bg-ai-cyan scale-125 shadow-lg ai-glow'
-                      : 'bg-ai-gray/30 hover:bg-ai-purple/50 hover:scale-110'
-                  }`}
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff0ea3]/50 ${index === currentIndex
+                      ? 'bg-[#ff0ea3] scale-125 shadow-lg ai-glow'
+                      : 'bg-white/20 hover:bg-[#ff0ea3]/50 hover:scale-110'
+                    }`}
                   role="tab"
                   aria-selected={index === currentIndex}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
             </div>
-            
+
             <p className="body-large text-white/90 max-w-3xl mx-auto">
-              Discover what our clients say about working with us on their <span className="gradient-text-ai">AI and machine learning projects</span>.
+              Discover what our clients say about working with us on their  projects.
             </p>
           </div>
         </div>
 
         <div className="relative">
-          {/* Navigation buttons - hidden on mobile, visible on desktop */}
-          <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-4 z-20">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToPrevious}
-              className="w-12 h-12 rounded-full bg-ai-dark/80 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5 text-ai-cyan group-hover:text-ai-purple transition-colors" />
-            </Button>
-          </div>
 
-          <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-4 z-20">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToNext}
-              className="w-12 h-12 rounded-full bg-ai-dark/80 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5 text-ai-cyan group-hover:text-ai-purple transition-colors" />
-            </Button>
-          </div>
-
-          {/* Mobile navigation buttons */}
-          <div className="md:hidden flex justify-center gap-4 mb-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToPrevious}
-              className="w-10 h-10 rounded-full bg-ai-dark/90 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-4 h-4 text-ai-cyan group-hover:text-ai-purple transition-colors" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToNext}
-              className="w-10 h-10 rounded-full bg-ai-dark/90 backdrop-blur-sm border-ai-purple/30 hover:bg-ai-dark hover:shadow-lg ai-glow transition-all duration-300 group"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-4 h-4 text-ai-cyan group-hover:text-ai-purple transition-colors" />
-            </Button>
-          </div>
 
           {/* Testimonials carousel */}
-          <div 
+          <div
             className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-12 relative overflow-hidden"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
@@ -232,7 +185,7 @@ const Testimonials = () => {
                 key={`${testimonials[currentIndex].id}-${currentIndex}`}
                 className="relative transform transition-all duration-700 ease-out scale-100 z-30 translate-x-0 opacity-100"
               >
-                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)'}}>
+                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-none p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}>
                   {/* Rating stars */}
                   <div className="flex items-center gap-1 mb-3 sm:mb-4" aria-label={`${testimonials[currentIndex].rating} out of 5 stars`}>
                     {renderStars(testimonials[currentIndex].rating)}
@@ -241,7 +194,7 @@ const Testimonials = () => {
                   {/* Quote icon */}
                   <div className="absolute top-4 sm:top-6 right-4 sm:right-6 text-white/20">
                     <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
 
@@ -263,7 +216,7 @@ const Testimonials = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <blockquote className="text-white/95 text-sm sm:text-base leading-relaxed italic">
                     "{testimonials[currentIndex].testimonial}"
                   </blockquote>
@@ -276,18 +229,17 @@ const Testimonials = () => {
               {displayTestimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${currentIndex}`}
-                  className={`relative transform transition-all duration-700 ease-out ${
-                    index === 0 
-                      ? 'scale-100 z-30 translate-x-0 opacity-100' 
-                      : index === 1 
-                      ? 'scale-90 z-20 translate-x-2 md:translate-x-4 opacity-80' 
-                      : 'scale-80 z-10 translate-x-4 md:translate-x-8 opacity-60'
-                  }`}
+                  className={`relative transform transition-all duration-700 ease-out ${index === 0
+                      ? 'scale-90 z-10 -translate-x-12 opacity-60'
+                      : index === 1
+                        ? 'scale-110 z-30 translate-x-0 opacity-100'
+                        : 'scale-90 z-10 translate-x-12 opacity-60'
+                    }`}
                   style={{
-                    transform: `perspective(1000px) rotateY(${index * 6 - 6}deg) translateZ(${index * 8}px)`
+                    transform: `perspective(1000px) rotateY(${index === 0 ? 25 : index === 2 ? -25 : 0}deg)`
                   }}
                 >
-                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-3xl p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-ai-purple/20 backdrop-blur-sm" style={{background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)'}}>
+                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-none p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}>
                     {/* Rating stars */}
                     <div className="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
                       {renderStars(testimonial.rating)}
@@ -296,7 +248,7 @@ const Testimonials = () => {
                     {/* Quote icon */}
                     <div className="absolute top-6 right-6 text-white/20">
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>
 
@@ -318,7 +270,7 @@ const Testimonials = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <blockquote className="text-white/95 text-sm md:text-base leading-relaxed italic">
                       "{testimonial.testimonial}"
                     </blockquote>
