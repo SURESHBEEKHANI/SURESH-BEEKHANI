@@ -92,13 +92,7 @@ const ClientSolutions = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              <Badge 
-                variant="outline" 
-                className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#00C2CB]/30"
-                style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-              >
-                Our Solutions
-              </Badge>
+              
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0">
                 AI Solutions Delivered For <span className="gradient-text-ai">Clients</span>
               </h2>
@@ -114,7 +108,7 @@ const ClientSolutions = () => {
                       ? 'text-white shadow-lg'
                       : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
                   }`}
-                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' } : {}}
+                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #ff2088 0%, #ff1975 50%, #ec4899 100%)' } : {}}
                 >
                   {solutionLabels[solution]}
                 </button>
@@ -147,7 +141,7 @@ const ClientSolutions = () => {
               <Button
                 onClick={handleReadMore}
                 className="text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #f2137b 0%, #f0179d 50%, #ec4899 100%)' }}
               >
                 <span>Read More</span>
                 <ArrowRight className="h-4 w-4 flex-shrink-0" />
@@ -163,7 +157,7 @@ const ClientSolutions = () => {
               
               {/* Decorative elements - responsive sizing */}
               <div className="absolute top-4 sm:top-6 md:top-10 right-4 sm:right-6 md:right-10 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full opacity-60"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}></div>
+                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a52866 100%)' }}></div>
               <div className="absolute bottom-8 sm:bottom-12 md:bottom-20 left-2 sm:left-4 md:left-8 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full opacity-50"
                 style={{ background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)' }}></div>
               <div className="absolute top-12 sm:top-20 md:top-32 left-4 sm:left-8 md:left-16 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 transform rotate-45 opacity-70"

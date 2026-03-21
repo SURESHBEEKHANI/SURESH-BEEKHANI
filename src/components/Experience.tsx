@@ -31,15 +31,9 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className={`text-center mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-          <Badge 
-            className="mb-4 px-4 py-2 border-[#a855f7]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-          >
-            <Star className="w-4 h-4 mr-2" />
-            Our Impact
-          </Badge>
+        
           <h2 className="heading-2 mb-4">
-            Why <span style={{ color: '#a855f7' }}>Choose Us</span>
+            Why <span style={{ color: '#ff0ea3' }}>Choose Us</span>
           </h2>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
             Delivering excellence in AI, machine learning, and data solutions with a proven track record of worldwide success.
@@ -65,7 +59,7 @@ const Experience = () => {
                 className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group/stat transition-transform duration-500 hover:-translate-y-2 rounded-2xl
                   ${index !== stats.length - 1 ? 'lg:border-r border-white/10 lg:rounded-r-none' : ''} 
                   ${index !== 0 ? 'lg:rounded-l-none' : ''}`}
-                style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)' }}
+                style={{ background: 'linear-gradient(180deg, rgba(223, 27, 245, 0) 0%, rgba(245, 10, 108, 0) 100%)' }}
               >
                 {/* Hover glow effect for each stat */}
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300 rounded-2xl lg:rounded-none"></div>

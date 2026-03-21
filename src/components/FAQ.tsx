@@ -17,31 +17,31 @@ const FAQ = () => {
         <div className="space-y-2">
           <p className="text-foreground/80 leading-relaxed text-sm">
             I offer comprehensive AI development services including: {' '}
-            <a href="/ai-development" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/ai-development" className="transition-colors" style={{ color: '#cb006c' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               AI Development
             </a>
             , {' '}
-            <a href="/ai-chatbot-development" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/ai-chatbot-development" className="transition-colors" style={{ color: '#f6109e' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               AI Chatbot Development
             </a>
             , {' '}
-            <a href="/chat-gpt-integrations" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/chat-gpt-integrations" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               ChatGPT Integrations
             </a>
             , {' '}
-            <a href="/computer-vision" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/computer-vision" className="transition-colors" style={{ color: '#cb0084' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               Computer Vision
             </a>
             , {' '}
-            <a href="/machine-learning" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/machine-learning" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               Machine Learning
             </a>
             , {' '}
-            <a href="/natural-language-processing" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/natural-language-processing" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               Natural Language Processing
             </a>
             , and {' '}
-            <a href="/predictive-modelling" className="transition-colors" style={{ color: '#00C2CB' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/predictive-modelling" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
               Predictive Modelling
             </a>
             . Each service is tailored to your specific business needs and industry requirements.
@@ -94,18 +94,13 @@ const FAQ = () => {
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-8 text-center">
-          <div 
-            className="inline-block mb-2 px-3 py-1 rounded-full text-sm font-medium border border-[#00C2CB]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-          >
-            FAQ
-          </div>
+        
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
-            Frequently Asked <span style={{ color: '#a855f7' }}>Questions</span>
+            Frequently Asked <span style={{ color: '#ff13c0' }}>Questions</span>
           </h2>
           <div 
             className="w-16 h-1 mx-auto mb-6"
-            style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #ff13b8 0%, #ff08b5 50%, #ec4899 100%)' }}
           ></div>
           <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
             Find answers to common questions about my services, process, and what you can expect when working with me.

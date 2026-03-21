@@ -9,7 +9,7 @@ const Industries = () => {
       id: 1,
       name: "FinTech",
       description: "Fraud detection, automated compliance, intelligent chatbots, and predictive analytics.",
-      image: "/image/pages_img/workflow-automation.jpg",
+      image: "image/Portfolio-img/finance-advisor.jpg",
       link: "/fintech",
       features: ["Fraud Detection", "Compliance", "AI Chatbots", "Predictive Analytics"]
     },
@@ -17,7 +17,7 @@ const Industries = () => {
       id: 2,
       name: "HealthTech",
       description: "Patient scheduling, workflow automation, AI diagnostics, and predictive health insights.",
-      image: "/image/pages_img/hospitals-clinics.jpg",
+      image: "/image/pages_img/HealthTech.png",
       link: "/healthtech",
       features: ["Patient Scheduling", "Workflow Automation", "AI Diagnostics", "Predictive Analytics"]
     },
@@ -25,7 +25,7 @@ const Industries = () => {
       id: 3,
       name: "RetailTech",
       description: "Personalized recommendations, demand forecasting, AI shopping assistants, and visual search.",
-      image: "/image/pages_img/predictive-analytics-hospital.jpg",
+      image: "/image/pages_img/RetailTech.jpg",
       link: "/retailtech",
       features: ["Recommendations", "Demand Forecasting", "AI Assistants", "Visual Search"]
     },
@@ -49,7 +49,7 @@ const Industries = () => {
       id: 6,
       name: "LegalTech",
       description: "Contract analysis, legal document search, compliance monitoring, and AI assistants.",
-      image: "/image/pages_img/workflow-automation.jpg",
+      image: "/image/pages_img/AI-Driven-Law-GPT.jpg",
       link: "/legaltech",
       features: ["Contract Analysis", "Legal Search", "Compliance", "AI Assistants"]
     },
@@ -75,15 +75,15 @@ const Industries = () => {
     <section className="py-6 sm:py-8 md:py-12 ai-section">
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
         {/* Industries Transforming with AI Development Section */}
-        <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative rounded-2xl sm:rounded-3xl ai-section">
-          <div className="relative z-10 max-w-7xl mx-auto">
+        <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative ai-section">
+          <div className="relative z-15 max-w-500xl mx-auto">
             <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white leading-tight">
                 AI <span className="gradient-text-ai">Industries</span>
               </h2>
               <div
                 className="w-20 sm:w-24 h-1 sm:h-1.5 mx-auto mb-8 sm:mb-10 rounded-full"
-                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #0891b2 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #2564eb44 0%, #4e46e53a 50%, #0890b252 100%)' }}
               ></div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
                 Transforming industries with AI solutions across finance, healthcare, retail, education, fitness, legal, wealth management, and technology.
@@ -96,7 +96,7 @@ const Industries = () => {
                 <div
                   key={industry.id}
                   className="group relative border-b border-r border-gray-300 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex items-center justify-center cursor-pointer overflow-hidden touch-manipulation"
-                  style={{ minHeight: 'clamp(180px, 25vh, 220px)' }}
+                  style={{ minHeight: 'clamp(250px, 25vh, 520px)' }}
                 >
                   <img
                     src={industry.image}
@@ -109,7 +109,7 @@ const Industries = () => {
 
                   {/* Hover overlay with content - enhanced for touch */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 sm:py-8 z-20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.95) 0%, rgba(168, 85, 247, 0.95) 50%, rgba(236, 72, 153, 0.95) 100%)' }}>
+                    style={{ background: 'linear-gradient(135deg, rgba(30, 90, 255, 0.37) 0%, rgba(169, 85, 247, 0.21) 50%, rgba(236, 72, 153, 0.95) 100%)' }}>
                     <div className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-4 leading-tight tracking-tight">{industry.name}</div>
                     <div className="text-white text-sm sm:text-base font-bold mb-4 sm:mb-6 leading-relaxed px-2 sm:px-0 drop-shadow-sm">{industry.description}</div>
                     <a

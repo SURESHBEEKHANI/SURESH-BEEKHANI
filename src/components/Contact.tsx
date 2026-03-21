@@ -366,7 +366,7 @@ const Contact = () => {
                   type="submit"
                   disabled={isSubmitting}
                   variant="primary"
-                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold  shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
                 >
                   {isSubmitting ? (
                     <>

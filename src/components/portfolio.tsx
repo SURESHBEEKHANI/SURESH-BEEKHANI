@@ -103,7 +103,7 @@ const projects = [
     title: "AI Personal Finance Advisor",
     description:
       "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
-    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    image: "/image/Portfolio-img/finance-advisor.jpg",
     link: "/portfolio/ai-personal-finance-advisor"
   },
   {
@@ -163,10 +163,11 @@ const Portfolio: React.FC = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
           <div className="text-white space-y-6 sm:space-y-8">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
-              AI Portfolio
+              Portfolio
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
-              Explore how AI is transforming industries and driving real-world impact—from healthcare diagnostics to legal automation—through innovative, cutting-edge projects.
+              Explore how AI is transforming industries and driving real-world <br />
+              impact—from healthcare diagnostics to legal automation
             </p>
           </div>
         </div>

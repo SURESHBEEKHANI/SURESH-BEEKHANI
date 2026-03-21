@@ -115,7 +115,7 @@ const Footer = () => {
                 className="rounded-full w-12 h-12 flex items-center justify-center shadow-lg shadow-fuchsia-500/30"
                 style={{
                   background:
-                    'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
+                    'linear-gradient(135deg, #f00e7b 0%, #ff0cbe 50%, #ed1481 100%)',
                 }}
               >
                 <Brain className="h-6 w-6 text-white" />
@@ -123,7 +123,7 @@ const Footer = () => {
 
               <div>
                 <h3 className="text-xl font-bold text-white">
-                  Suresh <span style={{ color: '#a855f7' }}>Beekhani</span>
+                  Suresh <span style={{ color: '#f92198' }}>Beekhani</span>
                 </h3>
                 <p className="text-xs text-indigo-300">
                   Data Scientist | AI Specialist
@@ -208,7 +208,7 @@ const Footer = () => {
               ) : (
                 <form
                   onSubmit={handleNewsletterSubmit}
-                  className="flex w-full max-w-xs overflow-hidden rounded-xl border border-white/15 bg-white/5 focus-within:border-fuchsia-500/50 transition-colors"
+                  className="flex w-full max-w-xs overflow-hidden  border border-white/15 bg-white/5 focus-within:border-fuchsia-500/50 transition-colors"
                 >
                   <Input
                     value={newsletterEmail}
@@ -220,10 +220,10 @@ const Footer = () => {
                   <Button
                     type="submit"
                     disabled={isNewsletterSubmitting}
-                    className="px-6 font-semibold text-white rounded-xl"
+                    className="px-6 font-semibold text-white "
                     style={{
                       background:
-                        'linear-gradient(90deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)',
+                        'linear-gradient(90deg, #d928c1 0%, #f82c92 50%, #ec4899 100%)',
                     }}
                   >
                     {isNewsletterSubmitting ? "..." : "Subscribe"}
@@ -266,7 +266,7 @@ const Footer = () => {
         onClick={scrollToTop}
         className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
-        style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ff0a84 100%)' }}
       >
         <ArrowUp size={18} />
       </Button>

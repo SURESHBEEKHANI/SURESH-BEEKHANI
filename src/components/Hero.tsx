@@ -184,12 +184,12 @@ const Hero = () => {
             animate={prefersReducedMotion ? false : "visible"}
           >
             <motion.h1 className="heading-1 font-bold leading-tight" variants={staggerItem}>
-              Suresh <span style={{ color: '#a855f7' }}>Beekhani</span>
+              Suresh <span style={{ color: '#f51dad' }}>Beekhani</span>
             </motion.h1>
 
             {/* Skills carousel */}
             <motion.div className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden" variants={staggerItem}>
-              <span className="body-medium mr-2 mobile-text" style={{ color: '#a855f7' }}>Specializing in</span>
+              <span className="body-medium mr-2 mobile-text" style={{ color: '#ff07a4' }}>Specializing in</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentSkill}
@@ -205,7 +205,9 @@ const Hero = () => {
             </motion.div>
 
             <motion.p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
-              I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging the gap between data science and business strategy.
+              I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, 
+              scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging
+              the gap between data science and business strategy.
             </motion.p>
 
             {/* Buttons */}
@@ -223,7 +225,7 @@ const Hero = () => {
               ].map((stat, idx) => (
                 <motion.div key={idx} className="text-center" custom={idx} variants={statsVariants} initial={prefersReducedMotion ? false : "hidden"} animate={prefersReducedMotion ? false : "visible"}>
                   <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">{stat.value}</div>
-                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#a855f7' }}>{stat.label}</div>
+                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#f755ef' }}>{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

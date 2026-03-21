@@ -222,25 +222,16 @@ const Services = () => {
           initial={prefersReducedMotion ? false : "hidden"}
           animate={isInView ? "visible" : "hidden"}
         >
-          <motion.div variants={staggerItem}>
-            <Badge
-              variant="outline"
-              className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 font-medium text-xs sm:text-sm rounded-full border-[#00C2CB]/30"
-              style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-            >
-              <Check className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
-              Services We Offer
-            </Badge>
-          </motion.div>
+        
           <motion.h2
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 sm:mb-6 text-white"
             variants={staggerItem}
           >
-            Our <span style={{ color: '#a855f7' }}>Services</span>
+            Our <span style={{ color: '#f02aa4' }}>Services</span>
           </motion.h2>
           <motion.div
-            className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8 rounded-full"
-            style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}
+            className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb- "
+            style={{ background: 'linear-gradient(135deg, #d928d0 0%, #f755e4 50%, #ec4899 100%)' }}
             variants={staggerItem}
           />
           <motion.p
@@ -287,12 +278,12 @@ const Services = () => {
                       setSelectedService(service);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedService === service
+                    className={`w-full text-left px-4 py-3 transition-all duration-300 ${selectedService === service
                       ? 'text-white font-medium shadow-lg'
                       : 'text-gray-300 hover:text-white hover:shadow-md'
                       }`}
                     style={selectedService === service
-                      ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
+                      ? { background: 'linear-gradient(135deg, #d028d9 0%, #f455f7 50%, #ec4899 100%)' }
                       : {}
                     }
                     onMouseEnter={(e) => {
@@ -342,17 +333,17 @@ const Services = () => {
                     <motion.button
                       key={service}
                       onClick={() => setSelectedService(service)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${selectedService === service
+                      className={`w-full text-left px-4 py-3  transition-all duration-300 ${selectedService === service
                         ? 'text-white shadow-lg'
                         : 'text-white/80 hover:text-white hover:shadow-md'
                         }`}
                       style={selectedService === service
-                        ? { background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }
+                        ? { background: 'linear-gradient(135deg, #d928d3 0%, #e62981 50%, #ec4899 100%)' }
                         : {}
                       }
                       onMouseEnter={(e) => {
                         if (selectedService !== service) {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)';
+                          e.currentTarget.style.background = 'linear-gradient(135deg,  #ec4899 100%)';
                         }
                       }}
                       onMouseLeave={(e) => {
@@ -463,7 +454,7 @@ const Services = () => {
                       >
                         <Button
                           onClick={handleReadMore}
-                          className="btn-primary px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg transition-all"
+                          className="btn-primary px-8 py-3 flex items-center gap-2 shadow-lg transition-all"
                         >
                           Learn More
                           <ArrowRight className="h-4 w-4" />

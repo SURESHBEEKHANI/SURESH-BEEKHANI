@@ -1,15 +1,20 @@
-import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AnimatedCarousel from "../components/ui/AnimatedCarousel";
+import IndustryHero from "../components/IndustryHero";
+import IndustryProfessional from "../components/IndustryProfessional";
+import IndustryCapabilities from "../components/IndustryCapabilities";
+import IndustrySuccessStories from "../components/IndustrySuccessStories";
+import IndustryFAQ from "../components/IndustryFAQ";
 
 const USE_CASES_DATA = [
-  { id: 1, title: "Fraud Detection & Risk Assessment", description: "AI-powered fraud detection systems analyze transactions in real-time, reducing false positives by 40% and protecting customer assets.", image: "/image/pages_img/workflow-automation.jpg", alt: "Fraud Detection" },
-  { id: 2, title: "Loan & Credit Decisioning", description: "Machine learning models assess creditworthiness, automate loan approvals, and personalize lending offers with greater accuracy.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Credit Decisioning" },
-  { id: 3, title: "AI-Powered Chatbots", description: "Intelligent virtual assistants handle customer inquiries, account management, and 24/7 support for banking and finance operations.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Finance Chatbots" },
-  { id: 4, title: "Regulatory Compliance (AML/KYC)", description: "Automate KYC verification, transaction monitoring, and regulatory reporting to stay compliant and reduce operational costs.", image: "/image/pages_img/patient-scheduling.jpg", alt: "Compliance Automation" }
+  { id: 1, title: "AI-Powered Fraud Detection", description: "Real-time analysis of transaction patterns to identify and block fraudulent activities instantly.", image: "/image/pages_img/Fraud-Detection.jpg", alt: "Fraud Detection" },
+  { id: 2, title: "Intelligent Credit Scoring", description: "Machine learning models analyze alternative data to provide more accurate credit risk assessments.", image: "/image/pages_img/Credit-Scoring.jpg", alt: "Credit Scoring" },
+  { id: 3, title: "Automated Wealth Management", description: "AI-driven robo-advisors provide personalized investment strategies and automated portfolio rebalancing.", image: "/image/pages_img/Wealth-Management.jpg", alt: "Wealth Management" },
+  { id: 4, title: "AI-Powered Customer Support", description: "Intelligent chatbots handle complex financial inquiries and provide 24/7 personalized assistance.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Financial Chatbots" },
+  { id: 5, title: "Algorithmic Trading Systems", description: "High-frequency trading models execute trades based on real-time market signals and sentiment analysis.", image: "/image/pages_img/Algorithmic-Trading.jpg", alt: "Algorithmic Trading" },
+  { id: 6, title: "Regulatory Compliance (RegTech)", description: "AI automates KYC/AML processes and monitors transactions for regulatory compliance in real-time.", image: "/image/pages_img/RegTech.jpg", alt: "RegTech" }
 ];
 
 const PORTFOLIO_DATA = [
@@ -94,7 +99,7 @@ const PORTFOLIO_DATA = [
   {
     title: "AI Personal Finance Advisor",
     description: "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
-    image: "/image/Portfolio-img/ai-personal-finance-advisor.jpg",
+    image: "/image/Portfolio-img/finance-advisor.jpg",
     link: "/portfolio/ai-personal-finance-advisor"
   },
   {
@@ -119,73 +124,11 @@ const FAQ_DATA = [
   { id: 5, question: "Can AI integrate with existing banking and payment systems?", answer: "Absolutely. Our AI solutions seamlessly integrate with core banking systems, payment gateways, and financial platforms through secure APIs. We ensure compliance with banking standards and minimal disruption to existing operations." }
 ];
 
-const HeroSection: React.FC = React.memo(() => (
-  <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
-    <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/workflow-automation.jpg')] bg-cover bg-center" />
-    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <div className="text-white space-y-6 sm:space-y-8">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
-          FinTech
-        </h1>
-        <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
-          Transform finance and banking with AI-powered fraud detection, automated compliance, intelligent chatbots, and predictive analytics. Enhance customer experience and operational efficiency.
-        </p>
-      </div>
-    </div>
-  </section>
-));
-HeroSection.displayName = 'HeroSection';
+const FinTech: React.FC = () => {
+  const useCases = useMemo(() => USE_CASES_DATA, []);
+  const faqData = useMemo(() => FAQ_DATA, []);
+  const portfolioData = useMemo(() => PORTFOLIO_DATA, []);
 
-const ProfessionalSection: React.FC = React.memo(() => (
-  <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-    <div className="max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        {/* Left Content */}
-        <div className="space-y-6 sm:space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-              AI-Driven Financial <span style={{ color: '#a855f7' }}>Technology Innovation</span>
-            </h2>
-          </div>
-          
-          <div className="space-y-5 text-slate-600 text-lg leading-relaxed">
-            <p>
-              We are revolutionizing financial services with the power of Artificial Intelligence. By combining machine learning, predictive analytics, and advanced automation, we create intelligent financial solutions that support fraud detection, risk assessment, automated compliance, and personalized customer experiences.
-            </p>
-            <p>
-              Our mission is to help financial institutions deliver more secure, efficient, and customer-centric services through innovative digital solutions.
-            </p>
-          </div>
-        </div>
-        
-        {/* Right Image with Modern Design */}
-        <div className="relative max-w-xl mx-auto lg:mx-0">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            {/* Decorative Elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl transform rotate-12 z-0 opacity-80" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-cyan-500 to-emerald-400 rounded-3xl transform -rotate-12 z-0 opacity-80" />
-            
-            {/* Main Image Container */}
-            <div className="relative z-10 bg-white p-2 rounded-3xl">
-              <div className="relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
-                <img 
-                  src="/image/pages_img/workflow-automation.jpg" 
-                  alt="Financial professionals using AI technology" 
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-));
-ProfessionalSection.displayName = 'ProfessionalSection';
-
-const CapabilitiesSection: React.FC = React.memo(() => {
   const capabilities = [
     {
       icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
@@ -195,285 +138,76 @@ const CapabilitiesSection: React.FC = React.memo(() => {
     },
     {
       icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
-      title: "Automated Compliance & KYC",
-      description: "Machine learning automates regulatory compliance, KYC verification, and AML monitoring. This reduces compliance costs by 50-70% while ensuring adherence to financial regulations and reducing risk exposure.",
+      title: "Automated Credit Scoring",
+      description: "Machine learning models analyze thousands of data points to provide highly accurate credit risk assessments. This enables faster loan approvals, reduces default risks, and expands access to credit for underserved segments.",
       gradient: "from-emerald-500 to-teal-500"
     },
     {
-      icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
-      title: "Intelligent Credit Scoring",
-      description: "AI models assess creditworthiness using alternative data sources and behavioral patterns. This enables faster loan approvals, reduces default rates by 30%, and expands access to credit for underserved populations.",
+      icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+      title: "Cost Reduction",
+      description: "AI automation drastically reduces operational costs across underwriting, customer service, and compliance. Financial institutions can automate repetitive tasks, leading to significant savings and resource reallocation.",
       gradient: "from-purple-500 to-pink-500"
     },
     {
-      icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-      title: "Personalized Financial Services",
-      description: "AI delivers tailored product recommendations, investment advice, and financial planning based on individual customer profiles, behaviors, and goals, increasing customer satisfaction and revenue per customer.",
+      icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+      title: "Enhanced Revenue Streams",
+      description: "AI-driven personalization and automated wealth management enable new product offerings and cross-selling opportunities. This improves customer lifetime value and opens new revenue channels in the digital economy.",
       gradient: "from-orange-500 to-red-500"
     },
     {
-      icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-      title: "24/7 AI-Powered Support",
-      description: "Intelligent chatbots and virtual assistants handle customer inquiries, account management, and transaction support around the clock, reducing support costs by 60% while improving response times.",
+      icon: "M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+      title: "Optimized Resource Allocation",
+      description: "Predictive analytics help financial institutions optimize capital allocation, liquidity management, and staffing. This ensures that resources are deployed where they generate the highest impact and return.",
       gradient: "from-indigo-500 to-violet-500"
     },
     {
-      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-      title: "Predictive Risk Management",
-      description: "AI analyzes market trends, portfolio performance, and risk factors to provide real-time insights and recommendations. This helps financial institutions optimize risk-return profiles and make data-driven investment decisions.",
+      icon: "M13 10V3L4 14h7v7l9-11h-7z",
+      title: "Competitive Market Edge",
+      description: "Adopting cutting-edge AI technology provides a significant advantage in the rapidly evolving FinTech landscape. Intelligent services improve customer retention and attract tech-savvy users.",
       gradient: "from-amber-500 to-yellow-500"
     }
   ];
 
   return (
-  <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#01010c] relative overflow-hidden">
-    {/* High-Tech Background Layers */}
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
-    <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
-    
-    <div className="max-w-7xl mx-auto relative z-10">
-      {/* Header */}
-      <div className="text-center space-y-4 mb-20 animate-fade-in">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-          Capabilities and Benefits of <span style={{ color: '#a855f7' }}>AI and ML in FinTech</span>
-        </h2>
-        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
-          Delivering excellence in <span className="text-gray-100 font-bold">financial intelligence</span> and secure automated banking.
-        </p>
-        <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mt-4 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-      </div>
-
-      {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-        {capabilities.map((capability, index) => (
-          <div 
-            key={index}
-            className="modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300"
-          >
-            <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${capability.gradient} rounded-xl flex items-center justify-center mb-2 mx-auto text-white shadow-lg`}>
-              <svg 
-                className="w-7 h-7 text-white" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d={capability.icon} />
-              </svg>
-            </div>
-
-            {/* Content */}
-            <h3 className="font-bold text-sm sm:text-base text-white mb-1.5 text-center w-full">
-              {capability.title}
-            </h3>
-            <p className="text-xs sm:text-sm font-medium text-gray-300 text-center leading-relaxed">
-              {capability.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-  );
-});
-CapabilitiesSection.displayName = 'CapabilitiesSection';
-
-const FinTech: React.FC = () => {
-  const useCases = useMemo(() => USE_CASES_DATA, []);
-  const faqData = useMemo(() => FAQ_DATA, []);
-  const portfolioData = useMemo(() => PORTFOLIO_DATA, []);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
-
-  const checkScrollButtons = useCallback(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      setCanScrollLeft(container.scrollLeft > 10);
-      setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
-    }
-  }, []);
-
-  const scroll = useCallback((direction: 'left' | 'right') => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      const cardWidth = 400;
-      const targetScroll = direction === 'left' 
-        ? Math.max(0, container.scrollLeft - cardWidth)
-        : Math.min(container.scrollWidth - container.clientWidth, container.scrollLeft + cardWidth);
-      container.scrollTo({ left: targetScroll, behavior: 'smooth' });
-      setIsAutoScrolling(false);
-      setTimeout(() => setIsAutoScrolling(true), 10000);
-    }
-  }, []);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container || !isAutoScrolling) return;
-    
-    const autoScrollInterval = setInterval(() => {
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      const currentScroll = container.scrollLeft;
-      
-      if (currentScroll >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollTo({ left: currentScroll + 400, behavior: 'smooth' });
-      }
-    }, 4000);
-    
-    return () => clearInterval(autoScrollInterval);
-  }, [isAutoScrolling]);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      checkScrollButtons();
-      container.addEventListener('scroll', checkScrollButtons);
-      return () => container.removeEventListener('scroll', checkScrollButtons);
-    }
-  }, [checkScrollButtons]);
-
-  return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <HeroSection />
-      <ProfessionalSection />
-      <CapabilitiesSection />
-      <AnimatedCarousel useCases={useCases} title="FinTech AI Solutions" subtitle="AI technology for modern finance and banking" />
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16 sm:mb-20">
-            <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200 shadow-sm">
-                Success Stories
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Real-World <span style={{ color: '#a855f7' }}>AI Solutions</span>
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
-              Discover how our cutting-edge AI technology has transformed <span className="text-slate-900 font-bold">financial institutions</span> and banking platforms worldwide.
-            </p>
-          </div>
-          
-          <div className="relative group">
-            {/* Navigation Buttons */}
-            <button 
-              onClick={() => scroll('left')} 
-              disabled={!canScrollLeft} 
-              className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-            
-            <button 
-              onClick={() => scroll('right')} 
-              disabled={!canScrollRight} 
-              className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-            
-            {/* Scroll Container */}
-            <div 
-              ref={scrollContainerRef} 
-              className="overflow-x-auto pb-8 scrollbar-hide scroll-smooth" 
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
-              onMouseEnter={() => setIsAutoScrolling(false)} 
-              onMouseLeave={() => setIsAutoScrolling(true)}
-              onTouchStart={() => setIsAutoScrolling(false)}
-            >
-              <div className="flex gap-6 sm:gap-8 px-4 sm:px-8" style={{ width: 'max-content' }}>
-                {portfolioData.map((project, idx) => (
-                  <div 
-                    key={project.link} 
-                    className="flex-shrink-0 w-80 sm:w-[420px] bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-purple-200 group/card transform hover:-translate-y-2"
-                  >
-                    <div className="relative h-52 sm:h-64 overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                    </div>
-                    <div className="p-6 sm:p-7 space-y-4">
-                      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover/card:text-[#a855f7] transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed line-clamp-3">
-                        {project.description}
-                      </p>
-              <Link 
-                to={project.link} 
-                className="inline-flex items-center gap-1.5 text-[#a855f7] font-bold text-sm hover:translate-x-1 transition-transform"
-              >
-                Learn More 
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Scroll Indicators */}
-            <div className="flex justify-center gap-2 mt-8">
-              {Array.from({ length: Math.ceil(portfolioData.length / 3) }).map((_, idx) => (
-                <div 
-                  key={idx} 
-                  className="h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300"
-                  style={{ width: idx === 0 ? '32px' : '8px' }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200">
-                Knowledge Base
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5">
-              Frequently Asked <span style={{ color: '#a855f7' }}>Questions</span>
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-              Everything you need to know about our <span className="text-slate-900 font-bold">AI-powered finance</span> solutions and process.
-            </p>
-          </div>
-          <div className="space-y-3">
-            {faqData.map((faq) => (
-              <details key={faq.id} className="bg-white rounded-xl shadow-md border border-gray-200 p-3 sm:p-4 group hover:shadow-lg hover:border-cyan-300 transition-all duration-300">
-                <summary className="cursor-pointer font-bold text-sm sm:text-base lg:text-lg text-gray-900 flex items-center justify-between group-hover:text-cyan-600 transition-colors duration-200">
-                  <span className="pr-4">{faq.question}</span>
-                  <span className="flex-shrink-0 ml-2 text-blue-600 group-hover:text-cyan-600 group-open:rotate-45 transition-transform duration-300 text-xl font-light">+</span>
-                </summary>
-                <div className="pt-3 text-gray-800 text-xs sm:text-sm lg:text-base font-medium leading-relaxed border-t border-gray-100 mt-3">
-                  {faq.answer}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <IndustryHero 
+        title="FinTech"
+        description="Empower your financial services with AI-driven fraud detection, credit scoring, automated wealth management, and personalized customer support. Drive efficiency and reduce risk."
+        bgImage="/image/pages_img/FinTech.png"
+      />
+      <IndustryProfessional 
+        title="AI-Driven Financial"
+        highlightedTitle="Service Innovation"
+        description1="We are revolutionizing the financial sector with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we build intelligent financial solutions that support smarter risk management, personalized wealth advice, and seamless automated operations."
+        description2="Our mission is to help financial institutions and FinTech startups deliver faster, more secure, and highly personalized services through innovative digital tools."
+        image="/image/pages_img/Fintech_img.jpg"
+      />
+      <IndustryCapabilities 
+        title="Capabilities and Benefits of"
+        highlightedTitle="AI and ML in FinTech"
+        subtitle="Driving innovation in"
+        highlightedSubtitle="financial intelligence"
+        capabilities={capabilities}
+      />
+      <AnimatedCarousel useCases={useCases} title="FinTech AI Solutions" subtitle="AI technology for modern financial services" />
+      <IndustrySuccessStories 
+        portfolioData={portfolioData}
+        title="Real-World"
+        highlightedTitle="AI Solutions"
+        subtitle="Discover how our cutting-edge AI technology has transformed"
+        highlightedSubtitle="financial operations"
+      />
+      <IndustryFAQ 
+        faqData={faqData}
+        title="Frequently Asked"
+        highlightedTitle="Questions"
+        subtitle="Everything you need to know about our"
+        highlightedSubtitle="AI-powered FinTech"
+      />
       <Footer />
     </div>
   );
 };
 
 export default FinTech;
-

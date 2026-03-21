@@ -6,15 +6,9 @@ const Approach = () => {
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <Badge 
-            variant="outline" 
-            className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 font-medium text-sm sm:text-base border-[#a855f7]/30"
-            style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)', color: '#a855f7' }}
-          >
-            Our Approach
-          </Badge>
+        
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Our Proven <span style={{ color: '#a855f7' }}>Approach to Achieve</span> Your Objectives
+            Our Proven <span style={{ color: '#ff03af' }}>Approach to Achieve</span> Your Objectives
           </h2>
           <div 
             className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-6 sm:mb-8"
