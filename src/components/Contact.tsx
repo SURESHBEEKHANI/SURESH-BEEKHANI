@@ -17,9 +17,18 @@ const HeroSection = () => (
     <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
     <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg mb-6">
-        Contact Us
-      </h1>
+      <div className="flex items-start gap-4 mb-4">
+        <div
+          className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+          style={{
+            background: '#ff0ea3',
+            transform: 'skewX(-15deg)'
+          }}
+        ></div>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+          Contact Us
+        </h1>
+      </div>
       <p className="text-xs sm:text-sm md:text-base text-gray-200 font-medium leading-relaxed max-w-2xl drop-shadow-md">
         We appreciate your interest in services. Please fill out the form so we can provide you with the right help and support.
       </p>

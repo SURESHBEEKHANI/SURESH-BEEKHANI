@@ -116,12 +116,20 @@ const stats = [
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-      
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            Transforming ideas into practical <span style={{ color: '#fb11a5' }}>AI solutions</span>
-          </h2>
-          <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
+        <div className={`text-left mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <div className="flex items-start gap-4 mb-3">
+            <div
+              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+              style={{
+                background: '#ff0ea3',
+                transform: 'skewX(-15deg)'
+              }}
+            ></div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+              Transforming ideas into practical <span style={{ color: '#ff0ea3' }}>AI solutions</span>
+            </h2>
+          </div>
+          <p className="text-base sm:text-lg text-white/90 max-w-3xl leading-relaxed">
             I build production-ready AI systems across machine learning, deep learning, natural language processing (NLP), and generative AI—focused on real-world impact and scalable deployments.
           </p>
         </div>

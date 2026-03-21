@@ -92,21 +92,20 @@ const FAQ = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="mb-8 text-center">
-        
-          <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
-            Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
-          </h2>
-          <p className="text-foreground/80 max-w-2xl mx-auto text-sm mb-6">
-            Find answers to common questions about my services, process, and what you can expect when working with me.
-          </p>
-          <div 
-            className="w-16 h-1 mx-auto mb-8"
-            style={{ 
-              background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.4) 100%)' 
-            }}
-          ></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-10 sm:mb-12 md:mb-16 text-left">
+          <div className="flex items-start gap-4 mb-3">
+            <div
+              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+              style={{
+                background: '#ff0ea3',
+                transform: 'skewX(-15deg)'
+              }}
+            ></div>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white leading-tight">
+              Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
+            </h2>
+          </div>
         </div>
 
         <div className="space-y-3">

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Star } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
@@ -141,36 +141,42 @@ const Testimonials = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
-              Client <span style={{ color: '#ff0ea3' }}>Testimonials</span>
+        <div className="text-left mb-8 sm:mb-12 md:mb-16">
+          <div className="flex items-start gap-4 mb-3">
+            <div
+              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+              style={{
+                background: '#ff0ea3',
+                transform: 'skewX(-15deg)'
+              }}
+            ></div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+              From idea to impact — hear it from <span style={{ color: '#ff0ea3' }}>our clients</span>
             </h2>
-
-            {/* Dots indicator moved under title */}
-            <div className="flex justify-center gap-2 sm:gap-3 mb-4 sm:mb-6" role="tablist" aria-label="Testimonial navigation">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToTestimonial(index)}
-                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff0ea3]/50 ${index === currentIndex
-                      ? 'bg-[#ff0ea3] scale-125 shadow-lg ai-glow'
-                      : 'bg-white/20 hover:bg-[#ff0ea3]/50 hover:scale-110'
-                    }`}
-                  role="tab"
-                  aria-selected={index === currentIndex}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <p className="body-large text-white/90 max-w-3xl mx-auto">
-              Discover what our clients say about working with us on their  projects.
-            </p>
           </div>
+
+
+          {/* Navigation is handled by auto-play and arrows */}
         </div>
 
-        <div className="relative">
+        <div className="relative group">
+          {/* Left Arrow */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 lg:-translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-[#ff0ea3]/20 hover:border-[#ff0ea3]/50 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-xl backdrop-blur-sm"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 lg:translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-[#ff0ea3]/20 hover:border-[#ff0ea3]/50 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-xl backdrop-blur-sm"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+          </button>
 
 
           {/* Testimonials carousel */}
@@ -230,10 +236,10 @@ const Testimonials = () => {
                 <div
                   key={`${testimonial.id}-${currentIndex}`}
                   className={`relative transform transition-all duration-700 ease-out ${index === 0
-                      ? 'scale-90 z-10 -translate-x-12 opacity-60'
-                      : index === 1
-                        ? 'scale-110 z-30 translate-x-0 opacity-100'
-                        : 'scale-90 z-10 translate-x-12 opacity-60'
+                    ? 'scale-90 z-10 -translate-x-12 opacity-60'
+                    : index === 1
+                      ? 'scale-110 z-30 translate-x-0 opacity-100'
+                      : 'scale-90 z-10 translate-x-12 opacity-60'
                     }`}
                   style={{
                     transform: `perspective(1000px) rotateY(${index === 0 ? 25 : index === 2 ? -25 : 0}deg)`

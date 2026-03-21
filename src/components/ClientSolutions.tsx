@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 
 interface SolutionDetail {
@@ -95,16 +94,19 @@ const ClientSolutions = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
-            <div className="text-center">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0 mb-3">
-                AI Solutions Delivered For <span style={{ color: '#ff0ea3' }}>Clients</span>
-              </h2>
-              <div
-                className="w-16 h-1 mx-auto mb-6"
-                style={{
-                  background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.4) 100%)'
-                }}
-              ></div>
+            <div className="text-left">
+              <div className="flex items-start gap-4 mb-3">
+                <div
+                  className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+                  style={{
+                    background: '#ff0ea3',
+                    transform: 'skewX(-15deg)'
+                  }}
+                ></div>
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight px-2 sm:px-0 whitespace-nowrap">
+                  AI Solutions Delivered For <span style={{ color: '#ff0ea3' }}>Clients</span>
+                </h2>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
@@ -173,8 +175,6 @@ const ClientSolutions = () => {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 };
