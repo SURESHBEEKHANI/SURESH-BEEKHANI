@@ -40,9 +40,15 @@ const Experience = () => {
         {/* Header */}
         <div className={`text-center mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-          <h2 className="heading-2 mb-4">
+          <h2 className="heading-2 mb-2 sm:mb-3">
             Why <span style={{ color: '#ff0ea3' }}>Choose Us</span>
           </h2>
+          <div
+            className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto mb-4 sm:mb-6"
+            style={{ 
+              background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.4) 100%)' 
+            }}
+          ></div>
           <p className="body-large text-foreground/70 max-w-3xl mx-auto">
             This reflects our skills, experience, and dedication to delivering high-quality work
           </p>

@@ -9,6 +9,7 @@ interface SolutionDetail {
   description: string;
   additionalInfo: string;
   benefits: string[];
+  image: string;
 }
 
 interface SolutionDetails {
@@ -22,8 +23,8 @@ const ClientSolutions = () => {
   const solutions = ['MedImaging', 'FraudGuard', 'RiskAnalyzer'];
 
   const solutionLabels: { [key: string]: string } = {
-    'MedImaging': 'Med Imaging',
     'FraudGuard': 'Fraud Guard',
+    'MedImaging': 'Med Imaging',
     'RiskAnalyzer': 'Risk Analyzer',
   };
 
@@ -39,7 +40,8 @@ const ClientSolutions = () => {
         'Better visibility into imaging throughput and case-mix across the network',
         'Seamless PACS & EHR workflow integration',
         'Explainable AI heatmaps for confident clinical decisions',
-      ]
+      ],
+      image: '/image/Delivered For Clients/AI Medical Imaging Assistant.jpg'
     },
     'FraudGuard': {
       title: 'AI Fraud Detection System',
@@ -52,7 +54,8 @@ const ClientSolutions = () => {
         'Enhanced customer trust and satisfaction',
         'Real-time anomaly detection on live transaction streams',
         'Automated alert workflows for faster response',
-      ]
+      ],
+      image: '/image/Delivered For Clients/Fraud Guard.jpg'
     },
     'RiskAnalyzer': {
       title: 'AI Portfolio Risk Analyzer',
@@ -65,7 +68,8 @@ const ClientSolutions = () => {
         'Stronger risk governance with consistent, auditable analytics',
         'AI-driven scenario analysis and stress testing',
         'Explainable factor decomposition for investment teams',
-      ]
+      ],
+      image: '/image/Delivered For Clients/Risk Analyzer.jpg'
     }
   };
 
@@ -73,8 +77,8 @@ const ClientSolutions = () => {
 
   const handleReadMore = () => {
     const pageMap: { [key: string]: string } = {
-      'MedImaging': '/portfolio/ai-medical-imaging-assistant',
       'FraudGuard': '/portfolio/ai-fraud-detection-system',
+      'MedImaging': '/portfolio/ai-medical-imaging-assistant',
       'RiskAnalyzer': '/portfolio/ai-portfolio-risk-analyzer',
     };
     navigate(pageMap[selectedSolution] || '/portfolio');
@@ -92,10 +96,15 @@ const ClientSolutions = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0">
-                AI Solutions Delivered For <span className="gradient-text-ai">Clients</span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight px-2 sm:px-0 mb-3">
+                AI Solutions Delivered For <span style={{ color: '#ff0ea3' }}>Clients</span>
               </h2>
+              <div
+                className="w-16 h-1 mx-auto mb-6"
+                style={{
+                  background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.4) 100%)'
+                }}
+              ></div>
             </div>
 
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
@@ -103,12 +112,11 @@ const ClientSolutions = () => {
                 <button
                   key={solution}
                   onClick={() => setSelectedSolution(solution)}
-                  className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${
-                    selectedSolution === solution
-                      ? 'text-white shadow-lg'
-                      : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
-                  }`}
-                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #ff2088 0%, #ff1975 50%, #ec4899 100%)' } : {}}
+                  className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${selectedSolution === solution
+                    ? 'text-white shadow-lg'
+                    : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
+                    }`}
+                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' } : {}}
                 >
                   {solutionLabels[solution]}
                 </button>
@@ -132,7 +140,7 @@ const ClientSolutions = () => {
               <div className="space-y-2.5 sm:space-y-3">
                 {currentSolution.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="w-2 h-2 bg-gradient-to-r from-ai-cyan to-ai-purple rounded-full mt-2 mr-3 flex-shrink-0 shadow-lg"></div>
+                    <div className="w-2 h-2 bg-[#ff0ea3] rounded-full mt-2 mr-3 flex-shrink-0 shadow-lg shadow-[#ff0ea3]/20"></div>
                     <p className="text-white/90 text-sm sm:text-base">{benefit}</p>
                   </div>
                 ))}
@@ -141,7 +149,7 @@ const ClientSolutions = () => {
               <Button
                 onClick={handleReadMore}
                 className="text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #f2137b 0%, #f0179d 50%, #ec4899 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' }}
               >
                 <span>Read More</span>
                 <ArrowRight className="h-4 w-4 flex-shrink-0" />
@@ -150,59 +158,23 @@ const ClientSolutions = () => {
           </div>
 
           <div className="relative lg:order-last">
-            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden"
-              style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%)' }}>
-              <div className="absolute inset-0 rounded-2xl"
-                style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%)' }}></div>
-              
-              {/* Decorative elements - responsive sizing */}
-              <div className="absolute top-4 sm:top-6 md:top-10 right-4 sm:right-6 md:right-10 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full opacity-60"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a52866 100%)' }}></div>
-              <div className="absolute bottom-8 sm:bottom-12 md:bottom-20 left-2 sm:left-4 md:left-8 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full opacity-50"
-                style={{ background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)' }}></div>
-              <div className="absolute top-12 sm:top-20 md:top-32 left-4 sm:left-8 md:left-16 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 transform rotate-45 opacity-70"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 100%)' }}></div>
-              <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 right-4 sm:right-8 md:right-16 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 transform rotate-45 opacity-60"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}></div>
-              <div className="absolute top-8 sm:top-12 md:top-20 right-12 sm:right-20 md:right-32 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 rounded-full opacity-50"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}></div>
-
-              {/* Main card - responsive sizing */}
-              <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-6">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-white/90 backdrop-blur-sm rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl">
-                  <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center"
-                      style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}>
-                      <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-white rounded-full"></div>
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base font-semibold text-gray-800">
-                      {solutionLabels[selectedSolution]}
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
-                    <div className="h-1.5 sm:h-2 md:h-3 rounded"
-                      style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%)' }}></div>
-                    <div className="h-1.5 sm:h-2 md:h-3 rounded w-3/4"
-                      style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%)' }}></div>
-                    <div className="h-1.5 sm:h-2 md:h-3 rounded w-1/2"
-                      style={{ background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%)' }}></div>
-                  </div>
-
-                  <div className="absolute -top-1 sm:-top-2 md:-top-4 -right-1 sm:-right-2 md:-right-4 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)' }}>
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-white rounded-full"></div>
-                  </div>
-                  <div className="absolute -bottom-0.5 sm:-bottom-1 md:-bottom-2 -left-0.5 sm:-left-1 md:-left-2 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 rounded-full"
-                    style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ec4899 100%)' }}></div>
-                </div>
-              </div>
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl group/image">
+              <div
+                className="absolute inset-0 z-10 transition-colors duration-300 group-hover/image:bg-black/20"
+                style={{ background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.1) 0%, transparent 100%)' }}
+              ></div>
+              <img
+                src={currentSolution.image}
+                alt={currentSolution.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110"
+              />
+              <div className="absolute inset-0 border border-white/10 rounded-2xl z-20 pointer-events-none"></div>
             </div>
           </div>
         </div>
       </div>
 
-      
+
     </section>
   );
 };

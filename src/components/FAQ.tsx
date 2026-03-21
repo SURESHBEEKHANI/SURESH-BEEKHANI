@@ -98,13 +98,15 @@ const FAQ = () => {
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
             Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
           </h2>
-          <div 
-            className="w-16 h-1 mx-auto mb-6"
-            style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}
-          ></div>
-          <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
+          <p className="text-foreground/80 max-w-2xl mx-auto text-sm mb-6">
             Find answers to common questions about my services, process, and what you can expect when working with me.
           </p>
+          <div 
+            className="w-16 h-1 mx-auto mb-8"
+            style={{ 
+              background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.4) 100%)' 
+            }}
+          ></div>
         </div>
 
         <div className="space-y-3">
