@@ -403,131 +403,78 @@ const AIDevelopment: React.FC = () => {
 				</div>
 			</section>
 
-			{/* Why Choose Us Section (Improved Side-by-Side Style) */}
-			<section className="relative overflow-hidden bg-white py-12 sm:py-16">
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-4 mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
-							WHY <span className="gradient-text-ai">CHOOSE US?</span>
+			{/* Why Choose Us Section (Modern Side-by-Side Layout) */}
+			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
+				<div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-blue-50/50 to-transparent pointer-events-none" />
+				<div className="max-w-7xl mx-auto container-padding">
+					<div className={`text-center space-y-4 mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+							Why Choose <span className="gradient-text-ai">Us?</span>
 						</h2>
-						<p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-							Strategic excellence and technical precision focused on delivering <span className="text-blue-600 font-bold">measurable enterprise value</span>.
+						<p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+							Industry expertise with proven results across multiple sectors and use cases.
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						<div className={`relative group ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-							<div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100">
-								<img
-									src="/image/services-img/ai_workspace_do_more.png"
-									alt="AI Development Workspace"
-									className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-								/>
-								<div className="absolute bottom-10 left-10 text-white z-20">
-									<div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
-										<p className="text-xl font-black tracking-tighter">DO MORE.</p>
-									</div>
+					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+						{/* Left: Workspace Image */}
+						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
+							<div className="relative group">
+								<div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+								<div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-100">
+									<img
+										src="/image/services-img/ai_workspace_do_more.png"
+										alt="AI Development Workspace"
+										className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+									/>
 								</div>
 							</div>
 						</div>
 
-						<div className={`relative ${isVisible ? 'slide-right' : 'opacity-0'}`}>
-							<div className="relative z-10 space-y-0">
-								{[
-									{
-										id: "01",
-										title: "Deep AI Expertise",
-										desc: "Specialized team with extensive experience in machine learning, NLP, and computer vision.",
-										bgColor: "bg-[#e23126]",
-										textColor: "group-hover:text-[#e23126]"
-									},
-									{
-										id: "02",
-										title: "Custom Solutions",
-										desc: "Tailored AI solutions designed specifically for your business challenges and goals.",
-										bgColor: "bg-[#9068d4]",
-										textColor: "group-hover:text-[#9068d4]"
-									},
-									{
-										id: "03",
-										title: "Enterprise Security",
-										desc: "Robust security measures and compliance with industry standards protecting your data.",
-										bgColor: "bg-[#3eb37c]",
-										textColor: "group-hover:text-[#3eb37c]"
-									},
-									{
-										id: "04",
-										title: "Proven Track Record",
-										desc: "Organizations achieving measurable results and ROI with our AI solutions.",
-										bgColor: "bg-[#f59e0b]",
-										textColor: "group-hover:text-[#f59e0b]"
-									}
-								].map((item, index) => (
-									<div key={item.id} className={`group flex items-start gap-8 sm:gap-12 py-8 ${index !== 3 ? 'border-b border-dashed border-slate-200' : ''}`}>
-										<div className="flex-shrink-0 w-16 sm:w-20 flex justify-center py-2 relative">
-											<div className={`absolute inset-0 ${item.bgColor} rounded-full opacity-10 group-hover:opacity-20 transition-opacity`}></div>
-											<div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full ${item.bgColor} flex items-center justify-center shadow-lg border border-white/10 z-10 transition-transform group-hover:scale-110 duration-300`}>
-												<span className="text-white font-black text-xl sm:text-2xl tracking-tighter opacity-90 group-hover:opacity-100 transition-all duration-300">
-													{item.id}
-												</span>
-											</div>
-										</div>
-										<div className="flex-grow pt-2">
-											<h3 className={`font-bold text-base sm:text-lg text-slate-800 mb-2 ${item.textColor} transition-colors tracking-tight`}>
-												{item.title}
-											</h3>
-											<p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed max-w-md">
-												{item.desc}
-											</p>
-										</div>
+						{/* Right: Numbered List */}
+						<div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+							{[
+								{
+									num: "01",
+									title: "Deep AI Expertise",
+									desc: "Specialized team with extensive experience in machine learning, NLP, and computer vision across multiple industries.",
+									color: "bg-[#e23126]"
+								},
+								{
+									num: "02",
+									title: "Custom Solutions",
+									desc: "Tailored AI solutions designed specifically for your business challenges, workflows, and strategic goals.",
+									color: "bg-[#9068d4]"
+								},
+								{
+									num: "03",
+									title: "Enterprise Security",
+									desc: "Robust security measures and compliance with industry standards protecting your sensitive business data.",
+									color: "bg-[#3eb37c]"
+								},
+								{
+									num: "04",
+									title: "Proven Track Record",
+									desc: "Organizations achieving measurable results, reduced costs, and enhanced ROI with our AI solutions.",
+									color: "bg-[#f59e0b]"
+								}
+							].map((item, idx) => (
+								<div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.1}s` }}>
+									<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-xl flex items-center justify-center text-white font-black text-sm sm:text-base shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+										{item.num}
 									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* Onboarding Process Section */}
-			<section className="py-10 sm:py-14 relative overflow-hidden bg-gray-900">
-				<div className="absolute inset-0 bg-[url('/image/pages_img/AI-Development-backgound.webp')] opacity-5 bg-cover bg-center"></div>
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white tracking-tight mb-4">AI Onboarding Process</h2>
-						<div className="flex justify-center mb-4">
-							<div className="w-16 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-full"></div>
-						</div>
-						<p className="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto px-4 font-medium">Your journey to transforming your business with AI starts here.</p>
-					</div>
-					<div className="relative">
-						<div className="hidden lg:block absolute top-[110px] left-0 w-full h-[2px] bg-gradient-to-r from-gray-800 via-blue-500 to-gray-800 opacity-50 z-0"></div>
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10">
-							{onboardingSteps.map((step, index) => (
-								<div
-									key={index}
-									className={`bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:bg-gray-800 hover:border-blue-500/50 transition-all duration-300 group flex flex-col items-center text-center ${isVisible ? 'slide-up' : 'opacity-0'}`}
-									style={{ animationDelay: `${index * 0.1}s` }}
-								>
-									<div className={`w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-gray-900 rounded-2xl mb-4 shadow-xl text-white group-hover:-translate-y-2 transition-transform duration-300 relative`}>
-										<div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${step.color} p-[2px]`}>
-											<div className="w-full h-full bg-gray-900 rounded-[14px] flex items-center justify-center">
-												{React.cloneElement(step.icon as React.ReactElement, { className: 'w-6 h-6' })}
-											</div>
-										</div>
-										<div className={`absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center font-bold text-xs shadow-lg border-2 border-gray-900`}>
-											{index + 1}
-										</div>
+									<div>
+										<h3 className="font-bold text-slate-800 text-sm sm:text-base mb-1 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+										<p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{item.desc}</p>
 									</div>
-									<h3 className="font-black text-base text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-200 transition-all duration-300">{step.title}</h3>
-									<p className="text-xs text-gray-400 font-semibold leading-relaxed group-hover:text-gray-300 transition-colors">{step.description}</p>
 								</div>
 							))}
 						</div>
 					</div>
 				</div>
 			</section>
+
+			<AIOnboardingProcess serviceName="AI" />
 
 			{/* FAQ Section */}
 			<section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -544,10 +491,10 @@ const AIDevelopment: React.FC = () => {
 					<div className="space-y-3 sm:space-y-4">
 						{faqData.map((faq, idx) => (
 							<details key={idx} className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-								<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
+								<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-[#ec4899] transition-colors duration-200">
 									{faq.question}
-									<span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-									<span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
+									<span className="ml-2 text-gray-900 group-hover:text-[#ec4899] group-open:hidden">+</span>
+									<span className="ml-2 text-gray-900 group-hover:text-[#ec4899] hidden group-open:inline">-</span>
 								</summary>
 								<div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">{faq.answer}</div>
 							</details>

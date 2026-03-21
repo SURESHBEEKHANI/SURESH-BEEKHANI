@@ -192,19 +192,19 @@ const Portfolio: React.FC = () => {
                   key={project.link}
                   ref={(el) => (cardRefs.current[idx] = el)}
                   data-index={idx}
-                  className={`group bg-gradient-to-br from-indigo-500 to-fuchsia-500 p-[1px] rounded-2xl transition-all duration-700 ease-out will-change-transform ${
+                  className={`group bg-white p-0 border border-gray-100 rounded-none transition-all duration-700 ease-out will-change-transform shadow-md hover:shadow-2xl hover:border-[#f01eff]/30 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                   }`}
                 >
-                  <div className={`flex flex-col items-start text-left bg-white rounded-2xl h-full p-6 shadow-sm transition-colors duration-300 hover:shadow-xl`}>
-                    <div className="relative w-full overflow-hidden rounded-xl">
+                  <div className={`flex flex-col items-start text-left bg-white rounded-none h-full p-6 transition-colors duration-300`}>
+                    <div className="relative w-full overflow-hidden rounded-none shadow-inner">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="h-80 w-full object-cover rounded-xl transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.03]"
+                        className="h-80 w-full object-cover rounded-none transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.03]"
                         loading="lazy"
                       />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
                     <h3 className="mt-5 text-base md:text-lg font-bold text-gray-900 tracking-tight transition-colors duration-300 group-hover:text-indigo-700">
@@ -215,20 +215,11 @@ const Portfolio: React.FC = () => {
                     </p>
                     <Link
                       to={project.link}
-                      className="btn-primary inline-flex items-center gap-2 px-6 py-3 min-h-[44px]"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 min-h-[44px] bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] text-white font-bold text-sm tracking-wide rounded-md hover:shadow-[0_10px_30px_rgba(255,14,163,0.3)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
                       aria-label={`View case study for ${project.title}`}
                     >
                       View Case Study
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5"
-                        aria-hidden="true"
-                      >
-                        <path d="M13.5 4.5a1 1 0 011 1V9a1 1 0 002 0V5.5a3 3 0 00-3-3H9a1 1 0 100 2h4.5z" />
-                        <path d="M20 12a8 8 0 11-8-8 1 1 0 010 2 6 6 0 106 6 1 1 0 012 0z" />
-                      </svg>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </div>

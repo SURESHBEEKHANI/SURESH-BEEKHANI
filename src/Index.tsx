@@ -17,34 +17,8 @@ const Index = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (!targetId) return;
-
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-
-        // Add offset for mobile to account for the larger header
-        const offset = isMobile ? 60 : 80;
-
-        window.scrollTo({
-          top: targetElement.offsetTop - offset,
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Clean up event listeners
-    return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function() {});
-      });
-    };
-  }, [isMobile]);
+    // Standard effect for any other logic needed on mount
+  }, []);
   
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -56,19 +30,19 @@ const Index = () => {
       <main className="relative z-10">
         <Hero />
         
-        <section id="about" className="pro-section">
+        <section className="pro-section">
           <div className="section-container">
             <About />
           </div>
         </section>
         
-        <section id="services" className="pro-section">
+        <section className="pro-section">
           <div className="section-container">
             <Services />
           </div>
         </section>
         
-        <section id="industries" className="pro-section">
+        <section className="pro-section">
           <div className="section-container">
             <Industries />
           </div>
@@ -92,7 +66,7 @@ const Index = () => {
           </div>
         </section>
         
-        <section id="experience" className="pro-section">
+        <section className="pro-section">
           <div className="section-container">
             <Experience />
           </div>

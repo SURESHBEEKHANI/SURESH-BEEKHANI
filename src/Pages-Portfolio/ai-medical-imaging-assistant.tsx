@@ -93,7 +93,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           {/* Left content */}
           <div>
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-primary mb-3">
+            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
@@ -125,7 +125,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
           </div>
 
           {/* Right form card */}
-          <div className="bg-[#0a0435] text-white rounded-2xl shadow-2xl p-8 sm:p-10 relative overflow-hidden">
+          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
@@ -143,7 +143,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
                       placeholder="Enter your name"
                       required
                     />
@@ -155,7 +155,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="you@example.com"
                       required
                     />
@@ -170,7 +170,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -181,7 +181,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       name="jobTitle"
                       value={formData.jobTitle}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="CMO, Head of Radiology..."
                     />
                   </div>
@@ -208,7 +208,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                   />
                   <label htmlFor="imaging-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
-                    <a href="/privacy" className="underline underline-offset-2 hover:text-fuchsia-300">
+                    <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
                     </a>{" "}
                     and Terms & Conditions.

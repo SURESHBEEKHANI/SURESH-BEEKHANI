@@ -15,35 +15,38 @@ const FAQ = () => {
       question: "What services do you offer?",
       answer: (
         <div className="space-y-2">
-          <p className="text-foreground/80 leading-relaxed text-sm">
+          <p className="text-gray-600 leading-relaxed text-sm">
+
             I offer comprehensive AI development services including: {' '}
-            <a href="/ai-development" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/ai-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               AI Development
             </a>
+
             , {' '}
-            <a href="/ai-chatbot-development" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/ai-chatbot-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               AI Chatbot Development
             </a>
             , {' '}
-            <a href="/chat-gpt-integrations" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/chat-gpt-integrations" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               ChatGPT Integrations
             </a>
             , {' '}
-            <a href="/computer-vision" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/computer-vision" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               Computer Vision
             </a>
             , {' '}
-            <a href="/machine-learning" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/machine-learning" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               Machine Learning
             </a>
             , {' '}
-            <a href="/natural-language-processing" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/natural-language-processing" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               Natural Language Processing
             </a>
             , and {' '}
-            <a href="/predictive-modelling" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/predictive-modelling" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
               Predictive Modelling
             </a>
+
             . Each service is tailored to your specific business needs and industry requirements.
           </p>
         </div>
@@ -84,12 +87,12 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
-      {/* AI Background decorative elements */}
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
+
+      {/* AI Background decorative elements - muted for white background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/5 to-ai-cyan/5 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/5 to-[#ff0ea3]/5 rounded-full blur-3xl opacity-30"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -102,7 +105,7 @@ const FAQ = () => {
                 transform: 'skewX(-15deg)'
               }}
             ></div>
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-[#050729] leading-tight">
               Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
             </h2>
           </div>
@@ -112,7 +115,7 @@ const FAQ = () => {
           {faqData.map((faq, index) => (
             <div
               key={index}
-              className="border border-border/50 rounded-md overflow-hidden bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
+              className="border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
               style={openIndex === index ? { 
                 borderColor: 'rgba(255, 14, 163, 0.5)',
                 boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
@@ -123,11 +126,11 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full h-auto p-4 text-left transition-all duration-300 hover:bg-transparent"
                 style={openIndex === index ? {
-                  background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.25) 0%, rgba(255, 14, 163, 0.2) 50%, rgba(255, 14, 163, 0.15) 100%)'
+                  background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.1) 50%, rgba(255, 14, 163, 0.05) 100%)'
                 } : {}}
                 onMouseEnter={(e) => {
                   if (openIndex !== index) {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.12) 50%, rgba(255, 14, 163, 0.08) 100%)';
+                    e.currentTarget.style.background = 'rgba(255, 14, 163, 0.05)';
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -137,26 +140,26 @@ const FAQ = () => {
                 }}
               >
                 <div className="flex items-center justify-between w-full">
-                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-foreground'}`}>
+                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'}`}>
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
                     <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#ff0ea3' }} />
                   ) : (
-                    <Plus className="h-4 w-4 text-muted-foreground flex-shrink-0 transition-colors duration-300 hover:text-[#ff0ea3]" />
+                    <Plus className="h-4 w-4 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#ff0ea3]" />
                   )}
                 </div>
               </Button>
               
               {openIndex === index && (
                 <div className="px-4 pb-4">
-                  <div className="pt-2 border-t border-border/30">
+                  <div className="pt-2 border-t border-gray-200/50">
                     {typeof faq.answer === 'string' ? (
-                      <p className="text-foreground/80 leading-relaxed text-sm">
+                      <p className="text-gray-600 leading-relaxed text-sm">
                         {faq.answer}
                       </p>
                     ) : (
-                      <div className="text-foreground/80 leading-relaxed text-sm">
+                      <div className="text-gray-600 leading-relaxed text-sm">
                         {faq.answer}
                       </div>
                     )}
@@ -168,6 +171,7 @@ const FAQ = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

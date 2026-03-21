@@ -35,10 +35,10 @@ const Hero = () => {
   ];
 
   const techIcons = [
-    { icon: <Cpu className="w-6 h-6" />, color: 'text-blue-500' },
-    { icon: <Database className="w-6 h-6" />, color: 'text-purple-500' },
-    { icon: <Network className="w-6 h-6" />, color: 'text-green-500' },
-    { icon: <Brain className="w-6 h-6" />, color: 'text-orange-500' },
+    { icon: <Cpu className="w-6 h-6" />, color: 'text-[#f01eff]' },
+    { icon: <Database className="w-6 h-6" />, color: 'text-[#f755d7]' },
+    { icon: <Network className="w-6 h-6" />, color: 'text-[#ec4899]' },
+    { icon: <Brain className="w-6 h-6" />, color: 'text-[#f01eff]' },
   ];
 
   // Cycle skills
@@ -83,13 +83,13 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/** Floating particles **/}
         {[{
-          top: 'top-20 left-10', size: 'w-3 h-3', color: 'bg-primary/40', y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4], duration: 6
+          top: 'top-20 left-10', size: 'w-3 h-3', color: 'bg-[#f01eff]/40', y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4], duration: 6
         }, {
-          top: 'top-40 right-20', size: 'w-2 h-2', color: 'bg-secondary/50', y: [20, -20, 20], opacity: [0.5,1,0.5], scale: [1,1.5,1], duration:4, delay:1
+          top: 'top-40 right-20', size: 'w-2 h-2', color: 'bg-[#ec4899]/50', y: [20, -20, 20], opacity: [0.5,1,0.5], scale: [1,1.5,1], duration:4, delay:1
         }, {
-          top: 'bottom-40 left-20', size: 'w-4 h-4', color: 'bg-accent/30', y: [-15,15,-15], x:[-10,10,-10], opacity:[0.3,0.6,0.3], duration:5, delay:2
+          top: 'bottom-40 left-20', size: 'w-4 h-4', color: 'bg-[#f01eff]/30', y: [-15,15,-15], x:[-10,10,-10], opacity:[0.3,0.6,0.3], duration:5, delay:2
         }, {
-          top: 'top-60 left-1/3', size: 'w-3 h-3', color: 'bg-secondary/40', y:[15,-15,15], opacity:[0.4,0.7,0.4], duration:7, delay:3
+          top: 'top-60 left-1/3', size: 'w-3 h-3', color: 'bg-[#f755d7]/40', y:[15,-15,15], opacity:[0.4,0.7,0.4], duration:7, delay:3
         }].map((p, idx) => (
           <motion.div
             key={idx}
@@ -140,7 +140,7 @@ const Hero = () => {
           >
             <div className="relative flex justify-center lg:justify-start">
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/40 via-secondary/30 to-accent/30 rounded-full blur-2xl opacity-60"
+                className="absolute inset-0 bg-gradient-to-r from-[#f01eff]/30 via-[#f755d7]/20 to-[#ec4899]/30 rounded-full blur-2xl opacity-60"
                 animate={prefersReducedMotion ? {} : { scale: [1,1.1,1], opacity:[0.6,0.8,0.6] }}
                 transition={{ duration: 3, repeat: Infinity, ease:'easeInOut' }}
               />
@@ -150,14 +150,14 @@ const Hero = () => {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? false : "visible"}
               >
-                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-white/20 shadow-2xl bg-gradient-to-br from-white to-gray-50 rounded-full overflow-hidden">
+                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-[#f755d7]/30 shadow-2xl bg-gradient-to-br from-[#0a0435] to-[#150a50] rounded-full overflow-hidden">
                   <AvatarImage
                     src="/image/sureshbeekhani.png"
                     alt="Suresh Beekhani - AI/ML Engineer"
                     className="object-cover w-full h-full"
                     loading="eager"
                   />
-                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-primary">SB</AvatarFallback>
+                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-ai">SB</AvatarFallback>
                 </Avatar>
 
                 {techIcons.map((tech, idx) => (
@@ -183,6 +183,10 @@ const Hero = () => {
             initial={prefersReducedMotion ? false : "hidden"}
             animate={prefersReducedMotion ? false : "visible"}
           >
+            <motion.div className="inline-flex items-center space-x-2 px-3 py-1 rounded-none bg-white/5 border border-[#ec4899]/30 backdrop-blur-md mb-2" variants={staggerItem}>
+              <div className="w-2 h-2 rounded-full bg-[#f01eff] animate-pulse" />
+              <span className="text-xs font-medium tracking-wider text-white/90 uppercase">AI Specialist</span>
+            </motion.div>
             <motion.h1 className="heading-1 font-bold leading-tight" variants={staggerItem}>
               Suresh <span style={{ color: '#f51dad' }}>Beekhani</span>
             </motion.h1>
@@ -213,11 +217,11 @@ const Hero = () => {
             {/* Buttons */}
             <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" variants={staggerItem}>
               <ButtonWrapper href="https://calendar.app.google/F63aBoA5vxJdtihj7" icon={<FileText />} text="Book Appointment" />
-              <ButtonWrapper href="#about" icon={<ArrowDown />} text="Learn More" outline />
+              <ButtonWrapper href="/#about" icon={<ArrowDown />} text="Learn More" outline />
             </motion.div>
 
             {/* Stats */}
-            <motion.div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10 w-full" variants={staggerItem}>
+            <motion.div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-[#f01eff]/20 w-full" variants={staggerItem}>
               {[
                 { label: 'Years Experience', value: statsCount.years },
                 { label: 'Projects Completed', value: statsCount.projects + '+' },
@@ -240,7 +244,12 @@ const ButtonWrapper = ({ href, icon, text, outline }) => {
   const prefersReducedMotion = useReducedMotion();
   return (
     <motion.div whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }} whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}>
-      <Button asChild variant={outline ? 'outline' : 'primary'} className="w-full sm:w-auto group touch-button">
+      <Button 
+        asChild 
+        variant={outline ? 'outline' : 'primary'} 
+        className={`w-full sm:w-auto group touch-button ${outline ? 'border-[#f01eff]/40 hover:border-[#f01eff] text-white hover:bg-[#f01eff]/10' : ''}`}
+        style={!outline ? { background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)' } : {}}
+      >
         <a href={href} target={outline ? '_self' : '_blank'} rel="noopener noreferrer" aria-label={text}>
           {icon && <span className="mr-2">{icon}</span>}
           <span className="mobile-text">{text}</span>

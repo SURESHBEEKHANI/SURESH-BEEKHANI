@@ -74,10 +74,10 @@ const Industries = () => {
   ];
 
   return (
-    <section className="py-6 sm:py-8 md:py-12 ai-section w-full overflow-x-hidden">
+    <section id="industries" className="pt-2 sm:pt-4 md:pt-6 pb-12 bg-white w-full overflow-x-hidden scroll-mt-20">
       <div className="w-full">
         {/* Industries Transforming with AI Development Section */}
-        <section className="py-8 sm:py-12 md:py-16 relative ai-section w-full">
+        <section className="pt-2 sm:pt-4 md:pt-6 pb-0 relative bg-white w-full">
           <div className="relative z-15 w-full">
             <div className="text-left space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 px-[5%] sm:px-[10%]">
               <div className="flex items-start gap-3 sm:gap-4">
@@ -88,22 +88,23 @@ const Industries = () => {
                     transform: 'skewX(-15deg)'
                   }}
                 ></div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
                   Industries We Transform with Innovative  <span style={{ color: '#ff0ea3' }}>AI Software Solutions</span>
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm md:text-base text-gray-400 max-w-2xl font-medium leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-2xl font-medium leading-relaxed">
                 We empower businesses across diverse industries with custom AI solutions, driving innovation, efficiency, and sustainable growth in the digital era.
               </p>
             </div>
 
             {/* Mobile-first responsive grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-white/50 overflow-hidden shadow-lg sm:shadow-2xl w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-gray-200 overflow-hidden shadow-lg sm:shadow-2xl w-full">
               {industries.map((industry) => (
                 <div
                   key={industry.id}
                   onClick={() => setActiveIndustry(industry.name)}
-                  className={`group relative border-b border-r border-white/50 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex items-center justify-center cursor-pointer overflow-hidden touch-manipulation transition-all duration-300 hover:z-30 hover:shadow-[0_0_20px_rgba(255,14,163,0.3)] ${activeIndustry === industry.name ? 'z-30 shadow-[0_0_20px_rgba(255,14,163,0.3)]' : ''
+                  className={`group relative border-b border-r border-gray-200 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex items-center justify-center cursor-pointer overflow-hidden touch-manipulation transition-all duration-300 hover:z-30 hover:shadow-[0_0_20px_rgba(255,14,163,0.3)] ${activeIndustry === industry.name ? 'z-30 shadow-[0_0_20px_rgba(255,14,163,0.3)]' : ''
                     }`}
                   style={{ minHeight: 'clamp(250px, 25vh, 520px)' }}
                 >
@@ -145,6 +146,7 @@ const Industries = () => {
         </section>
       </div>
     </section>
+
   );
 };
 

@@ -103,7 +103,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
           <button 
             onClick={() => scroll('left')} 
             disabled={!canScrollLeft} 
-            className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+            className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] hover:from-[#d10b85] hover:via-[#ff0ea3] hover:to-[#ff07a4] text-white p-3 sm:p-4 rounded-none shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -112,7 +112,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
           <button 
             onClick={() => scroll('right')} 
             disabled={!canScrollRight} 
-            className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+            className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] hover:from-[#d10b85] hover:via-[#ff0ea3] hover:to-[#ff07a4] text-white p-3 sm:p-4 rounded-none shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
             aria-label="Scroll right"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />

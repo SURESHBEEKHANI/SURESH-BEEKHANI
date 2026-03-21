@@ -171,7 +171,7 @@ const Navbar = () => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-blue-600' : 'text-white hover:text-cyan-400'
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#f755d7]'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -179,7 +179,7 @@ const Navbar = () => {
                       {link.label}
                       {/* Animated underline */}
                       <motion.span
-                        className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-primary to-blue-600"
+                        className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#f01eff] to-[#ec4899]"
                         initial={{ width: 0, x: '-50%' }}
                         animate={{ width: isActive ? '80%' : 0, x: '-50%' }}
                         whileHover={{ width: '80%' }}
@@ -206,7 +206,7 @@ const Navbar = () => {
                             <motion.a
                               key={item.href}
                               href={item.href}
-                              className={`block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
+                              className={`block px-4 py-2 text-gray-800 hover:bg-[#f01eff]/5 hover:text-[#ec4899] whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
                                 }`}
                               initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -226,7 +226,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-primary' : isScrolled ? 'text-gray-900 hover:text-blue-600' : 'text-white hover:text-cyan-400'
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#f755d7]'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -234,7 +234,7 @@ const Navbar = () => {
                   {link.label}
                   {/* Animated underline */}
                   <motion.span
-                    className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-primary to-blue-600"
+                    className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899]"
                     initial={{ width: 0, x: '-50%' }}
                     animate={{ width: isActive ? '80%' : 0, x: '-50%' }}
                     whileHover={{ width: '80%' }}
@@ -356,7 +356,7 @@ const Navbar = () => {
                         <div key={link.label} className="border-b border-white/5 last:border-0">
                           <button
                             onClick={() => setExpandedSection(isExpanded ? null : link.label)}
-                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-primary bg-primary/5' : 'text-white hover:text-cyan-400'
+                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-[#ec4899] bg-white/5' : 'text-white hover:text-[#f755d7]'
                               }`}
                           >
                             <span>{link.label}</span>
@@ -382,7 +382,7 @@ const Navbar = () => {
                                     <motion.a
                                       key={item.href}
                                       href={item.href}
-                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-cyan-400 transition-colors border-l border-white/10 pl-4"
+                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-[#f755d7] transition-colors border-l border-white/10 pl-4"
                                       onClick={() => setIsMobileMenuOpen(false)}
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
@@ -405,8 +405,8 @@ const Navbar = () => {
                         href={link.href}
                         className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${activeSection === link.href.replace('/#', '') ||
                             (link.href === '/Portfolio' && currentPath === '/Portfolio')
-                            ? 'text-primary bg-primary/10'
-                            : 'text-white hover:text-cyan-400 hover:bg-white/10'
+                            ? 'text-[#ec4899] bg-white/10'
+                            : 'text-white hover:text-[#f755d7] hover:bg-white/10'
                           }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         custom={index}

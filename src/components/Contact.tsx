@@ -11,26 +11,19 @@ import Footer from './Footer';
 import BackgroundAnimation from './BackgroundAnimation';
 
 const HeroSection = () => (
-  <section className="relative w-full min-h-[40vh] flex items-center justify-center overflow-hidden bg-[#0a0435]">
+  <section className="relative w-full min-h-[40vh] flex items-center justify-start overflow-hidden bg-[#0a0435]">
     {/* Ambient Blurs to match footer */}
     <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
     <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
     <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
-    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
-      <div className="flex items-start gap-4 mb-4">
-        <div
-          className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-          style={{
-            background: '#ff0ea3',
-            transform: 'skewX(-15deg)'
-          }}
-        ></div>
+    <div className="relative z-10 max-w-4xl px-4 sm:px-6 ml-[10%] sm:ml-[15%] lg:ml-[20%] pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
+      <div className="mb-4">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
           Contact Us
         </h1>
       </div>
       <p className="text-xs sm:text-sm md:text-base text-gray-200 font-medium leading-relaxed max-w-2xl drop-shadow-md">
-        We appreciate your interest in services. Please fill out the form so we can provide you with the right help and support.
+        We appreciate your interest in services. Please fill out the form so <br />we can provide you with the right help and support.
       </p>
     </div>
   </section>
@@ -176,7 +169,7 @@ const Contact = () => {
                     </p>
                   </div>
                   <div className="pt-10">
-                    <Button 
+                    <Button
                       onClick={() => setIsSubmitted(false)}
                       variant="outline"
                       className="px-8 py-6 rounded-xl border-white/40 bg-white/10 text-white hover:bg-white hover:text-purple-600 transition-all font-bold backdrop-blur-sm border-2"
@@ -188,194 +181,194 @@ const Contact = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* How can we help you */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* How can we help you */}
+                  <div className="space-y-2">
+                    <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
+                    <select
+                      id="helpType"
+                      name="helpType"
+                      value={formData.helpType}
+                      onChange={handleInputChange}
+                      className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                      required
+                    >
+                      <option value="" disabled>Please Select One</option>
+                      <option value="ai-development">AI Development</option>
+                      <option value="chatbot-development">Chatbot Development</option>
+                      <option value="chatgpt-integration">ChatGPT Integration</option>
+                      <option value="machine-deep-learning">Machine & Deep Learning</option>
+                      <option value="computer-vision">Computer Vision</option>
+                      <option value="predictive-modeling">Predictive Modeling</option>
+                      <option value="nlp">Natural Language Processing</option>
+                      <option value="ai-automation">AI Automation</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* Select your Industry */}
+                  <div className="space-y-2">
+                    <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                      required
+                    >
+                      <option value="" disabled>Please Select One</option>
+                      <option value="fintech">FinTech</option>
+                      <option value="healthtech">HealthTech</option>
+                      <option value="retailtech">RetailTech</option>
+                      <option value="edtech">EdTech</option>
+                      <option value="fittech">FitTech</option>
+                      <option value="legaltech">LegalTech</option>
+                      <option value="wealthtech">WealthTech</option>
+                      <option value="it-software">IT & Software</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* First Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name*</Label>
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="First Name"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Last Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name*</Label>
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      placeholder="Last Name"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email*</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div className="space-y-2">
+                    <Label htmlFor="phone" className="text-sm font-semibold text-gray-700">Phone*</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Phone"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Country */}
+                  <div className="space-y-2">
+                    <Label htmlFor="country" className="text-sm font-semibold text-gray-700">Country*</Label>
+                    <Input
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      placeholder="Country"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Company/Organization */}
+                  <div className="space-y-2">
+                    <Label htmlFor="company" className="text-sm font-semibold text-gray-700">Company/Organization*</Label>
+                    <Input
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      placeholder="Company Name"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      required
+                    /></div>
+                </div>
+
+                {/* Message */}
                 <div className="space-y-2">
-                  <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
-                  <select
-                    id="helpType"
-                    name="helpType"
-                    value={formData.helpType}
+                  <Label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
-                    required
-                  >
-                    <option value="" disabled>Please Select One</option>
-                    <option value="ai-development">AI Development</option>
-                    <option value="chatbot-development">Chatbot Development</option>
-                    <option value="chatgpt-integration">ChatGPT Integration</option>
-                    <option value="machine-deep-learning">Machine & Deep Learning</option>
-                    <option value="computer-vision">Computer Vision</option>
-                    <option value="predictive-modeling">Predictive Modeling</option>
-                    <option value="nlp">Natural Language Processing</option>
-                    <option value="ai-automation">AI Automation</option>
-                    <option value="feedback">Feedback</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                {/* Select your Industry */}
-                <div className="space-y-2">
-                  <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
-                  <select
-                    id="industry"
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
-                    required
-                  >
-                    <option value="" disabled>Please Select One</option>
-                    <option value="fintech">FinTech</option>
-                    <option value="healthtech">HealthTech</option>
-                    <option value="retailtech">RetailTech</option>
-                    <option value="edtech">EdTech</option>
-                    <option value="fittech">FitTech</option>
-                    <option value="legaltech">LegalTech</option>
-                    <option value="wealthtech">WealthTech</option>
-                    <option value="it-software">IT & Software</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                {/* First Name */}
-                <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name*</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    placeholder="First Name"
-                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                    required
-                  />
-                </div>
-
-                {/* Last Name */}
-                <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name*</Label>
-                  <Input
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  placeholder="Last Name"
-                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                  required
-                />
-                </div>
-
-                {/* Email */}
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email*</Label>
-                  <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                  required
-                />
-                </div>
-
-                {/* Phone */}
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-sm font-semibold text-gray-700">Phone*</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Phone"
-                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                    required
-                  />
-                </div>
-
-                {/* Country */}
-                <div className="space-y-2">
-                  <Label htmlFor="country" className="text-sm font-semibold text-gray-700">Country*</Label>
-                  <Input
-                    id="country"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleInputChange}
-                    placeholder="Country"
-                    className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                    required
-                  />
-                </div>
-
-                {/* Company/Organization */}
-                <div className="space-y-2">
-                  <Label htmlFor="company" className="text-sm font-semibold text-gray-700">Company/Organization*</Label>
-                  <Input
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="Company Name"
-                  className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
-                  required
-                /></div>
-              </div>
-
-              {/* Message */}
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</Label>
-                <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="How can we help you?"
-                className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all resize-none px-4 py-3"
-                required
-              />
-              </div>
-
-              {/* Checkboxes */}
-              <div className="space-y-4 pt-4">
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    name="newsletter"
-                    checked={formData.newsletter}
-                    onChange={handleInputChange}
-                    className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
-                  />
-                  <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
-                    I agree to sign up for the newsletter
-                  </label>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    checked={formData.terms}
-                    onChange={handleInputChange}
-                    className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                    placeholder="How can we help you?"
+                    className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all resize-none px-4 py-3"
                     required
                   />
-                  <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
-                    I agree to the <a href="/privacy-policy" target="_blank" className="text-purple-600 font-medium hover:underline">Privacy policy</a> and Terms and conditions.*
-                  </label>
                 </div>
-              </div>
 
-              {/* Submit Button */}
-              <div className="pt-6 flex justify-center sm:justify-start">
-                <Button
+                {/* Checkboxes */}
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="checkbox"
+                      id="newsletter"
+                      name="newsletter"
+                      checked={formData.newsletter}
+                      onChange={handleInputChange}
+                      className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                    />
+                    <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
+                      I agree to sign up for the newsletter
+                    </label>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      name="terms"
+                      checked={formData.terms}
+                      onChange={handleInputChange}
+                      className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                      required
+                    />
+                    <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
+                      I agree to the <a href="/privacy-policy" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Privacy policy</a> and Terms and conditions.*
+                    </label>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="pt-6 flex justify-center sm:justify-start">
+                  <Button
                   type="submit"
                   disabled={isSubmitting}
-                  variant="primary"
-                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold  shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                  style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)' }}
                 >
                   {isSubmitting ? (
                     <>
@@ -386,11 +379,11 @@ const Contact = () => {
                     'Submit Message'
                   )}
                 </Button>
-              </div>
-            </form>
-          )}
-        </div>
-      </section>
+                </div>
+              </form>
+            )}
+          </div>
+        </section>
       </main>
 
       <Footer />

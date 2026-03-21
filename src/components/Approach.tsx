@@ -3,7 +3,9 @@ import { Badge } from './ui/badge';
 
 const Approach = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section">
+    <section className="pt-12 pb-12 ai-section" id="approach">
+
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-left mb-12 sm:mb-16">
           <div className="flex items-start gap-4 mb-3">

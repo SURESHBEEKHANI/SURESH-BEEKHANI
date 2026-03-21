@@ -240,8 +240,8 @@
 
   /* Tech & AI Healthcare Buttons - Beekhani Gradient */
   .btn-primary {
-    @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    @apply text-white font-semibold px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    background: linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%);
     border: 1px solid rgba(168, 85, 247, 0.3);
   }
 
@@ -266,8 +266,8 @@
   }
 
   .btn-secondary {
-    @apply text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
+    @apply text-white font-semibold px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    background: linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%);
     border: 1px solid rgba(168, 85, 247, 0.3);
   }
 
@@ -277,7 +277,7 @@
   }
 
   .btn-outline {
-    @apply border-2 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    @apply border-2 text-white font-semibold px-8 py-4 rounded-none transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
     border-color: rgba(168, 85, 247, 0.5);
     background: rgba(109, 40, 217, 0.1);
     backdrop-filter: blur(10px);

@@ -130,14 +130,13 @@ const Testimonials = () => {
 
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
       aria-label="Client Testimonials"
     >
-      {/* AI Background decorative elements */}
+      {/* AI Background decorative elements - muted for white background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/20 to-[#ff0ea3]/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-[#ff0ea3]/15 to-[#ff0ea3]/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#ff0ea3]/5 to-[#ff0ea3]/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/5 to-[#ff0ea3]/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-[#ff0ea3]/10 to-[#ff0ea3]/5 rounded-full blur-3xl opacity-30"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -150,20 +149,17 @@ const Testimonials = () => {
                 transform: 'skewX(-15deg)'
               }}
             ></div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight">
               From idea to impact — hear it from <span style={{ color: '#ff0ea3' }}>our clients</span>
             </h2>
           </div>
-
-
-          {/* Navigation is handled by auto-play and arrows */}
         </div>
 
         <div className="relative group">
           {/* Left Arrow */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 lg:-translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-[#ff0ea3]/20 hover:border-[#ff0ea3]/50 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-xl backdrop-blur-sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 lg:-translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-[#ff0ea3] hover:bg-[#ff0ea3]/10 hover:border-[#ff0ea3]/30 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-lg"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -172,7 +168,7 @@ const Testimonials = () => {
           {/* Right Arrow */}
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 lg:translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-[#ff0ea3]/20 hover:border-[#ff0ea3]/50 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-xl backdrop-blur-sm"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 lg:translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-[#ff0ea3] hover:bg-[#ff0ea3]/10 hover:border-[#ff0ea3]/30 transition-all opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-lg"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -191,7 +187,7 @@ const Testimonials = () => {
                 key={`${testimonials[currentIndex].id}-${currentIndex}`}
                 className="relative transform transition-all duration-700 ease-out scale-100 z-30 translate-x-0 opacity-100"
               >
-                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] ai-card-glow rounded-none p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}>
+                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] rounded-none p-4 sm:p-6 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' }}>
                   {/* Rating stars */}
                   <div className="flex items-center gap-1 mb-3 sm:mb-4" aria-label={`${testimonials[currentIndex].rating} out of 5 stars`}>
                     {renderStars(testimonials[currentIndex].rating)}
@@ -245,7 +241,7 @@ const Testimonials = () => {
                     transform: `perspective(1000px) rotateY(${index === 0 ? 25 : index === 2 ? -25 : 0}deg)`
                   }}
                 >
-                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 ai-card-glow rounded-none p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}>
+                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 rounded-none p-6 md:p-8 shadow-2xl transform hover:rotate-0 transition-all duration-500 hover:scale-105 hover:shadow-3xl border border-[#ff0ea3]/20 backdrop-blur-sm" style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' }}>
                     {/* Rating stars */}
                     <div className="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
                       {renderStars(testimonial.rating)}
@@ -290,6 +286,7 @@ const Testimonials = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

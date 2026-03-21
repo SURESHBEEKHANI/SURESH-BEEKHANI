@@ -84,12 +84,11 @@ const ClientSolutions = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden">
-      {/* AI Background decorative elements */}
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
+      {/* AI Background decorative elements - muted for white background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/5 to-ai-cyan/5 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/5 to-[#ff0ea3]/5 rounded-full blur-3xl opacity-50"></div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -103,7 +102,7 @@ const ClientSolutions = () => {
                     transform: 'skewX(-15deg)'
                   }}
                 ></div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight px-2 sm:px-0 whitespace-nowrap">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight px-2 sm:px-0 whitespace-nowrap">
                   AI Solutions Delivered For <span style={{ color: '#ff0ea3' }}>Clients</span>
                 </h2>
               </div>
@@ -116,7 +115,7 @@ const ClientSolutions = () => {
                   onClick={() => setSelectedSolution(solution)}
                   className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${selectedSolution === solution
                     ? 'text-white shadow-lg'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm border border-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
                     }`}
                   style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' } : {}}
                 >
@@ -126,15 +125,15 @@ const ClientSolutions = () => {
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-white">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#050729]">
                 {currentSolution.title}
               </h3>
 
               <div className="space-y-3 sm:space-y-4">
-                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {currentSolution.description}
                 </p>
-                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {currentSolution.additionalInfo}
                 </p>
               </div>
@@ -143,7 +142,7 @@ const ClientSolutions = () => {
                 {currentSolution.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <div className="w-2 h-2 bg-[#ff0ea3] rounded-full mt-2 mr-3 flex-shrink-0 shadow-lg shadow-[#ff0ea3]/20"></div>
-                    <p className="text-white/90 text-sm sm:text-base">{benefit}</p>
+                    <p className="text-gray-700 text-sm sm:text-base">{benefit}</p>
                   </div>
                 ))}
               </div>
@@ -170,12 +169,13 @@ const ClientSolutions = () => {
                 alt={currentSolution.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110"
               />
-              <div className="absolute inset-0 border border-white/10 rounded-2xl z-20 pointer-events-none"></div>
+              <div className="absolute inset-0 border border-gray-100 rounded-2xl z-20 pointer-events-none"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   );
 };
 
