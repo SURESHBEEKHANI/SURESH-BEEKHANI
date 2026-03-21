@@ -17,31 +17,31 @@ const FAQ = () => {
         <div className="space-y-2">
           <p className="text-foreground/80 leading-relaxed text-sm">
             I offer comprehensive AI development services including: {' '}
-            <a href="/ai-development" className="transition-colors" style={{ color: '#cb006c' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/ai-development" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               AI Development
             </a>
             , {' '}
-            <a href="/ai-chatbot-development" className="transition-colors" style={{ color: '#f6109e' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/ai-chatbot-development" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               AI Chatbot Development
             </a>
             , {' '}
-            <a href="/chat-gpt-integrations" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/chat-gpt-integrations" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               ChatGPT Integrations
             </a>
             , {' '}
-            <a href="/computer-vision" className="transition-colors" style={{ color: '#cb0084' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/computer-vision" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               Computer Vision
             </a>
             , {' '}
-            <a href="/machine-learning" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/machine-learning" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               Machine Learning
             </a>
             , {' '}
-            <a href="/natural-language-processing" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/natural-language-processing" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               Natural Language Processing
             </a>
             , and {' '}
-            <a href="/predictive-modelling" className="transition-colors" style={{ color: '#c92868' }} onMouseEnter={(e) => e.currentTarget.style.color = '#1E5AFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#00C2CB'}>
+            <a href="/predictive-modelling" className="transition-colors hover:text-white font-medium" style={{ color: '#ff0ea3' }}>
               Predictive Modelling
             </a>
             . Each service is tailored to your specific business needs and industry requirements.
@@ -96,11 +96,11 @@ const FAQ = () => {
         <div className="mb-8 text-center">
         
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
-            Frequently Asked <span style={{ color: '#ff13c0' }}>Questions</span>
+            Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
           </h2>
           <div 
             className="w-16 h-1 mx-auto mb-6"
-            style={{ background: 'linear-gradient(135deg, #ff13b8 0%, #ff08b5 50%, #ec4899 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ff0ea3/80 50%, #ff0ea3/60 100%)' }}
           ></div>
           <p className="text-foreground/80 max-w-2xl mx-auto text-sm">
             Find answers to common questions about my services, process, and what you can expect when working with me.
@@ -111,22 +111,22 @@ const FAQ = () => {
           {faqData.map((faq, index) => (
             <div
               key={index}
-              className="border border-border/50 rounded-md overflow-hidden bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-ai-cyan/50 hover:shadow-lg"
+              className="border border-border/50 rounded-md overflow-hidden bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
               style={openIndex === index ? { 
-                borderColor: 'rgba(0, 194, 203, 0.5)',
-                boxShadow: '0 4px 20px rgba(30, 90, 255, 0.2), 0 0 15px rgba(0, 194, 203, 0.15)'
+                borderColor: 'rgba(255, 14, 163, 0.5)',
+                boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
               } : {}}
             >
               <Button
                 variant="ghost"
                 onClick={() => toggleFAQ(index)}
-                className="w-full h-auto p-4 text-left transition-all duration-300"
+                className="w-full h-auto p-4 text-left transition-all duration-300 hover:bg-transparent"
                 style={openIndex === index ? {
-                  background: 'linear-gradient(135deg, rgba(109, 40, 217, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%)'
+                  background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.25) 0%, rgba(255, 14, 163, 0.2) 50%, rgba(255, 14, 163, 0.15) 100%)'
                 } : {}}
                 onMouseEnter={(e) => {
                   if (openIndex !== index) {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(109, 40, 217, 0.05) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(236, 72, 153, 0.05) 100%)';
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.12) 50%, rgba(255, 14, 163, 0.08) 100%)';
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -136,13 +136,13 @@ const FAQ = () => {
                 }}
               >
                 <div className="flex items-center justify-between w-full">
-                  <h3 className="text-base font-semibold text-foreground pr-3">
+                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-foreground'}`}>
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
-                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#a855f7' }} />
+                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#ff0ea3' }} />
                   ) : (
-                    <Plus className="h-4 w-4 text-muted-foreground flex-shrink-0 transition-colors duration-300 hover:text-ai-cyan" />
+                    <Plus className="h-4 w-4 text-muted-foreground flex-shrink-0 transition-colors duration-300 hover:text-[#ff0ea3]" />
                   )}
                 </div>
               </Button>
