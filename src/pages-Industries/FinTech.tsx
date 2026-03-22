@@ -12,7 +12,7 @@ const USE_CASES_DATA = [
   { id: 1, title: "AI-Powered Fraud Detection", description: "Real-time analysis of transaction patterns to identify and block fraudulent activities instantly.", image: "/image/pages_img/Fraud-Detection.jpg", alt: "Fraud Detection" },
   { id: 2, title: "Intelligent Credit Scoring", description: "Machine learning models analyze alternative data to provide more accurate credit risk assessments.", image: "/image/pages_img/Credit-Scoring.jpg", alt: "Credit Scoring" },
   { id: 3, title: "Automated Wealth Management", description: "AI-driven robo-advisors provide personalized investment strategies and automated portfolio rebalancing.", image: "/image/pages_img/Wealth-Management.jpg", alt: "Wealth Management" },
-  { id: 4, title: "AI-Powered Customer Support", description: "Intelligent chatbots handle complex financial inquiries and provide 24/7 personalized assistance.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Financial Chatbots" },
+  { id: 4, title: "AI-Powered Customer Support", description: "Intelligent chatbots handle complex financial inquiries and provide 24/7 personalized assistance.", image: "/image/pages_img/Customer Support.jpg", alt: "Financial Chatbots" },
   { id: 5, title: "Algorithmic Trading Systems", description: "High-frequency trading models execute trades based on real-time market signals and sentiment analysis.", image: "/image/pages_img/Algorithmic-Trading.jpg", alt: "Algorithmic Trading" },
   { id: 6, title: "Regulatory Compliance (RegTech)", description: "AI automates KYC/AML processes and monitors transactions for regulatory compliance in real-time.", image: "/image/pages_img/RegTech.jpg", alt: "RegTech" }
 ];
@@ -169,43 +169,54 @@ const FinTech: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
-      <Navbar />
-      <IndustryHero 
-        title="FinTech"
-        description="Empower your financial services with AI-driven fraud detection, credit scoring, automated wealth management, and personalized customer support. Drive efficiency and reduce risk."
-        bgImage="/image/pages_img/FinTech.png"
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col relative overflow-hidden">
+      {/* Background Cover Image */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage: "url('/image/pages_img/FinTech.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
       />
-      <IndustryProfessional 
-        title="Innovative FinTech"
-        highlightedTitle="AI Software Solutions"
-        description1="We are revolutionizing the financial sector with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we build intelligent financial solutions that support smarter risk management, personalized wealth advice, and seamless automated operations."
-        description2="Our mission is to help financial institutions and FinTech startups deliver faster, more secure, and highly personalized services through innovative digital tools."
-        image="/image/pages_img/Fintech_img.jpg"
-      />
-      <IndustryCapabilities 
-        title="Capabilities and Benefits of"
-        highlightedTitle="AI and ML in FinTech"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="financial intelligence"
-        capabilities={capabilities}
-      />
-      <AnimatedCarousel useCases={useCases} title="FinTech AI Solutions" subtitle="AI technology for modern financial services" />
-      <IndustrySuccessStories 
-        portfolioData={portfolioData}
-        title="Real-World"
-        highlightedTitle="AI Solutions"
-        subtitle="Discover how our cutting-edge AI technology has transformed"
-        highlightedSubtitle="financial operations"
-      />
-      <IndustryFAQ 
-        faqData={faqData}
-        title="Frequently Asked"
-        highlightedTitle="Questions"
-        subtitle="Everything you need to know about our"
-        highlightedSubtitle="AI-powered FinTech"
-      />
-      <Footer />
+
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        <IndustryHero
+          title="FinTech"
+          description="Empower your financial services with AI-driven fraud detection, credit scoring, automated wealth management, and personalized customer support. Drive efficiency and reduce risk."
+          bgImage="/image/pages_img/FinTech.jpg"
+        />
+        <IndustryProfessional
+          title="Innovative FinTech"
+          highlightedTitle="AI Software Solutions"
+          description1="We are revolutionizing the financial sector with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we build intelligent financial solutions that support smarter risk management, personalized wealth advice, and seamless automated operations."
+          description2="Our mission is to help financial institutions and FinTech startups deliver faster, more secure, and highly personalized services through innovative digital tools and platforms."
+          image="/image/pages_img/Fintech_img.jpg"
+        />
+        <IndustryCapabilities
+          title="Capabilities and Benefits of"
+          highlightedTitle="AI and ML in FinTech"
+          capabilities={capabilities}
+        />
+        <AnimatedCarousel useCases={useCases} title="FinTech AI Solutions" subtitle="AI technology for modern financial services" />
+        <IndustrySuccessStories
+          portfolioData={portfolioData}
+          title="Real-World"
+          highlightedTitle="AI Solutions"
+          subtitle="Discover how our cutting-edge AI technology has transformed"
+          highlightedSubtitle="financial operations"
+        />
+        <IndustryFAQ
+          faqData={faqData}
+          title="Frequently Asked"
+          highlightedTitle="Questions"
+          subtitle="Everything you need to know about our"
+          highlightedSubtitle="AI-powered FinTech"
+        />
+        <Footer />
+      </div>
     </div>
   );
 };

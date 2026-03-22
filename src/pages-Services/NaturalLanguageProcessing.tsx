@@ -423,7 +423,7 @@ const NaturalLanguageProcessing: React.FC = () => {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
                 <div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
-                  <img src="/image/services-img/WHY-CHOOSE-US.jpg" alt="Why Choose Us" className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="/image/pages_img/WHY-CHOOSE-US.jpg" alt="Why Choose Us" className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
               </div>
             </div>

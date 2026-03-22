@@ -28,124 +28,150 @@ const AnimatedCarousel: React.FC<AnimatedCarouselProps> = ({
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === useCases.length - itemsPerView ? 0 : prevIndex + 1
+      prevIndex === useCases.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? useCases.length - itemsPerView : prevIndex - 1
+      prevIndex === 0 ? useCases.length - 1 : prevIndex - 1
     );
   };
 
   const visibleItems = useCases.slice(currentIndex, currentIndex + itemsPerView);
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-cyan-50/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#ff0ea3]/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-ai-cyan/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+      </div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div 
-          className="text-center space-y-3 mb-10 sm:mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-block mb-2">
-            <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-cyan-200">
-              Solutions
-            </span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            {title}
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            {subtitle}
-          </p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
-        <div className="relative">
-          {/* Navigation Arrows */}
-          <motion.button
-            onClick={prevSlide}
-            className="hidden lg:flex absolute -left-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 items-center justify-center border border-purple-300"
-            whileHover={{ scale: 1.1, x: -4 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Previous use cases"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
+        {/* Top Header Row */}
+        <motion.div 
+          className="mb-12 lg:mb-16"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-2 sm:w-3 h-6 sm:h-8 rounded-none"
+                style={{
+                  background: '#ff0ea3',
+                  transform: 'skewX(-15deg)'
+                }}
+              ></div>
+              <span className="text-[#ff0ea3] font-bold text-sm uppercase tracking-widest">Innovation Hub</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#050729] leading-tight">
+              {title}
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+              {subtitle}
+            </p>
+          </div>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
           
-          <motion.button
-            onClick={nextSlide}
-            className="hidden lg:flex absolute -right-5 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-[#6D28D9] via-[#a855f7] to-[#ec4899] hover:from-[#5b21b6] hover:via-[#9333ea] hover:to-[#db2777] text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 items-center justify-center border border-purple-300"
-            whileHover={{ scale: 1.1, x: 4 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Next use cases"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-          
-          {/* Content Carousel */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            <AnimatePresence mode="wait">
-              {visibleItems.map((useCase, index) => (
-                <motion.div
-                  key={`${useCase.id}-${currentIndex}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-cyan-300 h-full flex flex-col">
-                    <motion.div 
-                      className="relative h-44 sm:h-48 overflow-hidden"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
+          {/* Left Side: Interactive List */}
+          <div className="space-y-2.5 flex flex-col">
+            {useCases.map((useCase, index) => (
+              <button
+                key={useCase.id}
+                onClick={() => setCurrentIndex(index)}
+                className={`group flex items-start gap-3 sm:gap-4 text-left px-4 py-2.5 sm:py-3 rounded-none transition-all duration-500 w-full max-w-lg relative overflow-hidden ${
+                  currentIndex === index 
+                    ? 'bg-white shadow-[0_15px_30px_-10px_rgba(0,0,0,0.08)] ring-1 ring-[#ff0ea3]/15 text-[#ff0ea3]' 
+                    : 'hover:bg-gray-50/60 hover:translate-x-1'
+                }`}
+              >
+                <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-none flex items-center justify-center flex-shrink-0 transition-all duration-500 transform ${
+                  currentIndex === index ? 'bg-[#ff0ea3] text-white rotate-6 scale-105 shadow-md shadow-[#ff0ea3]/20' : 'bg-gray-100 text-gray-400 group-hover:bg-gray-200'
+                }`}>
+                  <span className="text-xs sm:text-sm font-bold">{index + 1}</span>
+                </div>
+                <div className="space-y-0.5 sm:space-y-1">
+                  <h3 className={`font-bold text-sm sm:text-base transition-colors duration-300 ${
+                    currentIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'
+                  }`}>
+                    {useCase.title}
+                  </h3>
+                  {currentIndex === index && (
+                    <motion.p 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="text-gray-500 text-xs sm:text-sm leading-relaxed pr-2 font-normal"
                     >
-                      <img
-                        src={useCase.image}
-                        alt={useCase.alt}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </motion.div>
-                    <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="font-bold text-base text-gray-900 mb-2 leading-snug group-hover:text-cyan-600 transition-colors duration-300">
-                        {useCase.title}
-                      </h3>
-                      <p className="text-xs text-gray-600 leading-relaxed flex-1">
-                        {useCase.description}
-                      </p>
+                      {useCase.description}
+                    </motion.p>
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Right Side: Showcase Carousel */}
+          <div className="relative w-full h-full min-h-[400px] sm:min-h-[500px] lg:min-h-[450px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.95, x: 50 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 1.05, x: -50 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
+              >
+                <div className="h-full w-full bg-white rounded-none overflow-hidden shadow-[0_30px_70px_-15px_rgba(0,0,0,0.15)] border border-slate-100 flex flex-col group/card">
+                  <div className="relative flex-1 overflow-hidden">
+                    <img
+                      src={useCases[currentIndex].image}
+                      alt={useCases[currentIndex].alt}
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050729]/80 via-transparent to-transparent opacity-60" />
+                    
+                    {/* Navigation Overlays */}
+                    <div className="absolute bottom-6 right-6 flex gap-3">
+                      <button
+                        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                        className="w-10 h-10 rounded-none bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#ff0ea3] transition-all"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                        className="w-10 h-10 rounded-none bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#ff0ea3] transition-all"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                  
+                  <div className="p-4 sm:p-6 space-y-3 bg-white relative">
+                     {/* Decorative Top Line */}
+                    <div className="absolute top-0 left-0 w-16 h-1 bg-[#ff0ea3]"></div>
+                    
+                    <h3 className="text-lg sm:text-xl font-bold text-[#050729]">
+                      {useCases[currentIndex].title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                      {useCases[currentIndex].description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </AnimatePresence>
-          </div>
-          
-          {/* Navigation Dots */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {Array.from({ length: Math.ceil(useCases.length / itemsPerView) }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i * itemsPerView)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  currentIndex === i * itemsPerView 
-                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 w-6' 
-                    : 'bg-gray-300 w-1.5 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
           </div>
         </div>
       </div>

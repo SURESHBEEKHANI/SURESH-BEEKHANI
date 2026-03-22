@@ -9,14 +9,49 @@ import IndustryProfessional from "../components/IndustryProfessional";
 import IndustryCapabilities from "../components/IndustryCapabilities";
 import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
-
 const USE_CASES_DATA = [
-  { id: 1, title: "Robo-Advisory & Portfolio Management", description: "AI-driven investment recommendations, rebalancing, and risk-adjusted portfolio optimization.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Robo-Advisory" },
-  { id: 2, title: "Client Onboarding & KYC", description: "Automate identity verification, risk profiling, and compliance checks for faster onboarding.", image: "/image/pages_img/workflow-automation.jpg", alt: "Client Onboarding" },
-  { id: 3, title: "Wealth Management Chatbots", description: "AI assistants for account inquiries, investment updates, and personalized financial guidance.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Wealth Chatbots" },
-  { id: 4, title: "Predictive Analytics", description: "Market sentiment analysis, risk modeling, and scenario planning for better investment decisions.", image: "/image/pages_img/Early-Disease-Detection.jpg", alt: "Wealth Analytics" },
-  { id: 5, title: "Risk Assessment & Compliance", description: "AI-powered risk profiling, regulatory compliance monitoring, and automated reporting.", image: "/image/pages_img/Automated-Compliance-Monitoring.jpg", alt: "Risk Compliance" },
-  { id: 6, title: "Market Intelligence", description: "Real-time market analysis, trend detection, and investment opportunity identification with AI.", image: "/image/pages_img/AIconten.jpg", alt: "Market Intelligence" }
+  {
+    id: 1,
+    title: "Robo-Advisory & Portfolio Management",
+    description: "AI-driven investment recommendations, rebalancing, and risk-adjusted portfolio optimization.",
+    image: "/image/pages_img/robo-advisory-portfolio-management.jpg",
+    alt: "Robo Advisory and Portfolio Management"
+  },
+  {
+    id: 2,
+    title: "Client Onboarding & KYC",
+    description: "Automate identity verification, risk profiling, and compliance checks for faster onboarding.",
+    image: "/image/pages_img/client-onboarding-kyc.jpg",
+    alt: "Client Onboarding and KYC"
+  },
+  {
+    id: 3,
+    title: "Wealth Management Chatbots",
+    description: "AI assistants for account inquiries, investment updates, and personalized financial guidance.",
+    image: "/image/pages_img/wealth-management-chatbots.jpg",
+    alt: "Wealth Management Chatbots"
+  },
+  {
+    id: 4,
+    title: "Predictive Analytics",
+    description: "Market sentiment analysis, risk modeling, and scenario planning for better investment decisions.",
+    image: "/image/pages_img/Predictive-Analytics-Services.jpg",
+    alt: "Predictive Analytics"
+  },
+  {
+    id: 5,
+    title: "Risk Assessment & Compliance",
+    description: "AI-powered risk profiling, regulatory compliance monitoring, and automated reporting.",
+    image: "/image/pages_img/risk-assessment-compliance.jpg",
+    alt: "Risk Assessment and Compliance"
+  },
+  {
+    id: 6,
+    title: "Market Intelligence",
+    description: "Real-time market analysis, trend detection, and investment opportunity identification with AI.",
+    image: "/image/pages_img/market-intelligence.jpg",
+    alt: "Market Intelligence"
+  }
 ];
 
 const PORTFOLIO_DATA = [
@@ -173,34 +208,32 @@ const WealthTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="WealthTech"
         description="Transform wealth management with AI-powered robo-advisory, client onboarding, predictive analytics, and intelligent chatbots. Enhance client experience and scalability."
-        bgImage="/image/pages_img/workflow-automation.jpg"
+        bgImage="/image/pages_img/WealthTech.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative Wealth"
         highlightedTitle="AI Software Solutions"
         description1="We are transforming wealth management with the power of Artificial Intelligence. By combining machine learning, predictive analytics, and natural language processing, we create intelligent wealth management solutions that support robo-advisory, risk assessment, portfolio optimization, and personalized client experiences."
-        description2="Our mission is to help wealth management firms deliver smarter investment strategies, enhance client satisfaction, and scale operations efficiently through innovative AI-powered solutions."
-        image="/image/pages_img/workflow-automation.jpg"
+        description2="Our mission is to help wealth management firms deliver smarter investment strategies, enhance client satisfaction, and scale operations efficiently through innovative AI-powered tools and platforms."
+        image="/image/pages_img/WealthTech.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in WealthTech"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="wealth management operations"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="WealthTech AI Solutions" subtitle="AI technology for wealth management" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="wealth management operations"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"

@@ -80,21 +80,29 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
   }, [checkScrollButtons]);
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-      
+    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#ff0ea3]/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-ai-cyan/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16 sm:mb-20">
-          <div className="inline-block mb-4">
-            <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-cyan-200 shadow-sm">
-              {badgeText}
-            </span>
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-start gap-4 mb-4">
+            <div
+              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+              style={{
+                background: '#ff0ea3',
+                transform: 'skewX(-15deg)'
+              }}
+            ></div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[#050729] leading-tight">
+              {title} <span style={{ color: '#ff0ea3' }}>{highlightedTitle}</span>
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
-            {title} <span style={{ color: '#a855f7' }}>{highlightedTitle}</span>
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
-            {subtitle} <span className="text-slate-900 font-bold">{highlightedSubtitle}</span> worldwide.
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed">
+            {subtitle} <span className="font-semibold text-[#050729]">{highlightedSubtitle}</span> worldwide.
           </p>
         </div>
         
@@ -103,7 +111,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
           <button 
             onClick={() => scroll('left')} 
             disabled={!canScrollLeft} 
-            className={`absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] hover:from-[#d10b85] hover:via-[#ff0ea3] hover:to-[#ff07a4] text-white p-3 sm:p-4 rounded-none shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+            className={`absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-[#ff0ea3] text-[#ff0ea3] hover:text-white p-3 sm:p-4 rounded-none shadow-xl transition-all duration-300 border border-gray-100 transform hover:scale-110 ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -112,7 +120,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
           <button 
             onClick={() => scroll('right')} 
             disabled={!canScrollRight} 
-            className={`absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 z-20 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] hover:from-[#d10b85] hover:via-[#ff0ea3] hover:to-[#ff07a4] text-white p-3 sm:p-4 rounded-none shadow-2xl transition-all duration-300 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
+            className={`absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-[#ff0ea3] text-[#ff0ea3] hover:text-white p-3 sm:p-4 rounded-none shadow-xl transition-all duration-300 border border-gray-100 transform hover:scale-110 ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} 
             aria-label="Scroll right"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -131,31 +139,48 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
               {portfolioData.map((project, idx) => (
                 <div 
                   key={project.link + idx} 
-                  className="flex-shrink-0 w-80 sm:w-[420px] bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-purple-200 group/card transform hover:-translate-y-2"
+                  className="flex-shrink-0 w-80 sm:w-[420px] bg-white rounded-none overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-15px_rgba(255,14,163,0.25)] transition-all duration-500 border border-slate-100 hover:border-[#ff0ea3]/40 group/card transform hover:-translate-y-3 flex flex-col"
                 >
-                  <div className="relative h-52 sm:h-64 overflow-hidden">
+                  <div className="relative h-60 sm:h-72 overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" 
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050729]/80 via-[#050729]/20 to-transparent opacity-80 group-hover/card:opacity-90 transition-opacity duration-500" />
+                    
+                    {/* Floating Badge */}
+                    <div className="absolute top-5 left-5 bg-[#ff0ea3] text-white px-4 py-1.5 rounded-none text-[10px] font-bold uppercase tracking-widest shadow-lg transform -rotate-1 group-hover/card:rotate-0 transition-transform duration-300">
+                      Success Story
+                    </div>
+
+                    <div className="absolute bottom-6 left-6 right-6">
+                       <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight group-hover/card:text-[#ff0ea3] transition-colors duration-300 drop-shadow-md">
+                        {project.title}
+                      </h3>
+                    </div>
                   </div>
-                  <div className="p-6 sm:p-7 space-y-4">
-                    <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover/card:text-[#a855f7] transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed line-clamp-3">
+                  <div className="p-6 sm:p-8 space-y-5 flex flex-col flex-grow bg-white relative">
+                    {/* Top glass accent line */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ff0ea3]/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
-                    <Link 
-                      to={project.link} 
-                      className="inline-flex items-center gap-1.5 text-[#a855f7] font-bold text-sm hover:translate-x-1 transition-transform"
-                    >
-                      Learn More 
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    <div className="pt-4 mt-auto">
+                      <Link 
+                        to={project.link} 
+                        className="group/link inline-flex items-center gap-3 text-[#ff0ea3] font-bold text-sm tracking-wide"
+                      >
+                        <span className="relative">
+                          Case Study Details
+                        </span>
+                        <div className="w-8 h-8 rounded-full bg-[#ff0ea3]/5 flex items-center justify-center group-hover/link:bg-[#ff0ea3] group-hover/link:text-white transition-all duration-300">
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -163,11 +188,12 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
           </div>
           
           {/* Scroll Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: Math.ceil(portfolioData.length / 3) }).map((_, idx) => (
+          <div className="flex justify-center gap-2 mt-10">
+            {Array.from({ length: Math.ceil(portfolioData.length) }).map((_, idx) => (
               <div 
                 key={idx} 
-                className={`h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${idx === 0 ? 'w-8' : 'w-2'}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${isAutoScrolling ? 'bg-gray-200' : 'bg-[#ff0ea3]/20'}`}
+                style={{ width: idx === 0 ? '24px' : '6px' }}
               />
             ))}
           </div>

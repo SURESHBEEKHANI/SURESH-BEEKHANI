@@ -9,12 +9,48 @@ import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
 
 const USE_CASES_DATA = [
-  { id: 1, title: "AI-Powered Development Tools", description: "Code generation, automated testing, and intelligent debugging to accelerate development by 40%.", image: "/image/pages_img/workflow-automation.jpg", alt: "Dev Tools" },
-  { id: 2, title: "Intelligent IT Support", description: "AI chatbots for ticketing, incident resolution, and 24/7 IT helpdesk automation.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "IT Support" },
-  { id: 3, title: "DevOps & Infrastructure", description: "Predictive monitoring, automated scaling, and anomaly detection for reliable operations.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "DevOps" },
-  { id: 4, title: "Enterprise Software Solutions", description: "Custom AI integrations for ERP, CRM, and business systems—driving efficiency and insights.", image: "/image/pages_img/patient-scheduling.jpg", alt: "Enterprise Software" },
-  { id: 5, title: "Code Quality & Security", description: "AI-powered code review, vulnerability detection, and automated security testing for safer software.", image: "/image/pages_img/Automated-Compliance-Monitoring.jpg", alt: "Code Security" },
-  { id: 6, title: "Intelligent Documentation", description: "Auto-generate technical documentation, API specs, and code comments with AI assistance.", image: "/image/pages_img/AIconten.jpg", alt: "Documentation" }
+  {
+    id: 1,
+    title: "AI-Powered Development Tools",
+    description: "Code generation, automated testing, and intelligent debugging to accelerate development by 40%.",
+    image: "/image/pages_img/ai-powered-development-tools.jpg",
+    alt: "AI-Powered Development Tools"
+  },
+  {
+    id: 2,
+    title: "Intelligent IT Support",
+    description: "AI chatbots for ticketing, incident resolution, and 24/7 IT helpdesk automation.",
+    image: "/image/pages_img/intelligent-it-support.jpg",
+    alt: "Intelligent IT Support"
+  },
+  {
+    id: 3,
+    title: "DevOps & Infrastructure",
+    description: "Predictive monitoring, automated scaling, and anomaly detection for reliable operations.",
+    image: "/image/pages_img/devops-infrastructure.jpg",
+    alt: "DevOps & Infrastructure"
+  },
+  {
+    id: 4,
+    title: "Enterprise Software Solutions",
+    description: "Custom AI integrations for ERP, CRM, and business systems—driving efficiency and insights.",
+    image: "/image/pages_img/enterprise-software-solutions.jpg",
+    alt: "Enterprise Software Solutions"
+  },
+  {
+    id: 5,
+    title: "Code Quality & Security",
+    description: "AI-powered code review, vulnerability detection, and automated security testing for safer software.",
+    image: "/image/pages_img/code-quality-security.jpg",
+    alt: "Code Quality & Security"
+  },
+  {
+    id: 6,
+    title: "Intelligent Documentation",
+    description: "Auto-generate technical documentation, API specs, and code comments with AI assistance.",
+    image: "/image/pages_img/intelligent-documentation.jpg",
+    alt: "Intelligent Documentation"
+  }
 ];
 
 const PORTFOLIO_DATA = [
@@ -171,34 +207,32 @@ const ITSoftware: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="IT & Software"
         description="Transform your technology stack with AI-powered development tools, intelligent IT support, DevOps automation, and enterprise software solutions. Scale smarter."
-        bgImage="/image/pages_img/workflow-automation.jpg"
+        bgImage="/image/pages_img/IT-Software.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative IT &"
         highlightedTitle="AI Software Solutions"
         description1="We are transforming IT operations and software development with the power of Artificial Intelligence. By combining machine learning, intelligent automation, and predictive analytics, we create smart solutions that support faster development cycles, automated operations, proactive monitoring, and enhanced security."
         description2="Our mission is to help technology teams deliver more reliable, efficient, and innovative software solutions through cutting-edge AI-powered tools and platforms."
-        image="/image/pages_img/workflow-automation.jpg"
+        image="/image/pages_img/IT-Software.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in IT & Software"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="technology operations"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="IT & Software AI Solutions" subtitle="AI technology for modern software and IT" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="technology delivery"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"

@@ -9,10 +9,48 @@ import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
 
 const USE_CASES_DATA = [
-  { id: 1, title: "Personalized Workout Plans", description: "AI creates custom routines based on goals, fitness level, and preferences—boosting adherence by 45%.", image: "/image/pages_img/wellness-personalized.jpg", alt: "Personalized Workouts" },
-  { id: 2, title: "Wearable Data Analytics", description: "Process heart rate, steps, sleep, and activity data for actionable insights and progress tracking.", image: "/image/pages_img/remote-patient-monitoring.jpg", alt: "Wearable Analytics" },
-  { id: 3, title: "AI Fitness Coaches", description: "Virtual coaches provide form correction, motivation, and 24/7 guidance via chatbots and voice assistants.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "AI Coaches" },
-  { id: 4, title: "Nutrition & Recovery", description: "AI-powered meal plans, supplement recommendations, and recovery optimization for better outcomes.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Nutrition AI" }
+  {
+    id: 1,
+    title: "Personalized Workout Plans",
+    description: "AI builds custom routines based on goals, fitness level, and preferences.",
+    image: "/image/pages_img/personalized-workout-plans.jpg",
+    alt: "Personalized Workout Plans"
+  },
+  {
+    id: 2,
+    title: "Wearable Data Analytics",
+    description: "Track heart rate, sleep, and activity data for actionable insights.",
+    image: "/image/pages_img/wearable-data-analytics.jpg",
+    alt: "Wearable Data Analytics"
+  },
+  {
+    id: 3,
+    title: "AI Fitness Coaches",
+    description: "Virtual coaches offer real-time guidance, form correction, and motivation.",
+    image: "/image/pages_img/ai-fitness-coaches.jpg",
+    alt: "AI Fitness Coaches"
+  },
+  {
+    id: 4,
+    title: "Nutrition & Recovery",
+    description: "AI-driven meal plans, hydration tracking, and recovery insights.",
+    image: "/image/pages_img/nutrition-recovery.jpg",
+    alt: "Nutrition and Recovery"
+  },
+  {
+    id: 5,
+    title: "Injury Prevention & Risk Analysis",
+    description: "Analyze movement patterns to detect risks and prevent injuries.",
+    image: "/image/pages_img/injury-prevention-risk-analysis.jpg",
+    alt: "Injury Prevention and Risk Analysis"
+  },
+  {
+    id: 6,
+    title: "Smart Fitness Progress Tracking",
+    description: "Track progress with AI insights and adaptive goal recommendations.",
+    image: "/image/pages_img/smart-fitness-progress-tracking.jpg",
+    alt: "Smart Fitness Progress Tracking"
+  }
 ];
 
 const PORTFOLIO_DATA = [
@@ -169,39 +207,37 @@ const FitTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="FitTech"
         description="Transform fitness with AI-powered personalized workouts, wearable analytics, virtual coaches, and nutrition optimization. Enhance user engagement and outcomes."
-        bgImage="/image/pages_img/wellness-personalized.jpg"
+        bgImage="/image/pages_img/FitTech.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative FitTech"
         highlightedTitle="AI Software Solutions"
         description1="We are revolutionizing fitness and wellness with the power of Artificial Intelligence. By combining machine learning, computer vision, and wearable data analytics, we create intelligent fitness solutions that support personalized workouts, real-time form correction, nutrition optimization, and progress tracking."
-        description2="Our mission is to help fitness platforms and wellness apps deliver more engaging, effective, and personalized experiences that drive user retention and achieve better health outcomes."
-        image="/image/pages_img/wellness-personalized.jpg"
+        description2="Our mission is to help fitness platforms and wellness apps deliver more engaging, effective, and personalized experiences through innovative digital tools and platforms."
+        image="/image/pages_img/FitTech.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in FitTech"
-        subtitle="Delivering excellence in"
-        highlightedSubtitle="well-being intelligence"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="FitTech AI Solutions" subtitle="AI technology for fitness and wellness" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="fitness platforms"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"
         subtitle="Everything you need to know about our"
-        highlightedSubtitle="AI-powered fitness"
+        highlightedSubtitle="AI-powered FitTech"
       />
       <Footer />
     </div>

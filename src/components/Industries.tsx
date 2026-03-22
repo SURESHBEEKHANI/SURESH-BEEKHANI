@@ -11,7 +11,7 @@ const Industries = () => {
       id: 1,
       name: "FinTech",
       description: "Fraud detection, automated compliance, intelligent chatbots, and predictive analytics.",
-      image: "/image/Industries-img/FinTech.jpg",
+      image: "/image/pages_img/FinTech.jpg",
       link: "/fintech",
       features: ["Fraud Detection", "Compliance", "AI Chatbots", "Predictive Analytics"]
     },
@@ -19,7 +19,7 @@ const Industries = () => {
       id: 2,
       name: "HealthTech",
       description: "Patient scheduling, workflow automation, AI diagnostics, and predictive health insights.",
-      image: "/image/Industries-img/HealthTech.png",
+      image: "/image/pages_img/HealthTech.png",
       link: "/healthtech",
       features: ["Patient Scheduling", "Workflow Automation", "AI Diagnostics", "Predictive Analytics"]
     },
@@ -27,7 +27,7 @@ const Industries = () => {
       id: 3,
       name: "RetailTech",
       description: "Personalized recommendations, demand forecasting, AI shopping assistants, and visual search.",
-      image: "/image/Industries-img/RetailTech.jpg",
+      image: "/image/pages_img/RetailTech.jpg",
       link: "/retailtech",
       features: ["Recommendations", "Demand Forecasting", "AI Assistants", "Visual Search"]
     },
@@ -35,7 +35,7 @@ const Industries = () => {
       id: 4,
       name: "EdTech",
       description: "Personalized learning paths, AI tutoring, automated grading, and predictive analytics.",
-      image: "/image/Industries-img/EdTech.jpg",
+      image: "/image/pages_img/EdTech.jpg",
       link: "/edtech",
       features: ["Personalized Learning", "AI Tutors", "Auto Grading", "Learning Analytics"]
     },
@@ -43,7 +43,7 @@ const Industries = () => {
       id: 5,
       name: "FitTech",
       description: "Personalized workouts, wearable analytics, AI coaches, and nutrition optimization.",
-      image: "/image/Industries-img/FitTech.jpg",
+      image: "/image/pages_img/FitTech.jpg",
       link: "/fittech",
       features: ["Personalized Workouts", "Wearable Analytics", "AI Coaches", "Nutrition AI"]
     },
@@ -51,7 +51,7 @@ const Industries = () => {
       id: 6,
       name: "LegalTech",
       description: "Contract analysis, legal document search, compliance monitoring, and AI assistants.",
-      image: "/image/Industries-img/LegalTech.jpg",
+      image: "/image/pages_img/LegalTech.jpg",
       link: "/legaltech",
       features: ["Contract Analysis", "Legal Search", "Compliance", "AI Assistants"]
     },
@@ -59,7 +59,7 @@ const Industries = () => {
       id: 7,
       name: "WealthTech",
       description: "Robo-advisory, client onboarding, predictive analytics, and wealth management chatbots.",
-      image: "/image/Industries-img/WealthTech.jpg",
+      image: "/image/pages_img/WealthTech.jpg",
       link: "/wealthtech",
       features: ["Robo-Advisory", "Client Onboarding", "Predictive Analytics", "AI Chatbots"]
     },
@@ -67,7 +67,7 @@ const Industries = () => {
       id: 8,
       name: "IT & Software",
       description: "AI dev tools, intelligent IT support, DevOps automation, and enterprise software.",
-      image: "/image/Industries-img/IT-Software.jpg",
+      image: "/image/pages_img/IT-Software.jpg",
       link: "/it-software",
       features: ["AI Dev Tools", "IT Support", "DevOps", "Enterprise Solutions"]
     }

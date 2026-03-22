@@ -9,12 +9,12 @@ import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
 
 const USE_CASES_DATA = [
-  { id: 1, title: "Personalized Recommendations", description: "AI-driven product recommendations boost conversions by 30% and increase average order value through intelligent cross-sell and upsell.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Recommendations" },
-  { id: 2, title: "Inventory & Demand Forecasting", description: "Predict demand accurately, optimize stock levels, and reduce overstock/stockouts with machine learning.", image: "/image/pages_img/workflow-automation.jpg", alt: "Demand Forecasting" },
-  { id: 3, title: "AI Shopping Assistants", description: "Intelligent chatbots guide customers, answer product questions, and provide 24/7 personalized shopping support.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Shopping Assistants" },
-  { id: 4, title: "Visual Search & Discovery", description: "Customers find products by image. AI-powered visual search improves discoverability and reduces returns.", image: "/image/pages_img/Medical-Image-Analysis.webp", alt: "Visual Search" },
-  { id: 5, title: "Dynamic Pricing Optimization", description: "AI-powered pricing strategies that adjust in real-time based on demand, competition, and market conditions.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Dynamic Pricing" },
-  { id: 6, title: "Customer Sentiment Analysis", description: "Analyze reviews, feedback, and social media to understand customer sentiment and improve products.", image: "/image/pages_img/AIconten.jpg", alt: "Sentiment Analysis" }
+  { id: 1, title: "Personalized Recommendations", description: "AI-driven product recommendations boost conversions by 30% and increase average order value through intelligent cross-sell and upsell.", image: "/image/pages_img/Personalized-Recommendations.jpg", alt: "Recommendations" },
+  { id: 2, title: "Inventory & Demand Forecasting", description: "Predict demand accurately, optimize stock levels, and reduce overstock/stockouts with machine learning.", image: "/image/pages_img/Demand-Forecasting.jpg", alt: "Demand Forecasting" },
+  { id: 3, title: "AI Shopping Assistants", description: "Intelligent chatbots guide customers, answer product questions, and provide 24/7 personalized shopping support.", image: "/image/pages_img/AI-Shopping-Assistants.jpg", alt: "Shopping Assistants" },
+  { id: 4, title: "Visual Search & Discovery", description: "Customers find products by image. AI-powered visual search improves discoverability and reduces returns.", image: "/image/pages_img/Visual Search.jpg", alt: "Visual Search" },
+  { id: 5, title: "Dynamic Pricing Optimization", description: "AI-powered pricing strategies that adjust in real-time based on demand, competition, and market conditions.", image: "/image/pages_img/Dynamic-Pricing-Optimization.jpg", alt: "Dynamic Pricing" },
+  { id: 6, title: "Customer Sentiment Analysis", description: "Analyze reviews, feedback, and social media to understand customer sentiment and improve products.", image: "/image/pages_img/Sentiment-Analysis.jpg", alt: "Sentiment Analysis" }
 ];
 
 const PORTFOLIO_DATA = [
@@ -171,34 +171,32 @@ const RetailTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="RetailTech"
         description="Transform retail with AI-powered recommendations, demand forecasting, intelligent chatbots, and visual search. Boost sales and customer satisfaction."
         bgImage="/image/pages_img/RetailTech.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative Retail"
         highlightedTitle="AI Software Solutions"
         description1="We are revolutionizing retail and e-commerce with the power of Artificial Intelligence. By combining machine learning, computer vision, and predictive analytics, we create intelligent retail solutions that support personalized recommendations, demand forecasting, inventory optimization, and enhanced customer experiences."
-        description2="Our mission is to help retailers and e-commerce businesses deliver more engaging shopping experiences, optimize operations, and drive revenue growth through innovative AI-powered solutions."
+        description2="Our mission is to help retailers and e-commerce businesses deliver more engaging shopping experiences, optimize operations, and drive revenue growth through innovative AI-powered tools and platforms."
         image="/image/pages_img/RetailTech.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in RetailTech"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="retail operations"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="RetailTech AI Solutions" subtitle="AI technology for modern retail and e-commerce" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="retail operations"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"

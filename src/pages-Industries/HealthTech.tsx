@@ -7,12 +7,49 @@ import IndustryProfessional from "../components/IndustryProfessional";
 import IndustryCapabilities from "../components/IndustryCapabilities";
 import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
-
 const USE_CASES_DATA = [
-  { id: 1, title: "Intelligent Patient Scheduling", description: "AI-powered scheduling optimizes appointments, reduces no-shows by up to 40%, and maximizes resource utilization.", image: "/image/pages_img/patient-scheduling.jpg", alt: "Patient Scheduling" },
-  { id: 2, title: "Clinical Workflow Automation", description: "Streamline administrative tasks, automate documentation, and optimize clinical workflows for 35% efficiency gains.", image: "/image/pages_img/workflow-automation.jpg", alt: "Workflow Automation" },
-  { id: 3, title: "AI-Powered Virtual Assistants", description: "Intelligent chatbots handle patient inquiries, appointment scheduling, and deliver 24/7 multilingual support.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Healthcare Virtual Assistants" },
-  { id: 4, title: "Predictive Healthcare Analytics", description: "Machine learning predicts patient outcomes, readmission risks, and enables proactive data-driven care decisions.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Predictive Analytics" }
+  {
+    id: 1,
+    title: "Intelligent Patient Scheduling",
+    description: "Optimize appointments, reduce no-shows by up to 40%, and maximize resource use.",
+    image: "/image/pages_img/Intelligent Patient Scheduling.jpg",
+    alt: "Patient Scheduling"
+  },
+  {
+    id: 2,
+    title: "Clinical Workflow Automation",
+    description: "Streamline admin and clinical tasks to reduce errors and free up staff time.",
+    image: "/image/pages_img/Clinical Workflow Automation.jpg",
+    alt: "Workflow Automation"
+  },
+  {
+    id: 3,
+    title: "AI-Powered Virtual Assistants",
+    description: "Provide 24/7 patient support for queries, bookings, and follow-ups.",
+    image: "/image/pages_img/AI-Powered Virtual Assistants.jpg",
+    alt: "Healthcare Virtual Assistants"
+  },
+  {
+    id: 4,
+    title: "Predictive Healthcare Analytics",
+    description: "Analyze data to predict risks, enable early diagnosis, and guide decisions.",
+    image: "/image/pages_img/Predictive Healthcare Analytics.jpg",
+    alt: "Predictive Analytics"
+  },
+  {
+    id: 5,
+    title: "Medical Imaging & Diagnostics AI",
+    description: "AI analyzes X-rays, MRIs, and CT scans for faster, accurate diagnoses.",
+    image: "/image/pages_img/medical-imaging-ai.jpg",
+    alt: "Medical Imaging AI"
+  },
+  {
+    id: 6,
+    title: "Remote Patient Monitoring (RPM)",
+    description: "Track vital signs in real time, detect early issues, and reduce readmissions.",
+    image: "/image/pages_img/remote-patient-monitoring.jpg",
+    alt: "Remote Patient Monitoring"
+  }
 ];
 
 const PORTFOLIO_DATA = [
@@ -169,34 +206,32 @@ const HealthTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="HealthTech"
         description="Transform healthcare with AI-powered diagnostics, patient scheduling, workflow automation, and predictive analytics. Enhance patient outcomes and operational efficiency."
         bgImage="/image/pages_img/HealthTech.png"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative Healthcare"
         highlightedTitle="AI Software Solutions"
         description1="We are redefining healthcare software with the power of Artificial Intelligence. By combining machine learning, computer vision, and advanced analytics, we create intelligent healthcare solutions that support smarter diagnoses, personalized treatments, and data-driven decision-making."
-        description2="Our mission is to help healthcare providers deliver faster, smarter, and more effective patient care through innovative digital solutions."
+        description2="Our mission is to help healthcare providers deliver faster, smarter, and more effective patient care through innovative digital tools and platforms."
         image="/image/pages_img/hospitals-clinics.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in HealthTech"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="medical intelligence"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="HealthTech AI Solutions" subtitle="AI technology for modern healthcare delivery" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="healthcare delivery"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"

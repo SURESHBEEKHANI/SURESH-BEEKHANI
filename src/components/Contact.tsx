@@ -172,7 +172,7 @@ const Contact = () => {
                     <Button
                       onClick={() => setIsSubmitted(false)}
                       variant="outline"
-                      className="px-8 py-6 rounded-xl border-white/40 bg-white/10 text-white hover:bg-white hover:text-purple-600 transition-all font-bold backdrop-blur-sm border-2"
+                      className="px-8 py-6 rounded-none border-white/40 bg-white/10 text-white hover:bg-white hover:text-[#ff0ea3] transition-all font-bold backdrop-blur-sm border-2"
                     >
                       Send Another Message
                     </Button>
@@ -190,7 +190,7 @@ const Contact = () => {
                       name="helpType"
                       value={formData.helpType}
                       onChange={handleInputChange}
-                      className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                      className="w-full h-12 px-4 rounded-none border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all cursor-pointer appearance-none"
                       required
                     >
                       <option value="" disabled>Please Select One</option>
@@ -215,7 +215,7 @@ const Contact = () => {
                       name="industry"
                       value={formData.industry}
                       onChange={handleInputChange}
-                      className="w-full h-12 px-4 rounded-md border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all cursor-pointer appearance-none"
+                      className="w-full h-12 px-4 rounded-none border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all cursor-pointer appearance-none"
                       required
                     >
                       <option value="" disabled>Please Select One</option>
@@ -231,7 +231,6 @@ const Contact = () => {
                     </select>
                   </div>
 
-                  {/* First Name */}
                   <div className="space-y-2">
                     <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name*</Label>
                     <Input
@@ -240,7 +239,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="First Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -254,7 +253,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Last Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -269,7 +268,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -284,7 +283,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Phone"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -298,7 +297,7 @@ const Contact = () => {
                       value={formData.country}
                       onChange={handleInputChange}
                       placeholder="Country"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -312,7 +311,7 @@ const Contact = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Company Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
                       required
                     /></div>
                 </div>
@@ -326,7 +325,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="How can we help you?"
-                    className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all resize-none px-4 py-3"
+                    className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all resize-none px-4 py-3 rounded-none"
                     required
                   />
                 </div>
@@ -367,12 +366,12 @@ const Contact = () => {
                   <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-12 py-6 text-sm font-bold text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
-                  style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)' }}
+                  className="w-full sm:w-auto px-12 py-7 text-sm font-bold text-white shadow-lg hover:shadow-[#ff0ea3]/30 transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-none"
+                  style={{ background: '#ff0ea3' }}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="animate-spin rounded-none h-4 w-4 border-b-2 border-white mr-2"></div>
                       Submitting...
                     </>
                   ) : (

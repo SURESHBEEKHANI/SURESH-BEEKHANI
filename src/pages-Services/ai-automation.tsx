@@ -512,7 +512,7 @@ const AIAutonomous: React.FC = () => {
 						<div className={`relative group ${isVisible ? 'slide-left' : 'opacity-0'}`}>
 							<div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100">
 								<img
-									src="/image/services-img/WHY-CHOOSE-US.jpg"
+									src="/image/pages_img/WHY-CHOOSE-US.jpg"
 									alt="Why Choose Us"
 									className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
 								/>

@@ -119,9 +119,9 @@ const Navbar = () => {
       initial={prefersReducedMotion ? false : "hidden"}
       animate={prefersReducedMotion ? false : "visible"}
       variants={navbarVariants}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 group/navbar ${isScrolled
         ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
-        : 'bg-transparent'
+        : 'bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-lg hover:border-b hover:border-gray-200/50'
         }`}
       role="navigation"
       aria-label="Main navigation"
@@ -171,7 +171,7 @@ const Navbar = () => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#f755d7]'
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -197,7 +197,7 @@ const Navbar = () => {
                         transition={{ duration: 0.2 }}
                       >
                         <motion.div
-                          className="bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-gray-200/50 py-2 overflow-hidden"
+                          className="bg-white/95 backdrop-blur-xl shadow-xl border border-gray-200/50 py-2 overflow-hidden"
                           initial={prefersReducedMotion ? {} : { scale: 0.95 }}
                           animate={{ scale: 1 }}
                           transition={{ duration: 0.2 }}
@@ -226,7 +226,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#f755d7]'
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -279,7 +279,7 @@ const Navbar = () => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${isScrolled ? 'text-gray-900' : 'text-white'
+                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${isScrolled ? 'text-gray-900' : 'text-white group-hover/navbar:text-gray-900'
                   }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
@@ -326,7 +326,7 @@ const Navbar = () => {
               aria-label="Mobile navigation menu"
             >
               <motion.div
-                className="border-t border-white/20 mt-2 rounded-b-2xl shadow-2xl overflow-hidden max-h-[calc(100vh-4rem)] overflow-y-auto relative"
+                className="border-t border-white/20 mt-2 shadow-2xl overflow-hidden max-h-[calc(100vh-4rem)] overflow-y-auto relative"
                 style={{ background: '#0a0435' }}
                 initial={prefersReducedMotion ? {} : { y: -20 }}
                 animate={{ y: 0 }}
@@ -428,7 +428,7 @@ const Navbar = () => {
                     >
                       <Button
                         asChild
-                        className="border border-white/10 shadow-lg text-white rounded-xl px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
+                        className="border border-white/10 shadow-lg text-white px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
                         style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #a855f7 50%, #ec4899 100%)' }}
                       >
                         <a

@@ -12,9 +12,9 @@ const USE_CASES_DATA = [
   { id: 1, title: "Contract Analysis & Review", description: "AI extracts clauses, identifies risks, and compares contracts—reducing review time by 70%.", image: "/image/pages_img/contect-analyer.jpg", alt: "Contract Analysis" },
   { id: 2, title: "Legal Document Search", description: "Semantic search across case law, contracts, and precedents for faster, more accurate research.", image: "/image/pages_img/Legal Document Search.jpg", alt: "Legal Search" },
   { id: 3, title: "Compliance Monitoring", description: "Automate regulatory tracking, policy updates, and compliance reporting across jurisdictions.", image: "/image/pages_img/Compliance Monitoring.jpg", alt: "Compliance" },
-  { id: 4, title: "AI Legal Assistants", description: "Chatbots for client intake, case triage, document drafting, and 24/7 legal support.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "Legal Chatbots" },
-  { id: 5, title: "Due Diligence Automation", description: "AI-powered document review and analysis for M&A, real estate, and corporate transactions.", image: "/image/pages_img/Automated-Compliance-Monitoring.jpg", alt: "Due Diligence" },
-  { id: 6, title: "Legal Document Generation", description: "Auto-generate contracts, briefs, and legal documents with AI-powered templates and clause libraries.", image: "/image/pages_img/AIconten.jpg", alt: "Document Generation" }
+  { id: 4, title: "AI Legal Assistants", description: "Chatbots for client intake, case triage, document drafting, and 24/7 legal support.", image: "/image/pages_img/AI Legal Assistants.jpg", alt: "Legal Chatbots" },
+  { id: 5, title: "Due Diligence Automation", description: "AI-powered document review and analysis for M&A, real estate, and corporate transactions.", image: "/image/pages_img/Due Diligence Automation.jpg", alt: "Due Diligence" },
+  { id: 6, title: "Legal Document Generation", description: "Auto-generate contracts, briefs, and legal documents with AI-powered templates and clause libraries.", image: "/image/pages_img/Legal Document Generation.jpg", alt: "Document Generation" }
 ];
 
 const PORTFOLIO_DATA = [
@@ -171,34 +171,32 @@ const LegalTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="LegalTech"
         description="Transform legal operations with AI-powered contract analysis, document search, compliance monitoring, and intelligent assistants. Enhance efficiency and accuracy."
         bgImage="/image/pages_img/AI-Driven-Law-GPT.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative Legal"
         highlightedTitle="AI Software Solutions"
         description1="We are transforming legal operations with the power of Artificial Intelligence. By combining natural language processing, machine learning, and intelligent automation, we create smart legal solutions that support contract analysis, legal research, compliance monitoring, and document management."
         description2="Our mission is to help law firms and legal departments deliver faster, more accurate, and cost-effective legal services through innovative AI-powered tools and platforms."
         image="/image/pages_img/AI-Driven-Law-GPT.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in LegalTech"
-        subtitle="Driving innovation in"
-        highlightedSubtitle="legal intelligence"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="LegalTech AI Solutions" subtitle="AI technology for legal and compliance" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="legal operations"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"

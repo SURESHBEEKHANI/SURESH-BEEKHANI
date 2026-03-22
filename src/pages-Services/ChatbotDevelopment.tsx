@@ -548,7 +548,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							</>
 						),
 						cta: "Book a Demo",
-						image: "/image/services-img/Customer Support Bot.png",
+						image: "/image/pages_img/Customer Support Bot.png",
 					},
 					{
 						key: "SalesAssistant",
@@ -561,7 +561,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							</>
 						),
 						cta: "Book a Demo",
-						image: "/image/services-img/Sales Assistant Bot.jpg",
+						image: "/image/pages_img/Sales Assistant Bot.jpg",
 					},
 					{
 						key: "InternalAssistant",
@@ -574,7 +574,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							</>
 						),
 						cta: "Book a Demo",
-						image: "/image/services-img/Internal Operations.jpg",
+						image: "/image/pages_img/Internal Operations.jpg",
 					},
 				];
 				const [activeTab, setActiveTab] = React.useState("CustomerSupport");
@@ -647,7 +647,7 @@ const AIChatbotDevelopment: React.FC = () => {
 								<div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
 								<div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
 									<img
-										src="/image/services-img/WHY-CHOOSE-US.jpg"
+										src="/image/pages_img/WHY-CHOOSE-US.jpg"
 										alt="Why Choose Us"
 										className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
 									/>

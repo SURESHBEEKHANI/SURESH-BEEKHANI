@@ -9,12 +9,12 @@ import IndustrySuccessStories from "../components/IndustrySuccessStories";
 import IndustryFAQ from "../components/IndustryFAQ";
 
 const USE_CASES_DATA = [
-  { id: 1, title: "Personalized Learning Paths", description: "AI adapts content to each learner's pace, style, and goals—increasing engagement and completion rates by 40%.", image: "/image/pages_img/wellness-personalized.jpg", alt: "Personalized Learning" },
-  { id: 2, title: "Intelligent Tutoring Systems", description: "AI tutors provide instant feedback, explain concepts, and offer 24/7 support to enhance student outcomes.", image: "/image/pages_img/ai-chatbots-hospital.jpg", alt: "AI Tutors" },
-  { id: 3, title: "Automated Grading & Assessment", description: "Reduce grading time by 70% with AI that evaluates essays, assignments, and assessments with consistency.", image: "/image/pages_img/workflow-automation.jpg", alt: "Automated Grading" },
-  { id: 4, title: "Predictive Analytics", description: "Identify at-risk students early, recommend interventions, and optimize curriculum with data-driven insights.", image: "/image/pages_img/predictive-analytics-hospital.jpg", alt: "Learning Analytics" },
-  { id: 5, title: "Content Generation & Curation", description: "AI creates customized learning materials, quizzes, and study guides tailored to curriculum standards.", image: "/image/pages_img/AIconten.jpg", alt: "Content Generation" },
-  { id: 6, title: "Virtual Learning Assistants", description: "24/7 AI assistants answer student questions, provide study tips, and guide learners through complex topics.", image: "/image/pages_img/AI-Travel-Assistant-bg.jpg", alt: "Virtual Assistants" }
+  { id: 1, title: "Personalized Learning Paths", description: "AI adapts content to each learner's pace, style, and goals—increasing engagement and completion rates by 40%.", image: "/image/pages_img/Personalized-Learning-Paths.jpg", alt: "Personalized Learning" },
+  { id: 2, title: "Intelligent Tutoring Systems", description: "AI tutors provide instant feedback, explain concepts, and offer 24/7 support to enhance student outcomes.", image: "/image/pages_img/Intelligent-Tutoring-Systems.jpg", alt: "AI Tutors" },
+  { id: 3, title: "Automated Grading & Assessment", description: "Reduce grading time by 70% with AI that evaluates essays, assignments, and assessments with consistency.", image: "/image/pages_img/Automated-Grading-Assessment.jpg", alt: "Automated Grading" },
+  { id: 4, title: "Predictive Analytics", description: "Identify at-risk students early, recommend interventions, and optimize curriculum with data-driven insights.", image: "/image/pages_img/Predictive-Analytics.jpg", alt: "Learning Analytics" },
+  { id: 5, title: "Content Generation & Curation", description: "AI creates customized learning materials, quizzes, and study guides tailored to curriculum standards.", image: "/image/pages_img/Content-Generation.jpg", alt: "Content Generation" },
+  { id: 6, title: "Virtual Learning Assistants", description: "24/7 AI assistants answer student questions, provide study tips, and guide learners through complex topics.", image: "/image/pages_img/Virtual-Learning-Assistants.jpg", alt: "Virtual Assistants" }
 ];
 
 const PORTFOLIO_DATA = [
@@ -171,39 +171,37 @@ const EdTech: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex flex-col">
       <Navbar />
-      <IndustryHero 
+      <IndustryHero
         title="EdTech"
         description="Transform education with AI-powered personalized learning, intelligent tutoring, automated grading, and predictive analytics. Enhance student engagement and outcomes."
-        bgImage="/image/pages_img/wellness-personalized.jpg"
+        bgImage="/image/pages_img/EdTech.jpg"
       />
-      <IndustryProfessional 
+      <IndustryProfessional
         title="Innovative EdTech"
         highlightedTitle="AI Software Solutions"
         description1="We are transforming education with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we create intelligent learning solutions that support personalized education, automated assessment, and data-driven teaching strategies."
-        description2="Our mission is to help educational institutions deliver more engaging, effective, and accessible learning experiences through innovative digital solutions."
-        image="/image/pages_img/wellness-personalized.jpg"
+        description2="Our mission is to help educational institutions deliver more engaging, effective, and accessible learning experiences through innovative digital tools and platforms."
+        image="/image/pages_img/EdTech.jpg"
       />
-      <IndustryCapabilities 
+      <IndustryCapabilities
         title="Capabilities and Benefits of"
         highlightedTitle="AI and ML in EdTech"
-        subtitle="Delivering excellence in"
-        highlightedSubtitle="personalized learning"
         capabilities={capabilities}
       />
       <AnimatedCarousel useCases={useCases} title="EdTech AI Solutions" subtitle="AI technology for modern education" />
-      <IndustrySuccessStories 
+      <IndustrySuccessStories
         portfolioData={portfolioData}
         title="Real-World"
         highlightedTitle="AI Solutions"
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="educational institutions"
       />
-      <IndustryFAQ 
+      <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
         highlightedTitle="Questions"
         subtitle="Everything you need to know about our"
-        highlightedSubtitle="AI-powered education"
+        highlightedSubtitle="AI-powered EdTech"
       />
       <Footer />
     </div>
