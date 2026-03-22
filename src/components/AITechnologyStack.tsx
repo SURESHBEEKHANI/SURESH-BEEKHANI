@@ -62,7 +62,7 @@ const AITechnologyStack: React.FC = () => {
 			<div className="max-w-7xl mx-auto container-padding">
 				<div className={`text-center space-y-4 mb-10 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight">
-						AI Technology Stack
+						AI Technology <span className="text-[#ff0ea3]">Stack</span>
 					</h2>
 					<p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4 font-medium leading-relaxed">
 						Industry-leading AI platforms optimized for business development and intelligent operations.

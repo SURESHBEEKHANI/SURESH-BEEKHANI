@@ -90,7 +90,7 @@ const Industries = () => {
                 ></div>
 
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-                  Industries We Transform with Innovative  <span className="gradient-text-ai">AI Software Solutions</span>
+                  Industries We Transform with Innovative  <span className="text-[#ff0ea3]">AI Software Solutions</span>
                 </h2>
               </div>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-2xl font-medium leading-relaxed">
