@@ -144,7 +144,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-xl bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
+                  className={`p-3 bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
                 >
                   {social.icon}
                 </a>
@@ -159,17 +159,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Services</h3>
             <ul className="space-y-3 text-indigo-100/70 text-sm">
               {[
-                "AI Development",
-                "Machine Learning",
-                "Deep Learning",
-                "NLP Solutions",
-                "Computer Vision",
-                "Predictive AI",
-                "Chatbot Development",
-                "AI Automation"
+                { label: "AI Development", href: "/ai-development" },
+                { label: "Chatbot Development", href: "/ai-chatbot-development" },
+                { label: "ChatGPT Integration", href: "/chat-gpt-integrations" },
+                { label: "Machine Learning", href: "/machine-learning" },
+                { label: "Computer Vision", href: "/computer-vision" },
+                { label: "Natural Language Processing", href: "/natural-language-processing" },
+                { label: "Predictive Modeling", href: "/predictive-modelling" },
+                { label: "AI Automation", href: "/ai-automation" }
               ].map((service) => (
-                <li key={service} className="hover:text-fuchsia-400 transition-colors cursor-pointer">
-                  {service}
+                <li key={service.label}>
+                  <a href={service.href} className="hover:text-[#f92198] transition-colors">
+                    {service.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -183,13 +185,13 @@ const Footer = () => {
 
             <ul className="space-y-3 text-indigo-100/70 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} className="text-fuchsia-400" /> Pakistan
+                <MapPin size={16} style={{ color: '#f92198' }} /> Pakistan
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} className="text-fuchsia-400" /> sureshbeekhani26@gmail.com
+                <Mail size={16} style={{ color: '#f92198' }} /> sureshbeekhani26@gmail.com
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} className="text-fuchsia-400" /> +923401213187
+                <Phone size={16} style={{ color: '#f92198' }} /> +923401213187
               </li>
             </ul>
 
