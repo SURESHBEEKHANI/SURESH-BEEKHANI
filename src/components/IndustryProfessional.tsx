@@ -22,7 +22,7 @@ const IndustryProfessional: React.FC<IndustryProfessionalProps> = React.memo(({
         <div className="space-y-6 sm:space-y-8">
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-              {title} <span style={{ color: '#a855f7' }}>{highlightedTitle}</span>
+              {title} <span className="gradient-text-ai">{highlightedTitle}</span>
             </h2>
           </div>
           

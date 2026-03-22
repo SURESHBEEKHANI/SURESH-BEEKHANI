@@ -177,8 +177,8 @@ const FinTech: React.FC = () => {
         bgImage="/image/pages_img/FinTech.png"
       />
       <IndustryProfessional 
-        title="AI-Driven Financial"
-        highlightedTitle="Service Innovation"
+        title="Innovative FinTech"
+        highlightedTitle="AI Software Solutions"
         description1="We are revolutionizing the financial sector with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we build intelligent financial solutions that support smarter risk management, personalized wealth advice, and seamless automated operations."
         description2="Our mission is to help financial institutions and FinTech startups deliver faster, more secure, and highly personalized services through innovative digital tools."
         image="/image/pages_img/Fintech_img.jpg"

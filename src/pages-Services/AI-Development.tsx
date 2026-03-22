@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow } from "lucide-react";
+import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
@@ -78,6 +78,11 @@ const faqData = [
 
 const AIDevelopment: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+	const toggleFAQ = (index: number) => {
+		setOpenIndex(openIndex === index ? null : index);
+	};
 
 	useEffect(() => {
 		setIsVisible(true);
@@ -103,7 +108,7 @@ const AIDevelopment: React.FC = () => {
 			</section>
 
 			{/* AI Development Capabilities Section */}
-			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
+			<section className="py-8 sm:py-10 bg-white relative overflow-hidden">
 				<div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -111,7 +116,7 @@ const AIDevelopment: React.FC = () => {
 						<div className={`relative flex justify-center lg:justify-start order-2 lg:order-1 ${isVisible ? 'slide-left' : 'opacity-0'}`}>
 							<div className="relative group">
 								<div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-								<div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-100">
+								<div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
 									<img
 										src="/image/pages_img/Power-AI-Development.jpg"
 										alt="The Power of AI Development"
@@ -123,13 +128,18 @@ const AIDevelopment: React.FC = () => {
 
 						{/* Right: Content */}
 						<div className={`space-y-6 order-1 lg:order-2 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<div className="space-y-2">
-								<h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-									The Power of <span className="gradient-text-ai">AI Development</span>
-								</h2>
+							<div className="text-left space-y-3 sm:space-y-4 mb-10">
+								<div className="flex flex-col items-start gap-3 sm:gap-4">
+									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
+										The Power of <span className="gradient-text-ai">AI Development</span>
+									</h2>
+								</div>
+								<p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl font-medium leading-relaxed">
+									Unlock the full potential of artificial intelligence to transform your business operations, enhance customer experiences, and drive innovation across all industries.
+								</p>
 							</div>
 
-							<div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+							<div className="space-y-4 text-slate-600 text-lg leading-relaxed text-left">
 								<p>
 									Unlock the full potential of artificial intelligence to transform your business operations, enhance customer experiences, and drive innovation across all industries.
 								</p>
@@ -148,14 +158,13 @@ const AIDevelopment: React.FC = () => {
 			{/* Services Section */}
 			<section className="py-10 sm:py-14 ai-section">
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-base sm:text-lg lg:text-xl font-extrabold text-white">
-							AI Solutions for Industry
-						</h2>
-						<div className="flex justify-center">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+								AI Solutions for <span className="gradient-text-ai">Industry</span>
+							</h2>
 						</div>
-						<p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+						<p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
 							Intelligent AI technologies that drive innovation and efficiency across your business.
 						</p>
 					</div>
@@ -166,7 +175,7 @@ const AIDevelopment: React.FC = () => {
 								className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.1}s` }}
 							>
-								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
+								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-white`}>
 									{service.icon}
 								</div>
 								<h3 className="font-bold text-xs sm:text-sm text-white mb-1.5 text-center w-full">
@@ -182,17 +191,19 @@ const AIDevelopment: React.FC = () => {
 			</section>
 
 			{/* Strategic Benefits Infographic Section (Linear Flow Style) */}
-			<section className="relative overflow-hidden bg-white py-12 sm:py-16">
+			<section className="relative overflow-hidden bg-white py-8 sm:py-10">
 				{/* Technical Grid Background */}
 				<div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-4 mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-							AI Development <span className="gradient-text-ai">Benefits</span>
-						</h2>
-						<p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Deliver <span className="text-slate-900 font-bold">measurable business</span> value and competitive advantage through AI innovation.
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
+								AI Development <span className="gradient-text-ai">Benefits</span>
+							</h2>
+						</div>
+						<p className="text-xs sm:text-sm md:text-base text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+							Deliver better business outcomes and operational excellence through AI innovation.
 						</p>
 					</div>
 
@@ -200,7 +211,7 @@ const AIDevelopment: React.FC = () => {
 						{/* Horizontal Connecting Line (Desktop Only) */}
 						<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] bg-slate-100 -translate-y-1/2 z-0"></div>
 
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10">
+						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
 							{[
 								{
 									title: "Operational Efficiency",
@@ -288,7 +299,7 @@ const AIDevelopment: React.FC = () => {
 			<AITechnologyStack />
 
 			{/* AI Implementation Process Section (Pill-Style Infographic) */}
-			<section className="bg-[#01010c] relative overflow-hidden py-12 sm:py-16">
+			<section className="bg-[#01010c] relative overflow-hidden py-8 sm:py-10">
 				{/* High-Tech Background Layers */}
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
@@ -296,14 +307,15 @@ const AIDevelopment: React.FC = () => {
 				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-4 mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-							AI Implementation <span className="gradient-text-ai"> Process</span>
-						</h2>
-						<p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
-							Proven methodology for deploying <span className="text-gray-100 font-bold">secure, scalable, and intelligent AI solutions</span>.
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+								AI Implementation <span className="gradient-text-ai">Process</span>
+							</h2>
+						</div>
+						<p className="text-xs sm:text-sm md:text-base text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
+							Proven methodology for deploying secure, scalable, and intelligent AI solutions.
 						</p>
-						<div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mt-4 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
 					</div>
 
 					<div className="relative flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-0">
@@ -404,14 +416,16 @@ const AIDevelopment: React.FC = () => {
 			</section>
 
 			{/* Why Choose Us Section (Modern Side-by-Side Layout) */}
-			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
+			<section className="py-8 sm:py-10 bg-white relative overflow-hidden">
 				<div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-blue-50/50 to-transparent pointer-events-none" />
 				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-4 mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-							Why Choose <span className="gradient-text-ai">Us?</span>
-						</h2>
-						<p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
+								Why Choose <span className="gradient-text-ai">Us?</span>
+							</h2>
+						</div>
+						<p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
 							Industry expertise with proven results across multiple sectors and use cases.
 						</p>
 					</div>
@@ -421,10 +435,10 @@ const AIDevelopment: React.FC = () => {
 						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
 							<div className="relative group">
 								<div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-								<div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-100">
+								<div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
 									<img
-										src="/image/services-img/ai_workspace_do_more.png"
-										alt="AI Development Workspace"
+										src="/image/services-img/WHY-CHOOSE-US.jpg"
+										alt="Why Choose Us"
 										className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
 									/>
 								</div>
@@ -477,27 +491,53 @@ const AIDevelopment: React.FC = () => {
 			<AIOnboardingProcess serviceName="AI" />
 
 			{/* FAQ Section */}
-			<section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+			<section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
 				<div className="max-w-4xl mx-auto">
-					<div className="text-center mb-6 sm:mb-8">
-						<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-						<div className="flex justify-center mb-2">
-							<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+								Frequently Asked <span className="gradient-text-ai">Questions</span>
+							</h2>
 						</div>
-						<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+						<p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
 							Common questions about AI development and our services.
 						</p>
 					</div>
-					<div className="space-y-3 sm:space-y-4">
-						{faqData.map((faq, idx) => (
-							<details key={idx} className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-								<summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-[#ec4899] transition-colors duration-200">
-									{faq.question}
-									<span className="ml-2 text-gray-900 group-hover:text-[#ec4899] group-open:hidden">+</span>
-									<span className="ml-2 text-gray-900 group-hover:text-[#ec4899] hidden group-open:inline">-</span>
-								</summary>
-								<div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">{faq.answer}</div>
-							</details>
+					<div className="space-y-3">
+						{faqData.map((faq, index) => (
+							<div
+								key={index}
+								className="border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
+								style={openIndex === index ? {
+									borderColor: 'rgba(255, 14, 163, 0.5)',
+									boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
+								} : {}}
+							>
+								<button
+									onClick={() => toggleFAQ(index)}
+									className="w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 hover:bg-transparent"
+									style={openIndex === index ? {
+										background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.1) 50%, rgba(255, 14, 163, 0.05) 100%)'
+									} : {}}
+								>
+									<div className="flex items-center justify-between w-full">
+										<h3 className={`text-sm sm:text-base font-bold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'}`}>
+											{faq.question}
+										</h3>
+										{openIndex === index ? (
+											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#ff0ea3' }} />
+										) : (
+											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#ff0ea3]" />
+										)}
+									</div>
+								</button>
+
+								{openIndex === index && (
+									<div className="px-5 sm:px-6 pb-5 sm:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed border-t border-gray-100 bg-white">
+										<div className="pt-4">{faq.answer}</div>
+									</div>
+								)}
+							</div>
 						))}
 					</div>
 				</div>

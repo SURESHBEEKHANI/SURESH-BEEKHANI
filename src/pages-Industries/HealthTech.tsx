@@ -175,8 +175,8 @@ const HealthTech: React.FC = () => {
         bgImage="/image/pages_img/HealthTech.png"
       />
       <IndustryProfessional 
-        title="AI-Driven Healthcare"
-        highlightedTitle="Software Innovation"
+        title="Innovative Healthcare"
+        highlightedTitle="AI Software Solutions"
         description1="We are redefining healthcare software with the power of Artificial Intelligence. By combining machine learning, computer vision, and advanced analytics, we create intelligent healthcare solutions that support smarter diagnoses, personalized treatments, and data-driven decision-making."
         description2="Our mission is to help healthcare providers deliver faster, smarter, and more effective patient care through innovative digital solutions."
         image="/image/pages_img/hospitals-clinics.jpg"

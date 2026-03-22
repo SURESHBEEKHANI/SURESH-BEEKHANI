@@ -177,8 +177,8 @@ const RetailTech: React.FC = () => {
         bgImage="/image/pages_img/RetailTech.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven Retail"
-        highlightedTitle="Technology Innovation"
+        title="Innovative Retail"
+        highlightedTitle="AI Software Solutions"
         description1="We are revolutionizing retail and e-commerce with the power of Artificial Intelligence. By combining machine learning, computer vision, and predictive analytics, we create intelligent retail solutions that support personalized recommendations, demand forecasting, inventory optimization, and enhanced customer experiences."
         description2="Our mission is to help retailers and e-commerce businesses deliver more engaging shopping experiences, optimize operations, and drive revenue growth through innovative AI-powered solutions."
         image="/image/pages_img/RetailTech.jpg"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Eye, Target, Users, Video, FileText, Brain, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare, Mail, TrendingUp } from "lucide-react";
+import { Eye, Target, Users, Video, FileText, Brain, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare, Mail, TrendingUp, Plus, Minus } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
@@ -101,8 +101,36 @@ const cvSolutions = [
 const ComputerVisionPro: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("VisionAI");
+  const [activeTab, setActiveTab ] = useState("VisionAI");
   const [isVisible, setIsVisible] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const faqData = [
+    {
+      question: "What is Computer Vision?",
+      answer: "Computer vision is AI technology that enables machines to interpret and understand visual information from images and videos. It powers applications like object detection, facial recognition, quality inspection, and automated visual analysis across industries."
+    },
+    {
+      question: "How can computer vision benefit my business?",
+      answer: "Computer vision automates visual tasks, improves quality control, enhances security monitoring, enables real-time analytics, reduces manual labor, and provides actionable insights from visual data—driving efficiency and cost savings across operations."
+    },
+    {
+      question: "What types of applications can computer vision handle?",
+      answer: "Our computer vision solutions handle object detection and tracking, facial recognition, image classification, OCR and document processing, quality inspection, defect detection, video analytics, security surveillance, and automated visual analysis across manufacturing, retail, security, and more."
+    },
+    {
+      question: "Is your computer vision solution secure?",
+      answer: "Yes, all our computer vision solutions are built with enterprise-grade security. We implement robust encryption, access controls, secure data handling, and compliance with industry standards (GDPR, SOC 2) to protect your visual data and business information."
+    },
+    {
+      question: "How do I get started with computer vision?",
+      answer: "Contact us for a consultation. We'll assess your visual workflows, discuss your business challenges, evaluate integration with your existing systems, and provide a detailed proposal with timeline and implementation roadmap for seamless deployment."
+    }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
@@ -129,7 +157,7 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* Computer Vision Capabilities Section */}
-      <section className="py-10 sm:py-14 bg-white relative overflow-hidden">
+      <section className="py-8 sm:py-10 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto container-padding">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -137,7 +165,7 @@ const ComputerVisionPro: React.FC = () => {
             <div className={`relative flex justify-center lg:justify-start order-2 lg:order-1 ${isVisible ? 'slide-left' : 'opacity-0'}`}>
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-100">
+                <div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
                   <img
                     src="/image/pages_img/Power-Computer-Vision.avif"
                     alt="The Power of Computer Vision"
@@ -148,12 +176,17 @@ const ComputerVisionPro: React.FC = () => {
             </div>
             {/* Right: Content */}
             <div className={`space-y-6 order-1 lg:order-2 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <div className="space-y-2">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-                  The Power of <span className="gradient-text-ai">Computer Vision</span>
-                </h2>
+              <div className="text-left space-y-3 sm:space-y-4 mb-10">
+                <div className="flex flex-col items-start gap-3 sm:gap-4">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
+                    The Power of <span className="gradient-text-ai">Computer Vision</span>
+                  </h2>
+                </div>
+                <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl font-medium leading-relaxed">
+                  Transform your business operations with advanced computer vision technology.
+                </p>
               </div>
-              <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+              <div className="space-y-4 text-slate-600 text-lg leading-relaxed text-left">
                 <p>
                   Transform your business operations with advanced computer vision technology. Our AI-powered solutions enable organizations to analyze images and video, detect patterns, automate visual tasks, and extract actionable insights with unprecedented accuracy and speed.
                 </p>
@@ -172,14 +205,13 @@ const ComputerVisionPro: React.FC = () => {
       {/* Services Section */}
       <section className="py-10 sm:py-14 ai-section">
         <div className="max-w-7xl mx-auto container-padding">
-          <div className={`text-center space-y-2 mb-8 sm:mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <h2 className="text-base sm:text-lg lg:text-xl font-extrabold text-white">
-              Computer Vision Services
-            </h2>
-            <div className="flex justify-center">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"></div>
+          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+                Computer Vision <span className="gradient-text-ai">Services</span>
+              </h2>
             </div>
-            <p className="text-base sm:text-xl font-semibold text-gray-300 max-w-3xl mx-auto px-4">
+            <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
               Intelligent visual AI solutions transforming business operations across all industries.
             </p>
           </div>
@@ -190,7 +222,7 @@ const ComputerVisionPro: React.FC = () => {
                 className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-2 mx-auto text-white`}>
+                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-white`}>
                   {service.icon}
                 </div>
                 <h3 className="font-bold text-xs sm:text-sm text-white mb-1.5 text-center w-full">
@@ -206,15 +238,17 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* Strategic Benefits Infographic Section (Linear Flow Style) */}
-      <section className="relative overflow-hidden bg-white py-12 sm:py-16">
+      <section className="relative overflow-hidden bg-white py-8 sm:py-10">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40" />
         <div className="max-w-7xl mx-auto container-padding relative z-10">
-          <div className={`text-center space-y-4 mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Computer Vision <span className="gradient-text-ai">Benefits</span>
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-              Transforming business operations through <span className="text-slate-900 font-bold">AI-powered visual intelligence</span> and automation.
+          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
+                Computer Vision <span className="gradient-text-ai">Benefits</span>
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+              Transforming business operations through AI-powered visual intelligence and automation.
             </p>
           </div>
           <div className="relative px-4">
@@ -263,20 +297,21 @@ const ComputerVisionPro: React.FC = () => {
       <AITechnologyStack />
 
       {/* AI Implementation Process (Pill-Style Infographic) */}
-      <section className="bg-[#01010c] relative overflow-hidden py-12 sm:py-16">
+      <section className="bg-[#01010c] relative overflow-hidden py-8 sm:py-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
         <div className="max-w-7xl mx-auto container-padding relative z-10">
-          <div className={`text-center space-y-4 mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-              AI Implementation <span className="gradient-text-ai">Process</span>
-            </h2>
-            <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
-              Proven methodology for deploying <span className="text-gray-100 font-bold">secure, intelligent computer vision solutions</span>.
+          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+                AI Implementation <span className="gradient-text-ai">Process</span>
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm md:text-base text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
+              Proven methodology for deploying secure, intelligent computer vision solutions.
             </p>
-            <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mt-4 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
           </div>
           <div className="relative flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-0">
             <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
@@ -373,14 +408,16 @@ const ComputerVisionPro: React.FC = () => {
       </section>
 
       {/* Why Choose Us Section (Modern Side-by-Side Layout) */}
-      <section className="py-10 sm:py-14 bg-white relative overflow-hidden">
+      <section className="py-8 sm:py-10 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-blue-50/50 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto container-padding">
-          <div className={`text-center space-y-4 mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Why Choose <span className="gradient-text-ai">Us?</span>
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
+                Why Choose <span className="gradient-text-ai">Us?</span>
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
               Industry expertise with proven results across multiple sectors and use cases.
             </p>
           </div>
@@ -388,8 +425,8 @@ const ComputerVisionPro: React.FC = () => {
             <div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-100">
-                  <img src="/image/pages_img/Power-Computer-Vision.avif" alt="Computer Vision Workspace" className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
+                  <img src="/image/services-img/WHY-CHOOSE-US.jpg" alt="Why Choose Us" className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -401,7 +438,7 @@ const ComputerVisionPro: React.FC = () => {
                 { num: "04", title: "Proven Track Record", desc: "Organizations achieving improved accuracy, reduced costs, and enhanced operational efficiency.", color: "bg-[#f39c12]" }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.1}s` }}>
-                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-xl flex items-center justify-center text-white font-black text-sm sm:text-base shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-none flex items-center justify-center text-white font-black text-sm sm:text-base shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     {item.num}
                   </div>
                   <div>
@@ -418,64 +455,55 @@ const ComputerVisionPro: React.FC = () => {
       <AIOnboardingProcess serviceName="computer vision" />
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-            <div className="flex justify-center mb-2">
-              <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
+          <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+                Frequently Asked <span className="gradient-text-ai">Questions</span>
+              </h2>
             </div>
-            <p className="text-base sm:text-xl text-gray-800 max-w-3xl mx-auto px-4">
+            <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
               Common questions about computer vision implementation and our AI services.
             </p>
           </div>
           {/* FAQ Accordion */}
-          <div className="space-y-3 sm:space-y-4">
-            {/* FAQ 1 */}
-            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-                What is Computer Vision?
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-              </summary>
-              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Computer vision is AI technology that enables machines to interpret and understand visual information from images and videos. It powers applications like object detection, facial recognition, quality inspection, and automated visual analysis across industries.</div>
-            </details>
-            {/* FAQ 2 */}
-            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-                How can computer vision benefit my business?
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-              </summary>
-              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Computer vision automates visual tasks, improves quality control, enhances security monitoring, enables real-time analytics, reduces manual labor, and provides actionable insights from visual data—driving efficiency and cost savings across operations.</div>
-            </details>
-            {/* FAQ 3 */}
-            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-                What types of applications can computer vision handle?
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-              </summary>
-              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Our computer vision solutions handle object detection and tracking, facial recognition, image classification, OCR and document processing, quality inspection, defect detection, video analytics, security surveillance, and automated visual analysis across manufacturing, retail, security, and more.</div>
-            </details>
-            {/* FAQ 4 */}
-            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-                Is your computer vision solution secure?
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-              </summary>
-              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Yes, all our computer vision solutions are built with enterprise-grade security. We implement robust encryption, access controls, secure data handling, and compliance with industry standards (GDPR, SOC 2) to protect your visual data and business information.</div>
-            </details>
-            {/* FAQ 5 */}
-            <details className="bg-white/95 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 p-3 sm:p-4 group">
-              <summary className="cursor-pointer font-semibold text-sm sm:text-base text-gray-900 flex items-center justify-between group-hover:text-blue-700 transition-colors duration-200">
-                How do I get started with computer vision?
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 group-open:hidden">+</span>
-                <span className="ml-2 text-gray-900 group-hover:text-blue-700 hidden group-open:inline">-</span>
-              </summary>
-              <div className="pt-2 sm:pt-3 text-gray-900 text-xs sm:text-sm">Contact us for a consultation. We'll assess your visual workflows, discuss your business challenges, evaluate integration with your existing systems, and provide a detailed proposal with timeline and implementation roadmap for seamless deployment.</div>
-            </details>
+          <div className="space-y-3">
+            {faqData.map((faq, index) => (
+              <div
+                key={index}
+                className="border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
+                style={openIndex === index ? {
+                  borderColor: 'rgba(255, 14, 163, 0.5)',
+                  boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
+                } : {}}
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 hover:bg-transparent"
+                  style={openIndex === index ? {
+                    background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.1) 50%, rgba(255, 14, 163, 0.05) 100%)'
+                  } : {}}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <h3 className={`text-sm sm:text-base font-bold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'}`}>
+                      {faq.question}
+                    </h3>
+                    {openIndex === index ? (
+                      <Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#ff0ea3' }} />
+                    ) : (
+                      <Plus className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#ff0ea3]" />
+                    )}
+                  </div>
+                </button>
+
+                {openIndex === index && (
+                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed border-t border-gray-100 bg-white">
+                    <div className="pt-4">{faq.answer}</div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

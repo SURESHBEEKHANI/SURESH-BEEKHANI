@@ -175,8 +175,8 @@ const FitTech: React.FC = () => {
         bgImage="/image/pages_img/wellness-personalized.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven Fitness"
-        highlightedTitle="Technology Innovation"
+        title="Innovative FitTech"
+        highlightedTitle="AI Software Solutions"
         description1="We are revolutionizing fitness and wellness with the power of Artificial Intelligence. By combining machine learning, computer vision, and wearable data analytics, we create intelligent fitness solutions that support personalized workouts, real-time form correction, nutrition optimization, and progress tracking."
         description2="Our mission is to help fitness platforms and wellness apps deliver more engaging, effective, and personalized experiences that drive user retention and achieve better health outcomes."
         image="/image/pages_img/wellness-personalized.jpg"

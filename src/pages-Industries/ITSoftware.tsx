@@ -177,8 +177,8 @@ const ITSoftware: React.FC = () => {
         bgImage="/image/pages_img/workflow-automation.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven IT &"
-        highlightedTitle="Software Innovation"
+        title="Innovative IT &"
+        highlightedTitle="AI Software Solutions"
         description1="We are transforming IT operations and software development with the power of Artificial Intelligence. By combining machine learning, intelligent automation, and predictive analytics, we create smart solutions that support faster development cycles, automated operations, proactive monitoring, and enhanced security."
         description2="Our mission is to help technology teams deliver more reliable, efficient, and innovative software solutions through cutting-edge AI-powered tools and platforms."
         image="/image/pages_img/workflow-automation.jpg"

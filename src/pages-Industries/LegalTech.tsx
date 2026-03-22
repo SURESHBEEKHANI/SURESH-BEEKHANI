@@ -177,8 +177,8 @@ const LegalTech: React.FC = () => {
         bgImage="/image/pages_img/AI-Driven-Law-GPT.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven Legal"
-        highlightedTitle="Technology Innovation"
+        title="Innovative Legal"
+        highlightedTitle="AI Software Solutions"
         description1="We are transforming legal operations with the power of Artificial Intelligence. By combining natural language processing, machine learning, and intelligent automation, we create smart legal solutions that support contract analysis, legal research, compliance monitoring, and document management."
         description2="Our mission is to help law firms and legal departments deliver faster, more accurate, and cost-effective legal services through innovative AI-powered tools and platforms."
         image="/image/pages_img/AI-Driven-Law-GPT.jpg"

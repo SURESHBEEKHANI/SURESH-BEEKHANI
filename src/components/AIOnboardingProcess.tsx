@@ -61,7 +61,6 @@ const AIOnboardingProcess: React.FC<AIOnboardingProcessProps> = ({ serviceName, 
           <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
             Simple, transparent steps to <span className="text-gray-100 font-bold">launch your {serviceName} project</span>.
           </p>
-          <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mt-4 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {displaySteps.map((step, idx) => (

@@ -179,8 +179,8 @@ const WealthTech: React.FC = () => {
         bgImage="/image/pages_img/workflow-automation.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven Wealth"
-        highlightedTitle="Management Innovation"
+        title="Innovative Wealth"
+        highlightedTitle="AI Software Solutions"
         description1="We are transforming wealth management with the power of Artificial Intelligence. By combining machine learning, predictive analytics, and natural language processing, we create intelligent wealth management solutions that support robo-advisory, risk assessment, portfolio optimization, and personalized client experiences."
         description2="Our mission is to help wealth management firms deliver smarter investment strategies, enhance client satisfaction, and scale operations efficiently through innovative AI-powered solutions."
         image="/image/pages_img/workflow-automation.jpg"

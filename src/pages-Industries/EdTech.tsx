@@ -177,8 +177,8 @@ const EdTech: React.FC = () => {
         bgImage="/image/pages_img/wellness-personalized.jpg"
       />
       <IndustryProfessional 
-        title="AI-Driven Education"
-        highlightedTitle="Software Innovation"
+        title="Innovative EdTech"
+        highlightedTitle="AI Software Solutions"
         description1="We are transforming education with the power of Artificial Intelligence. By combining machine learning, natural language processing, and advanced analytics, we create intelligent learning solutions that support personalized education, automated assessment, and data-driven teaching strategies."
         description2="Our mission is to help educational institutions deliver more engaging, effective, and accessible learning experiences through innovative digital solutions."
         image="/image/pages_img/wellness-personalized.jpg"

@@ -60,14 +60,11 @@ const AITechnologyStack: React.FC = () => {
 	return (
 		<section className="py-10 sm:py-14 bg-white relative">
 			<div className="max-w-7xl mx-auto container-padding">
-				<div className={`text-center space-y-2 mb-8 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-					<h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
+				<div className={`text-center space-y-4 mb-10 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight">
 						AI Technology Stack
 					</h2>
-					<div className="flex justify-center">
-						<div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
-					</div>
-					<p className="text-base sm:text-xl text-gray-900 max-w-3xl mx-auto px-4">
+					<p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4 font-medium leading-relaxed">
 						Industry-leading AI platforms optimized for business development and intelligent operations.
 					</p>
 				</div>
