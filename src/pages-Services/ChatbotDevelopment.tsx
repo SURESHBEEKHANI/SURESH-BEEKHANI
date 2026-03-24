@@ -521,7 +521,7 @@ const AIChatbotDevelopment: React.FC = () => {
 									</button>
 								))}
 							</div>
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center bg-white/80 rounded-none sm:rounded-3xl shadow-lg p-6 sm:p-8">
+							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center bg-white/80 rounded-none shadow-lg p-6 sm:p-8">
 								<div>
 									<h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">{solution.name}</h3>
 									<div className="text-sm sm:text-base lg:text-lg text-gray-900 mb-4 sm:mb-6 leading-relaxed">{solution.description}</div>
@@ -530,7 +530,7 @@ const AIChatbotDevelopment: React.FC = () => {
 									<img
 										src={solution.image}
 										alt={solution.name}
-										className="max-w-full rounded-none sm:rounded-3xl shadow-xl border-4 border-blue-100"
+										className="max-w-full rounded-none shadow-xl border-4 border-blue-100"
 										style={{ minHeight: 200, objectFit: "cover" }}
 									/>
 								</div>
