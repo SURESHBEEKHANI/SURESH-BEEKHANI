@@ -513,8 +513,8 @@ const AIChatbotDevelopment: React.FC = () => {
 										key={s.key}
 										onClick={() => setActiveTab(s.key)}
 										className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-none font-bold shadow-lg transition-all border-2 text-sm sm:text-base ${activeTab === s.key
-											? "bg-gradient-to-r from-[#6D28D9] via-[#8B5CF6] to-[#ec4899] text-white border-transparent scale-105"
-											: "bg-white text-gray-900 border-gray-200 hover:border-[#ec4899] hover:text-[#ec4899]"
+											? "bg-[#ff0ea3] text-white border-transparent scale-105"
+											: "bg-white text-gray-900 border-gray-200 hover:border-[#ff0ea3] hover:text-[#ff0ea3]"
 											}`}
 									>
 										{s.name}

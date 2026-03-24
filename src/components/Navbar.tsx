@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -20,6 +20,8 @@ const WhatsAppLogo = () => (
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('home');
@@ -32,14 +34,26 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      const currentScrollY = window.scrollY;
+      const prevScrollY = lastScrollY.current;
+
+      // Hide on scroll down, show on scroll up — ALL pages
+      if (currentScrollY < 80) {
+        setIsVisible(true);
+      } else if (currentScrollY > prevScrollY + 5) {
+        // Scrolling down — hide
+        setIsVisible(false);
+        setIsMobileMenuOpen(false);
+      } else if (currentScrollY < prevScrollY - 5) {
+        // Scrolling up — show
+        setIsVisible(true);
       }
 
+      lastScrollY.current = currentScrollY;
+      setIsScrolled(currentScrollY > 10);
+
       const sections = document.querySelectorAll('section[id]');
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = currentScrollY + 100;
 
       sections.forEach(section => {
         const sectionTop = (section as HTMLElement).offsetTop;
@@ -52,7 +66,7 @@ const Navbar = () => {
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -115,11 +129,12 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav
-      initial={prefersReducedMotion ? false : "hidden"}
-      animate={prefersReducedMotion ? false : "visible"}
-      variants={navbarVariants}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 group/navbar ${isScrolled
+    <nav
+      style={{
+        transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'transform 0.35s ease-in-out, background-color 0.3s, box-shadow 0.3s',
+      }}
+      className={`fixed top-0 left-0 right-0 z-50 group/navbar ${isScrolled
         ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
         : 'bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-lg hover:border-b hover:border-gray-200/50'
         }`}
@@ -449,7 +464,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
