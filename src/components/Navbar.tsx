@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -28,9 +28,26 @@ const Navbar = () => {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      setTimeout(() => searchInputRef.current?.focus(), 100);
+    }
+    if (isSearchOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      setSearchQuery('');
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isSearchOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,6 +144,36 @@ const Navbar = () => {
   const handleResourcesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
   };
+
+  const allSearchableLinks = [
+    { label: 'Home', href: '/#home' },
+    { label: 'About', href: '/#about' },
+    { label: 'Portfolio: View All Projects', href: '/Portfolio' },
+    { label: 'Experience', href: '/#experience' },
+    ...servicePages,
+    ...industriesPages,
+    ...resourcesPages,
+    { label: 'Portfolio: AI Fraud Detection System', href: '/portfolio/ai-fraud-detection-system' },
+    { label: 'Portfolio: AI Personal Finance Advisor', href: '/portfolio/ai-personal-finance-advisor' },
+    { label: 'Portfolio: AI Powered Electronic Health Record', href: '/portfolio/ai-powered-electronic-health-record' },
+    { label: 'Portfolio: AI Medical Imaging Assistant', href: '/portfolio/ai-medical-imaging-assistant' },
+    { label: 'Portfolio: AI Product Recommendation Engine', href: '/portfolio/ai-product-recommendation-engine' },
+    { label: 'Portfolio: AI Demand Forecasting System', href: '/portfolio/ai-demand-forecasting-system' },
+    { label: 'Portfolio: AI Personalized Learning Platform', href: '/portfolio/ai-personalized-learning-platform' },
+    { label: 'Portfolio: AI Automated Grading System', href: '/portfolio/ai-automated-grading-system' },
+    { label: 'Portfolio: AI Personal Fitness Coach', href: '/portfolio/ai-personal-fitness-coach' },
+    { label: 'Portfolio: AI Nutrition Planner', href: '/portfolio/ai-nutrition-planner' },
+    { label: 'Portfolio: AI Contract Analysis System', href: '/portfolio/ai-contract-analysis-system' },
+    { label: 'Portfolio: AI Legal Research Assistant', href: '/portfolio/ai-legal-research-assistant' },
+    { label: 'Portfolio: AI Robo Advisor', href: '/portfolio/ai-robo-advisor' },
+    { label: 'Portfolio: AI Portfolio Risk Analyzer', href: '/portfolio/ai-portfolio-risk-analyzer' },
+    { label: 'Portfolio: AI DevOps Monitoring Assistant', href: '/portfolio/ai-devops-monitoring-assistant' },
+    { label: 'Portfolio: AI IT Support Chatbot', href: '/portfolio/ai-it-support-chatbot' },
+  ];
+
+  const filteredLinks = searchQuery
+    ? allSearchableLinks.filter(link => link.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    : [];
 
   return (
     <nav
@@ -258,6 +305,21 @@ const Navbar = () => {
                 </motion.a>
               );
             })}
+
+            {/* Desktop Search Icon */}
+            <div className="flex items-center ml-2 pl-2 border-l transition-colors duration-300 border-white/20 group-hover/navbar:border-gray-200">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className={`p-2 rounded-full transition-colors duration-300 ${
+                  isScrolled 
+                    ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
+                    : 'text-white hover:text-[#ec4899] hover:bg-white/10 group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
+                }`}
+                aria-label="Open Search"
+              >
+                <Search className="w-5 h-5" strokeWidth={2.5} />
+              </button>
+            </div>
           </div>
 
           {/* Contact Button - Desktop */}
@@ -306,8 +368,11 @@ const Navbar = () => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className={`p-2 sm:p-3 hover:bg-white/10 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${isScrolled ? 'text-gray-900' : 'text-white group-hover/navbar:text-gray-900'
-                  }`}
+                className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
+                  isScrolled 
+                    ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
+                    : 'text-white hover:bg-white/10 hover:text-[#ec4899] group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
+                }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
@@ -321,7 +386,7 @@ const Navbar = () => {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <X className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.5} aria-hidden="true" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -331,7 +396,7 @@ const Navbar = () => {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <Menu className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.5} aria-hidden="true" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -448,6 +513,20 @@ const Navbar = () => {
                     );
                   })}
 
+                  {/* Mobile Search Button */}
+                  <div className="px-4 sm:px-6 mt-4">
+                    <button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsSearchOpen(true);
+                      }}
+                      className="w-full relative flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#ec4899] hover:bg-[#ec4899]/10 transition-all text-white/80 hover:text-white"
+                    >
+                      <span className="text-sm font-medium">Search the site...</span>
+                      <Search className="w-4 h-4" strokeWidth={2.5} />
+                    </button>
+                  </div>
+
                   {/* Mobile Contact Button */}
                   <div className="px-4 sm:px-6 py-6 sm:py-8">
                     <motion.div
@@ -476,6 +555,75 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Search overlay modal */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-[#0a0435]/90 backdrop-blur-md flex justify-center items-start pt-[12vh] px-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
+            >
+              {/* Search Header */}
+              <div className="flex items-center p-4 border-b border-gray-100 relative bg-white">
+                <Search className="w-6 h-6 text-gray-400 absolute left-6" strokeWidth={2.5} />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Search pages, services, industries, projects..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-12 py-3 bg-transparent text-gray-900 border-none outline-none text-lg placeholder:text-gray-400 focus:ring-0"
+                />
+                <button
+                  onClick={() => setIsSearchOpen(false)}
+                  className="absolute right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close search"
+                >
+                  <X className="w-6 h-6" strokeWidth={2.5} />
+                </button>
+              </div>
+
+              {/* Search Results */}
+              <div className="max-h-[60vh] overflow-y-auto bg-gray-50/50">
+                {searchQuery && filteredLinks.length > 0 ? (
+                  <div className="p-3">
+                    {filteredLinks.map((link, index) => (
+                      <a
+                        key={`${link.href}-${index}`}
+                        href={link.href}
+                        onClick={() => setIsSearchOpen(false)}
+                        className="flex items-center p-4 hover:bg-white rounded-xl transition-all shadow-sm border border-transparent hover:border-[#ec4899]/30 hover:shadow-md mb-2 group text-gray-700 hover:text-[#ec4899]"
+                      >
+                        <Search className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#ec4899] transition-colors" strokeWidth={2.5} />
+                        <span className="text-sm md:text-base font-medium">{link.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                ) : searchQuery ? (
+                  <div className="p-10 text-center text-gray-500">
+                    <p className="text-lg mb-2">No results found for "{searchQuery}"</p>
+                    <p className="text-sm">Try using different keywords or checking services page.</p>
+                  </div>
+                ) : (
+                  <div className="p-12 text-center text-gray-400">
+                    <Search className="w-12 h-12 mx-auto mb-4 opacity-20" />
+                    <p className="text-lg">Type to start finding what you need...</p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
