@@ -76,7 +76,7 @@ const About = () => {
             </div>
 
             {/* Main Image Container with 3D effect */}
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(255,14,163,0.2)] border border-white/10 bg-[#050729] transform-gpu transition-all duration-700 [perspective:1000px] group-hover:[transform:rotateX(2deg)_rotateY(-5deg)_scale(1.02)]">
+            <div className="relative z-10 rounded-none overflow-hidden shadow-[0_20px_60px_-15px_rgba(255,14,163,0.2)] border border-white/10 bg-[#050729] transform-gpu transition-all duration-700 [perspective:1000px] group-hover:[transform:rotateX(2deg)_rotateY(-5deg)_scale(1.02)]">
               {/* Animated Border Beam - More subtle and techy */}
               <div className="absolute inset-0 z-20 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#ff0ea3] to-transparent animate-border-beam opacity-50"></div>
@@ -92,7 +92,7 @@ const About = () => {
               />
 
               {/* Futuristic HUD Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-xl z-20 transform transition-all duration-500 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
+              <div className="absolute bottom-4 left-4 right-4 p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-none z-20 transform transition-all duration-500 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="relative">
