@@ -167,7 +167,7 @@ const AppContent = () => {
         <Route path="/portfolio/ai-portfolio-risk-analyzer" element={<AIPortfolioRiskAnalyzer />} />
         <Route path="/portfolio/ai-devops-monitoring-assistant" element={<AIDevOpsMonitoringAssistant />} />
         <Route path="/portfolio/ai-it-support-chatbot" element={<AIITSupportChatbot />} />
-        
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 

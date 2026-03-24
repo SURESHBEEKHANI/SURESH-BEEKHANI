@@ -261,14 +261,14 @@ const Navbar = () => {
           </div>
 
           {/* Contact Button - Desktop */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3 relative group/contact">
             <motion.div
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
             >
               <Button
                 asChild
-                className="border border-white/10 shadow-lg text-white  px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
+                className="rounded-none border border-white/10 shadow-lg text-white px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
                 style={{ background: 'linear-gradient(135deg, #f41eff 0%, #f755a9d9 50%, #ec4899 100%)' }}
               >
                 <a
@@ -283,6 +283,18 @@ const Navbar = () => {
                 </a>
               </Button>
             </motion.div>
+
+            {/* Notification type tooltip on hover */}
+            <div className="absolute top-full mt-3 right-0 opacity-0 invisible group-hover/contact:opacity-100 group-hover/contact:visible group-hover/contact:translate-y-0 translate-y-2 transition-all duration-300 z-50 pointer-events-none">
+              <div className="relative bg-white text-gray-900 text-xs sm:text-sm font-medium px-4 py-3 rounded-none shadow-2xl border border-gray-100 w-[260px] flex items-start gap-3 leading-snug">
+                <div className="shrink-0 relative flex h-2 w-2 mt-1">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </div>
+                If you're interested in our services, feel free to contact us on WhatsApp.
+                <div className="absolute -top-1.5 right-[30px] w-3 h-3 bg-white border-t border-l border-gray-100 transform rotate-45"></div>
+              </div>
+            </div>
           </div>
 
           {/* Mobile Menu Button - Improved touch target */}

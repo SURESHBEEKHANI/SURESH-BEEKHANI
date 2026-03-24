@@ -416,8 +416,8 @@ const AIChatbotDevelopment: React.FC = () => {
 								{ id: "05", title: "Change Management & Training", desc: "We empower your team with training and support to ensure smooth adoption and effective use of the AI system.", color: "#f39c12", icon: <Users className="w-8 h-8" /> },
 								{ id: "06", title: "Governance & Continuous Improvement", desc: "We implement governance frameworks and continuously refine models to ensure long-term success and scalability.", color: "#ff0ea3", icon: <Shield className="w-8 h-8" /> }
 							].map((step, index) => (
-								<div 
-									key={step.id} 
+								<div
+									key={step.id}
 									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-all duration-300 hover:bg-white/[0.03]
 										${index % 3 !== 2 ? 'lg:border-r border-white/25' : ''} 
 										${index < 3 ? 'lg:border-b border-white/25' : ''}
@@ -428,7 +428,7 @@ const AIChatbotDevelopment: React.FC = () => {
 									<div className="text-xl sm:text-2xl font-black mb-4 transition-transform duration-500 group-hover:scale-110 tracking-tighter" style={{ color: step.color }}>
 										{step.id}
 									</div>
-									
+
 									<div className="flex items-center gap-3 w-full justify-center mb-4">
 										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
 										<div className="text-white group-hover:scale-110 transition-transform duration-300">
@@ -439,7 +439,7 @@ const AIChatbotDevelopment: React.FC = () => {
 
 									<h4 className="text-white font-bold text-sm sm:text-base mb-2 text-center group-hover:text-[#ff0ea3] transition-colors">{step.title}</h4>
 									<p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed text-center max-w-[240px]">{step.desc}</p>
-									
+
 									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 								</div>
