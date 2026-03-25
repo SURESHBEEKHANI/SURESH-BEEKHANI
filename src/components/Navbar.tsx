@@ -18,7 +18,7 @@ const WhatsAppLogo = () => (
   </svg>
 );
 
-const Navbar = () => {
+const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -233,7 +233,7 @@ const Navbar = () => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -288,7 +288,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : isScrolled ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -311,7 +311,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className={`p-2 rounded-full transition-colors duration-300 ${
-                  isScrolled 
+                  (isScrolled || isDark)
                     ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
                     : 'text-white hover:text-[#ec4899] hover:bg-white/10 group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
                 }`}
@@ -369,7 +369,7 @@ const Navbar = () => {
                 size="sm"
                 onClick={toggleMobileMenu}
                 className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
-                  isScrolled 
+                  (isScrolled || isDark)
                     ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
                     : 'text-white hover:bg-white/10 hover:text-[#ec4899] group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
                 }`}
