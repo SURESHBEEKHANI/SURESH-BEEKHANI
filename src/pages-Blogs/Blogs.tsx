@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
-import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown } from "lucide-react";
+import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown, List } from "lucide-react";
 import { toast } from "sonner";
 
 const CATEGORIES = [
@@ -38,6 +38,7 @@ const Blogs: React.FC = () => {
   const [isSidebarSubscribed, setIsSidebarSubscribed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isTocOpen, setIsTocOpen] = useState(true);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -215,30 +216,37 @@ const Blogs: React.FC = () => {
 
               {/* Table of Contents Section */}
               {getTOC(selectedBlog.content).length > 0 && (
-                <div className="mb-16 bg-[#0a0435]/[0.02] border-y border-gray-100 p-10 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ec4899]/5 blur-3xl rounded-full translate-x-12 -translate-y-12" />
+                <div className="mb-12 bg-white border border-gray-200 p-6 rounded-lg inline-block shadow-sm transition-all duration-300 overflow-hidden">
+                  <div 
+                    className="flex items-center justify-between gap-8 cursor-pointer group/title"
+                    onClick={() => setIsTocOpen(!isTocOpen)}
+                  >
+                    <h3 className="text-lg font-bold text-[#0a0435] tracking-tight group-hover:text-[#ec4899] transition-colors">
+                      Table of Contents
+                    </h3>
+                    <div className="flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md text-gray-400 group-hover:text-[#ec4899] group-hover:border-[#ec4899]/50 transition-all">
+                      <List size={16} strokeWidth={2.5} />
+                    </div>
+                  </div>
                   
-                  <h3 className="text-xl font-black text-[#0a0435] mb-8 flex items-center gap-4 italic uppercase tracking-tighter">
-                    <span className="w-2 h-6 bg-[#ec4899] shadow-[0_0_10px_#ec4899]"></span>
-                    Table of Contents
-                  </h3>
-                  
-                  <nav className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
-                    {getTOC(selectedBlog.content).map((header, i) => (
-                      <a 
-                        key={i}
-                        href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="flex items-start gap-3 group/item border-b border-transparent hover:border-[#ec4899]/20 pb-2 transition-all"
-                      >
-                        <span className="text-[#ec4899] font-black italic text-xs mt-1 transition-transform group-hover/item:translate-x-1">
-                          {i + 1 < 10 ? `0${i + 1}` : i + 1}.
-                        </span>
-                        <span className="text-gray-500 font-bold text-sm uppercase group-hover/item:text-[#0a0435] transition-colors line-clamp-1">
-                          {header.text}
-                        </span>
-                      </a>
-                    ))}
-                  </nav>
+                  {isTocOpen && (
+                    <nav className="flex flex-col gap-3 mt-4 border-t border-gray-50 pt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                      {getTOC(selectedBlog.content).map((header, i) => (
+                        <a 
+                          key={i}
+                          href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="flex items-start gap-2 group transition-all"
+                        >
+                          <span className="text-sm font-semibold text-gray-400 w-4">
+                            {i + 1}.
+                          </span>
+                          <span className="text-sm font-medium text-gray-700 group-hover:text-[#ec4899] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
+                            {header.text}
+                          </span>
+                        </a>
+                      ))}
+                    </nav>
+                  )}
                 </div>
               )}
 
