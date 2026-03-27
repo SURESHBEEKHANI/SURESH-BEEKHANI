@@ -147,10 +147,21 @@ const Blogs: React.FC = () => {
     setSelectedBlog(prev => prev?.id === blogId ? { ...prev, views: (prev.views || 0) + 1 } : prev);
 
     try {
-      await supabase
-        .from("blogs")
-        .update({ views: (currentViews || 0) + 1 })
-        .eq("id", blogId);
+      // The best, most secure atomic approach for real total counts:
+      const { error: rpcError } = await supabase.rpc('increment_blog_view', { blog_id: blogId });
+
+      if (rpcError) {
+        // Fallback to standard update if the RPC function isn't created in Supabase yet.
+        // Note: Standard update may fail if RLS (Row Level Security) blocks anonymous updates
+        const { error: updateError } = await supabase
+          .from("blogs")
+          .update({ views: (currentViews || 0) + 1 })
+          .eq("id", blogId);
+
+        if (updateError) {
+          console.error("View increment failed, check RLS policies or create the SQL RPC:", updateError);
+        }
+      }
     } catch (err) {
       console.warn("Could not increment view count:", err);
     }
