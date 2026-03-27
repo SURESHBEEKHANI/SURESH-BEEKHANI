@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
@@ -46,6 +46,7 @@ const Blogs: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isTocOpen, setIsTocOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const viewedArticles = useRef<Set<string>>(new Set());
 
   // Sync URL with selected blog
   useEffect(() => {
@@ -57,6 +58,7 @@ const Blogs: React.FC = () => {
       if (found && found.id !== selectedBlog?.id) {
         setSelectedBlog(found);
         window.scrollTo(0, 0);
+        incrementViewCount(found.id, found.views || 0);
       }
     }
   }, [searchParams, blogs, selectedBlog]);
@@ -137,6 +139,13 @@ const Blogs: React.FC = () => {
   });
 
   const incrementViewCount = async (blogId: string, currentViews: number = 0) => {
+    if (viewedArticles.current.has(blogId)) return;
+    viewedArticles.current.add(blogId);
+
+    // Optimistically update locally
+    setBlogs(prev => prev.map(b => b.id === blogId ? { ...b, views: (b.views || 0) + 1 } : b));
+    setSelectedBlog(prev => prev?.id === blogId ? { ...prev, views: (prev.views || 0) + 1 } : prev);
+
     try {
       await supabase
         .from("blogs")
@@ -619,7 +628,6 @@ const Blogs: React.FC = () => {
                       <div key={post.id} className="group cursor-pointer flex flex-col items-center text-center"
                         onClick={() => {
                           setSearchParams({ article: post.id });
-                          incrementViewCount(post.id, post.views);
                         }}>
                         {post.image_url && (
                           <div className="relative w-full h-44 mb-4 overflow-hidden rounded-xl border-2 border-transparent group-hover:border-[#ec4899] transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[#ec4899]/20">
@@ -725,7 +733,6 @@ const Blogs: React.FC = () => {
                   className="relative bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col group transform hover:-translate-y-1 hover:border-[#ec4899]/30 border-b-4 border-b-transparent hover:border-b-[#ec4899]"
                   onClick={() => {
                     setSearchParams({ article: blog.id });
-                    incrementViewCount(blog.id, blog.views);
                   }}
                 >
                   <div className="relative h-48 overflow-hidden bg-gray-100">
