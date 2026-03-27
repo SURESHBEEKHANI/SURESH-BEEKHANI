@@ -503,9 +503,9 @@ const Blogs: React.FC = () => {
               {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
                 <div className="mt-16 pt-12 border-t border-gray-100 mb-12">
                   <div className="flex flex-col mb-8">
-                    <h3 className="text-3xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
+                    <h4 className="text-2xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
                       Frequently Asked <span className="text-[#ec4899]">Questions</span>
-                    </h3>
+                    </h4>
                   </div>
 
                   <div className="space-y-3">
