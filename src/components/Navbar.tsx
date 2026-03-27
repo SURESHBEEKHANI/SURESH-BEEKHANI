@@ -102,7 +102,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   }, []);
 
   useEffect(() => {
-    if (!isMobile) {
+    // We only force-close the mobile menu if the screen is actually at Desktop width (>=1024px)
+    // because Tailwind uses `lg:hidden` (1024px) for the mobile menu container.
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
       setIsMobileMenuOpen(false);
     }
 
