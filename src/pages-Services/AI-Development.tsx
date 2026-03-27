@@ -7,6 +7,7 @@ import Industries from "../components/Industries";
 import { Badge } from "@/components/ui/badge";
 import AITechnologyStack from "../components/AITechnologyStack";
 import AIOnboardingProcess from "../components/AIOnboardingProcess";
+import LatestBlogs from "../components/LatestBlogs";
 
 // AI Services across all industries
 const aiServices = [
@@ -444,7 +445,10 @@ const AIDevelopment: React.FC = () => {
 				</div>
 			</section>
 
+
 			<AIOnboardingProcess serviceName="AI" />
+
+			<LatestBlogs />
 
 			{/* FAQ Section */}
 			<section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">

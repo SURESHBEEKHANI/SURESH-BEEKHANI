@@ -464,7 +464,7 @@ const Blogs: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-6 text-xs mb-4 border-b border-gray-100 pb-4 uppercase tracking-[0.1em]">
                   <div className="flex items-center gap-2 text-[#0a0435] font-black">
                     <Calendar size={16} className="text-[#ec4899]" />
-                    {new Date(selectedBlog.created_at).toLocaleDateString('en-GB')}
+                    {new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </div>
 
                   <div className="flex items-center gap-2 text-gray-500 font-bold">
@@ -630,35 +630,30 @@ const Blogs: React.FC = () => {
 
 
                 {/* Recent Posts Section */}
-                <div className="bg-white p-8 border border-gray-100 rounded-none shadow-sm">
-                  <h3 className="text-xl font-bold text-[#0a0435] mb-6">
+                <div className="mt-12">
+                  <h3 className="text-[1.75rem] font-extrabold text-[#0a0435] mb-6">
                     Recent Posts
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     {recentBlogs.map(post => (
-                      <div key={post.id} className="group cursor-pointer flex flex-col items-center text-center"
+                      <div key={post.id} className="group cursor-pointer flex flex-col items-start text-left"
                         onClick={() => {
                           setSearchParams({ article: post.id });
                         }}>
                         {post.image_url && (
-                          <div className="relative w-full h-44 mb-4 overflow-hidden rounded-xl border-2 border-transparent group-hover:border-[#ec4899] transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[#ec4899]/20">
-                            <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-xl" />
+                          <div className="relative w-[90%] h-[140px] mb-4 overflow-hidden rounded-2xl border-t-4 border-[#d928c1]">
+                            <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                           </div>
                         )}
-                        <h4 
-                          className="text-lg font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors"
-                          title={post.title}
+                        <h4
+                          className="text-[1.2rem] font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors"
                         >
-                          {post.title.split(' ').slice(0, 3).join(' ')}{post.title.split(' ').length > 3 ? '...' : ''}
+                          {post.title}
                         </h4>
-                        <p className="text-xs text-gray-400 mt-2 font-medium">
-                          {new Date(post.created_at).toLocaleDateString()}
-                        </p>
                       </div>
                     ))}
                     {recentBlogs.length === 0 && (
-                      <p className="text-gray-400 text-sm italic text-center">No other posts yet.</p>
+                      <p className="text-gray-400 text-sm italic">No other posts yet.</p>
                     )}
                   </div>
                 </div>
@@ -744,57 +739,34 @@ const Blogs: React.FC = () => {
               {filteredBlogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="relative bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col group transform hover:-translate-y-1 hover:border-[#ec4899]/30 border-b-4 border-b-transparent hover:border-b-[#ec4899]"
-                  onClick={() => {
-                    setSearchParams({ article: blog.id });
-                  }}
+                  className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer pb-2"
+                  onClick={() => setSearchParams({ article: blog.id })}
                 >
-                  <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <div className="relative h-48 w-full overflow-hidden border-t-[5px] border-[#d928c1]">
                     {blog.image_url ? (
-                      <>
-                        <img
-                          src={blog.image_url}
-                          alt={blog.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        {/* Gradient overlay for depth */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                        {/* Read more hint on hover */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#ec4899] text-white text-xs font-black px-6 py-2 rounded-none shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 whitespace-nowrap uppercase tracking-widest border border-[#ff61b6]">
-                          Read Article →
-                        </div>
-                      </>
+                      <img src={blog.image_url} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 text-gray-400">
-                        <span className="text-xs font-medium border border-gray-300 px-4 py-1.5 uppercase tracking-wider text-gray-400">No Image</span>
-                      </div>
+                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
                     )}
                   </div>
 
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-center text-gray-700 text-sm mb-3 font-medium">
+                      <Calendar className="mr-2 w-4 h-4 text-[#ec4899]" />
+                      {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    </div>
 
-                  <div className="p-7 flex flex-col flex-grow bg-white">
-                    <h3 className="text-2xl font-black text-[#0a0435] mb-3 line-clamp-2 group-hover:text-[#ec4899] transition-colors leading-[1.3] tracking-tight">
+                    <h3 className="text-[1.1rem] font-bold text-[#0a0435] mb-8 leading-relaxed line-clamp-2 group-hover:text-[#ec4899] transition-colors">
                       {blog.title}
                     </h3>
-                    <p className="text-gray-600 text-[0.95rem] mb-6 line-clamp-3 overflow-ellipsis flex-grow leading-relaxed font-medium">
-                      {blog.content
-                        .replace(/!\[.*?\]\(.*?\)/g, "") // remove images
-                        .replace(/\[([^\]]+)\]\(.*?\)/g, "$1") // clean links to just text
-                        .replace(/[#*`~_>-]/g, "") // remove formatting marks
-                        .trim()
-                        .slice(0, 150)}...
-                    </p>
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                      <div className="flex items-center gap-5">
-                        <span className="text-[11px] font-bold text-gray-400 flex items-center uppercase tracking-widest">
-                          <Calendar size={13} className="mr-1.5 text-[#ec4899]" strokeWidth={2.5} />
-                          {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                        <span className="text-[11px] font-bold text-gray-400 flex items-center uppercase tracking-widest">
-                          <Eye size={13} className="mr-1.5 text-[#ec4899]" strokeWidth={2.5} />
-                          {blog.views || 0}
-                        </span>
-                      </div>
+
+                    <div className="mt-auto flex items-center text-[#ec4899] text-[0.95rem] font-bold uppercase tracking-wide">
+                      Read More
+                      <span className="ml-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </div>
                   </div>
                 </div>

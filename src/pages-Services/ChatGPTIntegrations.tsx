@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Industries from "../components/Industries";
 import AITechnologyStack from "../components/AITechnologyStack";
 import AIOnboardingProcess from "../components/AIOnboardingProcess";
+import LatestBlogs from "../components/LatestBlogs";
 
 const chatGPTServices = [
   {
@@ -457,7 +458,10 @@ const ChatGPTIntegrations: React.FC = () => {
         </div>
       </section>
 
-      <AIOnboardingProcess serviceName="ChatGPT integration" />
+
+			<AIOnboardingProcess serviceName="ChatGPT integration" />
+
+      <LatestBlogs />
 
       {/* FAQ Section */}
       <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
