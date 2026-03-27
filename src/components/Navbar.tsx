@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useReducedMotion } from '@/hooks/useAnimations';
 import { navbarVariants, menuItemVariants } from '@/lib/animations';
+import { supabase } from '../lib/supabaseClient';
 
 const WhatsAppLogo = () => (
   <svg
@@ -31,6 +32,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const [allBlogs, setAllBlogs] = useState<{ id: string, title: string }[]>([]);
 
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
 
@@ -42,6 +44,18 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     }
     if (isSearchOpen) {
       document.body.style.overflow = 'hidden';
+      // Fetch blogs when search opens if not already fetched
+      if (allBlogs.length === 0) {
+        supabase
+          .from('blogs')
+          .select('id, title')
+          .eq('status', 'published')
+          .then(({ data, error }) => {
+            if (!error && data) {
+              setAllBlogs(data);
+            }
+          });
+      }
     } else {
       document.body.style.overflow = '';
       setSearchQuery('');
@@ -171,8 +185,16 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     { label: 'Portfolio: AI IT Support Chatbot', href: '/portfolio/ai-it-support-chatbot' },
   ];
 
+  const combinedSearchableLinks = [
+    ...allSearchableLinks,
+    ...allBlogs.map(blog => ({
+      label: `Blog: ${blog.title}`,
+      href: `/blogs?article=${blog.id}`
+    }))
+  ];
+
   const filteredLinks = searchQuery
-    ? allSearchableLinks.filter(link => link.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    ? combinedSearchableLinks.filter(link => link.label.toLowerCase().includes(searchQuery.toLowerCase()))
     : [];
 
   return (
@@ -430,16 +452,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/10 blur-3xl pointer-events-none" />
                 <div className="py-3 sm:py-4 space-y-1">
                   {navLinks.map((link, index) => {
-                    // Skip 'Resources' as a top-level link in mobile mode to fulfill "remved Resources under Experience"
-                    if (link.label === 'Resources') return null;
-
-                    const hasDropdown = link.label === 'Services' || link.label === 'Industries';
-                    let dropdownItems = link.label === 'Services' ? servicePages : industriesPages;
-
-                    // Add 'Resources' as an option inside Industries dropdown as per user list
-                    if (link.label === 'Industries') {
-                      dropdownItems = [...industriesPages, { label: 'Resources', href: '/blogs' }];
-                    }
+                    const hasDropdown = link.label === 'Services' || link.label === 'Industries' || link.label === 'Resources';
+                    let dropdownItems = link.label === 'Services' ? servicePages : link.label === 'Industries' ? industriesPages : link.label === 'Resources' ? resourcesPages : [];
 
                     const isExpanded = expandedSection === link.label;
 
