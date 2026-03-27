@@ -646,8 +646,11 @@ const Blogs: React.FC = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-xl" />
                           </div>
                         )}
-                        <h4 className="text-lg font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors line-clamp-2">
-                          {post.title}
+                        <h4 
+                          className="text-lg font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors"
+                          title={post.title}
+                        >
+                          {post.title.split(' ').slice(0, 3).join(' ')}{post.title.split(' ').length > 3 ? '...' : ''}
                         </h4>
                         <p className="text-xs text-gray-400 mt-2 font-medium">
                           {new Date(post.created_at).toLocaleDateString()}
