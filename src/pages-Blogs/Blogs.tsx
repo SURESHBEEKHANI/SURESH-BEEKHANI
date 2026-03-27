@@ -421,14 +421,6 @@ const Blogs: React.FC = () => {
 
             {/* Main Content Area */}
             <article className="lg:w-[75%]">
-              {/* Back Button */}
-              <button 
-                onClick={() => setSearchParams({})} 
-                className="group flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-[#ec4899] mb-8 transition-colors uppercase tracking-widest"
-              >
-                <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" /> Back to Blogs
-              </button>
-
               {/* Cover Image First */}
               {selectedBlog.image_url && (
                 <div className="relative w-full overflow-hidden border-t-4 border-[#ec4899] shadow-2xl mb-12 group/cover">
