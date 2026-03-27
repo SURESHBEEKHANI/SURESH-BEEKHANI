@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
 import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown, List } from "lucide-react";
 import { toast } from "sonner";
+import { useSearchParams } from "react-router-dom";
 
 const CATEGORIES = [
   { id: "all", label: "All Posts" },
@@ -44,6 +45,21 @@ const Blogs: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isTocOpen, setIsTocOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Sync URL with selected blog
+  useEffect(() => {
+    const articleId = searchParams.get("article");
+    if (!articleId) {
+      if (selectedBlog) setSelectedBlog(null);
+    } else if (blogs.length > 0) {
+      const found = blogs.find((b) => b.id === articleId);
+      if (found && found.id !== selectedBlog?.id) {
+        setSelectedBlog(found);
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [searchParams, blogs, selectedBlog]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -404,8 +420,15 @@ const Blogs: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-8">
 
             {/* Main Content Area */}
-            {/* Main Content Area */}
             <article className="lg:w-[75%]">
+              {/* Back Button */}
+              <button 
+                onClick={() => setSearchParams({})} 
+                className="group flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-[#ec4899] mb-8 transition-colors uppercase tracking-widest"
+              >
+                <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" /> Back to Blogs
+              </button>
+
               {/* Cover Image First */}
               {selectedBlog.image_url && (
                 <div className="relative w-full overflow-hidden border-t-4 border-[#ec4899] shadow-2xl mb-12 group/cover">
@@ -603,9 +626,8 @@ const Blogs: React.FC = () => {
                     {recentBlogs.map(post => (
                       <div key={post.id} className="group cursor-pointer flex flex-col items-center text-center"
                         onClick={() => {
-                          setSelectedBlog(post);
+                          setSearchParams({ article: post.id });
                           incrementViewCount(post.id, post.views);
-                          window.scrollTo(0, 0);
                         }}>
                         {post.image_url && (
                           <div className="relative w-full h-44 mb-4 overflow-hidden rounded-xl border-2 border-transparent group-hover:border-[#ec4899] transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[#ec4899]/20">
@@ -710,9 +732,8 @@ const Blogs: React.FC = () => {
                   key={blog.id}
                   className="relative bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col group transform hover:-translate-y-1 hover:border-[#ec4899]/30 border-b-4 border-b-transparent hover:border-b-[#ec4899]"
                   onClick={() => {
-                    setSelectedBlog(blog);
+                    setSearchParams({ article: blog.id });
                     incrementViewCount(blog.id, blog.views);
-                    window.scrollTo(0, 0);
                   }}
                 >
                   <div className="relative h-48 overflow-hidden bg-gray-100">
