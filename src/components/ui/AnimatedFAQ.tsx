@@ -25,10 +25,10 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
       <div className="max-w-4xl mx-auto">
         <motion.div 
-          className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16"
+          className="text-center space-y-4 mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,7 +40,7 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+            <h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
               {title}
             </h2>
           </div>
@@ -63,7 +63,7 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
                 aria-expanded={openFAQ === faq.id}
                 aria-controls={`faq-answer-${faq.id}`}
               >
-                <span className="text-base sm:text-lg font-semibold text-gray-900 leading-tight pr-4">{faq.question}</span>
+                <span className="text-sm sm:text-base font-semibold text-gray-900 leading-tight pr-4">{faq.question}</span>
                 <motion.svg
                   className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 flex-shrink-0"
                   fill="none"
@@ -88,7 +88,7 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
                     className="overflow-hidden border-t-0"
                   >
                     <div className="px-4 sm:px-6 pb-4 sm:pb-4 text-gray-700 border-t-0">
-                      <p className="text-sm sm:text-base leading-relaxed">{faq.answer}</p>
+                      <p className="text-xs sm:text-sm leading-relaxed">{faq.answer}</p>
                     </div>
                   </motion.div>
                 )}

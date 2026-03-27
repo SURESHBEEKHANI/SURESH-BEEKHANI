@@ -26,6 +26,11 @@ interface Blog {
   status: "draft" | "published";
   created_at: string;
   views?: number;
+  faqs?: { q: string; a: string }[];
+  meta_title?: string;
+  meta_description?: string;
+  focus_keyword?: string;
+  secondary_keywords?: string;
 }
 
 const Blogs: React.FC = () => {
@@ -38,7 +43,7 @@ const Blogs: React.FC = () => {
   const [isSidebarSubscribed, setIsSidebarSubscribed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [isTocOpen, setIsTocOpen] = useState(true);
+  const [isTocOpen, setIsTocOpen] = useState(false);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -125,34 +130,226 @@ const Blogs: React.FC = () => {
       console.warn("Could not increment view count:", err);
     }
   };
-
   const renderContent = (content: string) => {
-    // Splits text around markdown images and headers
-    const parts = content.split(/(!\[.*?\]\(.*?\)|#{1,6}\s+.+)/g);
+    // ── Inline renderer: bold, italic, links, inline-code ──────────────
+    const renderInline = (text: string, baseKey: string): React.ReactNode[] => {
+      const segments = text.split(/(```[\s\S]*?```|`[^`]+`)/g);
+      return segments.map((seg, si) => {
+        if (seg.startsWith('```') && seg.endsWith('```')) {
+          const code = seg.slice(3, -3).replace(/^\n/, '');
+          return (
+            <pre key={`${baseKey}-cb-${si}`} className="bg-[#0f172a] text-[#e2e8f0] text-sm rounded-lg p-5 my-4 overflow-x-auto font-mono leading-relaxed border border-gray-700 shadow-xl">
+              <code>{code}</code>
+            </pre>
+          );
+        }
+        if (seg.startsWith('`') && seg.endsWith('`') && seg.length > 2) {
+          return (
+            <code key={`${baseKey}-ic-${si}`} className="bg-[#ec4899]/10 text-[#be185d] px-1.5 py-0.5 rounded text-[0.875em] font-mono font-semibold">
+              {seg.slice(1, -1)}
+            </code>
+          );
+        }
+        return seg.split(/(\*\*[\s\S]*?\*\*|\*[\s\S]*?\*|\[.*?\]\(.*?\))/g).map((sub, i) => {
+          if (sub.startsWith('**') && sub.endsWith('**'))
+            return <strong key={`${baseKey}-${si}-b${i}`} className="text-[#0a0435] font-extrabold">{sub.slice(2, -2)}</strong>;
+          if (sub.startsWith('*') && sub.endsWith('*') && sub.length > 2)
+            return <em key={`${baseKey}-${si}-em${i}`} className="italic text-gray-600">{sub.slice(1, -1)}</em>;
+          const lm = sub.match(/\[(.*?)\]\((.*?)\)/);
+          if (lm)
+            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#ec4899] hover:text-[#be185d] font-bold underline underline-offset-4 transition-colors">{lm[1]}</a>;
+          return <React.Fragment key={`${baseKey}-${si}-t${i}`}>{sub}</React.Fragment>;
+        });
+      });
+    };
 
-    return parts.map((part, index) => {
-      // Check for markdown headers
-      const headerMatch = part.match(/^(#+)\s+(.*)$/);
-      if (headerMatch) {
-         const level = headerMatch[1].length;
-         const text = headerMatch[2];
-         const Tag = `h${Math.min(level + 1, 6)}` as keyof JSX.IntrinsicElements;
-         return <Tag key={index} id={text.toLowerCase().replace(/\s+/g, '-')} className="font-black text-[#0a0435] mt-12 mb-6 italic uppercase tracking-tight scroll-mt-32 border-l-4 border-[#ec4899] pl-6 transition-all hover:translate-x-2">{text}</Tag>;
-      }
+    // ── Line-by-line parser ────────────────────────────────────────────
+    const lines = content.split('\n');
+    const elements: React.ReactNode[] = [];
+    let i = 0;
 
-      const match = part.match(/!\[(.*?)\]\((.*?)\)/);
-      if (match) {
-        return (
-          <img
-            key={index}
-            src={match[2]}
-            alt={match[1]}
-            className="w-full h-[400px] md:h-[500px] object-cover rounded-none shadow-lg my-12 border-l-4 border-[#ec4899]"
-          />
+    while (i < lines.length) {
+      const line = lines[i];
+
+      // Fenced code block
+      if (line.trimStart().startsWith('```')) {
+        const lang = line.replace(/^```/, '').trim();
+        const codeLines: string[] = [];
+        i++;
+        while (i < lines.length && !lines[i].trimStart().startsWith('```')) {
+          codeLines.push(lines[i]);
+          i++;
+        }
+        elements.push(
+          <div key={`code-${i}`} className="my-6 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+            {lang && (
+              <div className="bg-[#1e293b] px-4 py-2 flex items-center justify-between">
+                <span className="text-xs font-bold text-[#ec4899] uppercase tracking-widest">{lang}</span>
+                <span className="flex gap-1.5">
+                  <span className="w-3 h-3 rounded-full bg-red-400/60" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400/60" />
+                  <span className="w-3 h-3 rounded-full bg-green-400/60" />
+                </span>
+              </div>
+            )}
+            <pre className="bg-[#0f172a] text-[#e2e8f0] text-sm p-5 overflow-x-auto font-mono leading-relaxed">
+              <code>{codeLines.join('\n')}</code>
+            </pre>
+          </div>
         );
+        i++;
+        continue;
       }
-      return <span key={index}>{part}</span>;
-    });
+
+      // Markdown image — trim line first to handle \r (Windows CRLF)
+      const imgMatch = line.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (imgMatch) {
+        elements.push(
+          <div key={`img-${i}`} className="my-10 group/img relative border-l-4 border-[#ec4899] shadow-2xl rounded-none">
+            <div className="relative overflow-hidden bg-gray-50 rounded-none">
+              <img
+                src={imgMatch[2]}
+                alt={imgMatch[1]}
+                className="w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover/img:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+              {imgMatch[1] && (
+                <div className="absolute bottom-0 left-0 w-full bg-[#0a0435]/95 backdrop-blur-md text-white md:text-base text-sm px-5 py-3 rounded-none italic tracking-wide text-center shadow-2xl border-b-2 border-[#ec4899]">
+                  {imgMatch[1]}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+        i++;
+        continue;
+      }
+
+
+      // Blockquote
+      if (line.startsWith('> ')) {
+        const bqLines: string[] = [];
+        while (i < lines.length && lines[i].startsWith('> ')) {
+          bqLines.push(lines[i].slice(2));
+          i++;
+        }
+        elements.push(
+          <blockquote key={`bq-${i}`} className="relative border-l-4 border-[#ec4899] bg-gradient-to-r from-pink-50/60 to-transparent px-6 py-4 my-6 rounded-r-xl">
+            <span className="absolute top-3 left-4 text-4xl text-[#ec4899]/20 font-serif leading-none select-none">"</span>
+            {bqLines.map((bl, bi) => (
+              <p key={bi} className="italic text-gray-700 text-[1.05rem] leading-relaxed relative z-10">
+                {renderInline(bl, `bq-${i}-${bi}`)}
+              </p>
+            ))}
+          </blockquote>
+        );
+        continue;
+      }
+
+      // Heading
+      const headerMatch = line.match(/^(#{1,6})\s+(.+)$/);
+      if (headerMatch) {
+        const level = headerMatch[1].length;
+        const text = headerMatch[2];
+        const id = text.toLowerCase().replace(/\s+/g, '-');
+        const headingClasses: Record<number, string> = {
+          1: 'text-3xl md:text-4xl font-black text-[#0a0435] mt-10 mb-4 tracking-tight scroll-mt-32',
+          2: 'text-2xl md:text-3xl font-black text-[#0a0435] mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 border-b border-gray-100',
+          3: 'text-xl md:text-2xl font-extrabold text-[#0a0435] mt-6 mb-2 scroll-mt-32',
+          4: 'text-lg font-bold text-[#0a0435] mt-5 mb-2 scroll-mt-32',
+          5: 'text-base font-bold text-gray-700 mt-4 mb-1 scroll-mt-32',
+          6: 'text-sm font-bold text-gray-500 mt-4 mb-1 scroll-mt-32 uppercase tracking-wider',
+        };
+        const Tag = `h${Math.min(level + 1, 6)}` as keyof JSX.IntrinsicElements;
+        elements.push(
+          <Tag key={`h-${i}`} id={id} className={headingClasses[level] || headingClasses[3]}>
+            {level === 2 && <span className="inline-block w-1 h-5 bg-[#ec4899] rounded mr-2 align-middle -mt-0.5" />}
+            {text}
+          </Tag>
+        );
+        i++;
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^---+$/.test(line.trim())) {
+        elements.push(
+          <div key={`hr-${i}`} className="my-8 flex items-center gap-4">
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+            <div className="flex gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/30" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/60" />
+            </div>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+          </div>
+        );
+        i++;
+        continue;
+      }
+
+      // Bullet list
+      if (/^(\s*[-*+])\s/.test(line)) {
+        const items: string[] = [];
+        while (i < lines.length && /^(\s*[-*+])\s/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*[-*+]\s/, ''));
+          i++;
+        }
+        elements.push(
+          <ul key={`ul-${i}`} className="my-5 space-y-2.5 pl-1">
+            {items.map((item, li) => (
+              <li key={li} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 mt-[0.55em] w-2 h-2 rounded-full bg-[#ec4899] shadow-sm shadow-pink-200" />
+                <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
+                  {renderInline(item, `ul-${i}-${li}`)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        );
+        continue;
+      }
+
+      // Numbered list
+      if (/^\d+\.\s/.test(line)) {
+        const items: string[] = [];
+        while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
+          items.push(lines[i].replace(/^\d+\.\s/, ''));
+          i++;
+        }
+        elements.push(
+          <ol key={`ol-${i}`} className="my-5 space-y-2.5 pl-1 list-none">
+            {items.map((item, li) => (
+              <li key={li} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 min-w-[1.75rem] h-[1.75rem] rounded-md bg-gradient-to-br from-[#ec4899]/20 to-[#ec4899]/5 border border-[#ec4899]/20 text-[#ec4899] text-xs font-black flex items-center justify-center">
+                  {li + 1}
+                </span>
+                <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
+                  {renderInline(item, `ol-${i}-${li}`)}
+                </span>
+              </li>
+            ))}
+          </ol>
+        );
+        continue;
+      }
+
+      // Empty line — skip
+      if (line.trim() === '') {
+        i++;
+        continue;
+      }
+
+      // Normal paragraph
+      elements.push(
+        <p key={`p-${i}`} className="text-[#111827] text-[1.0625rem] leading-[1.85] mb-4">
+          {renderInline(line, `p-${i}`)}
+        </p>
+      );
+      i++;
+    }
+
+    return elements;
   };
 
   const getTOC = (content: string) => {
@@ -165,6 +362,34 @@ const Blogs: React.FC = () => {
       });
   };
 
+  useEffect(() => {
+    if (selectedBlog) {
+      document.title = `${selectedBlog.meta_title || selectedBlog.title} | AI Blog`;
+
+      // Update meta description
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.setAttribute('content', selectedBlog.meta_description || selectedBlog.content.slice(0, 160));
+
+      // Update keywords
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      const keywords = [selectedBlog.focus_keyword, selectedBlog.secondary_keywords].filter(Boolean).join(', ');
+      metaKeywords.setAttribute('content', keywords || "AI, Machine Learning, Data Science");
+
+    } else {
+      document.title = "AI Development Deep Dives - Blogs";
+    }
+  }, [selectedBlog]);
+
   if (selectedBlog) {
     const recentBlogs = blogs
       .filter(b => b.id !== selectedBlog.id)
@@ -175,40 +400,45 @@ const Blogs: React.FC = () => {
       <div className="min-h-screen bg-white flex flex-col">
         <Navbar isDark={true} />
 
-        <div className="max-w-7xl mx-auto px-4 pt-32 md:pt-40 pb-16 w-full grow">
-          <div className="flex flex-col lg:flex-row gap-24">
+        <div className="max-w-7xl mx-auto px-4 pt-24 md:pt-32 pb-16 w-full grow">
+          <div className="flex flex-col lg:flex-row gap-8">
 
             {/* Main Content Area */}
             {/* Main Content Area */}
-            <article className="lg:w-[65%]">
+            <article className="lg:w-[75%]">
               {/* Cover Image First */}
               {selectedBlog.image_url && (
-                <img
-                  src={selectedBlog.image_url}
-                  alt={selectedBlog.title}
-                  className="w-full h-auto max-h-[500px] object-cover rounded-none shadow-lg mb-12 border-t-8 border-[#ec4899]"
-                />
+                <div className="relative w-full overflow-hidden border-t-4 border-[#ec4899] shadow-2xl mb-12 group/cover">
+                  <img
+                    src={selectedBlog.image_url}
+                    alt={selectedBlog.title}
+                    className="w-full h-[320px] md:h-[480px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+                  />
+                  {/* Bottom gradient fade for title readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                </div>
               )}
+
 
               {/* Title and Metadata After Image */}
               <div className="mb-10">
-                <h1 className="text-4xl md:text-5xl font-black text-[#0a0435] mb-8 leading-tight">
+                <h1 className="text-4xl md:text-5xl font-black text-[#0a0435] mb-4 leading-tight tracking-tight">
                   {selectedBlog.title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-6 text-sm mb-12 border-b border-gray-100 pb-8">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-fuchsia-50/30 border border-fuchsia-100/50 text-[#0a0435] font-bold italic">
-                    <Calendar size={18} className="text-[#ec4899]" />
+                <div className="flex flex-wrap items-center gap-6 text-xs mb-4 border-b border-gray-100 pb-4 uppercase tracking-[0.1em]">
+                  <div className="flex items-center gap-2 text-[#0a0435] font-black">
+                    <Calendar size={16} className="text-[#ec4899]" />
                     {new Date(selectedBlog.created_at).toLocaleDateString('en-GB')}
                   </div>
 
-                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-100 text-gray-500 font-medium">
-                    <Eye size={18} className="text-[#ec4899]" />
+                  <div className="flex items-center gap-2 text-gray-500 font-bold">
+                    <Eye size={16} className="text-[#ec4899]" />
                     {selectedBlog.views || 0} Views
                   </div>
 
-                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-100 text-[#0a0435] font-bold">
-                    <User size={18} className="text-[#ec4899]" />
+                  <div className="flex items-center gap-2 text-[#0a0435] font-black">
+                    <User size={16} className="text-[#ec4899]" />
                     Suresh Beekhani
                   </div>
                 </div>
@@ -216,8 +446,8 @@ const Blogs: React.FC = () => {
 
               {/* Table of Contents Section */}
               {getTOC(selectedBlog.content).length > 0 && (
-                <div className="mb-12 bg-white border border-gray-200 p-6 rounded-lg inline-block shadow-sm transition-all duration-300 overflow-hidden">
-                  <div 
+                <div className="mb-6 bg-white border border-gray-200 p-6 rounded-lg inline-block shadow-sm transition-all duration-300 overflow-hidden">
+                  <div
                     className="flex items-center justify-between gap-8 cursor-pointer group/title"
                     onClick={() => setIsTocOpen(!isTocOpen)}
                   >
@@ -228,11 +458,11 @@ const Blogs: React.FC = () => {
                       <List size={16} strokeWidth={2.5} />
                     </div>
                   </div>
-                  
+
                   {isTocOpen && (
                     <nav className="flex flex-col gap-3 mt-4 border-t border-gray-50 pt-4 animate-in fade-in slide-in-from-top-2 duration-300">
                       {getTOC(selectedBlog.content).map((header, i) => (
-                        <a 
+                        <a
                           key={i}
                           href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
                           className="flex items-start gap-2 group transition-all"
@@ -240,7 +470,7 @@ const Blogs: React.FC = () => {
                           <span className="text-sm font-semibold text-gray-400 w-4">
                             {i + 1}.
                           </span>
-                          <span className="text-sm font-medium text-gray-700 group-hover:text-[#ec4899] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
+                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#ec4899] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
                             {header.text}
                           </span>
                         </a>
@@ -250,66 +480,62 @@ const Blogs: React.FC = () => {
                 </div>
               )}
 
-              <div className="prose prose-lg max-w-none text-gray-700 whitespace-pre-wrap mb-16">
+              <div className="prose prose-lg md:prose-xl max-w-none text-[#0f172a] leading-[1.85] mb-10 font-medium prose-p:mb-5 prose-headings:mb-3 prose-img:my-8 selection:bg-[#ec4899]/20">
                 {renderContent(selectedBlog.content)}
               </div>
 
               {/* FAQ Section */}
-              <div className="mt-24 pt-16 border-t border-gray-100 mb-20">
-                <div className="flex flex-col mb-12">
-                  <h3 className="text-3xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
-                    Frequently Asked <span className="text-[#ec4899]">Questions</span>
-                  </h3>
-                </div>
+              {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
+                <div className="mt-16 pt-12 border-t border-gray-100 mb-12">
+                  <div className="flex flex-col mb-8">
+                    <h3 className="text-3xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
+                      Frequently Asked <span className="text-[#ec4899]">Questions</span>
+                    </h3>
+                  </div>
 
-                <div className="space-y-3">
-                  {[
-                    { q: "How do you stay updated with the latest AI trends?", a: "We follow major AI research journals, participate in global conferences, and continuously test new models like GPT-4 and Claude to provide real-world insights." },
-                    { q: "Can I request a specific topic for a future blog?", a: "Absolutely! We value community input. Feel free to use our newsletter form to subscribe and reply with any specific AI topics you'd like us to cover." },
-                    { q: "Is the technical advice provided here suitable for beginners?", a: "Yes! While we dive deep into complex topics, we strive to explain the core concepts in a way that is accessible to both AI enthusiasts and industry leaders." },
-                    { q: "How often do you publish new blog posts?", a: "We aim to release high-quality, deep-dive articles 2-3 times per week, along with periodic 'Flash Updates' on breaking AI news and industry shifts." },
-                    { q: "Do you provide consulting based on these blog topics?", a: "Yes, Suresh Beekhani and the team offer specialized AI and Data Science consulting. You can reach out via the contact form on our main services page." }
-                  ].map((faq, index) => (
-                    <div
-                      key={index}
-                      className={`border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ec4899]/50 hover:shadow-lg group ${openFaq === index ? 'shadow-lg border-[#ec4899]/50' : ''}`}
-                      style={openFaq === index ? {
-                        boxShadow: '0 4px 20px rgba(236, 72, 153, 0.2), 0 0 15px rgba(236, 72, 153, 0.15)'
-                      } : {}}
-                    >
-                      <button
-                        onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                        className={`w-full p-5 flex items-center justify-between text-left transition-all duration-300 ${openFaq === index ? 'bg-gradient-to-r from-[#ec4899]/15 via-[#ec4899]/10 to-[#ec4899]/5' : 'hover:bg-[#ec4899]/5'}`}
+                  <div className="space-y-3">
+                    {selectedBlog.faqs.map((faq, index) => (
+                      <div
+                        key={index}
+                        className={`border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ec4899]/50 hover:shadow-lg group ${openFaq === index ? 'shadow-lg border-[#ec4899]/50' : ''}`}
+                        style={openFaq === index ? {
+                          boxShadow: '0 4px 20px rgba(236, 72, 153, 0.2), 0 0 15px rgba(236, 72, 153, 0.15)'
+                        } : {}}
                       >
-                        <h4 className={`text-base font-semibold transition-all duration-300 group-hover:text-[#ec4899] ${openFaq === index ? 'text-[#ec4899]' : 'text-[#050729]'}`}>
-                          {faq.q}
-                        </h4>
-                        <div className="flex-shrink-0 ml-4">
-                          {openFaq === index ? (
-                            <Minus className="h-4 w-4" style={{ color: '#ec4899' }} />
-                          ) : (
-                            <Plus className="h-4 w-4 text-gray-400 group-hover:text-[#ec4899]" />
-                          )}
-                        </div>
-                      </button>
-
-                      {openFaq === index && (
-                        <div className="px-5 pb-5 animate-in fade-in slide-in-from-top-1 duration-300">
-                          <div className="pt-3 border-t border-gray-200/50">
-                            <p className="text-gray-600 leading-relaxed text-sm">
-                              {faq.a}
-                            </p>
+                        <button
+                          onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                          className={`w-full p-5 flex items-center justify-between text-left transition-all duration-300 ${openFaq === index ? 'bg-gradient-to-r from-[#ec4899]/15 via-[#ec4899]/10 to-[#ec4899]/5' : 'hover:bg-[#ec4899]/5'}`}
+                        >
+                          <h4 className={`text-base font-semibold transition-all duration-300 group-hover:text-[#ec4899] ${openFaq === index ? 'text-[#ec4899]' : 'text-[#050729]'}`}>
+                            {faq.q}
+                          </h4>
+                          <div className="flex-shrink-0 ml-4">
+                            {openFaq === index ? (
+                              <Minus className="h-4 w-4" style={{ color: '#ec4899' }} />
+                            ) : (
+                              <Plus className="h-4 w-4 text-gray-400 group-hover:text-[#ec4899]" />
+                            )}
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                        </button>
+
+                        {openFaq === index && (
+                          <div className="px-5 pb-5 animate-in fade-in slide-in-from-top-1 duration-300">
+                            <div className="pt-3 border-t border-gray-200/50">
+                              <p className="text-gray-800 leading-relaxed text-base">
+                                {faq.a}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Bottom Navigation */}
-              <div className="mt-20 pt-10 border-t border-gray-100 flex flex-col items-center">
-                <p className="text-gray-400 text-sm mb-6 italic">Thanks for reading!</p>
+              <div className="mt-8 pt-10 border-t border-gray-100 flex flex-col items-center">
+                <p className="text-gray-600 text-sm mb-6 italic font-medium">Thanks for reading!</p>
                 <button
                   onClick={() => {
                     setSelectedBlog(null);
@@ -325,22 +551,22 @@ const Blogs: React.FC = () => {
 
             {/* Sidebar with Recent Posts */}
             {/* Sidebar with Recent Posts */}
-            <aside className="lg:w-[35%] pl-20 border-l-2 border-[#f755a9d9]">
-              <div className="sticky top-32 space-y-10">                {/* Newsletter Box */}
-                <div className="bg-white p-8 rounded-none shadow-sm border border-gray-100 relative overflow-hidden">
-                  <h3 className="text-xl font-bold text-[#0a0435] mb-6 relative z-10 leading-tight">
+            <aside className="lg:w-[25%] pl-6 border-l-2 border-[#f755a9d9]">
+              <div className="sticky top-32 space-y-6">                {/* Newsletter Box */}
+                <div className="bg-white p-4 rounded-none shadow-sm border border-gray-100 relative overflow-hidden">
+                  <h3 className="text-xl font-bold text-[#0a0435] mb-2 relative z-10 leading-tight">
                     Join Our <span className="text-[#ec4899]">Newsletter</span> for AI Updates
                   </h3>
 
                   {isSidebarSubscribed ? (
-                    <div className="bg-fuchsia-50/50 border border-fuchsia-100 p-6 rounded-none relative z-10 flex flex-col items-center text-center animate-in fade-in duration-700">
-                      <CheckCircle className="text-[#ec4899] mb-3" size={32} />
+                    <div className="bg-fuchsia-50/50 border border-fuchsia-100 p-4 rounded-none relative z-10 flex flex-col items-center text-center animate-in fade-in duration-700">
+                      <CheckCircle className="text-[#ec4899] mb-1" size={24} />
                       <p className="text-sm text-[#0a0435] font-bold">Successfully Joined!</p>
-                      <p className="text-xs text-gray-500 mt-2">Check your inbox soon for the latest AI insights.</p>
+                      <p className="text-xs text-gray-600 mt-1">Check your inbox soon for AI insights.</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSidebarSubscribe} className="relative z-10 space-y-4">
-                      <div className="flex flex-col space-y-3">
+                    <form onSubmit={handleSidebarSubscribe} className="relative z-10 space-y-2">
+                      <div className="flex flex-col space-y-1.5">
                         <input
                           type="email"
                           value={sidebarEmail}
@@ -361,7 +587,7 @@ const Blogs: React.FC = () => {
                   )}
 
                   {!isSidebarSubscribed && (
-                    <p className="text-[10px] text-gray-400 mt-4 relative z-10 text-center uppercase tracking-tighter font-medium">
+                    <p className="text-[11px] text-gray-500 mt-1.5 relative z-10 text-center uppercase tracking-tighter font-medium">
                       Get the latest AI insights delivered to your inbox
                     </p>
                   )}
@@ -370,10 +596,10 @@ const Blogs: React.FC = () => {
 
                 {/* Recent Posts Section */}
                 <div className="bg-white p-8 border border-gray-100 rounded-none shadow-sm">
-                  <h3 className="text-2xl font-bold text-[#0a0435] mb-10 text-center">
+                  <h3 className="text-xl font-bold text-[#0a0435] mb-6">
                     Recent Posts
                   </h3>
-                  <div className="space-y-10">
+                  <div className="space-y-6">
                     {recentBlogs.map(post => (
                       <div key={post.id} className="group cursor-pointer flex flex-col items-center text-center"
                         onClick={() => {
@@ -382,8 +608,9 @@ const Blogs: React.FC = () => {
                           window.scrollTo(0, 0);
                         }}>
                         {post.image_url && (
-                          <div className="w-full h-40 mb-4 overflow-hidden rounded-none border-2 border-transparent group-hover:border-[#ec4899] transition-all">
+                          <div className="relative w-full h-44 mb-4 overflow-hidden rounded-xl border-2 border-transparent group-hover:border-[#ec4899] transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[#ec4899]/20">
                             <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-xl" />
                           </div>
                         )}
                         <h4 className="text-lg font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors line-clamp-2">
@@ -422,7 +649,7 @@ const Blogs: React.FC = () => {
 
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
           <h2 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-tight">Stay Up-To-Date With Our Latest Blog</h2>
-          <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto font-light">
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-normal">
             Discover fresh ideas and stay ahead with our latest blog posts.
           </p>
         </div>
@@ -481,51 +708,59 @@ const Blogs: React.FC = () => {
               {filteredBlogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col group transform hover:-translate-y-1"
+                  className="relative bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col group transform hover:-translate-y-1 hover:border-[#ec4899]/30 border-b-4 border-b-transparent hover:border-b-[#ec4899]"
                   onClick={() => {
                     setSelectedBlog(blog);
                     incrementViewCount(blog.id, blog.views);
                     window.scrollTo(0, 0);
                   }}
                 >
-                  <div className="relative h-56 overflow-hidden bg-gray-100">
+                  <div className="relative h-48 overflow-hidden bg-gray-100">
                     {blog.image_url ? (
-                      <img
-                        src={blog.image_url}
-                        alt={blog.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      <>
+                        <img
+                          src={blog.image_url}
+                          alt={blog.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* Gradient overlay for depth */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                        {/* Read more hint on hover */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#ec4899] text-white text-xs font-black px-6 py-2 rounded-none shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 whitespace-nowrap uppercase tracking-widest border border-[#ff61b6]">
+                          Read Article →
+                        </div>
+                      </>
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <span className="text-sm border border-gray-300 rounded px-3 py-1">No Image</span>
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 text-gray-400">
+                        <span className="text-xs font-medium border border-gray-300 px-4 py-1.5 uppercase tracking-wider text-gray-400">No Image</span>
                       </div>
                     )}
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-[#ec4899] text-xs font-bold px-3 py-1.5 rounded-none shadow-sm border border-gray-100">
-                      {CATEGORIES.find(c => c.id === blog.category)?.label || blog.category}
-                    </div>
                   </div>
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#ec4899] transition-colors">
+
+                  <div className="p-7 flex flex-col flex-grow bg-white">
+                    <h3 className="text-2xl font-black text-[#0a0435] mb-3 line-clamp-2 group-hover:text-[#ec4899] transition-colors leading-[1.3] tracking-tight">
                       {blog.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-6 line-clamp-3 ext-ellipsis flex-grow">
-                      {blog.content.slice(0, 150)}...
+                    <p className="text-gray-600 text-[0.95rem] mb-6 line-clamp-3 overflow-ellipsis flex-grow leading-relaxed font-medium">
+                      {blog.content
+                        .replace(/!\[.*?\]\(.*?\)/g, "") // remove images
+                        .replace(/\[([^\]]+)\]\(.*?\)/g, "$1") // clean links to just text
+                        .replace(/[#*`~_>-]/g, "") // remove formatting marks
+                        .trim()
+                        .slice(0, 150)}...
                     </p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <div className="flex items-center gap-4">
-                        <span className="text-xs font-medium text-gray-400 flex items-center">
-                          <Calendar size={14} className="mr-1.5" />
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                      <div className="flex items-center gap-5">
+                        <span className="text-[11px] font-bold text-gray-400 flex items-center uppercase tracking-widest">
+                          <Calendar size={13} className="mr-1.5 text-[#ec4899]" strokeWidth={2.5} />
                           {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
-                        <span className="text-xs font-medium text-gray-400 flex items-center">
-                          <Eye size={14} className="mr-1.5" />
+                        <span className="text-[11px] font-bold text-gray-400 flex items-center uppercase tracking-widest">
+                          <Eye size={13} className="mr-1.5 text-[#ec4899]" strokeWidth={2.5} />
                           {blog.views || 0}
                         </span>
                       </div>
-                      <span className="text-[#ec4899] font-semibold text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                        Read more &rarr;
-                      </span>
                     </div>
                   </div>
                 </div>
