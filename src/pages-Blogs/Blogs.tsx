@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
-import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown, List } from "lucide-react";
+import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown, List, MessageSquare, ThumbsUp, Trash2, Reply, Send, CornerDownRight } from "lucide-react";
 import { toast } from "sonner";
 import { useSearchParams } from "react-router-dom";
 
@@ -34,6 +34,154 @@ interface Blog {
   secondary_keywords?: string;
 }
 
+interface BlogComment {
+  id: string;
+  blog_id: string;
+  parent_id: string | null;
+  user_name: string;
+  content: string;
+  likes: number;
+  created_at: string;
+  replies?: BlogComment[];
+}
+
+const AVATAR_COLORS = [
+  '#ec4899', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4'
+];
+
+const getAvatarColor = (name: string) => {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+};
+
+const CommentItem: React.FC<{
+  comment: BlogComment;
+  level?: number;
+  onReply: (id: string | null) => void;
+  onLike: (id: string) => void;
+  onDelete: (id: string) => void;
+  replyingTo: string | null;
+  replyInput: string;
+  setReplyInput: (val: string) => void;
+  onReplySubmit: (e: React.FormEvent, parentId: string) => void;
+  isSubmitting: boolean;
+  isAdmin: boolean;
+}> = ({ comment, level = 0, onReply, onLike, onDelete, replyingTo, replyInput, setReplyInput, onReplySubmit, isSubmitting, isAdmin }) => {
+  const avatarColor = getAvatarColor(comment.user_name);
+  const isReplying = replyingTo === comment.id;
+
+  return (
+    <div className={`mb-8 ${level > 0 ? 'ml-6 md:ml-12 border-l-2 border-gray-100 pl-6 md:pl-8 relative' : ''}`}>
+      {level > 0 && (
+        <div className="absolute top-4 -left-[2px] w-4 h-0.5 bg-gray-100" />
+      )}
+      
+      <div className="flex gap-4 items-start group">
+        <div 
+          className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center text-white font-black text-lg md:text-xl shadow-md"
+          style={{ backgroundColor: avatarColor }}
+        >
+          {comment.user_name.charAt(0).toUpperCase()}
+        </div>
+        
+        <div className="flex-grow">
+          <div className="bg-white border border-gray-100 p-5 shadow-sm group-hover:shadow-md transition-shadow relative">
+            <div className="flex justify-between items-center mb-3">
+              <div>
+                <span className="text-sm font-black text-[#0a0435] uppercase tracking-wider">{comment.user_name}</span>
+                <span className="text-[10px] text-gray-400 font-bold ml-3 uppercase tracking-tighter">
+                  {new Date(comment.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={() => onLike(comment.id)}
+                  className="flex items-center gap-1.5 text-gray-400 hover:text-[#ec4899] transition-colors group/like"
+                >
+                  <ThumbsUp size={14} className={comment.likes > 0 ? 'fill-[#ec4899] text-[#ec4899]' : ''} />
+                  <span className="text-xs font-black">{comment.likes}</span>
+                </button>
+                
+                {isAdmin && (
+                  <button 
+                    onClick={() => onDelete(comment.id)}
+                    className="text-gray-300 hover:text-red-500 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                )}
+              </div>
+            </div>
+            
+            <p className="text-gray-700 leading-relaxed text-[15px] font-medium whitespace-pre-wrap">
+              {comment.content}
+            </p>
+
+            <button 
+              onClick={() => onReply(isReplying ? null : comment.id)}
+              className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#ec4899] hover:text-[#0a0435] transition-colors"
+            >
+              <Reply size={12} /> {isReplying ? 'Cancel' : 'Reply'}
+            </button>
+          </div>
+
+          {/* Reply Form */}
+          {isReplying && (
+            <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+              <form onSubmit={(e) => onReplySubmit(e, comment.id)} className="flex flex-col gap-3">
+                <textarea
+                  autoFocus
+                  value={replyInput}
+                  onChange={(e) => setReplyInput(e.target.value)}
+                  placeholder={`Reply to ${comment.user_name}...`}
+                  className="w-full p-4 bg-gray-50 border border-gray-200 text-[#0a0435] focus:border-[#ec4899] outline-none transition-all text-sm font-medium rounded-none resize-none min-h-[100px]"
+                />
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !replyInput.trim()}
+                    className="flex items-center gap-2 bg-[#ec4899] text-white px-5 py-2 rounded-none font-black text-[10px] tracking-widest uppercase hover:bg-[#0a0435] transition-all disabled:opacity-50"
+                  >
+                    {isSubmitting ? <Loader2 className="animate-spin" size={14} /> : (
+                      <>Send Reply <Send size={12} /></>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Recursive Replies */}
+      {comment.replies && comment.replies.length > 0 && (
+        <div className="mt-8">
+          {comment.replies.map((reply) => (
+            <CommentItem 
+              key={reply.id} 
+              comment={reply} 
+              level={level + 1}
+              onReply={onReply}
+              onLike={onLike}
+              onDelete={onDelete}
+              replyingTo={replyingTo}
+              replyInput={replyInput}
+              setReplyInput={setReplyInput}
+              onReplySubmit={onReplySubmit}
+              isSubmitting={isSubmitting}
+              isAdmin={isAdmin}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Blogs: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -48,6 +196,26 @@ const Blogs: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const viewedArticles = useRef<Set<string>>(new Set());
 
+  // Comments State
+  const [comments, setComments] = useState<BlogComment[]>([]);
+  const [isLoadingComments, setIsLoadingComments] = useState(false);
+  const [newCommentInput, setNewCommentInput] = useState("");
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyInput, setReplyInput] = useState("");
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [session, setSession] = useState<any>(null);
+
+  // Check auth for comments
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
   // Sync URL with selected blog
   useEffect(() => {
     const articleId = searchParams.get("article");
@@ -59,6 +227,7 @@ const Blogs: React.FC = () => {
         setSelectedBlog(found);
         window.scrollTo(0, 0);
         incrementViewCount(found.id, found.views || 0);
+        fetchComments(found.id);
       }
     }
   }, [searchParams, blogs, selectedBlog]);
@@ -138,6 +307,9 @@ const Blogs: React.FC = () => {
     return activeCategory === "all" || blog.category === activeCategory;
   });
 
+  const selectedCategoryLabel =
+    CATEGORIES.find((c) => c.id === activeCategory)?.label ?? "All Posts";
+
   const incrementViewCount = async (blogId: string, currentViews: number = 0) => {
     if (viewedArticles.current.has(blogId)) return;
     viewedArticles.current.add(blogId);
@@ -164,6 +336,138 @@ const Blogs: React.FC = () => {
       }
     } catch (err) {
       console.warn("Could not increment view count:", err);
+    }
+  };
+
+  // ── Comment Logic ───────────────────────────────────────────────────
+
+  const buildCommentTree = (flatComments: BlogComment[]): BlogComment[] => {
+    const commentMap: Record<string, BlogComment> = {};
+    const roots: BlogComment[] = [];
+
+    flatComments.forEach(comment => {
+      commentMap[comment.id] = { ...comment, replies: [] };
+    });
+
+    flatComments.forEach(comment => {
+      if (comment.parent_id && commentMap[comment.parent_id]) {
+        commentMap[comment.parent_id].replies!.push(commentMap[comment.id]);
+      } else {
+        roots.push(commentMap[comment.id]);
+      }
+    });
+
+    return roots;
+  };
+
+  const fetchComments = async (blogId: string) => {
+    try {
+      setIsLoadingComments(true);
+      const { data, error } = await supabase
+        .from("blog_comments")
+        .select("*")
+        .eq("blog_id", blogId)
+        .order("created_at", { ascending: true }); // Parent comments first
+
+      if (error) throw error;
+      setComments(buildCommentTree(data || []));
+    } catch (err) {
+      console.error("Error fetching comments:", err);
+    } finally {
+      setIsLoadingComments(false);
+    }
+  };
+
+  const getUserDisplayName = (currSession: any) => {
+    if (!currSession?.user) return "Anonymous AI Explorer";
+    const userMeta = currSession.user.user_metadata;
+    const userEmail = currSession.user.email;
+
+    if (userMeta?.first_name) {
+      return `${userMeta.first_name} ${userMeta.last_name || ''}`.trim();
+    }
+    if (userEmail === "sureshbeekhani26@gmail.com") {
+      return "Suresh Beekhani";
+    }
+    if (userEmail) {
+      const emailParts = userEmail.split('@')[0];
+      return emailParts.charAt(0).toUpperCase() + emailParts.slice(1);
+    }
+    return "Anonymous AI Explorer";
+  };
+
+  const handleCommentSubmit = async (e: React.FormEvent, parentId: string | null = null) => {
+    e.preventDefault();
+    if (!selectedBlog) return;
+
+    const content = parentId ? replyInput.trim() : newCommentInput.trim();
+    if (!content) return;
+
+    setIsSubmittingComment(true);
+    try {
+      const userName = getUserDisplayName(session);
+
+      const newComment = {
+        blog_id: selectedBlog.id,
+        parent_id: parentId,
+        user_name: userName,
+        content,
+        likes: 0
+      };
+
+      const { data, error } = await supabase
+        .from("blog_comments")
+        .insert([newComment])
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Update UI locally
+      if (parentId) {
+        setReplyInput("");
+        setReplyingTo(null);
+      } else {
+        setNewCommentInput("");
+      }
+      
+      toast.success("Comment added successfully!");
+      fetchComments(selectedBlog.id);
+    } catch (err: any) {
+      console.error("Error adding comment:", err);
+      toast.error(err.message || "Failed to add comment");
+    } finally {
+      setIsSubmittingComment(false);
+    }
+  };
+
+  const handleCommentLike = async (commentId: string) => {
+    try {
+      const { error } = await supabase.rpc('increment_comment_likes', { comment_id: commentId });
+      
+      if (error) {
+        // Fallback to update if RPC fails
+        const { data: current } = await supabase.from('blog_comments').select('likes').eq('id', commentId).single();
+        await supabase.from('blog_comments').update({ likes: (current?.likes || 0) + 1 }).eq('id', commentId);
+      }
+      if (selectedBlog) fetchComments(selectedBlog.id);
+    } catch (err) {
+      console.error("Error liking comment:", err);
+    }
+  };
+
+  const handleCommentDelete = async (commentId: string) => {
+    try {
+      const { error } = await supabase
+        .from("blog_comments")
+        .delete()
+        .eq("id", commentId);
+
+      if (error) throw error;
+      toast.success("Comment deleted");
+      if (selectedBlog) fetchComments(selectedBlog.id);
+    } catch (err) {
+      console.error("Error deleting comment:", err);
     }
   };
   const renderContent = (content: string) => {
@@ -568,8 +872,82 @@ const Blogs: React.FC = () => {
                 </div>
               )}
 
+              {/* Comment Section */}
+              <div className="mt-16 pt-12 border-t border-gray-100">
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="w-12 h-12 rounded-none bg-gradient-to-br from-[#ec4899] to-[#d928c1] flex items-center justify-center text-white shadow-lg">
+                    <MessageSquare size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-black text-[#0a0435] tracking-tight uppercase italic">
+                      Conversations <span className="text-[#ec4899]">Deep Dive</span>
+                    </h3>
+                    <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mt-0.5">Share your insights & questions</p>
+                  </div>
+                </div>
+
+                {/* Main Comment Form */}
+                <div className="mb-12 bg-gray-50 p-6 md:p-8 border border-gray-100 relative group">
+                   {/* Decorative corner */}
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#ec4899]/30" />
+                  
+                  <form onSubmit={(e) => handleCommentSubmit(e)} className="relative z-10">
+                    <textarea
+                      value={newCommentInput}
+                      onChange={(e) => setNewCommentInput(e.target.value)}
+                      placeholder="Write your comment here..."
+                      className="w-full min-h-[120px] p-5 bg-white border border-gray-200 text-[#0a0435] focus:border-[#ec4899] focus:ring-4 focus:ring-[#ec4899]/5 outline-none transition-all text-base md:text-lg font-medium rounded-none resize-none"
+                    />
+                    <div className="flex justify-between items-center mt-4">
+                      <p className="text-[11px] text-gray-400 font-bold uppercase tracking-tighter">Your comment will be posted as <span className="text-[#ec4899] font-black">{getUserDisplayName(session)}</span></p>
+                      <button
+                        type="submit"
+                        disabled={isSubmittingComment || !newCommentInput.trim()}
+                        className="flex items-center gap-3 bg-[#0a0435] text-white px-8 py-3 rounded-none font-black text-sm tracking-widest uppercase hover:bg-[#ec4899] transition-all transform hover:-translate-y-1 shadow-lg disabled:opacity-50"
+                      >
+                        {isSubmittingComment ? <Loader2 className="animate-spin" size={18} /> : (
+                          <>
+                            Post Comment <Send size={16} />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                {/* Comments List */}
+                <div className="space-y-12">
+                  {isLoadingComments ? (
+                    <div className="flex justify-center py-12">
+                      <Loader2 className="animate-spin text-[#ec4899]" size={32} />
+                    </div>
+                  ) : comments.length === 0 ? (
+                    <div className="text-center py-12 border border-dashed border-gray-200 flex flex-col items-center">
+                      <MessageSquare className="text-gray-200 mb-4" size={48} />
+                      <p className="text-gray-400 font-bold tracking-widest uppercase text-xs">No comments yet. Start the conversation!</p>
+                    </div>
+                  ) : (
+                    comments.map((comment) => (
+                      <CommentItem 
+                        key={comment.id} 
+                        comment={comment} 
+                        onReply={(id) => setReplyingTo(id)}
+                        onLike={handleCommentLike}
+                        onDelete={handleCommentDelete}
+                        replyingTo={replyingTo}
+                        replyInput={replyInput}
+                        setReplyInput={setReplyInput}
+                        onReplySubmit={handleCommentSubmit}
+                        isSubmitting={isSubmittingComment}
+                        isAdmin={!!session?.user}
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
+
               {/* Bottom Navigation */}
-              <div className="mt-8 pt-10 border-t border-gray-100 flex flex-col items-center">
+              <div className="mt-16 pt-10 border-t border-gray-100 flex flex-col items-center">
                 <p className="text-gray-600 text-sm mb-6 italic font-medium">Thanks for reading!</p>
                 <button
                   onClick={() => {
@@ -679,9 +1057,19 @@ const Blogs: React.FC = () => {
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
 
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
-          <h2 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-tight">Stay Up-To-Date With Our Latest Blog</h2>
+          <div
+            className="inline-flex items-center justify-center mb-5 px-5 py-2.5 rounded-full border border-fuchsia-400/45 bg-fuchsia-500/15 backdrop-blur-sm text-sm md:text-base font-bold text-fuchsia-100 tracking-wide shadow-sm"
+            aria-live="polite"
+          >
+            {selectedCategoryLabel}
+          </div>
+          <h2 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-tight">
+            Stay Up-To-Date With Our Latest Blog
+          </h2>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-normal">
-            Discover fresh ideas and stay ahead with our latest blog posts.
+            {activeCategory === "all"
+              ? "Discover fresh ideas and stay ahead with our latest blog posts."
+              : `Showing posts in ${selectedCategoryLabel}. Explore guides and deep dives in this topic.`}
           </p>
         </div>
       </section>
