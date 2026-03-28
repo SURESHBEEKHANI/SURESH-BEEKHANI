@@ -8,6 +8,7 @@ import IndustryHero from "../components/IndustryHero";
 import IndustryProfessional from "../components/IndustryProfessional";
 import IndustryCapabilities from "../components/IndustryCapabilities";
 import IndustrySuccessStories from "../components/IndustrySuccessStories";
+import LatestBlogs from "../components/LatestBlogs";
 import IndustryFAQ from "../components/IndustryFAQ";
 const USE_CASES_DATA = [
   {
@@ -233,6 +234,7 @@ const WealthTech: React.FC = () => {
         subtitle="Discover how our cutting-edge AI technology has transformed"
         highlightedSubtitle="wealth management operations"
       />
+      <LatestBlogs />
       <IndustryFAQ
         faqData={faqData}
         title="Frequently Asked"
