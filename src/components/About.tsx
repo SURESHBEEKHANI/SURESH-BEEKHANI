@@ -23,27 +23,28 @@ const About = () => {
                     background: '#ff0ea3',
                     transform: 'skewX(-15deg)'
                   }}
-                ></div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight tracking-tight">
-                  Drive Unstoppable Business Growth with AI
-                </h2>
-              </div>
+                >
+                </div>
+  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight tracking-tight">
+    Drive Unstoppable Business Growth with AI
+  </h2>
+</div>
 
-              <div className="space-y-4 text-gray-600 leading-relaxed text-xs sm:text-sm">
-                <p>
-                  Unlock your business’s full potential with cutting-edge AI solutions crafted by <span className="font-bold text-[#050729]">Suresh Beekhani</span>. With a strong focus on real-world impact, we design and deploy intelligent systems that don’t just work — they deliver measurable results.
-                </p>
-                <p>
-                  From machine learning and deep learning to advanced applications in NLP, computer vision, predictive analytics, generative AI, and AI chatbots, we build scalable solutions tailored to your business needs.
-                </p>
-                <p>
-                  Our approach is simple: solve real problems, optimize operations, and create lasting value. Whether it’s automating workflows, enhancing decision-making, or unlocking powerful insights from your data — we help you move faster and smarter.
-                </p>
-                <p>
-                  Partner with us to transform your ideas into high-performance AI systems that drive efficiency, growth, and competitive advantage.
-                </p>
-              </div>
-            </div>
+<div className="space-y-4 text-gray-600 leading-relaxed text-xs sm:text-sm">
+  <p>
+    Maximize your business potential with cutting-edge AI solutions from <span className="font-bold text-[#050729]">Velnix Solutions</span>. We focus on real-world impact, designing intelligent systems that don’t just work — they deliver measurable results.
+  </p>
+  <p>
+    Leveraging machine learning, deep learning, and advanced AI applications in NLP, computer vision, predictive analytics, generative AI, and AI chatbots, we build scalable solutions tailored to your unique business needs.
+  </p>
+  <p>
+    Our approach is simple: solve real problems, optimize operations, and create lasting value. Whether automating workflows, enhancing decision-making, or extracting powerful insights from your data — we help your business move faster and smarter.
+  </p>
+  <p>
+    Partner with <span className="font-bold text-[#050729]">Velnix Solutions</span> to transform your ideas into high-performance AI systems that drive efficiency, growth, and a competitive advantage.
+  </p>
+</div>
+</div>
 
             <Button
               asChild

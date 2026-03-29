@@ -557,11 +557,11 @@ const Blogs: React.FC = () => {
                         </button>
 
                         {openFaq === index && (
-                          <div className="px-5 pb-5 animate-in fade-in slide-in-from-top-2 duration-400">
-                            <div className="pt-4 border-t border-gray-200/60 faq-answer-content">
-                              <div className="text-gray-800 leading-[1.7] text-base md:text-[1.05rem]">
-                                {renderContent(faq.a)}
-                              </div>
+                          <div className="px-5 pb-5 animate-in fade-in slide-in-from-top-1 duration-300">
+                            <div className="pt-3 border-t border-gray-200/50">
+                              <p className="text-gray-800 leading-relaxed text-base">
+                                {faq.a}
+                              </p>
                             </div>
                           </div>
                         )}

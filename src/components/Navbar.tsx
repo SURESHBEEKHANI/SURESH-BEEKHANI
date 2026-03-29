@@ -68,20 +68,11 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
       const currentScrollY = window.scrollY;
       const prevScrollY = lastScrollY.current;
 
-      // Hide on scroll down, show on scroll up — ALL pages
-      if (currentScrollY < 80) {
-        setIsVisible(true);
-      } else if (currentScrollY > prevScrollY + 5) {
-        // Scrolling down — hide
-        setIsVisible(false);
-        setIsMobileMenuOpen(false);
-      } else if (currentScrollY < prevScrollY - 5) {
-        // Scrolling up — show
-        setIsVisible(true);
-      }
+      // Always visible
+      setIsVisible(true);
 
       lastScrollY.current = currentScrollY;
-      setIsScrolled(currentScrollY > 10);
+      setIsScrolled(currentScrollY > 20);
 
       const sections = document.querySelectorAll('section[id]');
       const scrollPosition = currentScrollY + 100;
@@ -205,42 +196,37 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.35s ease-in-out, background-color 0.3s, box-shadow 0.3s',
       }}
-      className={`fixed top-0 left-0 right-0 z-50 group/navbar ${isScrolled
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
-        : 'bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-lg hover:border-b hover:border-gray-200/50'
+      className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 ${isScrolled
+        ? 'bg-white shadow-xl border-b border-gray-100 py-0'
+        : 'bg-transparent hover:bg-white/10 hover:backdrop-blur-md'
         }`}
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-[4rem] sm:h-20' : 'h-[4.5rem] sm:h-24 lg:h-28'}`}>
 
-          {/* Logo - Optimized for mobile */}
+          {/* Logo — larger + stronger contrast / shadow for a bold, zoomed look */}
           <motion.div
-            className="hidden lg:flex items-center flex-shrink-0"
-            whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
+            className="flex items-center flex-shrink-0"
+            whileHover={prefersReducedMotion ? {} : { scale: 1.12 }}
             transition={{ duration: 0.2 }}
           >
             <a
               href="/#home"
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2  text-white text-xs sm:text-sm lg:text-base font-semibold border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation"
-              style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)' }}
-              aria-label="AI Specialist - Home"
+              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-0 sm:ml-0"
+              aria-label="Neurovex - Home"
             >
-              <motion.svg
-                className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                animate={prefersReducedMotion ? {} : { rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.364 17.364l-1.414-1.414M12 21v-2M6.636 17.364l1.414-1.414M3 12h2M6.636 6.636l1.414 1.414" />
-              </motion.svg>
-              <span className="hidden sm:inline">AI Specialist</span>
-              <span className="sm:hidden">AI</span>
+              <img
+                src="/image/logo/Neurovex.png"
+                alt="Neurovex"
+                className={`w-auto transition-all duration-300 object-contain ${
+                  isScrolled 
+                    ? 'h-8 sm:h-10 md:h-12 brightness-100 contrast-100 drop-shadow-sm' 
+                    : 'h-10 w-auto sm:h-12 md:h-14 lg:h-16 xl:h-18 brightness-110 contrast-125 saturate-115 drop-shadow-[0_3px_14px_rgba(0,0,0,0.28)]'
+                }`}
+                decoding="async"
+              />
             </a>
           </motion.div>
 
@@ -257,7 +243,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#ec4899]'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -312,7 +298,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white group-hover/navbar:text-gray-900 hover:text-[#ec4899]'
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#ec4899]'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -337,7 +323,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 className={`p-2 rounded-full transition-colors duration-300 ${
                   (isScrolled || isDark)
                     ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
-                    : 'text-white hover:text-[#ec4899] hover:bg-white/10 group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
+                    : 'text-white hover:text-[#ec4899] hover:bg-white/10'
                 }`}
                 aria-label="Open Search"
               >
@@ -395,7 +381,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
                   (isScrolled || isDark)
                     ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
-                    : 'text-white hover:bg-white/10 hover:text-[#ec4899] group-hover/navbar:text-gray-900 group-hover/navbar:hover:text-[#ec4899] group-hover/navbar:hover:bg-gray-100'
+                    : 'text-white hover:bg-white/10 hover:text-[#ec4899]'
                 }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}

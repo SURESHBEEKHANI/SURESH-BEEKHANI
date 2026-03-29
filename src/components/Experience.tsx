@@ -49,7 +49,7 @@ const Experience = () => {
               }}
             ></div>
             <h2 className="heading-2 text-white leading-tight">
-              Why <span style={{ color: '#ff0ea3' }}>Choose Us</span>
+              Why <span style={{ color: '#ff0ea3' }}>Velnix Solutions</span>
             </h2>
           </div>
 

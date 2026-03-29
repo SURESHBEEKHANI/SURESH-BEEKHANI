@@ -127,111 +127,31 @@ const Hero = () => {
       </div>
 
       {/* Main content */}
-      <div className="z-10 max-w-7xl mx-auto container-padding py-8 sm:py-12 lg:py-0">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 xl:gap-16">
-          
-          {/* Avatar */}
-          <motion.div
-            className="relative mt-16 sm:mt-0 w-full lg:w-auto"
-            variants={fadeInLeft}
-            initial={prefersReducedMotion ? false : "hidden"}
-            animate={prefersReducedMotion ? false : "visible"}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative flex justify-center lg:justify-start">
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#f01eff]/30 via-[#f755d7]/20 to-[#ec4899]/30 rounded-full blur-2xl opacity-60"
-                animate={prefersReducedMotion ? {} : { scale: [1,1.1,1], opacity:[0.6,0.8,0.6] }}
-                transition={{ duration: 3, repeat: Infinity, ease:'easeInOut' }}
-              />
-              <motion.div
-                className="relative"
-                variants={avatarVariants}
-                initial={prefersReducedMotion ? false : "hidden"}
-                animate={prefersReducedMotion ? false : "visible"}
-              >
-                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border-4 border-[#f755d7]/30 shadow-2xl bg-gradient-to-br from-[#0a0435] to-[#150a50] rounded-full overflow-hidden">
-                  <AvatarImage
-                    src="/image/sureshbeekhani.png"
-                    alt="Suresh Beekhani - AI/ML Engineer"
-                    className="object-cover w-full h-full"
-                    loading="eager"
-                  />
-                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text-ai">SB</AvatarFallback>
-                </Avatar>
-
-                {techIcons.map((tech, idx) => (
-                  <motion.div
-                    key={idx}
-                    className={`absolute ${tech.color}`}
-                    style={{ top: `${20 + idx * 60}%`, left: idx % 2 === 0 ? '-20px' : 'auto', right: idx % 2 === 1 ? '-20px' : 'auto' }}
-                    initial={prefersReducedMotion ? {} : { scale: 0, opacity: 0 }}
-                    animate={prefersReducedMotion ? {} : { scale: [1,1.2,1], opacity: [0.7,1,0.7] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5, ease:'easeInOut' }}
-                  >
-                    {tech.icon}
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-
+      <div className="z-10 max-w-5xl mx-auto container-padding py-8 sm:py-12 lg:py-0">
+        <div className="flex flex-col items-center justify-center">
           {/* Text */}
           <motion.div
-            className="flex flex-col items-center lg:items-start gap-4 text-center lg:text-left"
+            className="flex flex-col items-center gap-6 text-center"
             variants={staggerContainer}
             initial={prefersReducedMotion ? false : "hidden"}
             animate={prefersReducedMotion ? false : "visible"}
           >
             <motion.div className="inline-flex items-center space-x-2 px-3 py-1 rounded-none bg-white/5 border border-[#ec4899]/30 backdrop-blur-md mb-2" variants={staggerItem}>
               <div className="w-2 h-2 rounded-full bg-[#f01eff] animate-pulse" />
-              <span className="text-xs font-medium tracking-wider text-white/90 uppercase">AI Specialist</span>
+              <span className="text-xs font-medium tracking-wider text-white/90 uppercase">AI Business Solutions</span>
             </motion.div>
-            <motion.h1 className="heading-1 font-bold leading-tight" variants={staggerItem}>
-              Suresh <span style={{ color: '#f51dad' }}>Beekhani</span>
+            
+            <motion.h1 className="heading-1 font-bold leading-tight max-w-4xl" variants={staggerItem}>
+              Your Trusted <span style={{ color: '#f51dad' }}>AI Partner</span> for Business Growth
             </motion.h1>
 
-            {/* Skills carousel */}
-            <motion.div className="h-6 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden" variants={staggerItem}>
-              <span className="body-medium mr-2 mobile-text" style={{ color: '#ff07a4' }}>Specializing in</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentSkill}
-                  className="body-medium font-semibold gradient-text-ai min-w-[180px] sm:min-w-[200px] text-left mobile-text"
-                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {skills[currentSkill]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.div>
-
-            <motion.p className="body-medium text-white/80 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
-              I approach AI and ML not just as technical challenges, but as solutions that create measurable business value. I focus on cost-efficient, 
-              scalable, and outcome-driven systems that help organizations make smarter decisions, optimize operations, and maximize ROI — bridging
-              the gap between data science and business strategy.
+            <motion.p className="body-large text-white/90 max-w-3xl leading-relaxed mobile-text" variants={staggerItem}>
+              We build AI solutions that streamline operations, increase revenue, and give your business a competitive edge.
             </motion.p>
 
             {/* Buttons */}
-            <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" variants={staggerItem}>
+            <motion.div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto justify-center" variants={staggerItem}>
               <ButtonWrapper href="https://calendar.app.google/F63aBoA5vxJdtihj7" icon={<FileText />} text="Book Appointment" />
-              <ButtonWrapper href="/#about" icon={<ArrowDown />} text="Learn More" outline />
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-[#f01eff]/20 w-full" variants={staggerItem}>
-              {[
-                { label: 'Years Experience', value: statsCount.years },
-                { label: 'Projects Completed', value: statsCount.projects + '+' },
-                { label: 'AI Models Built', value: statsCount.models + '+' }
-              ].map((stat, idx) => (
-                <motion.div key={idx} className="text-center" custom={idx} variants={statsVariants} initial={prefersReducedMotion ? false : "hidden"} animate={prefersReducedMotion ? false : "visible"}>
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold mobile-text gradient-text-ai">{stat.value}</div>
-                  <div className="text-xs sm:text-sm mobile-text" style={{ color: '#f755ef' }}>{stat.label}</div>
-                </motion.div>
-              ))}
             </motion.div>
           </motion.div>
         </div>

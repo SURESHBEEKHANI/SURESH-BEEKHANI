@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Heart, Brain, Code, Rocket, Globe, Youtube, Instagram } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
@@ -103,38 +103,28 @@ const Footer = () => {
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-6 relative z-10">
 
         <div className="grid lg:grid-cols-3 gap-12 mb-12">
 
           {/* Brand */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <div className="flex items-center gap-3">
-              <div
-                className="rounded-full w-12 h-12 flex items-center justify-center shadow-lg shadow-fuchsia-500/30"
-                style={{
-                  background:
-                    'linear-gradient(135deg, #f00e7b 0%, #ff0cbe 50%, #ed1481 100%)',
-                }}
-              >
-                <Brain className="h-6 w-6 text-white" />
-              </div>
+            <a
+              href="/#home"
+              className="inline-flex items-center touch-manipulation transition-transform duration-300 hover:scale-[1.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-400/50 rounded-lg"
+              aria-label="Neurovex — Home"
+            >
+              <img
+                src="/image/logo/Neurovex.png"
+                alt="Neurovex"
+                className="h-14 sm:h-16 md:h-20 w-auto max-w-[min(100%,300px)] object-contain object-left brightness-110 contrast-125 saturate-115 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
+                decoding="async"
+              />
+            </a>
 
-              <div>
-                <h3 className="text-xl font-bold text-white">
-                  Suresh <span style={{ color: '#f92198' }}>Beekhani</span>
-                </h3>
-                <p className="text-xs text-indigo-300">
-                  Data Scientist | AI Specialist
-                </p>
-              </div>
-            </div>
-
-            <p className="text-indigo-100/70 text-sm leading-relaxed">
-              Transforming ideas into intelligent AI solutions using
-              Machine Learning, Deep Learning, Generative AI, and intelligent
-              automation.
+            <p className="text-indigo-100/85 text-sm sm:text-base font-normal leading-relaxed max-w-md">
+              Transforming ideas into intelligent AI solutions, we empower businesses.
             </p>
 
             <div className="flex space-x-3">
