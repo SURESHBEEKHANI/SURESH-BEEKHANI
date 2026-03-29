@@ -8,6 +8,7 @@ import ClientSolutions from '@/components/ClientSolutions';
 import Approach from '@/components/Approach';
 import Testimonials from '@/components/Testimonials';
 import Experience from '@/components/Experience';
+import MeetFounder from '@/components/MeetFounder';
 import LatestBlogs from '@/components/LatestBlogs';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -70,6 +71,12 @@ const Index = () => {
         <section className="pro-section">
           <div className="section-container">
             <Experience />
+          </div>
+        </section>
+
+        <section className="pro-section">
+          <div className="section-container">
+            <MeetFounder />
           </div>
         </section>
 
