@@ -344,7 +344,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 style={{ background: 'linear-gradient(135deg, #f41eff 0%, #f755a9d9 50%, #ec4899 100%)' }}
               >
                 <a
-                  href="https://wa.me/923401213187"
+                  href="https://wa.me/923351312852"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
