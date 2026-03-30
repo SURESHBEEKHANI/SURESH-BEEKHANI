@@ -175,7 +175,7 @@ const Footer = () => {
 
             <ul className="space-y-3 text-indigo-100/70 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} style={{ color: '#f92198' }} /> Karachi,Pakistan
+                <MapPin size={16} style={{ color: '#f92198' }} /> Flat 5, St. 13, Near Taj Plaza, Central Jacob Lines, , Karachi, Pakistan, 74400
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} style={{ color: '#f92198' }} /> velnixsolutions@gmail.com
