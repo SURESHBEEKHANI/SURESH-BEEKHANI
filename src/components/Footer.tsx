@@ -175,13 +175,13 @@ const Footer = () => {
 
             <ul className="space-y-3 text-indigo-100/70 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} style={{ color: '#f92198' }} /> Pakistan
+                <MapPin size={16} style={{ color: '#f92198' }} /> Karachi,Pakistan
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} style={{ color: '#f92198' }} /> sureshbeekhani26@gmail.com
+                <Mail size={16} style={{ color: '#f92198' }} /> velnixsolutions@gmail.com
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} style={{ color: '#f92198' }} /> +923401213187
+                <Phone size={16} style={{ color: '#f92198' }} /> +923351312852
               </li>
             </ul>
 
