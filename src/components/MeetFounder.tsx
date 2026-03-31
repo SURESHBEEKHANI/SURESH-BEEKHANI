@@ -9,31 +9,37 @@ const MeetFounder = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="founder" className="py-24 relative overflow-hidden bg-[#05050A]">
-      {/* Subtle dark background accents */}
+    <section id="founder" className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden scroll-mt-20">
+      {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-48 h-48 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-3xl opacity-[0.18]" />
-        <div className="absolute -bottom-24 -left-24 w-48 h-48 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-3xl opacity-[0.14]" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] opacity-40" />
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
-          className="text-center mb-20"
+          className="text-left mb-12 sm:mb-20"
           variants={fadeInUp}
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? false : "visible"}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#f01eff]" />
-            <h2 className="text-[#f01eff] font-bold tracking-[0.3em] uppercase text-[10px]">Leadership</h2>
-            <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-[#f01eff]" />
+          <div className="flex items-start gap-4 mb-3">
+            <div
+              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+              style={{
+                background: '#ff0ea3',
+                transform: 'skewX(-15deg)'
+              }}
+            ></div>
+            <h2 className="heading-2 text-white leading-tight">
+              Leadership: Meet Our <span style={{ color: '#ff0ea3' }}>Founder</span>
+            </h2>
           </div>
-          <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899]">Founder</span>
-          </h3>
-          <div className="mt-6 h-1 w-24 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] mx-auto rounded-full opacity-50" />
+          <p className="body-large text-white/50 max-w-3xl">
+            The visionary strategies driving our enterprise.
+          </p>
         </motion.div>
 
         <motion.div 
@@ -45,33 +51,32 @@ const MeetFounder = () => {
         >
           {/* Image Column */}
           <motion.div 
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 flex justify-center items-end pt-12 lg:pt-0"
             variants={fadeInUp}
           >
+            {/* The Pink/Purple skewed shape behind the person */}
+            <div className="absolute top-[25%] bottom-0 left-[10%] right-[10%] sm:left-[15%] sm:right-[15%] md:left-[20%] md:right-[20%] bg-gradient-to-br from-[#c059f0] to-[#ff0ea3] rounded-[2rem] transform -skew-x-[15deg] -z-10 shadow-[0_0_50px_rgba(255,14,163,0.3)]"></div>
+            
             {/* Main Image Container */}
-            <div className="relative z-10 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group aspect-[4/5] sm:aspect-square lg:aspect-[4/5] xl:aspect-square">
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-tr from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"
-              />
+            <div className="relative z-10 w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[540px] mx-auto px-4 flex items-end justify-center">
               <img 
                 src="/image/sureshbeekhani.png" 
                 alt="Suresh Beekhani - Founder of Velnix Solutions" 
-                className="w-full h-full object-cover transition-all duration-1000 scale-[1.05] group-hover:scale-100 brightness-[1.08] contrast-[1.02]"
+                className="w-full h-auto object-contain object-bottom transition-transform duration-700 hover:scale-[1.02] filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] brightness-110 contrast-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C10] via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-700" />
             </div>
             
             {/* Floating accent orb */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 blur-3xl rounded-full -z-10 animate-pulse" />
+            <div className="absolute top-[20%] -left-10 w-40 h-40 bg-[#ff0ea3]/15 blur-3xl rounded-full -z-20 animate-pulse" />
           </motion.div>
 
           {/* Content Column */}
           <div className="order-1 lg:order-2 space-y-10">
             <motion.div variants={staggerItem} className="space-y-4">
               <h1 className="text-4xl md:text-5xl font-black text-white leading-[1.1] tracking-tight">
-                Suresh <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899]">Beekhani</span>
+                Suresh <span className="text-[#ff0ea3]">Beekhani</span>
               </h1>
-              <p className="text-[#f01eff] font-bold tracking-widest uppercase text-xs">Founder & CEO, Velnix Solutions | AI Specialist with a CFO Mindset</p>
+              <p className="text-[#ff0ea3] font-bold tracking-widest uppercase text-xs">Founder & CEO, Velnix Solutions | AI Specialist with a CFO Mindset</p>
             </motion.div>
 
             {/* Expertise Tags in one line */}

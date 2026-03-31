@@ -200,7 +200,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         transition: 'transform 0.35s ease-in-out, background-color 0.3s, box-shadow 0.3s',
       }}
       className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 ${
-        activeSection === 'home'
+        (currentPath === '/' && activeSection === 'home')
           ? 'bg-transparent'
           : 'bg-white shadow-xl border-b border-gray-100'
       }`}
@@ -218,16 +218,16 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
           >
             <a
               href="/#home"
-              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-0 sm:ml-0"
+              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-4 sm:ml-8 lg:ml-12"
               aria-label="Neurovex - Home"
             >
               <img
                 src="/image/logo/Neurovex.png"
                 alt="Neurovex"
-                className={`w-auto transition-all duration-300 object-contain ${
-                  activeSection !== 'home'
-                    ? 'h-8 sm:h-10 md:h-12 brightness-100 contrast-100'
-                    : 'h-10 w-auto sm:h-12 md:h-14 lg:h-16 xl:h-18 brightness-110 contrast-125 saturate-115 drop-shadow-[0_3px_14px_rgba(0,0,0,0.28)]'
+                className={`w-auto transition-all duration-300 object-contain scale-100 ${
+                  !(currentPath === '/' && activeSection === 'home')
+                    ? 'h-8 sm:h-10 md:h-12 lg:h-14 brightness-100 contrast-100'
+                    : 'h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 brightness-110 contrast-125 saturate-115 drop-shadow-[0_3px_14px_rgba(0,0,0,0.28)]'
                 }`}
                 decoding="async"
               />
@@ -250,7 +250,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                       className={`relative px-4 py-2 transition-all duration-300 font-medium rounded-md ${
                         isActive
                           ? 'text-[#ec4899]'
-                          : activeSection !== 'home'
+                          : !(currentPath === '/' && activeSection === 'home')
                             ? 'text-gray-700 hover:text-[#ec4899]'
                             : 'text-gray-100 hover:text-white'
                       }`}
@@ -313,7 +313,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   className={`relative px-4 py-2 transition-all duration-300 font-medium rounded-md ${
                     isActive
                       ? 'text-[#ec4899]'
-                      : activeSection !== 'home'
+                      : !(currentPath === '/' && activeSection === 'home')
                         ? 'text-gray-700 hover:text-[#ec4899]'
                         : 'text-gray-100 hover:text-white'
                   }`}
@@ -338,7 +338,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className={`p-2.5 rounded-full transition-all duration-300 ${
-                  activeSection !== 'home'
+                  !(currentPath === '/' && activeSection === 'home')
                     ? 'text-gray-700 hover:text-white hover:bg-[#ec4899]'
                     : 'text-white hover:text-white hover:bg-white/15'
                 }`}
@@ -350,7 +350,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
           </div>
 
           {/* Contact Button - Desktop */}
-          <div className="hidden lg:flex items-center space-x-3 relative group/contact">
+          <div className="hidden lg:flex items-center space-x-3 relative group/contact mr-4 lg:mr-8 xl:mr-10">
             <motion.div
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
@@ -396,7 +396,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 size="sm"
                 onClick={toggleMobileMenu}
                 className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
-                  activeSection !== 'home'
+                  !(currentPath === '/' && activeSection === 'home')
                     ? 'text-gray-700 hover:text-white hover:bg-[#ec4899]'
                     : 'text-white hover:bg-white/15'
                 }`}

@@ -117,24 +117,25 @@ const Footer = () => {
         <div className="grid lg:grid-cols-3 gap-12 mb-12">
 
           {/* Brand */}
-          <div className={`space-y-6 pl-[40%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <div className={`flex flex-col gap-6 pl-[40%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+            <div className="flex flex-col gap-1 -mt-4 text-left">
+              <a
+                href="/#home"
+                className="inline-flex items-center touch-manipulation transition-transform duration-300 hover:scale-[1.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-400/50 rounded-lg justify-start"
+                aria-label="Neurovex — Home"
+              >
+                <img
+                  src="/image/logo/Neurovex.png"
+                  alt="Neurovex"
+                  className="h-28 sm:h-32 md:h-40 lg:h-48 w-auto max-w-[min(100%,600px)] object-contain object-left brightness-110 contrast-125 saturate-115 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)] -ml-4"
+                  decoding="async"
+                />
+              </a>
 
-            <a
-              href="/#home"
-              className="inline-flex items-center touch-manipulation transition-transform duration-300 hover:scale-[1.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-400/50 rounded-lg"
-              aria-label="Neurovex — Home"
-            >
-              <img
-                src="/image/logo/Neurovex.png"
-                alt="Neurovex"
-                className="h-14 sm:h-16 md:h-20 w-auto max-w-[min(100%,300px)] object-contain object-left brightness-110 contrast-125 saturate-115 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
-                decoding="async"
-              />
-            </a>
-
-            <p className="text-white text-sm sm:text-base font-bold leading-relaxed whitespace-nowrap">
-              Transforming ideas into intelligent systems
-            </p>
+              <p className="text-white text-sm sm:text-base font-bold leading-relaxed whitespace-nowrap -mt-6">
+                Transforming ideas into intelligent systems
+              </p>
+            </div>
 
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -183,17 +184,17 @@ const Footer = () => {
 
             <ul className="space-y-3 text-white text-sm">
               <li className="flex items-start gap-2">
-                <MapPin size={16} style={{ color: '#f92198' }} />
+                <MapPin size={16} className="text-white mt-0.5" />
                 <span className="font-bold">
                   Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} style={{ color: '#f92198' }} />
+                <Mail size={16} className="text-white" />
                 <span className="font-bold">velnixsolutions@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} style={{ color: '#f92198' }} />
+                <Phone size={16} className="text-white" />
                 <span className="font-bold">+92 335 131 2852</span>
               </li>
             </ul>
