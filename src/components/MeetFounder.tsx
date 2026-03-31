@@ -9,11 +9,13 @@ const MeetFounder = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="founder" className="py-24 relative overflow-hidden bg-[#0B0C10]">
-      {/* Enhanced Background accents */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#f01eff]/5 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#ec4899]/5 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(240,30,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+    <section id="founder" className="py-24 relative overflow-hidden bg-[#05050A]">
+      {/* Subtle dark background accents */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-48 h-48 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-3xl opacity-[0.18]" />
+        <div className="absolute -bottom-24 -left-24 w-48 h-48 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-3xl opacity-[0.14]" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] opacity-40" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
@@ -48,8 +50,8 @@ const MeetFounder = () => {
           >
             {/* Main Image Container */}
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group aspect-[4/5] sm:aspect-square lg:aspect-[4/5] xl:aspect-square">
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-tr from-[#f01eff]/10 to-[#ec4899]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-tr from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"
               />
               <img 
                 src="/image/sureshbeekhani.png" 
@@ -60,7 +62,7 @@ const MeetFounder = () => {
             </div>
             
             {/* Floating accent orb */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#f01eff]/20 blur-3xl rounded-full -z-10 animate-pulse" />
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 blur-3xl rounded-full -z-10 animate-pulse" />
           </motion.div>
 
           {/* Content Column */}

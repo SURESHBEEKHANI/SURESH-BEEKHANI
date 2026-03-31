@@ -88,7 +88,7 @@ const Experience = () => {
         <div className={`mt-0 border-t border-l border-white/20 relative overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {/* Left Content - Title and Description */}
-            <div className="col-span-1 px-4 sm:px-6 py-6 sm:py-10 border-b border-r border-white/20 bg-white/5">
+            <div className="col-span-1 px-4 sm:px-6 py-6 sm:py-10 border-b border-r border-white/15 bg-white/0 backdrop-blur-sm">
               <div className="mb-4">
                 <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
                   Achievements
@@ -100,7 +100,7 @@ const Experience = () => {
             </div>
 
             {/* Right Content - Certificates Slider */}
-            <div className="col-span-1 lg:col-span-3 px-4 sm:px-6 py-6 sm:py-10 border-b border-r border-white/20 bg-white/5 relative group/slider">
+            <div className="col-span-1 lg:col-span-3 px-4 sm:px-6 py-6 sm:py-10 border-b border-r border-white/15 bg-white/0 backdrop-blur-sm relative group/slider">
               {/* Marquee Container */}
               <div id="cert-scroll" className="relative overflow-x-auto scrollbar-hide">
                 <div className="flex animate-scroll whitespace-nowrap gap-8 sm:gap-12 items-center min-w-max px-4">
@@ -109,7 +109,7 @@ const Experience = () => {
                       key={index}
                       className="flex-shrink-0 relative group/cert transition-all duration-300"
                     >
-                      <div className="bg-white rounded-xl p-3 shadow-2xl shadow-black/40 border border-white/10 group-hover/cert:border-[#ff0ea3]/30 transition-all duration-500 hover:-translate-y-2 flex items-center justify-center h-16 sm:h-24 w-28 sm:w-40 overflow-hidden">
+                      <div className="rounded-xl p-3 bg-gradient-to-b from-white/5 to-white/0 shadow-xl shadow-black/30 border border-white/10 group-hover/cert:border-[#ff0ea3]/40 transition-all duration-500 hover:-translate-y-2 flex items-center justify-center h-16 sm:h-24 w-28 sm:w-40 overflow-hidden">
                         <img
                           src={cert.path}
                           alt={cert.alt}

@@ -93,6 +93,7 @@ const AIPortfolioRiskAnalyzer = lazy(() => import("./Pages-Portfolio/ai-portfoli
 const AIDevOpsMonitoringAssistant = lazy(() => import("./Pages-Portfolio/ai-devops-monitoring-assistant"));
 const AIITSupportChatbot = lazy(() => import("./Pages-Portfolio/ai-it-support-chatbot"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 
 // ⚠️ Error Boundary
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -170,6 +171,7 @@ const AppContent = () => {
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

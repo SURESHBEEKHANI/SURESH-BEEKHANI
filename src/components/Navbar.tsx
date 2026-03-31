@@ -196,10 +196,11 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.35s ease-in-out, background-color 0.3s, box-shadow 0.3s',
       }}
-      className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 ${isScrolled
-        ? 'bg-white shadow-xl border-b border-gray-100 py-0'
-        : 'bg-transparent hover:bg-white/10 hover:backdrop-blur-md'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white shadow-xl border-b border-gray-100'
+          : 'bg-transparent'
+      }`}
       role="navigation"
       aria-label="Main navigation"
     >
@@ -243,8 +244,13 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#ec4899]'
-                        }`}
+                      className={`relative px-4 py-2 transition-colors duration-300 font-medium rounded-md ${
+                        isActive
+                          ? 'text-[#ec4899]'
+                          : isScrolled
+                            ? 'text-gray-900 hover:text-gray-900'
+                            : 'text-white hover:text-white'
+                      }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -278,7 +284,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                             <motion.a
                               key={item.href}
                               href={item.href}
-                              className={`block px-4 py-2 text-gray-800 hover:bg-[#f01eff]/5 hover:text-[#ec4899] whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
+                              className={`block px-4 py-2 text-gray-800 hover:bg-[#f01eff]/5 hover:text-white whitespace-nowrap transition-colors ${item.href === '/ai-development' ? 'text-xs' : 'text-sm'
                                 }`}
                               initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -298,8 +304,13 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${isActive ? 'text-[#ec4899]' : (isScrolled || isDark) ? 'text-gray-900 hover:text-[#ec4899]' : 'text-white hover:text-[#ec4899]'
-                    }`}
+                  className={`relative px-4 py-2 transition-colors duration-300 font-medium ${
+                    isActive
+                      ? 'text-[#ec4899]'
+                      : isScrolled
+                        ? 'text-gray-900 hover:text-gray-900'
+                        : 'text-white hover:text-white'
+                  }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -322,8 +333,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 onClick={() => setIsSearchOpen(true)}
                 className={`p-2 rounded-full transition-colors duration-300 ${
                   (isScrolled || isDark)
-                    ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
-                    : 'text-white hover:text-[#ec4899] hover:bg-white/10'
+                    ? 'text-gray-900 hover:text-white hover:bg-gray-100' 
+                    : 'text-white hover:text-white hover:bg-white/10'
                 }`}
                 aria-label="Open Search"
               >
@@ -380,8 +391,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 onClick={toggleMobileMenu}
                 className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
                   (isScrolled || isDark)
-                    ? 'text-gray-900 hover:text-[#ec4899] hover:bg-gray-100' 
-                    : 'text-white hover:bg-white/10 hover:text-[#ec4899]'
+                    ? 'text-gray-900 hover:text-white hover:bg-gray-100' 
+                    : 'text-white hover:bg-white/10 hover:text-white'
                 }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
@@ -450,7 +461,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         <div key={link.label} className="border-b border-white/5 last:border-0">
                           <button
                             onClick={() => setExpandedSection(isExpanded ? null : link.label)}
-                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-[#ec4899] bg-white/5' : 'text-white hover:text-[#f755d7]'
+                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-[#ec4899] bg-white/5' : 'text-white hover:text-white'
                               }`}
                           >
                             <span>{link.label}</span>
@@ -476,7 +487,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                                     <motion.a
                                       key={item.href}
                                       href={item.href}
-                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-[#f755d7] transition-colors border-l border-white/10 pl-4"
+                                      className="block py-3 text-sm sm:text-base text-gray-300 hover:text-white transition-colors border-l border-white/10 pl-4"
                                       onClick={() => setIsMobileMenuOpen(false)}
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
@@ -500,7 +511,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         className={`mobile-nav-item block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${activeSection === link.href.replace('/#', '') ||
                             (link.href === '/Portfolio' && currentPath === '/Portfolio')
                             ? 'text-[#ec4899] bg-white/10'
-                            : 'text-white hover:text-[#f755d7] hover:bg-white/10'
+                            : 'text-white hover:text-white hover:bg-white/10'
                           }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         custom={index}

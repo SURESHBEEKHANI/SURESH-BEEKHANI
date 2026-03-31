@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
               Privacy Policy
             </h1>
             <p className="text-xs sm:text-sm md:text-base text-gray-200 font-medium leading-relaxed max-w-2xl drop-shadow-md">
-              Your privacy is our priority. We are committed to protecting the personal data of our clients and customers.
+              We are committed to protecting personal data in accordance with GDPR and international privacy regulations.
             </p>
           </div>
         </div>
@@ -31,98 +31,182 @@ const PrivacyPolicy = () => {
 
       <main className="pb-20 px-6 sm:px-12 lg:px-24 max-w-6xl mx-auto relative z-10">
         <div className="space-y-8 text-gray-600 text-sm leading-relaxed text-justify mt-12">
-          <p className="font-medium text-slate-800 text-base border-b border-slate-200 pb-8 mb-8">
-            Suresh Beekhani is dedicated to safeguarding the privacy and security of our clients and customers. This Privacy Policy explains how we collect, use, store, and protect your information.
-          </p>
-
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-3">1. Scope of Policy</h2>
+            <p className="mb-4">
+              Velnix Solutions ("Company", "we", "our", or "us") is committed to protecting the privacy and security of personal data in accordance with applicable data protection laws, including the General Data Protection Regulation (GDPR) (EU) 2016/679 and other international privacy regulations.
+            </p>
             <p>
-              This Privacy Policy applies only to the practices of Suresh Beekhani. It does not apply to third-party companies, websites, or individuals that we do not own, control, employ, or manage.
+              This Privacy Policy explains how we collect, use, process, disclose, and safeguard your information when you engage with our services, website, or business operations.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">2. Policy Updates</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-3">1. Scope and Applicability</h2>
             <p>
-              We reserve the right to update or modify this Privacy Policy at any time without prior notice. Users are encouraged to review the latest version regularly to stay informed about how we protect their information.
+              This Privacy Policy applies to all personal data processed by Velnix Solutions in connection with:
             </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">3. Information Collection</h2>
-            <p className="mb-4">We collect information voluntarily provided by clients and customers for business purposes, including but not limited to:</p>
-            <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Personal information (e.g., name, email address, phone number, shipping address)</li>
-              <li>Financial information (e.g., billing details, credit card information)</li>
+            <ul className="list-disc pl-6 space-y-2 my-4">
+              <li>Clients and business partners</li>
+              <li>Website visitors and users</li>
+              <li>Service engagements and communications</li>
             </ul>
-            <p>This information is collected through forms, transactions, and interactions with our services.</p>
+            <p>This policy does not apply to third-party entities that we do not own or control.</p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">4. Use of Information</h2>
-            <p className="mb-4">The information collected is used to:</p>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">2. Definitions</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Process orders and manage transactions</li>
-              <li>Provide customer support and communication</li>
-              <li>Share updates about products, services, and offers</li>
-              <li>Improve our products, services, and user experience</li>
-              <li>Develop relevant content and future offerings</li>
+              <li><span className="font-semibold text-gray-800">Personal Data:</span> Any information relating to an identified or identifiable individual</li>
+              <li><span className="font-semibold text-gray-800">Processing:</span> Any operation performed on personal data (collection, storage, use, etc.)</li>
+              <li><span className="font-semibold text-gray-800">Data Subject:</span> The individual whose data is processed</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">5. Data Protection and Security</h2>
-            <p>
-              We implement appropriate physical, electronic, and managerial safeguards to protect your data from unauthorized access, misuse, or disclosure. Sensitive information, such as payment details, is encrypted using industry-standard security technologies.
+            <h2 className="text-lg font-bold text-gray-800 mb-4">3. Data Controller</h2>
+            <p className="mb-4">
+              Velnix Solutions acts as the Data Controller for personal data collected and processed under this policy.
             </p>
+            <ul className="space-y-2">
+              <li><span className="font-semibold text-gray-800">Email:</span> velnixsolutions@gmail.com</li>
+              <li><span className="font-semibold text-gray-800">Phone:</span> +92 335 1312852</li>
+              <li><span className="font-semibold text-gray-800">Location:</span> Karachi, Pakistan</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">6. Cookies</h2>
-            <p>
-              Our website uses cookies to enhance user experience and maintain session identity. Cookies help users remain logged in during a session. Users may disable cookies through their browser settings; however, some features of the website may be affected.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">7. Information Sharing</h2>
-            <p className="mb-4">We do not sell or rent personal information. Information may only be shared:</p>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">4. Information We Collect</h2>
+            <p className="mb-4">We may collect and process the following categories of personal data:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>With authorized third parties (e.g., vendors, suppliers, shipping providers) as necessary to deliver services</li>
-              <li>When required by law, legal proceedings, or government authorities</li>
+              <li><span className="font-semibold text-gray-800">Personal Information:</span> Name, email address, phone number, address and contact details</li>
+              <li><span className="font-semibold text-gray-800">Business Information:</span> Company name, project details, communications</li>
+              <li><span className="font-semibold text-gray-800">Financial Information:</span> Billing details, payment information (processed securely via third-party providers)</li>
+              <li><span className="font-semibold text-gray-800">Technical Data:</span> IP address, browser type, device information, usage data</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">8. Third-Party Links</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">5. Legal Basis for Processing (GDPR)</h2>
+            <p className="mb-4">We process personal data under the following lawful bases:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Contractual Necessity - To perform agreements and deliver services</li>
+              <li>Legitimate Interests - To improve services, operations, and communication</li>
+              <li>Consent - For marketing and optional communications</li>
+              <li>Legal Obligation - To comply with applicable laws and regulations</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">6. How We Use Your Information</h2>
+            <p className="mb-4">We use personal data to:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Provide and manage AI, software, and consulting services</li>
+              <li>Process transactions and fulfill contractual obligations</li>
+              <li>Communicate with clients and provide support</li>
+              <li>Improve products, services, and user experience</li>
+              <li>Send updates, marketing, or relevant business information (with consent)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">7. Data Sharing and Disclosure</h2>
+            <p className="mb-4">We do not sell or rent personal data. We may share information with:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Trusted service providers (e.g., hosting, payment processors, cloud services)</li>
+              <li>Business partners involved in service delivery</li>
+              <li>Legal authorities where required by law</li>
+            </ul>
+            <p className="mt-4">All third parties are required to maintain appropriate data protection standards.</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">8. International Data Transfers</h2>
+            <p className="mb-4">
+              As a global service provider, your data may be transferred and processed outside your country of residence.
+            </p>
+            <p className="mb-4">We ensure appropriate safeguards, including:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Standard Contractual Clauses (SCCs)</li>
+              <li>Secure data processing agreements</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">9. Data Retention</h2>
+            <p className="mb-4">We retain personal data only for as long as necessary to:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Fulfill contractual and business obligations</li>
+              <li>Comply with legal requirements</li>
+              <li>Resolve disputes and enforce agreements</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">10. Data Security</h2>
+            <p className="mb-4">We implement appropriate technical and organizational measures, including:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Encryption of sensitive data</li>
+              <li>Secure infrastructure and access controls</li>
+              <li>Continuous monitoring and protection systems</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">11. Your Rights (GDPR and International Users)</h2>
+            <p className="mb-4">You have the right to:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Access your personal data</li>
+              <li>Correct or update inaccurate data</li>
+              <li>Request deletion (Right to be Forgotten)</li>
+              <li>Restrict or object to processing</li>
+              <li>Request data portability</li>
+              <li>Withdraw consent at any time</li>
+            </ul>
+            <p className="mt-4">To exercise your rights, contact: velnixsolutions@gmail.com</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">12. Cookies and Tracking Technologies</h2>
             <p>
-              Our website may contain links to external websites. We are not responsible for the privacy practices of those websites. Users are encouraged to review the privacy policies of any third-party sites they visit.
+              We use cookies to enhance functionality and analyze usage. Users can control cookie preferences via browser settings.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">9. Children's Privacy</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">13. Third-Party Links</h2>
             <p>
-              We do not knowingly collect personal information from individuals under the age of 18. If such information is identified, it will be promptly deleted.
+              Our website may contain links to external sites. We are not responsible for their privacy practices.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">10. Data Accuracy and User Rights</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">14. Children's Privacy</h2>
             <p>
-              Clients and customers may request to update, correct, or delete their personal information at any time. We take reasonable steps to ensure that all personal data is accurate and up to date.
+              We do not knowingly collect data from individuals under 18. Any such data will be deleted if identified.
             </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">15. Policy Updates</h2>
+            <p>
+              We may update this policy periodically. Changes will be posted with an updated effective date.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">16. Contact Information</h2>
+            <ul className="space-y-2">
+              <li><span className="font-semibold text-gray-800">Velnix Solutions</span></li>
+              <li><span className="font-semibold text-gray-800">Location:</span> Karachi, Pakistan</li>
+              <li><span className="font-semibold text-gray-800">Phone:</span> +92 335 1312852</li>
+              <li><span className="font-semibold text-gray-800">Email:</span> velnixsolutions@gmail.com</li>
+            </ul>
           </section>
 
           <section className="border-b border-slate-200 pb-8 mb-8">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">11. Communication of Changes</h2>
-            <p>
-              Any changes to this Privacy Policy will be posted on our website and other appropriate platforms to ensure users remain informed about how their information is handled.
-            </p>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">17. Governing Law</h2>
+            <p>This Privacy Policy shall be governed by applicable international data protection laws.</p>
           </section>
-
-
         </div>
       </main>
 

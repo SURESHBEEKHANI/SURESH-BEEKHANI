@@ -356,7 +356,15 @@ const Contact = () => {
                       required
                     />
                     <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
-                      I agree to the <a href="/privacy-policy" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Privacy policy</a> and Terms and conditions.*
+                      I agree to the{" "}
+                      <a href="/privacy-policy" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                        Privacy policy
+                      </a>{" "}
+                      and{" "}
+                      <a href="/terms-and-conditions" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                        Terms and conditions
+                      </a>
+                      .*
                     </label>
                   </div>
                 </div>

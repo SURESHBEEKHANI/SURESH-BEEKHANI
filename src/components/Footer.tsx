@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram, Facebook } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
@@ -86,16 +86,15 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Github', icon: <Github size={16} />, url: 'https://github.com/sureshbeekhani', color: 'from-gray-600 to-gray-800' },
-    { name: 'LinkedIn', icon: <Linkedin size={16} />, url: 'https://www.linkedin.com/in/suresh-beekhani/', color: 'from-blue-600 to-blue-800' },
-    { name: 'X', icon: <Twitter size={16} />, url: 'https://x.com/SureshBeekhan', color: 'from-black to-gray-800' },
-    { name: 'YouTube', icon: <Youtube size={16} />, url: 'https://www.youtube.com/@sureshbeekhani', color: 'from-red-500 to-red-700' },
-    { name: 'Instagram', icon: <Instagram size={16} />, url: 'https://www.instagram.com/sureshbeekhani/', color: 'from-pink-500 to-purple-600' },
+    { name: 'Facebook', icon: <Facebook size={16} />, url: 'https://www.facebook.com/VelnixSolutions', color: 'from-blue-500 to-blue-700' },
+    { name: 'LinkedIn', icon: <Linkedin size={16} />, url: 'https://www.linkedin.com/company/beekhaninova', color: 'from-blue-600 to-blue-800' },
+    { name: 'X', icon: <Twitter size={16} />, url: 'https://x.com/VelnixSolutions', color: 'from-black to-gray-800' },
+    { name: 'Instagram', icon: <Instagram size={16} />, url: 'https://www.instagram.com/velnixsolutions/', color: 'from-pink-500 to-purple-600' },
   ];
 
   return (
     <footer
-      className="text-white py-16 relative overflow-hidden"
+      className="text-white pt-16 pb-6 relative overflow-hidden"
       style={{ background: '#0a0435' }}
     >
       {/* Fuchsia glow blobs — matching EHR hero */}
@@ -123,8 +122,8 @@ const Footer = () => {
               />
             </a>
 
-            <p className="text-indigo-100/85 text-sm sm:text-base font-normal leading-relaxed max-w-md">
-              Transforming ideas into intelligent AI solutions, we empower businesses.
+            <p className="text-indigo-100 text-sm sm:text-base font-medium leading-relaxed max-w-md">
+              We design and build intelligent AI solutions that help modern businesses automate, scale, and make smarter decisions.
             </p>
 
             <div className="flex space-x-3">
@@ -147,7 +146,7 @@ const Footer = () => {
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <h3 className="text-lg font-semibold text-white">Services</h3>
-            <ul className="space-y-3 text-indigo-100/70 text-sm">
+            <ul className="space-y-3 text-indigo-100/90 text-sm">
               {[
                 { label: "AI Development", href: "/ai-development" },
                 { label: "Chatbot Development", href: "/ai-chatbot-development" },
@@ -159,7 +158,7 @@ const Footer = () => {
                 { label: "AI Automation", href: "/ai-automation" }
               ].map((service) => (
                 <li key={service.label}>
-                  <a href={service.href} className="hover:text-[#f92198] transition-colors">
+                  <a href={service.href} className="hover:text-[#f92198] transition-colors font-medium">
                     {service.label}
                   </a>
                 </li>
@@ -171,17 +170,24 @@ const Footer = () => {
           {/* Contact + Newsletter */}
           <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
-            <h3 className="text-lg font-semibold text-white">Get In Touch</h3>
+            <h3 className="text-lg font-semibold text-white">Get in touch</h3>
 
-            <ul className="space-y-3 text-indigo-100/70 text-sm">
-              <li className="flex items-center gap-2">
-                <MapPin size={16} style={{ color: '#f92198' }} /> Flat 5, St. 13, Near Taj Plaza, Central Jacob Lines, , Karachi, Pakistan, 74400
+            <ul className="space-y-3 text-indigo-100/90 text-sm">
+              <li className="flex items-start gap-2">
+                <MapPin size={16} style={{ color: '#f92198' }} />
+                <span>
+                  Flat 5, Street 13, Near Taj Plaza, Central Jacob Lines,
+                  <br />
+                  Karachi, Pakistan, 74400
+                </span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} style={{ color: '#f92198' }} /> velnixsolutions@gmail.com
+                <Mail size={16} style={{ color: '#f92198' }} />
+                <span className="font-medium">velnixsolutions@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} style={{ color: '#f92198' }} /> +923351312852
+                <Phone size={16} style={{ color: '#f92198' }} />
+                <span className="font-medium">+92 335 131 2852</span>
               </li>
             </ul>
 
@@ -229,25 +235,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex justify-between items-center flex-col md:flex-row gap-4">
-          <p className="text-indigo-100/60 text-sm">
-            © {new Date().getFullYear()} Suresh Beekhani. All rights reserved.
+        <div className="border-t border-white/15 pt-2 flex justify-between items-center flex-col md:flex-row gap-2">
+          <p className="text-indigo-100/90 text-sm font-medium tracking-wide">
+            © {new Date().getFullYear()}{" "}
+            <span className="text-pink-400">Velnix Solutions</span>. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="/privacy-policy">
-              <Badge
-                variant="outline"
-                className="border-fuchsia-500/40 text-indigo-100/70 hover:bg-fuchsia-500/10 transition-colors cursor-pointer"
-              >
+              <span className="text-xs sm:text-sm font-medium text-indigo-100/90 hover:text-pink-400 transition-colors">
                 Privacy Policy
-              </Badge>
+              </span>
             </a>
-            <Badge
-              variant="outline"
-              className="border-fuchsia-500/40 text-indigo-100/70"
-            >
-              Data Scientist
-            </Badge>
+            <a href="/terms-and-conditions">
+              <span className="text-xs sm:text-sm font-medium text-indigo-100/90 hover:text-pink-400 transition-colors">
+                Terms and Conditions
+              </span>
+            </a>
+            
           </div>
         </div>
 
