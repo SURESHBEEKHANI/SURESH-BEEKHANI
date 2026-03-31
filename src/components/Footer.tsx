@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram, Facebook } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram, Facebook, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
@@ -86,10 +86,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', icon: <Facebook size={16} />, url: 'https://www.facebook.com/VelnixSolutions', color: 'from-blue-500 to-blue-700' },
-    { name: 'LinkedIn', icon: <Linkedin size={16} />, url: 'https://www.linkedin.com/company/beekhaninova', color: 'from-blue-600 to-blue-800' },
-    { name: 'X', icon: <Twitter size={16} />, url: 'https://x.com/VelnixSolutions', color: 'from-black to-gray-800' },
-    { name: 'Instagram', icon: <Instagram size={16} />, url: 'https://www.instagram.com/velnixsolutions/', color: 'from-pink-500 to-purple-600' },
+    { name: 'Facebook', icon: <Facebook size={12} />, url: 'https://www.facebook.com/VelnixSolutions', color: 'from-blue-500 to-blue-700' },
+    { name: 'LinkedIn', icon: <Linkedin size={12} />, url: 'https://www.linkedin.com/company/beekhaninova', color: 'from-blue-600 to-blue-800' },
+    { name: 'X', icon: <Twitter size={12} />, url: 'https://x.com/VelnixSolutions', color: 'from-black to-gray-800' },
+    { name: 'Instagram', icon: <Instagram size={12} />, url: 'https://www.instagram.com/velnixsolutions/', color: 'from-pink-500 to-purple-600' },
   ];
 
   return (
@@ -97,6 +97,16 @@ const Footer = () => {
       className="text-white pt-16 pb-6 relative overflow-hidden"
       style={{ background: '#0a0435' }}
     >
+      <style>{`
+        @keyframes slideLeftRight {
+          0%, 100% { transform: translateX(0px); }
+          25%       { transform: translateX(-10px); }
+          75%       { transform: translateX(10px); }
+        }
+        .animate-slide-lr {
+          animation: slideLeftRight 2s ease-in-out infinite;
+        }
+      `}</style>
       {/* Fuchsia glow blobs — matching EHR hero */}
       <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
@@ -107,7 +117,7 @@ const Footer = () => {
         <div className="grid lg:grid-cols-3 gap-12 mb-12">
 
           {/* Brand */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <div className={`space-y-6 pl-[40%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <a
               href="/#home"
@@ -122,8 +132,8 @@ const Footer = () => {
               />
             </a>
 
-            <p className="text-indigo-100 text-sm sm:text-base font-medium leading-relaxed max-w-md">
-              We design and build intelligent AI solutions that help modern businesses automate, scale, and make smarter decisions.
+            <p className="text-white text-sm sm:text-base font-bold leading-relaxed whitespace-nowrap">
+              Transforming ideas into intelligent systems
             </p>
 
             <div className="flex space-x-3">
@@ -133,7 +143,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
+                  className={`p-2 bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
                 >
                   {social.icon}
                 </a>
@@ -143,22 +153,21 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <div className={`space-y-6 pl-[20%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <h3 className="text-lg font-semibold text-white">Services</h3>
-            <ul className="space-y-3 text-indigo-100/90 text-sm">
+
+            <ul className="space-y-3 text-white text-sm">
               {[
                 { label: "AI Development", href: "/ai-development" },
-                { label: "Chatbot Development", href: "/ai-chatbot-development" },
-                { label: "ChatGPT Integration", href: "/chat-gpt-integrations" },
-                { label: "Machine Learning", href: "/machine-learning" },
-                { label: "Computer Vision", href: "/computer-vision" },
-                { label: "Natural Language Processing", href: "/natural-language-processing" },
-                { label: "Predictive Modeling", href: "/predictive-modelling" },
-                { label: "AI Automation", href: "/ai-automation" }
+                { label: "AI Automation", href: "/ai-automation" },
+                { label: "Web Development", href: "/web-development" },
+                { label: "App Development", href: "/app-development" },
+                { label: "DevOps Engineering", href: "/devops" },
+                { label: "Custom Software Development", href: "/custom-software-development" }
               ].map((service) => (
                 <li key={service.label}>
-                  <a href={service.href} className="hover:text-[#f92198] transition-colors font-medium">
+                  <a href={service.href} className="hover:text-[#f92198] transition-colors font-bold">
                     {service.label}
                   </a>
                 </li>
@@ -168,32 +177,30 @@ const Footer = () => {
           </div>
 
           {/* Contact + Newsletter */}
-          <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          <div className={`space-y-6 relative -left-[30%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 
             <h3 className="text-lg font-semibold text-white">Get in touch</h3>
 
-            <ul className="space-y-3 text-indigo-100/90 text-sm">
+            <ul className="space-y-3 text-white text-sm">
               <li className="flex items-start gap-2">
                 <MapPin size={16} style={{ color: '#f92198' }} />
-                <span>
-                  Flat 5, Street 13, Near Taj Plaza, Central Jacob Lines,
-                  <br />
-                  Karachi, Pakistan, 74400
+                <span className="font-bold">
+                  Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} style={{ color: '#f92198' }} />
-                <span className="font-medium">velnixsolutions@gmail.com</span>
+                <span className="font-bold">velnixsolutions@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} style={{ color: '#f92198' }} />
-                <span className="font-medium">+92 335 131 2852</span>
+                <span className="font-bold">+92 335 131 2852</span>
               </li>
             </ul>
 
             {/* Newsletter */}
             <div className="pt-6">
-              <h4 className="text-sm font-semibold text-white mb-3">
+              <h4 className="text-sm font-bold text-white mb-3">
                 Join Our Newsletter
               </h4>
 
@@ -235,23 +242,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/15 pt-2 flex justify-between items-center flex-col md:flex-row gap-2">
-          <p className="text-indigo-100/90 text-sm font-medium tracking-wide">
+        <div className="border-t border-white/15 py-4 flex justify-between items-center flex-col md:flex-row gap-2">
+          <p className="text-white text-sm font-bold tracking-wide relative left-[10%]">
             © {new Date().getFullYear()}{" "}
             <span className="text-pink-400">Velnix Solutions</span>. All rights reserved.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 relative -left-[10%] items-center">
             <a href="/privacy-policy">
-              <span className="text-xs sm:text-sm font-medium text-indigo-100/90 hover:text-pink-400 transition-colors">
+              <span className="text-xs sm:text-sm font-bold text-white hover:text-pink-400 transition-colors">
                 Privacy Policy
               </span>
             </a>
             <a href="/terms-and-conditions">
-              <span className="text-xs sm:text-sm font-medium text-indigo-100/90 hover:text-pink-400 transition-colors">
+              <span className="text-xs sm:text-sm font-bold text-white hover:text-pink-400 transition-colors">
                 Terms and Conditions
               </span>
             </a>
-            
+
           </div>
         </div>
 

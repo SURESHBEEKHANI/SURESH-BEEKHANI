@@ -69,6 +69,10 @@ const MachineLearning = lazy(() => import("./pages-Services/MachineLearning"));
 const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
+const WebDevelopment = lazy(() => import("./pages-Services/WebDevelopment"));
+const AppDevelopment = lazy(() => import("./pages-Services/AppDevelopment"));
+const DevOps = lazy(() => import("./pages-Services/DevOps"));
+const CustomSoftware = lazy(() => import("./pages-Services/CustomSoftware"));
 
 // Blogs
 const Blogs = lazy(() => import("./pages-Blogs/Blogs"));
@@ -149,6 +153,10 @@ const AppContent = () => {
         <Route path="/computer-vision" element={<ComputerVisionPro />} />
         <Route path="/ai-development" element={<AIDevelopment />} />
         <Route path="/ai-automation" element={<AIAutomation />} />
+        <Route path="/web-development" element={<WebDevelopment />} />
+        <Route path="/app-development" element={<AppDevelopment />} />
+        <Route path="/devops" element={<DevOps />} />
+        <Route path="/custom-software-development" element={<CustomSoftware />} />
 
         {/* Portfolio */}
         <Route path="/portfolio" element={<PortfolioPage />} />
