@@ -80,7 +80,7 @@ const MeetFounder = () => {
             </motion.div>
 
             {/* Expertise Tags in one line */}
-            <motion.div className="flex flex-nowrap items-center gap-2.5 overflow-x-auto pb-2 no-scrollbar" variants={staggerItem}>
+            <motion.div className="flex flex-nowrap items-center gap-2.5 overflow-x-auto pb-2 scrollbar-hide" variants={staggerItem}>
               {['Machine Learning', 'NLP', 'AI Strategy', 'Product Architecture'].map((tag) => (
                 <motion.span 
                   key={tag} 
