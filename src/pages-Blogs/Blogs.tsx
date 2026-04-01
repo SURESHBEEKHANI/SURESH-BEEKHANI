@@ -675,7 +675,7 @@ const Blogs: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-24 px-4 pt-32 relative overflow-hidden" style={{ background: '#0a0435' }}>
+      <section className="py-24 px-4 pt-32 relative overflow-hidden" style={{ background: '#020010' }}>
         {/* Decorative background elements matching Footer */}
         <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />

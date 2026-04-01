@@ -88,7 +88,7 @@ const Footer = () => {
 
   const socialLinks = [
     { name: 'Facebook', icon: <Facebook size={12} />, url: 'https://www.facebook.com/VelnixSolutions', color: 'from-blue-500 to-blue-700' },
-    { name: 'LinkedIn', icon: <Linkedin size={12} />, url: 'https://www.linkedin.com/company/beekhaninova', color: 'from-blue-600 to-blue-800' },
+    { name: 'LinkedIn', icon: <Linkedin size={12} />, url: 'https://www.linkedin.com/company/velnixsolutions/', color: 'from-blue-600 to-blue-800' },
     { name: 'X', icon: <Twitter size={12} />, url: 'https://x.com/VelnixSolutions', color: 'from-black to-gray-800' },
     { name: 'Instagram', icon: <Instagram size={12} />, url: 'https://www.instagram.com/velnixsolutions/', color: 'from-pink-500 to-purple-600' },
   ];
