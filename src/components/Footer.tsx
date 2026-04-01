@@ -100,7 +100,7 @@ const Footer = () => {
         {/* Main Base Gradients */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6a00ff]/10 blur-[140px] rounded-full translate-x-1/3 -translate-y-1/2 opacity-60" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#ec4899]/10 blur-[140px] rounded-full -translate-x-1/3 translate-y-1/2 opacity-60" />
-        
+
         {/* Subtle Tertiary Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3b82f6]/05 blur-[160px] opacity-40" />
 
@@ -235,7 +235,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar Redesign */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-white/50 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
             &copy; {new Date().getFullYear()} <span className="text-white">Velnix Solutions</span> All rights reserved.
           </p>
