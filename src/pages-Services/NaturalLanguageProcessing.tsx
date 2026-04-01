@@ -121,7 +121,7 @@ const faqData = [
 ];
 
 const NaturalLanguageProcessing: React.FC = () => {
-  const [currentIndex, setCurrentIndex ] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("InsightNLP");
   const [isVisible, setIsVisible] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -229,7 +229,7 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {nlpServices.map((service, index) => (
-              <div 
+              <div
                 key={service.id}
                 className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -335,8 +335,8 @@ const NaturalLanguageProcessing: React.FC = () => {
                 { id: "05", title: "Deployment & Optimization", desc: "Seamless integration into workflows with ongoing monitoring and optimization.", color: "#f39c12", icon: <Zap className="w-8 h-8" /> },
                 { id: "06", title: "Governance & Improvement", desc: "Implement governance frameworks and continuously refine for long-term success.", color: "#ff0ea3", icon: <BarChart3 className="w-8 h-8" /> }
               ].map((step, index) => (
-                <div 
-                  key={step.id} 
+                <div
+                  key={step.id}
                   className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-all duration-300 hover:bg-white/[0.03]
                     ${index % 3 !== 2 ? 'lg:border-r border-white/25' : ''} 
                     ${index < 3 ? 'lg:border-b border-white/25' : ''}
@@ -347,7 +347,7 @@ const NaturalLanguageProcessing: React.FC = () => {
                   <div className="text-xl sm:text-2xl font-black mb-4 transition-transform duration-500 group-hover:scale-110 tracking-tighter" style={{ color: step.color }}>
                     {step.id}
                   </div>
-                  
+
                   <div className="flex items-center gap-3 w-full justify-center mb-4">
                     <div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
                     <div className="text-white group-hover:scale-110 transition-transform duration-300">
@@ -358,7 +358,7 @@ const NaturalLanguageProcessing: React.FC = () => {
 
                   <h4 className="text-white font-bold text-sm sm:text-base mb-2 text-center group-hover:text-[#ff0ea3] transition-colors">{step.title}</h4>
                   <p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed text-center max-w-[240px]">{step.desc}</p>
-                  
+
                   {/* Subtle corner accent */}
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -376,7 +376,7 @@ const NaturalLanguageProcessing: React.FC = () => {
           <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <div className="flex flex-col items-center gap-3 sm:gap-4">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-                Why Choose <span className="text-[#ff0ea3]">Us?</span>
+                Why Choose <span className="text-[#ff0ea3]">Velnix Solutions?</span>
               </h2>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
@@ -415,7 +415,7 @@ const NaturalLanguageProcessing: React.FC = () => {
       </section>
 
 
-			<AIOnboardingProcess serviceName="NLP" />
+      <AIOnboardingProcess serviceName="NLP" />
 
       <LatestBlogs />
 
@@ -472,7 +472,7 @@ const NaturalLanguageProcessing: React.FC = () => {
           </div>
         </div>
       </section>
-   
+
       <Footer />
     </div>
   );

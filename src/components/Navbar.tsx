@@ -123,7 +123,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     { label: 'AI Development', href: '/ai-development' },
     { label: 'Chatbot Development', href: '/ai-chatbot-development' },
     { label: 'ChatGPT Integration', href: '/chat-gpt-integrations' },
-    { label: 'Machine Learning', href: '/machine-learning' },
+    { label: 'Machine & Deep Learning', href: '/machine-learning' },
     { label: 'Computer Vision', href: '/computer-vision' },
     { label: 'Natural Language Processing', href: '/natural-language-processing' },
     { label: 'Predictive Modeling', href: '/predictive-modelling' },
@@ -199,21 +199,17 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.35s ease-in-out, background-color 0.3s, box-shadow 0.3s',
       }}
-      className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 ${
-        (currentPath === '/' && activeSection === 'home')
-          ? 'bg-transparent'
-          : 'bg-white shadow-xl border-b border-gray-100'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 group/navbar transition-all duration-300 bg-white shadow-xl border-b border-gray-100`}
       role="navigation"
       aria-label="Main navigation"
     >
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-[4rem] sm:h-20' : 'h-[4.5rem] sm:h-24 lg:h-28'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-20'}`}>
 
           {/* Logo — larger + stronger contrast / shadow for a bold, zoomed look */}
           <motion.div
             className="flex items-center flex-shrink-0"
-            whileHover={prefersReducedMotion ? {} : { scale: 1.12 }}
+            whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
             transition={{ duration: 0.2 }}
           >
             <a
@@ -224,11 +220,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               <img
                 src="/image/logo/Neurovex.png"
                 alt="Neurovex"
-                className={`w-auto transition-all duration-300 object-contain scale-100 ${
-                  !(currentPath === '/' && activeSection === 'home')
-                    ? 'h-8 sm:h-10 md:h-12 lg:h-14 brightness-100 contrast-100'
-                    : 'h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 brightness-110 contrast-125 saturate-115 drop-shadow-[0_3px_14px_rgba(0,0,0,0.28)]'
-                }`}
+                className="h-11 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto transition-all duration-300 object-contain brightness-100 contrast-100"
                 decoding="async"
               />
             </a>
@@ -247,12 +239,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-all duration-300 font-medium rounded-md ${
+                      className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${
                         isActive
                           ? 'text-[#ec4899]'
-                          : !(currentPath === '/' && activeSection === 'home')
-                            ? 'text-gray-700 hover:text-[#ec4899]'
-                            : 'text-gray-100 hover:text-white'
+                          : 'text-gray-800 hover:text-[#ec4899]'
                       }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -310,12 +300,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-all duration-300 font-medium rounded-md ${
+                  className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${
                     isActive
                       ? 'text-[#ec4899]'
-                      : !(currentPath === '/' && activeSection === 'home')
-                        ? 'text-gray-700 hover:text-[#ec4899]'
-                        : 'text-gray-100 hover:text-white'
+                      : 'text-gray-800 hover:text-[#ec4899]'
                   }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -337,11 +325,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             <div className="flex items-center ml-2 pl-2 border-l transition-colors duration-300 border-white/20 group-hover/navbar:border-gray-200">
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className={`p-2.5 rounded-full transition-all duration-300 ${
-                  !(currentPath === '/' && activeSection === 'home')
-                    ? 'text-gray-700 hover:text-white hover:bg-[#ec4899]'
-                    : 'text-white hover:text-white hover:bg-white/15'
-                }`}
+                className="p-2.5 rounded-full transition-all duration-300 text-gray-800 hover:text-white hover:bg-[#ec4899]"
                 aria-label="Open Search"
               >
                 <Search className="w-5 h-5" strokeWidth={2.5} />
@@ -395,11 +379,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className={`p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation ${
-                  !(currentPath === '/' && activeSection === 'home')
-                    ? 'text-gray-700 hover:text-white hover:bg-[#ec4899]'
-                    : 'text-white hover:bg-white/15'
-                }`}
+                className="p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation text-gray-800 hover:text-white hover:bg-[#ec4899]"
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"

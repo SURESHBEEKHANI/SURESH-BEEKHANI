@@ -1,30 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
-import {
-  Check,
-  ArrowRight,
-  Sparkles,
-  Zap,
-  Shield,
-  Target,
-  Users,
-  TrendingUp,
-  Menu,
-  ChevronDown,
-} from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Zap, Shield, Target, Users, TrendingUp, Menu, ChevronDown, Globe, Smartphone, Cloud, Server, } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation, useReducedMotion } from '@/hooks/useAnimations';
-import {
-  fadeInUp,
-  serviceCardVariants,
-  benefitVariants,
-  staggerContainer,
-  staggerItem,
-  hoverLiftShadow,
-} from '@/lib/animations';
+import { fadeInUp, serviceCardVariants, benefitVariants, staggerContainer, staggerItem, hoverLiftShadow, } from '@/lib/animations';
 
 /* --------------------------
    Static Services Data
@@ -38,6 +20,10 @@ const SERVICES = [
   'Predictive Modeling',
   'Natural Language Processing',
   'AI Automation',
+  'Web Development',
+  'App Development',
+  'DevOps Engineering',
+  'Custom Software Development',
 ];
 
 
@@ -155,6 +141,54 @@ const SERVICE_DETAILS = {
       { title: 'Scalability', description: 'Scale operations instantly without proportional increases in resources or costs.' },
     ],
   },
+  'Web Development': {
+    title: 'Web Development',
+    description:
+      'Crafting high-performance, dynamic, and visually stunning web experiences that captivate users, drive conversions, and elevate your digital brand.',
+    icon: <Globe className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'Custom Website Development', description: 'Bespoke, high-performance websites tailored to your unique brand identity.' },
+      { title: 'Web App Development', description: 'Robust, scalable, and secure web applications using cutting-edge frameworks.' },
+      { title: 'E-Commerce Solutions', description: 'Seamless, conversion-optimized e-commerce platforms with secure payment gateways.' },
+      { title: 'CMS Development', description: 'Highly customizable CMS that empower your team to effortlessly manage content.' },
+    ],
+  },
+  'App Development': {
+    title: 'App Development',
+    description:
+      'Engineer groundbreaking mobile applications that put your business directly into the hands of your audience, anytime, anywhere.',
+    icon: <Smartphone className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'iOS App Development', description: 'Seamless, intuitive, and highly secure iOS applications tailored to Apple’s ecosystem.' },
+      { title: 'Android App Development', description: 'Robust and scalable Android applications that deliver consistent experiences.' },
+      { title: 'Cross-Platform Development', description: 'Deploy feature-rich mobile applications efficiently on both iOS and Android.' },
+      { title: 'Mobile UI/UX Design', description: 'Pixel-perfect, intuitive user interfaces specific to mobile gestures.' },
+    ],
+  },
+  'DevOps Engineering': {
+    title: 'DevOps Engineering',
+    description:
+      'Accelerate delivery, ensure monumental scalability, and eliminate operational bottlenecks with modern DevOps tools and cloud-native infrastructure automation.',
+    icon: <Cloud className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'CI/CD Pipeline Automation', description: 'Accelerate release cycles with robust Continuous Integration and Deployment.' },
+      { title: 'Cloud Infrastructure', description: 'Design and manage scalable cloud architectures on AWS, Azure, or Google Cloud.' },
+      { title: 'Infrastructure as Code', description: 'Provision and manage IT infrastructure automatically through definition files.' },
+      { title: 'Containerization', description: 'Modernize applications using Docker and Kubernetes for consistency.' },
+    ],
+  },
+  'Custom Software Development': {
+    title: 'Custom Software Development',
+    description:
+      'Engineer precision-crafted, scalable software solutions engineered from the ground up to solve your unique, mission-critical business challenges.',
+    icon: <Server className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'Enterprise Solutions', description: 'Robust, scalable systems designed to solve complex operational challenges.' },
+      { title: 'SaaS Development', description: 'Architect secure, multi-tenant Software-as-a-Service products.' },
+      { title: 'Legacy Modernization', description: 'Upgrade aging systems to modern cloud architectures without disruption.' },
+      { title: 'API Integration', description: 'Create robust APIs to seamlessly connect disparate third-party applications.' },
+    ],
+  },
 };
 
 
@@ -168,6 +202,10 @@ const SERVICE_ROUTES = {
   'Predictive Modeling': '/predictive-modelling',
   'Natural Language Processing': '/natural-language-processing',
   'AI Automation': '/ai-automation',
+  'Web Development': '/web-development',
+  'App Development': '/app-development',
+  'DevOps Engineering': '/devops',
+  'Custom Software Development': '/custom-software-development',
 };
 
 
@@ -278,9 +316,9 @@ const Services = () => {
                     key={service}
                     onClick={() => setSelectedService(service)}
                     className={`w-full text-left px-8 py-4 text-sm font-medium transition-all duration-200 ${selectedService === service
-                        ? 'bg-[#ff0ea3] text-white'
+                      ? 'bg-[#ff0ea3] text-white'
 
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
                       }`}
                   >
                     {service}

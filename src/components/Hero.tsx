@@ -12,66 +12,21 @@ const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const [currentSkill, setCurrentSkill] = useState(0);
-
-  const skills = [
-    'Machine Learning',
-    'Deep Learning',
-    'Natural Language Processing',
-    'Computer Vision',
-    'AI Development',
-    'Generative AI',
-  ];
-
-  // Cycle skills
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSkill(prev => (prev + 1) % skills.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [skills.length]);
-
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden section-padding ai-section text-white pt-20"
+      className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden section-padding bg-[#0a0435] text-white pt-20"
       aria-label="Hero Section"
     >
-      {/* Background animations */}
+      {/* Ambient Blurs and Texture (Synced with Privacy Policy/Footer style) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* White glow transition from Navbar */}
-        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-white/10 to-transparent" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
 
-        {/** Floating particles **/}
-        {[{
-          top: 'top-20 left-10', size: 'w-3 h-3', color: 'bg-[#f01eff]/40', y: [-20, 20, -20], opacity: [0.4, 0.8, 0.4], duration: 6
-        }, {
-          top: 'top-40 right-20', size: 'w-2 h-2', color: 'bg-[#ec4899]/50', y: [20, -20, 20], opacity: [0.5, 1, 0.5], scale: [1, 1.5, 1], duration: 4, delay: 1
-        }, {
-          top: 'bottom-40 left-20', size: 'w-4 h-4', color: 'bg-[#f01eff]/30', y: [-15, 15, -15], x: [-10, 10, -10], opacity: [0.3, 0.6, 0.3], duration: 5, delay: 2
-        }, {
-          top: 'top-60 left-1/3', size: 'w-3 h-3', color: 'bg-[#f755d7]/40', y: [15, -15, 15], opacity: [0.4, 0.7, 0.4], duration: 7, delay: 3
-        }].map((p, idx) => (
-          <motion.div
-            key={idx}
-            className={`absolute ${p.top} ${p.size} ${p.color} rounded-full`}
-            animate={prefersReducedMotion ? {} : { y: p.y, x: p.x || 0, opacity: p.opacity, scale: p.scale || 1 }}
-            transition={{ duration: p.duration, repeat: Infinity, ease: 'easeInOut', delay: p.delay || 0 }}
-          />
-        ))}
 
-        {/** Large gradient orbs **/}
-        {[{
-          position: '-top-40 -right-40', size: 'w-96 h-96', gradient: 'bg-gradient-to-br from-primary/10 to-secondary/10', duration: 8
-        }, {
-          position: '-bottom-40 -left-40', size: 'w-96 h-96', gradient: 'bg-gradient-to-tr from-accent/10 to-primary/10', duration: 10, delay: 2
-        }].map((orb, idx) => (
-          <motion.div
-            key={idx}
-            className={`absolute ${orb.position} ${orb.size} ${orb.gradient} rounded-full blur-3xl`}
-            animate={prefersReducedMotion ? {} : { scale: [1, idx === 0 ? 1.2 : 1.3, 1], opacity: [0.3, idx === 0 ? 0.5 : 0.6, 0.3] }}
-            transition={{ duration: orb.duration, repeat: Infinity, ease: 'easeInOut', delay: orb.delay || 0 }}
-          />
-        ))}
+
+
 
         {/** Animated lines **/}
         <motion.div
@@ -87,7 +42,7 @@ const Hero = () => {
       </div>
 
       {/* Main content - Centered Layout */}
-      <div className="z-10 max-w-5xl mx-auto container-padding pt-16 pb-24 sm:pt-20 sm:pb-32 lg:pt-12 lg:pb-28">
+      <div className="z-10 max-w-5xl mx-auto container-padding pt-24 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32">
         <div className="flex flex-col items-center justify-center text-center">
           <motion.div
             className="flex flex-col items-center gap-6"
@@ -100,7 +55,7 @@ const Hero = () => {
               <span className="text-xs font-medium tracking-wider text-white/90 uppercase">AI Business Solutions</span>
             </motion.div>
 
-            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight max-w-4xl" variants={staggerItem}>
+            <motion.h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-7xl font-bold leading-tight max-w-4xl" variants={staggerItem}>
               Your Trusted <span className="text-[#ff0ea3]">AI Partner</span> for Business Growth
             </motion.h1>
 
@@ -126,11 +81,10 @@ const ButtonWrapper = ({ href, icon, text, outline }: { href: string; icon?: Rea
       <Button
         asChild
         variant={outline ? 'outline' : 'primary'}
-        className={`w-full sm:w-auto group touch-button transition-colors duration-300 ${
-          outline 
-            ? 'border-[#ff0ea3]/40 hover:border-[#ff0ea3] text-white hover:bg-[#ff0ea3]/10' 
-            : 'bg-[#ff0ea3] hover:bg-[#e60c92] text-white border-none'
-        }`}
+        className={`w-full sm:w-auto group touch-button transition-colors duration-300 ${outline
+          ? 'border-[#ff0ea3]/40 hover:border-[#ff0ea3] text-white hover:bg-[#ff0ea3]/10'
+          : 'bg-[#ff0ea3] hover:bg-[#e60c92] text-white border-none'
+          }`}
       >
         <a href={href} target={outline ? '_self' : '_blank'} rel="noopener noreferrer" aria-label={text}>
           {icon && <span className="mr-2">{icon}</span>}

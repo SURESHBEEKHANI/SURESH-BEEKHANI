@@ -11,135 +11,135 @@ import LatestBlogs from "../components/LatestBlogs";
 
 // Predictive Modelling Services
 const pmServices = [
-	{
-		id: 1,
-		title: "Demand Forecasting",
-		description:
-			"Predict customer demand, sales trends, and market fluctuations using advanced time series analysis and regression models for optimal inventory and resource planning.",
-		icon: <TrendingUp className="h-7 w-7" />,
-		color: "from-indigo-500 to-purple-500"
-	},
-	{
-		id: 2,
-		title: "Customer Behavior Prediction",
-		description:
-			"Anticipate customer preferences, churn risks, and purchasing patterns by analyzing behavioral data for targeted marketing and retention strategies.",
-		icon: <BarChart3 className="h-7 w-7" />,
-		color: "from-emerald-500 to-teal-500"
-	},
-	{
-		id: 3,
-		title: "Risk Assessment & Classification",
-		description:
-			"Classify and assess business risks, credit scores, and investment opportunities using AI-powered classification models for informed decision-making.",
-		icon: <Target className="h-7 w-7" />,
-		color: "from-violet-500 to-purple-500"
-	},
-	{
-		id: 4,
-		title: "Anomaly & Fraud Detection",
-		description:
-			"Identify unusual patterns, fraudulent activities, and operational anomalies in real-time to protect your business and ensure compliance.",
-		icon: <Shield className="h-7 w-7" />,
-		color: "from-rose-500 to-pink-500"
-	},
-	{
-		id: 5,
-		title: "Market Trend Analysis",
-		description:
-			"Analyze market trends, competitor movements, and industry shifts to forecast opportunities and threats for strategic business planning.",
-		icon: <CheckCircle className="h-7 w-7" />,
-		color: "from-amber-500 to-orange-500"
-	},
-	{
-		id: 6,
-		title: "Operational Optimization",
-		description:
-			"Predict resource requirements, staffing needs, and operational bottlenecks to optimize business processes and improve efficiency.",
-		icon: <Brain className="h-7 w-7" />,
-		color: "from-cyan-500 to-blue-500"
-	},
+  {
+    id: 1,
+    title: "Demand Forecasting",
+    description:
+      "Predict customer demand, sales trends, and market fluctuations using advanced time series analysis and regression models for optimal inventory and resource planning.",
+    icon: <TrendingUp className="h-7 w-7" />,
+    color: "from-indigo-500 to-purple-500"
+  },
+  {
+    id: 2,
+    title: "Customer Behavior Prediction",
+    description:
+      "Anticipate customer preferences, churn risks, and purchasing patterns by analyzing behavioral data for targeted marketing and retention strategies.",
+    icon: <BarChart3 className="h-7 w-7" />,
+    color: "from-emerald-500 to-teal-500"
+  },
+  {
+    id: 3,
+    title: "Risk Assessment & Classification",
+    description:
+      "Classify and assess business risks, credit scores, and investment opportunities using AI-powered classification models for informed decision-making.",
+    icon: <Target className="h-7 w-7" />,
+    color: "from-violet-500 to-purple-500"
+  },
+  {
+    id: 4,
+    title: "Anomaly & Fraud Detection",
+    description:
+      "Identify unusual patterns, fraudulent activities, and operational anomalies in real-time to protect your business and ensure compliance.",
+    icon: <Shield className="h-7 w-7" />,
+    color: "from-rose-500 to-pink-500"
+  },
+  {
+    id: 5,
+    title: "Market Trend Analysis",
+    description:
+      "Analyze market trends, competitor movements, and industry shifts to forecast opportunities and threats for strategic business planning.",
+    icon: <CheckCircle className="h-7 w-7" />,
+    color: "from-amber-500 to-orange-500"
+  },
+  {
+    id: 6,
+    title: "Operational Optimization",
+    description:
+      "Predict resource requirements, staffing needs, and operational bottlenecks to optimize business processes and improve efficiency.",
+    icon: <Brain className="h-7 w-7" />,
+    color: "from-cyan-500 to-blue-500"
+  },
 ];
 
 
 
 const pmSolutions = [
-	{
-		key: "PredictAI",
-		name: "PredictAI",
-		description: (
-			<>
-				PredictAI delivers advanced predictive analytics, enabling businesses to forecast trends, optimize operations, and make data-driven decisions with confidence.
-			</>
-		),
-		cta: "Book a Demo",
-		image: "/image/pages_img/Predictive-Analytics-Services.jpg",
-	},
-	{
-		key: "ForecastPro",
-		name: "ForecastPro",
-		description: (
-			<>
-				ForecastPro provides comprehensive time series forecasting and demand prediction capabilities for strategic planning and resource optimization.
-			</>
-		),
-		cta: "Book a Demo",
-		image: "/image/pages_img/Predictive-Modelling.jpg",
-	},
-	{
-		key: "RiskGuard",
-		name: "RiskGuard",
-		description: (
-			<>
-				RiskGuard offers sophisticated risk assessment and anomaly detection to protect your business from potential threats and operational disruptions.
-			</>
-		),
-		cta: "Book a Demo",
-		image: "/image/pages_img/PredictiveAnalytics.jpg",
-	},
+  {
+    key: "PredictAI",
+    name: "PredictAI",
+    description: (
+      <>
+        PredictAI delivers advanced predictive analytics, enabling businesses to forecast trends, optimize operations, and make data-driven decisions with confidence.
+      </>
+    ),
+    cta: "Book a Demo",
+    image: "/image/pages_img/Predictive-Analytics-Services.jpg",
+  },
+  {
+    key: "ForecastPro",
+    name: "ForecastPro",
+    description: (
+      <>
+        ForecastPro provides comprehensive time series forecasting and demand prediction capabilities for strategic planning and resource optimization.
+      </>
+    ),
+    cta: "Book a Demo",
+    image: "/image/pages_img/Predictive-Modelling.jpg",
+  },
+  {
+    key: "RiskGuard",
+    name: "RiskGuard",
+    description: (
+      <>
+        RiskGuard offers sophisticated risk assessment and anomaly detection to protect your business from potential threats and operational disruptions.
+      </>
+    ),
+    cta: "Book a Demo",
+    image: "/image/pages_img/PredictiveAnalytics.jpg",
+  },
 ];
 
 const faqData = [
-	{
-		question: "What is predictive modeling and forecasting?",
-		answer: "Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.",
-	},
-	{
-		question: "Why is predictive analytics important?",
-		answer: "Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.",
-	},
-	{
-		question: "What is the difference between machine learning and predictive analytics?",
-		answer: "Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.",
-	},
-	{
-		question: "Will a predictive analytics tool bring value to my company?",
-		answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
-	},
-	{
-		question: "What are predictive modeling techniques?",
-		answer: "Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.",
-	},
+  {
+    question: "What is predictive modeling and forecasting?",
+    answer: "Predictive modeling and forecasting use historical data and advanced analytics to anticipate future outcomes. These methods empower organizations to stay ahead of trends, make informed decisions, and achieve better business results.",
+  },
+  {
+    question: "Why is predictive analytics important?",
+    answer: "Predictive analytics enables organizations to make smarter, data-driven decisions, anticipate opportunities and risks, optimize resources, and gain a sustainable competitive advantage.",
+  },
+  {
+    question: "What is the difference between machine learning and predictive analytics?",
+    answer: "Machine learning is a core component of predictive analytics. While predictive analytics leverages statistical methods and historical data to forecast outcomes, machine learning uses algorithms that continuously learn and improve from data, delivering even greater predictive accuracy.",
+  },
+  {
+    question: "Will a predictive analytics tool bring value to my company?",
+    answer: "Absolutely. Predictive analytics uncovers actionable insights, reveals trends, improves decision-making, streamlines operations, reduces risk, and enhances customer satisfaction, delivering measurable business value.",
+  },
+  {
+    question: "What are predictive modeling techniques?",
+    answer: "Key predictive modeling techniques include linear and logistic regression, decision trees, random forests, support vector machines, neural networks, time series analysis, and ensemble methods. Each technique is chosen to best address your unique business challenges and data landscape.",
+  },
 ];
 
 const PredictiveModelling: React.FC = () => {
-	const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
-	const [isVisible, setIsVisible] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-	const toggleFAQ = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index);
-	};
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
-	useEffect(() => {
-		setIsVisible(true);
-	}, []);
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
-	return (
-		<div className="min-h-screen ai-section flex flex-col">
-			<Navbar />
-			
-			{/* Hero Section */}
+  return (
+    <div className="min-h-screen ai-section flex flex-col">
+      <Navbar />
+
+      {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/Predictive-Modelling.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -229,7 +229,7 @@ const PredictiveModelling: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {pmServices.map((service, index) => (
-              <div 
+              <div
                 key={service.id}
                 className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -304,8 +304,8 @@ const PredictiveModelling: React.FC = () => {
           </div>
         </div>
       </section>
-      
-			<Industries />
+
+      <Industries />
 
       <AITechnologyStack />
 
@@ -336,8 +336,8 @@ const PredictiveModelling: React.FC = () => {
                 { id: "05", title: "Optimization", desc: "Continuous improvement based on real-world business outcomes.", color: "#f39c12", icon: <TrendingUp className="w-8 h-8" /> },
                 { id: "06", title: "Governance", desc: "Implement frameworks and continuously refine for long-term success.", color: "#ff0ea3", icon: <Shield className="w-8 h-8" /> }
               ].map((step, index) => (
-                <div 
-                  key={step.id} 
+                <div
+                  key={step.id}
                   className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-all duration-300 hover:bg-white/[0.03]
                     ${index % 3 !== 2 ? 'lg:border-r border-white/25' : ''} 
                     ${index < 3 ? 'lg:border-b border-white/25' : ''}
@@ -373,7 +373,7 @@ const PredictiveModelling: React.FC = () => {
           <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
             <div className="flex flex-col items-center gap-3 sm:gap-4">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-                Why Choose <span className="text-[#ff0ea3]">Us?</span>
+                Why Choose <span className="text-[#ff0ea3]">Velnix Solutions?</span>
               </h2>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
@@ -412,7 +412,7 @@ const PredictiveModelling: React.FC = () => {
       </section>
 
 
-			<AIOnboardingProcess serviceName="analytics" />
+      <AIOnboardingProcess serviceName="analytics" />
 
       <LatestBlogs />
 
@@ -469,10 +469,10 @@ const PredictiveModelling: React.FC = () => {
           </div>
         </div>
       </section>
-			
-			<Footer />
-		</div>
-	);
+
+      <Footer />
+    </div>
+  );
 };
 
 export default PredictiveModelling;

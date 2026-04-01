@@ -165,17 +165,17 @@ const AIAutonomous: React.FC = () => {
 							</div>
 
 							<div className="pt-4 sm:pt-6">
-                <Link
-                  to="/contact"
-                  className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
-                >
-                  <span className="relative flex items-center gap-2">
-                    Contact Expert
-                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </Link>
-              </div>
+								<Link
+									to="/contact"
+									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
+								>
+									<span className="relative flex items-center gap-2">
+										Contact Expert
+										<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+									</span>
+									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+								</Link>
+							</div>
 						</div>
 
 						{/* Right: AI Image with floating effect */}
@@ -358,45 +358,45 @@ const AIAutonomous: React.FC = () => {
 						</p>
 					</div>
 
-						<div className={`mt-8 sm:mt-12 border border-white/25 rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-						{[
-							{ id: "01", title: "Business Assessment", desc: "We analyze your current operations to identify high-impact opportunities where AI can deliver measurable ROI and streamline workflows.", color: "#e23126", icon: <Brain className="w-8 h-8" /> },
-							{ id: "02", title: "Secure Design", desc: "We design a robust, scalable AI architecture tailored to your needs, ensuring data security, compliance, and intelligent decision-making capabilities.", color: "#9068d4", icon: <Shield className="w-8 h-8" /> },
-							{ id: "03", title: "Validation & Testing", desc: "AI models are trained and rigorously tested in controlled environments to ensure accuracy, reliability, and alignment with business objectives.", color: "#3eb37c", icon: <CheckCircle className="w-8 h-8" /> },
-							{ id: "04", title: "Deployment & Optimization", desc: "We seamlessly integrate AI into your workflows, followed by continuous monitoring and performance optimization for sustained efficiency.", color: "#3b82f6", icon: <Zap className="w-8 h-8" /> },
-							{ id: "05", title: "Change Management & Training", desc: "We empower your team with training, documentation, and support to ensure smooth adoption and effective use of AI systems.", color: "#f39c12", icon: <Users className="w-8 h-8" /> },
-							{ id: "06", title: "Governance & Continuous Improvement", desc: "We implement governance frameworks, monitor performance, and continuously refine models to ensure long-term success, compliance, and scalability.", color: "#ff0ea3", icon: <Shield className="w-8 h-8" /> }
-						].map((step, index) => (
-							<div 
-								key={step.id} 
-								className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-all duration-300 hover:bg-white/[0.03]
+					<div className={`mt-8 sm:mt-12 border border-white/25 rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+							{[
+								{ id: "01", title: "Business Assessment", desc: "We analyze your current operations to identify high-impact opportunities where AI can deliver measurable ROI and streamline workflows.", color: "#e23126", icon: <Brain className="w-8 h-8" /> },
+								{ id: "02", title: "Secure Design", desc: "We design a robust, scalable AI architecture tailored to your needs, ensuring data security, compliance, and intelligent decision-making capabilities.", color: "#9068d4", icon: <Shield className="w-8 h-8" /> },
+								{ id: "03", title: "Validation & Testing", desc: "AI models are trained and rigorously tested in controlled environments to ensure accuracy, reliability, and alignment with business objectives.", color: "#3eb37c", icon: <CheckCircle className="w-8 h-8" /> },
+								{ id: "04", title: "Deployment & Optimization", desc: "We seamlessly integrate AI into your workflows, followed by continuous monitoring and performance optimization for sustained efficiency.", color: "#3b82f6", icon: <Zap className="w-8 h-8" /> },
+								{ id: "05", title: "Change Management & Training", desc: "We empower your team with training, documentation, and support to ensure smooth adoption and effective use of AI systems.", color: "#f39c12", icon: <Users className="w-8 h-8" /> },
+								{ id: "06", title: "Governance & Continuous Improvement", desc: "We implement governance frameworks, monitor performance, and continuously refine models to ensure long-term success, compliance, and scalability.", color: "#ff0ea3", icon: <Shield className="w-8 h-8" /> }
+							].map((step, index) => (
+								<div
+									key={step.id}
+									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-all duration-300 hover:bg-white/[0.03]
 									${index % 3 !== 2 ? 'lg:border-r border-white/25' : ''} 
 									${index < 3 ? 'lg:border-b border-white/25' : ''}
 									${index % 2 === 0 ? 'md:max-lg:border-r border-white/25' : ''}
 									${index < 4 ? 'md:max-lg:border-b border-white/25' : ''}
 									${index < 5 ? 'max-md:border-b border-white/25' : ''}`}
-							>
-								<div className="text-xl sm:text-2xl font-black mb-4 transition-transform duration-500 group-hover:scale-110 tracking-tighter" style={{ color: step.color }}>
-									{step.id}
-								</div>
-								<div className="flex items-center gap-3 w-full justify-center mb-4">
-									<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
-									<div className="text-white group-hover:scale-110 transition-transform duration-300">
-										{React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
+								>
+									<div className="text-xl sm:text-2xl font-black mb-4 transition-transform duration-500 group-hover:scale-110 tracking-tighter" style={{ color: step.color }}>
+										{step.id}
 									</div>
-									<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
+									<div className="flex items-center gap-3 w-full justify-center mb-4">
+										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
+										<div className="text-white group-hover:scale-110 transition-transform duration-300">
+											{React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
+										</div>
+										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}40` }}></div>
+									</div>
+									<h4 className="text-white font-bold text-sm sm:text-base mb-2 text-center group-hover:text-[#ff0ea3] transition-colors">{step.title}</h4>
+									<p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed text-center max-w-[240px]">{step.desc}</p>
+									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 								</div>
-								<h4 className="text-white font-bold text-sm sm:text-base mb-2 text-center group-hover:text-[#ff0ea3] transition-colors">{step.title}</h4>
-								<p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed text-center max-w-[240px]">{step.desc}</p>
-								<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-								<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
-			</div>
-			</div>
-		</section>
+				</div>
+			</section>
 
 			{/* Why Choose Us Section (Improved Side-by-Side Style) */}
 			<section className="relative overflow-hidden bg-white py-8 sm:py-10">
@@ -406,7 +406,7 @@ const AIAutonomous: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								WHY <span className="text-[#ff0ea3]">CHOOSE US?</span>
+								WHY CHOOSE <span className="text-[#ff0ea3]">Velnix Solutions?</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">

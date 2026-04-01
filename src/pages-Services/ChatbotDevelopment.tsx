@@ -548,7 +548,7 @@ const AIChatbotDevelopment: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Why Choose <span className="text-[#ff0ea3]">Us?</span>
+								Why Choose <span className="text-[#ff0ea3]">Velnix Solutions?</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">

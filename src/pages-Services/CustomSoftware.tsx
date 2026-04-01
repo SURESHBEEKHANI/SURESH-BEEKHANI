@@ -135,17 +135,17 @@ const CustomSoftware: React.FC = () => {
 							</div>
 
 							<div className="pt-4 sm:pt-6">
-                <Link
-                  to="/contact"
-                  className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
-                >
-                  <span className="relative flex items-center gap-2">
-                    Start Your Project
-                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </Link>
-              </div>
+								<Link
+									to="/contact"
+									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
+								>
+									<span className="relative flex items-center gap-2">
+										Start Your Project
+										<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+									</span>
+									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+								</Link>
+							</div>
 						</div>
 
 						<div className={`relative flex justify-center lg:justify-end order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
@@ -301,7 +301,7 @@ const CustomSoftware: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								WHY <span className="text-[#ff0ea3]">CHOOSE US?</span>
+								WHY <span className="text-[#ff0ea3]">Velnix Solutions?</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">

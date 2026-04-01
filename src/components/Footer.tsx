@@ -186,7 +186,7 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-white mt-0.5" />
                 <span className="font-bold">
-                  Pakistan
+                  Karachi, Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -229,7 +229,7 @@ const Footer = () => {
                     className="px-6 font-semibold text-white "
                     style={{
                       background:
-                        'linear-gradient(90deg, #d928c1 0%, #f82c92 50%, #ec4899 100%)',
+                        'linear-gradient(90deg, #ff0a84  0%, #f82c92 50%, #ec4899 100%)',
                     }}
                   >
                     {isNewsletterSubmitting ? "..." : "Subscribe"}
@@ -243,7 +243,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/15 py-4 flex justify-between items-center flex-col md:flex-row gap-2">
+        <div className="border-t border-white/80 py-4 flex justify-between items-center flex-col md:flex-row gap-2">
           <p className="text-white text-sm font-bold tracking-wide relative left-[10%]">
             © {new Date().getFullYear()}{" "}
             <span className="text-pink-400">Velnix Solutions</span>. All rights reserved.
@@ -270,7 +270,7 @@ const Footer = () => {
         onClick={scrollToTop}
         className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
-        style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #ff0a84 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #ff0a84  0%, #ff0a84 100%)' }}
       >
         <ArrowUp size={18} />
       </Button>
