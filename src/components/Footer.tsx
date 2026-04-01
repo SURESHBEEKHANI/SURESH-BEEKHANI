@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram, Facebook, ChevronDown } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, MapPin, Mail, Phone, Youtube, Instagram, Facebook, ChevronDown, ExternalLink } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { supabase } from '@/supabaseClient';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Footer = () => {
 
@@ -93,189 +94,223 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      className="text-white pt-16 pb-6 relative overflow-hidden"
-      style={{ background: '#0a0435' }}
-    >
-      <style>{`
-        @keyframes slideLeftRight {
-          0%, 100% { transform: translateX(0px); }
-          25%       { transform: translateX(-10px); }
-          75%       { transform: translateX(10px); }
-        }
-        .animate-slide-lr {
-          animation: slideLeftRight 2s ease-in-out infinite;
-        }
-      `}</style>
-      {/* Fuchsia glow blobs — matching EHR hero */}
-      <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
+    <footer className="relative bg-[#020010] text-white pt-24 pb-8 overflow-hidden">
+      {/* Premium Multi-Layer Ambient Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Main Base Gradients */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6a00ff]/10 blur-[140px] rounded-full translate-x-1/3 -translate-y-1/2 opacity-60" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#ec4899]/10 blur-[140px] rounded-full -translate-x-1/3 translate-y-1/2 opacity-60" />
+        
+        {/* Subtle Tertiary Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3b82f6]/05 blur-[160px] opacity-40" />
 
-      <div className="max-w-[1700px] mx-auto px-6 relative z-10">
+        {/* Top Edge Highlight for Section Separation */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff0ea3]/30 to-transparent" />
 
-        <div className="grid lg:grid-cols-3 gap-12 mb-12">
+        {/* High-End Grain & Noise Texture */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.04] mix-blend-screen" />
+      </div>
 
-          {/* Brand */}
-          <div className={`flex flex-col gap-6 pl-[40%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="flex flex-col gap-1 -mt-4 text-left">
-              <a
-                href="/#home"
-                className="inline-flex items-center touch-manipulation transition-transform duration-300 hover:scale-[1.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-400/50 rounded-lg justify-start"
-                aria-label="Neurovex — Home"
-              >
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+
+          {/* Brand Identity */}
+          <div className="lg:col-span-5 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-start gap-4"
+            >
+              <a href="/#home" className="group transition-transform hover:scale-105 duration-300">
                 <img
                   src="/image/logo/Neurovex.png"
                   alt="Neurovex"
-                  className="h-28 sm:h-32 md:h-40 lg:h-48 w-auto max-w-[min(100%,600px)] object-contain object-left brightness-110 contrast-125 saturate-115 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)] -ml-4"
-                  decoding="async"
+                  className="h-16 sm:h-20 w-auto object-contain brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                 />
               </a>
-
-              <p className="text-white text-sm sm:text-base font-bold leading-relaxed whitespace-nowrap -mt-6">
-                Transforming ideas into intelligent systems
+              <p className="text-white/60 text-lg max-w-sm leading-relaxed font-light">
+                Engineering world-class AI solutions that bridge the gap between imagination and industrial reality.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex space-x-3">
+            <div className="flex flex-wrap gap-4">
               {socialLinks.map((social) => (
-                <a
+                <motion.a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 bg-gradient-to-r text-white hover:scale-110 transition ${social.color}`}
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${social.color} shadow-lg transition-shadow hover:shadow-white/5 overflow-hidden relative group`}
                 >
-                  {social.icon}
-                </a>
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="scale-125">{social.icon}</div>
+                </motion.a>
               ))}
             </div>
-
           </div>
 
-          {/* Services */}
-          <div className={`space-y-6 pl-[20%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+          {/* Quick Links / Mobile Accordion Sections */}
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <FooterAccordion title="Our Expertise">
+              <ul className="space-y-4">
+                {[
+                  { label: "AI Development", href: "/ai-development" },
+                  { label: "AI Automation", href: "/ai-automation" },
+                  { label: "Web Intelligence", href: "/web-development" },
+                  { label: "App ecosystems", href: "/app-development" },
+                  { label: "DevOps Scaling", href: "/devops" },
+                  { label: "Custom Architectures", href: "/custom-software-development" }
+                ].map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-white/50 hover:text-[#ff0ea3] hover:pl-2 transition-all flex items-center gap-2 group decoration-transparent">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#ff0ea3]/40 group-hover:bg-[#ff0ea3] transition-colors" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </FooterAccordion>
 
-            <h3 className="text-lg font-semibold text-white">Services</h3>
+            <div className="space-y-8">
+              <FooterAccordion title="Get in touch">
+                <ul className="space-y-5">
+                  <li className="flex items-start gap-4 group">
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
+                      <MapPin size={16} className="text-[#ff0ea3]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Location</span>
+                      <span className="text-white/80 font-medium">Karachi, Pakistan</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 group">
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
+                      <Mail size={16} className="text-[#ff0ea3]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Email</span>
+                      <a href="mailto:velnixsolutions@gmail.com" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">velnixsolutions@gmail.com</a>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 group">
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
+                      <Phone size={16} className="text-[#ff0ea3]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Phone</span>
+                      <a href="tel:+923351312852" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">+92 335 131 2852</a>
+                    </div>
+                  </li>
+                </ul>
+              </FooterAccordion>
 
-            <ul className="space-y-3 text-white text-sm">
-              {[
-                { label: "AI Development", href: "/ai-development" },
-                { label: "AI Automation", href: "/ai-automation" },
-                { label: "Web Development", href: "/web-development" },
-                { label: "App Development", href: "/app-development" },
-                { label: "DevOps Engineering", href: "/devops" },
-                { label: "Custom Software Development", href: "/custom-software-development" }
-              ].map((service) => (
-                <li key={service.label}>
-                  <a href={service.href} className="hover:text-[#f92198] transition-colors font-bold">
-                    {service.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-          </div>
-
-          {/* Contact + Newsletter */}
-          <div className={`space-y-6 relative -left-[30%] ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-
-            <h3 className="text-lg font-semibold text-white">Get in touch</h3>
-
-            <ul className="space-y-3 text-white text-sm">
-              <li className="flex items-start gap-2">
-                <MapPin size={16} className="text-white mt-0.5" />
-                <span className="font-bold">
-                  Karachi, Pakistan
-                </span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} className="text-white" />
-                <span className="font-bold">velnixsolutions@gmail.com</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone size={16} className="text-white" />
-                <span className="font-bold">+92 335 131 2852</span>
-              </li>
-            </ul>
-
-            {/* Newsletter */}
-            <div className="pt-6">
-              <h4 className="text-sm font-bold text-white mb-3">
-                Join Our Newsletter
-              </h4>
-
-              {isSubscribed ? (
-                <div className="bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-xl p-4 animate-fadeIn">
-                  <p className="text-sm text-indigo-100/90 font-medium">
-                    Thank you! You've successfully joined our community.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleNewsletterSubmit}
-                  className="flex w-full max-w-xs overflow-hidden  border border-white/15 bg-white/5 focus-within:border-fuchsia-500/50 transition-colors"
-                >
-                  <Input
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    type="email"
-                    placeholder="Enter your email"
-                    className="border-0 bg-transparent text-white placeholder:text-indigo-200/50 focus-visible:ring-0 px-4 py-3"
-                  />
-                  <Button
-                    type="submit"
-                    disabled={isNewsletterSubmitting}
-                    className="px-6 font-semibold text-white "
-                    style={{
-                      background:
-                        'linear-gradient(90deg, #ff0a84  0%, #f82c92 50%, #ec4899 100%)',
-                    }}
-                  >
-                    {isNewsletterSubmitting ? "..." : "Subscribe"}
-                  </Button>
-                </form>
-              )}
+              {/* Newsletter Componentized */}
+              <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-md relative overflow-hidden group">
+                <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-white/80">Join Our Newsletter</h4>
+                {isSubscribed ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-[#ff0ea3] font-bold">
+                    System updated. Welcome to velnix Solutions.
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                    <Input
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="Newsletter Protocol (email)"
+                      className="bg-black/20 border-white/10 text-white placeholder:text-white/20 h-11 focus:border-[#ff0ea3]/50 rounded-xl"
+                    />
+                    <Button
+                      disabled={isNewsletterSubmitting}
+                      className="w-full bg-[#ff0ea3] hover:bg-[#e61295] text-white font-bold h-11 rounded-xl shadow-lg shadow-[#ff0ea3]/20"
+                    >
+                      {isNewsletterSubmitting ? "Processing..." : "Subscribe"}
+                    </Button>
+                  </form>
+                )}
+              </div>
             </div>
-
           </div>
-
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/80 py-4 flex justify-between items-center flex-col md:flex-row gap-2">
-          <p className="text-white text-sm font-bold tracking-wide relative left-[10%]">
-            © {new Date().getFullYear()}{" "}
-            <span className="text-pink-400">Velnix Solutions</span>. All rights reserved.
+        {/* Bottom Bar Redesign */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
+            &copy; {new Date().getFullYear()} <span className="text-white">Velnix Solutions</span> All rights reserved.
           </p>
-          <div className="flex gap-4 relative -left-[10%] items-center">
-            <a href="/privacy-policy">
-              <span className="text-xs sm:text-sm font-bold text-white hover:text-pink-400 transition-colors">
-                Privacy Policy
-              </span>
-            </a>
-            <a href="/terms-and-conditions">
-              <span className="text-xs sm:text-sm font-bold text-white hover:text-pink-400 transition-colors">
-                Terms and Conditions
-              </span>
-            </a>
-
+          <div className="flex gap-8">
+            <a href="/privacy-policy" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#ff0ea3] transition-colors">Privacy</a>
+            <a href="/terms-and-conditions" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#ff0ea3] transition-colors">Terms</a>
           </div>
         </div>
-
       </div>
 
-      {/* Scroll-to-top Button */}
-      <Button
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 rounded-full p-3 shadow-lg shadow-fuchsia-500/30 transition-opacity ${showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        style={{ background: 'linear-gradient(135deg, #ff0a84  0%, #ff0a84 100%)' }}
-      >
-        <ArrowUp size={18} />
-      </Button>
-
+      {/* Floating Scroll Top */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5, y: 100 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 100 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-[100] w-12 h-12 rounded-2xl bg-[#ff0ea3] text-white flex items-center justify-center shadow-[0_10px_30px_rgba(255,14,163,0.4)] hover:shadow-[0_15px_40px_rgba(255,14,163,1)] transition-all active:scale-95"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={24} strokeWidth={3} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
+  );
+};
+
+const FooterAccordion = ({ title, children }: { title: string; children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (!isMobile) {
+    return (
+      <div className="flex flex-col gap-8">
+        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#ff0ea3]">{title}</h3>
+        {children}
+      </div>
+    );
+  }
+
+  return (
+    <div className="border-b border-white/5 py-4">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full py-2 text-left"
+      >
+        <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#ff0ea3]">{title}</span>
+        <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+          <ChevronDown size={18} className="text-white/40" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="py-6 pt-2">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
