@@ -9,7 +9,7 @@ const MeetFounder = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="founder" className="py-12 sm:py-16 md:py-20 lg:py-24 ai-section relative overflow-hidden scroll-mt-20">
+    <section id="founder" className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden scroll-mt-20" style={{ background: '#020010' }}>
       {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>

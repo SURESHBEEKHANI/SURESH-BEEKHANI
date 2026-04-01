@@ -146,27 +146,27 @@
 
   /* Custom Scrollbar - Right Side (body only) - Matches Beekhani gradient */
   body::-webkit-scrollbar-track {
-    background: rgba(10, 4, 53, 0.8);
+    background: #020010;
     border-radius: 8px;
   }
 
   body::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #ff0ea3 0%, #c2006e 100%);
     border-radius: 8px;
-    border: 3px solid rgba(10, 4, 53, 0.8);
+    border: 3px solid #020010;
     box-shadow: 0 0 15px rgba(255, 14, 163, 0.5), 0 0 10px rgba(255, 14, 163, 0.3);
   }
 
   body::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ff3dba 0%, #ff0ea3 50%, #c2006e 100%);
     box-shadow: 0 0 25px rgba(255, 14, 163, 0.8), 0 0 35px rgba(255, 14, 163, 0.5), 0 0 20px rgba(255, 14, 163, 0.3);
-    border: 3px solid rgba(10, 4, 53, 0.6);
+    border: 3px solid #020010e6;
   }
 
   /* Firefox scrollbar - styled (body only) */
   body {
     scrollbar-width: auto !important;
-    scrollbar-color: #ff0ea3 rgba(10, 4, 53, 0.8) !important;
+    scrollbar-color: #ff0ea3 #020010 !important;
   }
 
   html {
