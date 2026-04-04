@@ -62,14 +62,12 @@ const Hero = () => {
             <span className="block sm:inline bg-gradient-to-r from-[#ff0ea3] via-[#ff6ec7] to-[#ff0ea3] bg-[length:200%] animate-gradient-x bg-clip-text text-transparent">
               AI Partner
             </span>{" "}
-            for Growth
+            in Healthcare
           </h1>
 
           {/* Description */}
           <p className="mt-8 text-lg sm:text-xl text-white/50 max-w-3xl leading-relaxed font-light tracking-wide">
-            We engineer high-performance AI solutions that accelerate growth, 
-            optimize workflows, and solve complex business challenges through 
-            cutting-edge neural architectures.
+            We deliver advanced AI solutions that drive growth, optimize hospital and clinic operations, and tackle the most complex healthcare challenges with precision and efficiency.
           </p>
 
           {/* CTA Button */}
