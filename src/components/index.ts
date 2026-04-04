@@ -1,5 +1,6 @@
 // Core Components
-export { default as About } from './About';
+export { default as ResourcesSection } from './Resources';
+export { default as Overview } from './overview';
 export { default as Approach } from './Approach';
 export { default as ClientSolutions } from './ClientSolutions';
 export { default as Contact } from './Contact';

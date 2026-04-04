@@ -111,7 +111,6 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   }, [isMobile, isMobileMenuOpen]);
 
   const navLinks = [
-    { label: 'About', href: '/#about' },
     { label: 'Portfolio', href: '/Portfolio' },
     { label: 'Services', href: '/#services' },
     { label: 'Industries', href: '/#industries' },
@@ -146,6 +145,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   ];
 
   const resourcesPages = [
+    { label: 'About', href: '/about' },
     { label: 'Blogs', href: '/blogs' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -157,7 +157,6 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
 
   const allSearchableLinks = [
     { label: 'Home', href: '/#home' },
-    { label: 'About', href: '/#about' },
     { label: 'Portfolio: View All Projects', href: '/Portfolio' },
     { label: 'Experience', href: '/#experience' },
     ...servicePages,
@@ -239,11 +238,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     <motion.a
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
-                      className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${
-                        isActive
-                          ? 'text-[#ec4899]'
-                          : 'text-gray-800 hover:text-[#ec4899]'
-                      }`}
+                      className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${isActive
+                        ? 'text-[#ec4899]'
+                        : 'text-gray-800 hover:text-[#ec4899]'
+                        }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -261,18 +259,16 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     {/* Dropdown Menu with Animation */}
                     <AnimatePresence>
                       <motion.div
-                        className={`absolute top-full mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible z-50 ${
-                          dropdownItems.length > 6 ? 'left-1/2 -translate-x-1/2' : 'left-0 min-w-[220px]'
-                        }`}
+                        className={`absolute top-full mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible z-50 ${dropdownItems.length > 6 ? 'left-1/2 -translate-x-1/2' : 'left-0 min-w-[220px]'
+                          }`}
                         initial={prefersReducedMotion ? {} : { opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
                       >
                         <motion.div
-                          className={`bg-white/95 backdrop-blur-xl shadow-xl border border-gray-200/50 py-2 overflow-hidden ${
-                            dropdownItems.length > 6 ? 'grid grid-cols-2 w-[500px]' : 'min-w-[220px]'
-                          }`}
+                          className={`bg-white/95 backdrop-blur-xl shadow-xl border border-gray-200/50 py-2 overflow-hidden ${dropdownItems.length > 6 ? 'grid grid-cols-2 w-[500px]' : 'min-w-[220px]'
+                            }`}
                           initial={prefersReducedMotion ? {} : { scale: 0.95 }}
                           animate={{ scale: 1 }}
                           transition={{ duration: 0.2 }}
@@ -300,11 +296,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${
-                    isActive
-                      ? 'text-[#ec4899]'
-                      : 'text-gray-800 hover:text-[#ec4899]'
-                  }`}
+                  className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${isActive
+                    ? 'text-[#ec4899]'
+                    : 'text-gray-800 hover:text-[#ec4899]'
+                    }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -495,9 +490,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         key={link.label}
                         href={link.href}
                         className={`mobile-nav-item block px-4 sm:px-6 py-4 text-base sm:text-lg font-medium transition-all min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${activeSection === link.href.replace('/#', '') ||
-                            (link.href === '/Portfolio' && currentPath === '/Portfolio')
-                            ? 'text-white bg-[#ec4899]'
-                            : 'text-white/80 hover:text-white hover:bg-white/10'
+                          (link.href === '/Portfolio' && currentPath === '/Portfolio')
+                          ? 'text-white bg-[#ec4899]'
+                          : 'text-white/80 hover:text-white hover:bg-white/10'
                           }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         custom={index}

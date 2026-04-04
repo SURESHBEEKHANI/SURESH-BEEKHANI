@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import About from '@/components/About';
+// import About from '@/components/About';
+import Overview from '@/components/overview';
 import Services from '@/components/Services';
 import Industries from '@/components/Industries';
 import ClientSolutions from '@/components/ClientSolutions';
@@ -17,57 +18,57 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const isMobile = useIsMobile();
-  
+
   useEffect(() => {
     // Standard effect for any other logic needed on mount
   }, []);
-  
+
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* BackgroundAnimation is positioned at the back with fixed positioning */}
       <BackgroundAnimation />
-      
+
       <Navbar />
-      
+
       <main className="relative z-10">
         <Hero />
         
         <section className="pro-section">
           <div className="section-container">
-            <About />
+            <Overview />
           </div>
         </section>
-        
+
         <section className="pro-section">
           <div className="section-container">
             <Services />
           </div>
         </section>
-        
+
         <section className="pro-section">
           <div className="section-container">
             <Industries />
           </div>
         </section>
-        
+
         <section id="client-solutions" className="pro-section">
           <div className="section-container">
             <ClientSolutions />
           </div>
         </section>
-        
+
         <section id="approach" className="pro-section">
           <div className="section-container">
             <Approach />
           </div>
         </section>
-        
+
         <section id="testimonials" className="pro-section">
           <div className="section-container">
             <Testimonials />
           </div>
         </section>
-        
+
         <section className="pro-section">
           <div className="section-container">
             <Experience />
@@ -85,15 +86,15 @@ const Index = () => {
             <LatestBlogs />
           </div>
         </section>
-        
-        
+
+
         <section id="faq" className="pro-section">
           <div className="section-container">
             <FAQ />
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

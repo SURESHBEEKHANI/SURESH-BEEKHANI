@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 
-const About = () => {
+const Overview = () => {
   return (
     <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden scroll-mt-20">
       {/* Decorative background elements - subtle for white background */}
@@ -124,4 +124,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Overview;
