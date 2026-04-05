@@ -161,7 +161,9 @@ const Footer = () => {
                   { label: "Web Intelligence", href: "/web-development" },
                   { label: "App ecosystems", href: "/app-development" },
                   { label: "DevOps Scaling", href: "/devops" },
-                  { label: "Custom Architectures", href: "/custom-software-development" }
+                  { label: "Custom Architectures", href: "/custom-software-development" },
+                  { label: "Big Data Analytic", href: "/big-data-analytics" },
+                  { label: "Agentic AI", href: "/agentic-ai" }
                 ].map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className="text-white/50 hover:text-[#ff0ea3] hover:pl-2 transition-all flex items-center gap-2 group decoration-transparent">

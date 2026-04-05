@@ -142,7 +142,7 @@ const CustomSoftware: React.FC = () => {
 									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
 								>
 									<span className="relative flex items-center gap-2">
-										Schedule a Demo
+										Contact Expert
 										<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
 									</span>
 									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

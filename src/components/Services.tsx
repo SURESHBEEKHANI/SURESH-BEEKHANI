@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Check, ArrowRight, Sparkles, Zap, Shield, Target, Users, TrendingUp, Menu, ChevronDown, Globe, Smartphone, Cloud, Server, } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Zap, Shield, Target, Users, TrendingUp, Menu, ChevronDown, Globe, Smartphone, Cloud, Server, Database, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +24,8 @@ const SERVICES = [
   'App Development',
   'DevOps Engineering',
   'Custom Software Development',
+  'Big Data Analytics',
+  'Agentic AI',
 ];
 
 
@@ -189,6 +191,30 @@ const SERVICE_DETAILS = {
       { title: 'API Integration', description: 'Create robust APIs to seamlessly connect disparate third-party applications.' },
     ],
   },
+  'Big Data Analytics': {
+    title: 'Big Data Analytics',
+    description:
+      'Unlock the hidden power of your data. We transform massive, complex datasets into actionable business intelligence that drives growth, optimizes operations, and creates sustainable competitive advantages.',
+    icon: <Database className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'Data Warehousing', description: 'Design and implement scalable data architectures that unify your disparate data sources.' },
+      { title: 'Real-time Streaming', description: 'Process and analyze high-velocity data in real-time to gain instant insights.' },
+      { title: 'Predictive Insights', description: 'Leverage machine learning to identify patterns and forecast future trends.' },
+      { title: 'Actionable Dashboards', description: 'Transform complex datasets into intuitive, interactive visualizations for decision making.' },
+    ],
+  },
+  'Agentic AI': {
+    title: 'Agentic AI Solutions',
+    description:
+      'The next evolution of intelligence. We build autonomous AI agents that act, reason, and solve complex business missions independently to drive unprecedented efficiency.',
+    icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
+    benefits: [
+      { title: 'Autonomous Reasoning', description: 'Agents that plan and execute multi-step workflows with minimal oversight.' },
+      { title: 'Multi-Agent Systems', description: 'Coordinated ecosystems of specialized agents working together at scale.' },
+      { title: 'Goal-Driven Performance', description: 'Agents that stay focused on high-level results, adapting plans in real-time.' },
+      { title: '24/7 Digital Workforce', description: 'Scalable autonomous execution that never sleeps and continuously learns.' },
+    ],
+  },
 };
 
 
@@ -206,6 +232,8 @@ const SERVICE_ROUTES = {
   'App Development': '/app-development',
   'DevOps Engineering': '/devops',
   'Custom Software Development': '/custom-software-development',
+  'Big Data Analytics': '/big-data-analytics',
+  'Agentic AI': '/agentic-ai',
 };
 
 

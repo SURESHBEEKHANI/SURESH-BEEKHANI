@@ -131,6 +131,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     { label: 'App Development', href: '/app-development' },
     { label: 'DevOps Engineering', href: '/devops' },
     { label: 'Custom Software Development', href: '/custom-software-development' },
+    { label: 'Big Data Analytics', href: '/big-data-analytics' },
+    { label: 'Agentic AI', href: '/agentic-ai' },
   ];
 
   const industriesPages = [

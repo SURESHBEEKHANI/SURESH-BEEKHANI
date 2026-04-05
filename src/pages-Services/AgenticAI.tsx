@@ -1,83 +1,85 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus, Cloud, Terminal, RefreshCw, Box, Activity, GitBranch, Layout, Settings, Server } from "lucide-react";
+import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus, Rocket, Settings } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
 import AITechnologyStack from "../components/AITechnologyStack";
 import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
+import { Badge } from "@/components/ui/badge";
 
-// DevOps Services
-const devopsServices = [
+// Agentic AI Services
+const agenticServices = [
 	{
 		id: 1,
-		title: "Continuous Integration (CI)",
-		description: "Accelerate your development cycle with automated code integration, efficient build processes, and comprehensive testing for faster code delivery.",
-		icon: <RefreshCw className="h-7 w-7" />,
+		title: "Autonomous Agent Design",
+		description: "Develop self-governing AI agents capable of reasoning, planning, and executing complex tasks across diverse digital environments with minimal human oversight.",
+		icon: <Bot className="h-7 w-7" />,
 		color: "from-blue-500 to-cyan-500"
 	},
 	{
 		id: 2,
-		title: "Continuous Deployment (CD)",
-		description: "Simplify and speed up your release pipeline with automated deployments, ensuring consistent, fast, and reliable delivery of new features.",
-		icon: <Zap className="h-7 w-7" />,
-		color: "from-orange-500 to-red-500"
+		title: "Multi-Agent Coordination",
+		description: "Architect sophisticated ecosystems where specialized AI agents collaborate, negotiate, and coordinate to solve intricate business problems at massive scale.",
+		icon: <Network className="h-7 w-7" />,
+		color: "from-purple-500 to-indigo-500"
 	},
 	{
 		id: 3,
-		title: "Infrastructure as Code (IaC)",
-		description: "Enhance scalability and consistency with code-driven infrastructure management using Terraform, CloudFormation, and Ansible.",
-		icon: <Terminal className="h-7 w-7" />,
-		color: "from-purple-500 to-pink-500"
+		title: "Goal-Oriented Reasoning",
+		description: "Implement advanced chain-of-thought and tree-of-thought reasoning frameworks that enable agents to decompose high-level business goals into actionable steps.",
+		icon: <Brain className="h-7 w-7" />,
+		color: "from-emerald-500 to-teal-500"
 	},
 	{
 		id: 4,
-		title: "Monitoring & Logging",
-		description: "Gain real-time visibility with advanced monitoring and logging solutions using Datadog, Prometheus, and ELK stack.",
-		icon: <Activity className="h-7 w-7" />,
-		color: "from-green-500 to-emerald-500"
+		title: "Agentic Workflow Automation",
+		description: "Transform static pipelines into dynamic, agent-led workflows that adapt in real-time to new information, changing priorities, and operational edge cases.",
+		icon: <Workflow className="h-7 w-7" />,
+		color: "from-amber-500 to-orange-500"
 	},
 	{
 		id: 5,
-		title: "Collaboration Tools",
-		description: "Strengthen teamwork with integrated platforms that improve communication across development and operations teams.",
-		icon: <Users className="h-7 w-7" />,
-		color: "from-indigo-500 to-purple-500"
+		title: "Self-Healing Operations",
+		description: "Deploy autonomous monitoring agents that not only detect system anomalies but proactively execute remediation strategies to maintain peak performance and uptime.",
+		icon: <Shield className="h-7 w-7" />,
+		color: "from-rose-500 to-pink-500"
 	},
 	{
 		id: 6,
-		title: "DevSecOps Integration",
-		description: "Embed security at every stage of development with automated vulnerability scans, compliance checks, and secure delivery.",
-		icon: <Shield className="h-7 w-7" />,
-		color: "from-teal-500 to-cyan-500"
+		title: "Continuous Agentic Learning",
+		description: "Create feedback loops where agents learn from their environment and successful outcomes, continuously refining their own strategies and decision-making logic.",
+		icon: <Rocket className="h-7 w-7" />,
+		color: "from-indigo-500 to-blue-500"
 	},
 ];
 
 const faqData = [
 	{
-		question: "What is DevOps and why does my business need it?",
-		answer: "DevOps bridges the gap between software development and IT operations. It implements automated practices that streamline software delivery, resulting in faster time-to-market, higher software quality, and rapid recovery from infrastructure failures."
+		question: "What is Agentic AI?",
+		answer: "Agentic AI refers to a new class of artificial intelligence that goes beyond static responses to act as an 'agent.' These systems can set goals, develop plans, interact with software tools, and perform multi-step missions autonomously to achieve a desired outcome.",
 	},
 	{
-		question: "Which cloud platforms do you support?",
-		answer: "Our DevOps engineers are highly experienced across all major cloud providers including Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, as well as hybrid and multi-cloud environments."
+		question: "How do AI agents differ from chatbots?",
+		answer: "While a chatbot typically responds to a direct prompt, an AI agent takes that prompt as a high-level goal. It then independently decides which tools to use (like searching a database, writing code, or sending an email) to finish the job without step-by-step human guidance.",
 	},
 	{
-		question: "How long does a DevOps transformation take?",
-		answer: "A complete transformation typically spans several months. However, implementing targeted improvements like a CI/CD pipeline or basic containerization (Docker/K8s) can yield measurable benefits within weeks."
+		question: "Is Agentic AI safe for enterprise use?",
+		answer: "Absolutely. We build in 'Human-in-the-loop' (HITL) checkpoints and robust governance frameworks. You set the permissions, guardrails, and budget limits, ensuring agents operate securely and predictably within your business boundaries.",
 	},
 	{
-		question: "Can you help migrate our legacy applications to the cloud?",
-		answer: "Yes, we specialize in cloud migrations. We analyze your monolithic systems and architect a phased migration strategy, often refactoring applications into cloud-native microservices along the way."
+		question: "What industries benefit most from Agentic AI?",
+		answer: "Any industry with complex, multi-step processes—such as supply chain management, customer support, software engineering, and financial research—sees massive gains in efficiency, scale, and consistency.",
 	},
 	{
-		question: "How do you handle security in DevOps?",
-		answer: "We practice 'DevSecOps', embedding security checks natively into the CI/CD pipeline. This includes automated vulnerability scanning, secure container registries, IAM best practices, and infrastructure compliance testing."
+		question: "How long does it take to deploy agentic systems?",
+		answer: "Deployment timelines range from 8-12 weeks for focused solutions like task-specific agents to 4-6 months for comprehensive multi-agent ecosystems. We provide phased implementations with validation at each stage.",
 	},
 ];
 
-const DevOps: React.FC = () => {
+const AgenticAI: React.FC = () => {
+	const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
 	const [isVisible, setIsVisible] = useState(false);
 	const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -94,45 +96,47 @@ const DevOps: React.FC = () => {
 			<Navbar />
 
 			{/* Hero Section */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
-				<div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/devops-infrastructure.jpg')] bg-cover bg-center" />
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-start hero-bg overflow-hidden">
+				<div className="absolute inset-0 opacity-20 bg-cover bg-center" style={{ backgroundImage: "url('/image/pages_img/Agentic AI.png')" }} />
 				<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-					<div className="text-white space-y-6 sm:space-y-8">
+					<div className="text-white space-y-6 sm:space-y-8 text-left flex flex-col items-start">
 						<h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
-							DevOps Engineering
+							Agentic AI
 						</h1>
 						<p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
-							Accelerate delivery, ensure monumental scalability, and eliminate operational bottlenecks <br />
-							with modern DevOps tools and cloud-native infrastructure automation.
+							Empower your enterprise with autonomous AI agents that act, reason, and solve complex missions independently to drive unprecedented efficiency and innovation across your digital ecosystem.
 						</p>
 					</div>
 				</div>
 			</section>
 
-			{/* Capabilities Section */}
+			{/* Strategy Section */}
 			<section className="py-8 sm:py-10 bg-white relative overflow-hidden">
 				<div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
-				<div className="max-w-7xl mx-auto container-padding">
+				<div className="max-w-7xl mx-auto container-padding border-b border-gray-100 pb-16">
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 						{/* Left: Content */}
 						<div className={`space-y-6 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							<div className="text-left space-y-3 sm:space-y-4 mb-10">
 								<div className="flex flex-col items-start gap-3 sm:gap-4">
 									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-										Revolutionize Your Operations with <span className="text-[#ff0ea3]">DevOps Mastery</span>
+										Agentic AI <span className="text-[#ff0ea3]">Solutions for Business</span>
 									</h2>
 								</div>
 								<p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl font-medium leading-relaxed">
-									Unlock faster, smarter, and more reliable software delivery with Velnix Solutions’ AI-integrated DevOps consulting.
+									Harness the power of Agentic AI to elevate your business operations with autonomous, intelligent workflows.
 								</p>
 							</div>
 
 							<div className="space-y-4 text-slate-600 text-lg leading-relaxed text-left">
 								<p>
-									We leverage AI-powered automation, predictive analytics, and robust QA to enhance efficiency, reduce risks, and accelerate deployments. Our approach ensures your systems are fast, scalable, and resilient.
+									Our advanced agentic frameworks empower AI models to manage sub-tasks, interact with external tools, and validate their own outputs—delivering high-autonomy solutions while ensuring strict safety alignment.
 								</p>
 								<p>
-									Our expert consulting optimizes workflows and strengthens team collaboration. We deliver customized strategies and modern toolchains that drive continuous integration and high-performance software development.
+									From intelligent automation and task orchestration to personalized digital workforce capabilities, Agentic AI transforms operations, enhances efficiency, and drives measurable outcomes.
+								</p>
+								<p>
+									Our AI specialists integrate and customize agentic models to match your business requirements, industry standards, and operational goals—unlocking the full potential of an evolving digital workforce.
 								</p>
 							</div>
 
@@ -143,6 +147,7 @@ const DevOps: React.FC = () => {
 								>
 									<span className="relative flex items-center gap-2">
 										Contact Expert
+
 										<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
 									</span>
 									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -150,14 +155,14 @@ const DevOps: React.FC = () => {
 							</div>
 						</div>
 
-						{/* Right: Image with floating effect */}
+						{/* Right: AI Image with floating effect */}
 						<div className={`relative flex justify-center lg:justify-end order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'}`}>
 							<div className="relative group">
 								<div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
 								<div className="relative overflow-hidden rounded-none shadow-2xl border border-slate-100">
 									<img
-										src="/image/pages_img/devops-infrastructure.jpg"
-										alt="DevOps Infrastructure Engineering"
+										src="/image/pages_img/Agentic AI.png"
+										alt="Advanced Agentic AI Reasoning"
 										className="w-full max-w-md h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
 									/>
 								</div>
@@ -173,15 +178,15 @@ const DevOps: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Technical DevOps <span className="text-[#ff0ea3]">Excellence</span>
+								Agentic AI <span className="text-[#ff0ea3]">Capabilities</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
-							Comprehensive engineering services designed for relentless deployment speed and infrastructure resilience.
+							Unleash a digital workforce capable of autonomous reasoning and complex task execution.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{devopsServices.map((service, index) => (
+						{agenticServices.map((service, index) => (
 							<div
 								key={service.id}
 								className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-105 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
@@ -211,11 +216,11 @@ const DevOps: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Operational <span className="text-[#ff0ea3]">Impact</span>
+								Agentic AI <span className="text-[#ff0ea3]">Impact</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
-							experience the tactical advantage of streamlined release cycles and rock-solid systems operations.
+							Deliver unprecedented scalability and operational precision through autonomous digital workers.
 						</p>
 					</div>
 
@@ -226,31 +231,31 @@ const DevOps: React.FC = () => {
 						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
 							{[
 								{
-									title: "Faster Releases",
-									desc: "Push new features and vital bug fixes to market significantly faster with automated CI/CD pipelines.",
-									icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#00b894",
+									title: "Autonomy",
+									desc: "Goal-driven processing that handles multi-step digital missions without supervision.",
+									icon: <Bot className="w-8 h-8 sm:w-10 sm:h-10" />,
+									color: "#5f27cd",
 									textSide: "above"
 								},
 								{
-									title: "Higher Quality",
-									desc: "Mandatory automated testing stages catch regressions before code ever reaches your production environment.",
+									title: "Reasoning",
+									desc: "Complex decision-making capabilities that adapt plans in real-time based on new data.",
+									icon: <Brain className="w-8 h-8 sm:w-10 sm:h-10" />,
+									color: "#ee5253",
+									textSide: "above"
+								},
+								{
+									title: "Scalability",
+									desc: "Instantly deploy thousands of specialized agents to handle surging business volume.",
 									icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#ff7675",
+									color: "#10ac84",
 									textSide: "above"
 								},
 								{
-									title: "Scalable Uptime",
-									desc: "Elastic, containerized architectures gracefully handle massive web traffic spikes with automated load balancing.",
-									icon: <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#fbc531",
-									textSide: "above"
-								},
-								{
-									title: "Security & Recovery",
-									desc: "Isolated infrastructure as code and automated backups permit near-instantaneous disaster recovery.",
-									icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#0984e3",
+									title: "Precision",
+									desc: "Systematic execution with validation layers to ensure 100% accurate results.",
+									icon: <Target className="w-8 h-8 sm:w-10 sm:h-10" />,
+									color: "#2e86de",
 									textSide: "above"
 								}
 							].map((item, idx) => (
@@ -310,7 +315,7 @@ const DevOps: React.FC = () => {
 
 			<AITechnologyStack />
 
-			{/* DevOps Implementation Process Section (Pill-Style Infographic) */}
+			{/* AI Implementation Process Section (Pill-Style Infographic) */}
 			<section className="bg-[#01010c] relative overflow-hidden py-8 sm:py-10">
 				{/* High-Tech Background Layers */}
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
@@ -322,23 +327,23 @@ const DevOps: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Implementation <span className="text-[#ff0ea3]">Roadmap</span>
+								Agent Implementation <span className="text-[#ff0ea3]">Process</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
-							Our systematic methodology for building high-speed, secure, and resilient infrastructure.
+							Proven methodology for deploying goal-oriented, mission-capable AI digital workers.
 						</p>
 					</div>
 
 					<div className={`mt-8 sm:mt-12 border border-white/25 rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
 							{[
-								{ id: "01", title: "Infrastructure Audit", desc: "We dive deep into your codebase and server infrastructure to identify bottlenecks and operational silos.", color: "#e23126", icon: <Eye className="w-8 h-8" /> },
-								{ id: "02", title: "Architecture Design", desc: "Architecting custom CI/CD pipelines (GitHub Actions, Jenkins, GitLab) mapping from commit to deployment.", color: "#9068d4", icon: <Layout className="w-8 h-8" /> },
-								{ id: "03", title: "IaC Implementation", desc: "Writing Terraform or CloudFormation code to dynamically spawn staging and production environment safely.", color: "#3eb37c", icon: <Code className="w-8 h-8" /> },
-								{ id: "04", title: "Security Integration", desc: "Embedding automated scans and vulnerability checks (DevSecOps) within the automated deployment pipeline.", color: "#3b82f6", icon: <Shield className="w-8 h-8" /> },
-								{ id: "05", title: "Scale Deployment", desc: "Executing the automated build/deploy cycle across multiple regions with zero-downtime and rollback safety.", color: "#f39c12", icon: <Zap className="w-8 h-8" /> },
-								{ id: "06", title: "Monitoring & Insight", desc: "Implementing Datadog, Prometheus, or Grafana for total real-time insight into performance and production scale.", color: "#ff0ea3", icon: <Activity className="w-8 h-8" /> }
+								{ id: "01", title: "Mission Scoping", desc: "We define the high-level goals and operational boundaries for your agents, identifying the tools they need to interact with.", color: "#3498db", icon: <Target className="w-8 h-8" /> },
+								{ id: "02", title: "Reasoning Design", desc: "We select and fine-tune reasoning frameworks (ReAct, Chain-of-Thought) appropriate for your specific mission complexity.", color: "#9b59b6", icon: <Brain className="w-8 h-8" /> },
+								{ id: "03", title: "Tool Integration", desc: "Agents are securely connected to your APIs, databases, and digital workspace through a robust orchestration layer.", color: "#2ecc71", icon: <Settings className="w-8 h-8" /> },
+								{ id: "04", title: "Agent Orchestration", desc: "Creation of multi-agent protocols to enable seamless coordination between specialized agents for large-scale operations.", color: "#e67e22", icon: <Network className="w-8 h-8" /> },
+								{ id: "05", title: "Governance & Safety", desc: "Implementation of guardrails, Human-in-the-loop (HITL) checkpoints, and alignment protocols for secure deployment.", color: "#e74c3c", icon: <Shield className="w-8 h-8" /> },
+								{ id: "06", title: "Scale & Optimize", desc: "Monitor agent performance cycles and refine reasoning logic for continuous operational improvement.", color: "#ff0ea3", icon: <Rocket className="w-8 h-8" /> }
 							].map((step, index) => (
 								<div
 									key={step.id}
@@ -382,7 +387,7 @@ const DevOps: React.FC = () => {
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
-							Mastery of cloud dynamics and systemic efficiency for world-class digital operations.
+							Deploy a workforce that reasons, acts, and self-optimizes in real-time.
 						</p>
 					</div>
 
@@ -401,7 +406,7 @@ const DevOps: React.FC = () => {
 								<div className="absolute bottom-10 left-10 text-white z-20">
 									<div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-none border border-white/20">
 
-										<p className="text-xl font-black tracking-tighter">CLOUD NATIVE.</p>
+										<p className="text-xl font-black tracking-tighter uppercase italic">THINK DIFFERENT.</p>
 									</div>
 								</div>
 							</div>
@@ -417,31 +422,31 @@ const DevOps: React.FC = () => {
 								{[
 									{
 										id: "01",
-										title: "Comprehensive Architecture Audit",
-										desc: "We dive deep into your existing environment to expose infrastructural bottlenecks and wasteful operational silos.",
-										bgColor: "bg-[#e23126]",
-										textColor: "group-hover:text-[#e23126]"
+										title: "Reasoning Engineering",
+										desc: "We don't just prompt AI; we engineer reasoning architectures that allow agents to pivot, double-check work, and use the right tools for the right mission.",
+										bgColor: "bg-indigo-600",
+										textColor: "group-hover:text-indigo-600"
 									},
 									{
 										id: "02",
-										title: "Toolchain Agnosticism",
-										desc: "From Jenkins and GitHub actions to Kubernetes and Terraform, we use the best tools for your specific custom cloud environment.",
-										bgColor: "bg-[#9068d4]",
-										textColor: "group-hover:text-[#9068d4]"
+										title: "Orchestration Layer",
+										desc: "Our systems coordinate dozens of agents working in parallel, managing state, memory, and multi-step task distribution with enterprise reliability.",
+										bgColor: "bg-purple-600",
+										textColor: "group-hover:text-purple-600"
 									},
 									{
 										id: "03",
-										title: "High Availability Focus",
-										desc: "Creating redundant subnets, automated load balancing, and failover strategies to guarantee 99.99% system uptime.",
-										bgColor: "bg-[#3eb37c]",
-										textColor: "group-hover:text-[#3eb37c]"
+										title: "Safe Autonomy",
+										desc: "Human-in-the-loop (HITL) frameworks are core to our designs. You define the mission; our agents execute within your strictly enforced guardrails.",
+										bgColor: "bg-emerald-600",
+										textColor: "group-hover:text-emerald-600"
 									},
 									{
 										id: "04",
-										title: "Cloud Cost Optimization",
-										desc: "We right-size cloud resources and terminate orphaned instances automatically to dramatically lower monthly AWS/GCP bills.",
-										bgColor: "bg-[#f59e0b]",
-										textColor: "group-hover:text-[#f59e0b]"
+										title: "Measurable Agency",
+										desc: "Agentic AI is about results. We track performance against complex business missions, delivering data-backed operational breakthroughs.",
+										bgColor: "bg-fuchsia-600",
+										textColor: "group-hover:text-fuchsia-600"
 									}
 								].map((item, index) => (
 									<div key={item.id} className={`group flex items-start gap-8 sm:gap-12 py-8 ${index !== 3 ? 'border-b border-dashed border-slate-200' : ''}`}>
@@ -473,33 +478,32 @@ const DevOps: React.FC = () => {
 				</div>
 			</section>
 
-
 			<AIOnboardingProcess
-				serviceName="devops consulting"
+				serviceName="Agentic AI Implementation"
 				steps={[
 					{
 						icon: <Mail className="h-8 w-8" />,
-						title: 'Contact Us',
-						description: 'Reach out to start your DevOps transformation. Share your current infrastructure challenges so we can prepare a tailored strategy.',
-						color: "from-green-500 to-emerald-500"
+						title: 'Agent Strategy',
+						description: 'We identify the high-autonomy opportunities and mission parameters that will yield the most impact for your digital workforce.',
+						color: "from-blue-600 to-indigo-700"
 					},
 					{
 						icon: <Brain className="h-8 w-8" />,
-						title: 'Infrastructure Discovery',
-						description: 'Schedule a session with our DevOps engineers. We\'ll audit your codebase, server setup, and CI/CD limitations.',
-						color: "from-blue-500 to-indigo-500"
+						title: 'Reasoning Framework',
+						description: 'Deployment and configuration of specialized reasoning frameworks (ReAct, Chain-of-Thought) tailored to your mission complexity.',
+						color: "from-purple-600 to-violet-700"
 					},
 					{
 						icon: <Target className="h-8 w-8" />,
-						title: 'Strategic Roadmap',
-						description: 'Based on the audit, we deliver a comprehensive proposal outlining the toolchain, migration path, and automation scope.',
-						color: "from-yellow-500 to-amber-500"
+						title: 'Tool & API Integration',
+						description: 'Securely connecting your autonomous agents to the external software, databases, and APIs they need to perform digital work.',
+						color: "from-emerald-600 to-teal-700"
 					},
 					{
 						icon: <Zap className="h-8 w-8" />,
-						title: 'Launch & Automation',
-						description: 'Once approved, we implement IaC, build automated pipelines, and handover a fully optimized, scalable infrastructure.',
-						color: "from-purple-500 to-violet-500"
+						title: 'Mission Launch',
+						description: 'Deployment of your agentic workforce with strict governance, team alignment training, and continuous performance optimization.',
+						color: "from-pink-600 to-rose-700"
 					},
 				]}
 			/>
@@ -513,11 +517,11 @@ const DevOps: React.FC = () => {
 					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
-								Frequently Asked <span className="text-[#ff0ea3]">Questions</span>
+								Agentic AI <span className="text-[#ff0ea3]">Framework FAQ</span>
 							</h2>
 						</div>
 						<p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
-							Common questions about our DevOps lifecycle, cloud management, and infrastructure security.
+							Common questions about autonomous agents and agentic system implementation.
 						</p>
 					</div>
 					{/* FAQ Accordion */}
@@ -566,4 +570,4 @@ const DevOps: React.FC = () => {
 	);
 };
 
-export default DevOps;
+export default AgenticAI;

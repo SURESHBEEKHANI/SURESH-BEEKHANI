@@ -73,6 +73,8 @@ const WebDevelopment = lazy(() => import("./pages-Services/WebDevelopment"));
 const AppDevelopment = lazy(() => import("./pages-Services/AppDevelopment"));
 const DevOps = lazy(() => import("./pages-Services/DevOps"));
 const CustomSoftware = lazy(() => import("./pages-Services/CustomSoftware"));
+const BigDataAnalytics = lazy(() => import("./pages-Services/BigDataAnalytics"));
+const AgenticAI = lazy(() => import("./pages-Services/AgenticAI"));
 
 // Blogs
 const Blogs = lazy(() => import("./pages-Blogs/Blogs"));
@@ -158,6 +160,8 @@ const AppContent = () => {
         <Route path="/app-development" element={<AppDevelopment />} />
         <Route path="/devops" element={<DevOps />} />
         <Route path="/custom-software-development" element={<CustomSoftware />} />
+        <Route path="/big-data-analytics" element={<BigDataAnalytics />} />
+        <Route path="/agentic-ai" element={<AgenticAI />} />
 
         {/* Portfolio */}
         <Route path="/portfolio" element={<PortfolioPage />} />
