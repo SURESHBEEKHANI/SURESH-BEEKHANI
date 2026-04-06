@@ -110,7 +110,7 @@ const MagneticButton = () => {
       >
         <a href="https://calendar.app.google/F63aBoA5vxJdtihj7" target="_blank">
           <FileText className="mr-2" />
-          Book Appointment
+          Get a Free Consultation
         </a>
       </Button>
     </div>
