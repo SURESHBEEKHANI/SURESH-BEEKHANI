@@ -19,12 +19,12 @@ const ClientSolutions = () => {
   const [selectedSolution, setSelectedSolution] = useState('MedImaging');
   const navigate = useNavigate();
 
-  const solutions = ['MedImaging', 'FraudGuard', 'RiskAnalyzer'];
+  const solutions = ['MedImaging', 'ClinDocAI', 'PatientRisk'];
 
   const solutionLabels: { [key: string]: string } = {
-    'FraudGuard': 'Fraud Guard',
     'MedImaging': 'Med Imaging',
-    'RiskAnalyzer': 'Risk Analyzer',
+    'ClinDocAI': 'Clin Doc AI',
+    'PatientRisk': 'Patient Risk',
   };
 
   const solutionDetails: SolutionDetails = {
@@ -42,31 +42,31 @@ const ClientSolutions = () => {
       ],
       image: '/image/Delivered For Clients/AI Medical Imaging Assistant.jpg'
     },
-    'FraudGuard': {
-      title: 'AI Fraud Detection System',
-      description: 'Our client, a leading financial institution, faced challenges with manual fraud detection, delayed responses, and increasing fraudulent activities, impacting customer trust and revenue. We implemented an AI-powered Fraud Detection System that leverages machine learning to identify anomalies, predict fraudulent patterns, and automate alerts.',
-      additionalInfo: 'The platform ensures proactive fraud prevention and enhances security — providing cost-effective protection that scales with transaction volume and evolves with emerging threat patterns.',
+    'ClinDocAI': {
+      title: 'AI Clinical Documentation System',
+      description: 'Our client, a large multi-specialty hospital network, struggled with physician burnout driven by excessive documentation time, inconsistent clinical note quality, and costly transcription workflows. We deployed an AI Clinical Documentation System powered by ambient NLP that listens to patient-physician conversations and auto-generates structured clinical notes in real time.',
+      additionalInfo: 'The system integrates seamlessly with existing EHR platforms, supports specialty-specific templates, and flags documentation gaps — empowering clinicians to spend less time on paperwork and more time on patient care.',
       benefits: [
-        'Reduced fraud detection time by 60%',
-        'Improved accuracy of fraud identification',
-        'Minimized financial losses due to fraud',
-        'Enhanced customer trust and satisfaction',
-        'Real-time anomaly detection on live transaction streams',
-        'Automated alert workflows for faster response',
+        'Reduced physician documentation time by up to 70%',
+        'Improved clinical note accuracy and completeness scores',
+        'Lower transcription and medical scribe costs across the network',
+        'Higher physician satisfaction and reduced burnout rates',
+        'Seamless EHR integration with specialty-specific templates',
+        'Real-time documentation gap detection and compliance flags',
       ],
-      image: '/image/Delivered For Clients/Fraud Guard.jpg'
+      image: '/image/Delivered For Clients/Clinical Documentation AI.jpg'
     },
-    'RiskAnalyzer': {
-      title: 'AI Portfolio Risk Analyzer',
-      description: 'Our client, an asset management firm, needed faster, more transparent risk analytics across complex multi-asset portfolios, without adding headcount to the risk team. We implemented an AI Portfolio Risk Analyzer that combines traditional risk metrics with machine learning–driven scenario analysis and factor decomposition.',
-      additionalInfo: 'This gives portfolio managers and risk officers a shared, explainable view of exposure — enabling stronger risk governance with consistent, auditable analytics at a fraction of the cost of manual processes.',
+    'PatientRisk': {
+      title: 'AI Patient Risk Stratification',
+      description: 'Our client, a regional health system, needed a proactive approach to identify high-risk patients before acute deterioration occurred, reduce preventable readmissions, and optimize care coordination across inpatient and outpatient settings. We built an AI Patient Risk Stratification platform that continuously analyzes vital signs, lab trends, EHR history, and social determinants of health.',
+      additionalInfo: 'The platform generates dynamic risk scores for each patient, surfaces early warning signals to care teams, and recommends targeted interventions — enabling clinicians to act earlier and allocate resources where they matter most.',
       benefits: [
-        'Reduced time to produce daily and intraday risk reports',
-        'Improved visibility into concentration and factor risk across portfolios',
-        'Earlier detection of limit breaches and emerging stress scenarios',
-        'Stronger risk governance with consistent, auditable analytics',
-        'AI-driven scenario analysis and stress testing',
-        'Explainable factor decomposition for investment teams',
+        'Reduced 30-day readmission rates through earlier intervention',
+        'Improved ICU transfer timing with real-time deterioration alerts',
+        'Better care coordination between inpatient and outpatient teams',
+        'Enhanced identification of high-risk patients using SDOH factors',
+        'AI-driven early warning system integrated with nursing workflows',
+        'Measurable reduction in preventable adverse clinical events',
       ],
       image: '/image/Delivered For Clients/Risk Analyzer.jpg'
     }
@@ -76,9 +76,9 @@ const ClientSolutions = () => {
 
   const handleReadMore = () => {
     const pageMap: { [key: string]: string } = {
-      'FraudGuard': '/portfolio/ai-fraud-detection-system',
       'MedImaging': '/portfolio/ai-medical-imaging-assistant',
-      'RiskAnalyzer': '/portfolio/ai-portfolio-risk-analyzer',
+      'ClinDocAI': '/portfolio/ai-clinical-documentation-system',
+      'PatientRisk': '/portfolio/ai-patient-risk-stratification',
     };
     navigate(pageMap[selectedSolution] || '/portfolio');
   };

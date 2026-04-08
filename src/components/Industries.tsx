@@ -5,71 +5,71 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 
 const Industries = () => {
-  const [activeIndustry, setActiveIndustry] = useState<string>("FinTech");
+  const [activeIndustry, setActiveIndustry] = useState<string>("Clinics & Small Hospitals");
   const industries = [
     {
       id: 1,
-      name: "FinTech",
-      description: "Fraud detection, automated compliance, intelligent chatbots, and predictive analytics.",
-      image: "/image/pages_img/FinTech.jpg",
-      link: "/fintech",
-      features: ["Fraud Detection", "Compliance", "AI Chatbots", "Predictive Analytics"]
+      name: "Clinics & Small Hospitals",
+      description: "AI triage, appointment scheduling, billing automation, and inventory management.",
+      image: "/image/Industries-Img/hospitals-clinics.jpg",
+      link: "/clinics-and-small-hospitals",
+      features: ["AI Triage", "Smart Scheduling", "Billing Automation", "Staffing"]
     },
     {
       id: 2,
-      name: "HealthTech",
-      description: "Patient scheduling, workflow automation, AI diagnostics, and predictive health insights.",
-      image: "/image/pages_img/HealthTech.png",
-      link: "/healthtech",
-      features: ["Patient Scheduling", "Workflow Automation", "AI Diagnostics", "Predictive Analytics"]
+      name: "Telemedicine",
+      description: "Virtual consultations, symptom checkers, real-time diagnostics, and remote triage.",
+      image: "/image/Industries-Img/Telemedicine.jpg",
+      link: "/telemedicine",
+      features: ["Virtual Consults", "Symptom Checkers", "Real-time AI", "Remote Triage"]
     },
     {
       id: 3,
-      name: "RetailTech",
-      description: "Personalized recommendations, demand forecasting, AI shopping assistants, and visual search.",
-      image: "/image/pages_img/RetailTech.jpg",
-      link: "/retailtech",
-      features: ["Recommendations", "Demand Forecasting", "AI Assistants", "Visual Search"]
+      name: "Drug Discovery",
+      description: "Molecular docking, toxicity prediction, molecule design, and biomarker discovery.",
+      image: "/image/Industries-Img/Molecule Design.jpg",
+      link: "/drug-discovery",
+      features: ["Molecular Docking", "ADMET Modeling", "Molecule Design", "Biomarkers"]
     },
     {
       id: 4,
-      name: "EdTech",
-      description: "Personalized learning paths, AI tutoring, automated grading, and predictive analytics.",
-      image: "/image/pages_img/EdTech.jpg",
-      link: "/edtech",
-      features: ["Personalized Learning", "AI Tutors", "Auto Grading", "Learning Analytics"]
+      name: "Health Data Analytics",
+      description: "Disease modeling, resource tracking, population health insights, and research analytics.",
+      image: "/image/Industries-Img/Health Data Analytics..jpg",
+      link: "/healthcare-data-analytics",
+      features: ["Disease Prediction", "Resource Tracking", "Population Health", "Research"]
     },
     {
       id: 5,
-      name: "FitTech",
-      description: "Personalized workouts, wearable analytics, AI coaches, and nutrition optimization.",
-      image: "/image/pages_img/FitTech.jpg",
-      link: "/fittech",
-      features: ["Personalized Workouts", "Wearable Analytics", "AI Coaches", "Nutrition AI"]
+      name: "Hospital Operations",
+      description: "Bed management, staff scheduling, supply chain optimization, and predictive maintenance.",
+      image: "/image/Industries-Img/hospitals-clinics.jpg",
+      link: "/hospital-operations-management",
+      features: ["Bed Management", "Staff Scheduling", "Supply Chain", "Wait Time Reduction"]
     },
     {
       id: 6,
-      name: "LegalTech",
-      description: "Contract analysis, legal document search, compliance monitoring, and AI assistants.",
-      image: "/image/pages_img/LegalTech.jpg",
-      link: "/legaltech",
-      features: ["Contract Analysis", "Legal Search", "Compliance", "AI Assistants"]
+      name: "Medical Imaging",
+      description: "AI scan analysis, cardiovascular CT support, early cancer detection, and workflow automation.",
+      image: "/image/Industries-Img/Medical Imaging.jpg",
+      link: "/medical-imaging-radiology",
+      features: ["Scan Support", "Cancer Detection", "Workflow AI", "Report Precision"]
     },
     {
       id: 7,
-      name: "WealthTech",
-      description: "Robo-advisory, client onboarding, predictive analytics, and wealth management chatbots.",
-      image: "/image/pages_img/WealthTech.jpg",
-      link: "/wealthtech",
-      features: ["Robo-Advisory", "Client Onboarding", "Predictive Analytics", "AI Chatbots"]
+      name: "Electronic Health Records",
+      description: "AI medical scribing, case summaries, automated documentation, and risk scoring.",
+      image: "/image/Industries-Img/Electronic Health Records.jpg",
+      link: "/electronic-health-records",
+      features: ["Medical Scribing", "Case Summaries", "Auto Documentation", "Risk Scoring"]
     },
     {
       id: 8,
-      name: "IT & Software",
-      description: "AI dev tools, intelligent IT support, DevOps automation, and enterprise software.",
-      image: "/image/pages_img/IT-Software.jpg",
-      link: "/it-software",
-      features: ["AI Dev Tools", "IT Support", "DevOps", "Enterprise Solutions"]
+      name: "Mental Health Tech",
+      description: "Mood analytics, crisis detection, personalized wellness plans, and therapy chatbots.",
+      image: "/image/Industries-Img/Telehealth Sentiment Analysis.jpg",
+      link: "/mental-health-tech",
+      features: ["Mood Analytics", "Crisis Detection", "Wellness Plans", "Therapy Bots"]
     }
   ];
 

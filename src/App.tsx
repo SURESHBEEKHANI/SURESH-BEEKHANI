@@ -51,14 +51,14 @@ function usePageTracking() {
 }
 
 // 📦 Lazy-loaded pages - Industries
-const FinTech = lazy(() => import("./pages-Industries/FinTech"));
-const HealthTech = lazy(() => import("./pages-Industries/HealthTech"));
-const RetailTech = lazy(() => import("./pages-Industries/RetailTech"));
-const EdTech = lazy(() => import("./pages-Industries/EdTech"));
-const FitTech = lazy(() => import("./pages-Industries/FitTech"));
-const LegalTech = lazy(() => import("./pages-Industries/LegalTech"));
-const WealthTech = lazy(() => import("./pages-Industries/WealthTech"));
-const ITSoftware = lazy(() => import("./pages-Industries/ITSoftware"));
+const ClinicsSmallHospitals = lazy(() => import("./pages-Industries/ClinicsSmallHospitals"));
+const Telemedicine = lazy(() => import("./pages-Industries/Telemedicine"));
+const DrugDiscovery = lazy(() => import("./pages-Industries/DrugDiscovery"));
+const HealthDataAnalytics = lazy(() => import("./pages-Industries/HealthDataAnalytics"));
+const HospitalOperations = lazy(() => import("./pages-Industries/HospitalOperations"));
+const MedicalImaging = lazy(() => import("./pages-Industries/MedicalImaging"));
+const EHR_EMR = lazy(() => import("./pages-Industries/ElectronicHealthRecords"));
+const MentalHealthTech = lazy(() => import("./pages-Industries/MentalHealthTech"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
@@ -134,14 +134,14 @@ const AppContent = () => {
         <Route path="/" element={<Index />} />
 
         {/* Industries */}
-        <Route path="/fintech" element={<FinTech />} />
-        <Route path="/healthtech" element={<HealthTech />} />
-        <Route path="/retailtech" element={<RetailTech />} />
-        <Route path="/edtech" element={<EdTech />} />
-        <Route path="/fittech" element={<FitTech />} />
-        <Route path="/legaltech" element={<LegalTech />} />
-        <Route path="/wealthtech" element={<WealthTech />} />
-        <Route path="/it-software" element={<ITSoftware />} />
+        <Route path="/clinics-and-small-hospitals" element={<ClinicsSmallHospitals />} />
+        <Route path="/telemedicine" element={<Telemedicine />} />
+        <Route path="/drug-discovery" element={<DrugDiscovery />} />
+        <Route path="/healthcare-data-analytics" element={<HealthDataAnalytics />} />
+        <Route path="/hospital-operations-management" element={<HospitalOperations />} />
+        <Route path="/medical-imaging-radiology" element={<MedicalImaging />} />
+        <Route path="/electronic-health-records" element={<EHR_EMR />} />
+        <Route path="/mental-health-tech" element={<MentalHealthTech />} />
 
         {/* Blogs */}
         <Route path="/blogs" element={<Blogs />} />

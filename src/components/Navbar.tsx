@@ -136,14 +136,14 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   ];
 
   const industriesPages = [
-    { label: 'FinTech', href: '/fintech' },
-    { label: 'HealthTech', href: '/healthtech' },
-    { label: 'RetailTech', href: '/retailtech' },
-    { label: 'EdTech', href: '/edtech' },
-    { label: 'FitTech', href: '/fittech' },
-    { label: 'LegalTech', href: '/legaltech' },
-    { label: 'WealthTech', href: '/wealthtech' },
-    { label: 'IT & Software', href: '/it-software' },
+    { label: 'Clinics & Small Hospitals', href: '/clinics-and-small-hospitals' },
+    { label: 'Telemedicine', href: '/telemedicine' },
+    { label: 'Drug Discovery', href: '/drug-discovery' },
+    { label: 'Healthcare Data Analytics', href: '/healthcare-data-analytics' },
+    { label: 'Hospital Operations Management', href: '/hospital-operations-management' },
+    { label: 'Medical Imaging (Radiology)', href: '/medical-imaging-radiology' },
+    { label: 'Electronic Health Records', href: '/electronic-health-records' },
+    { label: 'Mental Health Tech', href: '/mental-health-tech' },
   ];
 
   const resourcesPages = [
