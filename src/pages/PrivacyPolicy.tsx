@@ -199,7 +199,7 @@ const PrivacyPolicy = () => {
               <li><span className="font-semibold text-gray-800">Velnix Solutions</span></li>
               <li><span className="font-semibold text-gray-800">Location:</span> Karachi, Pakistan</li>
               <li><span className="font-semibold text-gray-800">Phone:</span> +92 335 1312852</li>
-              <li><span className="font-semibold text-gray-800">Email:</span> velnixsolutions@gmail.com</li>
+              <li><span className="font-semibold text-gray-800">Email:</span> info@velnixsolutions.com</li>
             </ul>
           </section>
 
