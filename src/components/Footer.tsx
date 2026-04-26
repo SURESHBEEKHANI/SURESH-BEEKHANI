@@ -193,7 +193,7 @@ const Footer = () => {
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Email</span>
-                      <a href="mailto:velnixsolutions@gmail.com" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">velnixsolutions@gmail.com</a>
+                      <a href="mailto:velnixsolutions@gmail.com" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">info@velnixsolutions.com</a>
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
