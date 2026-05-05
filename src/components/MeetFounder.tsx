@@ -18,7 +18,7 @@ const MeetFounder = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           className="text-left mb-12 sm:mb-20"
           variants={fadeInUp}
           initial={prefersReducedMotion ? false : "hidden"}
@@ -42,7 +42,7 @@ const MeetFounder = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
           variants={staggerContainer}
           initial={prefersReducedMotion ? false : "hidden"}
@@ -50,22 +50,22 @@ const MeetFounder = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Image Column */}
-          <motion.div 
+          <motion.div
             className="relative order-2 lg:order-1 flex justify-center items-end pt-12 lg:pt-0"
             variants={fadeInUp}
           >
             {/* The Pink/Purple skewed shape behind the person */}
             <div className="absolute top-[25%] bottom-0 left-[10%] right-[10%] sm:left-[15%] sm:right-[15%] md:left-[20%] md:right-[20%] bg-gradient-to-br from-[#c059f0] to-[#ff0ea3] rounded-[2rem] transform -skew-x-[15deg] -z-10 shadow-[0_0_50px_rgba(255,14,163,0.3)]"></div>
-            
+
             {/* Main Image Container */}
             <div className="relative z-10 w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[540px] mx-auto px-4 flex items-end justify-center">
-              <img 
-                src="/image/sureshbeekhani.png" 
-                alt="Suresh Beekhani - Founder of Velnix Solutions" 
+              <img
+                src="/image/sureshbeekhani.png"
+                alt="Suresh Beekhani - Founder of Velnix Solutions"
                 className="w-full h-auto object-contain object-bottom transition-transform duration-700 hover:scale-[1.02] filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] brightness-110 contrast-105"
               />
             </div>
-            
+
             {/* Floating accent orb */}
             <div className="absolute top-[20%] -left-10 w-40 h-40 bg-[#ff0ea3]/15 blur-3xl rounded-full -z-20 animate-pulse" />
           </motion.div>
@@ -76,14 +76,14 @@ const MeetFounder = () => {
               <h1 className="text-4xl md:text-5xl font-black text-white leading-[1.1] tracking-tight">
                 Suresh <span className="text-[#ff0ea3]">Beekhani</span>
               </h1>
-              <p className="text-[#ff0ea3] font-bold tracking-widest uppercase text-xs">Founder & CEO, Velnix Solutions | AI Specialist with a CFO Mindset</p>
+              <p className="text-[#ff0ea3] font-bold tracking-widest uppercase text-xs">Founder @ Velnix Solutions | AI & ML Engineer | </p>
             </motion.div>
 
             {/* Expertise Tags in one line */}
             <motion.div className="flex flex-nowrap items-center gap-2.5 overflow-x-auto pb-2 scrollbar-hide" variants={staggerItem}>
               {['Machine Learning', 'NLP', 'AI Strategy', 'Product Architecture'].map((tag) => (
-                <motion.span 
-                  key={tag} 
+                <motion.span
+                  key={tag}
                   className="px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-white/50 text-[10px] font-bold uppercase tracking-widest hover:border-[#f01eff]/40 hover:text-white hover:bg-[#f01eff]/5 transition-all cursor-default whitespace-nowrap flex-shrink-0"
                   whileHover={{ y: -3, scale: 1.02 }}
                 >
@@ -94,7 +94,7 @@ const MeetFounder = () => {
 
             <motion.div className="space-y-6 text-lg md:text-xl text-white/60 leading-relaxed font-light" variants={staggerItem}>
               <p>
-                 design intelligent systems that deliver measurable results and reduce costs. At <span className="text-white font-medium">Velnix Solutions</span>, our mission is to transform complex AI technology into actionable business intelligence.
+                design intelligent systems that deliver measurable results and reduce costs. At <span className="text-white font-medium">Velnix Solutions</span>, our mission is to transform complex AI technology into actionable business intelligence.
               </p>
               <p>
                 With extensive experience in Machine Learning, NLP, AI Strategy, and Product Architecture, I build scalable AI systems and automated workflows that drive growth. I believe AI is more than a tool—it’s a strategic partner that empowers businesses to make smarter, faster decisions in the digital age.
