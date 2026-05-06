@@ -58,16 +58,16 @@ const Hero = () => {
 
           {/* Heading */}
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight font-space">
-            Your Trusted{" "}
+            Your AI  {" "}
             <span className="block sm:inline bg-gradient-to-r from-[#ff0ea3] via-[#ff6ec7] to-[#ff0ea3] bg-[length:200%] animate-gradient-x bg-clip-text text-transparent">
-              AI Partner
+              Partner
             </span>{" "}
-            in Healthcare
+            for Smarter Healthcare Systems
           </h1>
 
           {/* Description */}
           <p className="mt-8 text-lg sm:text-xl text-white/50 max-w-3xl leading-relaxed font-light tracking-wide">
-            We deliver advanced AI solutions that drive growth, optimize hospital and clinic operations, and tackle the most complex healthcare challenges with precision and efficiency.
+           We help hospitals and clinics automate operations, improve efficiency, and make faster, data-driven decisions using advanced AI systems.
           </p>
 
           {/* CTA Button */}
