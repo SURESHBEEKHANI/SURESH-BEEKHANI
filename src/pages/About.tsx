@@ -164,16 +164,19 @@ const AboutPage = () => {
               </h2>
             </div>
 
-            <div className="space-y-4 text-xs sm:text-sm md:text-base text-gray-600 max-w-4xl font-medium leading-relaxed">
-              <p>
-                As an emerging AI service provider, <span className="font-bold text-[#050729]">Velnix Solutions</span> leverages cutting-edge technology to deliver smart, scalable solutions that help organizations fully harness AI. Our mission is to enhance internal processes, boost competitiveness, and future-proof businesses in a world where technology evolves at lightning speed.
-              </p>
-              <p>
-                Our journey began with a team of AI enthusiasts passionate about solving real-world problems. We understood that success in the digital age requires treating AI as a strategic priority. Our expertise spans machine learning, natural language processing (NLP), computer vision, predictive analytics, generative AI, and intelligent chatbots.
-              </p>
-              <p>
-                From startups to enterprises, across industries including healthcare, finance, and beyond, we help organizations transform ideas into measurable impact. Innovation, excellence, and meaningful change drive everything we do.
-              </p>
+            <div className="space-y-6 text-xs sm:text-sm md:text-base text-gray-600 max-w-4xl font-medium leading-relaxed">
+              <div>
+                <p className="font-bold text-[#ff0ea3] mb-2 text-sm sm:text-base">Mission</p>
+                <p>
+                  To deliver intelligent AI-powered software that simplifies processes and improves business and healthcare outcomes.
+                </p>
+              </div>
+              <div>
+                <p className="font-bold text-[#ff0ea3] mb-2 text-sm sm:text-base">Vision</p>
+                <p>
+                  To become a global AI product company transforming industries through automation, intelligence, and innovation. We turn complex problems into intelligent solutions.
+                </p>
+              </div>
             </div>
 
           </motion.div>
