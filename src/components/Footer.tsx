@@ -142,7 +142,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${social.color} shadow-lg transition-shadow hover:shadow-white/5 overflow-hidden relative group`}
+                  className={`w-10 h-10 rounded-none flex items-center justify-center bg-gradient-to-br ${social.color} shadow-lg transition-shadow hover:shadow-white/5 overflow-hidden relative group`}
                 >
                   <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
                   <div className="scale-125">{social.icon}</div>
@@ -209,7 +209,7 @@ const Footer = () => {
               </FooterAccordion>
 
               {/* Newsletter Componentized */}
-              <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-md relative overflow-hidden group">
+              <div className="bg-white/5 border border-white/10 p-6 rounded-none backdrop-blur-md relative overflow-hidden group">
                 <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-white/80">Join Our Newsletter</h4>
                 {isSubscribed ? (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-[#ff0ea3] font-bold">
@@ -221,11 +221,11 @@ const Footer = () => {
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="Newsletter Protocol (email)"
-                      className="bg-black/20 border-white/10 text-white placeholder:text-white/20 h-11 focus:border-[#ff0ea3]/50 rounded-xl"
+                      className="bg-black/20 border-white/10 text-white placeholder:text-white/20 h-11 focus:border-[#ff0ea3]/50 rounded-none"
                     />
                     <Button
                       disabled={isNewsletterSubmitting}
-                      className="w-full bg-[#ff0ea3] hover:bg-[#e61295] text-white font-bold h-11 rounded-xl shadow-lg shadow-[#ff0ea3]/20"
+                      className="w-full bg-[#ff0ea3] hover:bg-[#e61295] text-white font-bold h-11 rounded-none shadow-lg shadow-[#ff0ea3]/20"
                     >
                       {isNewsletterSubmitting ? "Processing..." : "Subscribe"}
                     </Button>
