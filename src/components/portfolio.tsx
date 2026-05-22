@@ -101,9 +101,11 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* Hero Section - gradient overlay with portfolio background image */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center hero-bg overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
+      {/* Hero Section - portfolio brand gradient (this section only) */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0435] via-[#1a0530] to-[#2d0a3d]">
+        <div className="absolute inset-0 opacity-25 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f01eff]/20 via-[#f755d7]/10 to-[#ec4899]/25" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(240,30,255,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(236,72,153,0.15),transparent_50%)]" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
           <div className="text-white space-y-6 sm:space-y-8">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
