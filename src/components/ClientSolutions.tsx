@@ -76,7 +76,7 @@ const ClientSolutions = () => {
 
   const handleReadMore = () => {
     const pageMap: { [key: string]: string } = {
-      'MedImaging': '/portfolio/ai-medical-imaging-assistant',
+      'MedImaging': '/portfolio/ai-powered-patient-management-system',
       'ClinDocAI': '/portfolio/ai-clinical-documentation-system',
       'PatientRisk': '/portfolio/ai-patient-risk-stratification',
     };

@@ -62,10 +62,10 @@ const PORTFOLIO_DATA = [
     link: "/portfolio/ai-powered-electronic-health-record"
   },
   {
-    title: "AI Medical Imaging Assistant",
-    description: "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
-    image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
-    link: "/portfolio/ai-medical-imaging-assistant"
+    title: "AI-Powered Patient Management System",
+    description: "Unified patient records, intelligent care coordination, and predictive insights for proactive population health management.",
+    image: "/image/Industries-Img/Intelligent Patient Scheduling.jpg",
+    link: "/portfolio/ai-powered-patient-management-system"
   },
   {
     title: "AI Appointment Management Systems",

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIMedicalImagingAssistant: React.FC = () => {
+const AIPoweredPatientManagementSystem: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +34,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
 
     try {
       window.open(
-        "https://drive.google.com/uc?export=download&id=1aR7qBfUMhsncq0hpwnf7iQj4o8BwkZ1s",
+        "https://drive.google.com/uc?export=download&id=19Q0AKHz5D2lSK8sro7f5QRSuYg71GeaN",
         "_blank"
       );
 
@@ -44,7 +44,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
         phone: formData.phone,
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-medical-imaging-assistant",
+        caseStudy: "ai-powered-patient-management-system",
       });
 
       if (result.savedInDatabase) {
@@ -57,7 +57,6 @@ const AIMedicalImagingAssistant: React.FC = () => {
       }
     } finally {
       setIsSubmitting(false);
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -74,15 +73,15 @@ const AIMedicalImagingAssistant: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-medical-imaging-assistant.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/Industries-Img/Electronic Health Records.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Medical Imaging Assistant
+              AI-Powered Patient Management System
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Computer vision models that analyze radiology images to surface anomalies, prioritize worklists, and
-              help radiologists deliver faster, more accurate diagnosis.
+              Unified patient records, intelligent care coordination, and predictive insights that help care teams
+              manage populations, reduce administrative burden, and improve outcomes across the continuum of care.
             </p>
           </div>
         </div>
@@ -97,30 +96,30 @@ const AIMedicalImagingAssistant: React.FC = () => {
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Medical Imaging Assistant
+              AI-Powered Patient Management System
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a multi-site hospital network, struggled with rising radiology volumes, long report turnaround
-              times, and growing pressure on radiologists to catch subtle findings across X-ray, CT, and MRI studies.
+              Our client, a regional health system with multiple clinics and ambulatory sites, struggled with fragmented
+              patient data, manual care coordination, and limited visibility into high-risk patients across departments.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI Medical Imaging Assistant that pre-screens studies, highlights suspicious regions,
-              and prioritizes high-risk cases in the worklist. The system integrates with existing PACS and EHR
-              workflows, provides explainable heatmaps, and supports clinicians without disrupting their reading
-              patterns.
+              We implemented an AI-Powered Patient Management System that centralizes patient profiles, automates care
+              pathways, and surfaces risk scores and next-best actions for care teams. The platform integrates with EHR
+              and scheduling systems, supports role-based dashboards, and uses NLP to summarize clinical notes and
+              communication history.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Reduced average report turnaround time for critical cases</li>
-              <li>Improved detection rates for subtle and early-stage anomalies</li>
-              <li>Higher radiologist satisfaction with workload distribution and triage</li>
-              <li>Better visibility into imaging throughput and case-mix across the network</li>
+              <li>Reduced care coordination time with automated task routing and alerts</li>
+              <li>Improved identification and outreach for high-risk and rising-risk patients</li>
+              <li>Higher staff productivity through unified patient views and AI-generated summaries</li>
+              <li>Better operational visibility into panel size, gaps in care, and follow-up compliance</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how our AI solution augments radiology teams, strengthens clinical
-              decision-making, and improves patient outcomes in imaging-heavy service lines.
+              Download the full case study to see how our AI solution streamlines patient management, strengthens
+              multidisciplinary collaboration, and helps healthcare organizations deliver more proactive, personalized care.
             </p>
           </div>
 
@@ -130,7 +129,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the clinical use cases, architecture overview, and real-world outcome
+                Fill in your details to access the implementation story, architecture overview, and real-world outcome
                 metrics.
               </p>
 
@@ -182,7 +181,7 @@ const AIMedicalImagingAssistant: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="CMO, Head of Radiology..."
+                      placeholder="CMO, Care Manager, CIO..."
                     />
                   </div>
                 </div>
@@ -201,12 +200,12 @@ const AIMedicalImagingAssistant: React.FC = () => {
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="imaging-consent"
+                    id="patient-mgmt-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="imaging-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="patient-mgmt-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
@@ -249,4 +248,4 @@ const AIMedicalImagingAssistant: React.FC = () => {
   );
 };
 
-export default AIMedicalImagingAssistant;
+export default AIPoweredPatientManagementSystem;

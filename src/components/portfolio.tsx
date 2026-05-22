@@ -15,11 +15,11 @@ const projects = [
     heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
   },
   {
-    title: "AI Medical Imaging Assistant",
+    title: "AI-Powered Patient Management System",
     description:
-      "Computer vision models analyze X‑rays, MRIs, and CT scans to highlight anomalies and support radiologist decision-making.",
-    image: "/image/Portfolio-img/ai-medical-imaging-assistant.jpg",
-    link: "/portfolio/ai-medical-imaging-assistant"
+      "Unified patient records, intelligent care coordination, and predictive insights for proactive population health management.",
+    image: "/image/Portfolio-img/AI-Powered Patient Management System.png",
+    link: "/portfolio/ai-powered-patient-management-system"
   },
   {
     title: "AI Appointment Management Systems",
