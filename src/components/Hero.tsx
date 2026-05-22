@@ -106,7 +106,7 @@ const MagneticButton = () => {
     >
       <Button
         asChild
-        className="px-8 py-4 text-lg rounded-xl bg-gradient-to-r from-[#ff0ea3] to-[#ff4dc4] shadow-[0_0_40px_rgba(255,14,163,0.7)] hover:shadow-[0_0_70px_rgba(255,14,163,1)]"
+        className="px-8 py-4 text-lg rounded-none bg-gradient-to-r from-[#ff0ea3] to-[#ff4dc4] shadow-[0_0_40px_rgba(255,14,163,0.7)] hover:shadow-[0_0_70px_rgba(255,14,163,1)]"
       >
         <a href="https://calendar.app.google/F63aBoA5vxJdtihj7" target="_blank">
           <FileText className="mr-2" />
