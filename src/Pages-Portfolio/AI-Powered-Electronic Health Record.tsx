@@ -34,7 +34,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
 
     try {
       window.open(
-        "https://drive.google.com/uc?export=download&id=1w12L8u8Po182QWNO2oitNlVtm5npMJgE",
+        "https://drive.google.com/uc?export=download&id=1VCuSZW69mnNytMG3npENEynCsiBnZ2ho",
         "_blank"
       );
 

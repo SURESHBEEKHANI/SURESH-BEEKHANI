@@ -10,7 +10,7 @@ const projects = [
     title: "AI-Powered Electronic Health Record",
     description:
       "Streamline healthcare data management and improve patient outcomes with AI-powered EHR systems.",
-    image: "/image/Portfolio-img/ai-powered-ehr.jpg",
+    image: "/image/Portfolio-img/ai-powered-ehr.png",
     link: "/portfolio/ai-powered-electronic-health-record",
     heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
   },
