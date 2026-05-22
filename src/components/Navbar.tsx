@@ -164,22 +164,14 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     ...servicePages,
     ...industriesPages,
     ...resourcesPages,
-    { label: 'Portfolio: AI Fraud Detection System', href: '/portfolio/ai-fraud-detection-system' },
-    { label: 'Portfolio: AI Personal Finance Advisor', href: '/portfolio/ai-personal-finance-advisor' },
     { label: 'Portfolio: AI Powered Electronic Health Record', href: '/portfolio/ai-powered-electronic-health-record' },
     { label: 'Portfolio: AI Medical Imaging Assistant', href: '/portfolio/ai-medical-imaging-assistant' },
     { label: 'Portfolio: AI Product Recommendation Engine', href: '/portfolio/ai-product-recommendation-engine' },
     { label: 'Portfolio: AI Demand Forecasting System', href: '/portfolio/ai-demand-forecasting-system' },
     { label: 'Portfolio: AI Personalized Learning Platform', href: '/portfolio/ai-personalized-learning-platform' },
     { label: 'Portfolio: AI Automated Grading System', href: '/portfolio/ai-automated-grading-system' },
-    { label: 'Portfolio: AI Personal Fitness Coach', href: '/portfolio/ai-personal-fitness-coach' },
-    { label: 'Portfolio: AI Nutrition Planner', href: '/portfolio/ai-nutrition-planner' },
-    { label: 'Portfolio: AI Contract Analysis System', href: '/portfolio/ai-contract-analysis-system' },
+    { label: 'Portfolio: AI Appointment Management Systems', href: '/portfolio/ai-appointment-management-systems' },
     { label: 'Portfolio: AI Legal Research Assistant', href: '/portfolio/ai-legal-research-assistant' },
-    { label: 'Portfolio: AI Robo Advisor', href: '/portfolio/ai-robo-advisor' },
-    { label: 'Portfolio: AI Portfolio Risk Analyzer', href: '/portfolio/ai-portfolio-risk-analyzer' },
-    { label: 'Portfolio: AI DevOps Monitoring Assistant', href: '/portfolio/ai-devops-monitoring-assistant' },
-    { label: 'Portfolio: AI IT Support Chatbot', href: '/portfolio/ai-it-support-chatbot' },
   ];
 
   const combinedSearchableLinks = [

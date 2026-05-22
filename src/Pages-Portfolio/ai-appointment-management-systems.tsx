@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { ArrowRight, MessageCircle, Clock, Users, Download, Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIContractAnalysisSystem: React.FC = () => {
+const AIAppointmentManagementSystems: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +36,7 @@ const AIContractAnalysisSystem: React.FC = () => {
     setError("");
 
     window.open(
-      "https://drive.google.com/uc?export=download&id=1Fzh020bo9hWmYuvdLr_DRdxDmQ0WXbPE",
+      "https://drive.google.com/uc?export=download&id=18Fpll7WXEhFCz_x3TiteseGe6wcXSGWM",
       "_blank"
     );
 
@@ -45,9 +45,10 @@ const AIContractAnalysisSystem: React.FC = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-contract-analysis-system",
+        caseStudy: "ai-appointment-management-systems",
       });
 
       if (result.savedInDatabase) {
@@ -73,11 +74,11 @@ const AIContractAnalysisSystem: React.FC = () => {
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Contract Analysis System
+              AI Appointment Management Systems
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              NLP-powered review that extracts key terms, flags risk, and accelerates contract cycles for legal and
-              business teams.
+              Intelligent scheduling that automates bookings, reduces no-shows, and optimizes appointment workflows
+              for healthcare providers and clinics.
             </p>
           </div>
         </div>
@@ -92,29 +93,29 @@ const AIContractAnalysisSystem: React.FC = () => {
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Contract Analysis
+              AI Appointment Management
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a leading legal firm, faced challenges with manual contract review, inconsistent risk
-              assessment, and delayed contract cycles.
+              Our client, a multi-specialty healthcare network, struggled with manual appointment scheduling,
+              high no-show rates, and inefficient resource allocation across clinics.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI-powered Contract Analysis System that automates key term extraction, risk scoring,
-              and clause recommendations. The platform ensures compliance, accelerates review cycles, and provides
-              actionable insights for legal teams.
+              We implemented an AI-powered Appointment Management System that automates scheduling, sends intelligent
+              reminders, predicts no-shows, and optimizes provider availability. The platform ensures seamless
+              patient experiences and maximizes clinic throughput.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Reduced contract review time by 50%</li>
-              <li>Improved risk identification and mitigation</li>
-              <li>Enhanced compliance with regulatory standards</li>
-              <li>Streamlined collaboration between legal and business teams</li>
+              <li>Reduced no-show rates by 40% with AI-driven reminders</li>
+              <li>Improved scheduling efficiency by 60%</li>
+              <li>Optimized provider utilization and resource allocation</li>
+              <li>Enhanced patient satisfaction with seamless self-service booking</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how our AI solution transformed contract workflows, improved risk
-              management, and empowered legal teams with actionable insights.
+              Download the full case study to see how our AI solution transformed appointment workflows, reduced
+              operational bottlenecks, and empowered healthcare teams with data-driven scheduling insights.
             </p>
           </div>
 
@@ -177,7 +178,7 @@ const AIContractAnalysisSystem: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="CTO, Head of Legal..."
+                      placeholder="CTO, Clinic Manager..."
                     />
                   </div>
                 </div>
@@ -189,19 +190,19 @@ const AIContractAnalysisSystem: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Legal firm name"
+                    className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Healthcare organization name"
                   />
                 </div>
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="ehr-consent"
+                    id="appointment-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="ehr-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="appointment-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
@@ -244,5 +245,4 @@ const AIContractAnalysisSystem: React.FC = () => {
   );
 };
 
-export default AIContractAnalysisSystem;
-
+export default AIAppointmentManagementSystems;

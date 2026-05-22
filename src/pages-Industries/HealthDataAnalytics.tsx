@@ -68,10 +68,10 @@ const PORTFOLIO_DATA = [
     link: "/portfolio/ai-medical-imaging-assistant"
   },
   {
-    title: "AI Contract Analysis System",
-    description: "NLP-powered contract review that extracts key clauses, flags risky terms, and activates legal workflows.",
+    title: "AI Appointment Management Systems",
+    description: "Intelligent scheduling that automates bookings, reduces no-shows, and optimizes appointment workflows for healthcare providers.",
     image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
-    link: "/portfolio/ai-contract-analysis-system"
+    link: "/portfolio/ai-appointment-management-systems"
   },
   {
     title: "AI Legal Research Assistant",

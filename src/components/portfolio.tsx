@@ -22,11 +22,11 @@ const projects = [
     link: "/portfolio/ai-medical-imaging-assistant"
   },
   {
-    title: "AI Contract Analysis System",
+    title: "AI Appointment Management Systems",
     description:
-      "NLP-powered contract review that extracts key clauses, flags risky terms, and accelerates legal workflows.",
-    image: "/image/Portfolio-img/ai-contract-analysis-system.jpg",
-    link: "/portfolio/ai-contract-analysis-system"
+      "Intelligent scheduling that automates bookings, reduces no-shows, and optimizes appointment workflows for healthcare providers.",
+    image: "/image/Portfolio-img/AI Appointment Management Systems.png",
+    link: "/portfolio/ai-appointment-management-systems"
   },
   {
     title: "AI Legal Research Assistant",
@@ -63,63 +63,7 @@ const projects = [
     image: "/image/Portfolio-img/ai-automated-grading-system.jpg",
     link: "/portfolio/ai-automated-grading-system"
   },
-  {
-    title: "AI Personal Fitness Coach",
-    description:
-      "Computer vision and analytics track workouts, posture, and progress to deliver personalized coaching and training plans.",
-    image: "/image/Portfolio-img/ai-personal-fitness-coach.jpg",
-    link: "/portfolio/ai-personal-fitness-coach"
-  },
-  {
-    title: "AI Nutrition Planner",
-    description:
-      "Meal plans tailored to health goals, dietary restrictions, and biometrics, with continuous AI optimization.",
-    image: "/image/Portfolio-img/ai-nutrition-planner.jpg",
-    link: "/portfolio/ai-nutrition-planner"
-  },
-  {
-    title: "AI Robo-Advisor",
-    description:
-      "Automated portfolio allocation and rebalancing driven by risk profiles, goals, and real-time market signals.",
-    image: "/image/Portfolio-img/ai-robo-advisor.jpg",
-    link: "/portfolio/ai-robo-advisor"
-  },
-  {
-    title: "AI Portfolio Risk Analyzer",
-    description:
-      "Scenario analysis, stress testing, and VaR-style insights to quantify and manage portfolio risk.",
-    image: "/image/Portfolio-img/ai-portfolio-risk-analyzer.jpg",
-    link: "/portfolio/ai-portfolio-risk-analyzer"
-  },
-  {
-    title: "AI Fraud Detection System",
-    description:
-      "Real-time AI models detect fraudulent transactions and unusual behavior across banking, fintech, and e‑commerce platforms.",
-    image: "/image/Portfolio-img/ai-fraud-detection.jpg",
-    link: "/portfolio/ai-fraud-detection-system",
-    heroBackground: "bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center"
-  },
-  {
-    title: "AI Personal Finance Advisor",
-    description:
-      "Intelligent financial coaching that analyzes spending, goals, and risk appetite to provide personalized money management advice.",
-    image: "/image/Portfolio-img/finance-advisor.jpg",
-    link: "/portfolio/ai-personal-finance-advisor"
-  },
-  {
-    title: "AI DevOps Monitoring Assistant",
-    description:
-      "Intelligent alerts and anomaly detection across logs, metrics, and traces to prevent outages and reduce MTTR.",
-    image: "/image/Portfolio-img/ai-devops-monitoring-assistant.jpg",
-    link: "/portfolio/ai-devops-monitoring-assistant"
-  },
-  {
-    title: "AI IT Support Chatbot",
-    description:
-      "Self-service IT support that resolves tickets, answers questions, and integrates with enterprise ITSM tools.",
-    image: "/image/Portfolio-img/ai-it-support-chatbot.jpg",
-    link: "/portfolio/ai-it-support-chatbot"
-  }
+
 ];
 
 const Portfolio: React.FC = () => {
@@ -192,9 +136,8 @@ const Portfolio: React.FC = () => {
                   key={project.link}
                   ref={(el) => (cardRefs.current[idx] = el)}
                   data-index={idx}
-                  className={`group bg-white p-0 border border-gray-100 rounded-none transition-all duration-700 ease-out will-change-transform shadow-md hover:shadow-2xl hover:border-[#f01eff]/30 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                  }`}
+                  className={`group bg-white p-0 border border-gray-100 rounded-none transition-all duration-700 ease-out will-change-transform shadow-md hover:shadow-2xl hover:border-[#f01eff]/30 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                    }`}
                 >
                   <div className={`flex flex-col items-start text-left bg-white rounded-none h-full p-6 transition-colors duration-300`}>
                     <div className="relative w-full overflow-hidden rounded-none shadow-inner">

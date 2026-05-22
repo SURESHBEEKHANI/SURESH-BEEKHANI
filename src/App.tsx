@@ -82,22 +82,14 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
-const AIFraudDetectionSystem = lazy(() => import("./Pages-Portfolio/ai-fraud-detection-system"));
-const AIPersonalFinanceAdvisor = lazy(() => import("./Pages-Portfolio/ai-personal-finance-advisor"));
 const AIPoweredElectronicHealthRecord = lazy(() => import("./Pages-Portfolio/AI-Powered-Electronic Health Record"));
 const AIMedicalImagingAssistant = lazy(() => import("./Pages-Portfolio/ai-medical-imaging-assistant"));
 const AIProductRecommendationEngine = lazy(() => import("./Pages-Portfolio/ai-product-recommendation-engine"));
 const AIDemandForecastingSystem = lazy(() => import("./Pages-Portfolio/ai-demand-forecasting-system"));
 const AIPersonalizedLearningPlatform = lazy(() => import("./Pages-Portfolio/ai-personalized-learning-platform"));
 const AIAutomatedGradingSystem = lazy(() => import("./Pages-Portfolio/ai-automated-grading-system"));
-const AIPersonalFitnessCoach = lazy(() => import("./Pages-Portfolio/ai-personal-fitness-coach"));
-const AINutritionPlanner = lazy(() => import("./Pages-Portfolio/ai-nutrition-planner"));
-const AIContractAnalysisSystem = lazy(() => import("./Pages-Portfolio/ai-contract-analysis-system"));
+const AIAppointmentManagementSystems = lazy(() => import("./Pages-Portfolio/ai-appointment-management-systems"));
 const AILegalResearchAssistant = lazy(() => import("./Pages-Portfolio/ai-legal-research-assistant"));
-const AIRoboAdvisor = lazy(() => import("./Pages-Portfolio/ai-robo-advisor"));
-const AIPortfolioRiskAnalyzer = lazy(() => import("./Pages-Portfolio/ai-portfolio-risk-analyzer"));
-const AIDevOpsMonitoringAssistant = lazy(() => import("./Pages-Portfolio/ai-devops-monitoring-assistant"));
-const AIITSupportChatbot = lazy(() => import("./Pages-Portfolio/ai-it-support-chatbot"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
@@ -165,22 +157,14 @@ const AppContent = () => {
 
         {/* Portfolio */}
         <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/portfolio/ai-fraud-detection-system" element={<AIFraudDetectionSystem />} />
-        <Route path="/portfolio/ai-personal-finance-advisor" element={<AIPersonalFinanceAdvisor />} />
         <Route path="/portfolio/ai-powered-electronic-health-record" element={<AIPoweredElectronicHealthRecord />} />
         <Route path="/portfolio/ai-medical-imaging-assistant" element={<AIMedicalImagingAssistant />} />
         <Route path="/portfolio/ai-product-recommendation-engine" element={<AIProductRecommendationEngine />} />
         <Route path="/portfolio/ai-demand-forecasting-system" element={<AIDemandForecastingSystem />} />
         <Route path="/portfolio/ai-personalized-learning-platform" element={<AIPersonalizedLearningPlatform />} />
         <Route path="/portfolio/ai-automated-grading-system" element={<AIAutomatedGradingSystem />} />
-        <Route path="/portfolio/ai-personal-fitness-coach" element={<AIPersonalFitnessCoach />} />
-        <Route path="/portfolio/ai-nutrition-planner" element={<AINutritionPlanner />} />
-        <Route path="/portfolio/ai-contract-analysis-system" element={<AIContractAnalysisSystem />} />
+        <Route path="/portfolio/ai-appointment-management-systems" element={<AIAppointmentManagementSystems />} />
         <Route path="/portfolio/ai-legal-research-assistant" element={<AILegalResearchAssistant />} />
-        <Route path="/portfolio/ai-robo-advisor" element={<AIRoboAdvisor />} />
-        <Route path="/portfolio/ai-portfolio-risk-analyzer" element={<AIPortfolioRiskAnalyzer />} />
-        <Route path="/portfolio/ai-devops-monitoring-assistant" element={<AIDevOpsMonitoringAssistant />} />
-        <Route path="/portfolio/ai-it-support-chatbot" element={<AIITSupportChatbot />} />
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
