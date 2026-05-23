@@ -106,12 +106,8 @@ const Portfolio: React.FC = () => {
         <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
-            <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              Portfolio
-            </h3>
-            <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Explore how AI is transforming industries and driving real-world impact—from healthcare diagnostics
-              to legal automation.
+            <p className="heading-3 font-extrabold text-gray-100 max-w-4xl mx-auto leading-relaxed tracking-tight drop-shadow-lg">
+              Explore the success stories driven by our high-impact project implementations.
             </p>
           </div>
         </div>
@@ -120,15 +116,7 @@ const Portfolio: React.FC = () => {
       {/* Main Content Section - white background, cards keep gradient accents */}
       <section className="py-16 bg-white min-h-screen relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="heading-4 font-semibold text-gray-900">
-              Real-world AI case studies
-            </h2>
-            <p className="body text-gray-700 mt-3">
-              Browse a curated selection of AI products we can help you build—from concept to production-ready systems.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 mt-10 justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 justify-center">
             {projects.map((project, idx) => {
               const isVisible = visibleStates[idx];
               return (
