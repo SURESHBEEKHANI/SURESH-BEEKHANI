@@ -89,7 +89,7 @@ const AIDemandForecastingSystem = lazy(() => import("./Pages-Portfolio/ai-demand
 const AIPersonalizedLearningPlatform = lazy(() => import("./Pages-Portfolio/ai-personalized-learning-platform"));
 const AIAutomatedGradingSystem = lazy(() => import("./Pages-Portfolio/ai-automated-grading-system"));
 const AIAppointmentManagementSystems = lazy(() => import("./Pages-Portfolio/ai-appointment-management-systems"));
-const AILegalResearchAssistant = lazy(() => import("./Pages-Portfolio/ai-legal-research-assistant"));
+const AIPoweredHospitalManagementSystem = lazy(() => import("./Pages-Portfolio/ai-powered-hospital-management-system"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
@@ -164,7 +164,7 @@ const AppContent = () => {
         <Route path="/portfolio/ai-personalized-learning-platform" element={<AIPersonalizedLearningPlatform />} />
         <Route path="/portfolio/ai-automated-grading-system" element={<AIAutomatedGradingSystem />} />
         <Route path="/portfolio/ai-appointment-management-systems" element={<AIAppointmentManagementSystems />} />
-        <Route path="/portfolio/ai-legal-research-assistant" element={<AILegalResearchAssistant />} />
+        <Route path="/portfolio/ai-powered-hospital-management-system" element={<AIPoweredHospitalManagementSystem />} />
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

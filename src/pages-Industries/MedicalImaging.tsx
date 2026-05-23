@@ -74,10 +74,10 @@ const PORTFOLIO_DATA = [
     link: "/portfolio/ai-appointment-management-systems"
   },
   {
-    title: "AI Legal Research Assistant",
-    description: "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
-    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
-    link: "/portfolio/ai-legal-research-assistant"
+    title: "AI-Powered Hospital Management System",
+    description: "Unified hospital operations platform with AI-driven bed management, staff scheduling, and supply chain optimization.",
+    image: "/image/Portfolio-img/AI-Powered Hospital Management System.png",
+    link: "/portfolio/ai-powered-hospital-management-system"
   },
   {
     title: "AI Product Recommendation Engine",

@@ -29,11 +29,11 @@ const projects = [
     link: "/portfolio/ai-appointment-management-systems"
   },
   {
-    title: "AI Legal Research Assistant",
+    title: "AI-Powered Hospital Management System",
     description:
-      "Retrieval-augmented generation surfaces relevant cases, statutes, and legal insights in natural language.",
-    image: "/image/Portfolio-img/ai-legal-research-assistant.jpg",
-    link: "/portfolio/ai-legal-research-assistant"
+      "Unified hospital operations platform with AI-driven bed management, staff scheduling, and supply chain optimization.",
+    image: "/image/Portfolio-img/AI-Powered Hospital Management System.png",
+    link: "/portfolio/ai-powered-hospital-management-system"
   },
   {
     title: "AI Product Recommendation Engine",
@@ -101,19 +101,17 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* Hero Section - portfolio brand gradient (this section only) */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0435] via-[#1a0530] to-[#2d0a3d]">
-        <div className="absolute inset-0 opacity-25 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#f01eff]/20 via-[#f755d7]/10 to-[#ec4899]/25" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(240,30,255,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(236,72,153,0.15),transparent_50%)]" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24">
-          <div className="text-white space-y-6 sm:space-y-8">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
+        <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
+          <div className="text-center text-white space-y-6">
+            <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
               Portfolio
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed max-w-4xl drop-shadow-md">
-              Explore how AI is transforming industries and driving real-world <br />
-              impact—from healthcare diagnostics to legal automation
+            </h3>
+            <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
+              Explore how AI is transforming industries and driving real-world impact—from healthcare diagnostics
+              to legal automation.
             </p>
           </div>
         </div>

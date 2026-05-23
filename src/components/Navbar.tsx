@@ -171,7 +171,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     { label: 'Portfolio: AI Personalized Learning Platform', href: '/portfolio/ai-personalized-learning-platform' },
     { label: 'Portfolio: AI Automated Grading System', href: '/portfolio/ai-automated-grading-system' },
     { label: 'Portfolio: AI Appointment Management Systems', href: '/portfolio/ai-appointment-management-systems' },
-    { label: 'Portfolio: AI Legal Research Assistant', href: '/portfolio/ai-legal-research-assistant' },
+    { label: 'Portfolio: AI-Powered Hospital Management System', href: '/portfolio/ai-powered-hospital-management-system' },
   ];
 
   const combinedSearchableLinks = [
