@@ -84,7 +84,7 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 const PortfolioPage = lazy(() => import("./components/portfolio"));
 const AIPoweredElectronicHealthRecord = lazy(() => import("./Pages-Portfolio/AI-Powered-Electronic Health Record"));
 const AIPoweredPatientManagementSystem = lazy(() => import("./Pages-Portfolio/ai-powered-patient-management-system"));
-const AIProductRecommendationEngine = lazy(() => import("./Pages-Portfolio/ai-product-recommendation-engine"));
+const AIPoweredTelemedicineSystems = lazy(() => import("./Pages-Portfolio/AI-Powered-Telemedicine-Systems"));
 const AIDemandForecastingSystem = lazy(() => import("./Pages-Portfolio/ai-demand-forecasting-system"));
 const AIPersonalizedLearningPlatform = lazy(() => import("./Pages-Portfolio/ai-personalized-learning-platform"));
 const AIAutomatedGradingSystem = lazy(() => import("./Pages-Portfolio/ai-automated-grading-system"));
@@ -159,7 +159,7 @@ const AppContent = () => {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/portfolio/ai-powered-electronic-health-record" element={<AIPoweredElectronicHealthRecord />} />
         <Route path="/portfolio/ai-powered-patient-management-system" element={<AIPoweredPatientManagementSystem />} />
-        <Route path="/portfolio/ai-product-recommendation-engine" element={<AIProductRecommendationEngine />} />
+        <Route path="/portfolio/ai-powered-telemedicine-systems" element={<AIPoweredTelemedicineSystems />} />
         <Route path="/portfolio/ai-demand-forecasting-system" element={<AIDemandForecastingSystem />} />
         <Route path="/portfolio/ai-personalized-learning-platform" element={<AIPersonalizedLearningPlatform />} />
         <Route path="/portfolio/ai-automated-grading-system" element={<AIAutomatedGradingSystem />} />

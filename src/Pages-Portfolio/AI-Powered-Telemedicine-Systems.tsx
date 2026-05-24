@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIProductRecommendationEngine: React.FC = () => {
+const AIPoweredTelemedicineSystems: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,10 +18,7 @@ const AIProductRecommendationEngine: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,19 +32,19 @@ const AIProductRecommendationEngine: React.FC = () => {
     setIsSubmitting(true);
     setError("");
 
-    window.open(
-      "https://drive.google.com/uc?export=download&id=1aypLTqst7kzj-8bmLlt0dVmCxOhvxQTy",
-      "_blank"
-    );
-
     try {
+      window.open(
+        "https://drive.google.com/uc?export=download&id=1hJQTljF8bFAvxl7fsG9FyJ1ZyLkqg3_7",
+        "_blank"
+      );
+
       const result = await saveCaseStudyLead({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-product-recommendation-engine",
+        caseStudy: "ai-powered-telemedicine-systems",
       });
 
       if (result.savedInDatabase) {
@@ -60,6 +57,13 @@ const AIProductRecommendationEngine: React.FC = () => {
       }
     } finally {
       setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        jobTitle: "",
+        company: "",
+      });
     }
   };
 
@@ -67,65 +71,64 @@ const AIProductRecommendationEngine: React.FC = () => {
     <>
       <Navbar />
 
+      {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-product-recommendation-engine.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Product Recommendation Engine
+              AI-Powered Telemedicine Systems
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Personalized, context-aware product recommendations that increase conversion, average order value, and
-              customer lifetime value across web and mobile.
+              Secure virtual care platforms with intelligent triage, remote consultations, and real-time patient
+              engagement—built to scale access without compromising clinical quality or compliance.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Case Study + Form Section */}
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left content */}
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Product Recommendation Engine
+              AI-Powered Telemedicine Systems
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a large eCommerce brand, needed to move from static merchandising rules to a dynamic,
-              data-driven recommendation strategy that could respond to each shopper in real time.
+              Our client, a multi-state virtual care provider, needed to move beyond basic video visits to an
+              integrated telemedicine platform that could triage patients intelligently, support clinicians with
+              AI-assisted workflows, and maintain HIPAA-aligned security across web and mobile channels.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI recommendation engine that combines collaborative filtering, content signals,
-              real-time behavior, and business constraints to power personalized experiences across web, mobile, and
-              marketing channels.
+              We delivered an AI-powered telemedicine system combining virtual visit scheduling, symptom-based triage,
+              secure messaging, e-prescribing integrations, and NLP-driven visit summaries. The platform routes patients
+              to the right care setting, surfaces clinical context before each encounter, and automates post-visit
+              follow-up and documentation tasks.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Lift in conversion rate and average order value</li>
-              <li>More relevant product discovery for new and returning visitors</li>
-              <li>Unified recommendation logic across PDP, cart, search, and campaigns</li>
-              <li>Measurable impact through A/B testing and experimentation</li>
+              <li>Faster time-to-visit with automated intake and smart scheduling</li>
+              <li>Higher visit completion rates and reduced no-shows</li>
+              <li>Improved clinician efficiency through AI summaries and structured notes</li>
+              <li>Stronger patient engagement via secure chat and personalized follow-up</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how AI recommendations can turn browsing behavior into higher
-              conversion and lifetime value at scale.
+              Download the full case study to see how AI-powered telemedicine can expand access to care, streamline
+              virtual workflows, and help healthcare organizations deliver consistent, high-quality remote experiences.
             </p>
           </div>
 
-          {/* Right form card */}
-          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden border border-white/5">
+          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-                Download Case Study Now!
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the recommendation architecture, model strategy, and uplift results.
+                Fill in your details to access the implementation story, architecture overview, and real-world outcome
+                metrics.
               </p>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -137,8 +140,9 @@ const AIProductRecommendationEngine: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/20 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff] hover:border-[#f01eff]/50 transition-colors"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
                       placeholder="Enter your name"
+                      required
                     />
                   </div>
                   <div>
@@ -168,43 +172,43 @@ const AIProductRecommendationEngine: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Role</label>
+                    <label className="block text-xs font-medium text-indigo-100 mb-1">Job Title</label>
                     <input
                       type="text"
                       name="jobTitle"
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Head of eCommerce, Product..."
+                      placeholder="CMO, Medical Director, CIO..."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-indigo-100 mb-1">Company</label>
+                  <label className="block text-xs font-medium text-indigo-100 mb-1">Organization</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
                     className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Retailer, marketplace, or brand"
+                    placeholder="Health system, clinic, or telehealth platform"
                   />
                 </div>
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="reco-consent"
+                    id="telemedicine-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="reco-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="telemedicine-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
                     </a>{" "}
-                    and Terms &amp; Conditions.
+                    and Terms & Conditions.
                   </label>
                 </div>
 
@@ -242,5 +246,4 @@ const AIProductRecommendationEngine: React.FC = () => {
   );
 };
 
-export default AIProductRecommendationEngine;
-
+export default AIPoweredTelemedicineSystems;

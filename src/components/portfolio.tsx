@@ -36,11 +36,11 @@ const projects = [
     link: "/portfolio/ai-powered-hospital-management-system"
   },
   {
-    title: "AI Product Recommendation Engine",
+    title: "AI-Powered Telemedicine Systems",
     description:
-      "Personalized product recommendations powered by user behavior, purchase history, and real-time context for higher conversions.",
-    image: "/image/Portfolio-img/ai-product-recommendation-engine.jpg",
-    link: "/portfolio/ai-product-recommendation-engine"
+      "AI-powered telemedicine systems enable secure virtual healthcare through intelligent automation, remote consultations, and real-time patient communication.",
+    image: "/image/Portfolio-img/AI-Powered Telemedicine Systems.png",
+    link: "/portfolio/ai-powered-telemedicine-systems"
   },
   {
     title: "AI Demand Forecasting System",

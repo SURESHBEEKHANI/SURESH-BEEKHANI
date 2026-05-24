@@ -112,10 +112,10 @@ const AIPoweredPatientManagementSystem: React.FC = () => {
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Reduced care coordination time with automated task routing and alerts</li>
-              <li>Improved identification and outreach for high-risk and rising-risk patients</li>
-              <li>Higher staff productivity through unified patient views and AI-generated summaries</li>
-              <li>Better operational visibility into panel size, gaps in care, and follow-up compliance</li>
+              <li>Faster care coordination with automated routing and alerts</li>
+              <li>Stronger outreach for high-risk and rising-risk patients</li>
+              <li>Higher productivity via unified views and AI summaries</li>
+              <li>Clearer visibility into care gaps and follow-up compliance</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
               Download the full case study to see how our AI solution streamlines patient management, strengthens
