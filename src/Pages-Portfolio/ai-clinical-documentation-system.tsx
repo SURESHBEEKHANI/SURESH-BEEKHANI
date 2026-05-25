@@ -34,7 +34,7 @@ const AIClinicalDocumentationSystem: React.FC = () => {
 
     try {
       window.open(
-        "https://drive.google.com/uc?export=download&id=1VCuSZW69mnNytMG3npENEynCsiBnZ2ho",
+        "https://drive.google.com/uc?export=download&id=1tYYl83evcwr2C5HidKRyqwVDL-fpExst",
         "_blank"
       );
 
