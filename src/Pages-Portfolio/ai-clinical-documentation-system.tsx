@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { toast } from "sonner";
-import { ArrowRight, MessageCircle, Clock, Users, Download, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIDemandForecastingSystem: React.FC = () => {
+const AIClinicalDocumentationSystem: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,10 +18,7 @@ const AIDemandForecastingSystem: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,19 +32,19 @@ const AIDemandForecastingSystem: React.FC = () => {
     setIsSubmitting(true);
     setError("");
 
-    window.open(
-      "https://drive.google.com/uc?export=download&id=1jNW6_945IKnRXq_ppfqCmklb1Up4BnoP",
-      "_blank"
-    );
-
     try {
+      window.open(
+        "https://drive.google.com/uc?export=download&id=1VCuSZW69mnNytMG3npENEynCsiBnZ2ho",
+        "_blank"
+      );
+
       const result = await saveCaseStudyLead({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-demand-forecasting-system",
+        caseStudy: "ai-clinical-documentation-system",
       });
 
       if (result.savedInDatabase) {
@@ -60,6 +57,13 @@ const AIDemandForecastingSystem: React.FC = () => {
       }
     } finally {
       setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        jobTitle: "",
+        company: "",
+      });
     }
   };
 
@@ -69,63 +73,66 @@ const AIDemandForecastingSystem: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-demand-forecasting-system.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Demand Forecasting System
+              AI-Powered Clinical Documentation System
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              AI-driven insights to predict demand, optimize inventory, and enhance supply chain efficiency.
+              Ambient AI captures patient encounters and auto-generates structured clinical notes, medical coding
+              suggestions, and EHR-ready documentation to reduce physician burnout.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Case Study + Form Section */}
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left content */}
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Demand Forecasting
+              AI-Powered Clinical Documentation System
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a global retail chain, faced challenges with overstocking, stockouts, and inaccurate demand
-              predictions, leading to revenue loss and inefficiencies.
+              Our client, a large multi-specialty hospital network, struggled with physician burnout driven by excessive
+              documentation time, inconsistent clinical note quality, and costly transcription workflows.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI-powered Demand Forecasting System that leverages historical data, market trends, and
-              real-time analytics to predict demand accurately. The platform optimizes inventory levels, reduces waste,
-              and ensures timely product availability.
+              We deployed an AI Clinical Documentation System powered by ambient NLP that listens to patient-physician
+              conversations and auto-generates structured clinical notes in real time. The platform integrates with
+              existing EHR systems, supports specialty-specific templates, and flags documentation gaps before notes are
+              finalized.
+            </p>
+            <p className="text-sm text-gray-700 leading-relaxed mb-4">
+              Intelligent coding assistance suggests ICD-10 and CPT codes from clinical narratives, while clinicians
+              review and approve every note—keeping humans in the loop while dramatically reducing after-hours charting.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Improved demand prediction accuracy by 85%</li>
-              <li>Reduced inventory holding costs by 30%</li>
-              <li>Minimized stockouts and overstock situations</li>
-              <li>Enhanced supply chain agility and responsiveness</li>
+              <li>Reduced physician documentation time by up to 70%</li>
+              <li>Improved clinical note accuracy and completeness scores</li>
+              <li>Lower transcription and medical scribe costs across the network</li>
+              <li>Higher physician satisfaction and reduced burnout rates</li>
+              <li>Seamless EHR integration with specialty-specific templates</li>
+              <li>Real-time documentation gap detection and compliance flags</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how our AI solution transformed demand planning, optimized inventory
-              management, and boosted operational efficiency.
+              Download the full case study to see how ambient AI documentation transformed clinical workflows, improved
+              note quality, and gave clinicians more time for direct patient care.
             </p>
           </div>
 
-          {/* Right form card */}
           <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-                Download Case Study Now!
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the in-depth implementation story, architecture overview, and outcome
+                Fill in your details to access the implementation story, architecture overview, and real-world outcome
                 metrics.
               </p>
 
@@ -140,6 +147,7 @@ const AIDemandForecastingSystem: React.FC = () => {
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
                       placeholder="Enter your name"
+                      required
                     />
                   </div>
                   <div>
@@ -176,36 +184,36 @@ const AIDemandForecastingSystem: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="CTO, Head of Supply Chain..."
+                      placeholder="CMO, Clinical Director, CIO..."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-indigo-100 mb-1">Company</label>
+                  <label className="block text-xs font-medium text-indigo-100 mb-1">Organization</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
                     className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Retail chain name"
+                    placeholder="Hospital, clinic, or health system"
                   />
                 </div>
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="ehr-consent"
+                    id="clinical-doc-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="ehr-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="clinical-doc-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
                     </a>{" "}
-                    and Terms &amp; Conditions.
+                    and Terms & Conditions.
                   </label>
                 </div>
 
@@ -243,5 +251,4 @@ const AIDemandForecastingSystem: React.FC = () => {
   );
 };
 
-export default AIDemandForecastingSystem;
-
+export default AIClinicalDocumentationSystem;

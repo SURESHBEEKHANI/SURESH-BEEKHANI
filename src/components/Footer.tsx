@@ -158,11 +158,8 @@ const Footer = () => {
                 {[
                   { label: "AI Development", href: "/ai-development" },
                   { label: "AI Automation", href: "/ai-automation" },
-                  { label: "Web Intelligence", href: "/web-development" },
-                  { label: "App ecosystems", href: "/app-development" },
-                  { label: "DevOps Scaling", href: "/devops" },
-                  { label: "Custom Architectures", href: "/custom-software-development" },
-                  { label: "Big Data Analytic", href: "/big-data-analytics" },
+                  { label: "Chatbot Development", href: "/ai-chatbot-development" },
+                  { label: "ChatGPT Integration", href: "/chat-gpt-integrations" },
                   { label: "Agentic AI", href: "/agentic-ai" }
                 ].map((link) => (
                   <li key={link.label}>

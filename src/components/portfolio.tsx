@@ -43,11 +43,11 @@ const projects = [
     link: "/portfolio/ai-powered-telemedicine-systems"
   },
   {
-    title: "AI Demand Forecasting System",
+    title: "AI-Powered Clinical Documentation System",
     description:
-      "Predictive models forecast demand across SKUs, locations, and time to optimize inventory, pricing, and supply chain decisions.",
-    image: "/image/Portfolio-img/ai-demand-forecasting-system.jpg",
-    link: "/portfolio/ai-demand-forecasting-system"
+      "Ambient AI captures patient encounters and auto-generates structured clinical notes, medical coding suggestions, and EHR-ready documentation to reduce physician burnout.",
+    image: "/image/Portfolio-img/AI-Powered-Clinical Documentation System.png",
+    link: "/portfolio/ai-clinical-documentation-system"
   },
   {
     title: "AI Personalized Learning Platform",
