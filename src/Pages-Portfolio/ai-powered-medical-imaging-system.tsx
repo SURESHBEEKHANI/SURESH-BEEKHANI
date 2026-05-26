@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { toast } from "sonner";
-import { ArrowRight, MessageCircle, Clock, Users, Download, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIAutomatedGradingSystem: React.FC = () => {
+const AIPoweredMedicalImagingSystem: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,10 +18,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,19 +32,19 @@ const AIAutomatedGradingSystem: React.FC = () => {
     setIsSubmitting(true);
     setError("");
 
-    window.open(
-      "https://drive.google.com/uc?export=download&id=1pUuAFLg-uKrwyQdGJwQY4dXAB8413w8M",
-      "_blank"
-    );
-
     try {
+      window.open(
+        "https://drive.google.com/uc?export=download&id=18pLwFFyNJXJvTKDm0NH1EJCIjtZ0duwQ",
+        "_blank"
+      );
+
       const result = await saveCaseStudyLead({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-automated-grading-system",
+        caseStudy: "ai-powered-medical-imaging-system",
       });
 
       if (result.savedInDatabase) {
@@ -69,52 +66,54 @@ const AIAutomatedGradingSystem: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-fraud-detection.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Automated Grading System
+              AI-Powered Medical Imaging System
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              AI that evaluates quizzes, essays, and open‑ended responses at scale, freeing educators to focus on
-              high‑value teaching and feedback.
+              AI that pre-screens radiology studies, highlights suspicious regions, and prioritizes high-risk cases—so
+              radiologists deliver faster, more accurate diagnoses at scale.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Case Study + Form Section */}
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left content */}
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Automated Grading
+              AI-Powered Medical Imaging System
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a leading educational institution, faced challenges with manual grading, inconsistent evaluation, and delayed feedback for students across multiple courses.
+              Our client, a multi-site hospital network, struggled with rising radiology volumes, long report turnaround
+              times, and growing pressure on radiologists to catch subtle findings across X-ray, CT, and MRI studies.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI-powered Automated Grading System that evaluates assignments, quizzes, and exams in real time. The platform analyzes responses, aligns with grading rubrics, provides instant feedback, and flags areas needing attention, ensuring consistency and accuracy.
+              We implemented an AI-Powered Medical Imaging System that pre-screens studies, highlights suspicious regions,
+              and prioritizes high-risk cases in the worklist. The platform integrates with existing PACS and EHR
+              workflows, provides explainable heatmaps, and supports clinicians without disrupting their reading
+              patterns.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Reduced grading time significantly for instructors</li>
-              <li>Delivered immediate, actionable feedback to students</li>
-              <li>Ensured fair and consistent evaluation across all courses</li>
-              <li>Enabled administrators to track performance trends and make data-driven decisions</li>
+              <li>Reduced average report turnaround time for critical cases</li>
+              <li>Improved detection rates for subtle and early-stage anomalies</li>
+              <li>Higher radiologist satisfaction with workload distribution and triage</li>
+              <li>Better visibility into imaging throughput and case-mix across the network</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how our AI solution transformed assessment workflows, improved learning outcomes, and empowered educators with actionable insights.
+              Download the full case study to see how our AI solution accelerated radiology workflows, improved diagnostic
+              confidence, and helped the network scale imaging operations without adding headcount.
             </p>
           </div>
 
-          {/* Right form card */}
           <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
@@ -122,7 +121,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                 Download Case Study Now!
               </h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the in-depth implementation story, architecture overview, and outcome
+                Fill in your details to access the implementation story, architecture overview, and real-world outcome
                 metrics.
               </p>
 
@@ -137,6 +136,7 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
                       placeholder="Enter your name"
+                      required
                     />
                   </div>
                   <div>
@@ -173,36 +173,36 @@ const AIAutomatedGradingSystem: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="CTO, Head of IT..."
+                      placeholder="Chief Radiologist, CMIO..."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-indigo-100 mb-1">Company</label>
+                  <label className="block text-xs font-medium text-indigo-100 mb-1">Organization</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Educational institution "
+                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Hospital or radiology network"
                   />
                 </div>
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="ehr-consent"
+                    id="medical-imaging-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="ehr-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="medical-imaging-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
                     </a>{" "}
-                    and Terms &amp; Conditions.
+                    and Terms & Conditions.
                   </label>
                 </div>
 
@@ -240,4 +240,4 @@ const AIAutomatedGradingSystem: React.FC = () => {
   );
 };
 
-export default AIAutomatedGradingSystem;
+export default AIPoweredMedicalImagingSystem;

@@ -57,11 +57,11 @@ const projects = [
     link: "/portfolio/ai-personalized-learning-platform"
   },
   {
-    title: "AI Automated Grading System",
+    title: "AI-Powered Medical Imaging System",
     description:
-      "Automated evaluation of assignments, quizzes, and free‑text answers with explainable scoring and instant feedback.",
-    image: "/image/Portfolio-img/ai-automated-grading-system.jpg",
-    link: "/portfolio/ai-automated-grading-system"
+      "AI that pre-screens radiology studies, highlights suspicious regions, and prioritizes high-risk cases for faster, more accurate diagnoses.",
+    image: "/image/Portfolio-img/AI-Powered Medical Imaging System.png",
+    link: "/portfolio/ai-powered-medical-imaging-system"
   },
 
 ];

@@ -169,7 +169,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     { label: 'Portfolio: AI Product Recommendation Engine', href: '/portfolio/ai-product-recommendation-engine' },
     { label: 'Portfolio: AI-Powered Clinical Documentation System', href: '/portfolio/ai-clinical-documentation-system' },
     { label: 'Portfolio: AI Personalized Learning Platform', href: '/portfolio/ai-personalized-learning-platform' },
-    { label: 'Portfolio: AI Automated Grading System', href: '/portfolio/ai-automated-grading-system' },
+    { label: 'Portfolio: AI-Powered Medical Imaging System', href: '/portfolio/ai-powered-medical-imaging-system' },
     { label: 'Portfolio: AI Appointment Management Systems', href: '/portfolio/ai-appointment-management-systems' },
     { label: 'Portfolio: AI-Powered Hospital Management System', href: '/portfolio/ai-powered-hospital-management-system' },
   ];
