@@ -86,7 +86,7 @@ const AIPoweredElectronicHealthRecord = lazy(() => import("./Pages-Portfolio/AI-
 const AIPoweredPatientManagementSystem = lazy(() => import("./Pages-Portfolio/ai-powered-patient-management-system"));
 const AIPoweredTelemedicineSystems = lazy(() => import("./Pages-Portfolio/AI-Powered-Telemedicine-Systems"));
 const AIClinicalDocumentationSystem = lazy(() => import("./Pages-Portfolio/ai-clinical-documentation-system"));
-const AIPersonalizedLearningPlatform = lazy(() => import("./Pages-Portfolio/ai-personalized-learning-platform"));
+const DiogenesAIChatBot = lazy(() => import("./Pages-Portfolio/diogenes-ai-chatbot"));
 const AIPoweredMedicalImagingSystem = lazy(() => import("./Pages-Portfolio/ai-powered-medical-imaging-system"));
 const AIAppointmentManagementSystems = lazy(() => import("./Pages-Portfolio/ai-appointment-management-systems"));
 const AIPoweredHospitalManagementSystem = lazy(() => import("./Pages-Portfolio/ai-powered-hospital-management-system"));
@@ -161,7 +161,7 @@ const AppContent = () => {
         <Route path="/portfolio/ai-powered-patient-management-system" element={<AIPoweredPatientManagementSystem />} />
         <Route path="/portfolio/ai-powered-telemedicine-systems" element={<AIPoweredTelemedicineSystems />} />
         <Route path="/portfolio/ai-clinical-documentation-system" element={<AIClinicalDocumentationSystem />} />
-        <Route path="/portfolio/ai-personalized-learning-platform" element={<AIPersonalizedLearningPlatform />} />
+        <Route path="/portfolio/diogenes-ai-chatbot" element={<DiogenesAIChatBot />} />
         <Route path="/portfolio/ai-powered-medical-imaging-system" element={<AIPoweredMedicalImagingSystem />} />
         <Route path="/portfolio/ai-appointment-management-systems" element={<AIAppointmentManagementSystems />} />
         <Route path="/portfolio/ai-powered-hospital-management-system" element={<AIPoweredHospitalManagementSystem />} />

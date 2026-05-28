@@ -50,11 +50,11 @@ const projects = [
     link: "/portfolio/ai-clinical-documentation-system"
   },
   {
-    title: "AI Personalized Learning Platform",
+    title: "Diogenes AI ChatBot",
     description:
-      "Adaptive learning experiences that dynamically adjust content difficulty and pacing to each learner’s performance.",
-    image: "/image/Portfolio-img/ai-personalized-learning-platform.jpg",
-    link: "/portfolio/ai-personalized-learning-platform"
+      "An intelligent AI chatbot that delivers real-time, context-aware conversations to support users with accurate and personalized responses.",
+    image: "/image/Portfolio-img/Diogenes AI ChatBot.png",
+    link: "/portfolio/diogenes-ai-chatbot"
   },
   {
     title: "AI-Powered Medical Imaging System",

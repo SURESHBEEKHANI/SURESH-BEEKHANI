@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Send } from "lucide-react";
 import { saveCaseStudyLead } from "@/lib/saveCaseStudyLead";
 
-const AIPersonalizedLearningPlatform: React.FC = () => {
+const DiogenesAIChatBot: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +36,7 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
     setError("");
 
     window.open(
-      "https://drive.google.com/uc?export=download&id=1L17pEn7ucrHtWf5BySFaP-vCjJMFJJlz",
+      "https://drive.google.com/uc?export=download&id=1CfHMywkS7kpJGyo7_An6KA8pUESDU1Wi",
       "_blank"
     );
 
@@ -47,7 +47,7 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
         phone: formData.phone,
         jobTitle: formData.jobTitle,
         company: formData.company,
-        caseStudy: "ai-personalized-learning-platform",
+        caseStudy: "diogenes-ai-chatbot",
       });
 
       if (result.savedInDatabase) {
@@ -68,56 +68,53 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
       <Navbar />
 
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-personalized-learning-platform.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/Diogenes%20AI%20ChatBot.png')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              AI Personalized Learning Platform
+              Diogenes AI ChatBot
             </h3>
             <p className="body-medium text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              An adaptive learning engine that tailors content, difficulty, and pacing to each learner in real time,
-              across web and mobile experiences.
+              An intelligent AI chatbot that delivers real-time, context-aware conversations to support users with
+              accurate and personalized responses.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Case Study + Form Section */}
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left content */}
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
-              AI Personalized Learning Platform
+              Diogenes AI ChatBot
             </h1>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Our client, a global education provider, needed to move beyond one-size-fits-all courses and offer a
-              dynamic learning experience tuned to each learner’s pace, mastery, and goals.
+              Our client needed a conversational AI assistant that could understand user intent, maintain context across
+              sessions, and deliver helpful responses at scale across web and messaging channels.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              We implemented an AI-powered personalized learning platform that analyzes performance, engagement, and
-              skill mastery signals in real time to adapt content sequencing, difficulty, and recommendations across web
-              and mobile.
+              We built Diogenes AI ChatBot with natural language understanding, retrieval-augmented knowledge access, and
+              guardrails for safe, on-brand replies—enabling faster support, higher engagement, and measurable reduction in
+              manual handling.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">
               <strong>Key outcomes:</strong>
             </p>
             <ul className="list-disc list-inside text-sm text-gray-700 leading-relaxed mb-4">
-              <li>Higher course completion and certification rates</li>
-              <li>Improved time-to-mastery for key skills</li>
-              <li>Richer cohort analytics for instructors and learning teams</li>
-              <li>Seamless integration with existing LMS and authentication systems</li>
+              <li>Faster first-response times and improved resolution rates</li>
+              <li>Context-aware conversations with persistent session memory</li>
+              <li>Integration with knowledge bases and business workflows</li>
+              <li>Analytics dashboards for conversation quality and user satisfaction</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Download the full case study to see how adaptive learning can power digital academies, internal training,
-              and learner experiences that feel truly personalized.
+              Request the full case study to explore the architecture, deployment model, and impact metrics behind Diogenes
+              AI ChatBot.
             </p>
           </div>
 
-          {/* Right form card */}
           <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden border border-white/5">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
@@ -125,8 +122,7 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
                 Download Case Study Now!
               </h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the full architecture, personalization engine, and learning impact
-                metrics.
+                Fill in your details to access the full architecture, conversation flows, and deployment impact metrics.
               </p>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -176,7 +172,7 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Head of Learning, CTO..."
+                      placeholder="Product Lead, CTO..."
                     />
                   </div>
                 </div>
@@ -189,18 +185,18 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
                     value={formData.company}
                     onChange={handleChange}
                     className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="University, enterprise, or EdTech"
+                    placeholder="Company or team name"
                   />
                 </div>
 
                 <div className="flex items-start gap-2 pt-1">
                   <input
-                    id="learning-consent"
+                    id="diogenes-consent"
                     type="checkbox"
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="learning-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="diogenes-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
                       Privacy Policy
@@ -243,5 +239,4 @@ const AIPersonalizedLearningPlatform: React.FC = () => {
   );
 };
 
-export default AIPersonalizedLearningPlatform;
-
+export default DiogenesAIChatBot;
