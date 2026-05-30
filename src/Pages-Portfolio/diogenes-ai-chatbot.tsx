@@ -45,6 +45,7 @@ const DiogenesAIChatBot: React.FC = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+
         jobTitle: formData.jobTitle,
         company: formData.company,
         caseStudy: "diogenes-ai-chatbot",
@@ -67,8 +68,9 @@ const DiogenesAIChatBot: React.FC = () => {
     <>
       <Navbar />
 
+      {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/Diogenes%20AI%20ChatBot.png')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
@@ -82,8 +84,10 @@ const DiogenesAIChatBot: React.FC = () => {
         </div>
       </section>
 
+      {/* Case Study + Form Section */}
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left content */}
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
               Case Study
@@ -110,19 +114,21 @@ const DiogenesAIChatBot: React.FC = () => {
               <li>Analytics dashboards for conversation quality and user satisfaction</li>
             </ul>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Request the full case study to explore the architecture, deployment model, and impact metrics behind Diogenes
-              AI ChatBot.
+              Download the full case study to see how our AI solution transformed customer support workflows, reduced
+              manual handling, and empowered teams with data-driven conversation insights.
             </p>
           </div>
 
-          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden border border-white/5">
+          {/* Right form card */}
+          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">
                 Download Case Study Now!
               </h2>
               <p className="text-sm text-indigo-100 mb-6">
-                Fill in your details to access the full architecture, conversation flows, and deployment impact metrics.
+                Fill in your details to access the in-depth implementation story, architecture overview, and outcome
+                metrics.
               </p>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -134,7 +140,7 @@ const DiogenesAIChatBot: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/20 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff] hover:border-[#f01eff]/50 transition-colors"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -165,27 +171,27 @@ const DiogenesAIChatBot: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Role</label>
+                    <label className="block text-xs font-medium text-indigo-100 mb-1">Job Title</label>
                     <input
                       type="text"
                       name="jobTitle"
                       value={formData.jobTitle}
                       onChange={handleChange}
                       className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Product Lead, CTO..."
+                      placeholder="CTO, Clinic Manager..."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-indigo-100 mb-1">Organization</label>
+                  <label className="block text-xs font-medium text-indigo-100 mb-1">Company</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Company or team name"
+                    className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Healthcare organization name"
                   />
                 </div>
 
