@@ -450,7 +450,7 @@ const Blogs: React.FC = () => {
                   <img
                     src={selectedBlog.image_url}
                     alt={selectedBlog.title}
-                    className="w-full h-[320px] md:h-[480px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+                    className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
                   />
                   {/* Bottom gradient fade for title readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />

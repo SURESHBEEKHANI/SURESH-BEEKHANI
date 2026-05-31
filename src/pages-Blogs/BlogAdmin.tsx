@@ -175,32 +175,50 @@ const BlogAdmin: React.FC = () => {
     }
   };
 
+  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+
+  const uploadBlogImage = async (file: File, prefix: "cover" | "content") => {
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError) throw authError;
+    if (!user) throw new Error("You must be signed in to upload images.");
+
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+      throw new Error(`File type "${file.type || "unknown"}" is not allowed. Use JPG, PNG, GIF, or WebP.`);
+    }
+
+    const fileExt = file.name.split(".").pop()?.toLowerCase() || "jpg";
+    const fileName = `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
+    const filePath = `${user.id}/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file, {
+        contentType: file.type,
+        cacheControl: "3600",
+        upsert: false,
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+    return data.publicUrl;
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const file = e.target.files?.[0];
       if (!file) return;
 
       setUploadingImage(true);
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('blog-images')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data } = supabase.storage
-        .from('blog-images')
-        .getPublicUrl(filePath);
-
-      setEditingBlog(prev => ({ ...prev, image_url: data.publicUrl }));
-    } catch (error) {
+      const publicUrl = await uploadBlogImage(file, "cover");
+      setEditingBlog(prev => ({ ...prev, image_url: publicUrl }));
+      toast.success("Cover image uploaded.");
+    } catch (error: any) {
       console.error("Error uploading image:", error);
-      alert("Error uploading image. Make sure the 'blog-images' bucket is public.");
+      toast.error(error.message || "Failed to upload image. Check storage policies in Supabase.");
     } finally {
       setUploadingImage(false);
+      e.target.value = "";
     }
   };
 
@@ -210,30 +228,19 @@ const BlogAdmin: React.FC = () => {
       if (!file) return;
 
       setUploadingContentImage(true);
-      const fileExt = file.name.split('.').pop();
-      const fileName = `content-${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('blog-images')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data } = supabase.storage
-        .from('blog-images')
-        .getPublicUrl(filePath);
-
-      const markdownImage = `\n![Image description](${data.publicUrl})\n`;
-      setEditingBlog(prev => ({ 
-        ...prev, 
-        content: (prev?.content || '') + markdownImage 
+      const publicUrl = await uploadBlogImage(file, "content");
+      const markdownImage = `\n![Image description](${publicUrl})\n`;
+      setEditingBlog(prev => ({
+        ...prev,
+        content: (prev?.content || "") + markdownImage,
       }));
-    } catch (error) {
+      toast.success("Image inserted into content.");
+    } catch (error: any) {
       console.error("Error uploading content image:", error);
-      alert("Error uploading image. Make sure the 'blog-images' bucket is public.");
+      toast.error(error.message || "Failed to upload image. Check storage policies in Supabase.");
     } finally {
       setUploadingContentImage(false);
+      e.target.value = "";
     }
   };
 
@@ -782,7 +789,7 @@ const BlogAdmin: React.FC = () => {
 
                 {editingBlog?.image_url && (
                   <div className="relative group">
-                    <div className="w-full aspect-video md:aspect-[21/9] rounded-none overflow-hidden border border-gray-100 shadow-sm relative">
+                    <div className="w-full aspect-[4/3] md:aspect-[16/9] rounded-none overflow-hidden border border-gray-100 shadow-sm relative">
                       <img src={editingBlog.image_url} alt="Cover" className="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
                       
                       <button 
