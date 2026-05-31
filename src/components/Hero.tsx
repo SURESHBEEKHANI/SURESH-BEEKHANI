@@ -49,13 +49,6 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
-          {/* Badge */}
-          <div className="inline-flex px-5 py-2 mb-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-            <span className="text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase text-white/60">
-              AI Business Architect
-            </span>
-          </div>
-
           {/* Heading */}
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight font-space">
             Your AI  {" "}
