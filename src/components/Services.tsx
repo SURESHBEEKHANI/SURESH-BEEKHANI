@@ -276,7 +276,7 @@ const Services = () => {
           <div
             className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
             style={{
-              background: '#ff0ea3',
+              background: '#B6FF00',
               transform: 'skewX(-15deg)'
             }}
           ></div>
@@ -316,8 +316,7 @@ const Services = () => {
                       setSelectedService(service);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 border-b border-gray-50 last:border-0 ${selectedService === service ? 'bg-gray-50 text-[#ff0ea3] font-semibold' : 'text-gray-700'
-
+                    className={`w-full text-left px-4 py-3 border-b border-gray-50 last:border-0 transition-colors ${selectedService === service ? 'bg-[#B6FF00]/10 text-[#050729] font-semibold' : 'text-gray-700 hover:bg-[#B6FF00]/10 hover:text-[#050729]'
                       }`}
                   >
                     {service}
@@ -344,9 +343,9 @@ const Services = () => {
                     key={service}
                     onClick={() => setSelectedService(service)}
                     className={`w-full text-left px-8 py-4 text-sm font-medium transition-all duration-200 ${selectedService === service
-                      ? 'bg-[#ff0ea3] text-white'
+                      ? 'bg-[#B6FF00] text-black'
 
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      : 'text-gray-300 hover:text-[#B6FF00] hover:bg-[#B6FF00]/10'
                       }`}
                   >
                     {service}
