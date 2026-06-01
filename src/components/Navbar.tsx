@@ -207,7 +207,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
           >
             <a
               href="/#home"
-              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-0"
+              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-6"
               aria-label="Neurovex - Home"
             >
               <img

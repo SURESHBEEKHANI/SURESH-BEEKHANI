@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus } from "lucide-react";
 import Navbar from "../components/Navbar";
@@ -216,7 +216,7 @@ const AIChatbotDevelopment: React.FC = () => {
 							<div className="pt-4 sm:pt-6">
 								<Link
 									to="/contact"
-									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-[#ff0ea3] rounded-none hover:bg-[#ff0ea3]/90 hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(255,14,163,0.4)]"
+									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-black transition-all duration-300 bg-[#B6FF00] rounded-none hover:bg-[#9ddf00] hover:scale-105 active:scale-95 shadow-[0_8px_25px_rgba(182,255,0,0.4)]"
 								>
 									<span className="relative flex items-center gap-2">
 										Contact Expert
@@ -578,31 +578,31 @@ const AIChatbotDevelopment: React.FC = () => {
 									num: "01",
 									title: "AI Chatbot Expertise",
 									desc: "Extensive experience in conversational AI, NLP, and intelligent chatbot development across multiple industries.",
-									color: "bg-[#ff0ea3]"
+									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "02",
 									title: "Industry Specialization",
 									desc: "Specialized chatbots for e-commerce, customer service, sales, support, and internal operations.",
-									color: "bg-[#ff0ea3]"
+									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "03",
 									title: "Advanced NLP & AI",
 									desc: "Advanced natural language processing and machine learning for accurate, context-aware interactions.",
-									color: "bg-[#ff0ea3]"
+									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "04",
 									title: "User-Centric Design",
 									desc: "Intuitive, user-friendly chatbots designed for accessibility, engagement, and optimal user experiences.",
-									color: "bg-[#ff0ea3]"
+									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "05",
 									title: "Enterprise Scale & Security",
 									desc: "Scalable solutions with end-to-end encryption and enterprise-grade security protecting sensitive customer data.",
-									color: "bg-[#ff0ea3]"
+									color: "bg-[#B6FF00]"
 								}
 							].map((item, idx) => (
 								<div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.1}s` }}>
