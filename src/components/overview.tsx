@@ -9,16 +9,16 @@ const Overview = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                 <div
-                  className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
+                  className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 rounded-full"
                   style={{
                     background: '#B6FF00',
                     transform: 'skewX(-15deg)'
                   }}
                 >
                 </div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight tracking-tight">
+                <h2 className="min-w-0 text-[clamp(0.8125rem,2.4vw,1.875rem)] font-bold text-[#050729] leading-tight tracking-tight whitespace-nowrap">
                   Drive Unstoppable Business Growth with AI
                 </h2>
               </div>
