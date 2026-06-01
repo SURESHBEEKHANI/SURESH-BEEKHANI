@@ -48,10 +48,10 @@ const Overview = () => {
 
             <Button
               asChild
-              className="text-white px-8 py-5 rounded-md text-xs sm:text-sm font-semibold transition-all shadow-lg hover:shadow-[#ff0ea3]/25"
-              style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)' }}
+              className="text-black hover:text-black px-8 py-5 rounded-md text-xs sm:text-sm font-medium transition-all border border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:shadow-[0_0_35px_rgba(182,255,0,0.55)]"
+              style={{ background: '#B6FF00' }}
             >
-              <Link to="/contact">Get a Quote</Link>
+              <Link to="/contact" className="text-black hover:text-black">Get a Quote</Link>
             </Button>
           </div>
 

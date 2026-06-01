@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronUp, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp, Search, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -207,11 +207,11 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
           >
             <a
               href="/#home"
-              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-4 sm:ml-8 lg:ml-12"
+              className="flex items-center touch-manipulation rounded-lg py-1 pr-2 ml-0"
               aria-label="Neurovex - Home"
             >
               <img
-                src="/image/logo/Neurovex.png"
+                src="/image/logo/logo1.png"
                 alt="Neurovex"
                 className="h-11 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto transition-all duration-300 object-contain brightness-100 contrast-100"
                 decoding="async"
@@ -233,8 +233,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                       href={link.href}
                       onClick={link.label === 'Resources' ? handleResourcesClick : undefined}
                       className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${isActive
-                        ? 'text-[#ec4899]'
-                        : 'text-gray-800 hover:text-[#ec4899]'
+                        ? 'text-[#FF4FA3]'
+                        : 'text-gray-800 hover:text-[#FF4FA3]'
                         }`}
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                       transition={{ duration: 0.2 }}
@@ -242,7 +242,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                       {link.label}
                       {/* Animated underline */}
                       <motion.span
-                        className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#f01eff] to-[#ec4899]"
+                        className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#FF4FA3] to-[#FF4FA3]"
                         initial={{ width: 0, x: '-50%' }}
                         animate={{ width: isActive ? '80%' : 0, x: '-50%' }}
                         whileHover={{ width: '80%' }}
@@ -271,7 +271,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                             <motion.a
                               key={item.href}
                               href={item.href}
-                              className="flex items-center px-5 py-3.5 text-gray-700 hover:bg-[#ec4899] hover:text-white whitespace-nowrap transition-all duration-200 text-sm font-medium"
+                              className="flex items-center px-5 py-3.5 text-gray-700 hover:bg-[#FF4FA3] hover:text-white whitespace-nowrap transition-all duration-200 text-sm font-medium"
                               initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: i * 0.05, duration: 0.2 }}
@@ -291,8 +291,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   key={link.label}
                   href={link.href}
                   className={`relative px-4 py-2 transition-all duration-300 font-semibold rounded-md ${isActive
-                    ? 'text-[#ec4899]'
-                    : 'text-gray-800 hover:text-[#ec4899]'
+                    ? 'text-[#FF4FA3]'
+                    : 'text-gray-800 hover:text-[#FF4FA3]'
                     }`}
                   whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -300,7 +300,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   {link.label}
                   {/* Animated underline */}
                   <motion.span
-                    className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899]"
+                    className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-[#FF4FA3] via-[#FF4FA3] to-[#FF4FA3]"
                     initial={{ width: 0, x: '-50%' }}
                     animate={{ width: isActive ? '80%' : 0, x: '-50%' }}
                     whileHover={{ width: '80%' }}
@@ -310,15 +310,23 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               );
             })}
 
-            {/* Desktop Search Icon */}
+            {/* Desktop Search Icon & Phone */}
             <div className="flex items-center ml-2 pl-2 border-l transition-colors duration-300 border-white/20 group-hover/navbar:border-gray-200">
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="p-2.5 rounded-full transition-all duration-300 text-gray-800 hover:text-white hover:bg-[#ec4899]"
+                className="p-2.5 rounded-full transition-all duration-300 text-gray-800 hover:text-white hover:bg-[#FF4FA3]"
                 aria-label="Open Search"
               >
                 <Search className="w-5 h-5" strokeWidth={2.5} />
               </button>
+
+              <a 
+                href="tel:+923351312852" 
+                className="flex items-center ml-4 space-x-2 text-gray-800 hover:text-[#FF4FA3] font-semibold transition-colors duration-300"
+              >
+                <Phone className="w-5 h-5" />
+                <span>+92 335 131 2852</span>
+              </a>
             </div>
           </div>
 
@@ -330,14 +338,14 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             >
               <Button
                 asChild
-                className="rounded-none border border-white/10 shadow-lg text-white px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
-                style={{ background: 'linear-gradient(135deg, #f41eff 0%, #f755a9d9 50%, #ec4899 100%)' }}
+                className="rounded-none border border-black/10 shadow-lg text-black hover:text-black px-4 lg:px-6 py-2 hover:shadow-xl transition-all duration-300 touch-manipulation min-h-[44px]"
+                style={{ background: '#B6FF00' }}
               >
                 <a
                   href="https://wa.me/923351312852"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-black hover:text-black"
                   aria-label="Contact via WhatsApp"
                 >
                   <WhatsAppLogo />
@@ -368,7 +376,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleMobileMenu}
-                className="p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation text-gray-800 hover:text-white hover:bg-[#ec4899]"
+                className="p-2 sm:p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] touch-manipulation text-gray-800 hover:text-white hover:bg-[#FF4FA3]"
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
@@ -436,7 +444,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         <div key={link.label} className="border-b border-white/5 last:border-0">
                           <button
                             onClick={() => setExpandedSection(isExpanded ? null : link.label)}
-                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-[#ec4899] bg-white/5' : 'text-white hover:text-white'
+                            className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors flex items-center justify-between touch-manipulation ${isExpanded ? 'text-[#FF4FA3] bg-white/5' : 'text-white hover:text-white'
                               }`}
                           >
                             <span>{link.label}</span>
@@ -485,7 +493,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         href={link.href}
                         className={`mobile-nav-item block px-4 sm:px-6 py-4 text-base sm:text-lg font-medium transition-all min-h-[48px] flex items-center touch-manipulation border-b border-white/5 last:border-0 ${activeSection === link.href.replace('/#', '') ||
                           (link.href === '/Portfolio' && currentPath === '/Portfolio')
-                          ? 'text-white bg-[#ec4899]'
+                          ? 'text-white bg-[#FF4FA3]'
                           : 'text-white/80 hover:text-white hover:bg-white/10'
                           }`}
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -508,7 +516,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         setIsMobileMenuOpen(false);
                         setIsSearchOpen(true);
                       }}
-                      className="w-full relative flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-transparent hover:bg-[#ec4899] transition-all duration-300 text-white group"
+                      className="w-full relative flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-transparent hover:bg-[#FF4FA3] transition-all duration-300 text-white group"
                     >
                       <span className="text-sm font-medium">Search the site...</span>
                       <Search className="w-4 h-4 group-hover:scale-110 transition-transform" strokeWidth={2.5} />
@@ -522,14 +530,14 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                     >
                       <Button
                         asChild
-                        className="border border-white/10 shadow-lg text-white px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
-                        style={{ background: 'linear-gradient(135deg, #1E5AFF 0%, #a855f7 50%, #ec4899 100%)' }}
+                        className="border border-black/10 shadow-lg text-black hover:text-black px-4 sm:px-6 py-3 sm:py-4 w-full hover:shadow-xl transition-all duration-300 min-h-[48px] touch-manipulation"
+                        style={{ background: '#B6FF00' }}
                       >
                         <a
                           href="https://wa.me/923401213187"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 text-sm sm:text-base font-semibold"
+                          className="flex items-center justify-center gap-2 text-sm sm:text-base text-black hover:text-black"
                         >
                           <WhatsAppLogo />
                           <span>Contact via WhatsApp</span>
@@ -589,9 +597,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                         key={`${link.href}-${index}`}
                         href={link.href}
                         onClick={() => setIsSearchOpen(false)}
-                        className="flex items-center p-4 hover:bg-[#ec4899] rounded-xl transition-all shadow-sm border border-transparent hover:shadow-md mb-2 group text-gray-700 hover:text-white"
+                        className="flex items-center p-4 hover:bg-[#FF4FA3] rounded-xl transition-all shadow-sm border border-transparent hover:shadow-md mb-2 group text-gray-700 hover:text-white"
                       >
-                        <Search className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#ec4899] transition-colors" strokeWidth={2.5} />
+                        <Search className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#FF4FA3] transition-colors" strokeWidth={2.5} />
                         <span className="text-sm md:text-base font-medium">{link.label}</span>
                       </a>
                     ))}

@@ -124,7 +124,7 @@ const Footer = () => {
             >
               <a href="/#home" className="group transition-transform hover:scale-105 duration-300">
                 <img
-                  src="/image/logo/Neurovex.png"
+                  src="/image/logo/logo1.png"
                   alt="Neurovex"
                   className="h-16 sm:h-20 w-auto object-contain brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                 />

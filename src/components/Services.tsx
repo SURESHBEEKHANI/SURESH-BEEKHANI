@@ -400,7 +400,8 @@ const Services = () => {
                   <div className="mt-auto pt-8 flex justify-end">
                     <Button
                       onClick={handleReadMore}
-                      className="bg-[#ff0ea3] hover:bg-[#d10b85] text-white px-8 py-6 rounded-sm text-sm font-semibold transition-all shadow-lg"
+                      className="text-black hover:text-black px-8 py-6 rounded-sm text-sm font-medium transition-all border border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:shadow-[0_0_35px_rgba(182,255,0,0.55)]"
+                      style={{ background: '#B6FF00' }}
                     >
                       Read More
                     </Button>

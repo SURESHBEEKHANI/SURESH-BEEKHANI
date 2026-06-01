@@ -579,8 +579,8 @@ const Blogs: React.FC = () => {
                     setSelectedBlog(null);
                     window.scrollTo(0, 0);
                   }}
-                  className="flex items-center gap-2 text-white px-10 py-4 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-bold tracking-wide"
-                  style={{ background: 'linear-gradient(135deg, #f41eff 0%, #f755a9d9 50%, #ec4899 100%)' }}
+                  className="flex items-center gap-2 text-black hover:text-black px-10 py-4 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-medium tracking-wide border border-black/10"
+                  style={{ background: '#B6FF00' }}
                 >
                   <ArrowLeft size={20} /> Back to Blogs
                 </button>
@@ -615,8 +615,8 @@ const Blogs: React.FC = () => {
                         <button
                           type="submit"
                           disabled={isSidebarSubmitting}
-                          className="w-full py-3 text-white font-extrabold shadow-lg hover:shadow-[#ec4899]/30 transition-all uppercase tracking-widest text-xs rounded-none disabled:opacity-50"
-                          style={{ background: 'linear-gradient(90deg, #d928c1 0%, #f82c92 50%, #ec4899 100%)' }}
+                          className="w-full py-3 text-black font-medium shadow-lg hover:shadow-[#B6FF00]/30 transition-all uppercase tracking-widest text-xs rounded-none disabled:opacity-50 border border-black/10"
+                          style={{ background: '#B6FF00' }}
                         >
                           {isSidebarSubmitting ? <Loader2 className="animate-spin mx-auto" size={16} /> : "Subscribe"}
                         </button>

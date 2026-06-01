@@ -582,8 +582,8 @@ const BlogAdmin: React.FC = () => {
 
               {/* Submit */}
               <button type="submit" disabled={authLoading}
-                className="w-full text-white font-bold py-4 transition-all duration-300 flex justify-center items-center shadow-lg disabled:opacity-60 disabled:cursor-not-allowed mt-2 rounded-none hover:shadow-[#ff0ea3]/30"
-                style={{ background: '#ff0ea3' }}>
+                className="w-full text-black font-medium py-4 transition-all duration-300 flex justify-center items-center shadow-lg disabled:opacity-60 disabled:cursor-not-allowed mt-2 rounded-none hover:shadow-[#B6FF00]/30 border border-black/10"
+                style={{ background: '#B6FF00' }}>
                 {authLoading
                   ? <Loader2 className="animate-spin" size={20} />
                   : isSignUp ? "Create Account →" : "Sign In securely →"}
@@ -627,8 +627,8 @@ const BlogAdmin: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <button
               onClick={() => openForm()}
-              className="flex items-center gap-2 text-white px-8 py-3.5 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-semibold border border-white/10"
-              style={{ background: 'linear-gradient(135deg, #f41eff 0%, #f755a9d9 50%, #ec4899 100%)' }}
+              className="flex items-center gap-2 text-black hover:text-black px-8 py-3.5 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-medium border border-black/10"
+              style={{ background: '#B6FF00' }}
             >
               <Plus size={20} /> Create New Post
             </button>
@@ -1142,8 +1142,8 @@ const BlogAdmin: React.FC = () => {
                 </button>
                 <button
                   onClick={() => handleSave("published")}
-                  className="px-12 py-5 text-white font-black text-xs tracking-[0.2em] uppercase transition-all shadow-2xl hover:scale-[1.02] active:scale-95 rounded-none"
-                  style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, #ec4899 100%)' }}
+                  className="px-12 py-5 text-black hover:text-black font-medium text-xs tracking-[0.2em] uppercase transition-all shadow-2xl hover:scale-[1.02] active:scale-95 rounded-none border border-black/10"
+                  style={{ background: '#B6FF00' }}
                 >
                   Publish Live Post
                 </button>

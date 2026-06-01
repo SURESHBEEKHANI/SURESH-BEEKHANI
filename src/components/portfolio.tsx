@@ -146,11 +146,12 @@ const Portfolio: React.FC = () => {
                     </p>
                     <Link
                       to={project.link}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 min-h-[44px] bg-gradient-to-r from-[#f01eff] via-[#f755d7] to-[#ec4899] text-white font-bold text-sm tracking-wide rounded-md hover:shadow-[0_10px_30px_rgba(255,14,163,0.3)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 min-h-[44px] text-black hover:text-black font-medium text-sm tracking-wide rounded-md border border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:shadow-[0_0_35px_rgba(182,255,0,0.55)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+                      style={{ background: '#B6FF00' }}
                       aria-label={`View case study for ${project.title}`}
                     >
                       View Case Study
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-black" />
                     </Link>
                   </div>
                 </div>

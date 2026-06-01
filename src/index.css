@@ -17,9 +17,9 @@
     --popover: 247 86% 13%;
     --popover-foreground: 210 20% 98%;
 
-    /* Primary: Violet #a855f7 */
-    --primary: 270 91% 65%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Lime Green #B6FF00 */
+    --primary: 77 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
     /* Secondary: Pink #ec4899 */
     --secondary: 335 83% 60%;
@@ -59,9 +59,9 @@
     --popover: 247 86% 13%;
     --popover-foreground: 210 20% 98%;
 
-    /* Primary: Violet */
-    --primary: 270 91% 65%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Lime Green */
+    --primary: 77 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
     /* Secondary: Pink */
     --secondary: 335 83% 60%;
@@ -241,16 +241,18 @@
     animation: gradient-flow 4s ease-in-out infinite;
   }
 
-  /* Tech & AI Healthcare Buttons - Beekhani Gradient */
+  /* Tech & AI Healthcare Buttons - Premium Lime Green */
   .btn-primary {
-    @apply text-white font-semibold px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%);
-    border: 1px solid rgba(168, 85, 247, 0.3);
+    @apply text-black font-medium px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    background: #B6FF00;
+    color: #000000;
+    border: 1px solid rgba(182, 255, 0, 0.3);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 20px 40px rgba(109, 40, 217, 0.5), 0 0 30px rgba(168, 85, 247, 0.4), 0 0 20px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 20px 40px rgba(182, 255, 0, 0.4), 0 0 30px rgba(182, 255, 0, 0.3);
     transform: translateY(-2px) scale(1.05);
+    color: #000000;
   }
 
   .btn-primary::before {
@@ -260,7 +262,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.5s;
   }
 
@@ -269,27 +271,30 @@
   }
 
   .btn-secondary {
-    @apply text-white font-semibold px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    background: linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%);
-    border: 1px solid rgba(168, 85, 247, 0.3);
+    @apply text-black font-medium px-8 py-4 rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    background: #B6FF00;
+    color: #000000;
+    border: 1px solid rgba(182, 255, 0, 0.3);
   }
 
   .btn-secondary:hover {
-    box-shadow: 0 20px 40px rgba(109, 40, 217, 0.5), 0 0 30px rgba(168, 85, 247, 0.4), 0 0 20px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 20px 40px rgba(182, 255, 0, 0.4), 0 0 30px rgba(182, 255, 0, 0.3);
     transform: translateY(-2px) scale(1.05);
+    color: #000000;
   }
 
   .btn-outline {
-    @apply border-2 text-white font-semibold px-8 py-4 rounded-none transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
-    border-color: rgba(168, 85, 247, 0.5);
-    background: rgba(109, 40, 217, 0.1);
+    @apply border-2 text-white font-medium px-8 py-4 rounded-none transition-all duration-500 transform hover:scale-105 relative overflow-hidden;
+    border-color: rgba(182, 255, 0, 0.5);
+    background: rgba(182, 255, 0, 0.05);
     backdrop-filter: blur(10px);
   }
 
   .btn-outline:hover {
-    background: linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%);
-    border-color: rgba(168, 85, 247, 0.8);
-    box-shadow: 0 15px 30px rgba(109, 40, 217, 0.4), 0 0 20px rgba(168, 85, 247, 0.3), 0 0 15px rgba(236, 72, 153, 0.2);
+    background: #B6FF00;
+    color: #000000;
+    border-color: rgba(182, 255, 0, 0.8);
+    box-shadow: 0 15px 30px rgba(182, 255, 0, 0.4), 0 0 20px rgba(182, 255, 0, 0.3);
     transform: translateY(-2px) scale(1.05);
   }
 
@@ -450,7 +455,7 @@
     background:
       radial-gradient(circle at 20% 80%, rgba(30, 90, 255, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(0, 194, 203, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(113, 239, 163, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 40% 40%, rgba(255, 79, 163, 0.12) 0%, transparent 50%);
     pointer-events: none;
     animation: aurora 8s ease-in-out infinite;
   }

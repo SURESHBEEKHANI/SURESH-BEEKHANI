@@ -113,11 +113,10 @@ const ClientSolutions = () => {
                 <button
                   key={solution}
                   onClick={() => setSelectedSolution(solution)}
-                  className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base min-h-[44px] touch-manipulation ${selectedSolution === solution
-                    ? 'text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                  className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base min-h-[44px] touch-manipulation border ${selectedSolution === solution
+                    ? 'bg-[#B6FF00] text-black border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:bg-[#ff0ea3] hover:text-white hover:border-[#ff0ea3]/20 hover:shadow-[0_0_35px_rgba(255,14,163,0.55)]'
+                    : 'bg-gray-50 text-gray-700 hover:bg-[#B6FF00]/15 hover:text-black border-gray-200 hover:border-[#B6FF00]/30'
                     }`}
-                  style={selectedSolution === solution ? { background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' } : {}}
                 >
                   {solutionLabels[solution]}
                 </button>
@@ -149,17 +148,16 @@ const ClientSolutions = () => {
 
               <Button
                 onClick={handleReadMore}
-                className="text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 shadow-lg text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #ff0ea3 0%, rgba(255, 14, 163, 0.8) 50%, rgba(255, 14, 163, 0.6) 100%)' }}
+                className="bg-[#B6FF00] text-black hover:bg-[#ff0ea3] hover:text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center gap-2 border border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:shadow-[0_0_35px_rgba(255,14,163,0.55)] hover:border-[#ff0ea3]/20 text-sm sm:text-base min-h-[44px] touch-manipulation w-full sm:w-auto justify-center transition-all duration-300 group"
               >
                 <span>Read More</span>
-                <ArrowRight className="h-4 w-4 flex-shrink-0" />
+                <ArrowRight className="h-4 w-4 flex-shrink-0 text-black group-hover:text-white transition-colors duration-300" />
               </Button>
             </div>
           </div>
 
           <div className="relative lg:order-last">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl group/image">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl group/image transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,14,163,0.3)]">
               <div
                 className="absolute inset-0 z-10 transition-colors duration-300 group-hover/image:bg-black/20"
                 style={{ background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.1) 0%, transparent 100%)' }}
