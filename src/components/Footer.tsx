@@ -222,7 +222,7 @@ const Footer = () => {
                     />
                     <Button
                       disabled={isNewsletterSubmitting}
-                      className="w-full bg-[#ff0ea3] hover:bg-[#e61295] text-white font-bold h-11 rounded-none shadow-lg shadow-[#ff0ea3]/20"
+                      className="w-full bg-[#B6FF00] hover:bg-[#9ddf00] text-black font-bold h-11 rounded-none shadow-lg shadow-[#B6FF00]/30"
                     >
                       {isNewsletterSubmitting ? "Processing..." : "Subscribe"}
                     </Button>
