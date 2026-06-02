@@ -95,19 +95,18 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#020010] text-white pt-24 pb-8 overflow-hidden">
-      {/* Premium Multi-Layer Ambient Background */}
+      {/* Premium Pink + Lime gradient ambient background */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Main Base Gradients */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6a00ff]/10 blur-[140px] rounded-full translate-x-1/3 -translate-y-1/2 opacity-60" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#ec4899]/10 blur-[140px] rounded-full -translate-x-1/3 translate-y-1/2 opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FF4FA3]/12 via-[#020010] to-[#B6FF00]/10" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-[#B6FF00]/8 via-transparent to-[#FF4FA3]/8" />
 
-        {/* Subtle Tertiary Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3b82f6]/05 blur-[160px] opacity-40" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF4FA3]/20 blur-[140px] rounded-full translate-x-1/3 -translate-y-1/2 opacity-70" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#B6FF00]/15 blur-[140px] rounded-full -translate-x-1/3 translate-y-1/2 opacity-70" />
 
-        {/* Top Edge Highlight for Section Separation */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff0ea3]/30 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#FF4FA3]/15 via-[#FF4FA3]/5 to-[#B6FF00]/15 blur-[120px] opacity-60 rounded-full" />
 
-        {/* High-End Grain & Noise Texture */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#FF4FA3]/40 via-[#B6FF00]/30 to-[#FF4FA3]/40" />
+
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.04] mix-blend-screen" />
       </div>
 
@@ -163,8 +162,8 @@ const Footer = () => {
                   { label: "Agentic AI", href: "/agentic-ai" }
                 ].map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-white/50 hover:text-[#ff0ea3] hover:pl-2 transition-all flex items-center gap-2 group decoration-transparent">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#ff0ea3]/40 group-hover:bg-[#ff0ea3] transition-colors" />
+                    <a href={link.href} className="text-white/50 hover:text-[#FF4FA3] hover:pl-2 transition-all flex items-center gap-2 group decoration-transparent">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#FF4FA3]/40 group-hover:bg-[#FF4FA3] transition-colors" />
                       {link.label}
                     </a>
                   </li>
@@ -176,8 +175,8 @@ const Footer = () => {
               <FooterAccordion title="Get in touch">
                 <ul className="space-y-5">
                   <li className="flex items-start gap-4 group">
-                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
-                      <MapPin size={16} className="text-[#ff0ea3]" />
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF4FA3]/50 transition-colors">
+                      <MapPin size={16} className="text-[#FF4FA3]" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Location</span>
@@ -185,21 +184,21 @@ const Footer = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
-                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
-                      <Mail size={16} className="text-[#ff0ea3]" />
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF4FA3]/50 transition-colors">
+                      <Mail size={16} className="text-[#FF4FA3]" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Email</span>
-                      <a href="mailto:velnixsolutions@gmail.com" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">info@velnixsolutions.com</a>
+                      <a href="mailto:velnixsolutions@gmail.com" className="text-white/80 font-medium hover:text-[#FF4FA3] transition-colors">info@velnixsolutions.com</a>
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
-                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#ff0ea3]/50 transition-colors">
-                      <Phone size={16} className="text-[#ff0ea3]" />
+                    <div className="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF4FA3]/50 transition-colors">
+                      <Phone size={16} className="text-[#FF4FA3]" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-white/40 uppercase tracking-widest font-bold">Phone</span>
-                      <a href="tel:+923351312852" className="text-white/80 font-medium hover:text-[#ff0ea3] transition-colors">+92 335 131 2852</a>
+                      <a href="tel:+923351312852" className="text-white/80 font-medium hover:text-[#FF4FA3] transition-colors">+92 335 131 2852</a>
                     </div>
                   </li>
                 </ul>
@@ -209,7 +208,7 @@ const Footer = () => {
               <div className="bg-white/5 border border-white/10 p-6 rounded-none backdrop-blur-md relative overflow-hidden group">
                 <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-white/80">Join Our Newsletter</h4>
                 {isSubscribed ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-[#ff0ea3] font-bold">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-[#FF4FA3] font-bold">
                     System updated. Welcome to velnix Solutions.
                   </motion.div>
                 ) : (
@@ -218,7 +217,7 @@ const Footer = () => {
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="Newsletter Protocol (email)"
-                      className="bg-black/20 border-white/10 text-white placeholder:text-white/20 h-11 focus:border-[#ff0ea3]/50 rounded-none"
+                      className="bg-black/20 border-white/10 text-white placeholder:text-white/20 h-11 focus:border-[#FF4FA3]/50 rounded-none"
                     />
                     <Button
                       disabled={isNewsletterSubmitting}
@@ -239,8 +238,8 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} <span className="text-white">Velnix Solutions</span> All rights reserved.
           </p>
           <div className="flex gap-8">
-            <a href="/privacy-policy" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#ff0ea3] transition-colors">Privacy</a>
-            <a href="/terms-and-conditions" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#ff0ea3] transition-colors">Terms</a>
+            <a href="/privacy-policy" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#FF4FA3] transition-colors">Privacy</a>
+            <a href="/terms-and-conditions" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-[#FF4FA3] transition-colors">Terms</a>
           </div>
         </div>
       </div>
@@ -253,7 +252,7 @@ const Footer = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 100 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-[100] w-12 h-12 rounded-2xl bg-[#ff0ea3] text-white flex items-center justify-center shadow-[0_10px_30px_rgba(255,14,163,0.4)] hover:shadow-[0_15px_40px_rgba(255,14,163,1)] transition-all active:scale-95"
+            className="fixed bottom-8 right-8 z-[100] w-12 h-12 rounded-2xl bg-[#FF4FA3] text-white flex items-center justify-center shadow-[0_10px_30px_rgba(255,79,163,0.4)] hover:shadow-[0_15px_40px_rgba(255,79,163,1)] transition-all active:scale-95"
             aria-label="Scroll to top"
           >
             <ArrowUp size={24} strokeWidth={3} />
@@ -278,7 +277,7 @@ const FooterAccordion = ({ title, children }: { title: string; children: React.R
   if (!isMobile) {
     return (
       <div className="flex flex-col gap-8">
-        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#ff0ea3]">{title}</h3>
+        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#FF4FA3]">{title}</h3>
         {children}
       </div>
     );
@@ -290,7 +289,7 @@ const FooterAccordion = ({ title, children }: { title: string; children: React.R
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full py-2 text-left"
       >
-        <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#ff0ea3]">{title}</span>
+        <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#FF4FA3]">{title}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
           <ChevronDown size={18} className="text-white/40" />
         </motion.div>
