@@ -96,19 +96,10 @@ const FAQ = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="mb-10 sm:mb-12 md:mb-16 text-left">
-          <div className="flex items-start gap-4 mb-3">
-            <div
-              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-              style={{
-                background: '#ff0ea3',
-                transform: 'skewX(-15deg)'
-              }}
-            ></div>
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-[#050729] leading-tight">
-              Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
-            </h2>
-          </div>
+        <div className="mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#050729] leading-tight">
+            Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
+          </h2>
         </div>
 
         <div className="space-y-3">

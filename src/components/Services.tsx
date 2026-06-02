@@ -268,20 +268,11 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Heading */}
         <motion.div
-          className="mb-8 sm:mb-12 lg:mb-16 flex items-center gap-3"
+          className="mb-8 sm:mb-12 lg:mb-16"
           variants={staggerContainer}
           initial={prefersReducedMotion ? false : "hidden"}
           animate={isInView ? "visible" : "hidden"}
         >
-          <div
-            className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-            style={{
-              background: '#B6FF00',
-              transform: 'skewX(-15deg)'
-            }}
-          ></div>
-
-
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#050729]">
             Services We Offer
           </h2>

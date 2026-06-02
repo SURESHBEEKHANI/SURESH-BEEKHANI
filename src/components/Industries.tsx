@@ -80,19 +80,9 @@ const Industries = () => {
         <section className="pt-2 sm:pt-4 md:pt-6 pb-0 relative bg-white w-full">
           <div className="relative z-15 w-full">
             <div className="text-left space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 px-[5%] sm:px-[10%]">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div
-                  className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-                  style={{
-                    background: '#ff0ea3',
-                    transform: 'skewX(-15deg)'
-                  }}
-                ></div>
-
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-                  Industries We Transform with Innovative  <span className="text-[#ff0ea3]">AI Software Solutions</span>
-                </h2>
-              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
+                Industries We Transform with Innovative <span className="text-[#ff0ea3]">AI Software Solutions</span>
+              </h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-2xl font-medium leading-relaxed">
                 We empower businesses across diverse industries with custom AI solutions, driving innovation, efficiency, and sustainable growth in the digital era.
               </p>

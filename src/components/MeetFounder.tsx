@@ -9,35 +9,19 @@ const MeetFounder = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="founder" className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden scroll-mt-20" style={{ background: '#020010' }}>
-      {/* AI Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-ai-purple/20 to-ai-cyan/15 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/15 to-ai-purple-light/20 rounded-full blur-3xl animate-aurora"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-ai-purple/5 to-ai-cyan/5 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="founder" className="py-12 sm:py-16 md:py-20 ai-section scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-left mb-12 sm:mb-20"
+          className="text-center mb-10 sm:mb-14"
           variants={fadeInUp}
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? false : "visible"}
           viewport={{ once: true }}
         >
-          <div className="flex items-start gap-4 mb-3">
-            <div
-              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-              style={{
-                background: '#ff0ea3',
-                transform: 'skewX(-15deg)'
-              }}
-            ></div>
-            <h2 className="heading-2 text-white leading-tight">
-              Leadership: Meet Our <span style={{ color: '#ff0ea3' }}>Founder</span>
-            </h2>
-          </div>
-          <p className="body-large text-white/50 max-w-3xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+            Leadership: Meet Our <span style={{ color: '#ff0ea3' }}>Founder</span>
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
             The visionary strategies driving our enterprise.
           </p>
         </motion.div>

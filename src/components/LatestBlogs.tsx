@@ -48,18 +48,9 @@ const LatestBlogs: React.FC = () => {
     <section className="py-16 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <div className="flex items-start gap-3 sm:gap-4 mb-3">
-            <div
-              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1.5 rounded-full"
-              style={{
-                background: '#ff0ea3',
-                transform: 'skewX(-15deg)'
-              }}
-            ></div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-              Blogs & Articles
-            </h2>
-          </div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2] mb-3">
+            Blogs & Articles
+          </h2>
           <p className="text-gray-500 font-medium text-sm md:text-base">
             Showcasing our expertise, experience, and commitment to excellence in every piece we create.
           </p>

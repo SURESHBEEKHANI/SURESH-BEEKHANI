@@ -141,18 +141,9 @@ const Testimonials = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-left mb-8 sm:mb-12 md:mb-16">
-          <div className="flex items-start gap-4 mb-3">
-            <div
-              className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-              style={{
-                background: '#ff0ea3',
-                transform: 'skewX(-15deg)'
-              }}
-            ></div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight">
-              From idea to impact — hear it from <span style={{ color: '#ff0ea3' }}>our clients</span>
-            </h2>
-          </div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#050729] leading-tight mb-3">
+            From idea to impact — hear it from our clients
+          </h2>
         </div>
 
         <div className="relative group">
