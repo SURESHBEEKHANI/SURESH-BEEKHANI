@@ -9,22 +9,22 @@ const Overview = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h2 className="text-[clamp(0.8125rem,2.4vw,1.875rem)] font-bold text-[#050729] leading-tight tracking-tight">
+              <h2 className="text-[clamp(0.8125rem,2.4vw,1.875rem)] font-bold text-[#050729] leading-tight tracking-tight whitespace-nowrap">
                 Drive Unstoppable Business Growth with AI
               </h2>
 
               <div className="space-y-4 text-gray-600 leading-relaxed text-xs sm:text-sm">
                 <p>
-                  Maximize your business potential with cutting-edge AI solutions from <span className="font-bold text-[#050729]">Velnix Solutions</span>. We focus on real-world impact, designing intelligent systems that don’t just work — they deliver measurable results.
+                  We help businesses grow, operate more efficiently, and deliver better customer experiences through smart, results-driven solutions. Our focus is not on technology for its own sake - it&apos;s on creating real value that helps your business succeed.
                 </p>
                 <p>
-                  Leveraging machine learning, deep learning, and advanced AI applications in NLP, computer vision, predictive analytics, generative AI, and AI chatbots, we build scalable solutions tailored to your unique business needs.
+                  From streamlining daily operations and reducing manual work to improving decision-making and increasing productivity, we develop solutions tailored to your unique goals and challenges.
                 </p>
                 <p>
-                  Our approach is simple: solve real problems, optimize operations, and create lasting value. Whether automating workflows, enhancing decision-making, or extracting powerful insights from your data — we help your business move faster and smarter.
+                  Every business is different, which is why we take the time to understand your needs and create strategies that support sustainable growth and long-term success.
                 </p>
                 <p>
-                  Partner with <span className="font-bold text-[#050729]">Velnix Solutions</span> to transform your ideas into high-performance AI systems that drive efficiency, growth, and a competitive advantage.
+                  Partner with <span className="font-bold text-[#050729]">Velnix Solutions</span> to improve efficiency, unlock new opportunities, and build a stronger, more competitive business for the future.
                 </p>
               </div>
             </div>

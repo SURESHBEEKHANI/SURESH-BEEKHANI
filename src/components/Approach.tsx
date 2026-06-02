@@ -8,7 +8,7 @@ const awards = [
   { path: '/image/certificate-image/DEEP-LEARING.png', alt: 'Deep Learning Certificate' },
   { path: '/image/certificate-image/aws.png', alt: 'AWS Certificate' },
   { path: '/image/certificate-image/machine learing AI.png', alt: 'Machine Learning AI Certificate' },
-  { path: '/image/certificate-image/Business Growth with AI.png', alt: 'Business Growth with AI Certificate' },
+  { path: '/image/certificate-image/AI develpments.png', alt: 'AI develpments' },
 ];
 
 const toSrc = (path: string) => encodeURI(path);
