@@ -64,7 +64,7 @@ const LatestBlogs: React.FC = () => {
                 to={`/blogs?article=${mainBlog.id}`}
                 className="group flex flex-col h-full bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
               >
-                <div className="relative w-full h-[280px] md:h-[350px] overflow-hidden border-t-[5px] border-[#ff0ea3]">
+                <div className="relative w-full h-[280px] md:h-[350px] overflow-hidden border-t-[5px] border-[#B6FF00]">
                   {mainBlog.image_url ? (
                     <img
                       src={mainBlog.image_url}
@@ -82,7 +82,7 @@ const LatestBlogs: React.FC = () => {
                     {new Date(mainBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </div>
 
-                  <h3 className="text-2xl md:text-[1.75rem] font-bold text-[#0a0435] mb-4 leading-tight group-hover:text-[#ff0ea3] transition-colors line-clamp-2">
+                  <h3 className="text-2xl md:text-[1.75rem] font-bold text-[#0a0435] mb-4 leading-tight group-hover:text-[#B6FF00] transition-colors line-clamp-2">
                     {mainBlog.title}
                   </h3>
 
@@ -94,7 +94,7 @@ const LatestBlogs: React.FC = () => {
                       .trim()}
                   </p>
 
-                  <div className="mt-auto flex items-center text-[#ff0ea3] text-[0.95rem] font-semibold">
+                  <div className="mt-auto flex items-center text-[#B6FF00] text-[0.95rem] font-semibold">
                     Read More
                     <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -111,7 +111,7 @@ const LatestBlogs: React.FC = () => {
                 to={`/blogs?article=${blog.id}`}
                 className="group flex flex-col sm:flex-row bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full sm:h-[180px]"
               >
-                <div className="relative w-full sm:w-[40%] h-[180px] sm:h-full overflow-hidden border-l-0 sm:border-l-[5px] border-t-[5px] sm:border-t-0 border-[#ff0ea3]">
+                <div className="relative w-full sm:w-[40%] h-[180px] sm:h-full overflow-hidden border-l-0 sm:border-l-[5px] border-t-[5px] sm:border-t-0 border-[#B6FF00]">
                   {blog.image_url ? (
                     <img
                       src={blog.image_url}
@@ -125,7 +125,7 @@ const LatestBlogs: React.FC = () => {
 
                 <div className="p-4 sm:p-5 w-full sm:w-[60%] flex flex-col justify-between">
                   <div>
-                    <h4 className="text-[1.1rem] font-bold text-[#0a0435] mb-2 leading-snug group-hover:text-[#ff0ea3] transition-colors line-clamp-2">
+                    <h4 className="text-[1.1rem] font-bold text-[#0a0435] mb-2 leading-snug group-hover:text-[#B6FF00] transition-colors line-clamp-2">
                       {blog.title}
                     </h4>
                     <p className="text-gray-500 text-xs line-clamp-2 leading-relaxed mb-4">
@@ -137,7 +137,7 @@ const LatestBlogs: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center text-[#ff0ea3] text-xs font-semibold mt-auto">
+                  <div className="flex items-center text-[#B6FF00] text-xs font-semibold mt-auto">
                     Read more
                     <ArrowRight className="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" />
                   </div>

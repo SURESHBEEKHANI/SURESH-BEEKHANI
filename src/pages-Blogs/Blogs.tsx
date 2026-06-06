@@ -184,7 +184,7 @@ const Blogs: React.FC = () => {
         }
         if (seg.startsWith('`') && seg.endsWith('`') && seg.length > 2) {
           return (
-            <code key={`${baseKey}-ic-${si}`} className="bg-[#ec4899]/10 text-[#be185d] px-1.5 py-0.5 rounded text-[0.875em] font-mono font-semibold">
+            <code key={`${baseKey}-ic-${si}`} className="bg-[#B6FF00]/10 text-[#9ddf00] px-1.5 py-0.5 rounded text-[0.875em] font-mono font-semibold">
               {seg.slice(1, -1)}
             </code>
           );
@@ -196,7 +196,7 @@ const Blogs: React.FC = () => {
             return <em key={`${baseKey}-${si}-em${i}`} className="italic text-gray-600">{sub.slice(1, -1)}</em>;
           const lm = sub.match(/\[(.*?)\]\((.*?)\)/);
           if (lm)
-            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#ec4899] hover:text-[#be185d] font-bold underline underline-offset-4 transition-colors">{lm[1]}</a>;
+            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#B6FF00] hover:text-[#9ddf00] font-bold underline underline-offset-4 transition-colors">{lm[1]}</a>;
           return <React.Fragment key={`${baseKey}-${si}-t${i}`}>{sub}</React.Fragment>;
         });
       });
@@ -223,7 +223,7 @@ const Blogs: React.FC = () => {
           <div key={`code-${i}`} className="my-6 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
             {lang && (
               <div className="bg-[#1e293b] px-4 py-2 flex items-center justify-between">
-                <span className="text-xs font-bold text-[#ec4899] uppercase tracking-widest">{lang}</span>
+                <span className="text-xs font-bold text-[#B6FF00] uppercase tracking-widest">{lang}</span>
                 <span className="flex gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-red-400/60" />
                   <span className="w-3 h-3 rounded-full bg-yellow-400/60" />
@@ -244,16 +244,16 @@ const Blogs: React.FC = () => {
       const imgMatch = line.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
       if (imgMatch) {
         elements.push(
-          <div key={`img-${i}`} className="my-10 group/img relative border-l-4 border-[#ec4899] shadow-2xl rounded-none">
-            <div className="relative overflow-hidden bg-gray-50 rounded-none">
+          <div key={`img-${i}`} className="my-8 flex justify-start">
+            <div className="group/img relative border-l-4 border-[#B6FF00] shadow-xl rounded-xl overflow-hidden w-full md:w-[85%] bg-gray-50">
               <img
                 src={imgMatch[2]}
                 alt={imgMatch[1]}
-                className="w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover/img:scale-105"
+                className="w-full h-auto max-h-[400px] object-cover transition-transform duration-700 group-hover/img:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
               {imgMatch[1] && (
-                <div className="absolute bottom-0 left-0 w-full bg-[#0a0435]/95 backdrop-blur-md text-white md:text-base text-sm px-5 py-3 rounded-none italic tracking-wide text-center shadow-2xl border-b-2 border-[#ec4899]">
+                <div className="absolute bottom-0 left-0 w-full bg-[#0a0435]/95 backdrop-blur-md text-white md:text-sm text-xs px-4 py-2 rounded-b-xl italic tracking-wide text-center shadow-2xl border-b-2 border-[#B6FF00]">
                   {imgMatch[1]}
                 </div>
               )}
@@ -273,8 +273,8 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <blockquote key={`bq-${i}`} className="relative border-l-4 border-[#ec4899] bg-gradient-to-r from-pink-50/60 to-transparent px-6 py-4 my-6 rounded-r-xl">
-            <span className="absolute top-3 left-4 text-4xl text-[#ec4899]/20 font-serif leading-none select-none">"</span>
+          <blockquote key={`bq-${i}`} className="relative border-l-4 border-[#B6FF00] bg-gradient-to-r from-[#B6FF00]/5 to-transparent px-6 py-4 my-6 rounded-r-xl">
+            <span className="absolute top-3 left-4 text-4xl text-[#B6FF00]/20 font-serif leading-none select-none">"</span>
             {bqLines.map((bl, bi) => (
               <p key={bi} className="italic text-gray-700 text-[1.05rem] leading-relaxed relative z-10">
                 {renderInline(bl, `bq-${i}-${bi}`)}
@@ -292,17 +292,17 @@ const Blogs: React.FC = () => {
         const text = headerMatch[2];
         const id = text.toLowerCase().replace(/\s+/g, '-');
         const headingClasses: Record<number, string> = {
-          1: 'text-3xl md:text-4xl font-black text-[#0a0435] mt-10 mb-4 tracking-tight scroll-mt-32',
-          2: 'text-2xl md:text-3xl font-black text-[#0a0435] mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 border-b border-gray-100',
-          3: 'text-xl md:text-2xl font-extrabold text-[#0a0435] mt-6 mb-2 scroll-mt-32',
-          4: 'text-lg font-bold text-[#0a0435] mt-5 mb-2 scroll-mt-32',
-          5: 'text-base font-bold text-gray-700 mt-4 mb-1 scroll-mt-32',
-          6: 'text-sm font-bold text-gray-500 mt-4 mb-1 scroll-mt-32 uppercase tracking-wider',
+          1: 'text-xl md:text-2xl font-black text-[#0a0435] mt-10 mb-4 tracking-tight scroll-mt-32',
+          2: 'text-lg md:text-xl font-black text-[#0a0435] mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 border-b border-gray-100',
+          3: 'text-base md:text-lg font-extrabold text-[#0a0435] mt-6 mb-2 scroll-mt-32',
+          4: 'text-sm md:text-base font-bold text-[#0a0435] mt-5 mb-2 scroll-mt-32',
+          5: 'text-xs md:text-sm font-bold text-gray-700 mt-4 mb-1 scroll-mt-32',
+          6: 'text-[10px] md:text-xs font-bold text-gray-500 mt-4 mb-1 scroll-mt-32 uppercase tracking-wider',
         };
         const Tag = `h${Math.min(level + 1, 6)}` as keyof JSX.IntrinsicElements;
         elements.push(
           <Tag key={`h-${i}`} id={id} className={headingClasses[level] || headingClasses[3]}>
-            {level === 2 && <span className="inline-block w-1 h-5 bg-[#ec4899] rounded mr-2 align-middle -mt-0.5" />}
+            {level === 2 && <span className="inline-block w-1 h-5 bg-[#B6FF00] rounded mr-2 align-middle -mt-0.5" />}
             {text}
           </Tag>
         );
@@ -316,9 +316,9 @@ const Blogs: React.FC = () => {
           <div key={`hr-${i}`} className="my-8 flex items-center gap-4">
             <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
             <div className="flex gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/60" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/30" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ec4899]/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/30" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/60" />
             </div>
             <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
           </div>
@@ -338,7 +338,7 @@ const Blogs: React.FC = () => {
           <ul key={`ul-${i}`} className="my-5 space-y-2.5 pl-1">
             {items.map((item, li) => (
               <li key={li} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 mt-[0.55em] w-2 h-2 rounded-full bg-[#ec4899] shadow-sm shadow-pink-200" />
+                <span className="flex-shrink-0 mt-[0.55em] w-2 h-2 rounded-full bg-[#B6FF00] shadow-sm shadow-[#B6FF00]/30" />
                 <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
                   {renderInline(item, `ul-${i}-${li}`)}
                 </span>
@@ -360,7 +360,7 @@ const Blogs: React.FC = () => {
           <ol key={`ol-${i}`} className="my-5 space-y-2.5 pl-1 list-none">
             {items.map((item, li) => (
               <li key={li} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 min-w-[1.75rem] h-[1.75rem] rounded-md bg-gradient-to-br from-[#ec4899]/20 to-[#ec4899]/5 border border-[#ec4899]/20 text-[#ec4899] text-xs font-black flex items-center justify-center">
+                <span className="flex-shrink-0 min-w-[1.75rem] h-[1.75rem] rounded-md bg-gradient-to-br from-[#B6FF00]/20 to-[#B6FF00]/5 border border-[#B6FF00]/20 text-[#B6FF00] text-xs font-black flex items-center justify-center">
                   {li + 1}
                 </span>
                 <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
@@ -446,11 +446,11 @@ const Blogs: React.FC = () => {
             <article className="lg:w-[75%]">
               {/* Cover Image First */}
               {selectedBlog.image_url && (
-                <div className="relative w-full overflow-hidden border-t-4 border-[#ec4899] shadow-2xl mb-12 group/cover">
+                <div className="relative w-full md:w-[90%] mr-auto overflow-hidden rounded-2xl border-t-4 border-[#B6FF00] shadow-xl mb-10 group/cover">
                   <img
                     src={selectedBlog.image_url}
                     alt={selectedBlog.title}
-                    className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+                    className="w-full h-[250px] md:h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
                   />
                   {/* Bottom gradient fade for title readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
@@ -460,23 +460,23 @@ const Blogs: React.FC = () => {
 
               {/* Title and Metadata After Image */}
               <div className="mb-10">
-                <h1 className="text-4xl md:text-5xl font-black text-[#0a0435] mb-4 leading-tight tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-black text-[#0a0435] mb-4 leading-tight tracking-tight">
                   {selectedBlog.title}
                 </h1>
 
                 <div className="flex flex-wrap items-center gap-6 text-xs mb-4 border-b border-gray-100 pb-4 uppercase tracking-[0.1em]">
                   <div className="flex items-center gap-2 text-[#0a0435] font-black">
-                    <Calendar size={16} className="text-[#ec4899]" />
+                    <Calendar size={16} className="text-[#B6FF00]" />
                     {new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </div>
 
                   <div className="flex items-center gap-2 text-gray-500 font-bold">
-                    <Eye size={16} className="text-[#ec4899]" />
+                    <Eye size={16} className="text-[#B6FF00]" />
                     {selectedBlog.views || 0} Views
                   </div>
 
                   <div className="flex items-center gap-2 text-[#0a0435] font-black">
-                    <User size={16} className="text-[#ec4899]" />
+                    <User size={16} className="text-[#B6FF00]" />
                     Suresh Beekhani
                   </div>
                 </div>
@@ -489,10 +489,10 @@ const Blogs: React.FC = () => {
                     className="flex items-center justify-between gap-8 cursor-pointer group/title"
                     onClick={() => setIsTocOpen(!isTocOpen)}
                   >
-                    <h3 className="text-lg font-bold text-[#0a0435] tracking-tight group-hover:text-[#ec4899] transition-colors">
+                    <h3 className="text-lg font-bold text-[#0a0435] tracking-tight group-hover:text-[#B6FF00] transition-colors">
                       Table of Contents
                     </h3>
-                    <div className="flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md text-gray-400 group-hover:text-[#ec4899] group-hover:border-[#ec4899]/50 transition-all">
+                    <div className="flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md text-gray-400 group-hover:text-[#B6FF00] group-hover:border-[#B6FF00]/50 transition-all">
                       <List size={16} strokeWidth={2.5} />
                     </div>
                   </div>
@@ -508,7 +508,7 @@ const Blogs: React.FC = () => {
                           <span className="text-sm font-semibold text-gray-400 w-4">
                             {i + 1}.
                           </span>
-                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#ec4899] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
+                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#B6FF00] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
                             {header.text}
                           </span>
                         </a>
@@ -518,7 +518,7 @@ const Blogs: React.FC = () => {
                 </div>
               )}
 
-              <div className="prose prose-lg md:prose-xl max-w-none text-[#0f172a] leading-[1.85] mb-10 font-medium prose-p:mb-5 prose-headings:mb-3 prose-img:my-8 selection:bg-[#ec4899]/20">
+              <div className="prose prose-lg md:prose-xl max-w-none text-[#0f172a] leading-[1.85] mb-10 font-medium prose-p:mb-5 prose-headings:mb-3 prose-img:my-8 selection:bg-[#B6FF00]/20">
                 {renderContent(selectedBlog.content)}
               </div>
 
@@ -527,7 +527,7 @@ const Blogs: React.FC = () => {
                 <div className="mt-16 pt-12 border-t border-gray-100 mb-12">
                   <div className="flex flex-col mb-8">
                     <h4 className="text-2xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
-                      Frequently Asked <span className="text-[#ec4899]">Questions</span>
+                      Frequently Asked <span className="text-black">Questions</span>
                     </h4>
                   </div>
 
@@ -535,23 +535,23 @@ const Blogs: React.FC = () => {
                     {selectedBlog.faqs.map((faq, index) => (
                       <div
                         key={index}
-                        className={`border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ec4899]/50 hover:shadow-lg group ${openFaq === index ? 'shadow-lg border-[#ec4899]/50' : ''}`}
+                        className={`border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-lg group ${openFaq === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
                         style={openFaq === index ? {
-                          boxShadow: '0 4px 20px rgba(236, 72, 153, 0.2), 0 0 15px rgba(236, 72, 153, 0.15)'
+                          boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
                         } : {}}
                       >
                         <button
                           onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                          className={`w-full p-5 flex items-center justify-between text-left transition-all duration-300 ${openFaq === index ? 'bg-gradient-to-r from-[#ec4899]/15 via-[#ec4899]/10 to-[#ec4899]/5' : 'hover:bg-[#ec4899]/5'}`}
+                          className={`w-full p-5 flex items-center justify-between text-left transition-all duration-300 ${openFaq === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
                         >
-                          <h4 className={`text-base font-semibold transition-all duration-300 group-hover:text-[#ec4899] ${openFaq === index ? 'text-[#ec4899]' : 'text-[#050729]'}`}>
+                          <h4 className={`text-base font-semibold transition-all duration-300 group-hover:text-[#B6FF00] ${openFaq === index ? 'text-[#B6FF00]' : 'text-[#050729]'}`}>
                             {faq.q}
                           </h4>
                           <div className="flex-shrink-0 ml-4">
                             {openFaq === index ? (
-                              <Minus className="h-4 w-4" style={{ color: '#ec4899' }} />
+                              <Minus className="h-4 w-4" style={{ color: '#B6FF00' }} />
                             ) : (
-                              <Plus className="h-4 w-4 text-gray-400 group-hover:text-[#ec4899]" />
+                              <Plus className="h-4 w-4 text-gray-400 group-hover:text-[#B6FF00]" />
                             )}
                           </div>
                         </button>
@@ -589,16 +589,16 @@ const Blogs: React.FC = () => {
 
             {/* Sidebar with Recent Posts */}
             {/* Sidebar with Recent Posts */}
-            <aside className="lg:w-[25%] pl-6 border-l-2 border-[#f755a9d9]">
+            <aside className="lg:w-[25%] pl-6 border-l-2 border-[#B6FF00]">
               <div className="sticky top-32 space-y-6">                {/* Newsletter Box */}
                 <div className="bg-white p-4 rounded-none shadow-sm border border-gray-100 relative overflow-hidden">
                   <h3 className="text-xl font-bold text-[#0a0435] mb-2 relative z-10 leading-tight">
-                    Join Our <span className="text-[#ec4899]">Newsletter</span> for AI Updates
+                    Join Our <span className="text-[#B6FF00]">Newsletter</span> for AI Updates
                   </h3>
 
                   {isSidebarSubscribed ? (
-                    <div className="bg-fuchsia-50/50 border border-fuchsia-100 p-4 rounded-none relative z-10 flex flex-col items-center text-center animate-in fade-in duration-700">
-                      <CheckCircle className="text-[#ec4899] mb-1" size={24} />
+                    <div className="bg-[#B6FF00]/10 border border-[#B6FF00]/30 p-4 rounded-none relative z-10 flex flex-col items-center text-center animate-in fade-in duration-700">
+                      <CheckCircle className="text-[#B6FF00] mb-1" size={24} />
                       <p className="text-sm text-[#0a0435] font-bold">Successfully Joined!</p>
                       <p className="text-xs text-gray-600 mt-1">Check your inbox soon for AI insights.</p>
                     </div>
@@ -610,7 +610,7 @@ const Blogs: React.FC = () => {
                           value={sidebarEmail}
                           onChange={(e) => setSidebarEmail(e.target.value)}
                           placeholder="Enter your email"
-                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 text-[#0a0435] placeholder:text-gray-400 outline-none focus:border-[#ec4899]/50 transition-all text-sm rounded-none"
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 text-[#0a0435] placeholder:text-gray-400 outline-none focus:border-[#B6FF00]/50 transition-all text-sm rounded-none"
                         />
                         <button
                           type="submit"
@@ -644,12 +644,12 @@ const Blogs: React.FC = () => {
                           setSearchParams({ article: post.id });
                         }}>
                         {post.image_url && (
-                          <div className="relative w-[90%] h-[140px] mb-4 overflow-hidden rounded-2xl border-t-4 border-[#d928c1]">
+                          <div className="relative w-[85%] h-[110px] mb-4 overflow-hidden rounded-xl border-t-4 border-[#B6FF00]">
                             <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                           </div>
                         )}
                         <h4
-                          className="text-[1.2rem] font-bold text-[#0a0435] leading-snug group-hover:text-[#ec4899] transition-colors"
+                          className="text-[1.2rem] font-bold text-[#0a0435] leading-snug group-hover:text-[#B6FF00] transition-colors"
                         >
                           {post.title}
                         </h4>
@@ -677,13 +677,13 @@ const Blogs: React.FC = () => {
       {/* Hero Section */}
       <section className="py-24 px-4 pt-32 relative overflow-hidden" style={{ background: '#020010' }}>
         {/* Decorative background elements matching Footer */}
-        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
+        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[#B6FF00]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-[#B6FF00]/25 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#B6FF00]/10 blur-3xl" />
 
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
           <div
-            className="inline-flex items-center justify-center mb-5 px-5 py-2.5 rounded-full border border-fuchsia-400/45 bg-fuchsia-500/15 backdrop-blur-sm text-sm md:text-base font-bold text-fuchsia-100 tracking-wide shadow-sm"
+            className="inline-flex items-center justify-center mb-5 px-5 py-2.5 rounded-full border border-[#B6FF00]/45 bg-[#B6FF00]/15 backdrop-blur-sm text-sm md:text-base font-bold text-[#B6FF00] tracking-wide shadow-sm"
             aria-live="polite"
           >
             {selectedCategoryLabel}
@@ -709,9 +709,9 @@ const Blogs: React.FC = () => {
               placeholder="Search for Blogs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-6 pr-12 py-3.5 bg-white border-2 border-[#ec4899]/30 rounded-lg text-gray-800 focus:border-[#ec4899] focus:ring-4 focus:ring-[#ec4899]/10 outline-none transition-all shadow-sm placeholder:text-gray-400 font-medium"
+              className="w-full pl-6 pr-12 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/10 outline-none transition-all shadow-sm placeholder:text-gray-400 font-medium"
             />
-            <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-[#ec4899]" size={20} />
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-[#B6FF00]" size={20} />
           </div>
 
           {/* Category Select Dropdown */}
@@ -719,7 +719,7 @@ const Blogs: React.FC = () => {
             <select
               value={activeCategory}
               onChange={(e) => setActiveCategory(e.target.value)}
-              className="w-full px-6 py-3.5 bg-white border-2 border-[#ec4899]/30 rounded-lg text-gray-800 focus:border-[#ec4899] focus:ring-4 focus:ring-[#ec4899]/10 outline-none transition-all shadow-sm font-medium appearance-none cursor-pointer"
+              className="w-full px-6 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/10 outline-none transition-all shadow-sm font-medium appearance-none cursor-pointer"
             >
               <option value="all">All Categories</option>
               {CATEGORIES.filter(c => c.id !== "all").map(category => (
@@ -727,7 +727,7 @@ const Blogs: React.FC = () => {
               ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-5 h-5 text-[#ec4899]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
               </svg>
             </div>
@@ -740,7 +740,7 @@ const Blogs: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           {loading ? (
             <div className="flex justify-center py-24">
-              <Loader2 className="animate-spin text-[#ec4899]" size={48} />
+              <Loader2 className="animate-spin text-[#B6FF00]" size={48} />
             </div>
           ) : filteredBlogs.length === 0 ? (
             <div className="text-center py-24 bg-white rounded-none border border-gray-200 shadow-sm">
@@ -755,7 +755,7 @@ const Blogs: React.FC = () => {
                   className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer pb-2"
                   onClick={() => setSearchParams({ article: blog.id })}
                 >
-                  <div className="relative h-48 w-full overflow-hidden border-t-[5px] border-[#d928c1]">
+                  <div className="relative h-40 w-full overflow-hidden border-t-[5px] border-[#B6FF00]">
                     {blog.image_url ? (
                       <img src={blog.image_url} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     ) : (
@@ -765,15 +765,15 @@ const Blogs: React.FC = () => {
 
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex items-center text-gray-700 text-sm mb-3 font-medium">
-                      <Calendar className="mr-2 w-4 h-4 text-[#ec4899]" />
+                      <Calendar className="mr-2 w-4 h-4 text-[#B6FF00]" />
                       {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                     </div>
 
-                    <h3 className="text-[1.1rem] font-bold text-[#0a0435] mb-8 leading-relaxed line-clamp-2 group-hover:text-[#ec4899] transition-colors">
+                    <h3 className="text-[1.1rem] font-bold text-[#0a0435] mb-8 leading-relaxed line-clamp-2 group-hover:text-[#B6FF00] transition-colors">
                       {blog.title}
                     </h3>
 
-                    <div className="mt-auto flex items-center text-[#ec4899] text-[0.95rem] font-bold uppercase tracking-wide">
+                    <div className="mt-auto flex items-center text-[#B6FF00] text-[0.95rem] font-bold uppercase tracking-wide">
                       Read More
                       <span className="ml-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

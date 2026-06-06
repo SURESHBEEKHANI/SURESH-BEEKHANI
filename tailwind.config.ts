@@ -193,6 +193,10 @@ export default {
 				'spin-reverse': {
 					from: { transform: 'rotate(0deg)' },
 					to: { transform: 'rotate(-360deg)' }
+				},
+				'sway-x': {
+					'0%, 100%': { transform: 'translateX(-20px)' },
+					'50%': { transform: 'translateX(20px)' }
 				}
 			},
 			animation: {
@@ -214,7 +218,8 @@ export default {
 				'spin-slow': 'spin 8s linear infinite',
 				'spin-reverse-slow': 'spin-reverse 10s linear infinite',
 				'border-beam': 'border-beam 4s ease-in-out infinite',
-				'float-delayed': 'float 6s ease-in-out infinite 2s'
+				'float-delayed': 'float 6s ease-in-out infinite 2s',
+				'sway-x': 'sway-x 5s ease-in-out infinite'
 			}
 		}
 	},

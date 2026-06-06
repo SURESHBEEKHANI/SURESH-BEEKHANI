@@ -16,34 +16,33 @@ const FAQ = () => {
       answer: (
         <div className="space-y-2">
           <p className="text-gray-600 leading-relaxed text-sm">
-
             I offer comprehensive AI development services including: {' '}
-            <a href="/ai-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/ai-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               AI Development
             </a>
 
             , {' '}
-            <a href="/ai-chatbot-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/ai-chatbot-development" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               AI Chatbot Development
             </a>
             , {' '}
-            <a href="/chat-gpt-integrations" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/chat-gpt-integrations" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               ChatGPT Integrations
             </a>
             , {' '}
-            <a href="/computer-vision" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/computer-vision" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               Computer Vision
             </a>
             , {' '}
-            <a href="/machine-learning" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/machine-learning" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               Machine Learning
             </a>
             , {' '}
-            <a href="/natural-language-processing" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/natural-language-processing" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               Natural Language Processing
             </a>
             , and {' '}
-            <a href="/predictive-modelling" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#ff0ea3' }}>
+            <a href="/predictive-modelling" className="transition-colors hover:text-[#050729] font-medium" style={{ color: '#B6FF00' }}>
               Predictive Modelling
             </a>
 
@@ -89,81 +88,152 @@ const FAQ = () => {
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
 
-      {/* AI Background decorative elements - muted for white background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/5 to-ai-cyan/5 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/5 to-[#ff0ea3]/5 rounded-full blur-3xl opacity-30"></div>
+      {/* Refined ambient colour wash — perceptible but not decorative */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 rounded-full blur-3xl opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(182,255,0,0.06) 0%, rgba(0,212,255,0.04) 100%)' }}
+        />
+        <div
+          className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 rounded-full blur-3xl opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.06) 0%, rgba(182,255,0,0.04) 100%)' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+
+        {/* Section heading — preserved hierarchy, tightened tracking */}
         <div className="mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#050729] leading-tight">
-            Frequently Asked <span style={{ color: '#ff0ea3' }}>Questions</span>
+          <h2
+            className="text-lg sm:text-xl md:text-2xl font-bold text-[#050729] leading-tight tracking-tight"
+            style={{ letterSpacing: '-0.01em' }}
+          >
+            Frequently Asked{' '}
+            <span
+              style={{
+                color: '#050729',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Questions
+            </span>
           </h2>
         </div>
 
+        {/* Accordion list */}
         <div className="space-y-3">
-          {faqData.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
-              style={openIndex === index ? { 
-                borderColor: 'rgba(255, 14, 163, 0.5)',
-                boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
-              } : {}}
-            >
-              <Button
-                variant="ghost"
-                onClick={() => toggleFAQ(index)}
-                className="w-full h-auto p-4 text-left transition-all duration-300 hover:bg-transparent"
-                style={openIndex === index ? {
-                  background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.1) 50%, rgba(255, 14, 163, 0.05) 100%)'
-                } : {}}
+          {faqData.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={index}
+                className="rounded-md overflow-hidden transition-all duration-300 group"
+                style={{
+                  border: isOpen
+                    ? '1px solid rgba(182, 255, 0, 0.38)'
+                    : '1px solid rgba(229, 231, 235, 1)',
+                  background: isOpen
+                    ? 'linear-gradient(180deg, rgba(182,255,0,0.03) 0%, rgba(255,255,255,1) 60%)'
+                    : '#fafafa',
+                  boxShadow: isOpen
+                    ? '0 2px 12px rgba(182,255,0,0.09), 0 1px 3px rgba(5,7,41,0.06)'
+                    : '0 1px 2px rgba(5,7,41,0.04)',
+                  transition: 'border-color 240ms ease, box-shadow 240ms ease, background 240ms ease',
+                }}
                 onMouseEnter={(e) => {
-                  if (openIndex !== index) {
-                    e.currentTarget.style.background = 'rgba(255, 14, 163, 0.05)';
+                  if (!isOpen) {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(182,255,0,0.30)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(182,255,0,0.07), 0 1px 3px rgba(5,7,41,0.05)';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  if (openIndex !== index) {
-                    e.currentTarget.style.background = '';
+                  if (!isOpen) {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(229,231,235,1)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 2px rgba(5,7,41,0.04)';
                   }
                 }}
               >
-                <div className="flex items-center justify-between w-full">
-                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'}`}>
-                    {faq.question}
-                  </h3>
-                  {openIndex === index ? (
-                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#ff0ea3' }} />
-                  ) : (
-                    <Plus className="h-4 w-4 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#ff0ea3]" />
-                  )}
-                </div>
-              </Button>
-              
-              {openIndex === index && (
-                <div className="px-4 pb-4">
-                  <div className="pt-2 border-t border-gray-200/50">
-                    {typeof faq.answer === 'string' ? (
-                      <p className="text-gray-600 leading-relaxed text-sm">
-                        {faq.answer}
-                      </p>
-                    ) : (
-                      <div className="text-gray-600 leading-relaxed text-sm">
-                        {faq.answer}
-                      </div>
-                    )}
+                {/* Trigger row */}
+                <Button
+                  variant="ghost"
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full h-auto p-4 text-left hover:bg-transparent focus-visible:ring-1 focus-visible:ring-[#B6FF00]/40 focus-visible:ring-offset-0"
+                  style={{ background: 'transparent' }}
+                >
+                  <div className="flex items-center justify-between w-full gap-3">
+                    <h3
+                      className="text-base font-semibold pr-3 transition-colors duration-200"
+                      style={{
+                        color: isOpen ? '#B6FF00' : '#050729',
+                        letterSpacing: '-0.005em',
+                        lineHeight: '1.4',
+                      }}
+                    >
+                      {faq.question}
+                    </h3>
+
+                    {/* Icon — clean, precise, no animation jitter */}
+                    <span
+                      className="flex-shrink-0 flex items-center justify-center rounded transition-colors duration-200"
+                      style={{
+                        width: '22px',
+                        height: '22px',
+                        color: isOpen ? '#B6FF00' : '#9ca3af',
+                      }}
+                      aria-hidden="true"
+                    >
+                      {isOpen ? (
+                        <Minus className="h-4 w-4" strokeWidth={2} />
+                      ) : (
+                        <Plus className="h-4 w-4" strokeWidth={2} />
+                      )}
+                    </span>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                </Button>
+
+                {/* Answer panel */}
+                {isOpen && (
+                  <div className="px-4 pb-4">
+                    <div
+                      className="pt-3"
+                      style={{
+                        borderTop: '1px solid rgba(229,231,235,0.7)',
+                      }}
+                    >
+                      {typeof faq.answer === 'string' ? (
+                        <p
+                          className="leading-relaxed text-sm"
+                          style={{
+                            color: '#4b5563',
+                            lineHeight: '1.65',
+                            letterSpacing: '0.003em',
+                          }}
+                        >
+                          {faq.answer}
+                        </p>
+                      ) : (
+                        <div
+                          className="leading-relaxed text-sm"
+                          style={{
+                            color: '#4b5563',
+                            lineHeight: '1.65',
+                            letterSpacing: '0.003em',
+                          }}
+                        >
+                          {faq.answer}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-
   );
 };
 
-export default FAQ; 
+export default FAQ;

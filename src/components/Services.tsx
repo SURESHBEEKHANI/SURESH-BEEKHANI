@@ -1,20 +1,18 @@
-import { useState, useEffect, useMemo } from 'react';
-import { Check, ArrowRight, Sparkles, Zap, Shield, Target, Users, TrendingUp, Menu, ChevronDown, Globe, Smartphone, Cloud, Server, Database, Bot } from 'lucide-react';
+import React, { useState, useMemo, useRef } from 'react';
+import {
+  Sparkles, Zap, Shield, Target, Users, TrendingUp,
+  ChevronDown, Globe, Smartphone, Cloud, Server, Database, Bot, ArrowRight, CheckCircle2
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation, useReducedMotion } from '@/hooks/useAnimations';
-import { fadeInUp, serviceCardVariants, benefitVariants, staggerContainer, staggerItem, hoverLiftShadow, } from '@/lib/animations';
 
-/* --------------------------
-   Static Services Data
---------------------------- */
+/* ─────────────────────────────────────────────────────────────
+   DATA
+───────────────────────────────────────────────────────────── */
 const SERVICES = [
   'AI Development',
   'Chatbot Development',
-  'ChatGPT Integration',
   'Machine & Deep Learning',
   'Computer Vision',
   'Predictive Modeling',
@@ -28,42 +26,31 @@ const SERVICES = [
   'Agentic AI',
 ];
 
-
-
-const SERVICE_DETAILS = {
+const SERVICE_DETAILS: Record<string, {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  tag: string;
+  benefits: { title: string; description: string }[];
+}> = {
   'AI Development': {
     title: 'AI Development',
+    tag: 'Core AI',
     description:
       "Innovation meets intelligent execution. We leverage cutting-edge AI technologies to build tailored solutions that align perfectly with your business needs—transforming operations, enhancing efficiency, and driving measurable growth.",
-    icon: <Sparkles className="h-6 w-6 sm:h-8 sm:w-8" />,
+    icon: <Sparkles className="h-5 w-5" />,
     benefits: [
-      {
-        title: 'Cutting-Edge Expertise',
-        description:
-          'Our team of experts is proficient in utilizing the latest technologies to develop custom AI solutions tailored to your needs.',
-      },
-      {
-        title: 'Seamless Integration',
-        description:
-          'We are dedicated to seamlessly integrating our AI solutions with your existing infrastructure, ensuring a smooth transition.',
-      },
-      {
-        title: 'Comprehensive AI Development Services',
-        description:
-          'From machine learning to natural language processing, our AI Development Services elevate your organization\'s capabilities.',
-      },
-      {
-        title: 'Empowering Organizational Capabilities',
-        description:
-          'Our mission is to empower organizations like yours to not only adapt but thrive in the dynamic landscape of AI technology.',
-      },
+      { title: 'Cutting-Edge Expertise', description: 'Our team of experts is proficient in utilizing the latest technologies to develop custom AI solutions tailored to your needs.' },
+      { title: 'Seamless Integration', description: 'We seamlessly integrate our AI solutions with your existing infrastructure, ensuring a smooth transition.' },
+      { title: 'Comprehensive AI Services', description: "From machine learning to NLP, our AI Development Services elevate your organization's capabilities." },
+      { title: 'Empowering Organizations', description: 'Our mission is to empower organizations like yours to not only adapt but thrive in the dynamic landscape of AI technology.' },
     ],
   },
   'Chatbot Development': {
     title: 'Chatbot Development',
-    description:
-      'Transform customer interactions with intelligent chatbots that understand, learn, and respond naturally to user queries.',
-    icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Conversational AI',
+    description: 'Transform customer interactions with intelligent chatbots that understand, learn, and respond naturally to user queries.',
+    icon: <Users className="h-5 w-5" />,
     benefits: [
       { title: 'Natural Language Processing', description: 'Advanced NLP capabilities for human-like conversations and understanding.' },
       { title: '24/7 Availability', description: 'Round-the-clock customer support without human intervention.' },
@@ -71,23 +58,11 @@ const SERVICE_DETAILS = {
       { title: 'Multi-Platform Integration', description: 'Seamless integration across websites, mobile apps, and social media.' },
     ],
   },
-  'ChatGPT Integration': {
-    title: 'ChatGPT Integration',
-    description:
-      "Leverage the power of OpenAI's ChatGPT to enhance your applications with conversational AI capabilities.",
-    icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
-    benefits: [
-      { title: 'Advanced Language Models', description: 'Integration with state-of-the-art language models for superior text generation.' },
-      { title: 'Custom Training', description: 'Fine-tuned models tailored to your specific use case and industry.' },
-      { title: 'API Integration', description: 'Seamless API integration for real-time conversational experiences.' },
-      { title: 'Cost-Effective Solutions', description: 'Optimized usage patterns to maximize value and minimize costs.' },
-    ],
-  },
   'Machine & Deep Learning': {
     title: 'Machine & Deep Learning',
-    description:
-      'Build intelligent systems that learn from data and make predictions with unprecedented accuracy.',
-    icon: <Target className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'ML / DL',
+    description: 'Build intelligent systems that learn from data and make predictions with unprecedented accuracy and reliability.',
+    icon: <Target className="h-5 w-5" />,
     benefits: [
       { title: 'Custom Model Development', description: 'Tailored ML/DL models designed for your specific business requirements.' },
       { title: 'Data Processing', description: 'Comprehensive data preprocessing and feature engineering pipelines.' },
@@ -97,9 +72,9 @@ const SERVICE_DETAILS = {
   },
   'Computer Vision': {
     title: 'Computer Vision',
-    description:
-      'Enable machines to see, understand, and interpret visual information like humans do.',
-    icon: <Shield className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Visual AI',
+    description: 'Enable machines to see, understand, and interpret visual information like humans do — with stunning precision.',
+    icon: <Shield className="h-5 w-5" />,
     benefits: [
       { title: 'Image Recognition', description: 'Advanced image classification and object detection capabilities.' },
       { title: 'Video Analysis', description: 'Real-time video processing and analysis for surveillance and automation.' },
@@ -109,9 +84,9 @@ const SERVICE_DETAILS = {
   },
   'Predictive Modeling': {
     title: 'Predictive Modeling',
-    description:
-      'Forecast future outcomes and trends using advanced statistical and machine learning techniques.',
-    icon: <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Forecasting',
+    description: 'Forecast future outcomes and trends using advanced statistical and machine learning techniques to stay ahead.',
+    icon: <TrendingUp className="h-5 w-5" />,
     benefits: [
       { title: 'Statistical Analysis', description: 'Comprehensive statistical modeling for accurate predictions.' },
       { title: 'Risk Assessment', description: 'Identify and quantify potential risks in business operations.' },
@@ -121,9 +96,9 @@ const SERVICE_DETAILS = {
   },
   'Natural Language Processing': {
     title: 'Natural Language Processing',
-    description:
-      'Enable computers to understand, interpret, and generate human language naturally.',
-    icon: <Sparkles className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'NLP',
+    description: 'Enable computers to understand, interpret, and generate human language naturally — at enterprise scale.',
+    icon: <Sparkles className="h-5 w-5" />,
     benefits: [
       { title: 'Text Analysis', description: 'Advanced text processing and sentiment analysis capabilities.' },
       { title: 'Language Translation', description: 'Accurate translation services for multiple languages.' },
@@ -133,9 +108,9 @@ const SERVICE_DETAILS = {
   },
   'AI Automation': {
     title: 'AI Automation',
-    description:
-      'Empower your business with intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation across all operations.',
-    icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Process AI',
+    description: 'Empower your business with intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation.',
+    icon: <Zap className="h-5 w-5" />,
     benefits: [
       { title: '24/7 Operation', description: 'Continuous operation without breaks, ensuring consistent performance around the clock.' },
       { title: 'Adaptive Intelligence', description: 'Learn and improve from every interaction, becoming more effective over time.' },
@@ -145,9 +120,9 @@ const SERVICE_DETAILS = {
   },
   'Web Development': {
     title: 'Web Development',
-    description:
-      'Crafting high-performance, dynamic, and visually stunning web experiences that captivate users, drive conversions, and elevate your digital brand.',
-    icon: <Globe className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Digital Products',
+    description: 'Crafting high-performance, dynamic, and visually stunning web experiences that captivate users and drive conversions.',
+    icon: <Globe className="h-5 w-5" />,
     benefits: [
       { title: 'Custom Website Development', description: 'Bespoke, high-performance websites tailored to your unique brand identity.' },
       { title: 'Web App Development', description: 'Robust, scalable, and secure web applications using cutting-edge frameworks.' },
@@ -157,11 +132,11 @@ const SERVICE_DETAILS = {
   },
   'App Development': {
     title: 'App Development',
-    description:
-      'Engineer groundbreaking mobile applications that put your business directly into the hands of your audience, anytime, anywhere.',
-    icon: <Smartphone className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Mobile',
+    description: 'Engineer groundbreaking mobile applications that put your business directly into the hands of your audience, anytime, anywhere.',
+    icon: <Smartphone className="h-5 w-5" />,
     benefits: [
-      { title: 'iOS App Development', description: 'Seamless, intuitive, and highly secure iOS applications tailored to Apple’s ecosystem.' },
+      { title: 'iOS App Development', description: "Seamless, intuitive, and highly secure iOS applications tailored to Apple's ecosystem." },
       { title: 'Android App Development', description: 'Robust and scalable Android applications that deliver consistent experiences.' },
       { title: 'Cross-Platform Development', description: 'Deploy feature-rich mobile applications efficiently on both iOS and Android.' },
       { title: 'Mobile UI/UX Design', description: 'Pixel-perfect, intuitive user interfaces specific to mobile gestures.' },
@@ -169,9 +144,9 @@ const SERVICE_DETAILS = {
   },
   'DevOps Engineering': {
     title: 'DevOps Engineering',
-    description:
-      'Accelerate delivery, ensure monumental scalability, and eliminate operational bottlenecks with modern DevOps tools and cloud-native infrastructure automation.',
-    icon: <Cloud className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Infrastructure',
+    description: 'Accelerate delivery, ensure monumental scalability, and eliminate operational bottlenecks with modern DevOps and cloud-native infrastructure.',
+    icon: <Cloud className="h-5 w-5" />,
     benefits: [
       { title: 'CI/CD Pipeline Automation', description: 'Accelerate release cycles with robust Continuous Integration and Deployment.' },
       { title: 'Cloud Infrastructure', description: 'Design and manage scalable cloud architectures on AWS, Azure, or Google Cloud.' },
@@ -181,9 +156,9 @@ const SERVICE_DETAILS = {
   },
   'Custom Software Development': {
     title: 'Custom Software Development',
-    description:
-      'Engineer precision-crafted, scalable software solutions engineered from the ground up to solve your unique, mission-critical business challenges.',
-    icon: <Server className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Enterprise',
+    description: 'Engineer precision-crafted, scalable software solutions built from the ground up to solve your unique, mission-critical business challenges.',
+    icon: <Server className="h-5 w-5" />,
     benefits: [
       { title: 'Enterprise Solutions', description: 'Robust, scalable systems designed to solve complex operational challenges.' },
       { title: 'SaaS Development', description: 'Architect secure, multi-tenant Software-as-a-Service products.' },
@@ -193,9 +168,9 @@ const SERVICE_DETAILS = {
   },
   'Big Data Analytics': {
     title: 'Big Data Analytics',
-    description:
-      'Unlock the hidden power of your data. We transform massive, complex datasets into actionable business intelligence that drives growth, optimizes operations, and creates sustainable competitive advantages.',
-    icon: <Database className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Data Intelligence',
+    description: 'Unlock the hidden power of your data. We transform massive, complex datasets into actionable business intelligence that drives growth.',
+    icon: <Database className="h-5 w-5" />,
     benefits: [
       { title: 'Data Warehousing', description: 'Design and implement scalable data architectures that unify your disparate data sources.' },
       { title: 'Real-time Streaming', description: 'Process and analyze high-velocity data in real-time to gain instant insights.' },
@@ -205,9 +180,9 @@ const SERVICE_DETAILS = {
   },
   'Agentic AI': {
     title: 'Agentic AI Solutions',
-    description:
-      'The next evolution of intelligence. We build autonomous AI agents that act, reason, and solve complex business missions independently to drive unprecedented efficiency.',
-    icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
+    tag: 'Next-Gen AI',
+    description: 'The next evolution of intelligence. We build autonomous AI agents that act, reason, and solve complex business missions independently.',
+    icon: <Bot className="h-5 w-5" />,
     benefits: [
       { title: 'Autonomous Reasoning', description: 'Agents that plan and execute multi-step workflows with minimal oversight.' },
       { title: 'Multi-Agent Systems', description: 'Coordinated ecosystems of specialized agents working together at scale.' },
@@ -217,12 +192,9 @@ const SERVICE_DETAILS = {
   },
 };
 
-
-
-const SERVICE_ROUTES = {
+const SERVICE_ROUTES: Record<string, string> = {
   'AI Development': '/ai-development',
   'Chatbot Development': '/ai-chatbot-development',
-  'ChatGPT Integration': '/chat-gpt-integrations',
   'Machine & Deep Learning': '/machine-learning',
   'Computer Vision': '/computer-vision',
   'Predictive Modeling': '/predictive-modelling',
@@ -236,17 +208,57 @@ const SERVICE_ROUTES = {
   'Agentic AI': '/agentic-ai',
 };
 
+/* ─────────────────────────────────────────────────────────────
+   BENEFIT CARD
+───────────────────────────────────────────────────────────── */
+const BenefitCard = ({
+  benefit,
+  index,
+}: {
+  benefit: { title: string; description: string };
+  index: number;
+}) => (
+  <motion.div
+    key={benefit.title}
+    initial={{ opacity: 0, y: 14 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.32, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+    className="group flex gap-4 p-4 rounded-xl border border-transparent hover:border-[#B6FF00]/40 transition-all duration-300"
+    style={{
+      background: 'linear-gradient(135deg, rgba(182,255,0,0.04) 0%, rgba(5,7,41,0.02) 100%)',
+    }}
+  >
+    {/* Icon bullet */}
+    <div
+      className="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full flex items-center justify-center"
+      style={{ background: 'rgba(182,255,0,0.15)' }}
+    >
+      <CheckCircle2
+        className="w-3.5 h-3.5"
+        style={{ color: '#7FB800' }}
+      />
+    </div>
 
+    <div>
+      <p className="text-sm font-semibold text-[#050729] mb-0.5 leading-snug">
+        {benefit.title}
+      </p>
+      <p className="text-[13px] leading-relaxed" style={{ color: '#6B7280' }}>
+        {benefit.description}
+      </p>
+    </div>
+  </motion.div>
+);
 
-/* --------------------------
-   Component
---------------------------- */
+/* ─────────────────────────────────────────────────────────────
+   MAIN COMPONENT
+───────────────────────────────────────────────────────────── */
 const Services = () => {
   const [selectedService, setSelectedService] = useState(SERVICES[0]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true });
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.08, triggerOnce: true });
 
   const currentService = useMemo(
     () => SERVICE_DETAILS[selectedService],
@@ -262,54 +274,103 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50 relative overflow-hidden scroll-mt-20"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 relative overflow-hidden scroll-mt-20"
+      style={{ background: '#F4F6F9' }}
       aria-label="Our AI Services"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section Heading */}
-        <motion.div
-          className="mb-8 sm:mb-12 lg:mb-16"
-          variants={staggerContainer}
-          initial={prefersReducedMotion ? false : "hidden"}
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#050729]">
-            Services We Offer
-          </h2>
-        </motion.div>
+      {/* ── Subtle dot grid texture ─────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(5,7,41,0.05) 1px, transparent 0)',
+          backgroundSize: '30px 30px',
+        }}
+      />
 
-        {/* Mobile Selector */}
+      {/* ── Ambient accent blob ─────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.07]"
+        style={{
+          background: 'radial-gradient(circle, #B6FF00 0%, transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+      />
+
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+
+        {/* ── Section Header ─────────────────────────────────── */}
         <motion.div
-          className="lg:hidden mb-6"
+          className="mb-12 sm:mb-16"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-full bg-[#050729] text-white px-4 py-3 rounded-lg flex items-center justify-between shadow-lg"
+          <h2
+            className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-[1.14]"
+            style={{ color: '#050729' }}
           >
-            <span className="font-medium">{selectedService}</span>
-            <ChevronDown className={`h-5 w-5 transition-transform ${isMobileMenuOpen ? 'rotate-180' : ''}`} />
-          </motion.button>
+            Services We Offer
+          </h2>
+          <p
+            className="mt-3 text-base sm:text-[17px] max-w-2xl leading-relaxed"
+            style={{ color: '#6B7280' }}
+          >
+            From core AI to enterprise software — we craft solutions that move the needle.
+          </p>
+        </motion.div>
+
+        {/* ── Mobile Service Selector ─────────────────────────── */}
+        <motion.div
+          className="lg:hidden mb-6 relative"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.42, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="w-full px-5 py-4 flex items-center justify-between rounded-xl font-semibold text-sm text-white transition-all duration-200"
+            style={{
+              background: '#050729',
+              boxShadow: '0 4px 16px rgba(5,7,41,0.22)',
+            }}
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span>{selectedService}</span>
+            <ChevronDown
+              className="h-4 w-4 transition-transform duration-300"
+              style={{ transform: isMobileMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            />
+          </button>
+
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
-                className="absolute mt-2 w-[calc(100%-2rem)] bg-white rounded-lg shadow-2xl border border-gray-100 max-h-60 overflow-y-auto z-50"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                className="absolute mt-2 w-full bg-white rounded-xl border border-gray-100 max-h-64 overflow-y-auto z-50"
+                style={{ boxShadow: '0 12px 40px rgba(5,7,41,0.14)' }}
+                initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
                 {SERVICES.map((service) => (
                   <button
                     key={service}
-                    onClick={() => {
-                      setSelectedService(service);
-                      setIsMobileMenuOpen(false);
+                    onClick={() => { setSelectedService(service); setIsMobileMenuOpen(false); }}
+                    className="w-full text-left px-5 py-3.5 border-b border-gray-50 last:border-0 text-sm transition-colors duration-150 flex items-center gap-3"
+                    style={{
+                      color: selectedService === service ? '#050729' : '#6B7280',
+                      fontWeight: selectedService === service ? 700 : 400,
+                      background: selectedService === service ? 'rgba(182,255,0,0.08)' : 'transparent',
                     }}
-                    className={`w-full text-left px-4 py-3 border-b border-gray-50 last:border-0 transition-colors ${selectedService === service ? 'bg-[#B6FF00]/10 text-[#050729] font-semibold' : 'text-gray-700 hover:bg-[#B6FF00]/10 hover:text-[#050729]'
-                      }`}
                   >
+                    {selectedService === service && (
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: '#B6FF00' }}
+                      />
+                    )}
                     {service}
                   </button>
                 ))}
@@ -318,93 +379,197 @@ const Services = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Card Layout */}
+        {/* ── Main Panel ─────────────────────────────────────── */}
         <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-sm overflow-hidden bg-white"
+          transition={{ duration: 0.55, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-2xl overflow-hidden"
+          style={{
+            boxShadow: '0 2px 4px rgba(5,7,41,0.04), 0 8px 24px rgba(5,7,41,0.07), 0 32px 64px rgba(5,7,41,0.10)',
+          }}
         >
-          <div className="grid lg:grid-cols-4 min-h-[600px]">
-            {/* Sidebar (Desktop) */}
-            <div className="hidden lg:block bg-[#050729] py-8">
-              <div className="flex flex-col">
-                {SERVICES.map((service) => (
-                  <button
-                    key={service}
-                    onClick={() => setSelectedService(service)}
-                    className={`w-full text-left px-8 py-4 text-sm font-medium transition-all duration-200 ${selectedService === service
-                      ? 'bg-[#B6FF00] text-black'
+          <div className="grid lg:grid-cols-[300px_1fr] min-h-[620px]">
 
-                      : 'text-gray-300 hover:text-[#B6FF00] hover:bg-[#B6FF00]/10'
-                      }`}
-                  >
-                    {service}
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* ── Sidebar ─────────────────────────────────────── */}
+            <aside
+              className="hidden lg:flex flex-col"
+              style={{ background: '#050729' }}
+              aria-label="Service navigation"
+            >
+              {/* Top accent bar */}
+              <div
+                className="h-[3px] w-full"
+                style={{ background: 'linear-gradient(90deg, #B6FF00 0%, #85CC00 100%)' }}
+              />
 
-            {/* Main Content */}
-            <div className="lg:col-span-3 p-8 lg:p-12 relative">
+              <nav className="flex flex-col flex-1 pt-7 pb-6" aria-label="Services list">
+                {SERVICES.map((service) => {
+                  const isActive = selectedService === service;
+                  const detail = SERVICE_DETAILS[service];
+                  return (
+                    <button
+                      key={service}
+                      onClick={() => setSelectedService(service)}
+                      className="group relative w-full text-left px-7 py-[11px] text-[13px] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00]"
+                      style={{
+                        color: isActive ? '#050729' : '#ffffff',
+                        background: isActive
+                          ? '#B6FF00'
+                          : 'transparent',
+                        fontWeight: isActive ? 700 : 400,
+                      }}
+                      aria-current={isActive ? 'true' : undefined}
+                    >
+                      {/* Hover fill */}
+                      {!isActive && (
+                        <span
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                          style={{ background: 'rgba(182,255,0,0.06)' }}
+                          aria-hidden="true"
+                        />
+                      )}
+
+                      <span className="relative z-10 flex items-center gap-2.5">
+                        {/* Dot indicator */}
+                        <span
+                          className="flex-shrink-0 w-1.5 h-1.5 rounded-full transition-all duration-200"
+                          style={{
+                            background: isActive ? '#050729' : 'rgba(182,255,0,0.3)',
+                            transform: isActive ? 'scale(1.2)' : 'scale(1)',
+                          }}
+                        />
+                        <span
+                          className="leading-snug transition-colors duration-150"
+                          style={{ color: isActive ? '#050729' : undefined }}
+                        >
+                          {service}
+                        </span>
+                      </span>
+
+                      {/* Active right border */}
+                      {isActive && (
+                        <span
+                          className="absolute right-0 top-1 bottom-1 w-[3px] rounded-l-full"
+                          style={{ background: 'rgba(5,7,41,0.25)' }}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </aside>
+
+            {/* ── Content Panel ───────────────────────────────── */}
+            <div
+              className="relative flex flex-col p-7 sm:p-10 lg:p-12"
+              style={{ background: '#ffffff' }}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedService}
-                  initial={{ opacity: 0, x: 10 }}
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full flex flex-col"
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex flex-col flex-1 h-full"
                 >
-                  <h3 className="text-3xl font-bold text-[#050729] mb-4">
-                    {currentService.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-                    {currentService.description}
-                  </p>
+                  {/* ── Service Title Area ───────────────────── */}
+                  <div className="mb-7 pb-7 border-b border-gray-100">
 
-                  <div className="mb-8">
-                    <h4 className="text-[#050729] font-bold text-lg mb-6">
-                      Business Benefits of Choosing Us
+
+                    {/* Icon + Title */}
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                        style={{
+                          background: 'linear-gradient(135deg, #050729 0%, #0D1254 100%)',
+                          color: '#B6FF00',
+                          boxShadow: '0 4px 14px rgba(5,7,41,0.18)',
+                        }}
+                      >
+                        {currentService.icon}
+                      </div>
+
+                      <div>
+                        <h3
+                          className="text-2xl sm:text-[1.85rem] font-bold tracking-tight leading-tight"
+                          style={{ color: '#050729' }}
+                        >
+                          {currentService.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p
+                      className="mt-4 text-[15px] sm:text-base leading-relaxed"
+                      style={{ color: '#4B5563', lineHeight: 1.78 }}
+                    >
+                      {currentService.description}
+                    </p>
+                  </div>
+
+                  {/* ── Benefits ────────────────────────────── */}
+                  <div className="flex-1">
+                    <h4
+                      className="text-[11px] font-bold tracking-[0.16em] uppercase mb-4"
+                      style={{ color: '#9CA3AF' }}
+                    >
+                      Business Benefits
                     </h4>
-                    <div className="space-y-6">
+
+                    <div className="grid sm:grid-cols-2 gap-2">
                       {currentService.benefits.map((benefit, i) => (
-                        <div key={i} className="flex gap-4">
-                          <div className="mt-1.5 flex-shrink-0">
-                            <div className="w-2.5 h-2.5 bg-[#050729] rounded-sm" />
-                          </div>
-                          <div>
-                            <span className="font-bold text-[#050729]">
-                              {benefit.title}:
-                            </span>{' '}
-                            <span className="text-gray-600">
-                              {benefit.description}
-                            </span>
-                          </div>
-                        </div>
+                        <BenefitCard key={benefit.title} benefit={benefit} index={i} />
                       ))}
                     </div>
                   </div>
 
-                  {/* Read More Button */}
-                  <div className="mt-auto pt-8 flex justify-end">
-                    <Button
+                  {/* ── CTA Row ─────────────────────────────── */}
+                  <div
+                    className="mt-8 pt-6 flex items-center justify-end"
+                    style={{ borderTop: '1px solid rgba(5,7,41,0.06)' }}
+                  >
+                    <button
                       onClick={handleReadMore}
-                      className="text-black hover:text-black px-8 py-6 rounded-sm text-sm font-medium transition-all border border-black/10 shadow-[0_0_20px_rgba(182,255,0,0.2)] hover:shadow-[0_0_35px_rgba(182,255,0,0.55)]"
-                      style={{ background: '#B6FF00' }}
+                      className="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-250 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
+                      style={{
+                        background: '#B6FF00',
+                        color: '#050729',
+                        boxShadow: '0 2px 8px rgba(182,255,0,0.22), 0 6px 20px rgba(182,255,0,0.12)',
+                        letterSpacing: '0.01em',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLButtonElement).style.background = '#A3E600';
+                        (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                          '0 4px 16px rgba(182,255,0,0.28), 0 8px 28px rgba(182,255,0,0.16)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLButtonElement).style.background = '#B6FF00';
+                        (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                          '0 2px 8px rgba(182,255,0,0.22), 0 6px 20px rgba(182,255,0,0.12)';
+                      }}
                     >
-                      Read More
-                    </Button>
-
+                      Explore Service
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    </button>
                   </div>
+
                 </motion.div>
               </AnimatePresence>
             </div>
+
           </div>
         </motion.div>
       </div>
     </section>
-
   );
 };
 

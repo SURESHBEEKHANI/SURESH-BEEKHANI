@@ -18,25 +18,25 @@ const defaultSteps: OnboardingStep[] = [
     icon: <Mail className="h-8 w-8" />,
     title: 'Contact Us',
     description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
-    color: "from-[#ff0ea3] to-[#ff0ea3]/70"
+    color: "from-[#B6FF00] to-[#B6FF00]/70"
   },
   {
     icon: <Brain className="h-8 w-8" />,
     title: 'Consultation & Discovery',
     description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations.',
-    color: "from-[#ff0ea3] to-[#ff0ea3]/70"
+    color: "from-[#B6FF00] to-[#B6FF00]/70"
   },
   {
     icon: <Target className="h-8 w-8" />,
     title: 'Receive a Detailed Proposal',
     description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate.',
-    color: "from-[#ff0ea3] to-[#ff0ea3]/70"
+    color: "from-[#B6FF00] to-[#B6FF00]/70"
   },
   {
     icon: <Zap className="h-8 w-8" />,
     title: 'Project Kickoff & Delivery',
     description: 'Once approved, our dedicated specialists launch your project with a clear plan and open communication ensuring smooth, successful delivery.',
-    color: "from-[#ff0ea3] to-[#ff0ea3]/70"
+    color: "from-[#B6FF00] to-[#B6FF00]/70"
   },
 ];
 
@@ -56,24 +56,21 @@ const AIOnboardingProcess: React.FC<AIOnboardingProcessProps> = ({ serviceName, 
       <div className="max-w-7xl mx-auto container-padding relative z-10">
         <div className={`text-center space-y-4 mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-            AI Onboarding <span className="text-[#ff0ea3]">Process</span>
+            AI Onboarding <span className="text-white">Process</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
-            Simple, transparent steps to <span className="text-[#ff0ea3] font-bold">launch your {serviceName} project</span>.
+          <p className="text-sm sm:text-base text-white max-w-2xl mx-auto font-medium leading-relaxed">
+            Simple, transparent steps to <span className="text-white font-bold">launch your {serviceName} project</span>.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {displaySteps.map((step, idx) => (
             <div key={idx} className={`relative group transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ transitionDelay: `${idx * 0.15}s` }}>
               <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/20 hover:bg-white/10 p-6 sm:p-8 text-center transition-all duration-300 h-full">
-                <div className={`w-16 h-16 mx-auto bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 mx-auto bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-black mb-5 shadow-[0_4px_16px_rgba(182,255,0,0.25)] group-hover:scale-110 transition-transform duration-300`}>
                   {step.icon}
                 </div>
                 <h3 className="font-bold text-white text-base sm:text-lg mb-3">{step.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{step.description}</p>
-              </div>
-              <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#ff0ea3] rounded-full flex items-center justify-center text-white font-black text-sm shadow-lg shadow-[#ff0ea3]/30">
-                {idx + 1}
+                <p className="text-xs sm:text-sm text-white leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}
