@@ -28,7 +28,8 @@ const Hero = () => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    const play = () => video.play().catch(() => {});
+    video.playbackRate = 2.0;
+    const play = () => { video.playbackRate = 2.0; video.play().catch(() => {}); };
     play();
     document.addEventListener('click', play, { once: true });
     return () => document.removeEventListener('click', play);
@@ -49,10 +50,18 @@ const Hero = () => {
           src="/image/background-video/BACKGOUND.mp4"
           preload="auto"
           autoPlay
+          loop
           muted
           playsInline
+          onCanPlay={(e) => {
+            const v = e.currentTarget;
+            v.playbackRate = 2.0;
+            v.play().catch(() => {});
+          }}
         />
 
+        {/* Dark transparent overlay */}
+        <div className="absolute inset-0 bg-black/55" />
 
       </div>
 
