@@ -196,7 +196,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-1 sm:py-1.5">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'min-h-14 sm:min-h-16' : 'min-h-16 sm:min-h-20'}`}>
 
           {/* Logo — larger + stronger contrast / shadow for a bold, zoomed look */}
