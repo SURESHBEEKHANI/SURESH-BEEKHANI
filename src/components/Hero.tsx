@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 // ── Premium brand tokens ─────────────────────────────────────────────────────
-const BRAND_PINK      = '#FF1A80';
+const BRAND_PINK = '#FF1A80';
 const BRAND_PINK_GLOW = 'rgba(255,26,128,0.32)';
 const BRAND_GREEN_SOFT = 'rgba(168,232,0,0.10)';
 
@@ -29,7 +29,7 @@ const Hero = () => {
     if (!video) return;
     video.muted = true;
     video.playbackRate = 2.0;
-    const play = () => { video.playbackRate = 2.0; video.play().catch(() => {}); };
+    const play = () => { video.playbackRate = 2.0; video.play().catch(() => { }); };
     play();
     document.addEventListener('click', play, { once: true });
     return () => document.removeEventListener('click', play);
@@ -56,7 +56,7 @@ const Hero = () => {
           onCanPlay={(e) => {
             const v = e.currentTarget;
             v.playbackRate = 2.0;
-            v.play().catch(() => {});
+            v.play().catch(() => { });
           }}
         />
 
@@ -92,7 +92,7 @@ const Hero = () => {
             >
               Trusted
             </span>
-            {' AI Development Agency'}
+            {' AI Development Company '}
           </h1>
 
           <p
@@ -159,7 +159,7 @@ const MagneticButton = () => {
         style={{
           background: `linear-gradient(140deg, #AAEE00 0%, #c4f500 50%, #b0e000 100%)`,
           boxShadow: SHADOW_REST,
-          border: '1px solid rgba(168,232,0,0.40)',
+          border: '1px solid rgba(139, 232, 0, 0.4)',
           letterSpacing: '0.01em',
         }}
         onMouseEnter={(e) => {
