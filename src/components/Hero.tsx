@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 // ── Premium brand tokens ─────────────────────────────────────────────────────
 const BRAND_PINK = '#FF1A80';
 const BRAND_PINK_GLOW = 'rgba(255,26,128,0.32)';
-const BRAND_GREEN_SOFT = 'rgba(168,232,0,0.10)';
+const BRAND_GREEN_SOFT = 'rgba(182,255,0,0.10)';
 
 // ── Shared style helpers ─────────────────────────────────────────────────────
 const sharpText: React.CSSProperties = {
@@ -125,14 +125,14 @@ const MagneticButton = () => {
     '0 1px 0 rgba(255,255,255,0.50) inset',
     '0 -1px 0 rgba(0,0,0,0.12) inset',
     '0 2px 8px rgba(0,0,0,0.18)',
-    '0 8px 28px rgba(168,232,0,0.42)',
+    '0 8px 28px rgba(182,255,0,0.42)',
   ].join(', ');
 
   const SHADOW_HOVER = [
     '0 1px 0 rgba(255,255,255,0.50) inset',
     '0 -1px 0 rgba(0,0,0,0.12) inset',
     '0 4px 14px rgba(0,0,0,0.22)',
-    '0 14px 40px rgba(168,232,0,0.56)',
+    '0 14px 40px rgba(182,255,0,0.56)',
   ].join(', ');
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -157,9 +157,9 @@ const MagneticButton = () => {
         asChild
         className="px-8 py-4 text-lg rounded-none font-semibold tracking-wide text-[#080d1c] hover:text-[#080d1c] transition-all duration-300"
         style={{
-          background: `linear-gradient(140deg, #AAEE00 0%, #c4f500 50%, #b0e000 100%)`,
+          background: `linear-gradient(140deg, #B6FF00 0%, #D2FF52 50%, #99E600 100%)`,
           boxShadow: SHADOW_REST,
-          border: '1px solid rgba(139, 232, 0, 0.4)',
+          border: '1px solid rgba(182, 255, 0, 0.4)',
           letterSpacing: '0.01em',
         }}
         onMouseEnter={(e) => {
