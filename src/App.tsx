@@ -93,6 +93,9 @@ const AIPoweredHospitalManagementSystem = lazy(() => import("./Pages-Portfolio/a
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+
+import CookieBanner from "./components/CookieBanner";
 
 // ⚠️ Error Boundary
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -121,9 +124,11 @@ const AppContent = () => {
   usePageTracking();
 
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        <Route path="/" element={<Index />} />
+    <>
+      <CookieBanner />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<Index />} />
 
         {/* Industries */}
         <Route path="/clinics-and-small-hospitals" element={<ClinicsSmallHospitals />} />
@@ -170,10 +175,12 @@ const AppContent = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    </>
   );
 };
 
