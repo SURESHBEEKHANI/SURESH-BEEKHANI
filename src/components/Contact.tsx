@@ -240,10 +240,45 @@ const Contact = () => {
     }
   };
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen overflow-x-hidden flex flex-col">
       <BackgroundAnimation />
       <Navbar />
+
+      {/* Let's Talk Business - Fixed Right Sidebar Button */}
+      <button
+        onClick={scrollToForm}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 group"
+        aria-label="Let's Talk Business"
+        style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+      >
+        <span
+          className="inline-flex items-center gap-2 px-3 py-6 text-white font-bold text-sm tracking-wider uppercase cursor-pointer transition-all duration-300 ease-in-out shadow-lg group-hover:shadow-xl group-hover:shadow-teal-500/30 group-hover:px-4"
+          style={{
+            background: 'linear-gradient(180deg, #00b4d8 0%, #0096a7 50%, #008090 100%)',
+            borderRadius: '12px 0 0 12px',
+            letterSpacing: '0.15em',
+          }}
+        >
+          <svg
+            className="w-4 h-4 rotate-90 transition-transform duration-300 group-hover:translate-y-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            style={{ transform: 'rotate(90deg)' }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          Let's Talk Business
+        </span>
+      </button>
 
       <HeroSection />
 
