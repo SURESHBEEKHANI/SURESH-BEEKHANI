@@ -82,7 +82,6 @@ const MeetFounder = () => {
               {/* Dot grid pattern */}
               <div className="absolute inset-0 -z-10 pointer-events-none opacity-40 transform-3d translate-z-[-30px]"
                 style={{
-                  backgroundImage: 'radial-gradient(circle, rgba(182,255,0,0.4) 1px, transparent 1px)',
                   backgroundSize: '20px 20px',
                   maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, transparent 100%)',
                   WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, transparent 100%)',

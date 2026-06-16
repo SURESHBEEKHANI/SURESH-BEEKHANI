@@ -116,7 +116,6 @@ const BigDataAnalytics: React.FC = () => {
 
 			{/* Strategy Section */}
 			<section className="py-8 sm:py-16 bg-white relative overflow-hidden">
-				<div className="absolute top-0 right-0 w-1/3 h-full bg-[radial-gradient(#ff0ea3_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none" />
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 						{/* Left: Content */}
@@ -175,7 +174,6 @@ const BigDataAnalytics: React.FC = () => {
 
 			{/* Solutions Section */}
 			<section className="py-8 sm:py-20 ai-section relative overflow-hidden">
-				<div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px] opacity-5" />
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
@@ -212,7 +210,6 @@ const BigDataAnalytics: React.FC = () => {
 
 			{/* Benefits Infographic */}
 			<section className="relative overflow-hidden bg-white py-8 sm:py-20">
-				<div className="absolute inset-0 bg-[radial-gradient(#050729_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03]" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-20 ${isVisible ? 'fade-in' : 'opacity-0'}`}>

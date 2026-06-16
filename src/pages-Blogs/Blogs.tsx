@@ -675,11 +675,10 @@ const Blogs: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-24 px-4 pt-32 relative overflow-hidden" style={{ background: '#020010' }}>
-        {/* Decorative background elements matching Footer */}
-        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[#B6FF00]/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-[#B6FF00]/25 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#B6FF00]/10 blur-3xl" />
+      <section className="py-24 px-4 pt-32 relative overflow-hidden bg-zinc-950">
+        {/* Ambient Blurs to match other pages */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
 
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
           <div
@@ -709,7 +708,7 @@ const Blogs: React.FC = () => {
               placeholder="Search for Blogs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-6 pr-12 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/10 outline-none transition-all shadow-sm placeholder:text-gray-400 font-medium"
+              className="w-full pl-6 pr-12 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 hover:border-[#B6FF00] focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/20 focus:outline-0 outline-none transition-all shadow-sm placeholder:text-gray-400 font-medium"
             />
             <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-[#B6FF00]" size={20} />
           </div>
@@ -719,7 +718,7 @@ const Blogs: React.FC = () => {
             <select
               value={activeCategory}
               onChange={(e) => setActiveCategory(e.target.value)}
-              className="w-full px-6 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/10 outline-none transition-all shadow-sm font-medium appearance-none cursor-pointer"
+              className="w-full px-6 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 hover:border-[#B6FF00] focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/20 focus:outline-0 outline-none transition-all shadow-sm font-medium appearance-none cursor-pointer"
             >
               <option value="all">All Categories</option>
               {CATEGORIES.filter(c => c.id !== "all").map(category => (

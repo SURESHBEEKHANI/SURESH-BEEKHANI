@@ -11,11 +11,10 @@ import Footer from './Footer';
 import BackgroundAnimation from './BackgroundAnimation';
 
 const HeroSection = () => (
-  <section className="relative w-full min-h-[40vh] flex items-center justify-start overflow-hidden bg-[#0a0435]">
+  <section className="relative w-full min-h-[40vh] flex items-center justify-start overflow-hidden bg-zinc-950">
     {/* Ambient Blurs to match footer */}
     <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
     <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
-    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse" />
     <div className="relative z-10 max-w-4xl px-4 sm:px-6 ml-[10%] sm:ml-[15%] lg:ml-[20%] pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
       <div className="mb-4">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
@@ -152,8 +151,7 @@ const Contact = () => {
           <div className="max-w-4xl mx-auto">
             {isSubmitted ? (
               <div className="relative rounded-3xl p-8 sm:p-16 text-center space-y-8 animate-in fade-in zoom-in duration-500 overflow-hidden shadow-2xl"
-                style={{ background: 'linear-gradient(135deg, #6D28D9 0%, #a855f7 50%, #ec4899 100%)' }}>
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+                style={{ background: 'linear-gradient(135deg, #2a3d00 0%, #5b8000 50%, #B6FF00 100%)' }}>
                 <div className="relative z-10">
                   <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-6 border border-white/30">
                     <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -172,7 +170,7 @@ const Contact = () => {
                     <Button
                       onClick={() => setIsSubmitted(false)}
                       variant="outline"
-                      className="px-8 py-6 rounded-none border-white/40 bg-white/10 text-white hover:bg-white hover:text-[#ff0ea3] transition-all font-bold backdrop-blur-sm border-2"
+                      className="px-8 py-6 rounded-none border-white/40 bg-white/10 text-white hover:bg-white hover:text-[#B6FF00] transition-all font-bold backdrop-blur-sm border-2"
                     >
                       Send Another Message
                     </Button>
@@ -185,50 +183,70 @@ const Contact = () => {
                   {/* How can we help you */}
                   <div className="space-y-2">
                     <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
-                    <select
-                      id="helpType"
-                      name="helpType"
-                      value={formData.helpType}
-                      onChange={handleInputChange}
-                      className="w-full h-12 px-4 rounded-none border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all cursor-pointer appearance-none"
-                      required
-                    >
-                      <option value="" disabled>Please Select One</option>
-                      <option value="ai-development">AI Development</option>
-                      <option value="chatbot-development">Chatbot Development</option>
-                      <option value="chatgpt-integration">ChatGPT Integration</option>
-                      <option value="machine-deep-learning">Machine & Deep Learning</option>
-                      <option value="computer-vision">Computer Vision</option>
-                      <option value="predictive-modeling">Predictive Modeling</option>
-                      <option value="nlp">Natural Language Processing</option>
-                      <option value="ai-automation">AI Automation</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="helpType"
+                        name="helpType"
+                        value={formData.helpType}
+                        onChange={handleInputChange}
+                        className="w-full h-12 px-4 pr-10 rounded-none border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all cursor-pointer appearance-none"
+                        required
+                      >
+                        <option value="" disabled>Please Select One</option>
+                        <option value="ai-development">AI Development</option>
+                        <option value="agentic-ai">Agentic AI</option>
+                        <option value="ai-automation">AI Automation</option>
+                        <option value="chatbot-development">Chatbot Development</option>
+                        <option value="chatgpt-integration">ChatGPT Integration</option>
+                        <option value="machine-deep-learning">Machine & Deep Learning</option>
+                        <option value="computer-vision">Computer Vision</option>
+                        <option value="predictive-modeling">Predictive Modeling</option>
+                        <option value="nlp">Natural Language Processing</option>
+                        <option value="big-data-analytics">Big Data Analytics</option>
+                        <option value="custom-software">Custom Software Development</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="app-development">App Development</option>
+                        <option value="devops">DevOps</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Select your Industry */}
                   <div className="space-y-2">
                     <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
-                    <select
-                      id="industry"
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleInputChange}
-                      className="w-full h-12 px-4 rounded-none border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all cursor-pointer appearance-none"
-                      required
-                    >
-                      <option value="" disabled>Please Select One</option>
-                      <option value="fintech">FinTech</option>
-                      <option value="healthtech">HealthTech</option>
-                      <option value="retailtech">RetailTech</option>
-                      <option value="edtech">EdTech</option>
-                      <option value="fittech">FitTech</option>
-                      <option value="legaltech">LegalTech</option>
-                      <option value="wealthtech">WealthTech</option>
-                      <option value="it-software">IT & Software</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="industry"
+                        name="industry"
+                        value={formData.industry}
+                        onChange={handleInputChange}
+                        className="w-full h-12 px-4 pr-10 rounded-none border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all cursor-pointer appearance-none"
+                        required
+                      >
+                        <option value="" disabled>Please Select One</option>
+                        <option value="fintech">FinTech</option>
+                        <option value="healthtech">HealthTech</option>
+                        <option value="retailtech">RetailTech</option>
+                        <option value="edtech">EdTech</option>
+                        <option value="fittech">FitTech</option>
+                        <option value="legaltech">LegalTech</option>
+                        <option value="wealthtech">WealthTech</option>
+                        <option value="it-software">IT & Software</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -239,7 +257,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="First Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -253,7 +271,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Last Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -268,7 +286,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -283,7 +301,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Phone"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -297,7 +315,7 @@ const Contact = () => {
                       value={formData.country}
                       onChange={handleInputChange}
                       placeholder="Country"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -311,7 +329,7 @@ const Contact = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Company Name"
-                      className="h-12 border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all rounded-none"
+                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     /></div>
                 </div>
@@ -325,7 +343,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="How can we help you?"
-                    className="min-h-[150px] border-gray-200 bg-white text-gray-900 focus:ring-2 focus:ring-[#ff0ea3]/20 focus:border-[#ff0ea3] transition-all resize-none px-4 py-3 rounded-none"
+                    className="min-h-[150px] border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all resize-none px-4 py-3 rounded-none"
                     required
                   />
                 </div>
@@ -339,7 +357,7 @@ const Contact = () => {
                       name="newsletter"
                       checked={formData.newsletter}
                       onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                      className="w-4 h-4 rounded border-[#B6FF00] text-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
                     />
                     <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
                       I agree to sign up for the newsletter
@@ -352,19 +370,18 @@ const Contact = () => {
                       name="terms"
                       checked={formData.terms}
                       onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer"
+                      className="w-4 h-4 rounded border-[#B6FF00] text-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
                       required
                     />
                     <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
                       I agree to the{" "}
-                      <a href="/privacy-policy" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                      <a href="/privacy-policy" target="_blank" className="font-bold text-[#B6FF00] hover:underline">
                         Privacy policy
                       </a>{" "}
                       and{" "}
-                      <a href="/terms-and-conditions" target="_blank" className="font-bold hover:underline" style={{ background: 'linear-gradient(135deg, #f01eff 0%, #f755d7 50%, #ec4899 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                        Terms and conditions
+                      <a href="/terms-and-conditions" target="_blank" className="font-bold text-[#B6FF00] hover:underline">
+                        Terms and conditions.*
                       </a>
-                      .*
                     </label>
                   </div>
                 </div>
@@ -374,12 +391,12 @@ const Contact = () => {
                   <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-12 py-7 text-sm font-bold text-white shadow-lg hover:shadow-[#ff0ea3]/30 transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-none"
-                  style={{ background: '#ff0ea3' }}
+                  className="w-full sm:w-auto px-12 py-7 text-sm font-bold text-zinc-950 shadow-lg hover:shadow-[#B6FF00]/30 transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-none"
+                  style={{ background: '#B6FF00' }}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-none h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="animate-spin rounded-none h-4 w-4 border-b-2 border-zinc-950 mr-2"></div>
                       Submitting...
                     </>
                   ) : (

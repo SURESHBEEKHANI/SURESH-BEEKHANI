@@ -32,13 +32,13 @@ export function CookieBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 bg-[#0a0435]/95 backdrop-blur-md border-t border-primary/20 shadow-2xl transform transition-transform duration-500 ease-in-out">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 bg-zinc-950/95 backdrop-blur-md border-t border-primary/20 shadow-2xl transform transition-transform duration-500 ease-in-out">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
         <div className="text-sm sm:text-base text-gray-300 flex-1">
           <p>
             We use cookies to improve your experience, analyze site traffic, and personalize content. 
             You can choose to accept all cookies, reject non-essential ones, or manage your preferences. 
-            Read our <Link to="/cookie-policy" className="text-primary hover:underline font-medium">Cookie Policy</Link> for more details.
+            Read our <Link to="/cookie-policy" className="text-primary hover:underline font-medium">Cookie Policy</Link> and <Link to="/privacy-policy" className="text-primary hover:underline font-medium">Privacy Policy</Link> for more details.
           </p>
         </div>
         

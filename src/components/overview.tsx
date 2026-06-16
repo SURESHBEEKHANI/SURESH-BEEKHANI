@@ -46,7 +46,6 @@ const Overview = () => {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(5,7,41,0.045) 1px, transparent 0)',
           backgroundSize: '28px 28px',
         }}
       />

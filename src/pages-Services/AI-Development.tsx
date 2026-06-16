@@ -212,7 +212,6 @@ const AIDevelopment: React.FC = () => {
 			{/* ─── Strategic Benefits Infographic Section ─── */}
 			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
 				{/* Refined technical dot grid — lighter, more breathable */}
-				<div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px] opacity-30" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>

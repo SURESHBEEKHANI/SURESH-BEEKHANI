@@ -18,37 +18,37 @@ const values = [
     icon: HeartHandshake,
     title: 'Client Value',
     desc: 'We exceed expectations, delivering tangible results that drive business success.',
-    color: '#ff0ea3',
+    color: '#B6FF00',
   },
   {
     icon: Users,
     title: 'People Driven',
     desc: 'We prioritize the well-being and growth of our employees, customers, and communities.',
-    color: '#6366f1',
+    color: '#B6FF00',
   },
   {
     icon: Shield,
     title: 'Integrity',
     desc: 'Honesty, transparency, and ethical behavior form the foundation of our trust.',
-    color: '#22d3ee',
+    color: '#B6FF00',
   },
   {
     icon: CheckCircle2,
     title: 'Accountability',
     desc: 'We take responsibility for our actions and outcomes, ensuring high performance.',
-    color: '#f59e0b',
+    color: '#B6FF00',
   },
   {
     icon: Lightbulb,
     title: 'Innovation Led',
     desc: 'We embrace technological breakthroughs, constantly pushing the boundaries of what’s possible.',
-    color: '#10b981',
+    color: '#B6FF00',
   },
   {
     icon: Globe2,
     title: 'Collaboration',
     desc: 'By combining diverse skills and perspectives, we drive innovation and achieve shared goals.',
-    color: '#8b5cf6',
+    color: '#B6FF00',
   },
 ];
 
@@ -94,15 +94,11 @@ const AboutPage = () => {
       <Navbar />
 
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#04021a]">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-zinc-950">
         {/* Background glows */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#ff0ea3]/20 rounded-full blur-[140px]" />
-          <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[#6366f1]/20 rounded-full blur-[120px]" />
-          {/* Grid overlay */}
-          <div
-            className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.06]"
-          />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-12 text-left">
@@ -114,10 +110,7 @@ const AboutPage = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight drop-shadow-lg text-white mb-6"
           >
-            About{' '}
-            <span className="bg-gradient-to-r from-[#ff0ea3] via-[#ff6ec7] to-[#ff0ea3] bg-clip-text text-transparent bg-[length:200%] animate-[gradient-x_3s_linear_infinite]">
-              Velnix Solutions
-            </span>
+            About Velnix Solutions
           </motion.h1>
 
           <motion.p
@@ -140,7 +133,6 @@ const AboutPage = () => {
       {/* ── 3. OUR STORY ─────────────────────────────────────────────────────── */}
       <section className="pt-12 sm:pt-16 pb-16 sm:pb-24 bg-white relative overflow-hidden">
         {/* Technical Grid Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40 z-0" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -152,13 +144,7 @@ const AboutPage = () => {
 
 
             <div className="flex items-start gap-4 mb-3">
-              <div
-                className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-                style={{
-                  background: '#ff0ea3',
-                  transform: 'skewX(-15deg)'
-                }}
-              ></div>
+
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
                 Our Vision & Mission
               </h2>
@@ -166,13 +152,13 @@ const AboutPage = () => {
 
             <div className="space-y-6 text-xs sm:text-sm md:text-base text-gray-600 max-w-4xl font-medium leading-relaxed">
               <div>
-                <p className="font-bold text-[#ff0ea3] mb-2 text-sm sm:text-base">Mission</p>
+                <p className="font-bold text-[#050729] mb-2 text-sm sm:text-base">Mission</p>
                 <p>
                   To deliver intelligent AI-powered software that simplifies processes and improves business and healthcare outcomes.
                 </p>
               </div>
               <div>
-                <p className="font-bold text-[#ff0ea3] mb-2 text-sm sm:text-base">Vision</p>
+                <p className="font-bold text-[#050729] mb-2 text-sm sm:text-base">Vision</p>
                 <p>
                   To become a global AI product company transforming industries through automation, intelligence, and innovation. We turn complex problems into intelligent solutions.
                 </p>
@@ -186,7 +172,6 @@ const AboutPage = () => {
       {/* ── 4. CORE VALUES ───────────────────────────────────────────────────── */}
       <section className="pt-16 sm:pt-24 pb-8 sm:pb-10 bg-white relative overflow-hidden">
         {/* Technical Grid Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40 z-0" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -195,15 +180,9 @@ const AboutPage = () => {
             className="text-left mb-10 sm:mb-16 space-y-3 sm:space-y-4"
           >
             <div className="flex items-start gap-4 mb-3">
-              <div
-                className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-                style={{
-                  background: '#ff0ea3',
-                  transform: 'skewX(-15deg)'
-                }}
-              ></div>
+
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-                What Shapes Our  <span className="text-[#ff0ea3]">Brand</span>
+                What Shapes Our Brand
               </h2>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-500 max-w-3xl font-medium leading-relaxed">
@@ -223,10 +202,10 @@ const AboutPage = () => {
                 className="group p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: `${color}18` }}
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 text-zinc-950"
+                  style={{ background: color }}
                 >
-                  <Icon className="w-6 h-6" style={{ color }} />
+                  <Icon className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-sm sm:text-base text-slate-800 mb-2 tracking-tight">{title}</h3>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">{desc}</p>
@@ -246,7 +225,6 @@ const AboutPage = () => {
       {/* ── 5. WHY CHOOSE US ─────────────────────────────────────────────────── */}
       <section className="py-8 sm:py-10 bg-white relative overflow-hidden">
         {/* Technical Grid Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40 z-0" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -255,15 +233,9 @@ const AboutPage = () => {
             className="text-left mb-10 sm:mb-16 space-y-3 sm:space-y-4"
           >
             <div className="flex items-start gap-4 mb-3">
-              <div
-                className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
-                style={{
-                  background: '#ff0ea3',
-                  transform: 'skewX(-15deg)'
-                }}
-              ></div>
+
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-[1.2]">
-                The Velnix <span className="text-[#ff0ea3]">Advantage</span>
+                The Velnix Advantage
               </h2>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-500 max-w-3xl font-medium leading-relaxed">
@@ -282,7 +254,7 @@ const AboutPage = () => {
                 whileHover={{ y: -6 }}
                 className="group p-7 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#ff0ea3]/10 flex items-center justify-center mb-5 group-hover:bg-[#ff0ea3] group-hover:text-white transition-colors text-[#ff0ea3]">
+                <div className="w-12 h-12 rounded-xl bg-[#B6FF00] flex items-center justify-center mb-5 transition-colors text-zinc-950">
                   <Icon className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-sm sm:text-base text-slate-800 mb-2 tracking-tight">{title}</h3>

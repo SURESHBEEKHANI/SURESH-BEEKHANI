@@ -36,7 +36,7 @@
     /* Border & Ring */
     --border: 247 40% 20%;
     --input: 247 40% 20%;
-    --ring: 270 91% 65%;
+    --ring: 77 100% 50%;
 
     /* Brand Gradients */
     --gradient-primary: linear-gradient(135deg, #6D28D9 0%, #a855f7 100%);
@@ -78,7 +78,7 @@
     /* Border & Ring */
     --border: 247 40% 20%;
     --input: 247 40% 20%;
-    --ring: 270 91% 65%;
+    --ring: 77 100% 50%;
 
     /* Dark Mode Gradients */
     --gradient-primary: linear-gradient(135deg, #6D28D9 0%, #a855f7 100%);
@@ -175,7 +175,7 @@
 
   /* Focus styles */
   *:focus-visible {
-    outline: 2px solid hsl(var(--primary));
+    outline: 2px solid #B6FF00;
     outline-offset: 2px;
     border-radius: var(--radius);
   }
