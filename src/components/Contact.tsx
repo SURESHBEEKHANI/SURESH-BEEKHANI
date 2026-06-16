@@ -1,5 +1,5 @@
 // src/components/Contact.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -27,6 +27,107 @@ const HeroSection = () => (
     </div>
   </section>
 );
+
+const HELP_OPTIONS = [
+  { value: "ai-development", label: "AI Development" },
+  { value: "agentic-ai", label: "Agentic AI" },
+  { value: "ai-automation", label: "AI Automation" },
+  { value: "chatbot-development", label: "Chatbot Development" },
+  { value: "chatgpt-integration", label: "ChatGPT Integration" },
+  { value: "machine-deep-learning", label: "Machine & Deep Learning" },
+  { value: "computer-vision", label: "Computer Vision" },
+  { value: "predictive-modeling", label: "Predictive Modeling" },
+  { value: "nlp", label: "Natural Language Processing" },
+  { value: "big-data-analytics", label: "Big Data Analytics" },
+  { value: "custom-software", label: "Custom Software Development" },
+  { value: "web-development", label: "Web Development" },
+  { value: "app-development", label: "App Development" },
+  { value: "devops", label: "DevOps" },
+  { value: "feedback", label: "Feedback" },
+  { value: "other", label: "Other" }
+];
+
+const INDUSTRY_OPTIONS = [
+  { value: "fintech", label: "FinTech" },
+  { value: "healthtech", label: "HealthTech" },
+  { value: "retailtech", label: "RetailTech" },
+  { value: "edtech", label: "EdTech" },
+  { value: "fittech", label: "FitTech" },
+  { value: "legaltech", label: "LegalTech" },
+  { value: "wealthtech", label: "WealthTech" },
+  { value: "it-software", label: "IT & Software" },
+  { value: "other", label: "Other" }
+];
+
+const CustomSelect = ({ 
+  options, 
+  value, 
+  onChange, 
+  placeholder,
+  name
+}: { 
+  options: {value: string, label: string}[], 
+  value: string, 
+  onChange: (e: any) => void, 
+  placeholder: string,
+  name: string
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selectedOption = options.find(opt => opt.value === value);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <div
+        className={`w-full h-12 px-4 rounded-none border ${isOpen ? 'border-[#B6FF00] ring-1 ring-[#B6FF00]' : 'border-gray-200'} bg-white text-gray-900 flex items-center justify-between cursor-pointer transition-all hover:border-[#B6FF00]`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className={value ? 'text-gray-900' : 'text-gray-500'}>
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <div className="pointer-events-none">
+          <svg className={`w-5 h-5 text-[#B6FF00] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 shadow-lg max-h-60 overflow-auto">
+          {options.map((option) => (
+            <div
+              key={option.value}
+              className={`px-4 py-3 cursor-pointer transition-colors ${
+                value === option.value 
+                  ? 'bg-[#B6FF00] text-black font-medium' 
+                  : 'text-gray-700 hover:bg-[#B6FF00] hover:text-black'
+              }`}
+              onClick={() => {
+                onChange({
+                  target: { name, value: option.value, type: 'select-one' }
+                });
+                setIsOpen(false);
+              }}
+            >
+              {option.label}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -183,70 +284,25 @@ const Contact = () => {
                   {/* How can we help you */}
                   <div className="space-y-2">
                     <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
-                    <div className="relative">
-                      <select
-                        id="helpType"
-                        name="helpType"
-                        value={formData.helpType}
-                        onChange={handleInputChange}
-                        className="w-full h-12 px-4 pr-10 rounded-none border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all cursor-pointer appearance-none"
-                        required
-                      >
-                        <option value="" disabled>Please Select One</option>
-                        <option value="ai-development">AI Development</option>
-                        <option value="agentic-ai">Agentic AI</option>
-                        <option value="ai-automation">AI Automation</option>
-                        <option value="chatbot-development">Chatbot Development</option>
-                        <option value="chatgpt-integration">ChatGPT Integration</option>
-                        <option value="machine-deep-learning">Machine & Deep Learning</option>
-                        <option value="computer-vision">Computer Vision</option>
-                        <option value="predictive-modeling">Predictive Modeling</option>
-                        <option value="nlp">Natural Language Processing</option>
-                        <option value="big-data-analytics">Big Data Analytics</option>
-                        <option value="custom-software">Custom Software Development</option>
-                        <option value="web-development">Web Development</option>
-                        <option value="app-development">App Development</option>
-                        <option value="devops">DevOps</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
+                    <CustomSelect
+                      name="helpType"
+                      value={formData.helpType}
+                      onChange={handleInputChange}
+                      placeholder="Please Select One"
+                      options={HELP_OPTIONS}
+                    />
                   </div>
 
                   {/* Select your Industry */}
                   <div className="space-y-2">
                     <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
-                    <div className="relative">
-                      <select
-                        id="industry"
-                        name="industry"
-                        value={formData.industry}
-                        onChange={handleInputChange}
-                        className="w-full h-12 px-4 pr-10 rounded-none border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all cursor-pointer appearance-none"
-                        required
-                      >
-                        <option value="" disabled>Please Select One</option>
-                        <option value="fintech">FinTech</option>
-                        <option value="healthtech">HealthTech</option>
-                        <option value="retailtech">RetailTech</option>
-                        <option value="edtech">EdTech</option>
-                        <option value="fittech">FitTech</option>
-                        <option value="legaltech">LegalTech</option>
-                        <option value="wealthtech">WealthTech</option>
-                        <option value="it-software">IT & Software</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
+                    <CustomSelect
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      placeholder="Please Select One"
+                      options={INDUSTRY_OPTIONS}
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -257,7 +313,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="First Name"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -271,7 +327,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Last Name"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -286,7 +342,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -301,7 +357,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Phone"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -315,7 +371,7 @@ const Contact = () => {
                       value={formData.country}
                       onChange={handleInputChange}
                       placeholder="Country"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     />
                   </div>
@@ -329,7 +385,7 @@ const Contact = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Company Name"
-                      className="h-12 border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all rounded-none"
+                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
                       required
                     /></div>
                 </div>
@@ -343,7 +399,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="How can we help you?"
-                    className="min-h-[150px] border-2 border-[#B6FF00] bg-white text-gray-900 shadow-none !outline-none focus:ring-0 focus:border-[#B6FF00] transition-all resize-none px-4 py-3 rounded-none"
+                    className="min-h-[150px] border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all resize-none px-4 py-3 rounded-none"
                     required
                   />
                 </div>
@@ -357,7 +413,7 @@ const Contact = () => {
                       name="newsletter"
                       checked={formData.newsletter}
                       onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-[#B6FF00] text-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
+                      className="w-4 h-4 rounded border-gray-300 text-[#B6FF00] accent-[#B6FF00] checked:bg-[#B6FF00] checked:hover:bg-[#B6FF00] checked:focus:bg-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
                     />
                     <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
                       I agree to sign up for the newsletter
@@ -370,7 +426,7 @@ const Contact = () => {
                       name="terms"
                       checked={formData.terms}
                       onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-[#B6FF00] text-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
+                      className="w-4 h-4 rounded border-gray-300 text-[#B6FF00] accent-[#B6FF00] checked:bg-[#B6FF00] checked:hover:bg-[#B6FF00] checked:focus:bg-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
                       required
                     />
                     <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">

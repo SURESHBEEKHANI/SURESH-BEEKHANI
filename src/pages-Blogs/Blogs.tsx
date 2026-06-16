@@ -45,6 +45,8 @@ const Blogs: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isTocOpen, setIsTocOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const viewedArticles = useRef<Set<string>>(new Set());
 
@@ -69,6 +71,16 @@ const Blogs: React.FC = () => {
     }, 400);
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const fetchPublishedBlogs = async (search = "") => {
     try {
@@ -714,22 +726,43 @@ const Blogs: React.FC = () => {
           </div>
 
           {/* Category Select Dropdown */}
-          <div className="w-full md:w-[300px] relative">
-            <select
-              value={activeCategory}
-              onChange={(e) => setActiveCategory(e.target.value)}
-              className="w-full px-6 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 hover:border-[#B6FF00] focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/20 focus:outline-0 outline-none transition-all shadow-sm font-medium appearance-none cursor-pointer"
+          <div className="w-full md:w-[300px] relative" ref={dropdownRef}>
+            <div
+              className={`w-full px-6 py-3.5 bg-white border-2 rounded-lg text-gray-800 transition-all shadow-sm font-medium cursor-pointer flex items-center justify-between ${
+                isDropdownOpen 
+                  ? 'border-[#B6FF00] ring-4 ring-[#B6FF00]/20' 
+                  : 'border-[#B6FF00]/30 hover:border-[#B6FF00]'
+              }`}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              <option value="all">All Categories</option>
-              {CATEGORIES.filter(c => c.id !== "all").map(category => (
-                <option key={category.id} value={category.id}>{category.label}</option>
-              ))}
-            </select>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-5 h-5 text-[#B6FF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
-              </svg>
+              <span>{CATEGORIES.find(c => c.id === activeCategory)?.label || "All Categories"}</span>
+              <div className="pointer-events-none">
+                <svg className={`w-5 h-5 text-[#B6FF00] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </div>
+
+            {isDropdownOpen && (
+              <div className="absolute z-50 w-full mt-2 bg-white border border-[#B6FF00]/30 rounded-lg shadow-lg max-h-60 overflow-auto py-2">
+                {CATEGORIES.map((category) => (
+                  <div
+                    key={category.id}
+                    className={`px-6 py-3 cursor-pointer transition-colors ${
+                      activeCategory === category.id 
+                        ? 'bg-[#B6FF00] text-black font-bold' 
+                        : 'text-gray-700 hover:bg-[#B6FF00] hover:text-black font-medium'
+                    }`}
+                    onClick={() => {
+                      setActiveCategory(category.id);
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    {category.label}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
