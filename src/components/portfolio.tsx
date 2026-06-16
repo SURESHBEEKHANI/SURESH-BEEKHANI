@@ -102,8 +102,8 @@ const Portfolio: React.FC = () => {
     <>
       <Navbar />
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-slate-950 overflow-hidden">
+        <div className="absolute inset-0 opacity-30 bg-[url('/image/Portfolio-img/ia.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <p className="heading-3 font-extrabold text-gray-100 max-w-4xl mx-auto leading-relaxed tracking-tight drop-shadow-lg">
@@ -124,7 +124,7 @@ const Portfolio: React.FC = () => {
                   key={project.link}
                   ref={(el) => (cardRefs.current[idx] = el)}
                   data-index={idx}
-                  className={`group bg-white p-0 border border-gray-100 rounded-none transition-all duration-700 ease-out will-change-transform shadow-md hover:shadow-2xl hover:border-[#f01eff]/30 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  className={`group bg-white p-0 border border-gray-100 rounded-none transition-all duration-700 ease-out will-change-transform shadow-md hover:shadow-2xl hover:border-[#B6FF00]/50 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                     }`}
                 >
                   <div className={`flex flex-col items-start text-left bg-white rounded-none h-full p-6 transition-colors duration-300`}>
@@ -138,7 +138,7 @@ const Portfolio: React.FC = () => {
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    <h3 className="mt-5 text-base md:text-lg font-bold text-gray-900 tracking-tight transition-colors duration-300 group-hover:text-indigo-700">
+                    <h3 className="mt-5 text-base md:text-lg font-bold text-gray-900 tracking-tight transition-colors duration-300 group-hover:text-[#8cbd00]">
                       {project.title}
                     </h3>
                     <p className="text-gray-700 mt-2 mb-6 text-xs md:text-sm leading-relaxed transition-colors duration-300 group-hover:text-gray-800">

@@ -187,6 +187,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
     : [];
 
   return (
+    <>
     <nav
       style={{
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
@@ -552,6 +553,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         </AnimatePresence>
       </div>
 
+    </nav>
+
       {/* Search overlay modal */}
       <AnimatePresence>
         {isSearchOpen && (
@@ -559,7 +562,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-[#0a0435]/90 backdrop-blur-md flex justify-center items-start pt-[12vh] px-4"
+            className="fixed inset-0 z-[40] bg-black/80 backdrop-blur-md flex justify-center items-start pt-[15vh] px-4"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -620,7 +623,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 

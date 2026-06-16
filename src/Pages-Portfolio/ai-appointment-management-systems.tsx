@@ -69,8 +69,8 @@ const AIAppointmentManagementSystems: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-slate-950 overflow-hidden">
+        <div className="absolute inset-0 opacity-30 bg-[url('/image/pages_img/ai-contract-analysis-system.jpg')] bg-cover bg-center" />
         <div className="relative z-10 max-w-6xl mx-auto container-padding py-16 sm:py-24">
           <div className="text-center text-white space-y-6">
             <h3 className="heading-3 font-extrabold leading-tight tracking-tight drop-shadow-lg">
@@ -89,7 +89,7 @@ const AIAppointmentManagementSystems: React.FC = () => {
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           {/* Left content */}
           <div>
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
+            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#8cbd00] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
@@ -120,7 +120,7 @@ const AIAppointmentManagementSystems: React.FC = () => {
           </div>
 
           {/* Right form card */}
-          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
+          <div className="bg-slate-950 text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">
@@ -140,7 +140,7 @@ const AIAppointmentManagementSystems: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-#B6FF00"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -204,7 +204,7 @@ const AIAppointmentManagementSystems: React.FC = () => {
                   />
                   <label htmlFor="appointment-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
-                    <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
+                    <a href="/privacy" className="underline underline-offset-2 hover:text-[#8cbd00]">
                       Privacy Policy
                     </a>{" "}
                     and Terms &amp; Conditions.
@@ -246,3 +246,5 @@ const AIAppointmentManagementSystems: React.FC = () => {
 };
 
 export default AIAppointmentManagementSystems;
+
+

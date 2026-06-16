@@ -90,7 +90,7 @@ const AIClinicalDocumentationSystem: React.FC = () => {
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#f01eff] mb-3">
+            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[#8cbd00] mb-3">
               Case Study
             </p>
             <h1 className="heading-2 text-gray-900 mb-6 leading-tight">
@@ -127,7 +127,7 @@ const AIClinicalDocumentationSystem: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-[#0a0435] text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
+          <div className="bg-slate-950 text-white rounded-none shadow-2xl p-8 sm:p-10 relative overflow-hidden">
             <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-fuchsia-500/40 blur-3xl" />
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Download Case Study Now!</h2>
@@ -145,7 +145,7 @@ const AIClinicalDocumentationSystem: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#f01eff]"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-#B6FF00"
                       placeholder="Enter your name"
                       required
                     />
@@ -210,7 +210,7 @@ const AIClinicalDocumentationSystem: React.FC = () => {
                   />
                   <label htmlFor="clinical-doc-consent" className="text-xs text-indigo-100 leading-relaxed">
                     I agree to the{" "}
-                    <a href="/privacy" className="underline underline-offset-2 hover:text-[#f01eff]">
+                    <a href="/privacy" className="underline underline-offset-2 hover:text-[#8cbd00]">
                       Privacy Policy
                     </a>{" "}
                     and Terms & Conditions.
@@ -252,3 +252,5 @@ const AIClinicalDocumentationSystem: React.FC = () => {
 };
 
 export default AIClinicalDocumentationSystem;
+
+
