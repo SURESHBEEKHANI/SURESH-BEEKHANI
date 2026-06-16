@@ -166,8 +166,8 @@ const Footer = () => {
                   { label: "Agentic AI", href: "/agentic-ai" }
                 ].map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-white hover:text-[#B6FF00] hover:pl-2 transition-all flex items-center gap-2 group decoration-transparent">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/40 group-hover:bg-[#B6FF00] transition-colors" />
+                    <a href={link.href} className="text-white hover:text-[#B6FF00] hover:pl-2 transition-all flex items-center gap-3 group decoration-transparent">
+                      <div className="w-2 h-2 rounded-full bg-[#B6FF00] group-hover:scale-125 transition-transform flex-shrink-0" />
                       {link.label}
                     </a>
                   </li>
