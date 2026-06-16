@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import Overview from '@/components/overview';
 import Services from '@/components/Services';
 import Industries from '@/components/Industries';
+import AIOnboardingProcess from '@/components/AIOnboardingProcess';
 import ClientSolutions from '@/components/ClientSolutions';
 import Approach from '@/components/Approach';
 import Testimonials from '@/components/Testimonials';
@@ -54,6 +55,12 @@ const Index = () => {
         <section className="pro-section">
           <div className="section-container">
             <Industries />
+          </div>
+        </section>
+
+        <section className="pro-section">
+          <div className="section-container">
+            <AIOnboardingProcess />
           </div>
         </section>
 
