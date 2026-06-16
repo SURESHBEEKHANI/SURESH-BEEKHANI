@@ -50,9 +50,12 @@ const AIOnboardingProcess: React.FC<AIOnboardingProcessProps> = ({ serviceName, 
 
   return (
     <section className="bg-[#01010c] relative overflow-hidden py-12 sm:py-16">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
+      {/* High-Tech Background Layers */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/15 to-transparent" />
+      {/* Ambient light */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/8 rounded-full blur-[140px]" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/8 rounded-full blur-[160px]" />
       <div className="max-w-7xl mx-auto container-padding relative z-10">
         <div className={`text-center space-y-4 mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">

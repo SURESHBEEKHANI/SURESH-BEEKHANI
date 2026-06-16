@@ -133,12 +133,12 @@ const AIDevelopment: React.FC = () => {
 										<span className="text-slate-900">AI Development</span>
 									</h2>
 								</div>
-								<p className="text-sm md:text-[15px] text-slate-500 max-w-xl font-normal leading-relaxed">
+								<p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
 									Unlock the full potential of artificial intelligence to transform your business operations, enhance customer experiences, and drive innovation across all industries.
 								</p>
 							</div>
 
-							<div className="space-y-4 text-slate-600 text-[15px] leading-relaxed text-left border-l-2 border-slate-100 pl-5">
+							<div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
 								<p>
 									Our AI specialists design and deploy custom machine learning models, intelligent automation systems, and data-driven solutions that seamlessly integrate with your existing infrastructure and workflows.
 								</p>
@@ -163,27 +163,41 @@ const AIDevelopment: React.FC = () => {
 						</div>
 
 						{/* Right: AI Image */}
-						<div className={`relative flex justify-center lg:justify-end order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full overflow-visible`}>
-							<img
-								src="/image/pages_img/Power-AI-Development.png"
-								alt="The Power of AI Development"
-								className="w-[120%] max-w-[120%] h-auto object-contain scale-125 animate-float"
-							/>
+						<div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
+							<div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
+								<img
+									src="/image/pages_img/Power-AI-Development.png"
+									alt="The Power of AI Development"
+									className="w-full h-[350px] md:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+								/>
+								{/* Premium gradient overlay for depth */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
+								
+								{/* Decorative corner accent */}
+								<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* ─── Services Section ─── */}
-			<section className="py-10 sm:py-14 ai-section">
-				<div className="max-w-7xl mx-auto container-padding">
+			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
+				{/* High-Tech Background Layers */}
+				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/15 to-transparent" />
+				{/* Ambient light */}
+				<div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/8 rounded-full blur-[140px]" />
+				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/8 rounded-full blur-[160px]" />
+
+				<div className="max-w-7xl mx-auto container-padding relative z-10">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
 								AI Solutions for <span className="text-white">Industry</span>
 							</h2>
 						</div>
-						<p className="text-xs sm:text-sm md:text-[15px] text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
 							Intelligent AI technologies that drive innovation and efficiency across your business.
 						</p>
 					</div>
@@ -191,16 +205,16 @@ const AIDevelopment: React.FC = () => {
 						{aiServices.map((service, index) => (
 							<div
 								key={service.id}
-								className={`modern-card p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] hover:scale-[1.025] hover:-translate-y-0.5 transition-all duration-300 ${isVisible ? 'scale-in' : 'opacity-0'}`}
+								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.08}s` }}
 							>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
 									{service.icon}
 								</div>
-								<h3 className="font-bold text-xs sm:text-sm text-white mb-1 text-center w-full tracking-wide">
+								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
 									{service.title}
 								</h3>
-								<p className="text-[10px] sm:text-xs font-normal text-slate-400 text-center leading-relaxed">
+								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
 									{service.description}
 								</p>
 							</div>
@@ -220,7 +234,7 @@ const AIDevelopment: React.FC = () => {
 								AI Development <span className="text-slate-900">Benefits</span>
 							</h2>
 						</div>
-						<p className="text-xs sm:text-sm md:text-[15px] text-slate-500 max-w-2xl mx-auto font-normal leading-relaxed">
+						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
 							Deliver better business outcomes and operational excellence through AI innovation.
 						</p>
 					</div>
@@ -263,9 +277,9 @@ const AIDevelopment: React.FC = () => {
 								<div key={idx} className="flex flex-col items-center">
 									{/* Label Above (Desktop) */}
 									<div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="text-center max-w-[200px]">
-											<h3 className="font-bold text-slate-900 text-[15px] mb-1.5 tracking-tight">{item.title}</h3>
-											<p className="text-[11px] text-slate-500 font-normal leading-relaxed">{item.desc}</p>
+										<div className="text-center max-w-[220px]">
+											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
+											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
 										</div>
 										<div className="w-[1px] h-10 bg-slate-200 mt-4" />
 										<div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
@@ -292,9 +306,9 @@ const AIDevelopment: React.FC = () => {
 									<div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
 										<div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
 										<div className="w-[1px] h-10 bg-slate-200 mb-4" />
-										<div className="text-center max-w-[200px]">
-											<h3 className="font-bold text-slate-900 text-[15px] mb-1.5 tracking-tight">{item.title}</h3>
-											<p className="text-[11px] text-slate-500 font-normal leading-relaxed">{item.desc}</p>
+										<div className="text-center max-w-[220px]">
+											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
+											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
 										</div>
 									</div>
 
@@ -330,7 +344,7 @@ const AIDevelopment: React.FC = () => {
 								AI Implementation <span className="text-white">Process</span>
 							</h2>
 						</div>
-						<p className="text-xs sm:text-sm md:text-[15px] text-white max-w-2xl mx-auto font-normal leading-relaxed">
+						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
 							Proven methodology for deploying secure, scalable, and intelligent AI solutions.
 						</p>
 					</div>
@@ -362,8 +376,8 @@ const AIDevelopment: React.FC = () => {
 										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
 									</div>
 
-									<h4 className="text-white font-semibold text-sm sm:text-[15px] mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
-									<p className="text-white text-[10px] sm:text-[11px] leading-relaxed text-center max-w-[200px] font-normal">{step.desc}</p>
+									<h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
+									<p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
 
 									{/* Corner accents */}
 									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -387,7 +401,7 @@ const AIDevelopment: React.FC = () => {
 								Why Choose <span className="text-black">Velnix Solutions?</span>
 							</h2>
 						</div>
-						<p className="text-xs sm:text-sm md:text-[15px] text-black max-w-2xl mx-auto font-normal leading-relaxed">
+						<p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
 							Industry expertise with proven results across multiple sectors and use cases.
 						</p>
 					</div>
@@ -395,16 +409,17 @@ const AIDevelopment: React.FC = () => {
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 						{/* Left: Workspace Image */}
 						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-							<div className="relative group">
-								{/* Refined ambient shadow — not a glowing blob, just a soft photographic shadow */}
-								<div className="absolute -inset-3 bg-gradient-to-br from-slate-200/60 to-slate-100/30 rounded-none blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-								<div className="relative overflow-hidden rounded-none shadow-[0_8px_40px_rgba(0,0,0,0.10)] border border-slate-100/80">
-									<img
-										src="/image/pages_img/WHY-CHOOSE-US.jpg"
-										alt="Why Choose Us"
-										className="w-full h-auto lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-									/>
-								</div>
+							<div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
+								<img
+									src="/image/pages_img/WHY-CHOOSE-US.jpg"
+									alt="Why Choose Us"
+									className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+								/>
+								{/* Premium gradient overlay for depth */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
+								
+								{/* Decorative corner accent */}
+								<div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
 							</div>
 						</div>
 
@@ -441,8 +456,8 @@ const AIDevelopment: React.FC = () => {
 										{item.num}
 									</div>
 									<div className="pt-0.5">
-										<h3 className="font-semibold text-black text-sm sm:text-[15px] mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
-										<p className="text-[12px] sm:text-sm text-black leading-relaxed font-normal">{item.desc}</p>
+										<h3 className="font-bold text-[#0a0435] text-base sm:text-lg mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
+										<p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{item.desc}</p>
 									</div>
 								</div>
 							))}
@@ -468,7 +483,7 @@ const AIDevelopment: React.FC = () => {
 								Frequently Asked <span className="text-black">Questions</span>
 							</h2>
 						</div>
-						<p className="text-xs sm:text-sm md:text-[15px] text-slate-500 max-w-2xl mx-auto font-normal leading-relaxed">
+						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
 							Common questions about AI development and our services.
 						</p>
 					</div>
@@ -476,27 +491,23 @@ const AIDevelopment: React.FC = () => {
 						{faqData.map((faq, index) => (
 							<div
 								key={index}
-								className="border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-black/25 hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] group"
+								className={`border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_4px_20px_rgba(182,255,0,0.2)] group ${openIndex === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
 								style={openIndex === index ? {
-									borderColor: 'rgba(0, 0, 0, 0.35)',
-									boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)',
+									boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
 								} : {}}
 							>
 								<button
 									onClick={() => toggleFAQ(index)}
-									className="w-full h-auto p-4 sm:p-5 text-left transition-all duration-300"
-									style={openIndex === index ? {
-										background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%)'
-									} : {}}
+									className={`w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 ${openIndex === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
 								>
 									<div className="flex items-center justify-between w-full">
-										<h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-black ${openIndex === index ? 'text-black' : 'text-slate-900'}`}>
+										<h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-slate-900'}`}>
 											{faq.question}
 										</h3>
 										{openIndex === index ? (
-											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-black" />
+											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
 										) : (
-											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-black" />
+											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
 										)}
 									</div>
 								</button>
