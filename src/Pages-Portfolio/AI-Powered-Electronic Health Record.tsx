@@ -112,7 +112,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">
                 Download  Case Study Now!
               </h2>
-              <p className="text-sm text-indigo-100 mb-6">
+              <p className="text-sm text-white/80 mb-6">
                 Fill in your details to access the in-depth implementation story, architecture overview, and outcome
                 metrics.
               </p>
@@ -120,7 +120,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Name</label>
+                    <label className="block text-xs font-medium text-white/80 mb-1">Name</label>
                     <input
                       type="text"
                       name="name"
@@ -131,13 +131,13 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Email</label>
+                    <label className="block text-xs font-medium text-white/80 mb-1">Email</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/80/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="you@example.com"
                       required
                     />
@@ -146,37 +146,37 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Phone Number</label>
+                    <label className="block text-xs font-medium text-white/80 mb-1">Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/80/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-indigo-100 mb-1">Job Title</label>
+                    <label className="block text-xs font-medium text-white/80 mb-1">Job Title</label>
                     <input
                       type="text"
                       name="jobTitle"
                       value={formData.jobTitle}
                       onChange={handleChange}
-                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-none border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/80/60 focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="CTO, Head of IT.."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-indigo-100 mb-1">Company</label>
+                  <label className="block text-xs font-medium text-white/80 mb-1">Company</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-indigo-200/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/80/60 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Hospital / Health system name"
                   />
                 </div>
@@ -188,7 +188,7 @@ const AIPoweredElectronicHealthRecord: React.FC = () => {
                     className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 text-secondary focus:ring-primary"
                     required
                   />
-                  <label htmlFor="ehr-consent" className="text-xs text-indigo-100 leading-relaxed">
+                  <label htmlFor="ehr-consent" className="text-xs text-white/80 leading-relaxed">
                     I agree to the{" "}
                     <a href="/privacy" className="underline underline-offset-2 hover:text-[#8cbd00]">
                       Privacy Policy

@@ -105,12 +105,6 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     keywords: 'predictive modeling, data analytics, forecasting, ML models',
     schemaType: 'Service',
   },
-  '/chat-gpt-integrations': {
-    title: 'ChatGPT Integration Services — GPT API Solutions | Velnix Solutions',
-    description: 'Integrate ChatGPT and GPT APIs into your applications for advanced conversational AI capabilities.',
-    keywords: 'ChatGPT integration, GPT API, OpenAI integration, LLM solutions',
-    schemaType: 'Service',
-  },
   '/natural-language-processing': {
     title: 'NLP Services — Natural Language Processing Solutions | Velnix Solutions',
     description: 'Advanced NLP solutions including text analysis, sentiment analysis, entity recognition, and language understanding.',
@@ -166,52 +160,52 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     schemaType: 'Service',
   },
   // ── Industries ──
-  '/clinics-and-small-hospitals': {
-    title: 'AI for Clinics & Small Hospitals | Velnix Solutions',
-    description: 'AI-powered solutions tailored for clinics and small hospitals to optimize patient care and operations.',
-    keywords: 'AI for clinics, hospital AI, healthcare AI, clinic management',
+  '/healthcare': {
+    title: 'AI for Healthcare | Velnix Solutions',
+    description: 'Advanced technology for healthcare excellence — AI systems that improve care delivery and operations.',
+    keywords: 'healthcare AI, hospital AI, clinical workflow, healthcare software',
     schemaType: 'Service',
   },
-  '/telemedicine': {
-    title: 'AI for Telemedicine — Remote Healthcare Solutions | Velnix Solutions',
-    description: 'Enhance telemedicine platforms with AI-driven diagnostics, virtual triage, and remote monitoring.',
-    keywords: 'telemedicine AI, remote healthcare, virtual care, telehealth',
+  '/fintech': {
+    title: 'AI for Fintech | Velnix Solutions',
+    description: 'Financial technology solutions for modern markets — fraud, risk, onboarding, and operations AI.',
+    keywords: 'fintech AI, financial technology, fraud detection, risk scoring',
     schemaType: 'Service',
   },
-  '/drug-discovery': {
-    title: 'AI for Drug Discovery — Pharmaceutical AI | Velnix Solutions',
-    description: 'Accelerate drug discovery with AI-powered molecular analysis, target identification, and clinical trial optimization.',
-    keywords: 'AI drug discovery, pharmaceutical AI, molecular analysis',
+  '/education': {
+    title: 'AI for Education | Velnix Solutions',
+    description: 'We promote education through innovative technology for learning, teaching, and student operations.',
+    keywords: 'education AI, EdTech, personalized learning, student support',
     schemaType: 'Service',
   },
-  '/healthcare-data-analytics': {
-    title: 'Healthcare Data Analytics — Health Informatics | Velnix Solutions',
-    description: 'Advanced healthcare data analytics for population health, clinical decision support, and operational efficiency.',
-    keywords: 'healthcare analytics, health informatics, clinical data, population health',
+  '/e-commerce': {
+    title: 'AI for E-Commerce | Velnix Solutions',
+    description: 'We enhance online commerce with tailored solutions for conversion, search, and operations.',
+    keywords: 'ecommerce AI, product recommendations, commerce search, retail AI',
     schemaType: 'Service',
   },
-  '/hospital-operations-management': {
-    title: 'AI for Hospital Operations — Smart Hospital Solutions | Velnix Solutions',
-    description: 'Optimize hospital operations with AI-driven scheduling, resource management, and workflow automation.',
-    keywords: 'hospital operations AI, smart hospital, healthcare operations',
+  '/food-and-groceries': {
+    title: 'AI for Food & Groceries | Velnix Solutions',
+    description: 'Tech solutions revolutionizing food and grocery — demand, inventory, waste, and store operations.',
+    keywords: 'grocery AI, foodtech, demand forecasting, inventory optimization',
     schemaType: 'Service',
   },
-  '/medical-imaging-radiology': {
-    title: 'AI for Medical Imaging & Radiology | Velnix Solutions',
-    description: 'AI-powered medical imaging solutions for radiology, pathology, and diagnostic assistance.',
-    keywords: 'medical imaging AI, radiology AI, diagnostic AI, pathology',
+  '/travel-and-tourism': {
+    title: 'AI for Travel & Tourism | Velnix Solutions',
+    description: 'Digital solutions for travel and hospitality — bookings, guest support, and property operations.',
+    keywords: 'travel AI, hospitality AI, hotel operations, booking assistant',
     schemaType: 'Service',
   },
-  '/electronic-health-records': {
-    title: 'AI for Electronic Health Records (EHR/EMR) | Velnix Solutions',
-    description: 'Intelligent EHR/EMR solutions with AI-assisted documentation, coding, and clinical decision support.',
-    keywords: 'EHR AI, EMR solutions, electronic health records, clinical documentation',
+  '/insurance': {
+    title: 'AI for Insurance | Velnix Solutions',
+    description: 'Innovative insurance technology solutions for claims, underwriting, and policyholder service.',
+    keywords: 'insurance AI, claims automation, underwriting, insurtech',
     schemaType: 'Service',
   },
-  '/mental-health-tech': {
-    title: 'AI for Mental Health Technology | Velnix Solutions',
-    description: 'AI-powered mental health solutions including therapy chatbots, mood tracking, and behavioral analysis.',
-    keywords: 'mental health AI, therapy chatbot, behavioral analysis, wellness tech',
+  '/on-demand': {
+    title: 'AI for On-Demand Services | Velnix Solutions',
+    description: 'Instant solutions tailored to your needs — dispatch, matching, and marketplace operations.',
+    keywords: 'on-demand AI, dispatch, marketplace operations, gig platform',
     schemaType: 'Service',
   },
 };

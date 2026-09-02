@@ -15,7 +15,7 @@ export const LoadingSpinner = ({ size = 'md', className = '' }: LoadingSpinnerPr
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <motion.div
-        className={`${sizeClasses[size]} border-2 border-ai-purple/30 border-t-ai-cyan rounded-full`}
+        className={`${sizeClasses[size]} border-2 border-primary/30 border-t-ai-cyan rounded-full`}
         animate={{ rotate: 360 }}
         transition={{
           duration: 1,
@@ -36,7 +36,7 @@ export const LoadingOverlay = ({ message = 'Loading...' }: { message?: string })
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="bg-gray-800/90 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center gap-4 border border-ai-purple/20"
+        className="bg-gray-800/90 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center gap-4 border border-primary/20"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.1 }}

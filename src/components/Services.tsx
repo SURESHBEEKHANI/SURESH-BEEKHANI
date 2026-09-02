@@ -1,14 +1,25 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import {
   Sparkles, Zap, Shield, Target, Users, TrendingUp,
-  ChevronDown, Globe, Smartphone, Cloud, Server, Database, Bot, ArrowRight, CheckCircle2
+  Globe, Smartphone, Cloud, Server, Database, Bot, ArrowRight, CheckCircle2
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation, useReducedMotion } from '@/hooks/useAnimations';
 
 /* ─────────────────────────────────────────────────────────────
-   DATA
+   VELNIX COLOR SYSTEM — LOCKED
+───────────────────────────────────────────────────────────── */
+const C = {
+  BLACK: '#050505',
+  LIME: '#B6FF00',
+  WHITE: '#FFFFFF',
+  GRAPHITE: '#111111',
+  DEEP_GREEN: '#7DCC00',
+} as const;
+
+/* ─────────────────────────────────────────────────────────────
+   DATA — 13 SERVICES (SOURCE OF TRUTH — VERBATIM)
 ───────────────────────────────────────────────────────────── */
 const SERVICES = [
   'AI Development',
@@ -209,64 +220,610 @@ const SERVICE_ROUTES: Record<string, string> = {
 };
 
 /* ─────────────────────────────────────────────────────────────
-   BENEFIT CARD
+   SERVICE SVG VISUALIZATIONS
+   Each service gets a unique, purpose-built SVG using only
+   Velnix colors. All decorative → aria-hidden.
 ───────────────────────────────────────────────────────────── */
-const BenefitCard = ({
-  benefit,
-  index,
-}: {
-  benefit: { title: string; description: string };
-  index: number;
-}) => (
-  <motion.div
-    key={benefit.title}
-    initial={{ opacity: 0, y: 14 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.32, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-    className="group flex gap-4 p-4 rounded-xl border border-transparent hover:border-[#B6FF00]/40 transition-all duration-300"
-    style={{
-      background: 'linear-gradient(135deg, rgba(182,255,0,0.04) 0%, rgba(5,7,41,0.02) 100%)',
-    }}
-  >
-    {/* Icon bullet */}
-    <div
-      className="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full flex items-center justify-center"
-      style={{ background: 'rgba(182,255,0,0.15)' }}
-    >
-      <CheckCircle2
-        className="w-3.5 h-3.5"
-        style={{ color: '#7FB800' }}
-      />
-    </div>
+const ServiceVisual: React.FC<{ service: string; featured?: boolean }> = ({ service, featured }) => {
+  const s = featured ? 160 : 64;
+  const stroke = featured ? 1.5 : 1;
+  const nodeR = featured ? 4 : 2.5;
 
-    <div>
-      <p className="text-sm font-semibold text-[#050729] mb-0.5 leading-snug">
-        {benefit.title}
-      </p>
-      <p className="text-[13px] leading-relaxed" style={{ color: '#6B7280' }}>
-        {benefit.description}
-      </p>
-    </div>
-  </motion.div>
-);
+  const commonProps = {
+    width: s,
+    height: s,
+    viewBox: `0 0 ${s} ${s}`,
+    fill: 'none',
+    'aria-hidden': true as const,
+    className: 'flex-shrink-0',
+  };
+
+  switch (service) {
+    /* Neural network — AI Development */
+    case 'AI Development':
+      return (
+        <svg {...commonProps}>
+          {/* Layer 1 nodes */}
+          {[0.2, 0.4, 0.6, 0.8].map((y, i) => (
+            <circle key={`l1-${i}`} cx={s * 0.2} cy={s * y} r={nodeR * 1.2} fill={C.LIME} opacity={0.8} />
+          ))}
+          {/* Layer 2 nodes */}
+          {[0.25, 0.5, 0.75].map((y, i) => (
+            <circle key={`l2-${i}`} cx={s * 0.5} cy={s * y} r={nodeR * 1.4} fill={C.LIME} />
+          ))}
+          {/* Layer 3 nodes */}
+          {[0.35, 0.65].map((y, i) => (
+            <circle key={`l3-${i}`} cx={s * 0.8} cy={s * y} r={nodeR * 1.2} fill={C.DEEP_GREEN} opacity={0.9} />
+          ))}
+          {/* Connections L1→L2 */}
+          {[0.2, 0.4, 0.6, 0.8].map((y1) =>
+            [0.25, 0.5, 0.75].map((y2, j) => (
+              <line key={`c1-${y1}-${j}`} x1={s * 0.2} y1={s * y1} x2={s * 0.5} y2={s * y2} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.2} />
+            ))
+          )}
+          {/* Connections L2→L3 */}
+          {[0.25, 0.5, 0.75].map((y1) =>
+            [0.35, 0.65].map((y2, j) => (
+              <line key={`c2-${y1}-${j}`} x1={s * 0.5} y1={s * y1} x2={s * 0.8} y2={s * y2} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.6} opacity={0.25} />
+            ))
+          )}
+        </svg>
+      );
+
+    /* Chat bubbles — Chatbot Development */
+    case 'Chatbot Development':
+      return (
+        <svg {...commonProps}>
+          <rect x={s * 0.1} y={s * 0.15} width={s * 0.5} height={s * 0.3} rx={s * 0.06} stroke={C.LIME} strokeWidth={stroke} opacity={0.6} />
+          <rect x={s * 0.35} y={s * 0.55} width={s * 0.55} height={s * 0.25} rx={s * 0.06} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.5} />
+          {/* Dots inside bubbles */}
+          {[0.22, 0.32, 0.42].map((x, i) => (
+            <circle key={`d1-${i}`} cx={s * x} cy={s * 0.3} r={nodeR * 0.7} fill={C.LIME} opacity={0.5} />
+          ))}
+          {[0.47, 0.57, 0.67].map((x, i) => (
+            <circle key={`d2-${i}`} cx={s * x} cy={s * 0.675} r={nodeR * 0.7} fill={C.DEEP_GREEN} opacity={0.4} />
+          ))}
+          {/* Connection line */}
+          <line x1={s * 0.45} y1={s * 0.45} x2={s * 0.5} y2={s * 0.55} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.3} strokeDasharray="3 3" />
+        </svg>
+      );
+
+    /* Layered model — Machine & Deep Learning */
+    case 'Machine & Deep Learning':
+      return (
+        <svg {...commonProps}>
+          {[0.2, 0.4, 0.6, 0.8].map((y, i) => (
+            <React.Fragment key={`layer-${i}`}>
+              <rect x={s * 0.15} y={s * y - s * 0.04} width={s * 0.7} height={s * 0.08} rx={s * 0.02} fill={C.LIME} opacity={0.1 + i * 0.08} />
+              <line x1={s * 0.15} y1={s * y} x2={s * 0.85} y2={s * y} stroke={C.LIME} strokeWidth={stroke} opacity={0.3 + i * 0.1} />
+              {[0.25, 0.45, 0.65, 0.75].map((x, j) => (
+                <circle key={`n-${i}-${j}`} cx={s * x} cy={s * y} r={nodeR * 0.8} fill={i === 3 ? C.DEEP_GREEN : C.LIME} opacity={0.5 + i * 0.1} />
+              ))}
+            </React.Fragment>
+          ))}
+        </svg>
+      );
+
+    /* Eye/lens — Computer Vision */
+    case 'Computer Vision':
+      return (
+        <svg {...commonProps}>
+          <ellipse cx={s * 0.5} cy={s * 0.5} rx={s * 0.35} ry={s * 0.22} stroke={C.LIME} strokeWidth={stroke} opacity={0.5} fill="none" />
+          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.12} stroke={C.LIME} strokeWidth={stroke} opacity={0.6} fill="none" />
+          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.04} fill={C.LIME} opacity={0.8} />
+          {/* Scan lines */}
+          {[0.3, 0.5, 0.7].map((y, i) => (
+            <line key={`scan-${i}`} x1={s * 0.15} y1={s * y} x2={s * 0.85} y2={s * y} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.4} opacity={0.2} strokeDasharray="4 4" />
+          ))}
+          {/* Corner brackets */}
+          <path d={`M${s * 0.18},${s * 0.28} L${s * 0.18},${s * 0.22} L${s * 0.24},${s * 0.22}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.4} fill="none" />
+          <path d={`M${s * 0.82},${s * 0.28} L${s * 0.82},${s * 0.22} L${s * 0.76},${s * 0.22}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.4} fill="none" />
+          <path d={`M${s * 0.18},${s * 0.72} L${s * 0.18},${s * 0.78} L${s * 0.24},${s * 0.78}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.4} fill="none" />
+          <path d={`M${s * 0.82},${s * 0.72} L${s * 0.82},${s * 0.78} L${s * 0.76},${s * 0.78}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.4} fill="none" />
+        </svg>
+      );
+
+    /* Trend line — Predictive Modeling */
+    case 'Predictive Modeling':
+      return (
+        <svg {...commonProps}>
+          {/* Grid lines */}
+          {[0.3, 0.5, 0.7].map((y, i) => (
+            <line key={`g-${i}`} x1={s * 0.1} y1={s * y} x2={s * 0.9} y2={s * y} stroke={C.WHITE} strokeWidth={stroke * 0.3} opacity={0.08} />
+          ))}
+          {/* Trend line */}
+          <polyline
+            points={`${s * 0.1},${s * 0.75} ${s * 0.25},${s * 0.6} ${s * 0.4},${s * 0.5} ${s * 0.55},${s * 0.35} ${s * 0.7},${s * 0.3}`}
+            stroke={C.LIME} strokeWidth={stroke * 1.2} fill="none" opacity={0.7} strokeLinejoin="round"
+          />
+          {/* Forecast */}
+          <polyline
+            points={`${s * 0.7},${s * 0.3} ${s * 0.85},${s * 0.2} ${s * 0.95},${s * 0.15}`}
+            stroke={C.DEEP_GREEN} strokeWidth={stroke} fill="none" opacity={0.4} strokeDasharray="4 3"
+          />
+          {/* Data points */}
+          {[[0.1, 0.75], [0.25, 0.6], [0.4, 0.5], [0.55, 0.35], [0.7, 0.3]].map(([x, y], i) => (
+            <circle key={`p-${i}`} cx={s * x} cy={s * y} r={nodeR} fill={C.LIME} opacity={0.8} />
+          ))}
+          {/* Forecast dots */}
+          {[[0.85, 0.2], [0.95, 0.15]].map(([x, y], i) => (
+            <circle key={`fp-${i}`} cx={s * x} cy={s * y} r={nodeR * 0.8} fill={C.DEEP_GREEN} opacity={0.5} />
+          ))}
+        </svg>
+      );
+
+    /* Text doc — NLP */
+    case 'Natural Language Processing':
+      return (
+        <svg {...commonProps}>
+          {/* Document frame */}
+          <rect x={s * 0.15} y={s * 0.1} width={s * 0.7} height={s * 0.8} rx={s * 0.03} stroke={C.WHITE} strokeWidth={stroke * 0.6} opacity={0.15} fill="none" />
+          {/* Text lines */}
+          {[0.22, 0.32, 0.42, 0.52, 0.62, 0.72].map((y, i) => (
+            <rect
+              key={`line-${i}`} x={s * 0.22} y={s * y}
+              width={s * (i % 2 === 0 ? 0.56 : 0.4)} height={s * 0.025}
+              rx={s * 0.01} fill={C.WHITE} opacity={0.12}
+            />
+          ))}
+          {/* Highlight bars */}
+          <rect x={s * 0.22} y={s * 0.30} width={s * 0.3} height={s * 0.06} rx={s * 0.01} fill={C.LIME} opacity={0.2} />
+          <rect x={s * 0.22} y={s * 0.50} width={s * 0.45} height={s * 0.06} rx={s * 0.01} fill={C.DEEP_GREEN} opacity={0.15} />
+        </svg>
+      );
+
+    /* Workflow chain — AI Automation */
+    case 'AI Automation':
+      return (
+        <svg {...commonProps}>
+          {/* Nodes */}
+          {[[0.15, 0.5], [0.4, 0.3], [0.4, 0.7], [0.65, 0.5], [0.88, 0.5]].map(([x, y], i) => (
+            <React.Fragment key={`auto-${i}`}>
+              <circle cx={s * x} cy={s * y} r={nodeR * 1.3} fill={i === 4 ? C.DEEP_GREEN : C.LIME} opacity={0.7} />
+              {i < 4 && (
+                <circle cx={s * x} cy={s * y} r={nodeR * 2.2} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.15} fill="none" />
+              )}
+            </React.Fragment>
+          ))}
+          {/* Connections */}
+          <line x1={s * 0.15} y1={s * 0.5} x2={s * 0.4} y2={s * 0.3} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.3} />
+          <line x1={s * 0.15} y1={s * 0.5} x2={s * 0.4} y2={s * 0.7} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.3} />
+          <line x1={s * 0.4} y1={s * 0.3} x2={s * 0.65} y2={s * 0.5} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.3} />
+          <line x1={s * 0.4} y1={s * 0.7} x2={s * 0.65} y2={s * 0.5} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.3} />
+          {/* Arrow to output */}
+          <line x1={s * 0.65} y1={s * 0.5} x2={s * 0.85} y2={s * 0.5} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.4} />
+          <polygon points={`${s * 0.83},${s * 0.46} ${s * 0.9},${s * 0.5} ${s * 0.83},${s * 0.54}`} fill={C.DEEP_GREEN} opacity={0.4} />
+        </svg>
+      );
+
+    /* Browser frame — Web Development */
+    case 'Web Development':
+      return (
+        <svg {...commonProps}>
+          {/* Browser chrome */}
+          <rect x={s * 0.1} y={s * 0.12} width={s * 0.8} height={s * 0.76} rx={s * 0.04} stroke={C.LIME} strokeWidth={stroke} opacity={0.35} fill="none" />
+          <line x1={s * 0.1} y1={s * 0.24} x2={s * 0.9} y2={s * 0.24} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.25} />
+          {/* Window dots */}
+          {[0.17, 0.22, 0.27].map((x, i) => (
+            <circle key={`dot-${i}`} cx={s * x} cy={s * 0.18} r={nodeR * 0.5} fill={C.LIME} opacity={0.35} />
+          ))}
+          {/* Code blocks */}
+          <rect x={s * 0.16} y={s * 0.3} width={s * 0.35} height={s * 0.18} rx={s * 0.02} fill={C.LIME} opacity={0.08} />
+          <rect x={s * 0.56} y={s * 0.3} width={s * 0.28} height={s * 0.5} rx={s * 0.02} fill={C.LIME} opacity={0.06} />
+          {/* Code lines */}
+          {[0.34, 0.38, 0.42].map((y, i) => (
+            <rect key={`code-${i}`} x={s * 0.2} y={s * y} width={s * (0.2 - i * 0.04)} height={s * 0.015} rx={1} fill={C.LIME} opacity={0.3} />
+          ))}
+        </svg>
+      );
+
+    /* Phone frame — App Development */
+    case 'App Development':
+      return (
+        <svg {...commonProps}>
+          <rect x={s * 0.25} y={s * 0.08} width={s * 0.5} height={s * 0.84} rx={s * 0.06} stroke={C.LIME} strokeWidth={stroke} opacity={0.4} fill="none" />
+          {/* Notch */}
+          <rect x={s * 0.38} y={s * 0.11} width={s * 0.24} height={s * 0.025} rx={s * 0.01} fill={C.LIME} opacity={0.25} />
+          {/* UI elements */}
+          <rect x={s * 0.3} y={s * 0.2} width={s * 0.4} height={s * 0.08} rx={s * 0.02} fill={C.LIME} opacity={0.1} />
+          <rect x={s * 0.3} y={s * 0.32} width={s * 0.18} height={s * 0.18} rx={s * 0.02} fill={C.LIME} opacity={0.12} />
+          <rect x={s * 0.52} y={s * 0.32} width={s * 0.18} height={s * 0.18} rx={s * 0.02} fill={C.DEEP_GREEN} opacity={0.1} />
+          <rect x={s * 0.3} y={s * 0.55} width={s * 0.4} height={s * 0.04} rx={s * 0.01} fill={C.LIME} opacity={0.08} />
+          <rect x={s * 0.3} y={s * 0.62} width={s * 0.28} height={s * 0.04} rx={s * 0.01} fill={C.LIME} opacity={0.06} />
+          {/* Home indicator */}
+          <rect x={s * 0.38} y={s * 0.86} width={s * 0.24} height={s * 0.02} rx={s * 0.01} fill={C.LIME} opacity={0.2} />
+        </svg>
+      );
+
+    /* Pipeline — DevOps Engineering */
+    case 'DevOps Engineering':
+      return (
+        <svg {...commonProps}>
+          {/* Pipeline stages */}
+          {[[0.12, 0.5], [0.35, 0.5], [0.58, 0.5], [0.82, 0.5]].map(([x, y], i) => (
+            <React.Fragment key={`stage-${i}`}>
+              <rect x={s * x - s * 0.07} y={s * y - s * 0.07} width={s * 0.14} height={s * 0.14} rx={s * 0.03} stroke={i === 3 ? C.DEEP_GREEN : C.LIME} strokeWidth={stroke} opacity={0.4 + i * 0.1} fill={i === 3 ? C.DEEP_GREEN : C.LIME} fillOpacity={0.08} />
+            </React.Fragment>
+          ))}
+          {/* Arrows between stages */}
+          {[0.22, 0.45, 0.68].map((x, i) => (
+            <React.Fragment key={`arrow-${i}`}>
+              <line x1={s * x} y1={s * 0.5} x2={s * (x + 0.06)} y2={s * 0.5} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.3} />
+              <polygon points={`${s * (x + 0.05)},${s * 0.47} ${s * (x + 0.08)},${s * 0.5} ${s * (x + 0.05)},${s * 0.53}`} fill={C.LIME} opacity={0.3} />
+            </React.Fragment>
+          ))}
+          {/* Infinity loop hint */}
+          <path d={`M${s * 0.3},${s * 0.25} Q${s * 0.5},${s * 0.12} ${s * 0.7},${s * 0.25}`} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.15} fill="none" />
+          <path d={`M${s * 0.3},${s * 0.75} Q${s * 0.5},${s * 0.88} ${s * 0.7},${s * 0.75}`} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.5} opacity={0.12} fill="none" />
+        </svg>
+      );
+
+    /* Architecture blocks — Custom Software */
+    case 'Custom Software Development':
+      return (
+        <svg {...commonProps}>
+          {/* Stacked blocks */}
+          <rect x={s * 0.12} y={s * 0.6} width={s * 0.76} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.3} fill={C.LIME} fillOpacity={0.04} />
+          <rect x={s * 0.18} y={s * 0.38} width={s * 0.3} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.35} fill={C.LIME} fillOpacity={0.06} />
+          <rect x={s * 0.52} y={s * 0.38} width={s * 0.3} height={s * 0.16} rx={s * 0.03} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.3} fill={C.DEEP_GREEN} fillOpacity={0.05} />
+          <rect x={s * 0.28} y={s * 0.16} width={s * 0.44} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.4} fill={C.LIME} fillOpacity={0.08} />
+          {/* Connectors */}
+          <line x1={s * 0.33} y1={s * 0.32} x2={s * 0.33} y2={s * 0.38} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.25} />
+          <line x1={s * 0.67} y1={s * 0.32} x2={s * 0.67} y2={s * 0.38} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.5} opacity={0.2} />
+          <line x1={s * 0.5} y1={s * 0.54} x2={s * 0.5} y2={s * 0.6} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.2} />
+        </svg>
+      );
+
+    /* Data stream — Big Data Analytics */
+    case 'Big Data Analytics':
+      return (
+        <svg {...commonProps}>
+          {/* Data stream lines */}
+          {[0.2, 0.35, 0.5, 0.65, 0.8].map((y, i) => (
+            <React.Fragment key={`stream-${i}`}>
+              <line x1={s * 0.05} y1={s * y} x2={s * 0.4} y2={s * y} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.15 + i * 0.05} />
+              <circle cx={s * 0.08} cy={s * y} r={nodeR * 0.6} fill={C.LIME} opacity={0.4} />
+            </React.Fragment>
+          ))}
+          {/* Funnel to dashboard */}
+          <path d={`M${s * 0.4},${s * 0.15} L${s * 0.55},${s * 0.4} L${s * 0.55},${s * 0.6} L${s * 0.4},${s * 0.85}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.2} fill="none" />
+          {/* Dashboard panel */}
+          <rect x={s * 0.6} y={s * 0.2} width={s * 0.32} height={s * 0.6} rx={s * 0.03} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.3} fill={C.DEEP_GREEN} fillOpacity={0.05} />
+          {/* Chart bars */}
+          {[0.65, 0.72, 0.79, 0.86].map((x, i) => (
+            <rect key={`bar-${i}`} x={s * x} y={s * (0.55 - i * 0.06)} width={s * 0.04} height={s * (0.2 + i * 0.06)} rx={1} fill={C.LIME} opacity={0.3 + i * 0.1} />
+          ))}
+        </svg>
+      );
+
+    /* Agent brain — Agentic AI */
+    case 'Agentic AI':
+      return (
+        <svg {...commonProps}>
+          {/* Central brain node */}
+          <circle cx={s * 0.5} cy={s * 0.45} r={s * 0.12} stroke={C.LIME} strokeWidth={stroke * 1.2} opacity={0.5} fill={C.LIME} fillOpacity={0.06} />
+          <circle cx={s * 0.5} cy={s * 0.45} r={s * 0.05} fill={C.LIME} opacity={0.7} />
+          {/* Decision branches */}
+          {[[0.2, 0.25], [0.8, 0.25], [0.15, 0.7], [0.5, 0.85], [0.85, 0.7]].map(([x, y], i) => (
+            <React.Fragment key={`agent-${i}`}>
+              <line x1={s * 0.5} y1={s * 0.45} x2={s * x} y2={s * y} stroke={i > 2 ? C.DEEP_GREEN : C.LIME} strokeWidth={stroke * 0.6} opacity={0.2} />
+              <circle cx={s * x} cy={s * y} r={nodeR} fill={i > 2 ? C.DEEP_GREEN : C.LIME} opacity={0.6} />
+            </React.Fragment>
+          ))}
+          {/* Orbit ring */}
+          <circle cx={s * 0.5} cy={s * 0.45} r={s * 0.3} stroke={C.LIME} strokeWidth={stroke * 0.4} opacity={0.1} fill="none" strokeDasharray="6 4" />
+        </svg>
+      );
+
+    default:
+      return (
+        <svg {...commonProps}>
+          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.2} stroke={C.LIME} strokeWidth={stroke} opacity={0.3} fill="none" />
+          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.06} fill={C.LIME} opacity={0.5} />
+        </svg>
+      );
+  }
+};
 
 /* ─────────────────────────────────────────────────────────────
-   MAIN COMPONENT
+   SERVICE CARD COMPONENT
+───────────────────────────────────────────────────────────── */
+const ServiceCard: React.FC<{
+  service: string;
+  index: number;
+  prefersReducedMotion: boolean;
+  isInView: boolean;
+  onNavigate: (service: string) => void;
+}> = ({ service, index, prefersReducedMotion, isInView, onNavigate }) => {
+  const detail = SERVICE_DETAILS[service];
+  const num = String(index + 1).padStart(2, '0');
+
+  return (
+    <motion.article
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.15 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex flex-col rounded-2xl overflow-hidden outline-none focus-within:ring-2 focus-within:ring-[#B6FF00] focus-within:ring-offset-2 focus-within:ring-offset-[#050505]"
+      style={{
+        background: C.GRAPHITE,
+        border: `1px solid rgba(182, 255, 0, 0.06)`,
+        transition: 'border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease',
+      }}
+      onMouseEnter={(e) => {
+        if (!prefersReducedMotion) {
+          (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.25)';
+          (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+          (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(182, 255, 0, 0.06)';
+        }
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.06)';
+        (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+      }}
+    >
+      {/* Lime top accent line */}
+      <div
+        className="h-[2px] w-full opacity-0 group-hover:opacity-100"
+        style={{ background: `linear-gradient(90deg, ${C.LIME}, ${C.DEEP_GREEN})`, transition: 'opacity 300ms ease' }}
+        aria-hidden="true"
+      />
+
+      <div className="flex flex-col flex-1 p-5 sm:p-6">
+        {/* Header — Visual + Number */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="opacity-60 group-hover:opacity-90" style={{ transition: 'opacity 300ms ease' }}>
+            <ServiceVisual service={service} />
+          </div>
+          <span
+            className="text-xl sm:text-2xl font-bold leading-none select-none"
+            style={{ color: C.LIME, opacity: 0.35, transition: 'opacity 200ms ease' }}
+          >
+            {num}
+          </span>
+        </div>
+
+        {/* Tag */}
+        <span
+          className="text-[10px] font-semibold tracking-[0.15em] uppercase mb-2 block"
+          style={{ color: `rgba(255, 255, 255, 0.4)` }}
+        >
+          {detail.tag}
+        </span>
+
+        {/* Service Name (H3) */}
+        <h3
+          className="text-lg sm:text-xl font-bold leading-snug mb-3"
+          style={{ color: C.WHITE }}
+        >
+          {detail.title}
+        </h3>
+
+        {/* Description */}
+        <p
+          className="text-[13px] sm:text-sm leading-relaxed mb-4 line-clamp-3"
+          style={{ color: 'rgba(255, 255, 255, 0.55)' }}
+        >
+          {detail.description}
+        </p>
+
+        {/* Top 2 Benefits */}
+        <div className="flex flex-col gap-1.5 mb-5 flex-1">
+          {detail.benefits.slice(0, 2).map((b) => (
+            <div key={b.title} className="flex items-center gap-2">
+              <CheckCircle2
+                className="w-3.5 h-3.5 flex-shrink-0"
+                style={{ color: C.DEEP_GREEN, opacity: 0.7 }}
+              />
+              <span
+                className="text-xs font-medium"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
+              >
+                {b.title}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <button
+          onClick={() => onNavigate(service)}
+          className="inline-flex items-center gap-2 text-sm font-semibold mt-auto outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] rounded-lg px-1 py-1"
+          style={{ color: C.LIME, transition: 'gap 200ms ease' }}
+          aria-label={`Explore ${detail.title} service`}
+        >
+          Explore Service
+          <ArrowRight
+            className="w-4 h-4 group-hover:translate-x-1"
+            style={{ transition: 'transform 200ms ease' }}
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </motion.article>
+  );
+};
+
+/* ─────────────────────────────────────────────────────────────
+   FEATURED SERVICE CARD (AI DEVELOPMENT)
+───────────────────────────────────────────────────────────── */
+const FeaturedServiceCard: React.FC<{
+  service: string;
+  prefersReducedMotion: boolean;
+  isInView: boolean;
+  onNavigate: (service: string) => void;
+}> = ({ service, prefersReducedMotion, isInView, onNavigate }) => {
+  const detail = SERVICE_DETAILS[service];
+
+  return (
+    <motion.article
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative rounded-2xl overflow-hidden mb-8 sm:mb-10 lg:mb-12 outline-none focus-within:ring-2 focus-within:ring-[#B6FF00] focus-within:ring-offset-2 focus-within:ring-offset-[#050505]"
+      style={{
+        background: C.GRAPHITE,
+        border: `1px solid rgba(182, 255, 0, 0.1)`,
+        transition: 'border-color 300ms ease, box-shadow 300ms ease',
+      }}
+      onMouseEnter={(e) => {
+        if (!prefersReducedMotion) {
+          (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.3)';
+          (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(182, 255, 0, 0.06)';
+        }
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.1)';
+        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+      }}
+    >
+      {/* Top lime accent */}
+      <div
+        className="h-[2px] w-full"
+        style={{ background: `linear-gradient(90deg, ${C.LIME} 0%, ${C.DEEP_GREEN} 60%, transparent 100%)` }}
+        aria-hidden="true"
+      />
+
+      <div className="grid lg:grid-cols-[55%_45%] gap-0">
+        {/* Content Side */}
+        <div className="p-7 sm:p-10 lg:p-12 flex flex-col">
+          {/* Number + Tag */}
+          <div className="flex items-center gap-4 mb-6">
+            <span
+              className="text-4xl sm:text-5xl font-bold leading-none select-none"
+              style={{ color: C.LIME, opacity: 0.5 }}
+            >
+              01
+            </span>
+            <span
+              className="text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full"
+              style={{
+                color: C.LIME,
+                background: 'rgba(182, 255, 0, 0.08)',
+                border: '1px solid rgba(182, 255, 0, 0.15)',
+              }}
+            >
+              {detail.tag}
+            </span>
+          </div>
+
+          {/* Service Name (H3) */}
+          <h3
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight mb-4"
+            style={{ color: C.WHITE }}
+          >
+            {detail.title}
+          </h3>
+
+          {/* Description */}
+          <p
+            className="text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
+            style={{ color: 'rgba(255, 255, 255, 0.6)', lineHeight: 1.75 }}
+          >
+            {detail.description}
+          </p>
+
+          {/* All 4 Benefits */}
+          <div className="grid sm:grid-cols-2 gap-3 mb-8">
+            {detail.benefits.map((b, i) => (
+              <div key={b.title} className="flex items-start gap-2.5">
+                <div
+                  className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                  style={{ background: 'rgba(182, 255, 0, 0.12)' }}
+                >
+                  <CheckCircle2 className="w-3 h-3" style={{ color: C.LIME }} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
+                    {b.title}
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
+                    {b.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <button
+            onClick={() => onNavigate(service)}
+            className="group/btn inline-flex items-center gap-2.5 px-7 py-3 rounded-xl text-sm font-bold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00] self-start"
+            style={{
+              background: C.LIME,
+              color: C.BLACK,
+              boxShadow: '0 2px 12px rgba(182, 255, 0, 0.2), 0 6px 24px rgba(182, 255, 0, 0.1)',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = '#A3E600';
+              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 16px rgba(182, 255, 0, 0.28), 0 8px 32px rgba(182, 255, 0, 0.14)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = C.LIME;
+              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 2px 12px rgba(182, 255, 0, 0.2), 0 6px 24px rgba(182, 255, 0, 0.1)';
+            }}
+            aria-label={`Explore ${detail.title} service`}
+          >
+            Explore Service
+            <ArrowRight
+              className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        {/* Visual Side */}
+        <div
+          className="hidden lg:flex items-center justify-center p-12 relative"
+          style={{ borderLeft: '1px solid rgba(182, 255, 0, 0.06)' }}
+        >
+          {/* Ambient glow */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(182, 255, 0, 0.04) 0%, transparent 70%)',
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Grid pattern */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern id="featured-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="0.6" fill={C.LIME} opacity="0.06" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#featured-grid)" />
+          </svg>
+
+          {/* Main visualization */}
+          <div className="relative z-10 opacity-80 group-hover:opacity-100 group-hover:scale-105" style={{ transition: 'opacity 400ms ease, transform 400ms ease' }}>
+            <ServiceVisual service={service} featured />
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+/* ─────────────────────────────────────────────────────────────
+   MAIN SERVICES COMPONENT
 ───────────────────────────────────────────────────────────── */
 const Services = () => {
-  const [selectedService, setSelectedService] = useState(SERVICES[0]);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.08, triggerOnce: true });
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true });
 
-  const currentService = useMemo(
-    () => SERVICE_DETAILS[selectedService],
-    [selectedService]
-  );
+  const featuredService = SERVICES[0]; // AI Development
+  const supportingServices = useMemo(() => SERVICES.slice(1), []);
 
-  const handleReadMore = () => {
-    const pagePath = SERVICE_ROUTES[selectedService];
+  const handleNavigate = (service: string) => {
+    const pagePath = SERVICE_ROUTES[service];
     if (pagePath) navigate(pagePath);
   };
 
@@ -274,298 +831,139 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 relative overflow-hidden scroll-mt-20"
-      style={{ background: '#F4F6F9' }}
-      aria-label="Our AI Services"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden scroll-mt-20"
+      style={{ background: C.BLACK }}
+      aria-label="Services We Offer"
     >
-      {/* ── Subtle dot grid texture ─────────────────────────── */}
+      {/* ── Background textures ───────────────────────────────── */}
+      {/* Dot grid */}
+      <svg
+        className="pointer-events-none absolute inset-0 w-full h-full"
+        aria-hidden="true"
+      >
+        <defs>
+          <pattern id="services-dots" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.5" fill={C.WHITE} opacity="0.03" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#services-dots)" />
+      </svg>
+
+      {/* Ambient lime glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
         style={{
-          backgroundSize: '30px 30px',
+          background: `radial-gradient(circle, ${C.LIME} 0%, transparent 70%)`,
+          opacity: 0.04,
+          filter: 'blur(80px)',
         }}
       />
 
-      {/* ── Ambient accent blob ─────────────────────────────── */}
+      {/* Secondary glow bottom-left */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.07]"
+        className="pointer-events-none absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, #B6FF00 0%, transparent 70%)',
+          background: `radial-gradient(circle, ${C.DEEP_GREEN} 0%, transparent 70%)`,
+          opacity: 0.03,
           filter: 'blur(60px)',
         }}
       />
 
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
 
-        {/* ── Section Header ─────────────────────────────────── */}
+        {/* ── Section Header ───────────────────────────────────── */}
         <motion.div
-          className="mb-12 sm:mb-16"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+          className="mb-12 sm:mb-16 lg:mb-20"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-5">
+            <div
+              className="h-[1px] w-8"
+              style={{ background: C.LIME }}
+              aria-hidden="true"
+            />
+            <span
+              className="text-xs font-semibold tracking-[0.25em] uppercase"
+              style={{ color: C.LIME }}
+            >
+              Services We Offer
+            </span>
+          </div>
+
+          {/* H2 */}
           <h2
-            className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-[1.14]"
-            style={{ color: '#050729' }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.1] mb-4"
+            style={{ color: C.WHITE }}
           >
-            Services We Offer
+            Technology Built Around{' '}
+            <span style={{ color: C.LIME }}>Your Business.</span>
           </h2>
+
+          {/* Supporting copy */}
           <p
-            className="mt-3 text-base sm:text-[17px] max-w-2xl leading-relaxed"
-            style={{ color: '#6B7280' }}
+            className="text-base sm:text-lg max-w-2xl leading-relaxed"
+            style={{ color: 'rgba(255, 255, 255, 0.5)' }}
           >
-            From core AI to enterprise software — we craft solutions that move the needle.
+            Explore our technology services designed to help businesses build, automate, modernize, and scale with confidence.
           </p>
         </motion.div>
 
-        {/* ── Mobile Service Selector ─────────────────────────── */}
+        {/* ── Featured Service (AI Development) ────────────────── */}
+        <FeaturedServiceCard
+          service={featuredService}
+          prefersReducedMotion={prefersReducedMotion}
+          isInView={isInView}
+          onNavigate={handleNavigate}
+        />
+
+        {/* ── Supporting Services Grid ─────────────────────────── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+          {supportingServices.map((service, i) => (
+            <ServiceCard
+              key={service}
+              service={service}
+              index={i + 1}
+              prefersReducedMotion={prefersReducedMotion}
+              isInView={isInView}
+              onNavigate={handleNavigate}
+            />
+          ))}
+        </div>
+
+        {/* ── Section Footer CTA ───────────────────────────────── */}
         <motion.div
-          className="lg:hidden mb-6 relative"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+          className="mt-12 sm:mt-16 flex justify-center"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.42, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-full px-5 py-4 flex items-center justify-between rounded-xl font-semibold text-sm text-white transition-all duration-200"
+            onClick={() => navigate('/ai-development')}
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
             style={{
-              background: '#050729',
-              boxShadow: '0 4px 16px rgba(5,7,41,0.22)',
+              color: C.LIME,
+              background: 'transparent',
+              border: `1px solid rgba(182, 255, 0, 0.25)`,
             }}
-            aria-expanded={isMobileMenuOpen}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(182, 255, 0, 0.08)';
+              (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(182, 255, 0, 0.5)';
+              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
+              (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(182, 255, 0, 0.25)';
+              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
+            }}
           >
-            <span>{selectedService}</span>
-            <ChevronDown
-              className="h-4 w-4 transition-transform duration-300"
-              style={{ transform: isMobileMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-            />
+            View All Services
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </button>
-
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                className="absolute mt-2 w-full bg-white rounded-xl border border-gray-100 max-h-64 overflow-y-auto z-50"
-                style={{ boxShadow: '0 12px 40px rgba(5,7,41,0.14)' }}
-                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {SERVICES.map((service) => (
-                  <button
-                    key={service}
-                    onClick={() => { setSelectedService(service); setIsMobileMenuOpen(false); }}
-                    className="w-full text-left px-5 py-3.5 border-b border-gray-50 last:border-0 text-sm transition-colors duration-150 flex items-center gap-3"
-                    style={{
-                      color: selectedService === service ? '#050729' : '#6B7280',
-                      fontWeight: selectedService === service ? 700 : 400,
-                      background: selectedService === service ? 'rgba(182,255,0,0.08)' : 'transparent',
-                    }}
-                  >
-                    {selectedService === service && (
-                      <span
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: '#B6FF00' }}
-                      />
-                    )}
-                    {service}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* ── Main Panel ─────────────────────────────────────── */}
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-2xl overflow-hidden"
-          style={{
-            boxShadow: '0 2px 4px rgba(5,7,41,0.04), 0 8px 24px rgba(5,7,41,0.07), 0 32px 64px rgba(5,7,41,0.10)',
-          }}
-        >
-          <div className="grid lg:grid-cols-[300px_1fr] min-h-[620px]">
-
-            {/* ── Sidebar ─────────────────────────────────────── */}
-            <aside
-              className="hidden lg:flex flex-col"
-              style={{ background: '#050729' }}
-              aria-label="Service navigation"
-            >
-              {/* Top accent bar */}
-              <div
-                className="h-[3px] w-full"
-                style={{ background: 'linear-gradient(90deg, #B6FF00 0%, #85CC00 100%)' }}
-              />
-
-              <nav className="flex flex-col flex-1 pt-7 pb-6" aria-label="Services list">
-                {SERVICES.map((service) => {
-                  const isActive = selectedService === service;
-                  const detail = SERVICE_DETAILS[service];
-                  return (
-                    <button
-                      key={service}
-                      onClick={() => setSelectedService(service)}
-                      className="group relative w-full text-left px-7 py-[11px] text-[13px] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00]"
-                      style={{
-                        color: isActive ? '#050729' : '#ffffff',
-                        background: isActive
-                          ? '#B6FF00'
-                          : 'transparent',
-                        fontWeight: isActive ? 700 : 400,
-                      }}
-                      aria-current={isActive ? 'true' : undefined}
-                    >
-                      {/* Hover fill */}
-                      {!isActive && (
-                        <span
-                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                          style={{ background: 'rgba(182,255,0,0.06)' }}
-                          aria-hidden="true"
-                        />
-                      )}
-
-                      <span className="relative z-10 flex items-center gap-2.5">
-                        {/* Dot indicator */}
-                        <span
-                          className="flex-shrink-0 w-1.5 h-1.5 rounded-full transition-all duration-200"
-                          style={{
-                            background: isActive ? '#050729' : 'rgba(182,255,0,0.3)',
-                            transform: isActive ? 'scale(1.2)' : 'scale(1)',
-                          }}
-                        />
-                        <span
-                          className="leading-snug transition-colors duration-150"
-                          style={{ color: isActive ? '#050729' : undefined }}
-                        >
-                          {service}
-                        </span>
-                      </span>
-
-                      {/* Active right border */}
-                      {isActive && (
-                        <span
-                          className="absolute right-0 top-1 bottom-1 w-[3px] rounded-l-full"
-                          style={{ background: 'rgba(5,7,41,0.25)' }}
-                          aria-hidden="true"
-                        />
-                      )}
-                    </button>
-                  );
-                })}
-              </nav>
-            </aside>
-
-            {/* ── Content Panel ───────────────────────────────── */}
-            <div
-              className="relative flex flex-col p-7 sm:p-10 lg:p-12"
-              style={{ background: '#ffffff' }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={selectedService}
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col flex-1 h-full"
-                >
-                  {/* ── Service Title Area ───────────────────── */}
-                  <div className="mb-7 pb-7 border-b border-gray-100">
-
-
-                    {/* Icon + Title */}
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                        style={{
-                          background: 'linear-gradient(135deg, #050729 0%, #0D1254 100%)',
-                          color: '#B6FF00',
-                          boxShadow: '0 4px 14px rgba(5,7,41,0.18)',
-                        }}
-                      >
-                        {currentService.icon}
-                      </div>
-
-                      <div>
-                        <h3
-                          className="text-2xl sm:text-[1.85rem] font-bold tracking-tight leading-tight"
-                          style={{ color: '#050729' }}
-                        >
-                          {currentService.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p
-                      className="mt-4 text-[15px] sm:text-base leading-relaxed"
-                      style={{ color: '#4B5563', lineHeight: 1.78 }}
-                    >
-                      {currentService.description}
-                    </p>
-                  </div>
-
-                  {/* ── Benefits ────────────────────────────── */}
-                  <div className="flex-1">
-                    <h4
-                      className="text-[11px] font-bold tracking-[0.16em] uppercase mb-4"
-                      style={{ color: '#9CA3AF' }}
-                    >
-                      Business Benefits
-                    </h4>
-
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {currentService.benefits.map((benefit, i) => (
-                        <BenefitCard key={benefit.title} benefit={benefit} index={i} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* ── CTA Row ─────────────────────────────── */}
-                  <div
-                    className="mt-8 pt-6 flex items-center justify-end"
-                    style={{ borderTop: '1px solid rgba(5,7,41,0.06)' }}
-                  >
-                    <button
-                      onClick={handleReadMore}
-                      className="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-250 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
-                      style={{
-                        background: '#B6FF00',
-                        color: '#050729',
-                        boxShadow: '0 2px 8px rgba(182,255,0,0.22), 0 6px 20px rgba(182,255,0,0.12)',
-                        letterSpacing: '0.01em',
-                      }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLButtonElement).style.background = '#A3E600';
-                        (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
-                        (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                          '0 4px 16px rgba(182,255,0,0.28), 0 8px 28px rgba(182,255,0,0.16)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLButtonElement).style.background = '#B6FF00';
-                        (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
-                        (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                          '0 2px 8px rgba(182,255,0,0.22), 0 6px 20px rgba(182,255,0,0.12)';
-                      }}
-                    >
-                      Explore Service
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </div>
-
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-          </div>
         </motion.div>
       </div>
     </section>

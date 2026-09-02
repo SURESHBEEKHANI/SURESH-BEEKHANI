@@ -51,19 +51,18 @@ function usePageTracking() {
 }
 
 // 📦 Lazy-loaded pages - Industries
-const ClinicsSmallHospitals = lazy(() => import("./pages-Industries/ClinicsSmallHospitals"));
-const Telemedicine = lazy(() => import("./pages-Industries/Telemedicine"));
-const DrugDiscovery = lazy(() => import("./pages-Industries/DrugDiscovery"));
-const HealthDataAnalytics = lazy(() => import("./pages-Industries/HealthDataAnalytics"));
-const HospitalOperations = lazy(() => import("./pages-Industries/HospitalOperations"));
-const MedicalImaging = lazy(() => import("./pages-Industries/MedicalImaging"));
-const EHR_EMR = lazy(() => import("./pages-Industries/ElectronicHealthRecords"));
-const MentalHealthTech = lazy(() => import("./pages-Industries/MentalHealthTech"));
+const Healthcare = lazy(() => import("./pages-Industries/Healthcare"));
+const Fintech = lazy(() => import("./pages-Industries/Fintech"));
+const Education = lazy(() => import("./pages-Industries/Education"));
+const Ecommerce = lazy(() => import("./pages-Industries/Ecommerce"));
+const FoodGroceries = lazy(() => import("./pages-Industries/FoodGroceries"));
+const TravelTourism = lazy(() => import("./pages-Industries/TravelTourism"));
+const Insurance = lazy(() => import("./pages-Industries/Insurance"));
+const OnDemand = lazy(() => import("./pages-Industries/OnDemand"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
 const PredictiveModelling = lazy(() => import("./pages-Services/PredictiveModelling"));
-const ChatGPTIntegrations = lazy(() => import("./pages-Services/ChatGPTIntegrations"));
 const NaturalLanguageProcessing = lazy(() => import("./pages-Services/NaturalLanguageProcessing"));
 const MachineLearning = lazy(() => import("./pages-Services/MachineLearning"));
 const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"));
@@ -131,14 +130,14 @@ const AppContent = () => {
           <Route path="/" element={<Index />} />
 
         {/* Industries */}
-        <Route path="/clinics-and-small-hospitals" element={<ClinicsSmallHospitals />} />
-        <Route path="/telemedicine" element={<Telemedicine />} />
-        <Route path="/drug-discovery" element={<DrugDiscovery />} />
-        <Route path="/healthcare-data-analytics" element={<HealthDataAnalytics />} />
-        <Route path="/hospital-operations-management" element={<HospitalOperations />} />
-        <Route path="/medical-imaging-radiology" element={<MedicalImaging />} />
-        <Route path="/electronic-health-records" element={<EHR_EMR />} />
-        <Route path="/mental-health-tech" element={<MentalHealthTech />} />
+        <Route path="/healthcare" element={<Healthcare />} />
+        <Route path="/fintech" element={<Fintech />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/e-commerce" element={<Ecommerce />} />
+        <Route path="/food-and-groceries" element={<FoodGroceries />} />
+        <Route path="/travel-and-tourism" element={<TravelTourism />} />
+        <Route path="/insurance" element={<Insurance />} />
+        <Route path="/on-demand" element={<OnDemand />} />
 
         {/* Blogs */}
         <Route path="/blogs" element={<Blogs />} />
@@ -147,7 +146,6 @@ const AppContent = () => {
         {/* Services */}
         <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
         <Route path="/predictive-modelling" element={<PredictiveModelling />} />
-        <Route path="/chat-gpt-integrations" element={<ChatGPTIntegrations />} />
         <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
         <Route path="/machine-learning" element={<MachineLearning />} />
         <Route path="/computer-vision" element={<ComputerVisionPro />} />

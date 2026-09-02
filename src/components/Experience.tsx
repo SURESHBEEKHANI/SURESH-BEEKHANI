@@ -1,46 +1,75 @@
 import React from 'react';
 
-const ACCENT = '#B6FF00';
+const C = {
+  black:    '#050505',
+  graphite: '#111111',
+  white:    '#FFFFFF',
+  lime:     '#B6FF00',
+  green:    '#7DCC00',
+  la: (o: number) => `rgba(182,255,0,${o})`,
+  wa: (o: number) => `rgba(255,255,255,${o})`,
+};
 
 const stats = [
-  { number: '5+', label: 'Years of Experience' },
-  { number: '23+', label: 'Happy Clients' },
-  { number: '25+', label: 'Projects Completed' },
-  { number: '99%', label: 'Client Satisfaction' },
+  { number: '5+', label: 'Years of Engineering Experience' },
+  { number: '23+', label: 'Enterprise & SMB Clients' },
+  { number: '25+', label: 'Intelligent Systems Deployed' },
+  { number: '99%', label: 'Client Satisfaction Rate' },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-12 sm:py-16 md:py-20 bg-[#f5f6f8] scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pb-8 sm:pb-10 border-b border-[#B6FF00]/60">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#050729] leading-tight mb-3">
-            Why Choose Velnix Solutions
-          </h2>
-          <p className="text-sm sm:text-base text-gray-600 font-medium tracking-wide max-w-4xl leading-[1.7]">
-            This highlights our skills, experience, and quality of work, demonstrating our commitment to excellence.
+    <section id="experience" className="py-16 sm:py-20 scroll-mt-20 relative" style={{ background: C.black }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        
+        {/* Section Header */}
+        <div className="pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6" style={{ borderBottom: `1px solid ${C.la(0.2)}` }}>
+          <div>
+            <span 
+              className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
+              style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
+            >
+              Proven Impact
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Why Businesses Partner With Velnix
+            </h2>
+          </div>
+          <p className="text-sm text-white/60 font-normal max-w-xl leading-relaxed">
+            Our track record reflects deep engineering expertise, rapid execution, and a persistent focus on measurable business outcomes.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
+        {/* Stats Grid */}
+        <div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-px" 
+          style={{ background: C.wa(0.08), border: `1px solid ${C.wa(0.08)}` }}
+        >
+          {stats.map((stat) => (
             <div
               key={stat.label}
-              className={`group flex flex-col items-center justify-center text-center py-10 sm:py-14 px-4 sm:px-6 transition-all duration-500 ease-out hover:bg-white/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.03)]
-                ${index % 2 === 0 ? 'border-r border-[#B6FF00]/40' : ''}
-                ${index < 2 ? 'border-b border-[#B6FF00]/40 lg:border-b-0' : ''}
-                ${index === 1 ? 'lg:border-r border-[#B6FF00]/40' : ''}`}
+              className="group flex flex-col items-center justify-center text-center p-8 sm:p-12 transition-all duration-300"
+              style={{ background: C.graphite }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = C.la(0.04);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = C.graphite;
+              }}
             >
               <div
-                className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold mb-3 tracking-tighter leading-none drop-shadow-sm transform group-hover:scale-[1.03] transition-all duration-500 ease-out"
-                style={{ color: ACCENT }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tighter leading-none transition-transform duration-300 group-hover:scale-105"
+                style={{ color: C.lime }}
               >
                 {stat.number}
               </div>
-              <p className="text-sm sm:text-base text-[#050729]/90 font-semibold tracking-wide">{stat.label}</p>
+              <p className="text-xs sm:text-sm font-semibold tracking-wide text-white/70 uppercase">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Enhanced Icon Component with better accessibility and mobile optimization
 export const PortfolioIcon = ({ 
   className = "w-6 h-6 sm:w-8 sm:h-8 mb-2 sm:mb-1", 
-  color = "text-purple-500",
+  color = "text-primary",
   children,
   ariaLabel = "Feature icon"
 }: {
@@ -73,7 +73,7 @@ export const FeatureCard = ({
         <Icon className="w-full h-full" />
       </div>
     </motion.div>
-    <h3 className="font-bold text-sm sm:text-base lg:text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200 leading-tight">
+    <h3 className="font-bold text-sm sm:text-base lg:text-lg text-gray-900 mb-2 group-hover:text-primary transition-colors duration-200 leading-tight">
       {title}
     </h3>
     {description && (
@@ -90,10 +90,10 @@ export const ResultCard = ({
   stat, 
   desc, 
   delay = 0,
-  bgColor = "bg-gradient-to-br from-indigo-50 to-purple-50",
-  textColor = "text-indigo-900",
+  bgColor = "bg-gradient-to-br from-accent to-purple-50",
+  textColor = "text-primary",
   shadowColor = "hover:shadow-indigo-200/50",
-  borderColor = "border-indigo-100"
+  borderColor = "border-primary"
 }: {
   icon: string;
   stat: string;
@@ -176,7 +176,7 @@ export const PortfolioSection = ({
 export const PortfolioHero = ({ 
   title, 
   description, 
-  gradient = "from-indigo-900 via-blue-700 to-purple-200",
+  gradient = "from-accent via-primary to-purple-200",
   className = "",
   backgroundImage = ""
 }: {
@@ -275,7 +275,7 @@ export const InfoSection = ({
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="mt-6 sm:mt-8 text-blue-600 hover:text-blue-800 font-semibold text-base sm:text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2 min-h-[44px] touch-manipulation"
+      className="mt-6 sm:mt-8 text-primary hover:text-primary font-semibold text-base sm:text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:ring-offset-2 rounded-lg transition-all duration-200 px-4 py-2 min-h-[44px] touch-manipulation"
       onClick={() => setShowFullInfo(!showFullInfo)}
       aria-expanded={showFullInfo}
       aria-controls="info-content"
@@ -345,8 +345,8 @@ export const PortfolioImage = ({
 export const CallToAction = ({ 
   title, 
   email = "surreshbeekhani26@gmail.com",
-  gradient = "from-indigo-500 to-indigo-700",
-  hoverGradient = "hover:from-indigo-600 hover:to-indigo-800",
+  gradient = "from-accent to-indigo-700",
+  hoverGradient = "hover:from-accent hover:to-indigo-800",
   className = "",
   subtitle = ""
 }: {
@@ -393,7 +393,7 @@ export const CallToAction = ({
           transition: { duration: 0.2 }
         }}
         whileTap={{ scale: 0.95 }}
-        className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl text-lg sm:text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 min-h-[44px] touch-manipulation"
+        className="inline-block bg-gradient-to-r from-primary to-purple-600 hover:from-primary hover:to-purple-700 text-white font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl text-lg sm:text-xl transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 min-h-[44px] touch-manipulation"
         aria-label="Contact us today"
       >
         Contact Us Today
@@ -443,7 +443,7 @@ export const SectionHeader = ({
     viewport={{ once: true }}
     className={`text-center mb-8 sm:mb-12`}
   >
-    <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-3 sm:mb-4 leading-tight ${className}`}>
+    <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-3 sm:mb-4 leading-tight ${className}`}>
       {title}
     </h2>
     {subtitle && (

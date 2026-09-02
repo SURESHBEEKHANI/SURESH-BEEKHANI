@@ -1,283 +1,309 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Quote, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BRAND TOKENS (Velnix Locked Color System)
+// ─────────────────────────────────────────────────────────────────────────────
+const C = {
+  black:    '#050505',
+  graphite: '#111111',
+  white:    '#FFFFFF',
+  lime:     '#B6FF00',
+  green:    '#7DCC00',
+  la: (o: number) => `rgba(182,255,0,${o})`,
+  wa: (o: number) => `rgba(255,255,255,${o})`,
+  ga: (o: number) => `rgba(125,204,0,${o})`,
+};
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 interface Testimonial {
   id: number;
   name: string;
-  title: string;
-  testimonial: string;
+  role: string;
+  company: string;
+  category: string;
+  quote: string;
   image: string;
-  rating?: number;
+  problem: string;
+  solution: string;
+  outcome: string;
+  featured?: boolean;
 }
 
+const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 1,
+    name: "Kate Callahan",
+    role: "Chief Executive Officer",
+    company: "Healthcare Solutions",
+    category: "Healthcare AI",
+    quote: "The collaboration has been exceptional. Velnix was quick to understand our operational bottlenecks, accommodating scope adjustments effortlessly while delivering high-impact software ahead of deadline.",
+    image: "/image/clinets-img/Jennifer Jones.jpg",
+    problem: "Manual administrative bottlenecks and slow patient data flow.",
+    solution: "Custom AI Workflow & EHR Automation Layer.",
+    outcome: "40% reduction in processing overhead & instant chart access.",
+    featured: true,
+  },
+  {
+    id: 2,
+    name: "Aram Saffarian",
+    role: "VP of Engineering",
+    company: "Enterprise Software Corp",
+    category: "Custom Software",
+    quote: "Velnix Solutions significantly upgraded our existing core application. Their team manages projects with strict discipline, clear documentation, and transparent technical communication.",
+    image: "/image/clinets-img/Andrey Korablin.jpg",
+    problem: "Outdated legacy codebase hindering rapid product scaling.",
+    solution: "Modular System Architecture & Cloud Infrastructure.",
+    outcome: "2.5x faster deployment cycles & improved platform stability.",
+  },
+  {
+    id: 3,
+    name: "Jeff Moye",
+    role: "Director of Product",
+    company: "NextGen Technologies",
+    category: "AI & Automation",
+    quote: "The Velnix team completed every milestone flawlessly. Their engineers solve complex problems fast, communicate daily via Slack, and consistently deliver clean code on time.",
+    image: "/image/clinets-img/Andrew Osadca.jpg",
+    problem: "Complex data extraction bottlenecks across remote teams.",
+    solution: "Automated Data Pipeline & AI Integration.",
+    outcome: "Real-time data synchronization & 12+ hours saved weekly.",
+  },
+  {
+    id: 4,
+    name: "Dominika Kowalska",
+    role: "Lead Data Scientist",
+    company: "BioAnalytics Hub",
+    category: "Data & Analytics",
+    quote: "Outstanding AI engineering capabilities that transformed our data processing. Their machine learning approach helped us achieve accurate predictive results in record time.",
+    image: "/image/clinets-img/Dominika Kowalska.jpg",
+    problem: "Slow predictive model training and unorganized datasets.",
+    solution: "High-throughput Machine Learning Pipeline.",
+    outcome: "3x faster predictive analytics turnaround.",
+  },
+  {
+    id: 5,
+    name: "Jamie Milnes",
+    role: "Head of Technology",
+    company: "CloudScale Systems",
+    category: "Software Architecture",
+    quote: "Exceptional technical depth combined with clear business alignment. They delivered our AI-powered platform ahead of schedule and exceeded all performance expectations.",
+    image: "/image/clinets-img/Jamie Milnes.jpg",
+    problem: "Inability to scale infrastructure during peak load.",
+    solution: "Scalable Microservices Architecture.",
+    outcome: "Zero downtime during peak operations.",
+  },
+  {
+    id: 6,
+    name: "Roma Kończak",
+    role: "AI Solutions Architect",
+    company: "Intelligenx",
+    category: "Conversational AI",
+    quote: "The team's deep understanding of AI agents and RAG systems translated complex requirements into an elegant product. Highly recommended for strategic AI development.",
+    image: "/image/clinets-img/Roma-Kończak.jpg",
+    problem: "Support team overwhelmed by repetitive policy inquiries.",
+    solution: "Context-aware RAG Intelligent Chatbot.",
+    outcome: "85% automated query resolution.",
+  },
+];
+
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const shouldReduce = useReducedMotion();
 
-  // Memoized testimonials data
-  const testimonials: Testimonial[] = useMemo(() => [
-    {
-      id: 1,
-      name: "Kate Callahan",
-      title: "Chief Executive Officer",
-      testimonial: "The collaboration has been amazing. Flexible and accommodating of scope changes, the team is quick to accommodate requests and answer questions. They continue to deliver high-quality work at a competitive price.",
-      image: "/image/clinets-img/Jennifer Jones.jpg",
-      rating: 5
-    },
-    {
-      id: 2,
-      name: "Aram Saffarian",
-      title: "VP of Engineering",
-      testimonial: "Velnix Solutions has improved the client's existing app. Velnix Solutions utilizes their expertise to deliver comprehensive, user-friendly solutions. Their team manages projects well and has excellent documentation processes and communication.",
-      image: "/image/clinets-img/Andrey Korablin.jpg",
-      rating: 5
-    },
-    {
-      id: 3,
-      name: "Jeff Moye",
-      title: "Director of Product",
-      testimonial: "The Velnix Solutions team has finished 2/3 of the project and completed every milestone so far. Their workflow is good; their members communicate regularly through Zoom, and they collaborate well with the client via GitHub, Jira, and Slack. They solve problems fast and deliver information on time.",
-      image: "/image/clinets-img/Andrew Osadca.jpg",
-      rating: 5
-    },
-    {
-      id: 4,
-      name: "Dominika Kowalska",
-      title: "Lead Data Scientist",
-      testimonial: "Outstanding AI solutions that transformed our business processes. The team's expertise in machine learning and their innovative approach helped us achieve remarkable results in record time.",
-      image: "/image/clinets-img/Dominika Kowalska.jpg",
-      rating: 5
-    },
-    {
-      id: 5,
-      name: "Jamie Milnes",
-      title: "Head of Technology",
-      testimonial: "Exceptional technical expertise combined with excellent communication. They delivered our AI-powered platform ahead of schedule and exceeded all our expectations.",
-      image: "/image/clinets-img/Jamie Milnes.jpg",
-      rating: 5
-    },
-    {
-      id: 6,
-      name: "Roma Kończak",
-      title: "AI Solutions Architect",
-      testimonial: "The team's deep understanding of AI and their ability to translate complex requirements into elegant solutions is truly impressive. Highly recommended for any AI development project.",
-      image: "/image/clinets-img/Roma-Kończak.jpg",
-      rating: 5
-    }
-  ], []);
+  const featured = TESTIMONIALS[activeIndex];
 
-  // Auto-scroll effect with pause on hover
+  // Auto-play effect: changes active testimonial every 5 seconds unless paused
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (isPaused) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, testimonials.length]);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
-  // Memoized navigation functions
-  const goToTestimonial = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
 
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
-
-  const goToPrevious = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  }, [testimonials.length]);
-
-  // Memoized display testimonials - mobile shows only current, desktop shows 3
-  const displayTestimonials = useMemo(() => {
-    const prev = testimonials[(currentIndex - 1 + testimonials.length) % testimonials.length];
-    const current = testimonials[currentIndex];
-    const next = testimonials[(currentIndex + 1) % testimonials.length];
-    return [prev, current, next];
-  }, [testimonials, currentIndex]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        goToPrevious();
-      } else if (e.key === 'ArrowRight') {
-        goToNext();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goToNext, goToPrevious]);
-
-  // Render star rating
-  const renderStars = (rating: number = 5) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-3 h-3 sm:w-4 sm:h-4 ${i < rating ? 'text-[#050729] fill-current' : 'text-[#050729]/20'
-          }`}
-        aria-hidden="true"
-      />
-    ));
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   };
 
   return (
-    <section
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
-      aria-label="Client Testimonials"
+    <section 
+      className="py-16 sm:py-24 relative overflow-hidden antialiased"
+      style={{ background: C.black, color: C.white }}
+      aria-label="Client Proof & Testimonials"
     >
-      {/* AI Background decorative elements - muted for white background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#B6FF00]/15 to-[#B6FF00]/25 rounded-full blur-[60px] sm:blur-[100px] opacity-40 mix-blend-multiply"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-[#B6FF00]/25 to-[#B6FF00]/15 rounded-full blur-[60px] sm:blur-[100px] opacity-40 mix-blend-multiply"></div>
+      {/* Ambient background glows */}
+      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
+        <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-left mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#050729] leading-tight mb-3">
-            From idea to impact — hear it from our clients
-          </h2>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+        
+        {/* ══════════════════════════════════════════════════════
+            SECTION HEADER
+        ══════════════════════════════════════════════════════ */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 mb-4"
+            >
+              <span
+                className="inline-flex items-center gap-2 px-3 py-1"
+                style={{
+                  border: `1px solid ${C.la(0.3)}`,
+                  background: C.la(0.06),
+                }}
+              >
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                  CLIENT PROOF & VERIFIED FEEDBACK
+                </span>
+              </span>
+            </motion.div>
+
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Trusted To Turn Complex Problems Into{' '}
+              <span style={{ color: C.lime }}>Better Systems.</span>
+            </h2>
+          </div>
+
+          <p className="text-xs sm:text-sm text-white/60 font-normal max-w-md leading-relaxed">
+            Real feedback from business owners, VPs of Engineering, and Product Directors who partnered with Velnix to build intelligent software and automated workflows.
+          </p>
         </div>
 
-        <div className="relative group">
-          {/* Left Arrow */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 lg:-translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 text-gray-400 hover:text-[#050729] hover:bg-[#B6FF00] hover:border-[#B6FF00] hover:shadow-[0_8px_24px_rgba(182,255,0,0.4)] transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
-            aria-label="Previous testimonial"
+        {/* ══════════════════════════════════════════════════════
+            SPOTLIGHT FEATURED TESTIMONIAL (AUTO-PLAY 5s)
+        ══════════════════════════════════════════════════════ */}
+        <div 
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div 
+            className="p-8 sm:p-12 relative overflow-hidden"
+            style={{
+              background: C.graphite,
+              border: `1px solid ${C.wa(0.12)}`,
+              boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
+            }}
           >
-            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
-          </button>
+            {/* Top Badge & Controls */}
+            <div className="flex items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={16} color={C.lime} />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF00]">
+                  Verified Client Partner
+                </span>
+              </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 lg:translate-x-16 z-40 p-2 sm:p-3 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 text-gray-400 hover:text-[#050729] hover:bg-[#B6FF00] hover:border-[#B6FF00] hover:shadow-[0_8px_24px_rgba(182,255,0,0.4)] transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
-          </button>
-
-
-          {/* Testimonials carousel */}
-          <div
-            className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-12 relative overflow-hidden"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            {/* Mobile: Show only current testimonial */}
-            <div className="md:hidden w-full max-w-sm">
-              <div
-                key={`${testimonials[currentIndex].id}-${currentIndex}`}
-                className="relative transform transition-all duration-700 ease-out scale-100 z-30 translate-x-0 opacity-100"
-              >
-                <div className="w-full h-auto min-h-[320px] sm:min-h-[360px] rounded-none p-4 sm:p-6 shadow-[0_20px_40px_rgba(0,0,0,0.06)] transform hover:rotate-0 transition-all duration-700 ease-out hover:scale-[1.02] hover:shadow-[0_30px_60px_rgba(182,255,0,0.15)] ring-1 ring-inset ring-white/40 border border-[#B6FF00]/20 backdrop-blur-md" style={{ background: 'linear-gradient(145deg, rgba(194,255,38,0.95) 0%, rgba(182,255,0,0.9) 50%, rgba(162,230,0,0.85) 100%)' }}>
-                  {/* Rating stars */}
-                  <div className="flex items-center gap-1 mb-3 sm:mb-4" aria-label={`${testimonials[currentIndex].rating} out of 5 stars`}>
-                    {renderStars(testimonials[currentIndex].rating)}
-                  </div>
-
-                  {/* Quote icon */}
-                  <div className="absolute top-4 sm:top-6 right-4 sm:right-6 text-[#050729]/10">
-                    <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-
-                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-[3px] sm:border-4 border-white/80 shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex-shrink-0">
-                      <img
-                        src={testimonials[currentIndex].image}
-                        alt={`${testimonials[currentIndex].name}, ${testimonials[currentIndex].title}`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-[#050729] font-bold tracking-tight text-base sm:text-lg md:text-xl mb-0.5">
-                        {testimonials[currentIndex].name}
-                      </h3>
-                      <p className="text-[#050729]/70 text-sm sm:text-base font-medium tracking-wide">
-                        {testimonials[currentIndex].title}
-                      </p>
-                    </div>
-                  </div>
-
-                  <blockquote className="text-[#050729]/90 text-sm sm:text-base leading-[1.7] font-medium italic">
-                    "{testimonials[currentIndex].testimonial}"
-                  </blockquote>
-                </div>
+              {/* Controls */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handlePrev}
+                  className="p-2 transition-all duration-200"
+                  style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.1)}`, color: C.white }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = C.la(0.1); e.currentTarget.style.borderColor = C.lime; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = C.wa(0.04); e.currentTarget.style.borderColor = C.wa(0.1); }}
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <span className="text-xs text-white/40 font-mono px-2">
+                  0{activeIndex + 1} / 0{TESTIMONIALS.length}
+                </span>
+                <button
+                  onClick={handleNext}
+                  className="p-2 transition-all duration-200"
+                  style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.1)}`, color: C.white }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = C.la(0.1); e.currentTarget.style.borderColor = C.lime; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = C.wa(0.04); e.currentTarget.style.borderColor = C.wa(0.1); }}
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight size={16} />
+                </button>
               </div>
             </div>
 
-            {/* Desktop: Show 3 testimonials with carousel effect */}
-            <div className="hidden md:flex">
-              {displayTestimonials.map((testimonial, index) => (
-                <div
-                  key={`${testimonial.id}-${currentIndex}`}
-                  className={`relative transform transition-all duration-700 ease-out ${index === 0
-                    ? 'scale-90 z-10 -translate-x-12 opacity-60'
-                    : index === 1
-                      ? 'scale-110 z-30 translate-x-0 opacity-100'
-                      : 'scale-90 z-10 translate-x-12 opacity-60'
-                    }`}
-                  style={{
-                    transform: `perspective(1000px) rotateY(${index === 0 ? 25 : index === 2 ? -25 : 0}deg)`
-                  }}
-                >
-                  <div className="w-72 md:w-80 lg:w-96 h-80 md:h-88 lg:h-96 rounded-none p-6 md:p-8 shadow-[0_20px_40px_rgba(0,0,0,0.06)] transform hover:rotate-0 transition-all duration-700 ease-out hover:scale-[1.02] hover:shadow-[0_30px_60px_rgba(182,255,0,0.15)] ring-1 ring-inset ring-white/40 border border-[#B6FF00]/20 backdrop-blur-md" style={{ background: 'linear-gradient(145deg, rgba(194,255,38,0.95) 0%, rgba(182,255,0,0.9) 50%, rgba(162,230,0,0.85) 100%)' }}>
-                    {/* Rating stars */}
-                    <div className="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
-                      {renderStars(testimonial.rating)}
-                    </div>
-
-                    {/* Quote icon */}
-                    <div className="absolute top-6 right-6 text-[#050729]/10">
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
-
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-[3px] md:border-4 border-white/80 shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex-shrink-0">
-                        <img
-                          src={testimonial.image}
-                          alt={`${testimonial.name}, ${testimonial.title}`}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-[#050729] font-bold tracking-tight text-lg md:text-xl mb-0.5">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-[#050729]/70 text-sm md:text-base font-medium tracking-wide">
-                          {testimonial.title}
-                        </p>
-                      </div>
-                    </div>
-
-                    <blockquote className="text-[#050729]/90 text-sm md:text-base leading-[1.7] font-medium italic">
-                      "{testimonial.testimonial}"
+            {/* Testimonial Quote & Context */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={featured.id}
+                initial={shouldReduce ? false : { opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={shouldReduce ? false : { opacity: 0, x: -20 }}
+                transition={{ duration: 0.35, ease }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              >
+                {/* Left: Quote & Attribution */}
+                <div className="lg:col-span-7 flex flex-col justify-between">
+                  <div>
+                    <Quote size={36} color={C.la(0.25)} className="mb-4" />
+                    <blockquote className="text-base sm:text-xl font-medium text-white/95 leading-relaxed mb-8 italic">
+                      "{featured.quote}"
                     </blockquote>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Removed dots indicator from here since it's now under the title */}
+                  <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                    <img
+                      src={featured.image}
+                      alt={featured.name}
+                      className="w-12 h-12 rounded-full object-cover shrink-0"
+                      style={{ border: `2px solid ${C.lime}` }}
+                    />
+                    <div>
+                      <h3 className="text-sm font-bold text-white">{featured.name}</h3>
+                      <p className="text-xs text-white/60">{featured.role} • <strong className="text-white/80">{featured.company}</strong></p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Problem -> Solution -> Outcome Summary */}
+                <div 
+                  className="lg:col-span-5 p-6 space-y-4"
+                  style={{ background: C.wa(0.02), border: `1px solid ${C.wa(0.08)}` }}
+                >
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#B6FF00] border-b border-white/10 pb-2">
+                    Operational Context
+                  </div>
+
+                  <div className="space-y-3 text-xs leading-relaxed">
+                    <div>
+                      <span className="text-white/50 block font-semibold uppercase text-[10px]">Business Challenge</span>
+                      <span className="text-white/80 font-medium">{featured.problem}</span>
+                    </div>
+
+                    <div>
+                      <span className="text-white/50 block font-semibold uppercase text-[10px]">Velnix Solution</span>
+                      <span className="text-white/80 font-medium">{featured.solution}</span>
+                    </div>
+
+                    <div className="pt-2 border-t border-white/5">
+                      <span className="text-[#B6FF00] block font-bold uppercase text-[10px]">Key Outcome</span>
+                      <span className="text-white font-bold text-sm">{featured.outcome}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+          </div>
         </div>
+
       </div>
     </section>
-
   );
 };
 

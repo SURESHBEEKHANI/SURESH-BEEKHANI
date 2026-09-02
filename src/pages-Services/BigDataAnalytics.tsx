@@ -9,7 +9,6 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AITechnologyStack from "../components/AITechnologyStack";
 import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
 
@@ -189,10 +188,10 @@ const BigDataAnalytics: React.FC = () => {
 			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
 				{/* High-Tech Background Layers */}
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/15 to-transparent" />
+				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
 				{/* Ambient light */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/8 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/8 rounded-full blur-[160px]" />
+				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
+				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
@@ -328,8 +327,6 @@ const BigDataAnalytics: React.FC = () => {
 				</div>
 			</section>
 			<Industries />
-
-			<AITechnologyStack />
 
 			<AIOnboardingProcess
 				serviceName="Big Data Analytics"

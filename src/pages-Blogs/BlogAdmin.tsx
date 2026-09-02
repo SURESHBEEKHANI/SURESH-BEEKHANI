@@ -429,7 +429,7 @@ const BlogAdmin: React.FC = () => {
         <section className="w-full pt-36 pb-16 px-6 relative overflow-hidden" style={{ background: '#0a0435' }}>
           {/* Glow orbs */}
           <div className="pointer-events-none absolute -top-16 -right-16 h-72 w-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 -left-16 h-64 w-64 rounded-full bg-indigo-600/20 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 -left-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
           <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
 
           <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -443,7 +443,7 @@ const BlogAdmin: React.FC = () => {
             <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
               Blog Admin <span style={{ color: '#f92198' }}>Portal</span>
             </h1>
-            <p className="text-indigo-100/70 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/80/70 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed">
               A powerful workspace to manage, publish, and curate your AI blog content — all in one place.
             </p>
 
@@ -613,7 +613,7 @@ const BlogAdmin: React.FC = () => {
       <section className="pt-32 pb-12 px-4 shadow-inner relative overflow-hidden" style={{ background: '#0a0435' }}>
         {/* Decorative background elements matching Footer */}
         <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-indigo-600/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
         
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
@@ -621,7 +621,7 @@ const BlogAdmin: React.FC = () => {
             <Lock size={24} className="text-[#ec4899]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Admin Workspace</h1>
-          <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto font-light mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-light mb-8 leading-relaxed">
             Welcome back, <span className="font-medium text-white">{session.user.email}</span>. Manage your drafts, edit live articles, and publish new content.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">

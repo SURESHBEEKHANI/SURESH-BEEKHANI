@@ -30,7 +30,7 @@ export const SectionHeader = ({
       {badge && (
         <Badge 
           variant="outline" 
-          className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-ai-purple/20 text-white border-ai-purple/30 font-medium text-xs sm:text-sm rounded-full hover:bg-ai-purple/25 transition-all duration-300"
+          className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/5 text-white border-primary/30 font-medium text-xs sm:text-sm rounded-full hover:bg-primary/5 transition-all duration-300"
         >
           {BadgeIcon && <BadgeIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />}
           {badge}

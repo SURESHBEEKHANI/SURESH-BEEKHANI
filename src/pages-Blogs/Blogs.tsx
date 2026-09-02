@@ -1,21 +1,38 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
-import { Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, Eye, Plus, Minus, ChevronDown, List } from "lucide-react";
+import { 
+  Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, 
+  Eye, Plus, Minus, List, ArrowRight, Clock, BookOpen, Sparkles, Zap
+} from "lucide-react";
 import { toast } from "sonner";
 import { useSearchParams } from "react-router-dom";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// BRAND TOKENS (Velnix Locked Color System)
+// ─────────────────────────────────────────────────────────────────────────────
+const C = {
+  black:    '#050505',
+  graphite: '#111111',
+  white:    '#FFFFFF',
+  lime:     '#B6FF00',
+  green:    '#7DCC00',
+  la: (o: number) => `rgba(182,255,0,${o})`,
+  wa: (o: number) => `rgba(255,255,255,${o})`,
+  ga: (o: number) => `rgba(125,204,0,${o})`,
+};
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
 const CATEGORIES = [
-  { id: "all", label: "All Posts" },
-  { id: "ai-development", label: "AI Development" },
-  { id: "chatbot-development", label: "Chatbot Development" },
-  { id: "chatgpt-integration", label: "ChatGPT Integration" },
-  { id: "machine-deep-learning", label: "Machine & Deep Learning" },
-  { id: "computer-vision", label: "Computer Vision" },
-  { id: "predictive-modeling", label: "Predictive Modeling" },
-  { id: "nlp", label: "Natural Language Processing" },
-  { id: "ai-automation", label: "AI Automation" }
+  { id: "all", label: "All Insights" },
+  { id: "ai-automation", label: "AI & Automation" },
+  { id: "ai-development", label: "Software & AI Systems" },
+  { id: "machine-deep-learning", label: "Data & Analytics" },
+  { id: "chatbot-development", label: "Conversational AI" },
+  { id: "predictive-modeling", label: "Operational Insights" },
 ];
 
 interface Blog {
@@ -44,11 +61,24 @@ const Blogs: React.FC = () => {
   const [isSidebarSubscribed, setIsSidebarSubscribed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [isTocOpen, setIsTocOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isTocOpen, setIsTocOpen] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const viewedArticles = useRef<Set<string>>(new Set());
+  const shouldReduce = useReducedMotion();
+
+  // Scroll Progress Tracker for Article View
+  useEffect(() => {
+    if (!selectedBlog) return;
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedBlog]);
 
   // Sync URL with selected blog
   useEffect(() => {
@@ -71,16 +101,6 @@ const Blogs: React.FC = () => {
     }, 400);
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const fetchPublishedBlogs = async (search = "") => {
     try {
@@ -127,15 +147,15 @@ const Blogs: React.FC = () => {
         .insert([{ email }]);
 
       if (error) {
-        if ((error as any).code === '23505') {
-          toast.success('You’re already subscribed!', { description: "We've got you already." });
+        if ((error as { code?: string })?.code === '23505') {
+          toast.success('You’re already subscribed!', { style: { background: C.lime, color: C.black } });
           setSidebarEmail('');
           return;
         }
         throw error;
       }
 
-      toast.success('Subscribed successfully!', { description: 'Welcome to our AI community.' });
+      toast.success('Subscribed successfully!', { style: { background: C.lime, color: C.black } });
       setSidebarEmail('');
       setIsSidebarSubscribed(true);
     } catch (err) {
@@ -150,71 +170,64 @@ const Blogs: React.FC = () => {
     return activeCategory === "all" || blog.category === activeCategory;
   });
 
-  const selectedCategoryLabel =
-    CATEGORIES.find((c) => c.id === activeCategory)?.label ?? "All Posts";
+  const featuredBlog = filteredBlogs.length > 0 ? filteredBlogs[0] : null;
+  const gridBlogs = filteredBlogs.length > 0 ? (activeCategory === "all" ? filteredBlogs.slice(1) : filteredBlogs) : [];
 
   const incrementViewCount = async (blogId: string, currentViews: number = 0) => {
     if (viewedArticles.current.has(blogId)) return;
     viewedArticles.current.add(blogId);
 
-    // Optimistically update locally
     setBlogs(prev => prev.map(b => b.id === blogId ? { ...b, views: (b.views || 0) + 1 } : b));
     setSelectedBlog(prev => prev?.id === blogId ? { ...prev, views: (prev.views || 0) + 1 } : prev);
 
     try {
-      // The best, most secure atomic approach for real total counts:
       const { error: rpcError } = await supabase.rpc('increment_blog_view', { blog_id: blogId });
-
       if (rpcError) {
-        // Fallback to standard update if the RPC function isn't created in Supabase yet.
-        // Note: Standard update may fail if RLS (Row Level Security) blocks anonymous updates
-        const { error: updateError } = await supabase
-          .from("blogs")
-          .update({ views: (currentViews || 0) + 1 })
-          .eq("id", blogId);
-
-        if (updateError) {
-          console.error("View increment failed, check RLS policies or create the SQL RPC:", updateError);
-        }
+        await supabase.from("blogs").update({ views: (currentViews || 0) + 1 }).eq("id", blogId);
       }
     } catch (err) {
       console.warn("Could not increment view count:", err);
     }
   };
+
+  const estimateReadingTime = (content: string) => {
+    const words = content.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    return `${minutes} min read`;
+  };
+
   const renderContent = (content: string) => {
-    // ── Inline renderer: bold, italic, links, inline-code ──────────────
     const renderInline = (text: string, baseKey: string): React.ReactNode[] => {
       const segments = text.split(/(```[\s\S]*?```|`[^`]+`)/g);
       return segments.map((seg, si) => {
         if (seg.startsWith('```') && seg.endsWith('```')) {
           const code = seg.slice(3, -3).replace(/^\n/, '');
           return (
-            <pre key={`${baseKey}-cb-${si}`} className="bg-[#0f172a] text-[#e2e8f0] text-sm rounded-lg p-5 my-4 overflow-x-auto font-mono leading-relaxed border border-gray-700 shadow-xl">
+            <pre key={`${baseKey}-cb-${si}`} className="bg-[#111111] text-white/90 text-xs sm:text-sm rounded-none p-5 my-6 overflow-x-auto font-mono leading-relaxed border border-white/10">
               <code>{code}</code>
             </pre>
           );
         }
         if (seg.startsWith('`') && seg.endsWith('`') && seg.length > 2) {
           return (
-            <code key={`${baseKey}-ic-${si}`} className="bg-[#B6FF00]/10 text-[#9ddf00] px-1.5 py-0.5 rounded text-[0.875em] font-mono font-semibold">
+            <code key={`${baseKey}-ic-${si}`} className="bg-[#B6FF00]/10 text-[#B6FF00] px-1.5 py-0.5 text-xs font-mono font-semibold">
               {seg.slice(1, -1)}
             </code>
           );
         }
         return seg.split(/(\*\*[\s\S]*?\*\*|\*[\s\S]*?\*|\[.*?\]\(.*?\))/g).map((sub, i) => {
           if (sub.startsWith('**') && sub.endsWith('**'))
-            return <strong key={`${baseKey}-${si}-b${i}`} className="text-[#0a0435] font-extrabold">{sub.slice(2, -2)}</strong>;
+            return <strong key={`${baseKey}-${si}-b${i}`} className="text-white font-bold">{sub.slice(2, -2)}</strong>;
           if (sub.startsWith('*') && sub.endsWith('*') && sub.length > 2)
-            return <em key={`${baseKey}-${si}-em${i}`} className="italic text-gray-600">{sub.slice(1, -1)}</em>;
+            return <em key={`${baseKey}-${si}-em${i}`} className="italic text-white/80">{sub.slice(1, -1)}</em>;
           const lm = sub.match(/\[(.*?)\]\((.*?)\)/);
           if (lm)
-            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#B6FF00] hover:text-[#9ddf00] font-bold underline underline-offset-4 transition-colors">{lm[1]}</a>;
+            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#B6FF00] hover:underline font-semibold">{lm[1]}</a>;
           return <React.Fragment key={`${baseKey}-${si}-t${i}`}>{sub}</React.Fragment>;
         });
       });
     };
 
-    // ── Line-by-line parser ────────────────────────────────────────────
     const lines = content.split('\n');
     const elements: React.ReactNode[] = [];
     let i = 0;
@@ -222,7 +235,6 @@ const Blogs: React.FC = () => {
     while (i < lines.length) {
       const line = lines[i];
 
-      // Fenced code block
       if (line.trimStart().startsWith('```')) {
         const lang = line.replace(/^```/, '').trim();
         const codeLines: string[] = [];
@@ -232,18 +244,13 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <div key={`code-${i}`} className="my-6 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+          <div key={`code-${i}`} className="my-6 rounded-none overflow-hidden border border-white/10 shadow-2xl">
             {lang && (
-              <div className="bg-[#1e293b] px-4 py-2 flex items-center justify-between">
-                <span className="text-xs font-bold text-[#B6FF00] uppercase tracking-widest">{lang}</span>
-                <span className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-400/60" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-400/60" />
-                  <span className="w-3 h-3 rounded-full bg-green-400/60" />
-                </span>
+              <div className="bg-[#111111] px-4 py-2 border-b border-white/10 flex items-center justify-between">
+                <span className="text-[10px] font-bold text-[#B6FF00] uppercase tracking-widest">{lang}</span>
               </div>
             )}
-            <pre className="bg-[#0f172a] text-[#e2e8f0] text-sm p-5 overflow-x-auto font-mono leading-relaxed">
+            <pre className="bg-[#050505] text-white/90 text-xs sm:text-sm p-5 overflow-x-auto font-mono leading-relaxed">
               <code>{codeLines.join('\n')}</code>
             </pre>
           </div>
@@ -252,20 +259,18 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-      // Markdown image — trim line first to handle \r (Windows CRLF)
       const imgMatch = line.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
       if (imgMatch) {
         elements.push(
-          <div key={`img-${i}`} className="my-8 flex justify-start">
-            <div className="group/img relative border-l-4 border-[#B6FF00] shadow-xl rounded-xl overflow-hidden w-full md:w-[85%] bg-gray-50">
+          <div key={`img-${i}`} className="my-8">
+            <div className="border-l-2 border-[#B6FF00] overflow-hidden bg-[#111111]">
               <img
                 src={imgMatch[2]}
                 alt={imgMatch[1]}
-                className="w-full h-auto max-h-[400px] object-cover transition-transform duration-700 group-hover/img:scale-105"
+                className="w-full h-auto max-h-[420px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
               {imgMatch[1] && (
-                <div className="absolute bottom-0 left-0 w-full bg-[#0a0435]/95 backdrop-blur-md text-white md:text-sm text-xs px-4 py-2 rounded-b-xl italic tracking-wide text-center shadow-2xl border-b-2 border-[#B6FF00]">
+                <div className="bg-[#111111] text-white/70 text-xs px-4 py-2 italic border-t border-white/5">
                   {imgMatch[1]}
                 </div>
               )}
@@ -276,8 +281,6 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-
-      // Blockquote
       if (line.startsWith('> ')) {
         const bqLines: string[] = [];
         while (i < lines.length && lines[i].startsWith('> ')) {
@@ -285,10 +288,9 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <blockquote key={`bq-${i}`} className="relative border-l-4 border-[#B6FF00] bg-gradient-to-r from-[#B6FF00]/5 to-transparent px-6 py-4 my-6 rounded-r-xl">
-            <span className="absolute top-3 left-4 text-4xl text-[#B6FF00]/20 font-serif leading-none select-none">"</span>
+          <blockquote key={`bq-${i}`} className="border-l-2 border-[#B6FF00] bg-[#111111] px-6 py-4 my-6">
             {bqLines.map((bl, bi) => (
-              <p key={bi} className="italic text-gray-700 text-[1.05rem] leading-relaxed relative z-10">
+              <p key={bi} className="italic text-white/80 text-sm sm:text-base leading-relaxed">
                 {renderInline(bl, `bq-${i}-${bi}`)}
               </p>
             ))}
@@ -297,24 +299,22 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-      // Heading
       const headerMatch = line.match(/^(#{1,6})\s+(.+)$/);
       if (headerMatch) {
         const level = headerMatch[1].length;
         const text = headerMatch[2];
         const id = text.toLowerCase().replace(/\s+/g, '-');
         const headingClasses: Record<number, string> = {
-          1: 'text-xl md:text-2xl font-black text-[#0a0435] mt-10 mb-4 tracking-tight scroll-mt-32',
-          2: 'text-lg md:text-xl font-black text-[#0a0435] mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 border-b border-gray-100',
-          3: 'text-base md:text-lg font-extrabold text-[#0a0435] mt-6 mb-2 scroll-mt-32',
-          4: 'text-sm md:text-base font-bold text-[#0a0435] mt-5 mb-2 scroll-mt-32',
-          5: 'text-xs md:text-sm font-bold text-gray-700 mt-4 mb-1 scroll-mt-32',
-          6: 'text-[10px] md:text-xs font-bold text-gray-500 mt-4 mb-1 scroll-mt-32 uppercase tracking-wider',
+          1: 'text-2xl sm:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight scroll-mt-32',
+          2: 'text-xl sm:text-2xl font-bold text-white mt-8 mb-4 tracking-tight scroll-mt-32 pb-2 border-b border-white/10',
+          3: 'text-lg sm:text-xl font-bold text-white mt-6 mb-3 scroll-mt-32',
+          4: 'text-base sm:text-lg font-semibold text-white mt-5 mb-2 scroll-mt-32',
+          5: 'text-sm font-semibold text-white/90 mt-4 mb-2 scroll-mt-32',
+          6: 'text-xs font-semibold text-white/70 mt-4 mb-2 scroll-mt-32 uppercase tracking-wider',
         };
         const Tag = `h${Math.min(level + 1, 6)}` as keyof JSX.IntrinsicElements;
         elements.push(
           <Tag key={`h-${i}`} id={id} className={headingClasses[level] || headingClasses[3]}>
-            {level === 2 && <span className="inline-block w-1 h-5 bg-[#B6FF00] rounded mr-2 align-middle -mt-0.5" />}
             {text}
           </Tag>
         );
@@ -322,24 +322,14 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-      // Horizontal rule
       if (/^---+$/.test(line.trim())) {
         elements.push(
-          <div key={`hr-${i}`} className="my-8 flex items-center gap-4">
-            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-            <div className="flex gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/60" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/30" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]/60" />
-            </div>
-            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-          </div>
+          <div key={`hr-${i}`} className="my-8 border-t border-white/10" />
         );
         i++;
         continue;
       }
 
-      // Bullet list
       if (/^(\s*[-*+])\s/.test(line)) {
         const items: string[] = [];
         while (i < lines.length && /^(\s*[-*+])\s/.test(lines[i])) {
@@ -347,13 +337,11 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <ul key={`ul-${i}`} className="my-5 space-y-2.5 pl-1">
+          <ul key={`ul-${i}`} className="my-4 space-y-2 pl-2">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 mt-[0.55em] w-2 h-2 rounded-full bg-[#B6FF00] shadow-sm shadow-[#B6FF00]/30" />
-                <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
-                  {renderInline(item, `ul-${i}-${li}`)}
-                </span>
+              <li key={li} className="flex gap-3 items-start text-sm sm:text-base text-white/80 leading-relaxed">
+                <span className="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+                <span>{renderInline(item, `ul-${i}-${li}`)}</span>
               </li>
             ))}
           </ul>
@@ -361,7 +349,6 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-      // Numbered list
       if (/^\d+\.\s/.test(line)) {
         const items: string[] = [];
         while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
@@ -369,15 +356,13 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <ol key={`ol-${i}`} className="my-5 space-y-2.5 pl-1 list-none">
+          <ol key={`ol-${i}`} className="my-4 space-y-2 pl-2">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 min-w-[1.75rem] h-[1.75rem] rounded-md bg-gradient-to-br from-[#B6FF00]/20 to-[#B6FF00]/5 border border-[#B6FF00]/20 text-[#B6FF00] text-xs font-black flex items-center justify-center">
+              <li key={li} className="flex gap-3 items-start text-sm sm:text-base text-white/80 leading-relaxed">
+                <span className="shrink-0 font-bold text-xs px-2 py-0.5 bg-[#111111] text-[#B6FF00] border border-white/10">
                   {li + 1}
                 </span>
-                <span className="text-[#111827] text-[1.0625rem] leading-[1.8]">
-                  {renderInline(item, `ol-${i}-${li}`)}
-                </span>
+                <span>{renderInline(item, `ol-${i}-${li}`)}</span>
               </li>
             ))}
           </ol>
@@ -385,15 +370,13 @@ const Blogs: React.FC = () => {
         continue;
       }
 
-      // Empty line — skip
       if (line.trim() === '') {
         i++;
         continue;
       }
 
-      // Normal paragraph
       elements.push(
-        <p key={`p-${i}`} className="text-[#111827] text-[1.0625rem] leading-[1.85] mb-4">
+        <p key={`p-${i}`} className="text-white/80 text-sm sm:text-base leading-relaxed mb-4 font-normal">
           {renderInline(line, `p-${i}`)}
         </p>
       );
@@ -415,9 +398,7 @@ const Blogs: React.FC = () => {
 
   useEffect(() => {
     if (selectedBlog) {
-      document.title = `${selectedBlog.meta_title || selectedBlog.title} | AI Blog`;
-
-      // Update meta description
+      document.title = `${selectedBlog.meta_title || selectedBlog.title} | Velnix Insights`;
       let metaDescription = document.querySelector('meta[name="description"]');
       if (!metaDescription) {
         metaDescription = document.createElement('meta');
@@ -425,401 +406,586 @@ const Blogs: React.FC = () => {
         document.head.appendChild(metaDescription);
       }
       metaDescription.setAttribute('content', selectedBlog.meta_description || selectedBlog.content.slice(0, 160));
-
-      // Update keywords
-      let metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta');
-        metaKeywords.setAttribute('name', 'keywords');
-        document.head.appendChild(metaKeywords);
-      }
-      const keywords = [selectedBlog.focus_keyword, selectedBlog.secondary_keywords].filter(Boolean).join(', ');
-      metaKeywords.setAttribute('content', keywords || "AI, Machine Learning, Data Science");
-
     } else {
-      document.title = "AI Development Deep Dives - Blogs";
+      document.title = "Velnix Insights — Strategic Business & AI Intelligence";
     }
   }, [selectedBlog]);
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // VIEW: SINGLE ARTICLE READER
+  // ───────────────────────────────────────────────────────────────────────────
   if (selectedBlog) {
     const recentBlogs = blogs
       .filter(b => b.id !== selectedBlog.id)
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-      .slice(0, 5);
+      .slice(0, 4);
 
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
+        {/* Reading Progress Indicator */}
+        <div 
+          className="fixed top-0 left-0 h-1 z-[110] transition-all duration-150"
+          style={{ width: `${scrollProgress}%`, background: C.lime }}
+        />
+
         <Navbar isDark={true} />
 
-        <div className="max-w-7xl mx-auto px-4 pt-24 md:pt-32 pb-16 w-full grow">
-          <div className="flex flex-col lg:flex-row gap-8">
+        <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            
+            {/* Back Link */}
+            <div className="mb-8">
+              <button
+                onClick={() => {
+                  setSelectedBlog(null);
+                  setSearchParams({});
+                  window.scrollTo(0, 0);
+                }}
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white/70 hover:text-[#B6FF00] transition-colors"
+              >
+                <ArrowLeft size={16} /> Back to Insights
+              </button>
+            </div>
 
-            {/* Main Content Area */}
-            <article className="lg:w-[75%]">
-              {/* Cover Image First */}
-              {selectedBlog.image_url && (
-                <div className="relative w-full md:w-[90%] mr-auto overflow-hidden rounded-2xl border-t-4 border-[#B6FF00] shadow-xl mb-10 group/cover">
-                  <img
-                    src={selectedBlog.image_url}
-                    alt={selectedBlog.title}
-                    className="w-full h-[250px] md:h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-                  />
-                  {/* Bottom gradient fade for title readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                </div>
-              )}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-
-              {/* Title and Metadata After Image */}
-              <div className="mb-10">
-                <h1 className="text-2xl md:text-3xl font-black text-[#0a0435] mb-4 leading-tight tracking-tight">
-                  {selectedBlog.title}
-                </h1>
-
-                <div className="flex flex-wrap items-center gap-6 text-xs mb-4 border-b border-gray-100 pb-4 uppercase tracking-[0.1em]">
-                  <div className="flex items-center gap-2 text-[#0a0435] font-black">
-                    <Calendar size={16} className="text-[#B6FF00]" />
-                    {new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                  </div>
-
-                  <div className="flex items-center gap-2 text-gray-500 font-bold">
-                    <Eye size={16} className="text-[#B6FF00]" />
-                    {selectedBlog.views || 0} Views
-                  </div>
-
-                  <div className="flex items-center gap-2 text-[#0a0435] font-black">
-                    <User size={16} className="text-[#B6FF00]" />
-                    Suresh Beekhani
-                  </div>
-                </div>
-              </div>
-
-              {/* Table of Contents Section */}
-              {getTOC(selectedBlog.content).length > 0 && (
-                <div className="mb-6 bg-white border border-gray-200 p-6 rounded-lg inline-block shadow-sm transition-all duration-300 overflow-hidden">
-                  <div
-                    className="flex items-center justify-between gap-8 cursor-pointer group/title"
-                    onClick={() => setIsTocOpen(!isTocOpen)}
+              {/* MAIN ARTICLE BODY */}
+              <article className="lg:col-span-8">
+                
+                {/* Header Metadata */}
+                <div className="mb-8">
+                  <span
+                    className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4"
+                    style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
                   >
-                    <h3 className="text-lg font-bold text-[#0a0435] tracking-tight group-hover:text-[#B6FF00] transition-colors">
-                      Table of Contents
-                    </h3>
-                    <div className="flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md text-gray-400 group-hover:text-[#B6FF00] group-hover:border-[#B6FF00]/50 transition-all">
-                      <List size={16} strokeWidth={2.5} />
+                    {selectedBlog.category || 'Strategic Insight'}
+                  </span>
+
+                  <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight mb-6">
+                    {selectedBlog.title}
+                  </h1>
+
+                  <div className="flex flex-wrap items-center gap-6 text-xs text-white/50 border-b border-white/10 pb-6">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={14} color={C.lime} />
+                      <span>{new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock size={14} color={C.lime} />
+                      <span>{estimateReadingTime(selectedBlog.content)}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Eye size={14} color={C.lime} />
+                      <span>{selectedBlog.views || 0} Views</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <User size={14} color={C.lime} />
+                      <span>Suresh Beekhani</span>
                     </div>
                   </div>
-
-                  {isTocOpen && (
-                    <nav className="flex flex-col gap-3 mt-4 border-t border-gray-50 pt-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                      {getTOC(selectedBlog.content).map((header, i) => (
-                        <a
-                          key={i}
-                          href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
-                          className="flex items-start gap-2 group transition-all"
-                        >
-                          <span className="text-sm font-semibold text-gray-400 w-4">
-                            {i + 1}.
-                          </span>
-                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#B6FF00] group-hover:underline transition-colors decoration-1 underline-offset-4 decoration-dotted">
-                            {header.text}
-                          </span>
-                        </a>
-                      ))}
-                    </nav>
-                  )}
                 </div>
-              )}
 
-              <div className="prose prose-lg md:prose-xl max-w-none text-[#0f172a] leading-[1.85] mb-10 font-medium prose-p:mb-5 prose-headings:mb-3 prose-img:my-8 selection:bg-[#B6FF00]/20">
-                {renderContent(selectedBlog.content)}
-              </div>
-
-              {/* FAQ Section */}
-              {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
-                <div className="mt-16 pt-12 border-t border-gray-100 mb-12">
-                  <div className="flex flex-col mb-8">
-                    <h4 className="text-2xl md:text-4xl font-black text-[#0a0435] tracking-tight uppercase italic">
-                      Frequently Asked <span className="text-black">Questions</span>
-                    </h4>
+                {/* Hero Feature Image */}
+                {selectedBlog.image_url && (
+                  <div className="mb-10 overflow-hidden border border-white/10" style={{ background: C.graphite }}>
+                    <img
+                      src={selectedBlog.image_url}
+                      alt={selectedBlog.title}
+                      className="w-full h-auto max-h-[440px] object-cover"
+                    />
                   </div>
+                )}
 
-                  <div className="space-y-3">
-                    {selectedBlog.faqs.map((faq, index) => (
-                      <div
-                        key={index}
-                        className={`border border-gray-200 rounded-md overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-lg group ${openFaq === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
-                        style={openFaq === index ? {
-                          boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
-                        } : {}}
-                      >
-                        <button
-                          onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                          className={`w-full p-5 flex items-center justify-between text-left transition-all duration-300 ${openFaq === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
-                        >
-                          <h4 className={`text-base font-semibold transition-all duration-300 group-hover:text-[#B6FF00] ${openFaq === index ? 'text-[#B6FF00]' : 'text-[#050729]'}`}>
-                            {faq.q}
-                          </h4>
-                          <div className="flex-shrink-0 ml-4">
-                            {openFaq === index ? (
-                              <Minus className="h-4 w-4" style={{ color: '#B6FF00' }} />
-                            ) : (
-                              <Plus className="h-4 w-4 text-gray-400 group-hover:text-[#B6FF00]" />
-                            )}
-                          </div>
-                        </button>
-
-                        {openFaq === index && (
-                          <div className="px-5 pb-5 animate-in fade-in slide-in-from-top-1 duration-300">
-                            <div className="pt-3 border-t border-gray-200/50">
-                              <p className="text-gray-800 leading-relaxed text-base">
-                                {faq.a}
-                              </p>
-                            </div>
-                          </div>
-                        )}
+                {/* Table of Contents */}
+                {getTOC(selectedBlog.content).length > 0 && (
+                  <div className="mb-10 p-6" style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}>
+                    <div 
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => setIsTocOpen(!isTocOpen)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <List size={16} color={C.lime} />
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-white">
+                          Table of Contents
+                        </h3>
                       </div>
-                    ))}
+                      <ChevronDown size={16} className={`transition-transform ${isTocOpen ? 'rotate-180' : ''}`} color={C.wa(0.5)} />
+                    </div>
+
+                    {isTocOpen && (
+                      <nav className="flex flex-col gap-2.5 mt-4 pt-4 border-t border-white/10 text-xs">
+                        {getTOC(selectedBlog.content).map((header, i) => (
+                          <a
+                            key={i}
+                            href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="text-white/70 hover:text-[#B6FF00] transition-colors"
+                          >
+                            <span className="text-white/30 mr-2">{i + 1}.</span>
+                            {header.text}
+                          </a>
+                        ))}
+                      </nav>
+                    )}
                   </div>
+                )}
+
+                {/* Article Content */}
+                <div className="prose prose-invert max-w-none mb-12">
+                  {renderContent(selectedBlog.content)}
                 </div>
-              )}
 
-              {/* Bottom Navigation */}
-              <div className="mt-8 pt-10 border-t border-gray-100 flex flex-col items-center">
-                <p className="text-gray-600 text-sm mb-6 italic font-medium">Thanks for reading!</p>
-                <button
-                  onClick={() => {
-                    setSelectedBlog(null);
-                    window.scrollTo(0, 0);
-                  }}
-                  className="flex items-center gap-2 text-black hover:text-black px-10 py-4 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-medium tracking-wide border border-black/10"
-                  style={{ background: '#B6FF00' }}
+                {/* Contextual Commercial CTA Box */}
+                <div 
+                  className="p-8 my-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+                  style={{ background: C.graphite, border: `1px solid ${C.la(0.3)}` }}
                 >
-                  <ArrowLeft size={20} /> Back to Blogs
-                </button>
-              </div>
-            </article>
+                  <div>
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-[#B6FF00] mb-1 block">
+                      Operational Next Step
+                    </span>
+                    <h3 className="text-lg font-bold text-white mb-2">
+                      Have a workflow worth automating?
+                    </h3>
+                    <p className="text-xs text-white/60 max-w-md">
+                      Let's assess your current manual processes and determine where AI or automation creates measurable impact.
+                    </p>
+                  </div>
+                  <a
+                    href="https://calendar.app.google/F63aBoA5vxJdtihj7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold text-black uppercase tracking-wider shrink-0 transition-all"
+                    style={{ background: C.lime }}
+                  >
+                    Discuss Your Workflow <ArrowRight size={14} />
+                  </a>
+                </div>
 
-            {/* Sidebar with Recent Posts */}
-            {/* Sidebar with Recent Posts */}
-            <aside className="lg:w-[25%] pl-6 border-l-2 border-[#B6FF00]">
-              <div className="sticky top-32 space-y-6">                {/* Newsletter Box */}
-                <div className="bg-white p-4 rounded-none shadow-sm border border-gray-100 relative overflow-hidden">
-                  <h3 className="text-xl font-bold text-[#0a0435] mb-2 relative z-10 leading-tight">
-                    Join Our <span className="text-[#B6FF00]">Newsletter</span> for AI Updates
+                {/* FAQ Section */}
+                {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
+                  <div className="mt-14 pt-10 border-t border-white/10 mb-12">
+                    <h3 className="text-xl font-bold text-white mb-6">
+                      Frequently Asked Questions
+                    </h3>
+
+                    <div className="space-y-3">
+                      {selectedBlog.faqs.map((faq, index) => (
+                        <div
+                          key={index}
+                          className="border transition-all duration-200"
+                          style={{
+                            background: C.graphite,
+                            borderColor: openFaq === index ? C.la(0.4) : C.wa(0.08),
+                          }}
+                        >
+                          <button
+                            onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                            className="w-full p-4 flex items-center justify-between text-left"
+                          >
+                            <span className="text-sm font-semibold text-white">
+                              {faq.q}
+                            </span>
+                            {openFaq === index ? (
+                              <Minus size={16} color={C.lime} className="shrink-0" />
+                            ) : (
+                              <Plus size={16} color={C.wa(0.4)} className="shrink-0" />
+                            )}
+                          </button>
+
+                          {openFaq === index && (
+                            <div className="px-4 pb-4 pt-1 border-t border-white/5 text-xs text-white/70 leading-relaxed">
+                              {faq.a}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+              </article>
+
+              {/* RIGHT SIDEBAR */}
+              <aside className="lg:col-span-4 flex flex-col gap-10">
+                
+                {/* Newsletter Box */}
+                <div 
+                  className="p-6"
+                  style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
+                >
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">
+                    Subscribe to Insights
                   </h3>
+                  <p className="text-xs text-white/60 leading-relaxed mb-4">
+                    Get practical ideas for automating workflows and adopting AI in business operations.
+                  </p>
 
                   {isSidebarSubscribed ? (
-                    <div className="bg-[#B6FF00]/10 border border-[#B6FF00]/30 p-4 rounded-none relative z-10 flex flex-col items-center text-center animate-in fade-in duration-700">
-                      <CheckCircle className="text-[#B6FF00] mb-1" size={24} />
-                      <p className="text-sm text-[#0a0435] font-bold">Successfully Joined!</p>
-                      <p className="text-xs text-gray-600 mt-1">Check your inbox soon for AI insights.</p>
+                    <div className="p-3 bg-[#B6FF00]/10 border border-[#B6FF00]/30 text-xs text-[#B6FF00] font-bold">
+                      ✓ Subscribed! You will receive our latest updates.
                     </div>
                   ) : (
-                    <form onSubmit={handleSidebarSubscribe} className="relative z-10 space-y-2">
-                      <div className="flex flex-col space-y-1.5">
-                        <input
-                          type="email"
-                          value={sidebarEmail}
-                          onChange={(e) => setSidebarEmail(e.target.value)}
-                          placeholder="Enter your email"
-                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 text-[#0a0435] placeholder:text-gray-400 outline-none focus:border-[#B6FF00]/50 transition-all text-sm rounded-none"
-                        />
-                        <button
-                          type="submit"
-                          disabled={isSidebarSubmitting}
-                          className="w-full py-3 text-black font-medium shadow-lg hover:shadow-[#B6FF00]/30 transition-all uppercase tracking-widest text-xs rounded-none disabled:opacity-50 border border-black/10"
-                          style={{ background: '#B6FF00' }}
-                        >
-                          {isSidebarSubmitting ? <Loader2 className="animate-spin mx-auto" size={16} /> : "Subscribe"}
-                        </button>
-                      </div>
+                    <form onSubmit={handleSidebarSubscribe} className="space-y-3">
+                      <input
+                        type="email"
+                        value={sidebarEmail}
+                        onChange={(e) => setSidebarEmail(e.target.value)}
+                        placeholder="Your work email"
+                        className="w-full h-10 px-3 bg-[#050505] text-white placeholder-white/40 text-xs outline-none"
+                        style={{ border: `1px solid ${C.wa(0.15)}` }}
+                      />
+                      <button
+                        type="submit"
+                        disabled={isSidebarSubmitting}
+                        className="w-full h-10 font-bold text-xs text-black uppercase tracking-wider transition-all"
+                        style={{ background: C.lime }}
+                      >
+                        {isSidebarSubmitting ? "Processing..." : "Subscribe"}
+                      </button>
                     </form>
-                  )}
-
-                  {!isSidebarSubscribed && (
-                    <p className="text-[11px] text-gray-500 mt-1.5 relative z-10 text-center uppercase tracking-tighter font-medium">
-                      Get the latest AI insights delivered to your inbox
-                    </p>
                   )}
                 </div>
 
-
-                {/* Recent Posts Section */}
-                <div className="mt-12">
-                  <h3 className="text-[1.75rem] font-extrabold text-[#0a0435] mb-6">
-                    Recent Posts
+                {/* Recent Articles */}
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4 pb-2 border-b border-white/10">
+                    Recent Insights
                   </h3>
-                  <div className="space-y-8">
+
+                  <div className="flex flex-col gap-4">
                     {recentBlogs.map(post => (
-                      <div key={post.id} className="group cursor-pointer flex flex-col items-start text-left"
-                        onClick={() => {
-                          setSearchParams({ article: post.id });
-                        }}>
-                        {post.image_url && (
-                          <div className="relative w-[85%] h-[110px] mb-4 overflow-hidden rounded-xl border-t-4 border-[#B6FF00]">
-                            <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                          </div>
-                        )}
-                        <h4
-                          className="text-[1.2rem] font-bold text-[#0a0435] leading-snug group-hover:text-[#B6FF00] transition-colors"
-                        >
+                      <div 
+                        key={post.id} 
+                        className="group cursor-pointer p-4 transition-all duration-200"
+                        style={{ background: C.graphite, border: `1px solid ${C.wa(0.06)}` }}
+                        onClick={() => setSearchParams({ article: post.id })}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = C.la(0.3);
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = C.wa(0.06);
+                        }}
+                      >
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#B6FF00] block mb-1">
+                          {post.category || 'Insight'}
+                        </span>
+                        <h4 className="text-xs font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug line-clamp-2">
                           {post.title}
                         </h4>
                       </div>
                     ))}
-                    {recentBlogs.length === 0 && (
-                      <p className="text-gray-400 text-sm italic">No other posts yet.</p>
-                    )}
                   </div>
                 </div>
-              </div>
-            </aside>
 
+              </aside>
+
+            </div>
           </div>
-        </div>
+        </main>
+
         <Footer />
       </div>
     );
   }
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // VIEW: INSIGHTS HOMEPAGE
+  // ───────────────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-24 px-4 pt-32 relative overflow-hidden bg-zinc-950">
-        {/* Ambient Blurs to match other pages */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
+      {/* ── BACKGROUND AMBIENT GLOWS ── */}
+      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ width: 600, height: 600, background: C.la(0.04) }} />
+      </div>
 
-        <div className="max-w-6xl mx-auto text-center text-white relative z-10">
-          <div
-            className="inline-flex items-center justify-center mb-5 px-5 py-2.5 rounded-full border border-[#B6FF00]/45 bg-[#B6FF00]/15 backdrop-blur-sm text-sm md:text-base font-bold text-[#B6FF00] tracking-wide shadow-sm"
-            aria-live="polite"
-          >
-            {selectedCategoryLabel}
-          </div>
-          <h2 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-tight">
-            Stay Up-To-Date With Our Latest Blog
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-normal">
-            {activeCategory === "all"
-              ? "Discover fresh ideas and stay ahead with our latest blog posts."
-              : `Showing posts in ${selectedCategoryLabel}. Explore guides and deep dives in this topic.`}
-          </p>
-        </div>
-      </section>
+      <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
-      {/* Search & Filter Section */}
-      <div className="py-8 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between">
-          {/* Search Input */}
-          <div className="relative w-full md:w-[400px]">
-            <input
-              type="text"
-              placeholder="Search for Blogs..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-6 pr-12 py-3.5 bg-white border-2 border-[#B6FF00]/30 rounded-lg text-gray-800 hover:border-[#B6FF00] focus:border-[#B6FF00] focus:ring-4 focus:ring-[#B6FF00]/20 focus:outline-0 outline-none transition-all shadow-sm placeholder:text-gray-400 font-medium"
-            />
-            <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-[#B6FF00]" size={20} />
-          </div>
-
-          {/* Category Select Dropdown */}
-          <div className="w-full md:w-[300px] relative" ref={dropdownRef}>
-            <div
-              className={`w-full px-6 py-3.5 bg-white border-2 rounded-lg text-gray-800 transition-all shadow-sm font-medium cursor-pointer flex items-center justify-between ${
-                isDropdownOpen 
-                  ? 'border-[#B6FF00] ring-4 ring-[#B6FF00]/20' 
-                  : 'border-[#B6FF00]/30 hover:border-[#B6FF00]'
-              }`}
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          {/* ══════════════════════════════════════════════════════
+              HERO HEADER
+          ══════════════════════════════════════════════════════ */}
+          <div className="max-w-3xl mb-12 sm:mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 mb-6"
             >
-              <span>{CATEGORIES.find(c => c.id === activeCategory)?.label || "All Categories"}</span>
-              <div className="pointer-events-none">
-                <svg className={`w-5 h-5 text-[#B6FF00] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <span
+                className="inline-flex items-center gap-2 px-3 py-1"
+                style={{
+                  border: `1px solid ${C.la(0.3)}`,
+                  background: C.la(0.06),
+                }}
+              >
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                  VELNIX INSIGHTS
+                </span>
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              style={{
+                fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
+                fontWeight: 800,
+                lineHeight: 1.08,
+                letterSpacing: '-0.03em',
+                color: C.white,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Where Business Problems Meet{' '}
+              <span style={{ color: C.lime }}>Intelligent Technology.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              style={{
+                fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
+                color: C.wa(0.72),
+                lineHeight: 1.75,
+                fontWeight: 400,
+              }}
+            >
+              Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
+            </motion.p>
+          </div>
+
+          {/* ══════════════════════════════════════════════════════
+              CATEGORY NAVIGATION & SEARCH BAR
+          ══════════════════════════════════════════════════════ */}
+          <div className="flex flex-col md:flex-row gap-6 items-stretch md:items-center justify-between mb-12 pb-8 border-b border-white/10">
+            
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-200"
+                  style={{
+                    background: activeCategory === cat.id ? C.lime : C.graphite,
+                    color: activeCategory === cat.id ? C.black : C.wa(0.7),
+                    border: `1px solid ${activeCategory === cat.id ? C.lime : C.wa(0.1)}`,
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
             </div>
 
-            {isDropdownOpen && (
-              <div className="absolute z-50 w-full mt-2 bg-white border border-[#B6FF00]/30 rounded-lg shadow-lg max-h-60 overflow-auto py-2">
-                {CATEGORIES.map((category) => (
+            {/* Search Input */}
+            <div className="relative w-full md:w-72">
+              <input
+                type="text"
+                placeholder="Search insights..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 pl-4 pr-10 bg-[#111111] text-white placeholder-white/40 text-xs outline-none transition-all duration-200"
+                style={{ border: `1px solid ${C.wa(0.12)}` }}
+                onFocus={(e) => e.target.style.borderColor = C.lime}
+                onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+              />
+              <Search size={14} color={C.lime} className="absolute right-3 top-1/2 -translate-y-1/2" />
+            </div>
+
+          </div>
+
+          {/* ══════════════════════════════════════════════════════
+              FEATURED ARTICLE CARD
+          ══════════════════════════════════════════════════════ */}
+          {!loading && featuredBlog && activeCategory === "all" && !searchQuery && (
+            <div className="mb-16">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6FF00] mb-3 block">
+                Featured Strategic Insight
+              </span>
+
+              <div 
+                className="group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 transition-all duration-300"
+                style={{
+                  background: C.graphite,
+                  border: `1px solid ${C.wa(0.12)}`,
+                }}
+                onClick={() => setSearchParams({ article: featuredBlog.id })}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = C.la(0.4);
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = C.wa(0.12);
+                }}
+              >
+                {/* Image */}
+                <div className="lg:col-span-6 overflow-hidden max-h-[320px] bg-[#050505]">
+                  {featuredBlog.image_url ? (
+                    <img
+                      src={featuredBlog.image_url}
+                      alt={featuredBlog.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-48 flex items-center justify-center text-xs text-white/30">Velnix Editorial</div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="lg:col-span-6 flex flex-col justify-between">
+                  <div>
+                    <span 
+                      className="inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider mb-3"
+                      style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
+                    >
+                      {featuredBlog.category || 'Strategic Insight'}
+                    </span>
+                    
+                    <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-tight mb-4">
+                      {featuredBlog.title}
+                    </h2>
+
+                    <p className="text-xs sm:text-sm text-white/60 line-clamp-3 leading-relaxed mb-6">
+                      {featuredBlog.meta_description || featuredBlog.content.slice(0, 180)}...
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                    <div className="flex items-center gap-4 text-white/40">
+                      <span>{new Date(featuredBlog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                      <span>•</span>
+                      <span>{estimateReadingTime(featuredBlog.content)}</span>
+                    </div>
+
+                    <span className="inline-flex items-center gap-2 text-[#B6FF00] font-bold text-xs group-hover:translate-x-1 transition-transform">
+                      Read Strategic Insight <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ══════════════════════════════════════════════════════
+              ARTICLE GRID
+          ══════════════════════════════════════════════════════ */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white/50 mb-6 pb-2 border-b border-white/10">
+              {activeCategory === "all" ? "Latest Published Insights" : `Insights in ${CATEGORIES.find(c => c.id === activeCategory)?.label}`}
+            </h3>
+
+            {loading ? (
+              <div className="flex justify-center py-20">
+                <Loader2 className="animate-spin text-[#B6FF00]" size={40} />
+              </div>
+            ) : gridBlogs.length === 0 && (!featuredBlog || activeCategory !== "all") ? (
+              <div className="text-center py-20 p-8" style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}>
+                <p className="text-sm text-white/60">No strategic insights found matching your criteria.</p>
+                <p className="text-xs text-white/40 mt-1">Try resetting search or switching categories.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {gridBlogs.map((blog) => (
                   <div
-                    key={category.id}
-                    className={`px-6 py-3 cursor-pointer transition-colors ${
-                      activeCategory === category.id 
-                        ? 'bg-[#B6FF00] text-black font-bold' 
-                        : 'text-gray-700 hover:bg-[#B6FF00] hover:text-black font-medium'
-                    }`}
-                    onClick={() => {
-                      setActiveCategory(category.id);
-                      setIsDropdownOpen(false);
+                    key={blog.id}
+                    className="group cursor-pointer flex flex-col justify-between p-6 transition-all duration-300"
+                    style={{
+                      background: C.graphite,
+                      border: `1px solid ${C.wa(0.08)}`,
+                    }}
+                    onClick={() => setSearchParams({ article: blog.id })}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = C.la(0.3);
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = C.wa(0.08);
                     }}
                   >
-                    {category.label}
+                    <div>
+                      {/* Image Thumbnail */}
+                      <div className="overflow-hidden h-40 mb-4 bg-[#050505]">
+                        {blog.image_url ? (
+                          <img 
+                            src={blog.image_url} 
+                            alt={blog.title} 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-xs text-white/20">Velnix Editorial</div>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between text-[10px] text-white/40 mb-2">
+                        <span className="font-bold uppercase tracking-wider text-[#B6FF00]">
+                          {blog.category || 'Insight'}
+                        </span>
+                        <span>{estimateReadingTime(blog.content)}</span>
+                      </div>
+
+                      <h4 className="text-base font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug mb-3 line-clamp-2">
+                        {blog.title}
+                      </h4>
+
+                      <p className="text-xs text-white/60 line-clamp-3 leading-relaxed mb-6">
+                        {blog.meta_description || blog.content.slice(0, 140)}...
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                      <span className="text-[11px] text-white/40">
+                        {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-[#B6FF00] font-bold text-xs group-hover:translate-x-1 transition-transform">
+                        Read <ArrowRight size={13} />
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
             )}
           </div>
+
+          {/* ══════════════════════════════════════════════════════
+              BOTTOM CONVERSATION CTA BANNER
+          ══════════════════════════════════════════════════════ */}
+          <div 
+            className="mt-20 p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
+            style={{
+              background: C.graphite,
+              border: `1px solid ${C.la(0.25)}`,
+            }}
+          >
+            <div className="max-w-2xl">
+              <span className="text-[10px] font-bold tracking-widest uppercase text-[#B6FF00] mb-2 block">
+                Turn Insights Into Action
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                Ready to evaluate your business automation opportunities?
+              </h3>
+              <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
+                Talk to our engineering leads about identifying operational bottlenecks, automating tasks, and building custom AI systems.
+              </p>
+            </div>
+
+            <a
+              href="https://calendar.app.google/F63aBoA5vxJdtihj7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold text-black uppercase tracking-wider shrink-0 transition-all"
+              style={{ background: C.lime }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = C.green; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = C.lime; }}
+            >
+              Book A Strategy Call <ArrowRight size={15} />
+            </a>
+          </div>
+
         </div>
-      </div>
-
-      {/* Content Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          {loading ? (
-            <div className="flex justify-center py-24">
-              <Loader2 className="animate-spin text-[#B6FF00]" size={48} />
-            </div>
-          ) : filteredBlogs.length === 0 ? (
-            <div className="text-center py-24 bg-white rounded-none border border-gray-200 shadow-sm">
-              <p className="text-xl text-gray-600 font-medium">No blog posts found in this category.</p>
-              <p className="text-gray-500 mt-2">Check back later for new updates!</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredBlogs.map((blog) => (
-                <div
-                  key={blog.id}
-                  className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer pb-2"
-                  onClick={() => setSearchParams({ article: blog.id })}
-                >
-                  <div className="relative h-40 w-full overflow-hidden border-t-[5px] border-[#B6FF00]">
-                    {blog.image_url ? (
-                      <img src={blog.image_url} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
-                    )}
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center text-gray-700 text-sm mb-3 font-medium">
-                      <Calendar className="mr-2 w-4 h-4 text-[#B6FF00]" />
-                      {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                    </div>
-
-                    <h3 className="text-[1.1rem] font-bold text-[#0a0435] mb-8 leading-relaxed line-clamp-2 group-hover:text-[#B6FF00] transition-colors">
-                      {blog.title}
-                    </h3>
-
-                    <div className="mt-auto flex items-center text-[#B6FF00] text-[0.95rem] font-bold uppercase tracking-wide">
-                      Read More
-                      <span className="ml-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      </main>
 
       <Footer />
     </div>

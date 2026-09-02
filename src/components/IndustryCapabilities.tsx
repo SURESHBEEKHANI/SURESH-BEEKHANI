@@ -21,9 +21,9 @@ const IndustryCapabilities: React.FC<IndustryCapabilitiesProps> = React.memo(({
   <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#01010c] relative overflow-hidden">
     {/* High-Tech Background Layers */}
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
-    <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px]"></div>
+    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+    <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[120px] animate-pulse"></div>
+    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[140px]"></div>
 
     <div className="max-w-7xl mx-auto relative z-10">
       {/* Header */}

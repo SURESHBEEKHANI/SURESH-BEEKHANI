@@ -1,64 +1,77 @@
-// src/components/Contact.tsx
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  Clock, 
+  Mail, 
+  MapPin, 
+  Phone, 
+  Sparkles, 
+  Zap, 
+  Layers, 
+  Cpu, 
+  Database,
+  ChevronDown
+} from 'lucide-react';
 import { toast } from 'sonner';
-import { supabase } from '@/supabaseClient'; // Supabase client
+import { supabase } from '@/supabaseClient';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import BackgroundAnimation from './BackgroundAnimation';
 
-const HeroSection = () => (
-  <section className="relative w-full min-h-[40vh] flex items-center justify-start overflow-hidden bg-zinc-950">
-    {/* Ambient Blurs to match footer */}
-    <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
-    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
-    <div className="relative z-10 max-w-4xl px-4 sm:px-6 ml-[10%] sm:ml-[15%] lg:ml-[20%] pt-24 pb-12 sm:pt-32 sm:pb-20 text-left text-white">
-      <div className="mb-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
-          Contact Us
-        </h1>
-      </div>
-      <p className="text-xs sm:text-sm md:text-base text-gray-200 font-medium leading-relaxed max-w-2xl drop-shadow-md">
-        We appreciate your interest in services. Please fill out the form so <br />we can provide you with the right help and support.
-      </p>
-    </div>
-  </section>
-);
+// ─────────────────────────────────────────────────────────────────────────────
+// BRAND TOKENS (Velnix Locked Color System)
+// ─────────────────────────────────────────────────────────────────────────────
+const C = {
+  black:    '#050505',
+  graphite: '#111111',
+  white:    '#FFFFFF',
+  lime:     '#B6FF00',
+  green:    '#7DCC00',
+  la: (o: number) => `rgba(182,255,0,${o})`,
+  wa: (o: number) => `rgba(255,255,255,${o})`,
+  ga: (o: number) => `rgba(125,204,0,${o})`,
+};
 
-const HELP_OPTIONS = [
-  { value: "ai-development", label: "AI Development" },
-  { value: "agentic-ai", label: "Agentic AI" },
-  { value: "ai-automation", label: "AI Automation" },
-  { value: "chatbot-development", label: "Chatbot Development" },
-  { value: "chatgpt-integration", label: "ChatGPT Integration" },
-  { value: "machine-deep-learning", label: "Machine & Deep Learning" },
-  { value: "computer-vision", label: "Computer Vision" },
-  { value: "predictive-modeling", label: "Predictive Modeling" },
-  { value: "nlp", label: "Natural Language Processing" },
-  { value: "big-data-analytics", label: "Big Data Analytics" },
-  { value: "custom-software", label: "Custom Software Development" },
-  { value: "web-development", label: "Web Development" },
-  { value: "app-development", label: "App Development" },
-  { value: "devops", label: "DevOps" },
-  { value: "feedback", label: "Feedback" },
-  { value: "other", label: "Other" }
+const ease = [0.22, 1, 0.36, 1] as const;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FORM OPTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+const IMPROVEMENT_GOALS = [
+  { id: 'automate-work', label: 'Automate Repetitive Work', icon: Zap },
+  { id: 'ai-solution', label: 'Build an AI Solution', icon: Cpu },
+  { id: 'connect-systems', label: 'Connect Existing Systems', icon: Layers },
+  { id: 'custom-software', label: 'Build Custom Software', icon: Database },
+  { id: 'improve-product', label: 'Improve Existing Product', icon: Sparkles },
+  { id: 'not-sure', label: "Not Sure / Need Assessment", icon: Clock },
+];
+
+const HELP_TOPICS = [
+  { value: "ai-automation", label: "AI & Workflow Automation" },
+  { value: "ai-development", label: "Custom AI Development" },
+  { value: "agentic-ai", label: "Agentic AI & Autonomous Systems" },
+  { value: "custom-software", label: "Custom Software Engineering" },
+  { value: "chatbot-development", label: "AI Chatbots & Conversational AI" },
+  { value: "machine-deep-learning", label: "Machine Learning & Analytics" },
+  { value: "web-app-dev", label: "Web & Mobile Product Engineering" },
+  { value: "other", label: "General Business Query" }
 ];
 
 const INDUSTRY_OPTIONS = [
-  { value: "fintech", label: "FinTech" },
-  { value: "healthtech", label: "HealthTech" },
-  { value: "retailtech", label: "RetailTech" },
-  { value: "edtech", label: "EdTech" },
-  { value: "fittech", label: "FitTech" },
-  { value: "legaltech", label: "LegalTech" },
-  { value: "wealthtech", label: "WealthTech" },
-  { value: "it-software", label: "IT & Software" },
-  { value: "other", label: "Other" }
+  { value: "healthcare", label: "Healthcare & Life Sciences" },
+  { value: "fintech", label: "Financial Services & Banking" },
+  { value: "ecommerce", label: "E-Commerce & Retail" },
+  { value: "professional-services", label: "Professional Services & Legal" },
+  { value: "logistics", label: "Logistics & Supply Chain" },
+  { value: "it-software", label: "Technology & SaaS" },
+  { value: "manufacturing", label: "Manufacturing & Industrial" },
+  { value: "other", label: "Other SMB Industry" }
 ];
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CUSTOM SELECT COMPONENT (Dark Graphite Velnix Theme)
+// ─────────────────────────────────────────────────────────────────────────────
 const CustomSelect = ({ 
   options, 
   value, 
@@ -68,14 +81,14 @@ const CustomSelect = ({
 }: { 
   options: {value: string, label: string}[], 
   value: string, 
-  onChange: (e: any) => void, 
+  onChange: (e: { target: { name: string, value: string, type: string } }) => void, 
   placeholder: string,
   name: string
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -89,50 +102,99 @@ const CustomSelect = ({
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <div
-        className={`w-full h-12 px-4 rounded-none border ${isOpen ? 'border-[#B6FF00] ring-1 ring-[#B6FF00]' : 'border-gray-200'} bg-white text-gray-900 flex items-center justify-between cursor-pointer transition-all hover:border-[#B6FF00]`}
+      <button
+        type="button"
+        className="w-full h-12 px-4 flex items-center justify-between text-left transition-all duration-200"
+        style={{
+          background: C.graphite,
+          border: `1px solid ${isOpen ? C.lime : C.wa(0.12)}`,
+          color: value ? C.white : C.wa(0.4),
+          boxShadow: isOpen ? `0 0 16px ${C.la(0.15)}` : 'none',
+        }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
       >
-        <span className={value ? 'text-gray-900' : 'text-gray-500'}>
+        <span className="text-sm font-medium truncate">
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <div className="pointer-events-none">
-          <svg className={`w-5 h-5 text-[#B6FF00] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
+        <ChevronDown 
+          size={16} 
+          className="transition-transform duration-200 shrink-0" 
+          style={{ 
+            color: isOpen ? C.lime : C.wa(0.4),
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+          }} 
+        />
+      </button>
 
-      {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 shadow-lg max-h-60 overflow-auto">
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className={`px-4 py-3 cursor-pointer transition-colors ${
-                value === option.value 
-                  ? 'bg-[#B6FF00] text-black font-medium' 
-                  : 'text-gray-700 hover:bg-[#B6FF00] hover:text-black'
-              }`}
-              onClick={() => {
-                onChange({
-                  target: { name, value: option.value, type: 'select-one' }
-                });
-                setIsOpen(false);
-              }}
-            >
-              {option.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 w-full mt-1 overflow-auto max-h-60"
+            style={{
+              background: C.graphite,
+              border: `1px solid ${C.wa(0.15)}`,
+              boxShadow: '0 16px 40px rgba(0,0,0,0.7)',
+            }}
+            role="listbox"
+          >
+            {options.map((option) => (
+              <div
+                key={option.value}
+                role="option"
+                aria-selected={value === option.value}
+                className="px-4 py-3 cursor-pointer text-sm transition-colors duration-150 flex items-center justify-between"
+                style={{
+                  background: value === option.value ? C.la(0.1) : 'transparent',
+                  color: value === option.value ? C.lime : C.wa(0.8),
+                  fontWeight: value === option.value ? 600 : 400,
+                }}
+                onMouseEnter={(e) => {
+                  if (value !== option.value) {
+                    e.currentTarget.style.background = C.wa(0.05);
+                    e.currentTarget.style.color = C.white;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (value !== option.value) {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = C.wa(0.8);
+                  }
+                }}
+                onClick={() => {
+                  onChange({
+                    target: { name, value: option.value, type: 'select-one' }
+                  });
+                  setIsOpen(false);
+                }}
+              >
+                <span>{option.label}</span>
+                {value === option.value && (
+                  <CheckCircle2 size={14} color={C.lime} />
+                )}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTACT COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
 const Contact = () => {
+  const shouldReduce = useReducedMotion();
+  const [selectedGoal, setSelectedGoal] = useState('automate-work');
   const [formData, setFormData] = useState({
-    helpType: '',
-    industry: '',
+    helpType: 'ai-automation',
+    industry: 'healthcare',
     firstName: '',
     lastName: '',
     email: '',
@@ -140,19 +202,23 @@ const Contact = () => {
     country: '',
     company: '',
     message: '',
-    newsletter: false,
-    terms: false
+    newsletter: true,
+    terms: true
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | { target: { name: string, value: string, type: string } }) => {
+    const target = e.target;
+    const name = target.name;
+    const type = target.type;
+
     if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
+      const checked = (target as HTMLInputElement).checked;
       setFormData(prev => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData(prev => ({ ...prev, [name]: target.value }));
     }
   };
 
@@ -160,11 +226,9 @@ const Contact = () => {
     const errors: string[] = [];
     if (!formData.firstName.trim()) errors.push('First Name is required');
     if (!formData.lastName.trim()) errors.push('Last Name is required');
-    if (!formData.email.trim()) errors.push('Email is required');
-    if (!formData.phone.trim()) errors.push('Phone is required');
-    if (!formData.helpType) errors.push('Please select how we can help you');
-    if (!formData.industry) errors.push('Please select your industry');
-    if (!formData.terms) errors.push('You must agree to the Privacy Policy and Terms and Conditions');
+    if (!formData.email.trim()) errors.push('Work Email is required');
+    if (!formData.company.trim()) errors.push('Company Name is required');
+    if (!formData.terms) errors.push('Please agree to the Privacy Policy');
 
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.push('Please enter a valid email address');
@@ -185,19 +249,20 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Insert form data into Supabase table "Contact Us"
-      // Note: Using the exact name from the screenshot
+      const goalLabel = IMPROVEMENT_GOALS.find(g => g.id === selectedGoal)?.label || selectedGoal;
+      const combinedMessage = `[Primary Goal: ${goalLabel}]\n\n${formData.message || 'No additional message details provided.'}`;
+
       const { error } = await supabase.from('Contact Us').insert([
         {
           first_name: formData.firstName,
           last_name: formData.lastName,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone || null,
           subject: formData.helpType,
-          message: formData.message,
+          message: combinedMessage,
           help_topic: formData.helpType,
           industry: formData.industry,
-          country: formData.country,
+          country: formData.country || null,
           company_organization: formData.company,
           newsletter_signup: formData.newsletter,
           agree_terms: formData.terms
@@ -209,296 +274,626 @@ const Contact = () => {
         throw error;
       }
 
-      // Show success message
-      toast.success('Message sent successfully!', {
-        description: 'Your message has been saved for our team’s review.',
+      toast.success('Strategy inquiry received!', {
+        description: 'Our team will review your operational requirements and reach out within 24 business hours.',
         duration: 5000,
+        style: { background: C.lime, color: C.black, border: 'none' }
       });
 
       setIsSubmitted(true);
-
-      // Reset form fields
-      setFormData({
-        helpType: '',
-        industry: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        country: '',
-        company: '',
-        message: '',
-        newsletter: false,
-        terms: false
-      });
-
     } catch (error) {
       console.error(error);
-      toast.error('Something went wrong. Please try again.');
+      toast.error('Could not submit inquiry right now. Please email info@velnixsolutions.com directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen overflow-x-hidden flex flex-col">
-      <BackgroundAnimation />
+    <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
       <Navbar />
 
-      {/* Let's Talk Business - Fixed Right Sidebar Button */}
-      <button
-        onClick={scrollToForm}
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 group"
-        aria-label="Let's Talk Business"
-        style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-      >
-        <span
-          className="inline-flex items-center gap-2 px-3 py-6 text-white font-bold text-sm tracking-wider uppercase cursor-pointer transition-all duration-300 ease-in-out shadow-lg group-hover:shadow-xl group-hover:shadow-teal-500/30 group-hover:px-4"
-          style={{
-            background: 'linear-gradient(180deg, #00b4d8 0%, #0096a7 50%, #008090 100%)',
-            borderRadius: '12px 0 0 12px',
-            letterSpacing: '0.15em',
-          }}
-        >
-          <svg
-            className="w-4 h-4 rotate-90 transition-transform duration-300 group-hover:translate-y-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            style={{ transform: 'rotate(90deg)' }}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          Let's Talk Business
-        </span>
-      </button>
+      {/* ── BACKGROUND AMBIENT GLOWS ── */}
+      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute top-0 left-1/4 rounded-full blur-[140px]"
+          style={{ width: 500, height: 500, background: C.la(0.04) }}
+        />
+        <div
+          className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]"
+          style={{ width: 450, height: 450, background: C.ga(0.03) }}
+        />
+      </div>
 
-      <HeroSection />
+      <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          
+          {/* ══════════════════════════════════════════════════════
+              HERO HEADER
+          ══════════════════════════════════════════════════════ */}
+          <div className="max-w-3xl mb-16 lg:mb-20">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease }}
+              className="inline-flex items-center gap-2 mb-6"
+            >
+              <span
+                className="inline-flex items-center gap-2 px-3 py-1"
+                style={{
+                  border: `1px solid ${C.la(0.3)}`,
+                  background: C.la(0.06),
+                }}
+              >
+                <span
+                  style={{
+                    width: 6, height: 6,
+                    borderRadius: '50%',
+                    background: C.lime,
+                    boxShadow: `0 0 8px ${C.lime}`,
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    color: C.lime,
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  LET'S BUILD WHAT'S NEXT
+                </span>
+              </span>
+            </motion.div>
 
-      <main className="flex-grow relative z-10">
-        <section id="contact" className="py-12 sm:py-24 px-4 sm:px-6 bg-white overflow-hidden">
-          <div className="max-w-4xl mx-auto">
-            {isSubmitted ? (
-              <div className="relative rounded-3xl p-8 sm:p-16 text-center space-y-8 animate-in fade-in zoom-in duration-500 overflow-hidden shadow-2xl"
-                style={{ background: 'linear-gradient(135deg, #2a3d00 0%, #5b8000 50%, #B6FF00 100%)' }}>
-                <div className="relative z-10">
-                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-6 border border-white/30">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-md">
-                      Thank You for Your Interest!
-                    </h3>
-                    <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed drop-shadow-sm font-medium">
-                      We've received your message and our team will get back to you within 24 hours. We're excited to help you transform your ideas into intelligent AI solutions.
-                    </p>
-                  </div>
-                  <div className="pt-10">
-                    <Button
-                      onClick={() => setIsSubmitted(false)}
-                      variant="outline"
-                      className="px-8 py-6 rounded-none border-white/40 bg-white/10 text-white hover:bg-white hover:text-[#B6FF00] transition-all font-bold backdrop-blur-sm border-2"
+            {/* H1 */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6, ease }}
+              style={{
+                fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
+                fontWeight: 800,
+                lineHeight: 1.08,
+                letterSpacing: '-0.03em',
+                color: C.white,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Turn Your Business Problem Into An{' '}
+              <span style={{ color: C.lime }}>Intelligent System.</span>
+            </motion.h1>
+
+            {/* Supporting Copy */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease }}
+              style={{
+                fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
+                color: C.wa(0.72),
+                lineHeight: 1.7,
+                fontWeight: 400,
+              }}
+            >
+              Tell us what slows your business down. We will evaluate your workflow, assess where AI or automation creates measurable impact, and outline the right technical path. No complex jargon required.
+            </motion.p>
+          </div>
+
+          {/* ══════════════════════════════════════════════════════
+              MAIN TWO-COLUMN LAYOUT
+          ══════════════════════════════════════════════════════ */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+            {/* ──────────────────────────────────────────────────
+                LEFT COLUMN — Context, Roadmap & Trust
+            ────────────────────────────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25, duration: 0.6, ease }}
+              className="lg:col-span-5 flex flex-col gap-10"
+            >
+              {/* Problem Focus Box */}
+              <div
+                className="p-6 sm:p-8"
+                style={{
+                  background: C.graphite,
+                  border: `1px solid ${C.wa(0.08)}`,
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: C.lime,
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  Common Operational Challenges We Solve
+                </h3>
+                
+                <ul className="flex flex-col gap-3.5">
+                  {[
+                    'Repetitive manual work taking up team bandwidth',
+                    'Disconnected tools & spreadsheet-heavy processes',
+                    'Administrative workloads slowing customer delivery',
+                    'Data fragmentation across multiple software tools',
+                    'Custom AI software & intelligent workflow needs',
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm" style={{ color: C.wa(0.8) }}>
+                      <CheckCircle2 size={16} color={C.lime} className="shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 3-Step What Happens Next */}
+              <div>
+                <h3
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: C.wa(0.5),
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  What Happens Next
+                </h3>
+
+                <div className="flex flex-col gap-6 relative">
+                  {/* Step 1 */}
+                  <div className="flex gap-4 items-start">
+                    <div
+                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
+                      style={{ background: C.la(0.1), color: C.lime, border: `1px solid ${C.la(0.3)}` }}
                     >
-                      Send Another Message
-                    </Button>
+                      01
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-white mb-1">Tell Us the Business Problem</h4>
+                      <p className="text-xs text-white/60 leading-relaxed">
+                        Share your workflow, pain point, or goal through the form.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex gap-4 items-start">
+                    <div
+                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
+                      style={{ background: C.wa(0.05), color: C.wa(0.7), border: `1px solid ${C.wa(0.1)}` }}
+                    >
+                      02
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-white mb-1">We Assess the Opportunity</h4>
+                      <p className="text-xs text-white/60 leading-relaxed">
+                        Our team reviews where AI, software, or system integration creates clear ROI.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex gap-4 items-start">
+                    <div
+                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
+                      style={{ background: C.wa(0.05), color: C.wa(0.7), border: `1px solid ${C.wa(0.1)}` }}
+                    >
+                      03
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-white mb-1">We Discuss the Right Path</h4>
+                      <p className="text-xs text-white/60 leading-relaxed">
+                        A focused conversation to determine feasibility, scope, and technical direction.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* How can we help you */}
-                  <div className="space-y-2">
-                    <Label htmlFor="helpType" className="text-sm font-semibold text-gray-700">How can we help you*</Label>
-                    <CustomSelect
-                      name="helpType"
-                      value={formData.helpType}
-                      onChange={handleInputChange}
-                      placeholder="Please Select One"
-                      options={HELP_OPTIONS}
-                    />
-                  </div>
 
-                  {/* Select your Industry */}
-                  <div className="space-y-2">
-                    <Label htmlFor="industry" className="text-sm font-semibold text-gray-700">Select your Industry*</Label>
-                    <CustomSelect
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleInputChange}
-                      placeholder="Please Select One"
-                      options={INDUSTRY_OPTIONS}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name*</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      placeholder="First Name"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Last Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name*</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      placeholder="Last Name"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email*</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Email"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-sm font-semibold text-gray-700">Phone*</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Phone"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Country */}
-                  <div className="space-y-2">
-                    <Label htmlFor="country" className="text-sm font-semibold text-gray-700">Country*</Label>
-                    <Input
-                      id="country"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleInputChange}
-                      placeholder="Country"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Company/Organization */}
-                  <div className="space-y-2">
-                    <Label htmlFor="company" className="text-sm font-semibold text-gray-700">Company/Organization*</Label>
-                    <Input
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Company Name"
-                      className="h-12 border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all rounded-none"
-                      required
-                    /></div>
+              {/* SLA & Direct Contact */}
+              <div
+                className="p-6 flex flex-col gap-4"
+                style={{
+                  background: C.wa(0.02),
+                  border: `1px solid ${C.wa(0.06)}`,
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <Clock size={16} color={C.lime} />
+                  <span className="text-xs font-semibold text-white/90">
+                    Response Guarantee: Within 24 Business Hours
+                  </span>
                 </div>
 
-                {/* Message */}
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="How can we help you?"
-                    className="min-h-[150px] border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#B6FF00] focus:border-[#B6FF00] transition-all resize-none px-4 py-3 rounded-none"
-                    required
-                  />
-                </div>
-
-                {/* Checkboxes */}
-                <div className="space-y-4 pt-4">
-                  <div className="flex items-center space-x-3">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-gray-300 text-[#B6FF00] accent-[#B6FF00] checked:bg-[#B6FF00] checked:hover:bg-[#B6FF00] checked:focus:bg-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
-                    />
-                    <label htmlFor="newsletter" className="text-sm text-gray-600 cursor-pointer">
-                      I agree to sign up for the newsletter
-                    </label>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <input
-                      type="checkbox"
-                      id="terms"
-                      name="terms"
-                      checked={formData.terms}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-gray-300 text-[#B6FF00] accent-[#B6FF00] checked:bg-[#B6FF00] checked:hover:bg-[#B6FF00] checked:focus:bg-[#B6FF00] focus:ring-[#B6FF00] cursor-pointer"
-                      required
-                    />
-                    <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
-                      I agree to the{" "}
-                      <a href="/privacy-policy" target="_blank" className="font-bold text-[#B6FF00] hover:underline">
-                        Privacy policy
-                      </a>{" "}
-                      and{" "}
-                      <a href="/terms-and-conditions" target="_blank" className="font-bold text-[#B6FF00] hover:underline">
-                        Terms and conditions.*
-                      </a>
-                    </label>
+                <div className="flex flex-col gap-2 pt-2" style={{ borderTop: `1px solid ${C.wa(0.06)}` }}>
+                  <a 
+                    href="mailto:info@velnixsolutions.com" 
+                    className="flex items-center gap-3 text-xs text-white/70 hover:text-[#B6FF00] transition-colors"
+                  >
+                    <Mail size={14} color={C.lime} />
+                    <span>info@velnixsolutions.com</span>
+                  </a>
+                  <a 
+                    href="tel:+923351312852" 
+                    className="flex items-center gap-3 text-xs text-white/70 hover:text-[#B6FF00] transition-colors"
+                  >
+                    <Phone size={14} color={C.lime} />
+                    <span>+92 335 131 2852</span>
+                  </a>
+                  <div className="flex items-center gap-3 text-xs text-white/70">
+                    <MapPin size={14} color={C.lime} />
+                    <span>Karachi, Pakistan</span>
                   </div>
                 </div>
+              </div>
 
-                {/* Submit Button */}
-                <div className="pt-6 flex justify-center sm:justify-start">
-                  <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto px-12 py-7 text-sm font-bold text-zinc-950 shadow-lg hover:shadow-[#B6FF00]/30 transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-none"
-                  style={{ background: '#B6FF00' }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-none h-4 w-4 border-b-2 border-zinc-950 mr-2"></div>
-                      Submitting...
-                    </>
-                  ) : (
-                    'Submit Message'
-                  )}
-                </Button>
+            </motion.div>
+
+            {/* ──────────────────────────────────────────────────
+                RIGHT COLUMN — Guided Conversion Form
+            ────────────────────────────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6, ease }}
+              className="lg:col-span-7"
+            >
+              <div
+                className="p-6 sm:p-10 relative overflow-hidden"
+                style={{
+                  background: C.graphite,
+                  border: `1px solid ${C.wa(0.1)}`,
+                  boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
+                }}
+              >
+                {/* Form header badge */}
+                <div className="flex items-center justify-between mb-8 pb-6" style={{ borderBottom: `1px solid ${C.wa(0.08)}` }}>
+                  <div>
+                    <h2 className="text-lg font-bold text-white">Start Your Inquiry</h2>
+                    <p className="text-xs text-white/50 mt-1">Short form • ~45 seconds to complete</p>
+                  </div>
+                  <span
+                    className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1"
+                    style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
+                  >
+                    Qualified B2B Channel
+                  </span>
                 </div>
-              </form>
-            )}
+
+                {isSubmitted ? (
+                  /* Success Screen */
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-12 px-4 text-center space-y-6"
+                  >
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto"
+                      style={{ background: C.la(0.15), border: `1px solid ${C.lime}` }}
+                    >
+                      <CheckCircle2 size={32} color={C.lime} />
+                    </div>
+
+                    <div className="space-y-3 max-w-md mx-auto">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white">
+                        Inquiry Submitted Successfully
+                      </h3>
+                      <p className="text-sm text-white/70 leading-relaxed">
+                        Thank you for sharing your business context. Our engineering leads will review your inquiry and reach out within 24 business hours to discuss potential next steps.
+                      </p>
+                    </div>
+
+                    <div className="pt-6">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsSubmitted(false);
+                          setFormData({
+                            helpType: 'ai-automation',
+                            industry: 'healthcare',
+                            firstName: '',
+                            lastName: '',
+                            email: '',
+                            phone: '',
+                            country: '',
+                            company: '',
+                            message: '',
+                            newsletter: true,
+                            terms: true
+                          });
+                        }}
+                        className="px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors"
+                        style={{
+                          background: C.wa(0.05),
+                          color: C.white,
+                          border: `1px solid ${C.wa(0.15)}`,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = C.lime;
+                          e.currentTarget.style.color = C.black;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = C.wa(0.05);
+                          e.currentTarget.style.color = C.white;
+                        }}
+                      >
+                        Submit Another Inquiry
+                      </button>
+                    </div>
+                  </motion.div>
+                ) : (
+                  /* Active Form */
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    
+                    {/* STEP 1: What are you looking to improve? (Interactive Pills) */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80 mb-3">
+                        01. What are you looking to improve?*
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {IMPROVEMENT_GOALS.map((goal) => {
+                          const IconComp = goal.icon;
+                          const isSelected = selectedGoal === goal.id;
+                          return (
+                            <button
+                              key={goal.id}
+                              type="button"
+                              onClick={() => {
+                                setSelectedGoal(goal.id);
+                                if (goal.id === 'automate-work') setFormData(prev => ({ ...prev, helpType: 'ai-automation' }));
+                                else if (goal.id === 'ai-solution') setFormData(prev => ({ ...prev, helpType: 'ai-development' }));
+                                else if (goal.id === 'connect-systems') setFormData(prev => ({ ...prev, helpType: 'agentic-ai' }));
+                                else if (goal.id === 'custom-software') setFormData(prev => ({ ...prev, helpType: 'custom-software' }));
+                              }}
+                              className="flex items-center gap-3 p-3 text-left transition-all duration-200"
+                              style={{
+                                background: isSelected ? C.la(0.08) : C.wa(0.02),
+                                border: `1px solid ${isSelected ? C.lime : C.wa(0.08)}`,
+                                color: isSelected ? C.lime : C.wa(0.75),
+                              }}
+                            >
+                              <IconComp size={16} color={isSelected ? C.lime : C.wa(0.4)} className="shrink-0" />
+                              <span className="text-xs font-medium">{goal.label}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* STEP 2: Service Category & Industry Dropdowns */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <label className="block text-xs font-semibold text-white/70">
+                          Primary Service Category*
+                        </label>
+                        <CustomSelect
+                          name="helpType"
+                          value={formData.helpType}
+                          onChange={handleInputChange}
+                          placeholder="Select Service"
+                          options={HELP_TOPICS}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-xs font-semibold text-white/70">
+                          Industry Sector*
+                        </label>
+                        <CustomSelect
+                          name="industry"
+                          value={formData.industry}
+                          onChange={handleInputChange}
+                          placeholder="Select Industry"
+                          options={INDUSTRY_OPTIONS}
+                        />
+                      </div>
+                    </div>
+
+                    {/* STEP 3: Contact & Company Details */}
+                    <div className="space-y-4">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80">
+                        02. Contact & Organization Details*
+                      </label>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* First Name */}
+                        <div>
+                          <input
+                            type="text"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                            placeholder="First Name *"
+                            required
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+
+                        {/* Last Name */}
+                        <div>
+                          <input
+                            type="text"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                            placeholder="Last Name *"
+                            required
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+
+                        {/* Work Email */}
+                        <div>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="Work Email *"
+                            required
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+
+                        {/* Company Name */}
+                        <div>
+                          <input
+                            type="text"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleInputChange}
+                            placeholder="Company / Organization *"
+                            required
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+
+                        {/* Phone */}
+                        <div>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="Phone Number (Optional)"
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+
+                        {/* Country */}
+                        <div>
+                          <input
+                            type="text"
+                            name="country"
+                            value={formData.country}
+                            onChange={handleInputChange}
+                            placeholder="Country / Location"
+                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
+                            style={{ border: `1px solid ${C.wa(0.12)}` }}
+                            onFocus={(e) => e.target.style.borderColor = C.lime}
+                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* STEP 4: Problem Statement / Message */}
+                    <div className="space-y-2">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80">
+                        03. Tell Us About The Business Problem / Workflow
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={4}
+                        placeholder="Briefly describe what repetitive task, system bottleneck, or workflow challenge you want to address..."
+                        className="w-full p-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200 resize-none"
+                        style={{ border: `1px solid ${C.wa(0.12)}` }}
+                        onFocus={(e) => e.target.style.borderColor = C.lime}
+                        onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
+                      />
+                    </div>
+
+                    {/* Terms & Newsletter */}
+                    <div className="space-y-3 pt-2">
+                      <label className="flex items-center gap-3 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          name="terms"
+                          checked={formData.terms}
+                          onChange={handleInputChange}
+                          required
+                          className="w-4 h-4 rounded-none accent-[#B6FF00] cursor-pointer"
+                        />
+                        <span className="text-xs text-white/70">
+                          I agree to Velnix Solutions' Privacy Policy & Terms of Service *
+                        </span>
+                      </label>
+
+                      <label className="flex items-center gap-3 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          name="newsletter"
+                          checked={formData.newsletter}
+                          onChange={handleInputChange}
+                          className="w-4 h-4 rounded-none accent-[#B6FF00] cursor-pointer"
+                        />
+                        <span className="text-xs text-white/60">
+                          Keep me updated on AI automation insights & B2B case studies
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Primary CTA Button */}
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full group inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-sm tracking-wide transition-all duration-200 relative overflow-hidden"
+                        style={{
+                          background: C.lime,
+                          color: C.black,
+                          boxShadow: `0 8px 28px ${C.la(0.3)}`,
+                          cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                          opacity: isSubmitting ? 0.75 : 1,
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!isSubmitting) {
+                            e.currentTarget.style.background = C.green;
+                            e.currentTarget.style.boxShadow = `0 12px 36px ${C.la(0.5)}`;
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!isSubmitting) {
+                            e.currentTarget.style.background = C.lime;
+                            e.currentTarget.style.boxShadow = `0 8px 28px ${C.la(0.3)}`;
+                          }
+                        }}
+                      >
+                        {isSubmitting ? (
+                          <span>Processing Inquiry...</span>
+                        ) : (
+                          <>
+                            <span>Start The Conversation</span>
+                            <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                  </form>
+                )}
+
+              </div>
+            </motion.div>
+
           </div>
-        </section>
+        </div>
       </main>
 
       <Footer />

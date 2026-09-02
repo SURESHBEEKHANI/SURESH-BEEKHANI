@@ -46,20 +46,20 @@ export function CookieBanner() {
           <Button 
             variant="outline" 
             onClick={handleCustomize}
-            className="text-white border-primary/50 hover:bg-primary/20 bg-transparent flex-1 md:flex-none"
+            className="text-white border-primary/50 hover:bg-primary/5 bg-transparent flex-1 md:flex-none"
           >
             Customize Settings
           </Button>
           <Button 
             variant="outline" 
             onClick={handleReject}
-            className="text-white border-primary/50 hover:bg-primary/20 bg-transparent flex-1 md:flex-none"
+            className="text-white border-primary/50 hover:bg-primary/5 bg-transparent flex-1 md:flex-none"
           >
             Reject
           </Button>
           <Button 
             onClick={handleAcceptAll}
-            className="bg-primary hover:bg-primary/90 text-white shadow-[0_0_15px_rgba(var(--primary),0.5)] flex-1 md:flex-none"
+            className="bg-primary hover:bg-primary/5 text-white shadow-[0_0_15px_rgba(var(--primary),0.5)] flex-1 md:flex-none"
           >
             Accept All
           </Button>

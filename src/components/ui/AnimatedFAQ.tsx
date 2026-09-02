@@ -25,7 +25,7 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
   };
 
   return (
-    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-purple-50 to-white">
+    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-tr from-primary to-white">
       <div className="max-w-4xl mx-auto">
         <motion.div 
           className="text-center space-y-4 mb-8 sm:mb-10"
@@ -35,7 +35,7 @@ const AnimatedFAQ: React.FC<AnimatedFAQProps> = ({
           transition={{ duration: 0.6 }}
         >
           <div className="flex justify-center items-center space-x-2 sm:space-x-3">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
               <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>

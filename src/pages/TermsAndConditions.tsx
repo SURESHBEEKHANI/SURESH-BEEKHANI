@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
 
       <section className="relative w-full min-h-[40vh] sm:min-h-[50vh] flex items-center justify-start bg-zinc-950 overflow-hidden pt-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full" />
         <div className="relative z-10 max-w-6xl px-4 sm:px-6 ml-[10%] sm:ml-[15%] lg:ml-[20%] py-8 sm:py-12">
           <div className="text-white space-y-4 sm:space-y-6 text-left">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
