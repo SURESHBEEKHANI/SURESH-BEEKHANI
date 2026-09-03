@@ -177,7 +177,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
 };
 
 const CONTACT_DETAILS = [
-  { label: 'Karachi, Pakistan', href: undefined, icon: MapPin },
+  { label: 'M.A. Jinnah Road, Near Taj Medical Complex,Street 13, Karachi, Sindh ,Pakistan', href: undefined, icon: MapPin },
   { label: 'info@velnixsolutions.com', href: 'mailto:info@velnixsolutions.com', icon: Mail },
   { label: '+92 335 131 2852', href: 'tel:+923351312852', icon: Phone },
 ] as const;
@@ -487,29 +487,6 @@ const Footer = () => {
                 {/* Primary CTA */}
                 <FooterCTA />
 
-                {/* Quick contact */}
-                <div className="flex items-center gap-6">
-                  <a
-                    href="mailto:info@velnixsolutions.com"
-                    className="inline-flex items-center gap-2 transition-colors duration-200"
-                    style={{ fontSize: '0.8rem', color: C.wa(0.5), textDecoration: 'none' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.white; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.5); }}
-                  >
-                    <Mail size={13} />
-                    info@velnixsolutions.com
-                  </a>
-                  <a
-                    href="tel:+923351312852"
-                    className="inline-flex items-center gap-2 transition-colors duration-200"
-                    style={{ fontSize: '0.8rem', color: C.wa(0.5), textDecoration: 'none' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.white; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.5); }}
-                  >
-                    <Phone size={13} />
-                    +92 335 131 2852
-                  </a>
-                </div>
               </motion.div>
             </div>
           </div>
