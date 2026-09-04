@@ -177,7 +177,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
 };
 
 const CONTACT_DETAILS = [
-  { label: 'M.A. Jinnah Road, Near Taj Medical Complex,Street 13, Karachi, Sindh ,Pakistan', href: undefined, icon: MapPin },
+  { label: 'M.A. Jinnah Road, Near Taj Medical Complex,\nStreet 13, Karachi, Sindh, Pakistan', href: undefined, icon: MapPin },
   { label: 'info@velnixsolutions.com', href: 'mailto:info@velnixsolutions.com', icon: Mail },
   { label: '+92 335 131 2852', href: 'tel:+923351312852', icon: Phone },
 ] as const;
@@ -200,8 +200,8 @@ const FooterContactCol = () => {
         const Icon = item.icon;
         const inner = (
           <>
-            <Icon size={13} color={C.la(0.7)} strokeWidth={1.5} className="shrink-0" />
-            {item.label}
+            <Icon size={13} color={C.la(0.7)} strokeWidth={1.5} className="mt-1 shrink-0" />
+            <span style={item.href ? undefined : { whiteSpace: 'pre-line', fontSize: '0.75rem', lineHeight: 1.5 }}>{item.label}</span>
           </>
         );
         return (
@@ -209,7 +209,7 @@ const FooterContactCol = () => {
             {item.href ? (
               <a
                 href={item.href}
-                className="inline-flex items-center gap-2 text-sm transition-colors duration-200"
+                className="inline-flex items-start gap-2 text-sm transition-colors duration-200"
                 style={{ color: C.wa(0.55), textDecoration: 'none' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
@@ -217,7 +217,7 @@ const FooterContactCol = () => {
                 {inner}
               </a>
             ) : (
-              <span className="inline-flex items-center gap-2 text-sm" style={{ color: C.wa(0.55) }}>
+              <span className="inline-flex items-start gap-2 text-sm" style={{ color: C.wa(0.55) }}>
                 {inner}
               </span>
             )}
@@ -317,47 +317,53 @@ const NewsletterForm = () => {
       {done ? (
         <p style={{ fontSize: '0.875rem', color: C.lime, fontWeight: 600 }}>Welcome to Velnix. ✓</p>
       ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder="Your work email"
-            disabled={submitting}
-            style={{
-              flex: 1,
-              background: C.wa(0.04),
-              border: `1px solid ${C.wa(0.1)}`,
-              color: C.white,
-              fontSize: '0.8rem',
-              padding: '0.6rem 0.875rem',
-              outline: 'none',
-              borderRadius: 0,
-              minWidth: 0,
-            }}
-            onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = C.la(0.5); }}
-            onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = C.wa(0.1); }}
-          />
-          <button
-            type="submit"
-            disabled={submitting}
-            style={{
-              background: C.lime,
-              color: C.black,
-              fontWeight: 700,
-              fontSize: '0.75rem',
-              padding: '0.6rem 1rem',
-              border: 'none',
-              cursor: submitting ? 'not-allowed' : 'pointer',
-              whiteSpace: 'nowrap',
-              opacity: submitting ? 0.7 : 1,
-              transition: 'background 0.2s',
-            }}
-            onMouseEnter={e => { if (!submitting) (e.currentTarget as HTMLElement).style.background = C.green; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = C.lime; }}
-          >
-            {submitting ? '…' : 'Subscribe'}
-          </button>
+        <form onSubmit={handleSubmit} style={{ maxWidth: 360 }}>
+          <div style={{ position: 'relative' }}>
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Your work email"
+              disabled={submitting}
+              style={{
+                width: '100%',
+                background: C.wa(0.04),
+                border: `1px solid ${C.wa(0.1)}`,
+                color: C.white,
+                fontSize: '0.8rem',
+                padding: '0.6rem 6.5rem 0.6rem 0.875rem',
+                outline: 'none',
+                borderRadius: 999,
+              }}
+              onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = C.la(0.5); }}
+              onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = C.wa(0.1); }}
+            />
+            <button
+              type="submit"
+              disabled={submitting}
+              style={{
+                position: 'absolute',
+                top: 4,
+                right: 4,
+                bottom: 4,
+                background: C.lime,
+                color: C.black,
+                fontWeight: 700,
+                fontSize: '0.75rem',
+                padding: '0 0.65rem',
+                border: 'none',
+                borderRadius: 999,
+                cursor: submitting ? 'not-allowed' : 'pointer',
+                whiteSpace: 'nowrap',
+                opacity: submitting ? 0.7 : 1,
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => { if (!submitting) (e.currentTarget as HTMLElement).style.background = C.green; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = C.lime; }}
+            >
+              {submitting ? '…' : 'Subscribe'}
+            </button>
+          </div>
         </form>
       )}
     </div>
@@ -551,6 +557,7 @@ const Footer = () => {
                       className="inline-flex items-center justify-center transition-all duration-200"
                       style={{
                         width: 34, height: 34,
+                        borderRadius: '50%',
                         background: C.wa(0.05),
                         border: `1px solid ${C.wa(0.1)}`,
                         color: C.wa(0.5),

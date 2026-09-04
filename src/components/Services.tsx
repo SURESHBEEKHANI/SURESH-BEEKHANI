@@ -629,7 +629,7 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden scroll-mt-20"
+      className="pb-8 pt-20 md:pb-10 md:pt-28 lg:pb-12 lg:pt-32 relative overflow-hidden scroll-mt-20"
       style={{ background: C.BLACK }}
       aria-label="Services We Offer"
     >

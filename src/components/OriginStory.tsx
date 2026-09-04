@@ -12,8 +12,8 @@ const STORY_POINTS = [
 const IMPACT_STATS = [
   { number: '5+', label: 'Years of engineering experience' },
   { number: '23+', label: 'Enterprise and SMB clients' },
-  { number: '25+', label: 'Intelligent systems deployed' },
-  { number: '99%', label: 'Client satisfaction rate' },
+  { number: '45+', label: 'Intelligent systems deployed' },
+  { number: '95%', label: 'Client satisfaction rate' },
 ];
 
 const OriginStory = () => {

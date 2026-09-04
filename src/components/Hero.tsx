@@ -257,11 +257,11 @@ const Hero = () => {
               className="flex items-center gap-10 mt-0 pt-8"
               style={{ borderTop: `1px solid ${C.whiteAlpha(0.08)}` }}
             >
-              <MetricChip value="60%" label="Admin work cut"  delay={0.58} />
+              <MetricChip value="70%" label="Admin work cut"  delay={0.58} />
               <div style={{ width: 1, height: 36, background: C.whiteAlpha(0.1) }} />
-              <MetricChip value="3×"  label="Faster workflows" delay={0.62} />
+              <MetricChip value="10×"  label="Faster workflows" delay={0.62} />
               <div style={{ width: 1, height: 36, background: C.whiteAlpha(0.1) }} />
-              <MetricChip value="SMB" label="Focused solutions"  delay={0.66} />
+              <MetricChip value="SMBs" label="Focused solutions"  delay={0.66} />
             </motion.div>
           </div>
 

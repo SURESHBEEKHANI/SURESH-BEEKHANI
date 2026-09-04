@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
 import { 
   Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, 
-  Eye, Plus, Minus, List, ArrowRight, Clock, BookOpen, Sparkles, Zap
+  Eye, Plus, Minus, List, ArrowRight, Clock, BookOpen, Sparkles, Zap, ChevronDown
 } from "lucide-react";
 import { toast } from "sonner";
 import { useSearchParams } from "react-router-dom";
@@ -60,6 +60,7 @@ const Blogs: React.FC = () => {
   const [isSidebarSubmitting, setIsSidebarSubmitting] = useState(false);
   const [isSidebarSubscribed, setIsSidebarSubscribed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isTocOpen, setIsTocOpen] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -534,36 +535,9 @@ const Blogs: React.FC = () => {
                   {renderContent(selectedBlog.content)}
                 </div>
 
-                {/* Contextual Commercial CTA Box */}
-                <div 
-                  className="p-8 my-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-                  style={{ background: C.graphite, border: `1px solid ${C.la(0.3)}` }}
-                >
-                  <div>
-                    <span className="text-[10px] font-bold tracking-widest uppercase text-[#B6FF00] mb-1 block">
-                      Operational Next Step
-                    </span>
-                    <h3 className="text-lg font-bold text-white mb-2">
-                      Have a workflow worth automating?
-                    </h3>
-                    <p className="text-xs text-white/60 max-w-md">
-                      Let's assess your current manual processes and determine where AI or automation creates measurable impact.
-                    </p>
-                  </div>
-                  <a
-                    href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold text-black uppercase tracking-wider shrink-0 transition-all"
-                    style={{ background: C.lime }}
-                  >
-                    Discuss Your Workflow <ArrowRight size={14} />
-                  </a>
-                </div>
-
                 {/* FAQ Section */}
                 {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
-                  <div className="mt-14 pt-10 border-t border-white/10 mb-12">
+                  <div className="mt-14 pt-10 mb-12">
                     <h3 className="text-xl font-bold text-white mb-6">
                       Frequently Asked Questions
                     </h3>
@@ -614,10 +588,11 @@ const Blogs: React.FC = () => {
                   style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
                 >
                   <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">
-                    Subscribe to Insights
+                  Talk to Velnix
+
                   </h3>
                   <p className="text-xs text-white/60 leading-relaxed mb-4">
-                    Get practical ideas for automating workflows and adopting AI in business operations.
+                    Have a question about AI, product development, or your next project? **Start a conversation with our team.
                   </p>
 
                   {isSidebarSubscribed ? (
@@ -656,7 +631,7 @@ const Blogs: React.FC = () => {
                     {recentBlogs.map(post => (
                       <div 
                         key={post.id} 
-                        className="group cursor-pointer p-4 transition-all duration-200"
+                        className="group flex cursor-pointer items-center gap-3 rounded-xl p-4 transition-all duration-200"
                         style={{ background: C.graphite, border: `1px solid ${C.wa(0.06)}` }}
                         onClick={() => setSearchParams({ article: post.id })}
                         onMouseEnter={(e) => {
@@ -666,12 +641,24 @@ const Blogs: React.FC = () => {
                           e.currentTarget.style.borderColor = C.wa(0.06);
                         }}
                       >
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#B6FF00] block mb-1">
-                          {post.category || 'Insight'}
-                        </span>
-                        <h4 className="text-xs font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug line-clamp-2">
-                          {post.title}
-                        </h4>
+                        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-[#050505] sm:h-20 sm:w-32">
+                          {post.image_url ? (
+                            <img
+                              src={post.image_url}
+                              alt=""
+                              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="flex h-full items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white/20">
+                              Velnix Editorial
+                            </div>
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="text-xs font-bold leading-snug text-white transition-colors group-hover:text-[#B6FF00] line-clamp-3">
+                            {post.title}
+                          </h4>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -707,26 +694,6 @@ const Blogs: React.FC = () => {
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-6"
-            >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
-                  VELNIX INSIGHTS
-                </span>
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -740,8 +707,7 @@ const Blogs: React.FC = () => {
                 marginBottom: '1.25rem',
               }}
             >
-              Where Business Problems Meet{' '}
-              <span style={{ color: C.lime }}>Intelligent Technology.</span>
+              Where Business Problems Meet{' '}<span style={{ color: C.lime }}>Intelligent Technology.</span>
             </motion.h1>
 
             <motion.p
@@ -755,7 +721,7 @@ const Blogs: React.FC = () => {
                 fontWeight: 400,
               }}
             >
-              Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
+              Practical intelligence, engineering frameworks, and strategic guidance for SMBs decision-makers evaluating AI, automation, software, and workflow optimization.
             </motion.p>
           </div>
 
@@ -764,22 +730,75 @@ const Blogs: React.FC = () => {
           ══════════════════════════════════════════════════════ */}
           <div className="flex flex-col md:flex-row gap-6 items-stretch md:items-center justify-between mb-12 pb-8 border-b border-white/10">
             
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => (
+            {/* Category Dropdown */}
+            <div className="w-full md:max-w-sm">
+              <div className="relative">
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-200"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded={isCategoryOpen}
+                  aria-label="Select insight category"
+                  className="flex h-10 w-full items-center justify-between px-4 text-left text-xs font-semibold uppercase tracking-wider outline-none transition-all duration-200"
                   style={{
-                    background: activeCategory === cat.id ? C.lime : C.graphite,
-                    color: activeCategory === cat.id ? C.black : C.wa(0.7),
-                    border: `1px solid ${activeCategory === cat.id ? C.lime : C.wa(0.1)}`,
+                    background: isCategoryOpen ? C.la(0.08) : C.graphite,
+                    border: `1px solid ${isCategoryOpen ? C.lime : C.wa(0.12)}`,
+                    color: isCategoryOpen ? C.lime : C.white,
+                  }}
+                  onClick={() => setIsCategoryOpen(open => !open)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = C.lime;
+                    e.currentTarget.style.color = C.lime;
+                    e.currentTarget.style.background = C.la(0.08);
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isCategoryOpen) {
+                      e.currentTarget.style.borderColor = C.wa(0.12);
+                      e.currentTarget.style.color = C.white;
+                      e.currentTarget.style.background = C.graphite;
+                    }
                   }}
                 >
-                  {cat.label}
+                  {CATEGORIES.find(cat => cat.id === activeCategory)?.label || 'All Insights'}
+                  <ChevronDown size={16} color={isCategoryOpen ? C.lime : C.wa(0.6)} className={`transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
                 </button>
-              ))}
+                {isCategoryOpen && (
+                  <div
+                    role="listbox"
+                    aria-label="Available insight categories"
+                    className="absolute left-0 right-0 z-30 mt-1 overflow-hidden"
+                    style={{ background: C.graphite, border: `1px solid ${C.lime}` }}
+                  >
+                    {CATEGORIES.map((cat) => (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        role="option"
+                        aria-selected={activeCategory === cat.id}
+                        className="block w-full px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-200"
+                        style={{
+                          background: activeCategory === cat.id ? C.la(0.18) : C.graphite,
+                          color: activeCategory === cat.id ? C.lime : C.white,
+                          borderBottom: `1px solid ${C.wa(0.06)}`,
+                        }}
+                        onClick={() => {
+                          setActiveCategory(cat.id);
+                          setIsCategoryOpen(false);
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = C.la(0.18);
+                          e.currentTarget.style.color = C.lime;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = activeCategory === cat.id ? C.la(0.18) : C.graphite;
+                          e.currentTarget.style.color = activeCategory === cat.id ? C.lime : C.white;
+                        }}
+                      >
+                        {cat.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Search Input */}
@@ -952,37 +971,7 @@ const Blogs: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               BOTTOM CONVERSATION CTA BANNER
           ══════════════════════════════════════════════════════ */}
-          <div 
-            className="mt-20 p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
-            style={{
-              background: C.graphite,
-              border: `1px solid ${C.la(0.25)}`,
-            }}
-          >
-            <div className="max-w-2xl">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-[#B6FF00] mb-2 block">
-                Turn Insights Into Action
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Ready to evaluate your business automation opportunities?
-              </h3>
-              <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
-                Talk to our engineering leads about identifying operational bottlenecks, automating tasks, and building custom AI systems.
-              </p>
-            </div>
-
-            <a
-              href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold text-black uppercase tracking-wider shrink-0 transition-all"
-              style={{ background: C.lime }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = C.green; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = C.lime; }}
-            >
-              Book A Strategy Call <ArrowRight size={15} />
-            </a>
-          </div>
+          
 
         </div>
       </main>

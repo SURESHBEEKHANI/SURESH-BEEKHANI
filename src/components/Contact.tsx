@@ -312,42 +312,6 @@ const Contact = () => {
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
           <div className="max-w-3xl mb-16 lg:mb-20">
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease }}
-              className="inline-flex items-center gap-2 mb-6"
-            >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span
-                  style={{
-                    width: 6, height: 6,
-                    borderRadius: '50%',
-                    background: C.lime,
-                    boxShadow: `0 0 8px ${C.lime}`,
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    color: C.lime,
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  LET'S BUILD WHAT'S NEXT
-                </span>
-              </span>
-            </motion.div>
-
             {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -394,7 +358,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25, duration: 0.6, ease }}
-              className="lg:col-span-5 flex flex-col gap-10"
+              className="lg:order-2 lg:col-span-5 flex flex-col gap-10"
             >
               {/* Problem Focus Box */}
               <div
@@ -545,7 +509,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6, ease }}
-              className="lg:col-span-7"
+              className="lg:order-1 lg:col-span-7"
             >
               <div
                 className="p-6 sm:p-10 relative overflow-hidden"
