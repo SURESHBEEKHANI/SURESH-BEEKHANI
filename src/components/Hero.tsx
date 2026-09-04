@@ -164,7 +164,7 @@ const Hero = () => {
               style={{ color: C.limeAlpha(0.9) }}
             >
               <span style={{ width: 28, height: 1, background: C.lime }} aria-hidden="true" />
-              AI operations / Velnix Solutions
+              AI Innovation · Product Engineering · Strategic Consulting
             </motion.div>
 
             {/* H1 */}
@@ -188,7 +188,7 @@ const Hero = () => {
                   display: 'inline',
                 }}
               >
-                Operations
+                 Operations Into
               </span>{' '}
               Into Intelligent Systems.
             </motion.h1>
