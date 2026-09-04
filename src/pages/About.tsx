@@ -6,8 +6,6 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import MeetFounder from '@/components/MeetFounder';
-import Experience from '@/components/Experience';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS (Velnix Locked Color System)
@@ -287,17 +285,7 @@ const AboutPage = () => {
         </section>
 
         {/* ══════════════════════════════════════════════════════
-            4. MEET LEADERSHIP
-        ══════════════════════════════════════════════════════ */}
-        <MeetFounder />
-
-        {/* ══════════════════════════════════════════════════════
-            5. EXPERIENCE & TRACK RECORD STATS
-        ══════════════════════════════════════════════════════ */}
-        <Experience />
-
-        {/* ══════════════════════════════════════════════════════
-            6. THE VELNIX ADVANTAGE (WHY US)
+          5. THE VELNIX ADVANTAGE (WHY US)
         ══════════════════════════════════════════════════════ */}
         <section className="about-band about-band--graphite w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-7xl">

@@ -1,14 +1,13 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 // import About from '@/components/About';
-import Overview from '@/components/overview';
+import OriginStory from '@/components/OriginStory';
+import MeetFounder from '@/components/MeetFounder';
 import Services from '@/components/Services';
 import Industries from '@/components/Industries';
 import ClientSolutions from '@/components/ClientSolutions';
 import Approach from '@/components/Approach';
 import Testimonials from '@/components/Testimonials';
-import Experience from '@/components/Experience';
-import MeetFounder from '@/components/MeetFounder';
 import LatestBlogs from '@/components/LatestBlogs';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -27,15 +26,15 @@ const Index = () => {
         <Hero />
         
         <AnimatedSection threshold={0.08}>
-            <Overview />
+            <OriginStory />
+        </AnimatedSection>
+
+        <AnimatedSection threshold={0.08}>
+          <MeetFounder />
         </AnimatedSection>
 
         <AnimatedSection threshold={0.08}>
             <Services />
-        </AnimatedSection>
-
-        <AnimatedSection threshold={0.08}>
-            <Experience />
         </AnimatedSection>
 
         <div>
@@ -52,10 +51,6 @@ const Index = () => {
 
         <AnimatedSection id="testimonials" threshold={0.08}>
             <Testimonials />
-        </AnimatedSection>
-
-        <AnimatedSection threshold={0.08}>
-            <MeetFounder />
         </AnimatedSection>
 
         <AnimatedSection threshold={0.08}>

@@ -1,10 +1,10 @@
 // Core Components
 export { default as ResourcesSection } from './Resources';
-export { default as Overview } from './overview';
+export { default as OriginStory } from './OriginStory';
+export { default as MeetFounder } from './MeetFounder';
 export { default as Approach } from './Approach';
 export { default as ClientSolutions } from './ClientSolutions';
 export { default as Contact } from './Contact';
-export { default as Experience } from './Experience';
 export { default as FAQ } from './FAQ';
 export { default as Footer } from './Footer';
 export { default as Hero } from './Hero';
