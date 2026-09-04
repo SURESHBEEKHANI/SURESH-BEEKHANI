@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import BackgroundAnimation from './BackgroundAnimation';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS  (Velnix Locked Color System)
@@ -88,6 +89,8 @@ const Hero = () => {
         }}
         aria-label="Velnix Solutions hero section"
       >
+
+        <BackgroundAnimation />
 
         <div
           className="pointer-events-none absolute inset-0"
@@ -250,6 +253,18 @@ const Hero = () => {
 
             </motion.div>
 
+            <motion.a
+              href="/contact"
+              {...fadeUp}
+              transition={{ delay: 0.43, duration: 0.5, ease }}
+              className="mb-10 inline-flex items-center gap-2 text-xs font-semibold transition-colors duration-200"
+              style={{ color: C.whiteAlpha(0.52), textDecoration: 'none', letterSpacing: '0.04em' }}
+              onMouseEnter={e => { e.currentTarget.style.color = C.lime; }}
+              onMouseLeave={e => { e.currentTarget.style.color = C.whiteAlpha(0.52); }}
+            >
+              Not sure where to start? Talk to our team <ArrowRight size={13} />
+            </motion.a>
+
             {/* Metrics row */}
             <motion.div
               {...fadeUp}
@@ -266,6 +281,17 @@ const Hero = () => {
           </div>
 
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.7 }}
+          className="pointer-events-none absolute bottom-24 right-6 hidden flex-col items-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/40 sm:flex lg:right-10"
+          aria-hidden="true"
+        >
+          <span style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+          <span className="h-10 w-px" style={{ background: `linear-gradient(${C.limeAlpha(0.7)}, transparent)` }} />
+        </motion.div>
 
         {/* ── BOTTOM FEATURED IN STRIP ── */}
         <FeaturedInStrip />

@@ -11,15 +11,11 @@ import Testimonials from '@/components/Testimonials';
 import LatestBlogs from '@/components/LatestBlogs';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import BackgroundAnimation from '@/components/BackgroundAnimation';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
 const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* BackgroundAnimation is positioned at the back with fixed positioning */}
-      <BackgroundAnimation />
-
       <Navbar />
 
       <main className="relative z-10">

@@ -1,4 +1,4 @@
-import { Suspense, lazy, Component, ReactNode, ErrorInfo, useEffect } from 'react';
+import { Suspense, lazy, Component, ReactNode, ErrorInfo, useEffect, useRef } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -100,6 +100,71 @@ import CookieBanner from "./components/CookieBanner";
 // ⚠️ Error Boundary
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
+const SiteCursor = () => {
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    if (!cursor || reduceMotion || coarsePointer) return;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const interactive = target?.closest('a, button, [role="button"], input, select, textarea');
+      cursor.style.opacity = '1';
+      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      cursor.style.width = interactive ? '44px' : '22px';
+      cursor.style.height = interactive ? '44px' : '22px';
+      cursor.style.color = interactive ? '#B6FF00' : 'rgba(255,255,255,0.55)';
+    };
+
+    const hideCursor = () => { cursor.style.opacity = '0'; };
+    window.addEventListener('pointermove', handlePointerMove);
+    document.addEventListener('mouseleave', hideCursor);
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('mouseleave', hideCursor);
+    };
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        @keyframes velnix-cursor-pulse {
+          0%, 100% { box-shadow: 0 0 0 rgba(182,255,0,0); }
+          50% { box-shadow: 0 0 14px rgba(182,255,0,0.24); }
+        }
+      `}</style>
+      <div
+        ref={cursorRef}
+        className="pointer-events-none fixed left-0 top-0 z-[100] hidden transition-[width,height,color,opacity] duration-200 md:block"
+        aria-hidden="true"
+        style={{
+          width: 22,
+          height: 22,
+          opacity: 0,
+          color: 'rgba(255,255,255,0.55)',
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        <span
+          className="absolute inset-0"
+          style={{
+            border: '1px solid currentColor',
+            animation: 'velnix-cursor-pulse 2.2s ease-in-out infinite',
+          }}
+        />
+        <span
+          className="absolute left-1/2 top-1/2 h-[3px] w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{ background: 'currentColor' }}
+        />
+      </div>
+    </>
+  );
+};
+
 // Loader
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0435' }}>
@@ -191,6 +256,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <SiteCursor />
           <AppContent />
         </BrowserRouter>
       </TooltipProvider>
