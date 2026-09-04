@@ -51,6 +51,8 @@ const PrivacyPolicy = () => {
   return <>
     <style>{`
       .privacy-page { background: ${C.black}; color: ${C.white}; }
+      .privacy-page > header { background: linear-gradient(135deg, ${C.graphite} 0%, ${C.black} 72%); }
+      .privacy-content { background: linear-gradient(rgba(182,255,0,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.018) 1px, transparent 1px), ${C.black}; background-size: 56px 56px; }
       .privacy-page a:focus-visible, .privacy-page button:focus-visible { outline: 2px solid ${C.lime}; outline-offset: 3px; }
       .privacy-section { scroll-margin-top: 6.5rem; }
       .privacy-h2 { color: ${C.white}; font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 600; line-height: 1.25; margin: 0 0 1.25rem; }
@@ -67,7 +69,7 @@ const PrivacyPolicy = () => {
           <p className="max-w-2xl text-base sm:text-lg" style={{ color: C.wa(0.72), lineHeight: 1.7 }}>We are committed to protecting personal data in accordance with GDPR and international privacy regulations.</p>
         </div>
       </header>
-      <main className="mx-auto max-w-[1200px] px-5 py-10 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+      <main className="privacy-content mx-auto max-w-[1200px] px-5 py-10 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
         <div className="privacy-print-hide mb-8 lg:hidden">
           <button type="button" aria-expanded={mobileTocOpen} aria-controls="privacy-mobile-toc" onClick={() => setMobileTocOpen((open) => !open)} className="flex min-h-12 w-full items-center justify-between px-4 py-3 text-left" style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}`, color: C.white }}>
             <span className="text-sm font-medium tracking-wide">On this page</span>{mobileTocOpen ? <ChevronUp size={18} aria-hidden="true" color={C.lime} /> : <ChevronDown size={18} aria-hidden="true" color={C.lime} />}

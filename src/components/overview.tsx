@@ -85,7 +85,7 @@ const Overview = () => {
             {/* Heading */}
             <div className="space-y-4">
               <h2
-                className="text-2xl sm:text-3xl lg:text-[2.1rem] font-extrabold leading-[1.18] tracking-tight whitespace-nowrap"
+                className="text-2xl sm:text-3xl lg:text-[2.1rem] font-extrabold leading-[1.18] tracking-tight"
                 style={{ color: '#050729' }}
               >
                 Drive Unstoppable{' '}

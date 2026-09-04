@@ -165,8 +165,9 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             2. VISION & MISSION
         ══════════════════════════════════════════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-20 sm:mb-28">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="about-band about-band--graphite w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             
             {/* Mission Card */}
             <motion.div
@@ -229,12 +230,14 @@ const AboutPage = () => {
             </motion.div>
 
           </div>
+          </div>
         </section>
 
         {/* ══════════════════════════════════════════════════════
             3. CORE VALUES
         ══════════════════════════════════════════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-20 sm:mb-28">
+        <section className="about-band about-band--black w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+          <div className="mx-auto max-w-7xl">
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
@@ -280,6 +283,7 @@ const AboutPage = () => {
               </motion.div>
             ))}
           </div>
+          </div>
         </section>
 
         {/* ══════════════════════════════════════════════════════
@@ -295,7 +299,8 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             6. THE VELNIX ADVANTAGE (WHY US)
         ══════════════════════════════════════════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 my-20 sm:my-28">
+        <section className="about-band about-band--graphite w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+          <div className="mx-auto max-w-7xl">
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
@@ -340,6 +345,7 @@ const AboutPage = () => {
                 <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{desc}</p>
               </motion.div>
             ))}
+          </div>
           </div>
         </section>
 

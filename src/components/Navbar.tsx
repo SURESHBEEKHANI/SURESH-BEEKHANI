@@ -580,9 +580,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: currentPath === '/' && !scrolled ? 'transparent' : `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
+          background: currentPath === '/' ? 'transparent' : `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
           borderBottom: currentPath === '/' ? 'none' : `1px solid ${scrolled ? C.wa(0.3) : C.wa(0.05)}`,
-          boxShadow: currentPath === '/' && !scrolled ? 'none' : scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
+          boxShadow: currentPath === '/' ? 'none' : scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
           transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s',
         }}
       >

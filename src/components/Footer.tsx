@@ -57,8 +57,8 @@ const NAV_COLS = [
     title: 'Company',
     links: [
       { label: 'About Velnix',          href: '/about' },
-      { label: 'Our Process',           href: '/#process' },
-      { label: 'Portfolio',             href: '/#portfolio' },
+      { label: 'Our Process',           href: '/#approach' },
+      { label: 'Portfolio',             href: '/portfolio' },
       { label: 'Blog & Insights',       href: '/blogs' },
       { label: 'Contact',               href: '/contact' },
     ],

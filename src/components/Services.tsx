@@ -690,7 +690,7 @@ const Services = () => {
 
           {/* H2 */}
           <h2
-            className="max-w-none whitespace-nowrap text-3xl font-bold leading-none tracking-[-0.035em] sm:text-4xl lg:text-5xl"
+            className="max-w-[18ch] text-3xl font-bold leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-5xl"
             style={{ color: C.WHITE }}
           >
             Services{' '}
@@ -702,7 +702,7 @@ const Services = () => {
               className="max-w-xl text-left text-base leading-7 sm:text-lg"
               style={{ color: 'rgba(255, 255, 255, 0.58)' }}
             >
-              From intelligence to automation.Systems that scale.
+              From intelligence to automation. Systems that scale.
             </p>
           </div>
         </motion.div>

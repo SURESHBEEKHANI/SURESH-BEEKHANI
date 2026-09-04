@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 // import About from '@/components/About';
@@ -14,16 +13,9 @@ import LatestBlogs from '@/components/LatestBlogs';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import BackgroundAnimation from '@/components/BackgroundAnimation';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
 const Index = () => {
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    // Standard effect for any other logic needed on mount
-  }, []);
-
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* BackgroundAnimation is positioned at the back with fixed positioning */}
@@ -34,66 +26,45 @@ const Index = () => {
       <main className="relative z-10">
         <Hero />
         
-        <section className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <Overview />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <Services />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <Experience />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section className="pro-section">
-          <div className="section-container">
+        <div>
             <Industries />
-          </div>
-        </section>
+        </div>
 
-        <section id="client-solutions" className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <ClientSolutions />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section id="approach" className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <Approach />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section id="testimonials" className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection id="testimonials" threshold={0.08}>
             <Testimonials />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <MeetFounder />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-        <section className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection threshold={0.08}>
             <LatestBlogs />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
 
-
-        <section id="faq" className="pro-section">
-          <AnimatedSection className="section-container" threshold={0.08}>
+        <AnimatedSection id="faq" threshold={0.08}>
             <FAQ />
-          </AnimatedSection>
-        </section>
+        </AnimatedSection>
       </main>
 
       <Footer />

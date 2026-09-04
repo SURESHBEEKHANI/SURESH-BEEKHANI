@@ -17,6 +17,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useAnimations';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -47,7 +48,10 @@ const faqs = [
   ['Will this work with our existing systems?', 'That is one of the audit questions. We assess your current tools, data access, security requirements, and integration constraints before recommending a build.'],
 ];
 
-const AIAudit: React.FC = () => (
+const AIAudit: React.FC = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
   <div className="ai-audit-page min-h-screen bg-[#050505] text-white">
     <Navbar />
 
@@ -57,15 +61,15 @@ const AIAudit: React.FC = () => (
         <div className="pointer-events-none absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.07) 1px, transparent 1px)', backgroundSize: '72px 72px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
         <div className="pointer-events-none absolute -right-40 top-8 h-[34rem] w-[34rem] rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #7DCC00, transparent 68%)' }} />
         <div className="relative mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[1.03fr_0.97fr] lg:items-center lg:gap-20">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: lime }}>
               <span className="h-px w-8" style={{ background: lime }} /> AI Audit
             </div>
-            <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.055em] sm:text-6xl lg:text-8xl">Find the work<br /><span style={{ color: lime }}>worth transforming.</span></h1>
+            <h1 className="max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl lg:text-[6.5rem]">Find the work <span style={{ color: lime }}>worth transforming.</span></h1>
             <p className="mt-8 max-w-xl text-lg leading-8 sm:text-xl" style={{ color: muted }}>A focused 7–14 day assessment that shows where AI can create measurable value in your business, what to build first, and why.</p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-3 rounded-full bg-[#B6FF00] px-6 py-4 text-sm font-bold text-[#050505] transition-transform hover:-translate-y-0.5">Book an AI Audit <ArrowRight size={17} /></Link>
-              <a href="#how-it-works" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:border-[#B6FF00]">See the method <ChevronDown size={16} /></a>
+              <Link to="/contact" className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-[#B6FF00] px-6 py-4 text-sm font-bold text-[#050505] transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B6FF00]">Book an AI Audit <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" /></Link>
+              <a href="#how-it-works" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:border-[#B6FF00] hover:text-[#B6FF00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B6FF00]">See the method <ChevronDown size={16} /></a>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: 'rgba(255,255,255,0.42)' }}>
               <span className="flex items-center gap-2"><Clock3 size={14} style={{ color: lime }} /> 7–14 days</span>
@@ -74,15 +78,15 @@ const AIAudit: React.FC = () => (
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative">
-            <div className="absolute -inset-5 rounded-[2rem] border border-[#B6FF00]/10" />
-            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-[#111111] p-5 shadow-2xl sm:p-7">
+          <motion.div initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative">
+            <div className="absolute -inset-5 border border-[#B6FF00]/10" />
+            <div className="relative overflow-hidden border border-white/15 bg-[#111111] p-5 shadow-2xl sm:p-7">
               <div className="flex items-center justify-between border-b border-white/10 pb-5"><span className="text-xs font-bold uppercase tracking-[0.18em] text-white/50">Opportunity map</span><span className="rounded-full bg-[#B6FF00]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#B6FF00]">Live model</span></div>
               <div className="mt-7 grid grid-cols-[1fr_auto] gap-3 text-sm">
                 {[['Claims intake', 'High value', '92'], ['Client onboarding', 'Fast win', '84'], ['Reporting workflow', 'Data ready', '77'], ['Internal support', 'Explore', '61']].map(([name, label, score], index) => (
                   <React.Fragment key={name}>
-                    <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-4"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#B6FF00]/10 text-[10px] font-bold text-[#B6FF00]">0{index + 1}</span><div><div className="font-semibold">{name}</div><div className="mt-1 text-xs text-white/40">{label}</div></div></div>
-                    <div className="flex min-w-16 items-center justify-center rounded-lg border border-[#B6FF00]/20 bg-[#B6FF00]/[0.06] text-xl font-black text-[#B6FF00]">{score}</div>
+                    <div className="flex items-center gap-3 border border-white/10 bg-white/[0.03] px-4 py-4"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#B6FF00]/10 text-[10px] font-bold text-[#B6FF00]">0{index + 1}</span><div><div className="font-semibold">{name}</div><div className="mt-1 text-xs text-white/40">{label}</div></div></div>
+                    <div className="flex min-w-16 items-center justify-center border border-[#B6FF00]/20 bg-[#B6FF00]/[0.06] text-xl font-black text-[#B6FF00]">{score}</div>
                   </React.Fragment>
                 ))}
               </div>
@@ -123,5 +127,6 @@ const AIAudit: React.FC = () => (
     <Footer />
   </div>
 );
+};
 
 export default AIAudit;

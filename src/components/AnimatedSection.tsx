@@ -6,6 +6,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
+  id?: string;
   delay?: number;
   stagger?: boolean;
   threshold?: number;
@@ -18,6 +19,7 @@ interface AnimatedSectionProps {
 export const AnimatedSection = ({
   children,
   className = '',
+  id,
   delay = 0,
   stagger = false,
   threshold = 0.1
@@ -30,6 +32,7 @@ export const AnimatedSection = ({
   return (
     <motion.div
       ref={ref}
+      id={id}
       className={className}
       variants={prefersReducedMotion ? undefined : variants}
       initial={prefersReducedMotion ? false : 'hidden'}
