@@ -53,6 +53,7 @@ const AIAudit: React.FC = () => (
 
     <main>
       <section className="relative overflow-hidden border-b border-white/10 px-5 pb-20 pt-[8%] scroll-mt-20 sm:px-8 sm:pb-28 lg:px-12 lg:pt-[8%]">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)', filter: 'blur(10px)' }} />
         <div className="pointer-events-none absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.07) 1px, transparent 1px)', backgroundSize: '72px 72px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
         <div className="pointer-events-none absolute -right-40 top-8 h-[34rem] w-[34rem] rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #7DCC00, transparent 68%)' }} />
         <div className="relative mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[1.03fr_0.97fr] lg:items-center lg:gap-20">

@@ -105,13 +105,6 @@ const SOLUTIONS: SolutionData[] = [
   },
 ];
 
-const TRUST_TAGS = [
-  'AI PRODUCT DEVELOPMENT',
-  'CUSTOM AI SYSTEM',
-  'WORKFLOW INTEGRATION',
-  'INDUSTRY-SPECIFIC SOLUTION',
-];
-
 const ClientSolutions: React.FC = () => {
   const [activeTab, setActiveTab] = useState('MedImaging');
   const [ctaHovered, setCtaHovered] = useState(false);
@@ -124,7 +117,7 @@ const ClientSolutions: React.FC = () => {
     <section
       className="py-16 sm:py-24 relative overflow-hidden antialiased"
       id="client-solutions"
-      style={{ background: C.black, color: C.white }}
+      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
       aria-labelledby="client-solutions-heading"
     >
       {/* Background Grid & Ambient Lighting */}
@@ -417,25 +410,6 @@ const ClientSolutions: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* ══════════════════════════════════════════════════════
-            TRUST SIGNALS STRIP
-        ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
-          {TRUST_TAGS.map((tag) => (
-            <span
-              key={tag}
-              className="text-[0.6rem] font-bold uppercase tracking-wider px-3 py-1.5"
-              style={{
-                border: `1px solid ${C.wa(0.08)}`,
-                background: C.wa(0.02),
-                color: C.wa(0.4),
-              }}
-            >
-              {tag}
-            </span>
-          ))}
         </div>
 
       </div>

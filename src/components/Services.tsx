@@ -617,7 +617,7 @@ const Services = () => {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true });
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [showAllServices, setShowAllServices] = useState(false);
 
   const handleNavigate = (service: string) => {
@@ -634,6 +634,15 @@ const Services = () => {
       aria-label="Services We Offer"
     >
       {/* ── Background textures ───────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+          filter: 'blur(10px)',
+        }}
+      />
+
       {/* Dot grid */}
       <svg
         className="pointer-events-none absolute inset-0 w-full h-full"
@@ -673,7 +682,7 @@ const Services = () => {
 
         {/* ── Section Header ───────────────────────────────────── */}
         <motion.div
-          className="mb-12 grid gap-8 pb-12 sm:mb-16 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16 lg:pb-20"
+          className="mb-12 grid gap-x-8 gap-y-2 pb-12 sm:mb-16 sm:gap-y-3 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-x-16 lg:gap-y-3 lg:pb-20"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -688,23 +697,13 @@ const Services = () => {
             <span style={{ color: C.LIME }}>We Offer.</span>
           </h2>
 
-          <div className="flex flex-col items-start gap-6 lg:col-start-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-            {/* Supporting copy */}
+          <div className="lg:col-start-1">
             <p
-              className="max-w-xl text-left text-base leading-7 sm:text-lg lg:w-[21rem] lg:max-w-none lg:flex-none"
+              className="max-w-xl text-left text-base leading-7 sm:text-lg"
               style={{ color: 'rgba(255, 255, 255, 0.58)' }}
             >
-              From intelligence to automation.<br />Systems that scale.
+              From intelligence to automation.Systems that scale.
             </p>
-            <button
-              type="button"
-              onClick={() => setShowAllServices(current => !current)}
-              aria-expanded={showAllServices}
-              className="inline-flex shrink-0 items-center gap-3 rounded-full border border-[#B6FF00] bg-[#B6FF00] px-6 py-3 text-sm font-bold text-[#050505] transition-colors hover:border-[#7DCC00] hover:bg-[#7DCC00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
-            >
-              {showAllServices ? 'Show Fewer Services' : 'View More Services'}
-              <ArrowRight className="h-4 w-4" style={{ transform: showAllServices ? 'rotate(-90deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }} aria-hidden="true" />
-            </button>
           </div>
         </motion.div>
 
@@ -721,6 +720,18 @@ const Services = () => {
               onNavigate={handleNavigate}
             />
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAllServices(current => !current)}
+            aria-expanded={showAllServices}
+            className="inline-flex shrink-0 items-center gap-3 rounded-full border border-[#B6FF00] bg-[#B6FF00] px-6 py-3 text-sm font-bold text-[#050505] transition-colors hover:border-[#7DCC00] hover:bg-[#7DCC00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
+          >
+            {showAllServices ? 'Show Fewer Services' : 'View More Services'}
+            <ArrowRight className="h-4 w-4" style={{ transform: showAllServices ? 'rotate(-90deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }} aria-hidden="true" />
+          </button>
         </div>
 
       </div>

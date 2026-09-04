@@ -389,7 +389,7 @@ const Footer = () => {
       `}</style>
 
       <footer
-        style={{ background: `radial-gradient(ellipse 62% 48% at 84% 16%, ${C.ga(0.12)} 0%, ${C.ga(0.035)} 45%, transparent 78%), radial-gradient(ellipse 52% 42% at 8% 88%, ${C.la(0.07)} 0%, transparent 76%), ${C.black}`, color: C.white, position: 'relative', overflow: 'hidden' }}
+        style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white, position: 'relative', overflow: 'hidden' }}
         aria-label="Velnix Solutions site footer"
       >
 

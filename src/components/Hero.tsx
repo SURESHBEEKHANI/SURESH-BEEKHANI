@@ -147,7 +147,6 @@ const WorkflowNode = ({
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
             lineHeight: 1.25,
-            maxWidth: 72,
           }}
         >
           {node.label}
@@ -157,125 +156,64 @@ const WorkflowNode = ({
   );
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// WORKFLOW VISUAL
-// ─────────────────────────────────────────────────────────────────────────────
 const WorkflowVisual = ({ scrollProgress }: { scrollProgress: MotionValue<number> }) => {
   const shouldReduce = useReducedMotion();
-  const systemOpacity = useTransform(scrollProgress, [0, 0.14, 0.72, 1], [0.72, 1, 1, 0.42]);
-  const connectionOpacity = useTransform(scrollProgress, [0, 0.18, 0.45, 0.86], [0.25, 0.45, 1, 0.35]);
-  const outcomeOpacity = useTransform(scrollProgress, [0.38, 0.58, 0.86], [0.2, 1, 1]);
+  const connectionOpacity = useTransform(scrollProgress, [0.1, 0.42], [0.15, 1]);
+  const systemOpacity = useTransform(scrollProgress, [0, 0.2, 0.8], [0.55, 1, 1]);
 
   return (
-    <div className="relative w-full h-full select-none" aria-hidden="true">
-
-      {/* Outer container */}
+    <div className="relative w-full aspect-[1.6] min-h-[280px]">
       <div
-        className="relative w-full h-full rounded-none overflow-hidden"
+        className="absolute rounded-full blur-[80px]"
         style={{
-          background: `linear-gradient(145deg, ${C.graphite} 0%, ${C.black} 100%)`,
-          border: `1px solid ${C.whiteAlpha(0.07)}`,
+          width: '50%',
+          height: '50%',
+          top: '0%',
+          left: '25%',
+          background: C.greenAlpha(0.08),
+          animation: shouldReduce ? 'none' : 'pulse 4s ease-in-out infinite',
         }}
+      />
+      <motion.svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ opacity: systemOpacity }}
       >
-        {/* Subtle background grid */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="velnix-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke={C.white} strokeWidth="0.5" />
-            </pattern>
-          </defs>
+        <defs>
+          <pattern id="velnix-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke={C.whiteAlpha(0.06)} strokeWidth="0.25" />
+          </pattern>
+          <linearGradient id="eg1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={C.green} stopOpacity="0.3" />
+            <stop offset="100%" stopColor={C.lime} stopOpacity="0.9" />
+          </linearGradient>
+          <linearGradient id="eg2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={C.green} stopOpacity="0.3" />
+            <stop offset="100%" stopColor={C.lime} stopOpacity="0.9" />
+          </linearGradient>
           <rect width="100%" height="100%" fill="url(#velnix-grid)" />
-        </svg>
-
-        {/* Deep-green ambient glow behind center node */}
-        <div
-          className="absolute rounded-full blur-[80px]"
-          style={{
-            width: '50%',
-            height: '50%',
-            top: '0%',
-            left: '25%',
-            background: C.greenAlpha(0.08),
-            animation: shouldReduce ? 'none' : 'pulse 4s ease-in-out infinite',
-          }}
-        />
-
-        {/* SVG – edges + animated dots */}
-        <motion.svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          style={{ opacity: systemOpacity }}
-        >
-          <defs>
-            {/* Lime gradient for active edges */}
-            <linearGradient id="eg1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor={C.green} stopOpacity="0.3" />
-              <stop offset="100%" stopColor={C.lime} stopOpacity="0.9" />
-            </linearGradient>
-            <linearGradient id="eg2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor={C.green} stopOpacity="0.3" />
-              <stop offset="100%" stopColor={C.lime} stopOpacity="0.9" />
-            </linearGradient>
-          </defs>
-
-          {EDGES.map((edge, index) => (
-            <WorkflowEdge
-              key={`${edge.from}-${edge.to}`}
-              edge={edge}
-              index={index}
-              scrollProgress={scrollProgress}
-              connectionOpacity={connectionOpacity}
-              shouldReduce={Boolean(shouldReduce)}
-            />
-          ))}
-        </motion.svg>
-
-        {/* Nodes */}
-        {NODES.map((node, index) => (
-          <WorkflowNode
-            key={node.id}
-            node={node}
+        </defs>
+        {EDGES.map((edge, index) => (
+          <WorkflowEdge
+            key={`${edge.from}-${edge.to}`}
+            edge={edge}
             index={index}
             scrollProgress={scrollProgress}
+            connectionOpacity={connectionOpacity}
             shouldReduce={Boolean(shouldReduce)}
           />
         ))}
-
-        {/* Status bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-2"
-          style={{
-            background: C.limeAlpha(0.06),
-            borderTop: `1px solid ${C.limeAlpha(0.15)}`,
-            opacity: shouldReduce ? 1 : outcomeOpacity,
-          }}
-        >
-          <span style={{ fontSize: 9, color: C.limeAlpha(0.8), letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
-            System Active
-          </span>
-          <div className="flex items-center gap-1.5">
-            {!shouldReduce && (
-              <span
-                className="rounded-full"
-                style={{
-                  width: 6,
-                  height: 6,
-                  background: C.lime,
-                  animation: 'velnix-blink 1.4s ease-in-out infinite',
-                  boxShadow: `0 0 8px ${C.lime}`,
-                }}
-              />
-            )}
-            <span style={{ fontSize: 9, color: C.whiteAlpha(0.5), letterSpacing: '0.08em' }}>
-              VELNIX AI
-            </span>
-          </div>
-        </motion.div>
-      </div>
+      </motion.svg>
+      {NODES.map((node, index) => (
+        <WorkflowNode
+          key={node.id}
+          node={node}
+          index={index}
+          scrollProgress={scrollProgress}
+          shouldReduce={Boolean(shouldReduce)}
+        />
+      ))}
     </div>
   );
 };
@@ -357,10 +295,19 @@ const Hero = () => {
         className="relative isolate w-full overflow-hidden"
         style={{
           minHeight: '100vh',
-          background: `radial-gradient(ellipse 52% 70% at 78% 42%, ${C.greenAlpha(0.13)} 0%, ${C.greenAlpha(0.045)} 42%, transparent 78%), radial-gradient(ellipse 45% 55% at 12% 18%, ${C.limeAlpha(0.075)} 0%, transparent 72%), ${C.black}`,
+          background: C.black,
         }}
         aria-label="Velnix Solutions hero section"
       >
+
+        <div
+          className="pointer-events-none absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+            filter: 'blur(10px)',
+          }}
+        />
 
         {/* ── BACKGROUND AMBIENT ── */}
         <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
@@ -410,44 +357,6 @@ const Hero = () => {
               LEFT COLUMN — Messaging
           ═══════════════════════════════════════════ */}
           <div className="flex flex-col items-start">
-
-            {/* Eyebrow */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.05, duration: 0.5, ease }}
-              className="flex items-center gap-2 mb-7"
-            >
-              <span
-                className="inline-flex items-center gap-2 rounded-none px-3.5 py-1.5"
-                style={{
-                  border: `1px solid ${C.limeAlpha(0.35)}`,
-                  background: C.limeAlpha(0.06),
-                }}
-              >
-                <span
-                  style={{
-                    width: 6, height: 6,
-                    borderRadius: '50%',
-                    background: C.lime,
-                    flexShrink: 0,
-                    display: 'inline-block',
-                    boxShadow: `0 0 8px ${C.lime}`,
-                    animation: shouldReduce ? 'none' : 'velnix-blink 1.8s ease-in-out infinite',
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    color: C.lime,
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Intelligent Software Systems
-                </span>
-              </span>
-            </motion.div>
 
             {/* H1 */}
             <motion.h1
@@ -530,42 +439,6 @@ const Hero = () => {
                 <ArrowRight size={15} />
               </a>
 
-            </motion.div>
-
-            {/* Trust Signal */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.45, duration: 0.55, ease }}
-              className="flex items-center gap-3"
-            >
-              <div
-                className="flex items-center gap-1.5 px-3 py-1.5"
-                style={{
-                  border: `1px solid ${C.whiteAlpha(0.1)}`,
-                  background: C.whiteAlpha(0.02),
-                }}
-              >
-                {['AI', 'Automation', 'Software Development'].map((tag, i) => (
-                  <span key={tag} className="flex items-center gap-1.5">
-                    {i > 0 && (
-                      <span style={{ color: C.limeAlpha(0.5), fontSize: '0.6rem', fontWeight: 700 }}>
-                        •
-                      </span>
-                    )}
-                    <span
-                      style={{
-                        fontSize: '0.7rem',
-                        color: C.whiteAlpha(0.5),
-                        letterSpacing: '0.08em',
-                        fontWeight: 500,
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  </span>
-                ))}
-              </div>
             </motion.div>
 
             {/* Metrics row */}

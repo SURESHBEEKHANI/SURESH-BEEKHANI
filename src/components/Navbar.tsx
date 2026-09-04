@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -169,7 +170,7 @@ const DesktopDropdown = ({
                       height: 34,
                       background: C.la(0.08),
                       border: `1px solid ${C.la(0.22)}`,
-                      color: C.lime,
+                      color: variant === 'industries' ? C.green : C.lime,
                     }}
                   >
                     <Icon size={16} strokeWidth={1.75} />
@@ -366,7 +367,7 @@ const MobileAccordion = ({
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.6); }}
                   >
                     {Icon ? (
-                      <Icon size={16} strokeWidth={1.75} color={C.lime} className="shrink-0" />
+                      <Icon size={16} strokeWidth={1.75} color={group.label === 'Industries' ? C.green : C.lime} className="shrink-0" />
                     ) : (
                       <span style={{ width: 4, height: 4, borderRadius: '50%', background: C.la(0.5), flexShrink: 0, display: 'inline-block' }} />
                     )}
@@ -519,7 +520,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   const [searchOpen, setSearchOpen]     = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const shouldReduce = useReducedMotion();
-  const currentPath  = typeof window !== 'undefined' ? window.location.pathname : '';
+  const { pathname: currentPath } = useLocation();
 
   // Scroll handler
   useEffect(() => {
@@ -579,10 +580,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
-          borderBottom: `1px solid ${scrolled ? C.wa(0.09) : C.wa(0.05)}`,
-          boxShadow: scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
-          transition: 'border-color 0.3s, box-shadow 0.3s',
+          background: currentPath === '/' && !scrolled ? 'transparent' : `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
+          borderBottom: currentPath === '/' ? 'none' : `1px solid ${scrolled ? C.wa(0.3) : C.wa(0.05)}`,
+          boxShadow: currentPath === '/' && !scrolled ? 'none' : scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
+          transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s',
         }}
       >
         <div
