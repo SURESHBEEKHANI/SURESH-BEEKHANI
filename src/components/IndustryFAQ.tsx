@@ -35,8 +35,8 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
     <section className="py-10 sm:py-14 bg-white relative overflow-hidden border-t border-slate-100">
       {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-[#ff0ea3]/5 to-ai-cyan/5 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-ai-cyan/5 to-[#ff0ea3]/5 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-velnix-lime/5 to-velnix-green/5 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-tr from-velnix-green/5 to-velnix-lime/5 rounded-full blur-3xl opacity-30"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -45,12 +45,12 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
             <div
               className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
               style={{
-                background: '#ff0ea3',
+                background: '#B6FF00',
                 transform: 'skewX(-15deg)'
               }}
             ></div>
             <h2 className="text-2xl md:text-3xl font-display font-bold text-[#050729] leading-tight">
-              {title} <span style={{ color: '#ff0ea3' }}>{highlightedTitle}</span>
+              {title} <span style={{ color: '#B6FF00' }}>{highlightedTitle}</span>
             </h2>
           </div>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mt-4 leading-relaxed">
@@ -62,10 +62,10 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
           {faqData.map((faq, index) => (
             <div
               key={faq.id || index}
-              className="border border-gray-200 rounded-none overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#ff0ea3]/50 hover:shadow-lg group"
+              className="border border-gray-200 rounded-none overflow-hidden bg-gray-50 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-lg group"
               style={openIndex === index ? { 
-                borderColor: 'rgba(255, 14, 163, 0.5)',
-                boxShadow: '0 4px 20px rgba(255, 14, 163, 0.2), 0 0 15px rgba(255, 14, 163, 0.15)'
+                borderColor: 'rgba(182, 255, 0, 0.5)',
+                boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
               } : {}}
             >
               <Button
@@ -73,17 +73,17 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
                 onClick={() => toggleFAQ(index)}
                 className="w-full h-auto p-4 text-left transition-all duration-300 hover:bg-transparent"
                 style={openIndex === index ? {
-                  background: 'linear-gradient(135deg, rgba(255, 14, 163, 0.15) 0%, rgba(255, 14, 163, 0.1) 50%, rgba(255, 14, 163, 0.05) 100%)'
+                  background: 'linear-gradient(135deg, rgba(182, 255, 0, 0.15) 0%, rgba(182, 255, 0, 0.1) 50%, rgba(182, 255, 0, 0.05) 100%)'
                 } : {}}
               >
                 <div className="flex items-center justify-between w-full">
-                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#ff0ea3] ${openIndex === index ? 'text-[#ff0ea3]' : 'text-[#050729]'}`}>
+                  <h3 className={`text-base font-semibold pr-3 transition-all duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-[#050729]'}`}>
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
-                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#ff0ea3' }} />
+                    <Minus className="h-4 w-4 flex-shrink-0" style={{ color: '#B6FF00' }} />
                   ) : (
-                    <Plus className="h-4 w-4 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#ff0ea3]" />
+                    <Plus className="h-4 w-4 text-gray-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
                   )}
                 </div>
               </Button>

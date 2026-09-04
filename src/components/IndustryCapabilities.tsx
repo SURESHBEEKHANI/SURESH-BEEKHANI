@@ -32,12 +32,12 @@ const IndustryCapabilities: React.FC<IndustryCapabilitiesProps> = React.memo(({
           <div
             className="w-2 sm:w-3 h-6 rounded-none flex-shrink-0 mt-1"
             style={{
-              background: '#ff0ea3',
+              background: '#B6FF00',
               transform: 'skewX(-15deg)'
             }}
           ></div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-            {title} <span style={{ color: '#ff0ea3' }}>{highlightedTitle}</span>
+            {title} <span style={{ color: '#B6FF00' }}>{highlightedTitle}</span>
           </h2>
         </div>
       </div>

@@ -83,8 +83,8 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
     <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#ff0ea3]/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-ai-cyan/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-velnix-lime/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-velnix-green/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -93,12 +93,12 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
             <div
               className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"
               style={{
-                background: '#ff0ea3',
+                background: '#B6FF00',
                 transform: 'skewX(-15deg)'
               }}
             ></div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[#050729] leading-tight">
-              {title} <span style={{ color: '#ff0ea3' }}>{highlightedTitle}</span>
+              {title} <span style={{ color: '#B6FF00' }}>{highlightedTitle}</span>
             </h2>
           </div>
           <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed">

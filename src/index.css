@@ -7,6 +7,11 @@
 @layer base {
     :root {
     /* Velnix Color Palette */
+      --velnix-rich-black: #050505;
+      --velnix-graphite: #111111;
+      --velnix-white: #FFFFFF;
+      --velnix-lime: #B6FF00;
+      --velnix-deep-green: #7DCC00;
     /* Primary Background */
     --background: 0 0% 2%; /* #050505 */
     --foreground: 0 0% 100%; /* #FFFFFF */
@@ -183,6 +188,93 @@
 }
 
 @layer components {
+
+  .ai-audit-page {
+    --audit-black: #050505;
+    --audit-graphite: #111111;
+    --audit-lime: #B6FF00;
+    --audit-green: #7DCC00;
+    --audit-white: #FFFFFF;
+    --audit-border: rgba(255, 255, 255, 0.12);
+    --audit-muted: rgba(255, 255, 255, 0.64);
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+
+  .ai-audit-page a,
+  .ai-audit-page button,
+  .ai-audit-page summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ai-audit-page a:focus-visible,
+  .ai-audit-page button:focus-visible,
+  .ai-audit-page summary:focus-visible {
+    outline: 2px solid var(--audit-lime);
+    outline-offset: 4px;
+  }
+
+  .ai-audit-page main > section > div:not(.pointer-events-none) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-audit-page main a.rounded-full,
+  .ai-audit-page main button.rounded-full {
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .ai-audit-page main a.rounded-full:hover,
+  .ai-audit-page main button.rounded-full:hover {
+    transform: translateY(-2px);
+  }
+
+  .ai-audit-page main .rounded-xl.border,
+  .ai-audit-page main .rounded-2xl.border {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .ai-audit-page main .rounded-xl.border:hover,
+  .ai-audit-page main .rounded-2xl.border:hover {
+    border-color: rgba(182, 255, 0, 0.3);
+  }
+
+  @media (max-width: 640px) {
+    .ai-audit-page main > section > div:not(.pointer-events-none) {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-audit-page main a.rounded-full,
+    .ai-audit-page main button.rounded-full,
+    .ai-audit-page main .rounded-xl.border,
+    .ai-audit-page main .rounded-2xl.border {
+      transition: none;
+    }
+
+    .ai-audit-page main a.rounded-full:hover,
+    .ai-audit-page main button.rounded-full:hover {
+      transform: none;
+    }
+  }
+
+  .ai-audit-page > main > section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image: radial-gradient(circle at 8% 18%, rgba(125, 204, 0, 0.11), transparent 32%), radial-gradient(circle at 92% 78%, rgba(182, 255, 0, 0.08), transparent 30%);
+  }
+
+  .ai-audit-page > main > section::before {
+    content: '';
+    position: absolute;
+    inset: -18%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(125, 204, 0, 0.12), transparent 62%);
+    filter: blur(42px);
+    opacity: 0.7;
+  }
 
   /* Tech & AI Healthcare Card Styles */
   .modern-card {
@@ -443,8 +535,8 @@
     bottom: 0;
     background:
       radial-gradient(circle at 20% 80%, rgba(182, 255, 0, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(0, 194, 203, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 79, 163, 0.12) 0%, transparent 50%);
+      radial-gradient(circle at 80% 20%, rgba(125, 204, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(182, 255, 0, 0.06) 0%, transparent 50%);
     pointer-events: none;
     animation: aurora 8s ease-in-out infinite;
   }
@@ -457,8 +549,8 @@
     right: 0;
     bottom: 0;
     background:
-      linear-gradient(45deg, transparent 30%, rgba(30, 90, 255, 0.03) 50%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(0, 194, 203, 0.02) 50%, transparent 70%);
+      linear-gradient(45deg, transparent 30%, rgba(125, 204, 0, 0.03) 50%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, rgba(182, 255, 0, 0.02) 50%, transparent 70%);
     pointer-events: none;
   }
 
@@ -473,8 +565,8 @@
   .project-card:hover {
     transform: translateY(-12px) scale(1.03);
     box-shadow:
-      0 30px 60px rgba(30, 90, 255, 0.25),
-      0 0 40px rgba(0, 194, 203, 0.15),
+      0 30px 60px rgba(125, 204, 0, 0.18),
+      0 0 40px rgba(182, 255, 0, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border-color: #B6FF00;
   }
@@ -1061,7 +1153,7 @@
 
   /* Focus styles for accessibility */
   .image-icon:focus-within {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid #B6FF00;
     outline-offset: 2px;
     border-radius: 0.5rem;
   }

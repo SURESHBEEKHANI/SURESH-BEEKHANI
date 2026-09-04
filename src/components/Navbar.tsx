@@ -20,6 +20,7 @@ const C = {
   lime:     '#B6FF00',
   green:    '#7DCC00',
   la: (o: number) => `rgba(182,255,0,${o})`,
+  ga: (o: number) => `rgba(125,204,0,${o})`,
   wa: (o: number) => `rgba(255,255,255,${o})`,
 };
 
@@ -578,9 +579,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: C.black,
+          background: `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
           borderBottom: `1px solid ${scrolled ? C.wa(0.09) : C.wa(0.05)}`,
-          boxShadow: scrolled ? `0 8px 32px rgba(0,0,0,0.5)` : 'none',
+          boxShadow: scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
           transition: 'border-color 0.3s, box-shadow 0.3s',
         }}
       >
@@ -712,7 +713,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease }}
-              style={{ overflow: 'hidden', background: C.black, borderTop: `1px solid ${C.wa(0.07)}` }}
+              style={{ overflow: 'hidden', background: `radial-gradient(ellipse 80% 45% at 78% 0%, ${C.ga(0.1)} 0%, transparent 72%), ${C.black}`, borderTop: `1px solid ${C.wa(0.07)}` }}
             >
               <div
                 className="max-w-[1280px] mx-auto px-6 sm:px-10"
@@ -772,7 +773,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 w-full py-4"
+                  className="flex items-center justify-center gap-2 w-full rounded-full py-4"
                   style={{
                     background: C.lime, color: C.black,
                     fontWeight: 700, fontSize: '0.9rem',
@@ -834,7 +835,7 @@ const NavCTA = ({ scrolled }: { scrolled: boolean }) => {
         cur.style.background = C.lime;
         cur.style.boxShadow = `0 4px 16px ${C.la(0.3)}`;
       }}
-      className="inline-flex items-center gap-2 velnix-nav-link"
+      className="inline-flex items-center gap-2 rounded-full velnix-nav-link"
       style={{
         background: C.lime,
         color: C.black,

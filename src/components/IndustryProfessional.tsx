@@ -24,7 +24,7 @@ const IndustryProfessional: React.FC<IndustryProfessionalProps> = React.memo(({
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#050729] leading-tight flex flex-wrap gap-2">
               <span className="text-[#050729]">{title}</span>
-              <span style={{ color: '#ff0ea3' }}>{highlightedTitle}</span>
+              <span style={{ color: '#B6FF00' }}>{highlightedTitle}</span>
             </h2>
           </div>
           
@@ -35,7 +35,7 @@ const IndustryProfessional: React.FC<IndustryProfessionalProps> = React.memo(({
 
           <div className="pt-4">
             <Link to="/contact">
-              <button className="bg-[#ff0ea3] text-white px-8 py-4 rounded-none font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-[#ff0ea3]/30 transition-all duration-300 transform hover:-translate-y-1 hover:brightness-110 active:scale-95 flex items-center gap-3">
+              <button className="bg-[#B6FF00] text-black px-8 py-4 rounded-none font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-[#B6FF00]/30 transition-all duration-300 transform hover:-translate-y-1 hover:brightness-110 active:scale-95 flex items-center gap-3">
                 Contact Expert
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -49,8 +49,8 @@ const IndustryProfessional: React.FC<IndustryProfessionalProps> = React.memo(({
         <div className="relative max-w-xl mx-auto lg:mx-0">
           <div className="relative rounded-none overflow-hidden shadow-2xl">
             {/* Decorative Elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#ff0ea3]/20 to-transparent rounded-none transform rotate-12 z-0 opacity-80" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-ai-cyan/20 to-transparent rounded-none transform -rotate-12 z-0 opacity-80" />
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#B6FF00]/20 to-transparent rounded-none transform rotate-12 z-0 opacity-80" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-[#7DCC00]/20 to-transparent rounded-none transform -rotate-12 z-0 opacity-80" />
             
             {/* Main Image Container */}
             <div className="relative z-10 bg-white p-2 rounded-none">
@@ -61,7 +61,7 @@ const IndustryProfessional: React.FC<IndustryProfessionalProps> = React.memo(({
                   className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" 
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#ff0ea3]/10 to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#B6FF00]/10 to-transparent opacity-60" />
               </div>
             </div>
           </div>

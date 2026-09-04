@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import {
   Sparkles, Zap, Shield, Target, Users, TrendingUp,
   Globe, Smartphone, Cloud, Server, Database, Bot, ArrowRight, CheckCircle2
@@ -24,17 +24,17 @@ const C = {
 const SERVICES = [
   'AI Development',
   'Chatbot Development',
+  'Agentic AI',
+  'AI Automation',
   'Machine & Deep Learning',
   'Computer Vision',
   'Predictive Modeling',
   'Natural Language Processing',
-  'AI Automation',
   'Web Development',
   'App Development',
   'DevOps Engineering',
   'Custom Software Development',
   'Big Data Analytics',
-  'Agentic AI',
 ];
 
 const SERVICE_DETAILS: Record<string, {
@@ -526,287 +526,86 @@ const ServiceVisual: React.FC<{ service: string; featured?: boolean }> = ({ serv
 };
 
 /* ─────────────────────────────────────────────────────────────
-   SERVICE CARD COMPONENT
+   EDITORIAL SERVICE ROW
 ───────────────────────────────────────────────────────────── */
-const ServiceCard: React.FC<{
+const ServiceRow: React.FC<{
   service: string;
   index: number;
+  isExpanded: boolean;
   prefersReducedMotion: boolean;
   isInView: boolean;
+  onToggle: () => void;
   onNavigate: (service: string) => void;
-}> = ({ service, index, prefersReducedMotion, isInView, onNavigate }) => {
+}> = ({ service, index, isExpanded, prefersReducedMotion, isInView, onToggle, onNavigate }) => {
   const detail = SERVICE_DETAILS[service];
-  const num = String(index + 1).padStart(2, '0');
+  const rowId = `service-row-${index}`;
+  const panelId = `${rowId}-details`;
 
   return (
     <motion.article
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.15 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col rounded-2xl overflow-hidden outline-none focus-within:ring-2 focus-within:ring-[#B6FF00] focus-within:ring-offset-2 focus-within:ring-offset-[#050505]"
+      transition={{ duration: 0.45, delay: 0.12 + index * 0.045, ease: [0.22, 1, 0.36, 1] }}
+      className="group border-t last:border-b"
       style={{
-        background: C.GRAPHITE,
-        border: `1px solid rgba(182, 255, 0, 0.06)`,
-        transition: 'border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease',
-      }}
-      onMouseEnter={(e) => {
-        if (!prefersReducedMotion) {
-          (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.25)';
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(182, 255, 0, 0.06)';
-        }
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.06)';
-        (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+        borderColor: isExpanded ? 'rgba(182, 255, 0, 0.34)' : 'rgba(255, 255, 255, 0.14)',
+        background: isExpanded ? 'rgba(182, 255, 0, 0.06)' : 'transparent',
+        transition: 'background 300ms ease, border-color 300ms ease',
       }}
     >
-      {/* Lime top accent line */}
-      <div
-        className="h-[2px] w-full opacity-0 group-hover:opacity-100"
-        style={{ background: `linear-gradient(90deg, ${C.LIME}, ${C.DEEP_GREEN})`, transition: 'opacity 300ms ease' }}
-        aria-hidden="true"
-      />
-
-      <div className="flex flex-col flex-1 p-5 sm:p-6">
-        {/* Header — Visual + Number */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="opacity-60 group-hover:opacity-90" style={{ transition: 'opacity 300ms ease' }}>
-            <ServiceVisual service={service} />
-          </div>
-          <span
-            className="text-xl sm:text-2xl font-bold leading-none select-none"
-            style={{ color: C.LIME, opacity: 0.35, transition: 'opacity 200ms ease' }}
-          >
-            {num}
-          </span>
-        </div>
-
-        {/* Tag */}
-        <span
-          className="text-[10px] font-semibold tracking-[0.15em] uppercase mb-2 block"
-          style={{ color: `rgba(255, 255, 255, 0.4)` }}
-        >
-          {detail.tag}
+      <button
+        id={rowId}
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isExpanded}
+        aria-controls={panelId}
+        className="flex w-full items-center gap-4 py-6 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-inset sm:gap-8 sm:py-8 lg:gap-12 lg:py-9"
+      >
+        <span className="w-10 shrink-0 font-mono text-xs tracking-[0.12em] sm:w-14 sm:text-sm" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
+          {String(index + 1).padStart(2, '0')}
         </span>
-
-        {/* Service Name (H3) */}
-        <h3
-          className="text-lg sm:text-xl font-bold leading-snug mb-3"
-          style={{ color: C.WHITE }}
-        >
-          {detail.title}
-        </h3>
-
-        {/* Description */}
-        <p
-          className="text-[13px] sm:text-sm leading-relaxed mb-4 line-clamp-3"
-          style={{ color: 'rgba(255, 255, 255, 0.55)' }}
-        >
-          {detail.description}
-        </p>
-
-        {/* Top 2 Benefits */}
-        <div className="flex flex-col gap-1.5 mb-5 flex-1">
-          {detail.benefits.slice(0, 2).map((b) => (
-            <div key={b.title} className="flex items-center gap-2">
-              <CheckCircle2
-                className="w-3.5 h-3.5 flex-shrink-0"
-                style={{ color: C.DEEP_GREEN, opacity: 0.7 }}
-              />
-              <span
-                className="text-xs font-medium"
-                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
-              >
-                {b.title}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <button
-          onClick={() => onNavigate(service)}
-          className="inline-flex items-center gap-2 text-sm font-semibold mt-auto outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] rounded-lg px-1 py-1"
-          style={{ color: C.LIME, transition: 'gap 200ms ease' }}
-          aria-label={`Explore ${detail.title} service`}
-        >
-          Explore Service
-          <ArrowRight
-            className="w-4 h-4 group-hover:translate-x-1"
-            style={{ transition: 'transform 200ms ease' }}
-            aria-hidden="true"
-          />
-        </button>
-      </div>
-    </motion.article>
-  );
-};
-
-/* ─────────────────────────────────────────────────────────────
-   FEATURED SERVICE CARD (AI DEVELOPMENT)
-───────────────────────────────────────────────────────────── */
-const FeaturedServiceCard: React.FC<{
-  service: string;
-  prefersReducedMotion: boolean;
-  isInView: boolean;
-  onNavigate: (service: string) => void;
-}> = ({ service, prefersReducedMotion, isInView, onNavigate }) => {
-  const detail = SERVICE_DETAILS[service];
-
-  return (
-    <motion.article
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative rounded-2xl overflow-hidden mb-8 sm:mb-10 lg:mb-12 outline-none focus-within:ring-2 focus-within:ring-[#B6FF00] focus-within:ring-offset-2 focus-within:ring-offset-[#050505]"
-      style={{
-        background: C.GRAPHITE,
-        border: `1px solid rgba(182, 255, 0, 0.1)`,
-        transition: 'border-color 300ms ease, box-shadow 300ms ease',
-      }}
-      onMouseEnter={(e) => {
-        if (!prefersReducedMotion) {
-          (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.3)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(182, 255, 0, 0.06)';
-        }
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(182, 255, 0, 0.1)';
-        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-      }}
-    >
-      {/* Top lime accent */}
-      <div
-        className="h-[2px] w-full"
-        style={{ background: `linear-gradient(90deg, ${C.LIME} 0%, ${C.DEEP_GREEN} 60%, transparent 100%)` }}
-        aria-hidden="true"
-      />
-
-      <div className="grid lg:grid-cols-[55%_45%] gap-0">
-        {/* Content Side */}
-        <div className="p-7 sm:p-10 lg:p-12 flex flex-col">
-          {/* Number + Tag */}
-          <div className="flex items-center gap-4 mb-6">
-            <span
-              className="text-4xl sm:text-5xl font-bold leading-none select-none"
-              style={{ color: C.LIME, opacity: 0.5 }}
-            >
-              01
-            </span>
-            <span
-              className="text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full"
-              style={{
-                color: C.LIME,
-                background: 'rgba(182, 255, 0, 0.08)',
-                border: '1px solid rgba(182, 255, 0, 0.15)',
-              }}
-            >
-              {detail.tag}
-            </span>
-          </div>
-
-          {/* Service Name (H3) */}
-          <h3
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight mb-4"
-            style={{ color: C.WHITE }}
-          >
+        <span className="min-w-0 flex-1">
+          <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
+            {detail.tag}
+          </span>
+          <span className="block text-xl font-bold leading-tight tracking-[-0.03em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-2xl lg:text-4xl">
             {detail.title}
-          </h3>
+          </span>
+        </span>
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border sm:h-12 sm:w-12" style={{ borderColor: isExpanded ? C.LIME : C.DEEP_GREEN, background: isExpanded ? C.LIME : C.DEEP_GREEN, color: C.BLACK, transition: 'transform 300ms ease, background 300ms ease, border-color 300ms ease' }}>
+          <span className="text-2xl font-light leading-none" style={{ transform: isExpanded ? 'rotate(45deg)' : 'none', transition: 'transform 300ms ease' }}>+</span>
+        </span>
+      </button>
 
-          {/* Description */}
-          <p
-            className="text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
-            style={{ color: 'rgba(255, 255, 255, 0.6)', lineHeight: 1.75 }}
-          >
-            {detail.description}
-          </p>
-
-          {/* All 4 Benefits */}
-          <div className="grid sm:grid-cols-2 gap-3 mb-8">
-            {detail.benefits.map((b, i) => (
-              <div key={b.title} className="flex items-start gap-2.5">
-                <div
-                  className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(182, 255, 0, 0.12)' }}
-                >
-                  <CheckCircle2 className="w-3 h-3" style={{ color: C.LIME }} />
+      <motion.div
+        id={panelId}
+        role="region"
+        aria-labelledby={rowId}
+        initial={false}
+        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
+        style={{ overflow: 'hidden' }}
+      >
+        <div className="grid gap-8 pb-8 pl-14 sm:grid-cols-[1fr_220px] sm:pb-10 sm:pl-[5.5rem] lg:grid-cols-[1fr_280px] lg:gap-16 lg:pl-28">
+          <div>
+            <p className="max-w-2xl text-sm leading-7 sm:text-base" style={{ color: 'rgba(255,255,255,0.64)' }}>{detail.description}</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {detail.benefits.slice(0, 4).map((benefit) => (
+                <div key={benefit.title} className="flex items-start gap-2 text-xs leading-5" style={{ color: 'rgba(255,255,255,0.58)' }}>
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: C.LIME }} aria-hidden="true" />
+                  <span>{benefit.title}</span>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
-                    {b.title}
-                  </p>
-                  <p className="text-xs mt-0.5" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
-                    {b.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button type="button" onClick={() => onNavigate(service)} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#B6FF00] px-5 py-3 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" aria-label={`Explore ${detail.title} service`}>
+              Explore Service <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </button>
           </div>
-
-          {/* CTA */}
-          <button
-            onClick={() => onNavigate(service)}
-            className="group/btn inline-flex items-center gap-2.5 px-7 py-3 rounded-xl text-sm font-bold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00] self-start"
-            style={{
-              background: C.LIME,
-              color: C.BLACK,
-              boxShadow: '0 2px 12px rgba(182, 255, 0, 0.2), 0 6px 24px rgba(182, 255, 0, 0.1)',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = '#A3E600';
-              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 16px rgba(182, 255, 0, 0.28), 0 8px 32px rgba(182, 255, 0, 0.14)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = C.LIME;
-              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 2px 12px rgba(182, 255, 0, 0.2), 0 6px 24px rgba(182, 255, 0, 0.1)';
-            }}
-            aria-label={`Explore ${detail.title} service`}
-          >
-            Explore Service
-            <ArrowRight
-              className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </button>
-        </div>
-
-        {/* Visual Side */}
-        <div
-          className="hidden lg:flex items-center justify-center p-12 relative"
-          style={{ borderLeft: '1px solid rgba(182, 255, 0, 0.06)' }}
-        >
-          {/* Ambient glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(182, 255, 0, 0.04) 0%, transparent 70%)',
-            }}
-            aria-hidden="true"
-          />
-
-          {/* Grid pattern */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            aria-hidden="true"
-          >
-            <defs>
-              <pattern id="featured-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="0.6" fill={C.LIME} opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#featured-grid)" />
-          </svg>
-
-          {/* Main visualization */}
-          <div className="relative z-10 opacity-80 group-hover:opacity-100 group-hover:scale-105" style={{ transition: 'opacity 400ms ease, transform 400ms ease' }}>
-            <ServiceVisual service={service} featured />
+          <div className="hidden items-center justify-center border-l border-[#B6FF00]/10 sm:flex" aria-hidden="true">
+            <div className="opacity-80 transition-transform duration-500 group-hover:scale-105"><ServiceVisual service={service} featured /></div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.article>
   );
 };
@@ -818,9 +617,8 @@ const Services = () => {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true });
-
-  const featuredService = SERVICES[0]; // AI Development
-  const supportingServices = useMemo(() => SERVICES.slice(1), []);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const [showAllServices, setShowAllServices] = useState(false);
 
   const handleNavigate = (service: string) => {
     const pagePath = SERVICE_ROUTES[service];
@@ -875,96 +673,56 @@ const Services = () => {
 
         {/* ── Section Header ───────────────────────────────────── */}
         <motion.div
-          className="mb-12 sm:mb-16 lg:mb-20"
+          className="mb-12 grid gap-8 pb-12 sm:mb-16 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16 lg:pb-20"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-5">
-            <div
-              className="h-[1px] w-8"
-              style={{ background: C.LIME }}
-              aria-hidden="true"
-            />
-            <span
-              className="text-xs font-semibold tracking-[0.25em] uppercase"
-              style={{ color: C.LIME }}
-            >
-              Services We Offer
-            </span>
-          </div>
 
           {/* H2 */}
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.1] mb-4"
+            className="max-w-none whitespace-nowrap text-3xl font-bold leading-none tracking-[-0.035em] sm:text-4xl lg:text-5xl"
             style={{ color: C.WHITE }}
           >
-            Technology Built Around{' '}
-            <span style={{ color: C.LIME }}>Your Business.</span>
+            Services{' '}
+            <span style={{ color: C.LIME }}>We Offer.</span>
           </h2>
 
-          {/* Supporting copy */}
-          <p
-            className="text-base sm:text-lg max-w-2xl leading-relaxed"
-            style={{ color: 'rgba(255, 255, 255, 0.5)' }}
-          >
-            Explore our technology services designed to help businesses build, automate, modernize, and scale with confidence.
-          </p>
+          <div className="flex flex-col items-start gap-6 lg:col-start-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+            {/* Supporting copy */}
+            <p
+              className="max-w-xl text-left text-base leading-7 sm:text-lg lg:w-[21rem] lg:max-w-none lg:flex-none"
+              style={{ color: 'rgba(255, 255, 255, 0.58)' }}
+            >
+              From intelligence to automation.<br />Systems that scale.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowAllServices(current => !current)}
+              aria-expanded={showAllServices}
+              className="inline-flex shrink-0 items-center gap-3 rounded-full border border-[#B6FF00] bg-[#B6FF00] px-6 py-3 text-sm font-bold text-[#050505] transition-colors hover:border-[#7DCC00] hover:bg-[#7DCC00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
+            >
+              {showAllServices ? 'Show Fewer Services' : 'View More Services'}
+              <ArrowRight className="h-4 w-4" style={{ transform: showAllServices ? 'rotate(-90deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }} aria-hidden="true" />
+            </button>
+          </div>
         </motion.div>
 
-        {/* ── Featured Service (AI Development) ────────────────── */}
-        <FeaturedServiceCard
-          service={featuredService}
-          prefersReducedMotion={prefersReducedMotion}
-          isInView={isInView}
-          onNavigate={handleNavigate}
-        />
-
-        {/* ── Supporting Services Grid ─────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-          {supportingServices.map((service, i) => (
-            <ServiceCard
+        <div aria-label="Available services">
+          {SERVICES.slice(0, showAllServices ? SERVICES.length : 5).map((service, index) => (
+            <ServiceRow
               key={service}
               service={service}
-              index={i + 1}
+              index={index}
+              isExpanded={expandedIndex === index}
               prefersReducedMotion={prefersReducedMotion}
               isInView={isInView}
+              onToggle={() => setExpandedIndex(current => current === index ? null : index)}
               onNavigate={handleNavigate}
             />
           ))}
         </div>
 
-        {/* ── Section Footer CTA ───────────────────────────────── */}
-        <motion.div
-          className="mt-12 sm:mt-16 flex justify-center"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <button
-            onClick={() => navigate('/ai-development')}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B6FF00]"
-            style={{
-              color: C.LIME,
-              background: 'transparent',
-              border: `1px solid rgba(182, 255, 0, 0.25)`,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(182, 255, 0, 0.08)';
-              (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(182, 255, 0, 0.5)';
-              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
-              (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(182, 255, 0, 0.25)';
-              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
-            }}
-          >
-            View All Services
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

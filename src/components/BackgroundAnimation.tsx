@@ -5,7 +5,7 @@ import * as THREE from 'three';
  * BackgroundAnimation Component
  * 
  * Renders a cinematic 3D environment using Three.js.
- * Description: Abstract futuristic purple network with glowing nodes and connecting lines, 
+ * Description: Abstract green network with glowing nodes and connecting lines, 
  * smooth camera drifting forward through the mesh, soft neon lighting, depth of field, 
  * and subtle particles.
  */
@@ -42,9 +42,9 @@ const BackgroundAnimation = () => {
 
       const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');      // Center glow
-      gradient.addColorStop(0.2, 'rgba(168, 85, 247, 0.9)');    // Violet
-      gradient.addColorStop(0.5, 'rgba(109, 40, 217, 0.4)');    // Purple core
-      gradient.addColorStop(1, 'rgba(109, 40, 217, 0)');        // Outer transparency
+      gradient.addColorStop(0.2, 'rgba(182, 255, 0, 0.9)');    // Lime
+      gradient.addColorStop(0.5, 'rgba(125, 204, 0, 0.4)');    // Deep Green core
+      gradient.addColorStop(1, 'rgba(125, 204, 0, 0)');        // Outer transparency
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 128, 128);
@@ -102,7 +102,7 @@ const BackgroundAnimation = () => {
 
     // 5. Connecting Lines
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x9333ea, // Deeper purple (Purple-600)
+      color: 0x7dcc00, // Deep Green
       transparent: true,
       opacity: 0.18,
       blending: THREE.AdditiveBlending,
@@ -244,7 +244,7 @@ const BackgroundAnimation = () => {
       ref={containerRef} 
       className="fixed inset-0 -z-10 pointer-events-none overflow-hidden" 
       style={{ 
-        background: 'radial-gradient(circle at center, #0f0720 0%, #000000 100%)',
+        background: 'radial-gradient(circle at center, rgba(125,204,0,0.08) 0%, #050505 72%)',
         opacity: 0.9 // Subtle transparency to blend with potential background colors
       }}
     />

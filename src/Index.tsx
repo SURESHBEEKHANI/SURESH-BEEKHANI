@@ -15,6 +15,7 @@ import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import BackgroundAnimation from '@/components/BackgroundAnimation';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { AnimatedSection } from '@/components/AnimatedSection';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -34,21 +35,21 @@ const Index = () => {
         <Hero />
         
         <section className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <Overview />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <Services />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <Experience />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section className="pro-section">
@@ -58,40 +59,40 @@ const Index = () => {
         </section>
 
         <section id="client-solutions" className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <ClientSolutions />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section id="approach" className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <Approach />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section id="testimonials" className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <Testimonials />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <MeetFounder />
-          </div>
+          </AnimatedSection>
         </section>
 
         <section className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <LatestBlogs />
-          </div>
+          </AnimatedSection>
         </section>
 
 
         <section id="faq" className="pro-section">
-          <div className="section-container">
+          <AnimatedSection className="section-container" threshold={0.08}>
             <FAQ />
-          </div>
+          </AnimatedSection>
         </section>
       </main>
 

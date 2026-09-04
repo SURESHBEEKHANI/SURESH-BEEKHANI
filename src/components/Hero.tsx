@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Zap, ChevronRight, Database, BarChart3, Settings, FileText } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, MotionValue, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, Zap, Database, BarChart3, Settings, FileText } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS  (Velnix Locked Color System)
@@ -49,18 +49,122 @@ const EDGES = [
 // ─────────────────────────────────────────────────────────────────────────────
 const nodeMap = Object.fromEntries(NODES.map(n => [n.id, n]));
 
+const WorkflowEdge = ({
+  edge,
+  index,
+  scrollProgress,
+  connectionOpacity,
+  shouldReduce,
+}: {
+  edge: typeof EDGES[number];
+  index: number;
+  scrollProgress: MotionValue<number>;
+  connectionOpacity: MotionValue<number>;
+  shouldReduce: boolean;
+}) => {
+  const n1 = nodeMap[edge.from];
+  const n2 = nodeMap[edge.to];
+  const isVert = Math.abs(n1.x - n2.x) < Math.abs(n1.y - n2.y);
+  const grad = isVert ? 'eg2' : 'eg1';
+  const edgeProgress = useTransform(scrollProgress, [0.16 + index * 0.04, 0.48 + index * 0.04], [0, 1]);
+  const dx = useTransform(edgeProgress, value => n1.x + (n2.x - n1.x) * value);
+  const dy = useTransform(edgeProgress, value => n1.y + (n2.y - n1.y) * value);
+
+  return (
+    <g>
+      <motion.line
+        x1={n1.x}
+        y1={n1.y}
+        x2={n2.x}
+        y2={n2.y}
+        stroke={`url(#${grad})`}
+        strokeWidth="0.35"
+        strokeDasharray={edge.active ? '1.2 1.2' : '0.5 2'}
+        strokeOpacity={edge.active ? connectionOpacity : 0.25}
+      />
+      {!shouldReduce && (
+        <motion.circle cx={dx} cy={dy} r="0.8" fill={C.lime} opacity={connectionOpacity} />
+      )}
+    </g>
+  );
+};
+
+const WorkflowNode = ({
+  node,
+  index,
+  scrollProgress,
+  shouldReduce,
+}: {
+  node: typeof NODES[number];
+  index: number;
+  scrollProgress: MotionValue<number>;
+  shouldReduce: boolean;
+}) => {
+  const NodeIcon = node.icon;
+  const isCentral = node.id === 'process';
+  const nodeOpacity = useTransform(scrollProgress, [0.08 + index * 0.08, 0.3 + index * 0.08], [0.35, 1]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.4 + index * 0.12, duration: 0.5, ease }}
+      className="absolute"
+      style={{
+        left: `${node.x}%`,
+        top: `${node.y}%`,
+        transform: 'translate(-50%, -50%)',
+        opacity: shouldReduce ? 1 : nodeOpacity,
+      }}
+    >
+      {isCentral && !shouldReduce && (
+        <span
+          className="absolute inset-0 rounded-none"
+          style={{
+            animation: 'velnix-ring 2.2s ease-out infinite',
+            border: `1px solid ${C.limeAlpha(0.5)}`,
+            borderRadius: 4,
+            inset: -8,
+          }}
+        />
+      )}
+      <div
+        className="relative flex flex-col items-center gap-1 px-3 py-2.5 rounded-none"
+        style={{
+          background: isCentral ? `linear-gradient(145deg, ${C.lime}18 0%, ${C.graphite} 100%)` : C.graphite,
+          border: `1px solid ${isCentral ? C.limeAlpha(0.5) : C.whiteAlpha(0.1)}`,
+          minWidth: isCentral ? 96 : 80,
+          boxShadow: isCentral ? `0 0 24px ${C.limeAlpha(0.2)}` : `0 2px 12px rgba(0,0,0,0.4)`,
+        }}
+      >
+        <NodeIcon size={isCentral ? 20 : 14} strokeWidth={1.5} color={isCentral ? C.lime : C.whiteAlpha(0.65)} />
+        <span
+          className="leading-tight text-center"
+          style={{
+            fontSize: isCentral ? 9.5 : 8,
+            fontWeight: isCentral ? 700 : 500,
+            color: isCentral ? C.lime : C.whiteAlpha(0.7),
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            lineHeight: 1.25,
+            maxWidth: 72,
+          }}
+        >
+          {node.label}
+        </span>
+      </div>
+    </motion.div>
+  );
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 // WORKFLOW VISUAL
 // ─────────────────────────────────────────────────────────────────────────────
-const WorkflowVisual = () => {
+const WorkflowVisual = ({ scrollProgress }: { scrollProgress: MotionValue<number> }) => {
   const shouldReduce = useReducedMotion();
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    if (shouldReduce) return;
-    const id = setInterval(() => setTick(t => (t + 1) % 100), 60);
-    return () => clearInterval(id);
-  }, [shouldReduce]);
+  const systemOpacity = useTransform(scrollProgress, [0, 0.14, 0.72, 1], [0.72, 1, 1, 0.42]);
+  const connectionOpacity = useTransform(scrollProgress, [0, 0.18, 0.45, 0.86], [0.25, 0.45, 1, 0.35]);
+  const outcomeOpacity = useTransform(scrollProgress, [0.38, 0.58, 0.86], [0.2, 1, 1]);
 
   return (
     <div className="relative w-full h-full select-none" aria-hidden="true">
@@ -97,7 +201,12 @@ const WorkflowVisual = () => {
         />
 
         {/* SVG – edges + animated dots */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <motion.svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          style={{ opacity: systemOpacity }}
+        >
           <defs>
             {/* Lime gradient for active edges */}
             <linearGradient id="eg1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -110,114 +219,28 @@ const WorkflowVisual = () => {
             </linearGradient>
           </defs>
 
-          {EDGES.map((e, i) => {
-            const n1 = nodeMap[e.from];
-            const n2 = nodeMap[e.to];
-            const id = `grad-${i}`;
-            const isVert = Math.abs(n1.x - n2.x) < Math.abs(n1.y - n2.y);
-            const grad = isVert ? 'eg2' : 'eg1';
-
-            // Animated travelling dot position
-            const progress = ((tick * 1.2 + i * 28) % 100) / 100;
-            const dx = n1.x + (n2.x - n1.x) * progress;
-            const dy = n1.y + (n2.y - n1.y) * progress;
-
-            return (
-              <g key={id}>
-                {/* Edge line */}
-                <line
-                  x1={n1.x}
-                  y1={n1.y}
-                  x2={n2.x}
-                  y2={n2.y}
-                  stroke={`url(#${grad})`}
-                  strokeWidth="0.35"
-                  strokeDasharray={e.active ? '1.2 1.2' : '0.5 2'}
-                  strokeOpacity={e.active ? 0.8 : 0.25}
-                />
-                {/* Travelling pulse dot */}
-                {!shouldReduce && (
-                  <circle
-                    cx={dx}
-                    cy={dy}
-                    r="0.8"
-                    fill={C.lime}
-                    opacity={0.95}
-                  />
-                )}
-              </g>
-            );
-          })}
-        </svg>
+          {EDGES.map((edge, index) => (
+            <WorkflowEdge
+              key={`${edge.from}-${edge.to}`}
+              edge={edge}
+              index={index}
+              scrollProgress={scrollProgress}
+              connectionOpacity={connectionOpacity}
+              shouldReduce={Boolean(shouldReduce)}
+            />
+          ))}
+        </motion.svg>
 
         {/* Nodes */}
-        {NODES.map((node, i) => {
-          const NodeIcon = node.icon;
-          const isCentral = node.id === 'process';
-
-          return (
-            <motion.div
-              key={node.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 + i * 0.12, duration: 0.5, ease }}
-              className="absolute"
-              style={{
-                left: `${node.x}%`,
-                top: `${node.y}%`,
-                transform: 'translate(-50%, -50%)',
-              }}
-            >
-              {/* Pulse ring for central AI node */}
-              {isCentral && !shouldReduce && (
-                <span
-                  className="absolute inset-0 rounded-none"
-                  style={{
-                    animation: 'velnix-ring 2.2s ease-out infinite',
-                    border: `1px solid ${C.limeAlpha(0.5)}`,
-                    borderRadius: 4,
-                    inset: -8,
-                  }}
-                />
-              )}
-
-              {/* Node card */}
-              <div
-                className="relative flex flex-col items-center gap-1 px-3 py-2.5 rounded-none"
-                style={{
-                  background: isCentral
-                    ? `linear-gradient(145deg, ${C.lime}18 0%, ${C.graphite} 100%)`
-                    : C.graphite,
-                  border: `1px solid ${isCentral ? C.limeAlpha(0.5) : C.whiteAlpha(0.1)}`,
-                  minWidth: isCentral ? 96 : 80,
-                  boxShadow: isCentral
-                    ? `0 0 24px ${C.limeAlpha(0.2)}`
-                    : `0 2px 12px rgba(0,0,0,0.4)`,
-                }}
-              >
-                <NodeIcon
-                  size={isCentral ? 20 : 14}
-                  strokeWidth={1.5}
-                  color={isCentral ? C.lime : C.whiteAlpha(0.65)}
-                />
-                <span
-                  className="leading-tight text-center"
-                  style={{
-                    fontSize: isCentral ? 9.5 : 8,
-                    fontWeight: isCentral ? 700 : 500,
-                    color: isCentral ? C.lime : C.whiteAlpha(0.7),
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    lineHeight: 1.25,
-                    maxWidth: 72,
-                  }}
-                >
-                  {node.label}
-                </span>
-              </div>
-            </motion.div>
-          );
-        })}
+        {NODES.map((node, index) => (
+          <WorkflowNode
+            key={node.id}
+            node={node}
+            index={index}
+            scrollProgress={scrollProgress}
+            shouldReduce={Boolean(shouldReduce)}
+          />
+        ))}
 
         {/* Status bar */}
         <motion.div
@@ -228,6 +251,7 @@ const WorkflowVisual = () => {
           style={{
             background: C.limeAlpha(0.06),
             borderTop: `1px solid ${C.limeAlpha(0.15)}`,
+            opacity: shouldReduce ? 1 : outcomeOpacity,
           }}
         >
           <span style={{ fontSize: 9, color: C.limeAlpha(0.8), letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -296,7 +320,13 @@ const MetricChip = ({ value, label, delay }: { value: string; label: string; del
 // ─────────────────────────────────────────────────────────────────────────────
 const Hero = () => {
   const shouldReduce = useReducedMotion();
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroVisualOpacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 1, 0.7]);
+  const heroVisualScale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0.94]);
 
   return (
     <>
@@ -315,14 +345,19 @@ const Hero = () => {
           from { background-position: -200% center; }
           to   { background-position:  200% center; }
         }
+        @keyframes velnix-headline {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
       `}</style>
 
       <section
+        ref={heroRef}
         id="hero"
         className="relative isolate w-full overflow-hidden"
         style={{
           minHeight: '100vh',
-          background: C.black,
+          background: `radial-gradient(ellipse 52% 70% at 78% 42%, ${C.greenAlpha(0.13)} 0%, ${C.greenAlpha(0.045)} 42%, transparent 78%), radial-gradient(ellipse 45% 55% at 12% 18%, ${C.limeAlpha(0.075)} 0%, transparent 72%), ${C.black}`,
         }}
         aria-label="Velnix Solutions hero section"
       >
@@ -338,8 +373,8 @@ const Hero = () => {
               height: 560,
               top: -160,
               left: -120,
-              background: `radial-gradient(circle, ${C.limeAlpha(0.04)} 0%, transparent 70%)`,
-              filter: 'blur(60px)',
+              background: `radial-gradient(circle, ${C.limeAlpha(0.1)} 0%, ${C.greenAlpha(0.035)} 38%, transparent 72%)`,
+              filter: 'blur(46px)',
             }}
           />
 
@@ -351,8 +386,8 @@ const Hero = () => {
               height: 480,
               bottom: -80,
               right: -80,
-              background: `radial-gradient(circle, ${C.greenAlpha(0.04)} 0%, transparent 70%)`,
-              filter: 'blur(80px)',
+              background: `radial-gradient(circle, ${C.greenAlpha(0.12)} 0%, ${C.greenAlpha(0.04)} 42%, transparent 74%)`,
+              filter: 'blur(64px)',
             }}
           />
 
@@ -468,31 +503,33 @@ const Hero = () => {
               {/* Primary CTA */}
               <PrimaryButton />
 
-              {/* Secondary CTA */}
+              {/* AI Audit CTA */}
               <a
-                href="/services"
-                className="group inline-flex items-center gap-2 transition-all duration-300"
+                href="/ai-audit"
+                className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300"
                 style={{
                   fontSize: '0.9rem',
-                  fontWeight: 600,
-                  color: C.whiteAlpha(0.7),
-                  letterSpacing: '0.01em',
+                  fontWeight: 700,
+                  color: C.black,
+                  borderColor: C.lime,
+                  background: C.lime,
                   textDecoration: 'none',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.color = C.white;
+                  e.currentTarget.style.borderColor = C.green;
+                  e.currentTarget.style.color = C.black;
+                  e.currentTarget.style.background = C.green;
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.color = C.whiteAlpha(0.7);
+                  e.currentTarget.style.borderColor = C.lime;
+                  e.currentTarget.style.color = C.black;
+                  e.currentTarget.style.background = C.lime;
                 }}
               >
-                Explore Solutions
-                <ChevronRight
-                  size={15}
-                  className="group-hover:translate-x-0.5 transition-transform duration-200"
-                  strokeWidth={2.5}
-                />
+                Get the AI Audit — $1,000
+                <ArrowRight size={15} />
               </a>
+
             </motion.div>
 
             {/* Trust Signal */}
@@ -554,7 +591,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease }}
             className="relative w-full"
-            style={{ minHeight: 420 }}
+            style={{ minHeight: 420, opacity: shouldReduce ? 1 : heroVisualOpacity, scale: shouldReduce ? 1 : heroVisualScale }}
           >
             {/* Panel label */}
             <div
@@ -594,7 +631,7 @@ const Hero = () => {
 
             {/* The visualization */}
             <div className="w-full" style={{ paddingTop: 36, minHeight: 420 }}>
-              <WorkflowVisual />
+              <WorkflowVisual scrollProgress={scrollYProgress} />
             </div>
 
             {/* Decorative corner marks */}
@@ -660,7 +697,7 @@ const PrimaryButton = () => {
       onMouseMove={handleMove}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="group inline-flex items-center gap-2.5 relative overflow-hidden transition-transform duration-200"
+      className="group inline-flex items-center gap-2.5 relative overflow-hidden rounded-full transition-transform duration-200"
       style={{
         background: C.lime,
         color: C.black,
@@ -708,46 +745,44 @@ const PUBLICATIONS = [
   { name: 'New York Weekly',  style: { fontFamily: 'Times New Roman, serif', fontSize: '0.85rem', letterSpacing: '0.06em' } },
 ];
 
-const FeaturedInStrip = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 12 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.8, duration: 0.6 }}
-    className="relative z-10 w-full border-t"
-    style={{ borderColor: C.whiteAlpha(0.07), background: C.black }}
-    aria-label="As featured in"
-  >
-    <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-10">
-      {/* Badge */}
-      <span
-        className="shrink-0 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase"
-        style={{
-          background: C.whiteAlpha(0.06),
-          border: `1px solid ${C.whiteAlpha(0.1)}`,
-          color: C.whiteAlpha(0.6),
-        }}
-      >
-        Featured In
-      </span>
+const FeaturedInStrip = () => {
+  const shouldReduce = useReducedMotion();
+  const publicationTrack = [...PUBLICATIONS, ...PUBLICATIONS];
 
-      {/* Logos */}
-      <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-        {PUBLICATIONS.map(p => (
-          <span
-            key={p.name}
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8, duration: 0.6 }}
+      className="relative z-10 w-full overflow-hidden border-t"
+      style={{ borderColor: C.lime, background: C.lime }}
+      aria-label="As featured in"
+    >
+  
+          <div
+            className="flex w-max items-center gap-6 py-3 pr-6 sm:gap-10 sm:py-4 sm:pr-10"
             style={{
-              color: C.whiteAlpha(0.35),
-              ...p.style,
-              transition: 'color 0.3s',
-              cursor: 'default',
+              animation: shouldReduce ? 'none' : 'velnix-headline 24s linear infinite',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.whiteAlpha(0.7); }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.whiteAlpha(0.35); }}
           >
-            {p.name}
-          </span>
-        ))}
-      </div>
-    </div>
-  </motion.div>
-);
+            {publicationTrack.map((publication, index) => (
+              <span
+                key={`${publication.name}-${index}`}
+                aria-hidden={index >= PUBLICATIONS.length}
+                style={{
+                  color: C.black,
+                  ...publication.style,
+                  transition: 'color 0.3s',
+                  cursor: 'default',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.black; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.black; }}
+              >
+                {publication.name}
+              </span>
+            ))}
+          </div>
+    </motion.div>
+  );
+};

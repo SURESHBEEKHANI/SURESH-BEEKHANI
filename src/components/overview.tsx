@@ -33,6 +33,7 @@ const Overview = () => {
   });
   const imageY = useTransform(scrollYProgress, [0, 1], [30, -30]);
   const imageRotate = useTransform(scrollYProgress, [0, 1], [1.5, -1.5]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.96, 1, 0.97]);
 
   return (
     <section
@@ -185,7 +186,10 @@ const Overview = () => {
             {/* Image section */}
             <div className="relative w-full max-w-[864px]">
               {/* Main image card */}
-              <div className="relative rounded-2xl overflow-hidden">
+              <motion.div
+                className="relative rounded-2xl overflow-hidden"
+                style={prefersReducedMotion ? undefined : { y: imageY, rotate: imageRotate, scale: imageScale }}
+              >
                 <img
                   src="/image/certificate-image/Business Growth with AI.png"
                   alt="Business Growth with AI — Velnix Solutions"
@@ -197,7 +201,7 @@ const Overview = () => {
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
+              </motion.div>
 
               {/* Floating badge — bottom right */}
               <div

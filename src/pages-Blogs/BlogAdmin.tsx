@@ -16,6 +16,41 @@ const CATEGORIES = [
   { id: "ai-automation", label: "AI Automation" }
 ];
 
+const BRAND = {
+  black: "#050505",
+  graphite: "#111111",
+  white: "#FFFFFF",
+  lime: "#B6FF00",
+  green: "#7DCC00",
+};
+
+const ADMIN_STYLES = `
+  .blog-admin-page { background: ${BRAND.black} !important; color: ${BRAND.white}; }
+  .blog-admin-page .admin-surface { background: ${BRAND.graphite} !important; border-color: rgba(255,255,255,.1) !important; }
+  .blog-admin-page input, .blog-admin-page textarea, .blog-admin-page select { background: ${BRAND.graphite} !important; color: ${BRAND.white} !important; border-color: rgba(255,255,255,.14) !important; }
+  .blog-admin-page input::placeholder, .blog-admin-page textarea::placeholder { color: rgba(255,255,255,.38) !important; }
+  .blog-admin-page input:focus, .blog-admin-page textarea:focus, .blog-admin-page select:focus { border-color: ${BRAND.lime} !important; outline: 2px solid rgba(182,255,0,.2) !important; outline-offset: 1px; }
+  .blog-admin-page button:focus-visible, .blog-admin-page a:focus-visible, .blog-admin-page input:focus-visible, .blog-admin-page textarea:focus-visible, .blog-admin-page select:focus-visible { outline: 2px solid ${BRAND.lime}; outline-offset: 3px; }
+  .blog-admin-page .brand-lime { color: ${BRAND.lime} !important; }
+  .blog-admin-page .admin-muted { color: rgba(255,255,255,.58) !important; }
+  .blog-admin-page .admin-subtle { color: rgba(255,255,255,.4) !important; }
+  .blog-admin-page .admin-divider { border-color: rgba(255,255,255,.1) !important; }
+  .blog-admin-page .admin-primary { background: ${BRAND.lime} !important; color: ${BRAND.black} !important; }
+  .blog-admin-page .admin-primary:hover { background: ${BRAND.green} !important; }
+  .blog-admin-page .admin-control { min-height: 44px; border: 1px solid rgba(255,255,255,.14); background: ${BRAND.graphite}; color: ${BRAND.white}; }
+  .blog-admin-page .admin-row:hover { background: rgba(182,255,0,.045) !important; }
+  .blog-admin-page .admin-status { border: 1px solid rgba(182,255,0,.28); color: ${BRAND.lime}; background: rgba(182,255,0,.08); }
+  .blog-admin-page .admin-draft { border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.72); background: rgba(255,255,255,.06); }
+  .blog-admin-page [class*="bg-white"], .blog-admin-page [class*="bg-gray-50"] { background: ${BRAND.graphite} !important; }
+  .blog-admin-page [class*="bg-gray-900"] { background: ${BRAND.black} !important; }
+  .blog-admin-page [class*="text-gray-900"], .blog-admin-page [class*="text-gray-800"] { color: ${BRAND.white} !important; }
+  .blog-admin-page [class*="text-gray-700"], .blog-admin-page [class*="text-gray-600"], .blog-admin-page [class*="text-gray-500"], .blog-admin-page [class*="text-gray-400"] { color: rgba(255,255,255,.58) !important; }
+  .blog-admin-page [class*="text-[#ff0ea3]"], .blog-admin-page [class*="text-[#ec4899]"] { color: ${BRAND.lime} !important; }
+  .blog-admin-page [class*="border-gray"] { border-color: rgba(255,255,255,.12) !important; }
+  @media (max-width: 640px) { .blog-admin-page .admin-table-wrap { overflow: visible; } .blog-admin-page .admin-table { min-width: 0; } .blog-admin-page .admin-table thead { display: none; } .blog-admin-page .admin-table tr { display: block; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,.1); } .blog-admin-page .admin-table td { display: block; padding: .35rem 0; border: 0; } .blog-admin-page .admin-table td:last-child { padding-top: .8rem; } }
+  @media print { .blog-admin-page .admin-print-hide { display: none !important; } }
+`;
+
 interface Blog {
   id: string;
   title: string;
@@ -32,8 +67,18 @@ interface Blog {
   views?: number;
 }
 
+const Summary = ({ label, value }: { label: string; value: number }) => (
+  <div className="admin-surface border px-5 py-4">
+    <p className="admin-subtle text-[10px] font-bold uppercase tracking-[0.18em]">{label}</p>
+    <p className="mt-2 text-2xl font-semibold text-white">{value}</p>
+  </div>
+);
+
 const BlogAdmin: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | "published" | "draft">("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingBlog, setEditingBlog] = useState<Partial<Blog> | null>(null);
@@ -83,6 +128,14 @@ const BlogAdmin: React.FC = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [preferences, setPreferences] = useState("");
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const query = searchQuery.trim().toLowerCase();
+    const matchesQuery = !query || blog.title.toLowerCase().includes(query) || blog.category.toLowerCase().includes(query);
+    const matchesStatus = statusFilter === "all" || blog.status === statusFilter;
+    const matchesCategory = categoryFilter === "all" || blog.category === categoryFilter;
+    return matchesQuery && matchesStatus && matchesCategory;
+  });
 
   useEffect(() => {
     // Check active sessions and sets the user
@@ -414,7 +467,7 @@ const BlogAdmin: React.FC = () => {
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0a0435]">
-        <Loader2 className="animate-spin text-fuchsia-500" size={48} />
+        <Loader2 className="animate-spin brand-lime" size={48} />
       </div>
     );
   }
@@ -422,29 +475,27 @@ const BlogAdmin: React.FC = () => {
   // If not logged in, show login form
   if (!session) {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="blog-admin-page min-h-screen flex flex-col">
         <Navbar />
+        <style>{ADMIN_STYLES}</style>
 
         {/* ── Full Width Hero Section ── */}
-        <section className="w-full pt-36 pb-16 px-6 relative overflow-hidden" style={{ background: '#0a0435' }}>
+        <section className="w-full border-b border-white/10 px-6 pb-16 pt-32 relative overflow-hidden" style={{ background: BRAND.black }}>
           {/* Glow orbs */}
-          <div className="pointer-events-none absolute -top-16 -right-16 h-72 w-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 -left-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
 
           <div className="max-w-5xl mx-auto text-center relative z-10">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-full mb-8">
-              <Lock size={14} className="text-fuchsia-300" />
-              <span className="text-xs font-semibold text-white/80 tracking-widest uppercase">Secure Admin Access</span>
+              <Lock size={14} className="brand-lime" />
+              <span className="text-xs font-semibold text-white/80 tracking-widest uppercase">Secure admin access</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-              Blog Admin <span style={{ color: '#f92198' }}>Portal</span>
+              Blog Admin
             </h1>
             <p className="text-white/80/70 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed">
-              A powerful workspace to manage, publish, and curate your AI blog content — all in one place.
+              Sign in to manage, publish, and curate Velnix blog content.
             </p>
 
 
@@ -453,13 +504,13 @@ const BlogAdmin: React.FC = () => {
 
         {/* ── Form Card (below hero, overlapping) ── */}
         <div className="w-full flex justify-center px-6 pb-20 -mt-6 relative z-20">
-          <div className="w-full max-w-lg bg-white shadow-[0_0_40px_rgba(0,0,0,0.1)] p-10 border border-t-0 border-[#ff0ea3]">
+          <div className="admin-surface w-full max-w-lg p-6 sm:p-10 border shadow-2xl">
             {/* Header */}
             <div className="mb-8 text-center">
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
+              <h2 className="text-3xl font-extrabold text-white mb-2">
                 {isSignUp ? "Create your account" : "Welcome back"}
               </h2>
-              <p className="text-gray-600 text-sm">
+              <p className="admin-muted text-sm">
                 {isSignUp ? "Fill in your details to get started" : "Sign in to your admin dashboard"}
               </p>
             </div>
@@ -606,29 +657,28 @@ const BlogAdmin: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="blog-admin-page min-h-screen flex flex-col">
       <Navbar />
+      <style>{ADMIN_STYLES}</style>
       
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-4 shadow-inner relative overflow-hidden" style={{ background: '#0a0435' }}>
+      <section className="border-b border-white/10 px-4 pb-12 pt-28 shadow-inner relative overflow-hidden" style={{ background: BRAND.black }}>
         {/* Decorative background elements matching Footer */}
-        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-700/10 blur-3xl" />
         
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
-          <div className="inline-flex items-center justify-center p-3 bg-white/10 backdrop-blur-md rounded-none mb-6 border border-white/20">
-            <Lock size={24} className="text-[#ec4899]" />
+          <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-none mb-6 border border-white/20">
+            <Lock size={22} className="brand-lime" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Admin Workspace</h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-light mb-8 leading-relaxed">
-            Welcome back, <span className="font-medium text-white">{session.user.email}</span>. Manage your drafts, edit live articles, and publish new content.
+          <p className="brand-lime mb-3 text-xs font-semibold uppercase tracking-[0.22em]">Content management</p>
+          <h1 className="brand-lime text-4xl md:text-6xl font-extrabold mb-5 tracking-tight">Blog Management</h1>
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto font-light mb-8 leading-relaxed">
+            Welcome back, <span className="brand-lime font-medium">{session.user.email}</span>. Manage drafts, edit live articles, and publish new content.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <button
               onClick={() => openForm()}
-              className="flex items-center gap-2 text-black hover:text-black px-8 py-3.5 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-medium border border-black/10"
-              style={{ background: '#B6FF00' }}
+              className="admin-primary flex items-center gap-2 px-8 py-3.5 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 font-medium border border-black/10"
+              style={{ background: BRAND.lime }}
             >
               <Plus size={20} /> Create New Post
             </button>
@@ -643,12 +693,24 @@ const BlogAdmin: React.FC = () => {
       </section>
 
       <div className="flex-grow">
-        <section className="pt-16 pb-8 px-4 max-w-7xl mx-auto -mt-10 relative z-10">
-          <div className="flex justify-between items-center mb-6 px-2">
+        <section className="pt-12 pb-8 px-4 max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-8 px-2">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Your Entries</h2>
-              <p className="text-gray-500 mt-1">You have {blogs.length} posts configured across all categories.</p>
+              <h2 className="text-2xl font-bold text-white">Your posts</h2>
+              <p className="admin-muted mt-1">Create, review, and publish your Velnix knowledge base.</p>
             </div>
+            <button onClick={() => openForm()} className="admin-primary inline-flex min-h-11 items-center justify-center gap-2 px-5 py-3 font-semibold" style={{ background: BRAND.lime }}><Plus size={18} /> Create New Post</button>
+          </div>
+
+          <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <Summary label="Total posts" value={blogs.length} />
+            <Summary label="Published" value={blogs.filter((blog) => blog.status === "published").length} />
+            <Summary label="Drafts" value={blogs.filter((blog) => blog.status === "draft").length} />
+          </div>
+
+          <div className="admin-surface mb-5 flex flex-col gap-3 border p-3 sm:flex-row sm:items-center">
+            <div className="relative min-w-0 flex-1"><Search size={17} className="admin-subtle absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" /><label htmlFor="blog-search" className="sr-only">Search posts</label><input id="blog-search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search posts..." className="admin-control w-full pl-10 pr-3 text-sm" /></div>
+            <div className="flex flex-col gap-3 sm:flex-row"><label className="sr-only" htmlFor="status-filter">Filter by status</label><select id="status-filter" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as "all" | "published" | "draft")} className="admin-control px-3 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option></select><label className="sr-only" htmlFor="category-filter">Filter by category</label><select id="category-filter" value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)} className="admin-control px-3 text-sm"><option value="all">All categories</option>{CATEGORIES.map((category) => <option key={category.id} value={category.id}>{category.label}</option>)}</select>{(searchQuery || statusFilter !== "all" || categoryFilter !== "all") && <button type="button" onClick={() => { setSearchQuery(""); setStatusFilter("all"); setCategoryFilter("all"); }} className="admin-control inline-flex items-center justify-center gap-2 px-3 text-sm"><X size={15} /> Clear</button>}</div>
           </div>
 
           {loading ? (
@@ -656,11 +718,11 @@ const BlogAdmin: React.FC = () => {
               <Loader2 className="animate-spin text-[#ff0ea3]" size={40} />
             </div>
           ) : (
-            <div className="bg-white rounded-none shadow-[0_0_40px_rgba(0,0,0,0.05)] border border-gray-200 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse min-w-[800px]">
+            <div className="admin-surface rounded-none shadow-2xl border overflow-hidden">
+              <div className="admin-table-wrap overflow-x-auto">
+                <table className="admin-table w-full text-left border-collapse min-w-[800px]">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-200 text-gray-700 text-sm">
+                    <tr className="bg-white/5 border-b admin-divider text-white/60 text-xs">
                       <th className="p-4 font-semibold uppercase tracking-wider">Title</th>
                       <th className="p-4 font-semibold uppercase tracking-wider">Status</th>
                       <th className="p-4 font-semibold uppercase tracking-wider">Category</th>
@@ -668,44 +730,41 @@ const BlogAdmin: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {blogs.length === 0 ? (
+                    {filteredBlogs.length === 0 ? (
                       <tr>
                         <td colSpan={4} className="p-12 text-center text-gray-500">
                           <div className="flex flex-col items-center justify-center">
                             <div className="bg-gray-50 p-4 rounded-none border border-gray-100 mb-3 text-[#ec4899]">
                               <Plus size={32} />
                             </div>
-                            <p className="text-lg font-medium text-gray-900">No posts yet</p>
-                            <p className="text-sm mt-1">Create your first blog post to get started.</p>
+                            <p className="text-lg font-medium text-white">{blogs.length === 0 ? "No posts yet" : "No posts found"}</p>
+                            <p className="admin-muted text-sm mt-1">{blogs.length === 0 ? "Create your first blog post to get started." : "Try changing your search or filters."}</p>
+                            {blogs.length === 0 ? <button onClick={() => openForm()} className="admin-primary mt-5 inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold" style={{ background: BRAND.lime }}><Plus size={16} /> Create New Post</button> : <button onClick={() => { setSearchQuery(""); setStatusFilter("all"); setCategoryFilter("all"); }} className="admin-control mt-5 px-4 py-2.5 text-sm">Clear Filters</button>}
                           </div>
                         </td>
                       </tr>
                     ) : (
-                      blogs.map((blog) => (
-                        <tr key={blog.id} className="border-b border-gray-100 hover:bg-gray-50 transition text-gray-900">
+                      filteredBlogs.map((blog) => (
+                        <tr key={blog.id} className="admin-row border-b admin-divider transition text-white">
                           <td className="p-4 font-medium">
                             <div className="line-clamp-1">{blog.title}</div>
-                            <div className="text-xs text-gray-500 font-normal mt-1">
+                            <div className="admin-subtle text-xs font-normal mt-1">
                               {new Date(blog.created_at).toLocaleDateString()}
                             </div>
                           </td>
                           <td className="p-4">
-                            <span className={`px-2.5 py-1 rounded-none text-xs font-semibold tracking-wide ${
-                              blog.status === 'published' 
-                                ? 'bg-green-100 text-green-700 border border-green-200' 
-                                : 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                            }`}>
+                              <span className={`px-2.5 py-1 rounded-none text-xs font-semibold tracking-wide ${blog.status === 'published' ? 'admin-status' : 'admin-draft'}`}>
                               {blog.status.toUpperCase()}
                             </span>
                           </td>
-                          <td className="p-4 text-gray-600 capitalize text-sm">
+                          <td className="p-4 admin-muted capitalize text-sm">
                             {CATEGORIES.find(c => c.id === blog.category)?.label || blog.category}
                           </td>
                           <td className="p-4 flex gap-2 justify-end">
-                            <button onClick={() => openForm(blog)} className="p-2 text-[#ff0ea3] hover:bg-[#ff0ea3]/10 rounded-none transition" title="Edit">
+                              <button onClick={() => openForm(blog)} className="p-2 brand-lime hover:bg-white/10 rounded-none transition" title="Edit post" aria-label={`Edit ${blog.title}`}>
                               <Edit2 size={18} />
                             </button>
-                            <button onClick={() => handleDelete(blog.id)} className="p-2 text-red-500 hover:bg-red-50 rounded-none transition" title="Delete">
+                            <button onClick={() => handleDelete(blog.id)} className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-none transition" title="Delete post" aria-label={`Delete ${blog.title}`}>
                               <Trash2 size={18} />
                             </button>
                           </td>
@@ -722,7 +781,7 @@ const BlogAdmin: React.FC = () => {
 
       {/* Blog Form Full Screen Overlay */}
       {isFormOpen && (
-        <div className="fixed inset-0 bg-white z-[70] overflow-y-auto animate-in fade-in slide-in-from-bottom-2 duration-300 flex flex-col">
+        <div className="admin-surface fixed inset-0 z-[70] overflow-y-auto animate-in fade-in slide-in-from-bottom-2 duration-300 flex flex-col">
           {/* Header Bar */}
           <div className="h-20 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white/90 backdrop-blur-xl z-30 px-6 md:px-12 shadow-sm">
             <div className="flex items-center gap-4">
@@ -747,7 +806,7 @@ const BlogAdmin: React.FC = () => {
           <div className="flex-grow bg-gray-50/50">
             <div className="max-w-5xl mx-auto p-6 md:p-12 space-y-10">
               {/* Form Content Area */}
-              <div className="bg-white p-8 md:p-12 shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 space-y-8">
+              <div className="admin-surface p-8 md:p-12 shadow-2xl border border-gray-100 space-y-8">
                 <div>
                   <label className="block text-xs font-black text-gray-400 tracking-[0.2em] mb-3 uppercase">Post Title</label>
                   <input

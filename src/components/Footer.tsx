@@ -389,7 +389,7 @@ const Footer = () => {
       `}</style>
 
       <footer
-        style={{ background: C.black, color: C.white, position: 'relative', overflow: 'hidden' }}
+        style={{ background: `radial-gradient(ellipse 62% 48% at 84% 16%, ${C.ga(0.12)} 0%, ${C.ga(0.035)} 45%, transparent 78%), radial-gradient(ellipse 52% 42% at 8% 88%, ${C.la(0.07)} 0%, transparent 76%), ${C.black}`, color: C.white, position: 'relative', overflow: 'hidden' }}
         aria-label="Velnix Solutions site footer"
       >
 
@@ -398,9 +398,9 @@ const Footer = () => {
           {/* Top separator line */}
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.25)}, transparent)` }} />
           {/* Subtle lime glow top-left */}
-          <div style={{ position: 'absolute', top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.05)} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
+          <div style={{ position: 'absolute', top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 40%, transparent 72%)`, filter: 'blur(48px)' }} />
           {/* Subtle green glow bottom-right */}
-          <div style={{ position: 'absolute', bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.04)} 0%, transparent 70%)`, filter: 'blur(70px)' }} />
+          <div style={{ position: 'absolute', bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`, filter: 'blur(58px)' }} />
         </div>
 
         {/* ══════════════════════════════════════════════════════
@@ -732,7 +732,7 @@ const FooterCTA = () => {
         (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 36px ${C.la(0.55)}`;
       }}
       onMouseLeave={handleLeave}
-      className="group inline-flex items-center gap-2.5 relative overflow-hidden"
+      className="group inline-flex items-center gap-2.5 relative overflow-hidden rounded-full"
       style={{
         background: C.lime,
         color: C.black,

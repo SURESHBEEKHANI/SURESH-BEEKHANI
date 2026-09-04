@@ -45,7 +45,7 @@ export const SectionHeader = ({
       </h2>
       
       {centered && (
-        <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-ai-purple to-ai-cyan mx-auto mb-6 sm:mb-8 rounded-full" />
+        <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-velnix-green to-velnix-lime mx-auto mb-6 sm:mb-8 rounded-full" />
       )}
       
       {description && (
