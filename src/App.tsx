@@ -1,4 +1,4 @@
-import { Suspense, lazy, Component, ReactNode, ErrorInfo, useEffect, useRef } from 'react';
+import { Suspense, lazy, Component, ReactNode, ErrorInfo, useEffect, useRef, useState } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +9,7 @@ import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
 import ReactGA from "react-ga4";
+import { FaWhatsapp } from 'react-icons/fa';
 
 // ✅ Load Measurement ID from .env
 const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID;
@@ -157,11 +158,60 @@ const SiteCursor = () => {
           }}
         />
         <span
-          className="absolute left-1/2 top-1/2 h-[3px] w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{ background: 'currentColor' }}
+          className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{ background: '#FFFFFF', boxShadow: '0 0 6px rgba(255,255,255,0.9)' }}
         />
       </div>
     </>
+  );
+};
+
+const WhatsAppWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const whatsappNumber = '923351312852';
+  const openWhatsApp = (message: string) =>
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  return (
+    <div
+      className="fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-2 sm:bottom-7 sm:right-7"
+      aria-label="WhatsApp contact options"
+    >
+      {isOpen && (
+        <div className="flex flex-col items-end gap-2" aria-label="WhatsApp contact choices">
+          <a
+            href={openWhatsApp('Hello, I would like to contact HR.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
+            style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
+          >
+            <FaWhatsapp size={18} />
+            Contact HR
+          </a>
+          <a
+            href={openWhatsApp('Hello, I would like to discuss a business project.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
+            style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
+          >
+            <FaWhatsapp size={18} />
+            For Business
+          </a>
+        </div>
+      )}
+      <button
+        type="button"
+        onClick={() => setIsOpen(open => !open)}
+        aria-expanded={isOpen}
+        aria-label={isOpen ? 'Close WhatsApp contact options' : 'Open WhatsApp contact options'}
+        className="inline-flex h-16 w-16 items-center justify-center rounded-full text-white shadow-xl transition-transform duration-200 hover:scale-105"
+        style={{ background: '#25D366', boxShadow: '0 12px 28px rgba(37,211,102,0.32)' }}
+      >
+        <FaWhatsapp size={32} />
+      </button>
+    </div>
   );
 };
 
@@ -257,6 +307,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <SiteCursor />
+          <WhatsAppWidget />
           <AppContent />
         </BrowserRouter>
       </TooltipProvider>

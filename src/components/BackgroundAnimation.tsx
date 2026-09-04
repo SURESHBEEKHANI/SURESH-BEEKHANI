@@ -27,6 +27,12 @@ const NETWORK_NODES: NetworkNode[] = [
   { x: -13.2, y: -6.4, z: -2, r: 0.5 }, { x: 13.1, y: -6.8, z: -2, r: 0.5 },
   { x: -8.8, y: 7.5, z: 1, r: 0.55 }, { x: 8.9, y: 7.2, z: 1, r: 0.55 },
   { x: -8.7, y: -7.1, z: 1, r: 0.55 }, { x: 8.8, y: -7.4, z: 1, r: 0.55 },
+  { x: -11.2, y: 3.8, z: -1, r: 0.3 }, { x: -8.4, y: 4.8, z: 0, r: 0.28 },
+  { x: -5.8, y: 1.2, z: 1, r: 0.3 }, { x: -3.2, y: 3.1, z: 0, r: 0.26 },
+  { x: 3.2, y: 2.9, z: 0, r: 0.28 }, { x: 5.9, y: 1.3, z: 1, r: 0.3 },
+  { x: 8.6, y: 3.9, z: -1, r: 0.26 }, { x: 11.4, y: 0.2, z: 0, r: 0.3 },
+  { x: -11.3, y: -1.2, z: -1, r: 0.28 }, { x: -8.5, y: -2.5, z: 0, r: 0.3 },
+  { x: 5.8, y: -1.6, z: 0, r: 0.28 }, { x: 11.2, y: -1.4, z: 0, r: 0.26 },
 ];
 
 const NETWORK_EDGES: [number, number][] = [
@@ -37,9 +43,17 @@ const NETWORK_EDGES: [number, number][] = [
   [3, 4], [4, 12], [11, 12],
   [20, 0], [20, 16], [21, 6], [21, 7], [22, 8], [22, 18], [23, 15], [23, 19],
   [24, 2], [25, 5], [26, 10], [27, 13],
+  [28, 0], [28, 24], [29, 2], [29, 3], [30, 1], [30, 9],
+  [31, 2], [31, 16], [32, 4], [32, 17], [33, 5], [33, 13],
+  [34, 6], [34, 25], [35, 7], [35, 21], [36, 8], [36, 22],
+  [37, 9], [37, 10], [38, 14], [38, 15], [39, 15], [39, 23],
 ];
 
 const SIGNAL_PATHS = [[0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15]];
+const PRIMARY_EDGES: [number, number][] = [
+  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7],
+  [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15],
+];
 
 const BackgroundAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +79,7 @@ const BackgroundAnimation = () => {
     container.appendChild(renderer.domElement);
 
     const group = new THREE.Group();
+    group.scale.setScalar(0.78);
     scene.add(group);
 
     const nodeTextureCanvas = document.createElement('canvas');
@@ -85,7 +100,7 @@ const BackgroundAnimation = () => {
     nodeGeometry.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
     const nodeMaterial = new THREE.PointsMaterial({
       color: C.white,
-      size: 0.16,
+      size: 0.07,
       transparent: true,
       opacity: 0.58,
       depthWrite: false,
@@ -110,13 +125,29 @@ const BackgroundAnimation = () => {
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     group.add(lines);
 
+    const primaryLinePositions = new Float32Array(PRIMARY_EDGES.length * 6);
+    PRIMARY_EDGES.forEach(([from, to], index) => {
+      const a = NETWORK_NODES[from];
+      const b = NETWORK_NODES[to];
+      primaryLinePositions.set([a.x, a.y, a.z, b.x, b.y, b.z], index * 6);
+    });
+    const primaryLineGeometry = new THREE.BufferGeometry();
+    primaryLineGeometry.setAttribute('position', new THREE.BufferAttribute(primaryLinePositions, 3));
+    const primaryLineMaterial = new THREE.LineBasicMaterial({
+      color: C.lime,
+      transparent: true,
+      opacity: isCompactViewport ? 0.06 : 0.1,
+    });
+    const primaryLines = new THREE.LineSegments(primaryLineGeometry, primaryLineMaterial);
+    group.add(primaryLines);
+
     const signalGeometry = new THREE.BufferGeometry();
     const signalPositions = new Float32Array(SIGNAL_PATHS.length * 3);
     signalGeometry.setAttribute('position', new THREE.BufferAttribute(signalPositions, 3));
     const signalMaterial = new THREE.PointsMaterial({
       color: C.lime,
       map: nodeTexture,
-      size: 0.7,
+      size: 0.18,
       transparent: true,
       opacity: 0.95,
       depthWrite: false,
@@ -172,6 +203,8 @@ const BackgroundAnimation = () => {
       nodeMaterial.dispose();
       lineGeometry.dispose();
       lineMaterial.dispose();
+      primaryLineGeometry.dispose();
+      primaryLineMaterial.dispose();
       signalGeometry.dispose();
       signalMaterial.dispose();
       nodeTexture.dispose();
@@ -207,13 +240,24 @@ const BackgroundAnimation = () => {
             />
           ))}
         </g>
+        <g fill="none" stroke={C.lime} strokeOpacity="0.16" strokeWidth="0.14">
+          {PRIMARY_EDGES.map(([from, to]) => (
+            <line
+              key={`primary-${from}-${to}`}
+              x1={NETWORK_NODES[from].x + 50}
+              y1={30 - NETWORK_NODES[from].y * 2.3}
+              x2={NETWORK_NODES[to].x + 50}
+              y2={30 - NETWORK_NODES[to].y * 2.3}
+            />
+          ))}
+        </g>
         <g fill={C.white} fillOpacity="0.58">
           {NETWORK_NODES.map((node, index) => (
             <circle
               key={index}
               cx={node.x + 50}
               cy={30 - node.y * 2.3}
-              r={Math.max(0.18, node.r * 0.12)}
+              r={Math.max(0.06, node.r * 0.045)}
             />
           ))}
         </g>

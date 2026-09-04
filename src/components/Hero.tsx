@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import BackgroundAnimation from './BackgroundAnimation';
@@ -66,6 +66,28 @@ const MetricChip = ({ value, label, delay }: { value: string; label: string; del
 // MAIN HERO
 // ─────────────────────────────────────────────────────────────────────────────
 const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const bounds = hero.getBoundingClientRect();
+      const traveled = Math.max(0, -bounds.top);
+      const range = Math.max(1, bounds.height - window.innerHeight);
+      setScrollProgress(Math.min(1, traveled / range));
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
+  }, []);
+
   return (
     <>
       {/* Keyframe injections */}
@@ -78,10 +100,15 @@ const Hero = () => {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }
         }
+        @keyframes velnix-scroll-line {
+          from { transform: translateY(-120%); }
+          to   { transform: translateY(420%); }
+        }
       `}</style>
 
       <section
         id="hero"
+        ref={heroRef}
         className="relative isolate w-full overflow-hidden"
         style={{
           minHeight: '100vh',
@@ -89,6 +116,18 @@ const Hero = () => {
         }}
         aria-label="Velnix Solutions hero section"
       >
+
+        <div className="pointer-events-none absolute left-0 top-0 z-20 h-px w-full overflow-hidden" aria-hidden="true">
+          <div
+            className="absolute left-0 top-0 h-px w-1/5"
+            style={{
+              transform: `translateX(${scrollProgress * 500}%)`,
+              background: `linear-gradient(90deg, transparent, ${C.limeAlpha(0.85)}, transparent)`,
+              boxShadow: `0 0 12px ${C.limeAlpha(0.55)}`,
+              transition: 'transform 120ms linear',
+            }}
+          />
+        </div>
 
         <BackgroundAnimation />
 
@@ -221,6 +260,26 @@ const Hero = () => {
               className="flex flex-wrap items-center gap-4 mb-12"
             >
 
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.32, duration: 0.5, ease }}
+                className="pointer-events-none hidden flex-col items-center gap-2 text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-white/40 sm:flex"
+                aria-hidden="true"
+              >
+                <span style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+                <span className="relative h-8 w-px overflow-hidden" style={{ background: C.whiteAlpha(0.16) }}>
+                  <span
+                    className="absolute left-0 top-0 h-2.5 w-px"
+                    style={{
+                      background: C.lime,
+                      boxShadow: `0 0 8px ${C.limeAlpha(0.8)}`,
+                      animation: 'velnix-scroll-line 1.8s ease-in-out infinite alternate',
+                    }}
+                  />
+                </span>
+              </motion.div>
+
               {/* Primary CTA */}
               <PrimaryButton />
 
@@ -281,17 +340,6 @@ const Hero = () => {
           </div>
 
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.7 }}
-          className="pointer-events-none absolute bottom-24 right-6 hidden flex-col items-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/40 sm:flex lg:right-10"
-          aria-hidden="true"
-        >
-          <span style={{ writingMode: 'vertical-rl' }}>Scroll</span>
-          <span className="h-10 w-px" style={{ background: `linear-gradient(${C.limeAlpha(0.7)}, transparent)` }} />
-        </motion.div>
 
         {/* ── BOTTOM FEATURED IN STRIP ── */}
         <FeaturedInStrip />
