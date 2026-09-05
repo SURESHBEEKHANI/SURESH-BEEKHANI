@@ -20,11 +20,11 @@ const OriginStory = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="about" className="relative overflow-hidden border-y border-white/10 bg-[#111111] pb-0 pt-20 text-white sm:pb-0 sm:pt-28 lg:pb-0 lg:pt-32">
+    <section id="about" className="relative overflow-hidden border-y border-white/10 bg-[#111111] pb-0 pt-16 text-white sm:pb-0 sm:pt-20 lg:pb-0 lg:pt-24">
       <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.035) 1px, transparent 1px)', backgroundSize: '64px 64px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
       <div className="pointer-events-none absolute -right-40 top-10 h-[32rem] w-[32rem] rounded-full bg-[#7DCC00]/10 blur-[120px]" aria-hidden="true" />
 
-      <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-16">
+      <div className="relative mx-auto grid max-w-[1280px] items-center gap-10 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-16">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}

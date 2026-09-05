@@ -94,7 +94,7 @@ const AIAutonomous: React.FC = () => {
 			<Navbar />
 
 			{/* ─── Hero Section ─── */}
-			<section className="relative w-full min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center bg-slate-950 overflow-hidden">
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
 				{/* Background Image */}
 				<div className="absolute inset-0 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center opacity-60 sm:opacity-70" />
 
@@ -117,7 +117,7 @@ const AIAutonomous: React.FC = () => {
 			</section>
 
 			{/* ─── AI Automation Capabilities Section ─── */}
-			<section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
+			<section className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
 				{/* Refined ambient wash — right side only, barely perceptible */}
 				<div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
 
@@ -190,7 +190,7 @@ const AIAutonomous: React.FC = () => {
 				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
 								AI Automation <span className="text-white">Solutions</span>
@@ -204,7 +204,7 @@ const AIAutonomous: React.FC = () => {
 						{autonomousServices.map((service, index) => (
 							<div
 								key={service.id}
-								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
+								className={`p-5 sm:p-6 flex flex-col gap-3 sm:gap-4 items-center min-h-[180px] sm:min-h-[200px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.08}s` }}
 							>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
@@ -223,11 +223,11 @@ const AIAutonomous: React.FC = () => {
 			</section>
 
 			{/* ─── Strategic Benefits Infographic Section ─── */}
-			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
+			<section className="relative overflow-hidden bg-white py-8 sm:py-12 lg:py-14">
 				{/* Refined technical dot grid — lighter, more breathable */}
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
 								AI Automation <span className="text-slate-900">Benefits</span>

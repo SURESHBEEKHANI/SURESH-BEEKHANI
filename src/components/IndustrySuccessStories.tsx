@@ -80,7 +80,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
   }, [checkScrollButtons]);
 
   return (
-    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white relative overflow-hidden">
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-velnix-lime/5 to-transparent rounded-full blur-[120px] opacity-40"></div>
@@ -88,7 +88,7 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-10">
           <div className="flex items-start gap-4 mb-4">
             <div
               className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"

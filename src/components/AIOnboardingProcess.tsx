@@ -49,7 +49,7 @@ const AIOnboardingProcess: React.FC<AIOnboardingProcessProps> = ({ serviceName, 
   }, []);
 
   return (
-    <section className="bg-[#01010c] relative overflow-hidden py-12 sm:py-16">
+    <section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14 lg:py-16">
       {/* High-Tech Background Layers */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/15 to-transparent" />
@@ -65,7 +65,7 @@ const AIOnboardingProcess: React.FC<AIOnboardingProcessProps> = ({ serviceName, 
             Simple, transparent steps to <span className="text-white font-bold">launch your {serviceName} project</span>.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
           {displaySteps.map((step, idx) => (
             <div key={idx} className={`relative group transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'}`} style={{ transitionDelay: `${idx * 0.15}s` }}>
               <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/20 hover:bg-white/10 p-6 sm:p-8 text-center transition-all duration-300 h-full">

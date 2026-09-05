@@ -136,7 +136,7 @@ const Testimonials = () => {
 
   return (
     <section 
-      className="py-16 sm:py-24 relative overflow-hidden antialiased"
+      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
       style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
       aria-label="Client Proof & Testimonials"
     >
@@ -151,7 +151,7 @@ const Testimonials = () => {
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
         ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/10">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -193,7 +193,7 @@ const Testimonials = () => {
           onMouseLeave={() => setIsPaused(false)}
         >
           <div 
-            className="p-8 sm:p-12 relative overflow-hidden"
+            className="p-6 sm:p-8 lg:p-10 relative overflow-hidden"
             style={{
               background: C.graphite,
               border: `1px solid ${C.wa(0.12)}`,

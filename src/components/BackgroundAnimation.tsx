@@ -1,321 +1,1964 @@
 import { useEffect, useRef } from 'react';
-import { useReducedMotion } from 'framer-motion';
-import * as THREE from 'three';
 
-const C = {
+const COLORS = {
   black: '#050505',
   graphite: '#111111',
-  white: '#FFFFFF',
-  lime: '#B6FF00',
+  white: '255,255,255',
+  lime: '182,255,0',
+  green: '125,204,0',
 };
 
-type NetworkNode = { x: number; y: number; z: number; r: number };
+const CONFIG = {
+  // ============================================================
+  // DENSITY
+  // ============================================================
+  desktopNodes: 300,
+  tabletNodes: 190,
+  mobileNodes: 100,
 
-const NETWORK_NODES: NetworkNode[] = [
-  { x: -10, y: 5, z: -1, r: 1.1 }, { x: -7, y: 2, z: 0, r: 0.7 },
-  { x: -4, y: 4, z: 1, r: 0.8 }, { x: -1.2, y: 2.1, z: 0, r: 0.9 },
-  { x: 1.5, y: 2.5, z: 0, r: 1.3 }, { x: 4.4, y: 3.8, z: 1, r: 0.8 },
-  { x: 7.5, y: 5, z: -1, r: 1.1 }, { x: 10.5, y: 1.8, z: 0, r: 0.7 },
-  { x: -10.5, y: -2.8, z: -1, r: 0.8 }, { x: -7.5, y: -0.5, z: 0, r: 0.7 },
-  { x: -4.5, y: -2.4, z: 1, r: 1.1 }, { x: -1.5, y: -1, z: 0, r: 0.8 },
-  { x: 1.5, y: -1.2, z: 0, r: 1.2 }, { x: 4.2, y: -2.8, z: 1, r: 0.8 },
-  { x: 7.4, y: -0.4, z: -1, r: 1.0 }, { x: 10.4, y: -3, z: 0, r: 0.7 },
-  { x: -2.2, y: 5.4, z: 2, r: 0.6 }, { x: 2.7, y: 5.5, z: 2, r: 0.7 },
-  { x: -2.6, y: -4.6, z: 2, r: 0.7 }, { x: 2.8, y: -4.8, z: 2, r: 0.7 },
-  { x: -12.8, y: 7.2, z: -2, r: 0.5 }, { x: 12.8, y: 6.6, z: -2, r: 0.5 },
-  { x: -13.2, y: -6.4, z: -2, r: 0.5 }, { x: 13.1, y: -6.8, z: -2, r: 0.5 },
-  { x: -8.8, y: 7.5, z: 1, r: 0.55 }, { x: 8.9, y: 7.2, z: 1, r: 0.55 },
-  { x: -8.7, y: -7.1, z: 1, r: 0.55 }, { x: 8.8, y: -7.4, z: 1, r: 0.55 },
-  { x: -11.2, y: 3.8, z: -1, r: 0.3 }, { x: -8.4, y: 4.8, z: 0, r: 0.28 },
-  { x: -5.8, y: 1.2, z: 1, r: 0.3 }, { x: -3.2, y: 3.1, z: 0, r: 0.26 },
-  { x: 3.2, y: 2.9, z: 0, r: 0.28 }, { x: 5.9, y: 1.3, z: 1, r: 0.3 },
-  { x: 8.6, y: 3.9, z: -1, r: 0.26 }, { x: 11.4, y: 0.2, z: 0, r: 0.3 },
-  { x: -11.3, y: -1.2, z: -1, r: 0.28 }, { x: -8.5, y: -2.5, z: 0, r: 0.3 },
-  { x: 5.8, y: -1.6, z: 0, r: 0.28 }, { x: 11.2, y: -1.4, z: 0, r: 0.26 },
-  { x: -15.2, y: 6.2, z: -2, r: 0.22 }, { x: -16.8, y: 2.1, z: -1, r: 0.2 },
-  { x: -15.6, y: -2.2, z: -2, r: 0.22 }, { x: -16.9, y: -6.1, z: -1, r: 0.2 },
-  { x: 15.1, y: 6.4, z: -2, r: 0.22 }, { x: 16.8, y: 2.3, z: -1, r: 0.2 },
-  { x: 15.7, y: -2.4, z: -2, r: 0.22 }, { x: 16.9, y: -6.3, z: -1, r: 0.2 },
-  { x: -13.9, y: 0.4, z: 1, r: 0.18 }, { x: -14.4, y: -4.5, z: 1, r: 0.18 },
-  { x: 13.8, y: 0.5, z: 1, r: 0.18 }, { x: 14.3, y: -4.6, z: 1, r: 0.18 },
-];
+  // ============================================================
+  // NETWORK
+  // ============================================================
+  connectionDistance: 0.21,
+  maxRenderConnectionDistance: 0.085,
+  maxConnectionsPerNode: 2,
 
-const NETWORK_EDGES: [number, number][] = [
-  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7],
-  [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15],
-  [1, 9], [2, 10], [3, 11], [4, 12], [5, 13], [6, 14],
-  [2, 16], [16, 17], [17, 5], [10, 18], [18, 19], [19, 13],
-  [3, 4], [4, 12], [11, 12],
-  [20, 0], [20, 16], [21, 6], [21, 7], [22, 8], [22, 18], [23, 15], [23, 19],
-  [24, 2], [25, 5], [26, 10], [27, 13],
-  [28, 0], [28, 24], [29, 2], [29, 3], [30, 1], [30, 9],
-  [31, 2], [31, 16], [32, 4], [32, 17], [33, 5], [33, 13],
-  [34, 6], [34, 25], [35, 7], [35, 21], [36, 8], [36, 22],
-  [37, 9], [37, 10], [38, 14], [38, 15], [39, 15], [39, 23],
-];
+  // ============================================================
+  // VISUAL
+  // ============================================================
+  nodeOpacity: 0.56,
+  lineOpacity: 0.12,
 
-const SIGNAL_PATHS = [[0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15]];
-const PRIMARY_EDGES: [number, number][] = [
-  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7],
-  [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15],
-];
+  nodeSize: 1.15,
+  minNodeSize: 0.65,
+  maxNodeSize: 1.75,
 
-const CENTER_NODE_INDICES = new Set([3, 4, 10, 11, 12, 13, 29, 31, 32, 33]);
-const CENTER_MOLECULE: NetworkNode[] = [
-  { x: -0.9, y: 0.1, z: 0.5, r: 0.35 },
-  { x: 0, y: 0.8, z: 0.2, r: 0.35 },
-  { x: 0.9, y: 0.1, z: 0.5, r: 0.35 },
-];
-const CENTER_MOLECULE_EDGES: [number, number][] = [[0, 1], [1, 2], [2, 0]];
-const OUTER_NODE_INDICES = NETWORK_NODES
-  .map((_, index) => index)
-  .filter(index => !CENTER_NODE_INDICES.has(index));
-const OUTER_EDGES = NETWORK_EDGES.filter(([from, to]) =>
-  !CENTER_NODE_INDICES.has(from) && !CENTER_NODE_INDICES.has(to)
-);
+  // ============================================================
+  // MOTION
+  // ============================================================
+  driftSpeed: 0.000052,
+  clusterSpeed: 0.000016,
+  depthStrength: 0.00013,
 
-const BackgroundAnimation = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduce = useReducedMotion();
+  // ============================================================
+  // SIGNALS
+  // ============================================================
+  signalFrequency: 0.000095,
+  signalSpeed: 0.00040,
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container || !window.WebGLRenderingContext) return;
+  // ============================================================
+  // CURSOR
+  // ============================================================
+  mouseInfluence: 0.00072,
+  cursorRadius: 0.145,
+  maxCursorConnections: 3,
 
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-    } catch {
-      return;
-    }
+  // ============================================================
+  // SCROLL
+  // ============================================================
+  scrollInfluence: 0.00010,
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.z = 25;
-    const isCompactViewport = window.innerWidth < 768;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isCompactViewport ? 1 : 1.5));
-    renderer.setClearColor(C.black, 0);
-    container.appendChild(renderer.domElement);
+  // ============================================================
+  // CREATIVE DETAILS
+  // ============================================================
+  orbitChance: 0.08,
+  pulseChance: 0.025,
+};
 
-    const group = new THREE.Group();
-    group.scale.setScalar(0.78);
-    scene.add(group);
+type NodeShape =
+  | 'sphere'
+  | 'cube'
+  | 'diamond'
+  | 'hexagon'
+  | 'pyramid'
+  | 'ring';
 
-    const nodeTextureCanvas = document.createElement('canvas');
-    nodeTextureCanvas.width = 64;
-    nodeTextureCanvas.height = 64;
-    const textureContext = nodeTextureCanvas.getContext('2d');
-    if (!textureContext) return;
-    const nodeGradient = textureContext.createRadialGradient(32, 32, 1, 32, 32, 32);
-    nodeGradient.addColorStop(0, 'rgba(255,255,255,1)');
-    nodeGradient.addColorStop(0.25, 'rgba(182,255,0,0.9)');
-    nodeGradient.addColorStop(1, 'rgba(182,255,0,0)');
-    textureContext.fillStyle = nodeGradient;
-    textureContext.fillRect(0, 0, 64, 64);
-    const nodeTexture = new THREE.CanvasTexture(nodeTextureCanvas);
+type NetworkNode = {
+  x: number;
+  y: number;
+  z: number;
 
-    const visibleNodeIndices = OUTER_NODE_INDICES;
-    const visibleNodes = visibleNodeIndices.map(index => NETWORK_NODES[index]);
-    const nodePositions = new Float32Array(visibleNodes.flatMap(node => [node.x, node.y, node.z]));
-    const driftingLowerLeftNodes = [
-      { sourceIndex: 42, amplitude: 0.55, speed: 0.42 },
-      { sourceIndex: 43, amplitude: 0.45, speed: 0.34 },
-      { sourceIndex: 49, amplitude: 0.36, speed: 0.5 },
-    ];
-    const nodeGeometry = new THREE.BufferGeometry();
-    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
-    const nodeMaterial = new THREE.PointsMaterial({
-      color: C.white,
-      size: 0.12,
-      transparent: true,
-      opacity: 0.72,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    });
-    const nodes = new THREE.Points(nodeGeometry, nodeMaterial);
-    group.add(nodes);
+  layer: 0 | 1 | 2;
 
-    const centerPositions = new Float32Array(CENTER_MOLECULE.flatMap(node => [node.x, node.y, node.z]));
-    const centerGeometry = new THREE.BufferGeometry();
-    centerGeometry.setAttribute('position', new THREE.BufferAttribute(centerPositions, 3));
-    const centerMaterial = new THREE.PointsMaterial({
-      color: C.white,
-      size: 0.09,
-      transparent: true,
-      opacity: 0.78,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    });
-    const centerNodes = new THREE.Points(centerGeometry, centerMaterial);
-    group.add(centerNodes);
+  shape: NodeShape;
 
-    const bondPositions = new Float32Array((OUTER_EDGES.length + CENTER_MOLECULE_EDGES.length) * 6);
-    OUTER_EDGES.forEach(([from, to], index) => {
-      const a = NETWORK_NODES[from];
-      const b = NETWORK_NODES[to];
-      bondPositions.set([a.x, a.y, a.z, b.x, b.y, b.z], index * 6);
-    });
-    CENTER_MOLECULE_EDGES.forEach(([from, to], index) => {
-      const a = CENTER_MOLECULE[from];
-      const b = CENTER_MOLECULE[to];
-      bondPositions.set([a.x, a.y, a.z, b.x, b.y, b.z], (OUTER_EDGES.length + index) * 6);
-    });
-    const bondGeometry = new THREE.BufferGeometry();
-    bondGeometry.setAttribute('position', new THREE.BufferAttribute(bondPositions, 3));
-    const bondMaterial = new THREE.LineBasicMaterial({
-      color: C.white,
-      transparent: true,
-      opacity: isCompactViewport ? 0.035 : 0.06,
-    });
-    const bonds = new THREE.LineSegments(bondGeometry, bondMaterial);
-    group.add(bonds);
+  phase: number;
+  speed: number;
 
-    const signalGeometry = new THREE.BufferGeometry();
-    const signalPositions = new Float32Array(SIGNAL_PATHS.length * 3);
-    signalGeometry.setAttribute('position', new THREE.BufferAttribute(signalPositions, 3));
-    const signalMaterial = new THREE.PointsMaterial({
-      color: C.lime,
-      map: nodeTexture,
-      size: 0.18,
-      transparent: true,
-      opacity: 0.95,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    });
-    const signals = new THREE.Points(signalGeometry, signalMaterial);
-    group.add(signals);
+  size: number;
 
-    const resize = () => {
-      const width = container.clientWidth || window.innerWidth;
-      const height = container.clientHeight || window.innerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
-    };
-    resize();
-    window.addEventListener('resize', resize);
+  rotation: number;
+  rotationSpeed: number;
 
-    let frame = 0;
-    let time = 0;
-    const animate = () => {
-      time += shouldReduce ? 0 : 0.004;
-      if (!shouldReduce) {
-        group.position.x = Math.sin(time * 0.17) * 0.22;
-        group.position.y = Math.cos(time * 0.13) * 0.14;
-        group.position.z = Math.sin(time * 0.09) * 0.08;
-        group.rotation.y = Math.sin(time * 0.35) * 0.035;
-        group.rotation.x = Math.cos(time * 0.24) * 0.018;
-        const nodePositionAttribute = nodeGeometry.attributes.position;
-        driftingLowerLeftNodes.forEach(({ sourceIndex, amplitude, speed }) => {
-          const visibleIndex = visibleNodeIndices.indexOf(sourceIndex);
-          if (visibleIndex < 0) return;
-          const baseY = NETWORK_NODES[sourceIndex].y;
-          nodePositionAttribute.setY(visibleIndex, baseY + Math.sin(time * speed + sourceIndex) * amplitude);
+  orbit: boolean;
+  orbitRadius: number;
+  orbitSpeed: number;
+
+  pulseOffset: number;
+};
+
+type NetworkEdge = {
+  from: number;
+  to: number;
+
+  signalPhase: number;
+  signalOffset: number;
+
+  importance: number;
+};
+
+type Cluster = {
+  x: number;
+  y: number;
+
+  width: number;
+  height: number;
+
+  phase: number;
+
+  driftX: number;
+  driftY: number;
+
+  breathe: number;
+
+  nodes: NetworkNode[];
+  edges: NetworkEdge[];
+};
+
+const seededRandom = (seed: number) => {
+  let value = seed % 2147483647;
+
+  return () => {
+    value = (value * 16807) % 2147483647;
+
+    return (
+      (value - 1) /
+      2147483646
+    );
+  };
+};
+
+const createNetwork = (
+  nodeCount: number,
+): Cluster[] => {
+  const random =
+    seededRandom(82371);
+
+  /*
+   * Asymmetric spatial composition.
+   *
+   * Center is intentionally quieter.
+   */
+  const layouts = [
+    [0.00, 0.02, 0.30, 0.22],
+    [0.70, 0.01, 0.30, 0.23],
+
+    [-0.07, 0.24, 0.30, 0.27],
+    [0.77, 0.23, 0.30, 0.28],
+
+    [-0.04, 0.53, 0.31, 0.26],
+    [0.73, 0.52, 0.31, 0.27],
+
+    [0.01, 0.80, 0.31, 0.20],
+    [0.69, 0.79, 0.31, 0.21],
+
+    [0.29, 0.04, 0.42, 0.17],
+    [0.30, 0.30, 0.40, 0.33],
+    [0.29, 0.76, 0.42, 0.19],
+  ];
+
+  const nodesPerCluster =
+    Math.max(
+      5,
+      Math.round(
+        nodeCount /
+          layouts.length,
+      ),
+    );
+
+  return layouts.map(
+    (
+      [
+        x,
+        y,
+        width,
+        height,
+      ],
+      clusterIndex,
+    ) => {
+      const nodes: NetworkNode[] =
+        Array.from(
+          {
+            length:
+              nodesPerCluster,
+          },
+          (_, index) => {
+            const roll =
+              random();
+
+            const shape: NodeShape =
+              roll < 0.43
+                ? 'cube'
+                : roll < 0.60
+                  ? 'sphere'
+                  : roll < 0.73
+                    ? 'diamond'
+                    : roll < 0.84
+                      ? 'hexagon'
+                      : roll < 0.93
+                        ? 'pyramid'
+                        : 'ring';
+
+            return {
+              x:
+                0.07 +
+                random() *
+                  0.86,
+
+              y:
+                0.08 +
+                random() *
+                  0.84,
+
+              z:
+                random() *
+                  2 -
+                1,
+
+              layer:
+                (index +
+                  clusterIndex) %
+                  10 ===
+                0
+                  ? 2
+                  : (index +
+                        clusterIndex) %
+                      3 ===
+                    0
+                    ? 0
+                    : 1,
+
+              shape,
+
+              phase:
+                random() *
+                Math.PI *
+                2,
+
+              speed:
+                0.55 +
+                random() *
+                  0.9,
+
+              size:
+                CONFIG.minNodeSize +
+                random() *
+                  (
+                    CONFIG.maxNodeSize -
+                    CONFIG.minNodeSize
+                  ),
+
+              rotation:
+                random() *
+                Math.PI *
+                2,
+
+              rotationSpeed:
+                (
+                  random() -
+                  0.5
+                ) *
+                0.000075,
+
+              orbit:
+                random() <
+                CONFIG.orbitChance,
+
+              orbitRadius:
+                0.002 +
+                random() *
+                  0.009,
+
+              orbitSpeed:
+                0.000012 +
+                random() *
+                  0.000018,
+
+              pulseOffset:
+                random(),
+            };
+          },
+        );
+
+      const edges: NetworkEdge[] =
+        [];
+
+      const connectionCount =
+        new Array(
+          nodes.length,
+        ).fill(0);
+
+      const addEdge = (
+        from: number,
+        to: number,
+        importance: number,
+      ) => {
+        if (from === to) {
+          return;
+        }
+
+        if (
+          connectionCount[from] >=
+          CONFIG.maxConnectionsPerNode
+        ) {
+          return;
+        }
+
+        if (
+          connectionCount[to] >=
+          CONFIG.maxConnectionsPerNode
+        ) {
+          return;
+        }
+
+        const exists =
+          edges.some(
+            (edge) =>
+              (
+                edge.from ===
+                  from &&
+                edge.to === to
+              ) ||
+              (
+                edge.from === to &&
+                edge.to === from
+              ),
+          );
+
+        if (exists) {
+          return;
+        }
+
+        edges.push({
+          from,
+          to,
+
+          signalPhase:
+            random(),
+
+          signalOffset:
+            random(),
+
+          importance,
         });
-        nodePositionAttribute.needsUpdate = true;
-        SIGNAL_PATHS.slice(0, isCompactViewport ? 1 : SIGNAL_PATHS.length).forEach((path, pathIndex) => {
-          const progress = (time * (0.11 + pathIndex * 0.035) + pathIndex * 0.5) % 1;
-          const segment = progress * (path.length - 1);
-          const index = Math.floor(segment);
-          const amount = segment - index;
-          const from = NETWORK_NODES[path[index]];
-          const to = NETWORK_NODES[path[Math.min(index + 1, path.length - 1)]];
-          signalPositions.set([
-            from.x + (to.x - from.x) * amount,
-            from.y + (to.y - from.y) * amount,
-            from.z + (to.z - from.z) * amount + 0.08,
-          ], pathIndex * 3);
-        });
-        signalGeometry.attributes.position.needsUpdate = true;
-      }
-      renderer.render(scene, camera);
-      frame = requestAnimationFrame(animate);
-    };
-    animate();
 
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('resize', resize);
-      nodeGeometry.dispose();
-      nodeMaterial.dispose();
-      centerGeometry.dispose();
-      centerMaterial.dispose();
-      bondGeometry.dispose();
-      bondMaterial.dispose();
-      signalGeometry.dispose();
-      signalMaterial.dispose();
-      nodeTexture.dispose();
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
-    };
-  }, [shouldReduce]);
+        connectionCount[
+          from
+        ] += 1;
 
-  return (
-    <div
-      ref={containerRef}
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-      aria-hidden="true"
-      style={{
-        background: `radial-gradient(ellipse 55% 80% at 78% 46%, rgba(17,17,17,0.78), transparent 72%), ${C.black}`,
-        opacity: 0.66,
-      }}
-    >
-      <svg
-        className="absolute inset-0 h-full w-full opacity-52"
-        viewBox="0 0 100 60"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <g fill="none" stroke={C.white} strokeOpacity="0.14" strokeWidth="0.1">
-          {OUTER_EDGES.map(([from, to], index) => (
-            <line
-              key={`bond-${index}`}
-              x1={NETWORK_NODES[from].x + 50}
-              y1={30 - NETWORK_NODES[from].y * 2.3}
-              x2={NETWORK_NODES[to].x + 50}
-              y2={30 - NETWORK_NODES[to].y * 2.3}
-            />
-          ))}
-        </g>
-        <g fill="none" stroke={C.white} strokeOpacity="0.14" strokeWidth="0.1">
-          {CENTER_MOLECULE_EDGES.map(([from, to], index) => (
-            <line
-              key={`center-bond-${index}`}
-              x1={CENTER_MOLECULE[from].x + 50}
-              y1={30 - CENTER_MOLECULE[from].y * 2.3}
-              x2={CENTER_MOLECULE[to].x + 50}
-              y2={30 - CENTER_MOLECULE[to].y * 2.3}
-            />
-          ))}
-        </g>
-        <g fill={C.white} fillOpacity="0.82">
-          {OUTER_NODE_INDICES.map(index => {
-            const node = NETWORK_NODES[index];
-            return (
-            <circle
-              key={index}
-              cx={node.x + 50}
-              cy={30 - node.y * 2.3}
-              r={Math.max(0.06, node.r * 0.045)}
-            />
+        connectionCount[
+          to
+        ] += 1;
+      };
+
+      /*
+       * Build local topology.
+       *
+       * Nodes only connect to nearby nodes.
+       */
+      nodes.forEach(
+        (node, from) => {
+          const candidates: Array<{
+            index: number;
+            distance: number;
+          }> = [];
+
+          nodes.forEach(
+            (
+              candidate,
+              to,
+            ) => {
+              if (
+                from === to
+              ) {
+                return;
+              }
+
+              const distance =
+                Math.hypot(
+                  node.x -
+                    candidate.x,
+
+                  node.y -
+                    candidate.y,
+
+                  (
+                    node.z -
+                    candidate.z
+                  ) *
+                    0.35,
+                );
+
+              if (
+                distance <=
+                CONFIG.connectionDistance
+              ) {
+                candidates.push({
+                  index: to,
+                  distance,
+                });
+              }
+            },
+          );
+
+          candidates.sort(
+            (a, b) =>
+              a.distance -
+              b.distance,
+          );
+
+          /*
+           * Only a few closest candidates.
+           */
+          candidates
+            .slice(0, 3)
+            .forEach(
+              (
+                candidate,
+              ) => {
+                /*
+                 * Sparse random topology.
+                 */
+                if (
+                  random() >
+                  0.36
+                ) {
+                  const importance =
+                    1 -
+                    candidate.distance /
+                      CONFIG.connectionDistance;
+
+                  addEdge(
+                    from,
+                    candidate.index,
+                    Math.max(
+                      0.25,
+                      importance,
+                    ),
+                  );
+                }
+              },
             );
-          })}
-        </g>
-        <g fill={C.white} fillOpacity="0.82">
-          {CENTER_MOLECULE.map((node, index) => (
-            <circle
-              key={`center-${index}`}
-              cx={node.x + 50}
-              cy={30 - node.y * 2.3}
-              r="0.1"
-            />
-          ))}
-        </g>
-      </svg>
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 42% 64% at 36% 46%, rgba(5,5,5,0.94), transparent 78%)' }} />
-    </div>
+        },
+      );
+
+      return {
+        x,
+        y,
+        width,
+        height,
+
+        phase:
+          random() *
+          Math.PI *
+          2,
+
+        driftX:
+          (
+            random() -
+            0.5
+          ) *
+          0.11,
+
+        driftY:
+          (
+            random() -
+            0.5
+          ) *
+          0.08,
+
+        breathe:
+          0.985 +
+          random() *
+            0.025,
+
+        nodes,
+
+        edges,
+      };
+    },
   );
 };
 
-export default BackgroundAnimation;
+const drawNodeShape = (
+  context: CanvasRenderingContext2D,
+  shape: NodeShape,
+  x: number,
+  y: number,
+  size: number,
+  rotation: number,
+  color: string,
+) => {
+  context.save();
 
+  context.translate(
+    x,
+    y,
+  );
+
+  context.rotate(
+    rotation,
+  );
+
+  context.fillStyle =
+    color;
+
+  context.strokeStyle =
+    color;
+
+  context.lineWidth =
+    0.45;
+
+  context.beginPath();
+
+  if (
+    shape ===
+    'sphere'
+  ) {
+    context.arc(
+      0,
+      0,
+      size,
+      0,
+      Math.PI * 2,
+    );
+
+    context.fill();
+  }
+
+  else if (
+    shape ===
+    'cube'
+  ) {
+    /*
+     * Front face.
+     */
+    context.moveTo(
+      -size,
+      -size * 0.68,
+    );
+
+    context.lineTo(
+      size * 0.55,
+      -size,
+    );
+
+    context.lineTo(
+      size,
+      -size * 0.25,
+    );
+
+    context.lineTo(
+      -size * 0.55,
+      size * 0.04,
+    );
+
+    context.closePath();
+
+    context.fill();
+
+    /*
+     * Secondary face.
+     */
+    context.globalAlpha *=
+      0.38;
+
+    context.beginPath();
+
+    context.moveTo(
+      -size * 0.55,
+      size * 0.04,
+    );
+
+    context.lineTo(
+      size,
+      -size * 0.25,
+    );
+
+    context.lineTo(
+      size * 0.55,
+      size,
+    );
+
+    context.lineTo(
+      -size,
+      size * 0.68,
+    );
+
+    context.closePath();
+
+    context.fill();
+  }
+
+  else if (
+    shape ===
+      'diamond' ||
+    shape ===
+      'pyramid'
+  ) {
+    context.moveTo(
+      0,
+      -size * 1.15,
+    );
+
+    context.lineTo(
+      size,
+      0,
+    );
+
+    context.lineTo(
+      0,
+      size * 1.15,
+    );
+
+    context.lineTo(
+      -size,
+      0,
+    );
+
+    context.closePath();
+
+    if (
+      shape ===
+      'pyramid'
+    ) {
+      context.fill();
+    } else {
+      context.stroke();
+    }
+  }
+
+  else if (
+    shape ===
+    'hexagon'
+  ) {
+    for (
+      let index = 0;
+      index < 6;
+      index += 1
+    ) {
+      const angle =
+        (
+          Math.PI *
+          2 *
+          index
+        ) /
+        6;
+
+      const pointX =
+        Math.cos(angle) *
+        size;
+
+      const pointY =
+        Math.sin(angle) *
+        size;
+
+      if (
+        index === 0
+      ) {
+        context.moveTo(
+          pointX,
+          pointY,
+        );
+      } else {
+        context.lineTo(
+          pointX,
+          pointY,
+        );
+      }
+    }
+
+    context.closePath();
+
+    context.stroke();
+  }
+
+  else {
+    /*
+     * Ring node.
+     */
+    context.arc(
+      0,
+      0,
+      size * 1.05,
+      0,
+      Math.PI * 2,
+    );
+
+    context.stroke();
+
+    context.beginPath();
+
+    context.arc(
+      0,
+      0,
+      size * 0.30,
+      0,
+      Math.PI * 2,
+    );
+
+    context.fill();
+  }
+
+  context.restore();
+};
+
+const BackgroundAnimation =
+  () => {
+    const canvasRef =
+      useRef<HTMLCanvasElement>(
+        null,
+      );
+
+    useEffect(() => {
+      const canvas =
+        canvasRef.current;
+
+      const context =
+        canvas?.getContext(
+          '2d',
+        );
+
+      if (
+        !canvas ||
+        !context
+      ) {
+        return;
+      }
+
+      const reducedMotionQuery =
+        window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        );
+
+      let reducedMotion =
+        reducedMotionQuery.matches;
+
+      let animationFrame = 0;
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+
+      let scrollProgress = 0;
+
+      const pointer = {
+        x: 0.5,
+        y: 0.5,
+
+        targetX: 0.5,
+        targetY: 0.5,
+
+        active: 0,
+        targetActive: 0,
+
+        velocity: 0,
+      };
+
+      let clusters =
+        createNetwork(
+          CONFIG.desktopNodes,
+        );
+
+      const resize = () => {
+        const bounds =
+          canvas.getBoundingClientRect();
+
+        width =
+          bounds.width;
+
+        height =
+          bounds.height;
+
+        dpr =
+          Math.min(
+            window.devicePixelRatio ||
+              1,
+            width < 768
+              ? 1.35
+              : 1.8,
+          );
+
+        canvas.width =
+          Math.max(
+            1,
+            Math.floor(
+              width * dpr,
+            ),
+          );
+
+        canvas.height =
+          Math.max(
+            1,
+            Math.floor(
+              height * dpr,
+            ),
+          );
+
+        context.setTransform(
+          dpr,
+          0,
+          0,
+          dpr,
+          0,
+          0,
+        );
+
+        const nodeCount =
+          width < 600
+            ? CONFIG.mobileNodes
+            : width < 1024
+              ? CONFIG.tabletNodes
+              : CONFIG.desktopNodes;
+
+        clusters =
+          createNetwork(
+            nodeCount,
+          );
+
+        draw(0);
+      };
+
+      const updateScroll =
+        () => {
+          scrollProgress =
+            Math.min(
+              1,
+              Math.max(
+                0,
+                -canvas.getBoundingClientRect()
+                  .top /
+                  Math.max(
+                    1,
+                    height,
+                  ),
+              ),
+            );
+        };
+
+      const updatePointer = (
+        event: PointerEvent,
+      ) => {
+        if (
+          reducedMotion ||
+          event.pointerType ===
+            'touch' ||
+          width < 768
+        ) {
+          return;
+        }
+
+        const bounds =
+          canvas.getBoundingClientRect();
+
+        const inside =
+          event.clientX >=
+            bounds.left &&
+          event.clientX <=
+            bounds.right &&
+          event.clientY >=
+            bounds.top &&
+          event.clientY <=
+            bounds.bottom;
+
+        if (!inside) {
+          pointer.targetActive =
+            0;
+
+          return;
+        }
+
+        const nextX =
+          (
+            event.clientX -
+            bounds.left
+          ) /
+          Math.max(
+            1,
+            bounds.width,
+          );
+
+        const nextY =
+          (
+            event.clientY -
+            bounds.top
+          ) /
+          Math.max(
+            1,
+            bounds.height,
+          );
+
+        pointer.velocity =
+          Math.min(
+            1,
+            Math.hypot(
+              nextX -
+                pointer.targetX,
+              nextY -
+                pointer.targetY,
+            ) * 18,
+          );
+
+        pointer.targetX =
+          nextX;
+
+        pointer.targetY =
+          nextY;
+
+        pointer.targetActive =
+          1;
+      };
+
+      const clearPointer =
+        () => {
+          pointer.targetActive =
+            0;
+
+          pointer.velocity =
+            0;
+        };
+
+      const draw = (
+        time: number,
+      ) => {
+        if (
+          !width ||
+          !height
+        ) {
+          return;
+        }
+
+        const elapsed =
+          reducedMotion
+            ? 0
+            : time;
+
+        /*
+         * Background.
+         */
+        context.clearRect(
+          0,
+          0,
+          width,
+          height,
+        );
+
+        context.fillStyle =
+          COLORS.black;
+
+        context.fillRect(
+          0,
+          0,
+          width,
+          height,
+        );
+
+        /*
+         * Smooth pointer.
+         */
+        pointer.x +=
+          (
+            pointer.targetX -
+            pointer.x
+          ) *
+          0.035;
+
+        pointer.y +=
+          (
+            pointer.targetY -
+            pointer.y
+          ) *
+          0.035;
+
+        pointer.active +=
+          (
+            pointer.targetActive -
+            pointer.active
+          ) *
+          0.08;
+
+        pointer.velocity *=
+          0.94;
+
+        const interactionNodes: Array<{
+          x: number;
+          y: number;
+          distance: number;
+        }> = [];
+
+        /*
+         * 3D camera.
+         */
+        const cameraX =
+          reducedMotion
+            ? 0
+            : (
+                pointer.x -
+                0.5
+              ) *
+                width *
+                0.018;
+
+        const cameraY =
+          reducedMotion
+            ? 0
+            : (
+                pointer.y -
+                0.5
+              ) *
+                height *
+                0.014 +
+              scrollProgress *
+                height *
+                0.018;
+
+        clusters.forEach(
+          (
+            cluster,
+            clusterIndex,
+          ) => {
+            /*
+             * Central area remains quieter.
+             */
+            const centerQuiet =
+              clusterIndex >= 8
+                ? 0.42
+                : 1;
+
+            /*
+             * Slow breathing movement.
+             */
+            const breathing =
+              reducedMotion
+                ? 1
+                : 1 +
+                  Math.sin(
+                    elapsed *
+                      CONFIG.clusterSpeed *
+                      cluster.breathe +
+                      cluster.phase,
+                  ) *
+                    0.008;
+
+            const clusterDriftX =
+              reducedMotion
+                ? 0
+                : Math.sin(
+                    elapsed *
+                      CONFIG.clusterSpeed +
+                      cluster.phase,
+                  ) *
+                  cluster.driftX;
+
+            const clusterDriftY =
+              reducedMotion
+                ? 0
+                : Math.cos(
+                    elapsed *
+                      CONFIG.clusterSpeed *
+                      0.83 +
+                      cluster.phase,
+                  ) *
+                  cluster.driftY;
+
+            const parallax =
+              clusterIndex %
+                3 ===
+              0
+                ? 1
+                : clusterIndex %
+                      3 ===
+                    1
+                  ? 0.55
+                  : 0.25;
+
+            const originX =
+              (
+                cluster.x +
+                clusterDriftX +
+                (
+                  pointer.x -
+                  0.5
+                ) *
+                  CONFIG.mouseInfluence *
+                  parallax -
+                scrollProgress *
+                  CONFIG.scrollInfluence
+              ) *
+              width;
+
+            const originY =
+              (
+                cluster.y +
+                clusterDriftY +
+                (
+                  pointer.y -
+                  0.5
+                ) *
+                  CONFIG.mouseInfluence *
+                  parallax +
+                scrollProgress *
+                  CONFIG.scrollInfluence
+              ) *
+              height;
+
+            /*
+             * Project nodes.
+             */
+            const points =
+              cluster.nodes.map(
+                (
+                  node,
+                ) => {
+                  const depth =
+                    node.layer ===
+                    0
+                      ? 0.35
+                      : node.layer ===
+                          1
+                        ? 0.72
+                        : 1.15;
+
+                  const movementX =
+                    reducedMotion
+                      ? 0
+                      : Math.sin(
+                          elapsed *
+                            CONFIG.driftSpeed *
+                            node.speed +
+                            node.phase,
+                        ) *
+                        0.015;
+
+                  const movementY =
+                    reducedMotion
+                      ? 0
+                      : Math.cos(
+                          elapsed *
+                            CONFIG.driftSpeed *
+                            0.82 *
+                            node.speed +
+                            node.phase,
+                        ) *
+                        0.012;
+
+                  /*
+                   * Tiny orbital movement.
+                   */
+                  const orbitX =
+                    node.orbit &&
+                    !reducedMotion
+                      ? Math.cos(
+                          elapsed *
+                            node.orbitSpeed +
+                            node.phase,
+                        ) *
+                        node.orbitRadius
+                      : 0;
+
+                  const orbitY =
+                    node.orbit &&
+                    !reducedMotion
+                      ? Math.sin(
+                          elapsed *
+                            node.orbitSpeed +
+                            node.phase,
+                        ) *
+                        node.orbitRadius
+                      : 0;
+
+                  /*
+                   * Z movement.
+                   */
+                  const depthMotionX =
+                    reducedMotion
+                      ? 0
+                      : Math.sin(
+                          elapsed *
+                            CONFIG.clusterSpeed *
+                            depth +
+                            node.phase *
+                              0.7,
+                        ) *
+                        0.012 *
+                        depth;
+
+                  const depthMotionY =
+                    reducedMotion
+                      ? 0
+                      : Math.cos(
+                          elapsed *
+                            CONFIG.clusterSpeed *
+                            0.76 *
+                            depth +
+                            node.phase,
+                        ) *
+                        0.009 *
+                        depth;
+
+                  const localX =
+                    (
+                      node.x +
+                      movementX +
+                      orbitX +
+                      depthMotionX
+                    ) *
+                    breathing;
+
+                  const localY =
+                    (
+                      node.y +
+                      movementY +
+                      orbitY +
+                      depthMotionY
+                    ) *
+                    breathing;
+
+                  const worldX =
+                    originX +
+                    localX *
+                      cluster.width *
+                      width;
+
+                  const worldY =
+                    originY +
+                    localY *
+                      cluster.height *
+                      height;
+
+                  const worldZ =
+                    node.z +
+                    (
+                      reducedMotion
+                        ? 0
+                        : Math.sin(
+                            elapsed *
+                              CONFIG.depthStrength +
+                              node.phase,
+                          ) *
+                          0.085
+                    );
+
+                  const perspective =
+                    1 /
+                    (
+                      1 -
+                      worldZ *
+                        0.18
+                    );
+
+                  return {
+                    x:
+                      width / 2 +
+                      (
+                        worldX -
+                        width / 2 -
+                        cameraX *
+                          worldZ
+                      ) *
+                        perspective,
+
+                    y:
+                      height / 2 +
+                      (
+                        worldY -
+                        height / 2 -
+                        cameraY *
+                          worldZ
+                      ) *
+                        perspective,
+
+                    depth,
+
+                    perspective,
+                  };
+                },
+              );
+
+            /*
+             * ==================================================
+             * CLUSTER CONNECTIONS
+             * ==================================================
+             */
+            cluster.edges.forEach(
+              (edge) => {
+                const from =
+                  points[
+                    edge.from
+                  ];
+
+                const to =
+                  points[
+                    edge.to
+                  ];
+
+                const distance =
+                  Math.hypot(
+                    from.x -
+                      to.x,
+                    from.y -
+                      to.y,
+                  );
+
+                /*
+                 * HARD SHORT-LINE LIMIT.
+                 */
+                const maxLineLength =
+                  Math.min(
+                    width,
+                    height,
+                  ) *
+                  CONFIG.maxRenderConnectionDistance;
+
+                if (
+                  distance >
+                  maxLineLength
+                ) {
+                  return;
+                }
+
+                /*
+                 * Rare signal activation.
+                 */
+                const active =
+                  !reducedMotion &&
+                  Math.sin(
+                    elapsed *
+                      CONFIG.signalFrequency +
+                      edge.signalPhase *
+                        12 +
+                      edge.signalOffset *
+                        8,
+                  ) >
+                    0.91;
+
+                /*
+                 * Clear but still subtle.
+                 */
+                const baseOpacity =
+                  CONFIG.lineOpacity *
+                  edge.importance *
+                  centerQuiet;
+
+                const opacity =
+                  active
+                    ? 0.32 *
+                      edge.importance *
+                      centerQuiet
+                    : baseOpacity *
+                      0.80;
+
+                context.strokeStyle =
+                  active
+                    ? `rgba(${COLORS.lime},${opacity})`
+                    : `rgba(${COLORS.white},${opacity})`;
+
+                /*
+                 * Hairline.
+                 * DO NOT increase.
+                 */
+                context.lineWidth =
+                  active
+                    ? 0.52
+                    : 0.30;
+
+                context.beginPath();
+
+                context.moveTo(
+                  from.x,
+                  from.y,
+                );
+
+                context.lineTo(
+                  to.x,
+                  to.y,
+                );
+
+                context.stroke();
+
+                /*
+                 * Moving Lime signal.
+                 */
+                if (
+                  active
+                ) {
+                  const signalPosition =
+                    (
+                      elapsed *
+                        CONFIG.signalSpeed +
+                      edge.signalOffset
+                    ) % 1;
+
+                  const signalX =
+                    from.x +
+                    (
+                      to.x -
+                      from.x
+                    ) *
+                      signalPosition;
+
+                  const signalY =
+                    from.y +
+                    (
+                      to.y -
+                      from.y
+                    ) *
+                      signalPosition;
+
+                  context.fillStyle =
+                    `rgba(${COLORS.lime},0.82)`;
+
+                  context.beginPath();
+
+                  context.arc(
+                    signalX,
+                    signalY,
+                    1.0,
+                    0,
+                    Math.PI * 2,
+                  );
+
+                  context.fill();
+                }
+              },
+            );
+
+            /*
+             * ==================================================
+             * NODES
+             * ==================================================
+             */
+            cluster.nodes.forEach(
+              (
+                node,
+                index,
+              ) => {
+                const point =
+                  points[index];
+
+                /*
+                 * Cursor interaction.
+                 */
+                if (
+                  pointer.active >
+                  0.01
+                ) {
+                  const cursorX =
+                    pointer.x *
+                    width;
+
+                  const cursorY =
+                    pointer.y *
+                    height;
+
+                  const distance =
+                    Math.hypot(
+                      point.x -
+                        cursorX,
+                      point.y -
+                        cursorY,
+                    );
+
+                  const interactionRadius =
+                    Math.min(
+                      width,
+                      height,
+                    ) *
+                    CONFIG.cursorRadius;
+
+                  if (
+                    distance <
+                    interactionRadius
+                  ) {
+                    interactionNodes.push({
+                      x: point.x,
+                      y: point.y,
+                      distance,
+                    });
+                  }
+                }
+
+                /*
+                 * Rare node pulse.
+                 */
+                const active =
+                  !reducedMotion &&
+                  Math.sin(
+                    elapsed *
+                      CONFIG.signalFrequency +
+                      node.phase *
+                        11 +
+                      node.pulseOffset,
+                  ) >
+                    0.94;
+
+                /*
+                 * 3D size.
+                 */
+                const radius =
+                  CONFIG.nodeSize *
+                  node.size *
+                  (
+                    0.82 +
+                    point.depth *
+                      0.18
+                  ) *
+                  point.perspective;
+
+                const nodeColor =
+                  active
+                    ? `rgba(${COLORS.lime},${
+                        0.90 *
+                        centerQuiet
+                      })`
+                    : node.layer ===
+                        0
+                      ? `rgba(${COLORS.green},${
+                          0.32 *
+                          centerQuiet
+                        })`
+                      : `rgba(${COLORS.white},${
+                          CONFIG.nodeOpacity *
+                          (
+                            node.layer ===
+                            2
+                              ? 1.12
+                              : 0.70
+                          ) *
+                          centerQuiet
+                        })`;
+
+                /*
+                 * Tiny selective glow.
+                 */
+                if (
+                  active
+                ) {
+                  context.shadowColor =
+                    `rgba(${COLORS.lime},0.55)`;
+
+                  context.shadowBlur =
+                    5;
+                }
+
+                drawNodeShape(
+                  context,
+                  node.shape,
+                  point.x,
+                  point.y,
+                  radius,
+                  reducedMotion
+                    ? node.rotation
+                    : node.rotation +
+                      elapsed *
+                        node.rotationSpeed,
+                  nodeColor,
+                );
+
+                context.shadowBlur =
+                  0;
+              },
+            );
+          },
+        );
+
+        /*
+         * ========================================================
+         * CURSOR INTELLIGENCE FIELD
+         * ========================================================
+         */
+        if (
+          pointer.active >
+            0.01 &&
+          interactionNodes.length >
+            0
+        ) {
+          const cursorX =
+            pointer.x *
+            width;
+
+          const cursorY =
+            pointer.y *
+            height;
+
+          const connectionCount =
+            Math.min(
+              CONFIG.maxCursorConnections,
+              2 +
+                Math.round(
+                  pointer.velocity,
+                ),
+            );
+
+          interactionNodes.sort(
+            (a, b) =>
+              a.distance -
+              b.distance,
+          );
+
+          const activeNodes =
+            interactionNodes.slice(
+              0,
+              connectionCount,
+            );
+
+          const cursorMaxDistance =
+            Math.min(
+              width,
+              height,
+            ) *
+            CONFIG.cursorRadius;
+
+          activeNodes.forEach(
+            (
+              node,
+              index,
+            ) => {
+              const strength =
+                pointer.active *
+                (
+                  1 -
+                  node.distance /
+                    cursorMaxDistance
+                );
+
+              /*
+               * Very small local response.
+               */
+              const displacement =
+                Math.min(
+                  3,
+                  strength *
+                    (
+                      1.1 +
+                      pointer.velocity *
+                        1.4
+                    ),
+                );
+
+              const directionX =
+                (
+                  cursorX -
+                  node.x
+                ) /
+                Math.max(
+                  1,
+                  node.distance,
+                );
+
+              const directionY =
+                (
+                  cursorY -
+                  node.y
+                ) /
+                Math.max(
+                  1,
+                  node.distance,
+                );
+
+              const nodeX =
+                node.x +
+                directionX *
+                  displacement;
+
+              const nodeY =
+                node.y +
+                directionY *
+                  displacement;
+
+              /*
+               * Cursor lines are even shorter.
+               */
+              const cursorDistance =
+                Math.hypot(
+                  nodeX -
+                    cursorX,
+                  nodeY -
+                    cursorY,
+                );
+
+              const maxCursorLine =
+                Math.min(
+                  width,
+                  height,
+                ) *
+                0.07;
+
+              if (
+                cursorDistance >
+                maxCursorLine
+              ) {
+                return;
+              }
+
+              context.strokeStyle =
+                `rgba(${COLORS.lime},${
+                  0.035 +
+                  strength *
+                    0.075
+                })`;
+
+              context.lineWidth =
+                0.28 +
+                strength *
+                  0.15;
+
+              context.beginPath();
+
+              context.moveTo(
+                cursorX,
+                cursorY,
+              );
+
+              context.lineTo(
+                nodeX,
+                nodeY,
+              );
+
+              context.stroke();
+
+              /*
+               * Activated node.
+               */
+              context.fillStyle =
+                `rgba(${COLORS.lime},${
+                  0.18 +
+                  strength *
+                    0.30
+                })`;
+
+              context.beginPath();
+
+              context.arc(
+                nodeX,
+                nodeY,
+                0.8 +
+                  strength *
+                    0.55,
+                0,
+                Math.PI * 2,
+              );
+
+              context.fill();
+
+              /*
+               * Cursor signal.
+               */
+              if (
+                index === 0 &&
+                !reducedMotion
+              ) {
+                const signalPosition =
+                  (
+                    elapsed *
+                      CONFIG.signalSpeed *
+                      (
+                        1.15 +
+                        pointer.velocity
+                      ) +
+                    0.25
+                  ) % 1;
+
+                context.fillStyle =
+                  `rgba(${COLORS.lime},${
+                    0.48 +
+                    strength *
+                      0.25
+                  })`;
+
+                context.beginPath();
+
+                context.arc(
+                  cursorX +
+                    (
+                      nodeX -
+                      cursorX
+                    ) *
+                      signalPosition,
+
+                  cursorY +
+                    (
+                      nodeY -
+                      cursorY
+                    ) *
+                      signalPosition,
+
+                  0.9,
+
+                  0,
+
+                  Math.PI * 2,
+                );
+
+                context.fill();
+              }
+            },
+          );
+
+          /*
+           * Cursor anchor.
+           */
+          context.fillStyle =
+            `rgba(${COLORS.lime},${
+              0.24 *
+              pointer.active
+            })`;
+
+          context.beginPath();
+
+          context.arc(
+            cursorX,
+            cursorY,
+            1.2 +
+              pointer.active *
+                0.45,
+            0,
+            Math.PI * 2,
+          );
+
+          context.fill();
+        }
+      };
+
+      const animate = (
+        time: number,
+      ) => {
+        draw(time);
+
+        animationFrame =
+          window.requestAnimationFrame(
+            animate,
+          );
+      };
+
+      const handleMotionPreference =
+        (
+          event: MediaQueryListEvent,
+        ) => {
+          reducedMotion =
+            event.matches;
+
+          if (
+            reducedMotion
+          ) {
+            pointer.targetActive =
+              0;
+
+            draw(0);
+          }
+        };
+
+      resize();
+
+      updateScroll();
+
+      window.addEventListener(
+        'resize',
+        resize,
+      );
+
+      window.addEventListener(
+        'scroll',
+        updateScroll,
+        {
+          passive: true,
+        },
+      );
+
+      window.addEventListener(
+        'pointermove',
+        updatePointer,
+        {
+          passive: true,
+        },
+      );
+
+      window.addEventListener(
+        'blur',
+        clearPointer,
+      );
+
+      reducedMotionQuery.addEventListener(
+        'change',
+        handleMotionPreference,
+      );
+
+      animationFrame =
+        window.requestAnimationFrame(
+          animate,
+        );
+
+      return () => {
+        window.cancelAnimationFrame(
+          animationFrame,
+        );
+
+        window.removeEventListener(
+          'resize',
+          resize,
+        );
+
+        window.removeEventListener(
+          'scroll',
+          updateScroll,
+        );
+
+        window.removeEventListener(
+          'pointermove',
+          updatePointer,
+        );
+
+        window.removeEventListener(
+          'blur',
+          clearPointer,
+        );
+
+        reducedMotionQuery.removeEventListener(
+          'change',
+          handleMotionPreference,
+        );
+      };
+    }, []);
+
+    return (
+      <div
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 h-full w-full"
+        />
+
+        {/* Center readability / cinematic depth */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 50% 55% at 50% 43%, rgba(5,5,5,0.46) 0%, rgba(5,5,5,0.16) 45%, transparent 82%), linear-gradient(180deg, rgba(5,5,5,0.06), rgba(5,5,5,0.40))',
+          }}
+        />
+
+        {/* Very subtle vignette */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 45%, rgba(5,5,5,0.32) 100%)',
+          }}
+        />
+      </div>
+    );
+  };
+
+export default BackgroundAnimation;

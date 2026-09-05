@@ -134,10 +134,10 @@ const Industries: React.FC = () => {
   }, [activeIndex, prefersReducedMotion]);
 
   return (
-    <section id="industries" className="relative overflow-hidden py-20 sm:py-24 lg:py-32 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
+    <section id="industries" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)', filter: 'blur(10px)' }} />
       <div className="relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-12">
-        <motion.div className="mb-12 grid gap-8 lg:mb-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
+        <motion.div className="mb-8 grid gap-8 lg:mb-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-12">
           <div>
             <div className="mb-5 flex items-center gap-3"><span style={{ width: 28, height: 2, background: C.LIME }} /><span style={{ color: C.LIME, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em' }}>INDUSTRIES</span></div>
             <h2 id="industries-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Intelligent solutions for <span style={{ color: C.LIME }}>real-world industries.</span></h2>

@@ -26,7 +26,7 @@ export const SectionHeader = ({
   className = ''
 }: SectionHeaderProps) => {
   return (
-    <div className={`${centered ? 'text-center' : ''} mb-12 sm:mb-16 ${className}`}>
+    <div className={`${centered ? 'text-center' : ''} mb-8 sm:mb-10 ${className}`}>
       {badge && (
         <Badge 
           variant="outline" 
@@ -37,7 +37,7 @@ export const SectionHeader = ({
         </Badge>
       )}
       
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight">
         {title}
         {highlight && (
           <> <span className="gradient-text-ai">{highlight}</span></>
@@ -45,7 +45,7 @@ export const SectionHeader = ({
       </h2>
       
       {centered && (
-        <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-velnix-green to-velnix-lime mx-auto mb-6 sm:mb-8 rounded-full" />
+        <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-velnix-green to-velnix-lime mx-auto mb-4 sm:mb-6 rounded-full" />
       )}
       
       {description && (

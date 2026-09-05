@@ -7,9 +7,9 @@ const MeetFounder = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="founder" className="relative overflow-hidden border-b border-white/10 bg-[#050505] py-20 text-white sm:py-28 lg:py-32">
+    <section id="founder" className="relative overflow-hidden border-b border-white/10 bg-[#050505] py-16 text-white sm:py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.03) 1px, transparent 1px)', backgroundSize: '64px 64px', maskImage: 'linear-gradient(to bottom, transparent, black 24%, transparent 95%)' }} />
-      <div className="relative mx-auto grid max-w-[1280px] items-center gap-12 px-6 sm:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-24 lg:px-16">
+      <div className="relative mx-auto grid max-w-[1280px] items-center gap-10 px-6 sm:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:px-16">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

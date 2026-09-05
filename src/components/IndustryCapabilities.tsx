@@ -18,7 +18,7 @@ const IndustryCapabilities: React.FC<IndustryCapabilitiesProps> = React.memo(({
   highlightedTitle,
   capabilities
 }) => (
-  <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#01010c] relative overflow-hidden">
+  <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#01010c] relative overflow-hidden">
     {/* High-Tech Background Layers */}
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
@@ -27,7 +27,7 @@ const IndustryCapabilities: React.FC<IndustryCapabilitiesProps> = React.memo(({
 
     <div className="max-w-7xl mx-auto relative z-10">
       {/* Header */}
-      <div className="text-left space-y-4 mb-12 sm:mb-16 animate-fade-in lg:pl-[10%]">
+      <div className="text-left space-y-4 mb-8 sm:mb-10 animate-fade-in lg:pl-[10%]">
         <div className="flex items-start gap-4 mb-2">
           <div
             className="w-2 sm:w-3 h-6 rounded-none flex-shrink-0 mt-1"

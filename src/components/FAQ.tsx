@@ -199,7 +199,7 @@ const FAQ = () => {
 
   return (
     <section 
-      className="py-16 sm:py-24 relative overflow-hidden antialiased"
+      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
       style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
       aria-label="Frequently Asked Questions & Decision Support"
     >
@@ -214,7 +214,7 @@ const FAQ = () => {
         {/* ══════════════════════════════════════════════════════
             HERO HEADER
         ══════════════════════════════════════════════════════ */}
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +249,7 @@ const FAQ = () => {
         {/* ══════════════════════════════════════════════════════
             SEARCH & CATEGORY FILTER BAR
         ══════════════════════════════════════════════════════ */}
-        <div className="mb-10 space-y-6">
+        <div className="mb-8 space-y-5">
           {/* Live Search Bar */}
           <div className="relative max-w-xl">
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/40">

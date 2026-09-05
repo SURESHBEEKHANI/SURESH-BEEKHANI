@@ -32,7 +32,7 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
   };
 
   return (
-    <section className="py-10 sm:py-14 bg-white relative overflow-hidden border-t border-slate-100">
+    <section className="py-8 sm:py-12 lg:py-14 bg-white relative overflow-hidden border-t border-slate-100">
       {/* AI Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 h-40 sm:w-80 sm:h-80 bg-gradient-to-br from-velnix-lime/5 to-velnix-green/5 rounded-full blur-3xl opacity-30"></div>
@@ -40,7 +40,7 @@ const IndustryFAQ: React.FC<IndustryFAQProps> = React.memo(({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="mb-10 sm:mb-12 md:mb-16 text-left">
+        <div className="mb-8 sm:mb-10 text-left">
           <div className="flex items-start gap-4 mb-3">
             <div
               className="w-2.5 sm:w-4 h-3.5 sm:h-5 md:h-6 flex-shrink-0 mt-1 rounded-full"

@@ -111,7 +111,7 @@ const Hero = () => {
         ref={heroRef}
         className="relative isolate w-full overflow-hidden"
         style={{
-          minHeight: '100vh',
+          minHeight: 'clamp(85vh, 90vh, 95vh)',
           background: C.black,
         }}
         aria-label="Velnix Solutions hero section"
@@ -191,7 +191,7 @@ const Hero = () => {
         <div
           className="relative z-10 w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16
                      flex items-center
-                     pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-32"
+                     pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-28 lg:pb-20"
         >
 
           {/* ═══════════════════════════════════════════
@@ -202,7 +202,7 @@ const Hero = () => {
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.05, duration: 0.55, ease }}
-              className="mb-6 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em]"
+              className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em]"
               style={{ color: C.limeAlpha(0.9) }}
             >
               <span style={{ width: 28, height: 1, background: C.lime }} aria-hidden="true" />
@@ -219,7 +219,7 @@ const Hero = () => {
                 color: C.white,
                 lineHeight: 1.06,
                 letterSpacing: '-0.03em',
-                marginBottom: '1.5rem',
+                marginBottom: '1.25rem',
                 WebkitFontSmoothing: 'antialiased',
               }}
             >
@@ -244,7 +244,7 @@ const Hero = () => {
                 color: C.whiteAlpha(0.72),
                 lineHeight: 1.75,
                 maxWidth: '42ch',
-                marginBottom: '2.5rem',
+                marginBottom: '2rem',
                 fontWeight: 400,
                 letterSpacing: '0.01em',
               }}
@@ -257,7 +257,7 @@ const Hero = () => {
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.35, duration: 0.55, ease }}
-              className="flex flex-wrap items-center gap-4 mb-12"
+              className="flex flex-wrap items-center gap-4 mb-8"
             >
 
               <motion.div
@@ -316,7 +316,7 @@ const Hero = () => {
               href="/contact"
               {...fadeUp}
               transition={{ delay: 0.43, duration: 0.5, ease }}
-              className="mb-10 inline-flex items-center gap-2 text-xs font-semibold transition-colors duration-200"
+              className="mb-6 inline-flex items-center gap-2 text-xs font-semibold transition-colors duration-200"
               style={{ color: C.whiteAlpha(0.52), textDecoration: 'none', letterSpacing: '0.04em' }}
               onMouseEnter={e => { e.currentTarget.style.color = C.lime; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.whiteAlpha(0.52); }}
