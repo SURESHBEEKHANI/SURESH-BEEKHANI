@@ -72,6 +72,7 @@ const NAV: NavGroup[] = [
     label: 'Company',
     items: [
       { label: 'About Velnix',  href: '/about' },
+      { label: 'Careers',      href: '/careers' },
       { label: 'Blog',          href: '/blogs' },
       { label: 'Contact',       href: '/contact' },
     ],
@@ -82,6 +83,7 @@ const ALL_SEARCHABLE: NavItem[] = [
   { label: 'Home',             href: '/' },
   { label: 'Portfolio',        href: '/Portfolio' },
   { label: 'About',            href: '/about' },
+  { label: 'Careers',          href: '/careers' },
   { label: 'Blogs',            href: '/blogs' },
   { label: 'Contact',          href: '/contact' },
   { label: 'AI Development',   href: '/ai-development' },
@@ -521,14 +523,20 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
   const [activeSection, setActiveSection] = useState('home');
   const shouldReduce = useReducedMotion();
   const { pathname: currentPath } = useLocation();
+  const isHeroTop = !scrolled;
 
   // Scroll handler
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+      const scrollTop = Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop,
+      );
+      setScrolled(scrollTop > 0);
 
       const sections = document.querySelectorAll('section[id]');
-      const pos = window.scrollY + 100;
+      const pos = scrollTop + 100;
       sections.forEach(s => {
         const el = s as HTMLElement;
         if (pos >= el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
@@ -536,8 +544,15 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         }
       });
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    document.body.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('scroll', onScroll, true);
+      document.body.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   // Lock body scroll when mobile menu open
@@ -580,17 +595,20 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: currentPath === '/' ? 'transparent' : `radial-gradient(ellipse 55% 180% at 82% 0%, ${C.ga(0.1)} 0%, transparent 68%), ${C.black}`,
-          borderBottom: currentPath === '/' ? 'none' : `1px solid ${scrolled ? C.wa(0.3) : C.wa(0.05)}`,
-          boxShadow: currentPath === '/' ? 'none' : scrolled ? `0 8px 32px rgba(0,0,0,0.5), 0 3px 24px ${C.la(0.16)}` : `0 4px 22px ${C.la(0.14)}`,
-          transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s',
+          background: isHeroTop ? 'transparent' : C.black,
+          backgroundColor: isHeroTop ? 'transparent' : C.black,
+          backgroundImage: 'none',
+          backdropFilter: isHeroTop ? 'none' : 'blur(12px)',
+          WebkitBackdropFilter: isHeroTop ? 'none' : 'blur(12px)',
+          borderBottom: isHeroTop ? '1px solid transparent' : `1px solid ${C.wa(0.1)}`,
+          boxShadow: isHeroTop ? 'none' : `0 8px 24px rgba(0,0,0,0.18)`,
+          transition: 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease',
         }}
       >
         <div
           className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between"
           style={{
-            minHeight: scrolled ? 60 : 72,
-            transition: 'min-height 0.35s ease',
+            minHeight: 72,
           }}
         >
 
@@ -607,10 +625,9 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               src="/image/logo/logo1.png"
               alt="Velnix Solutions"
               style={{
-                height: scrolled ? 40 : 48,
+                height: 48,
                 width: 'auto',
                 objectFit: 'contain',
-                transition: 'height 0.35s ease',
               }}
               decoding="async"
             />

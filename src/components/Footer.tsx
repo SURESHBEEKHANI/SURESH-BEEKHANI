@@ -57,9 +57,11 @@ const NAV_COLS = [
     title: 'Company',
     links: [
       { label: 'About Velnix',          href: '/about' },
+      { label: 'Careers',               href: '/careers' },
       { label: 'Our Process',           href: '/#approach' },
       { label: 'Portfolio',             href: '/portfolio' },
       { label: 'Blog & Insights',       href: '/blogs' },
+      { label: 'Customer Central',      href: '/contact' },
       { label: 'Contact',               href: '/contact' },
     ],
   },
@@ -286,6 +288,7 @@ const NewsletterForm = () => {
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -298,7 +301,7 @@ const NewsletterForm = () => {
       const { error } = await supabase.from('newsletter_signups').insert([{ email: val }]);
       if (error) {
         if ((error as { code?: string })?.code === '23505') {
-          toast.success('Already subscribed!', { style: { background: C.lime, color: C.black, border: 'none' } });
+          setAlreadySubscribed(true);
           setEmail(''); return;
         }
         throw error;
@@ -311,18 +314,38 @@ const NewsletterForm = () => {
 
   return (
     <div>
-      <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.lime, marginBottom: 12 }}>
+      <p className="flex items-center gap-2" style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.lime, marginBottom: 12 }}>
         Stay Updated
+        {alreadySubscribed && (
+          <span
+            style={{
+              border: `1px solid ${C.la(0.35)}`,
+              borderRadius: 999,
+              background: C.la(0.1),
+              color: C.lime,
+              padding: '0.25rem 0.55rem',
+              fontSize: '0.58rem',
+              letterSpacing: '0.04em',
+              textTransform: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Already subscribed!
+          </span>
+        )}
       </p>
       {done ? (
         <p style={{ fontSize: '0.875rem', color: C.lime, fontWeight: 600 }}>Welcome to Velnix. ✓</p>
       ) : (
-        <form onSubmit={handleSubmit} style={{ maxWidth: 360 }}>
+        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 240 }}>
           <div style={{ position: 'relative' }}>
             <input
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={e => {
+                setEmail(e.target.value);
+                setAlreadySubscribed(false);
+              }}
               placeholder="Your work email"
               disabled={submitting}
               style={{

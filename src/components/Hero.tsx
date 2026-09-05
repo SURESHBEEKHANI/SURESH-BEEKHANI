@@ -104,6 +104,35 @@ const Hero = () => {
           from { transform: translateY(-120%); }
           to   { transform: translateY(420%); }
         }
+        @keyframes velnix-system-scan {
+          from { opacity: 0; transform: translateX(-18%); }
+          50% { opacity: 1; }
+          to { opacity: 0; transform: translateX(18%); }
+        }
+        @keyframes velnix-image-scan {
+          from { opacity: 0; top: 0%; }
+          12% { opacity: 1; }
+          88% { opacity: 1; }
+          to { opacity: 0; top: 100%; }
+        }
+        @keyframes velnix-topic-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+        @keyframes velnix-orbit-spin {
+          from { transform: rotateX(64deg) rotateZ(0deg); }
+          to { transform: rotateX(64deg) rotateZ(360deg); }
+        }
+        @keyframes velnix-object-drift {
+          0%, 100% { transform: translate(0, -8px); }
+          25% { transform: translate(8px, 0); }
+          50% { transform: translate(0, 8px); }
+          75% { transform: translate(-8px, 0); }
+        }
+        @keyframes velnix-core-pulse {
+          0%, 100% { opacity: .35; transform: scale(.92); }
+          50% { opacity: .75; transform: scale(1); }
+        }
       `}</style>
 
       <section
@@ -190,7 +219,7 @@ const Hero = () => {
         {/* ── MAIN CONTENT ── */}
         <div
           className="relative z-10 w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16
-                     flex items-center
+                     grid items-center gap-6 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:gap-4
                      pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-28 lg:pb-20"
         >
 
@@ -339,6 +368,8 @@ const Hero = () => {
             </motion.div>
           </div>
 
+          <HeroSystemVisual />
+
         </div>
 
         {/* ── BOTTOM FEATURED IN STRIP ── */}
@@ -349,6 +380,55 @@ const Hero = () => {
 };
 
 export default Hero;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HERO SYSTEM VISUAL
+// ─────────────────────────────────────────────────────────────────────────────
+const HERO_IMAGES = [
+  '/image/Hero-section-image/hero-page-image-1.avif',
+  '/image/Hero-section-image/hero-page-image-2.avif',
+  '/image/Hero-section-image/hero-page-image-3.avif',
+];
+
+const HeroSystemVisual = () => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    const imageRotation = window.setInterval(() => {
+      setImageIndex(index => (index + 1) % HERO_IMAGES.length);
+    }, 5000);
+
+    return () => window.clearInterval(imageRotation);
+  }, []);
+
+  return (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.96 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 0.22, duration: 0.8, ease }}
+    className="relative min-h-[390px] overflow-visible sm:min-h-[520px] lg:-translate-x-12 lg:-translate-y-6"
+    style={{
+      background: 'transparent',
+    }}
+    aria-label="Agentic AI visual showing intelligent automation and business impact"
+  >
+    <div
+      className="absolute left-[16%] top-1/2 h-px w-[68%]"
+      style={{
+        background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)`,
+        animation: 'velnix-system-scan 4s ease-in-out infinite',
+      }}
+    />
+    <div className="absolute inset-1 overflow-hidden border sm:inset-3" style={{ borderColor: C.limeAlpha(0.42), boxShadow: `0 0 70px ${C.limeAlpha(0.12)}` }}>
+      <img src={HERO_IMAGES[imageIndex]} alt="Velnix intelligent systems in action" className="h-full w-full object-cover" style={{ opacity: 0.78, filter: 'saturate(0.72) contrast(1.04)', transform: 'scale(1.04)', transition: 'opacity 700ms ease-in-out' }} />
+      <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${C.black}b8 0%, ${C.black}26 42%, ${C.black}c2 100%), linear-gradient(0deg, ${C.greenAlpha(0.2)}, transparent 48%), linear-gradient(115deg, ${C.limeAlpha(0.14)}, transparent 38%)`, mixBlendMode: 'screen', opacity: 0.82 }} />
+      <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(90deg, transparent 10%, ${C.greenAlpha(0.12)} 50%, transparent 90%)`, mixBlendMode: 'color', opacity: 0.9 }} />
+      <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(${C.whiteAlpha(0.06)} 1px, transparent 1px), linear-gradient(90deg, ${C.whiteAlpha(0.06)} 1px, transparent 1px)`, backgroundSize: '44px 44px', opacity: 0.22 }} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)`, boxShadow: `0 0 14px ${C.limeAlpha(0.75)}`, animation: 'velnix-image-scan 4.5s ease-in-out infinite' }} />
+    </div>
+  </motion.div>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIMARY BUTTON  (magnetic + shimmer)

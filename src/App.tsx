@@ -95,6 +95,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const Careers = lazy(() => import("./pages/Careers"));
 
 import CookieBanner from "./components/CookieBanner";
 
@@ -286,6 +287,7 @@ const AppContent = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
 
         <Route path="*" element={<NotFound />} />
