@@ -157,10 +157,6 @@ const SiteCursor = () => {
             animation: 'velnix-cursor-pulse 2.2s ease-in-out infinite',
           }}
         />
-        <span
-          className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{ background: '#FFFFFF', boxShadow: '0 0 6px rgba(255,255,255,0.9)' }}
-        />
       </div>
     </>
   );

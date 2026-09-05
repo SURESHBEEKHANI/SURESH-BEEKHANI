@@ -7,7 +7,6 @@ const C = {
   graphite: '#111111',
   white: '#FFFFFF',
   lime: '#B6FF00',
-  green: '#7DCC00',
 };
 
 type NetworkNode = { x: number; y: number; z: number; r: number };
@@ -33,6 +32,12 @@ const NETWORK_NODES: NetworkNode[] = [
   { x: 8.6, y: 3.9, z: -1, r: 0.26 }, { x: 11.4, y: 0.2, z: 0, r: 0.3 },
   { x: -11.3, y: -1.2, z: -1, r: 0.28 }, { x: -8.5, y: -2.5, z: 0, r: 0.3 },
   { x: 5.8, y: -1.6, z: 0, r: 0.28 }, { x: 11.2, y: -1.4, z: 0, r: 0.26 },
+  { x: -15.2, y: 6.2, z: -2, r: 0.22 }, { x: -16.8, y: 2.1, z: -1, r: 0.2 },
+  { x: -15.6, y: -2.2, z: -2, r: 0.22 }, { x: -16.9, y: -6.1, z: -1, r: 0.2 },
+  { x: 15.1, y: 6.4, z: -2, r: 0.22 }, { x: 16.8, y: 2.3, z: -1, r: 0.2 },
+  { x: 15.7, y: -2.4, z: -2, r: 0.22 }, { x: 16.9, y: -6.3, z: -1, r: 0.2 },
+  { x: -13.9, y: 0.4, z: 1, r: 0.18 }, { x: -14.4, y: -4.5, z: 1, r: 0.18 },
+  { x: 13.8, y: 0.5, z: 1, r: 0.18 }, { x: 14.3, y: -4.6, z: 1, r: 0.18 },
 ];
 
 const NETWORK_EDGES: [number, number][] = [
@@ -54,6 +59,20 @@ const PRIMARY_EDGES: [number, number][] = [
   [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7],
   [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15],
 ];
+
+const CENTER_NODE_INDICES = new Set([3, 4, 10, 11, 12, 13, 29, 31, 32, 33]);
+const CENTER_MOLECULE: NetworkNode[] = [
+  { x: -0.9, y: 0.1, z: 0.5, r: 0.35 },
+  { x: 0, y: 0.8, z: 0.2, r: 0.35 },
+  { x: 0.9, y: 0.1, z: 0.5, r: 0.35 },
+];
+const CENTER_MOLECULE_EDGES: [number, number][] = [[0, 1], [1, 2], [2, 0]];
+const OUTER_NODE_INDICES = NETWORK_NODES
+  .map((_, index) => index)
+  .filter(index => !CENTER_NODE_INDICES.has(index));
+const OUTER_EDGES = NETWORK_EDGES.filter(([from, to]) =>
+  !CENTER_NODE_INDICES.has(from) && !CENTER_NODE_INDICES.has(to)
+);
 
 const BackgroundAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -95,51 +114,61 @@ const BackgroundAnimation = () => {
     textureContext.fillRect(0, 0, 64, 64);
     const nodeTexture = new THREE.CanvasTexture(nodeTextureCanvas);
 
-    const nodePositions = new Float32Array(NETWORK_NODES.flatMap(node => [node.x, node.y, node.z]));
+    const visibleNodeIndices = OUTER_NODE_INDICES;
+    const visibleNodes = visibleNodeIndices.map(index => NETWORK_NODES[index]);
+    const nodePositions = new Float32Array(visibleNodes.flatMap(node => [node.x, node.y, node.z]));
+    const driftingLowerLeftNodes = [
+      { sourceIndex: 42, amplitude: 0.55, speed: 0.42 },
+      { sourceIndex: 43, amplitude: 0.45, speed: 0.34 },
+      { sourceIndex: 49, amplitude: 0.36, speed: 0.5 },
+    ];
     const nodeGeometry = new THREE.BufferGeometry();
     nodeGeometry.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
     const nodeMaterial = new THREE.PointsMaterial({
       color: C.white,
-      size: 0.07,
+      size: 0.12,
       transparent: true,
-      opacity: 0.58,
+      opacity: 0.72,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
     });
     const nodes = new THREE.Points(nodeGeometry, nodeMaterial);
     group.add(nodes);
 
-    const linePositions = new Float32Array(NETWORK_EDGES.length * 6);
-    NETWORK_EDGES.forEach(([from, to], index) => {
-      const a = NETWORK_NODES[from];
-      const b = NETWORK_NODES[to];
-      linePositions.set([a.x, a.y, a.z, b.x, b.y, b.z], index * 6);
-    });
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-    const lineMaterial = new THREE.LineBasicMaterial({
-      color: C.green,
+    const centerPositions = new Float32Array(CENTER_MOLECULE.flatMap(node => [node.x, node.y, node.z]));
+    const centerGeometry = new THREE.BufferGeometry();
+    centerGeometry.setAttribute('position', new THREE.BufferAttribute(centerPositions, 3));
+    const centerMaterial = new THREE.PointsMaterial({
+      color: C.white,
+      size: 0.09,
       transparent: true,
-      opacity: isCompactViewport ? 0.07 : 0.12,
+      opacity: 0.78,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
     });
-    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-    group.add(lines);
+    const centerNodes = new THREE.Points(centerGeometry, centerMaterial);
+    group.add(centerNodes);
 
-    const primaryLinePositions = new Float32Array(PRIMARY_EDGES.length * 6);
-    PRIMARY_EDGES.forEach(([from, to], index) => {
+    const bondPositions = new Float32Array((OUTER_EDGES.length + CENTER_MOLECULE_EDGES.length) * 6);
+    OUTER_EDGES.forEach(([from, to], index) => {
       const a = NETWORK_NODES[from];
       const b = NETWORK_NODES[to];
-      primaryLinePositions.set([a.x, a.y, a.z, b.x, b.y, b.z], index * 6);
+      bondPositions.set([a.x, a.y, a.z, b.x, b.y, b.z], index * 6);
     });
-    const primaryLineGeometry = new THREE.BufferGeometry();
-    primaryLineGeometry.setAttribute('position', new THREE.BufferAttribute(primaryLinePositions, 3));
-    const primaryLineMaterial = new THREE.LineBasicMaterial({
-      color: C.lime,
+    CENTER_MOLECULE_EDGES.forEach(([from, to], index) => {
+      const a = CENTER_MOLECULE[from];
+      const b = CENTER_MOLECULE[to];
+      bondPositions.set([a.x, a.y, a.z, b.x, b.y, b.z], (OUTER_EDGES.length + index) * 6);
+    });
+    const bondGeometry = new THREE.BufferGeometry();
+    bondGeometry.setAttribute('position', new THREE.BufferAttribute(bondPositions, 3));
+    const bondMaterial = new THREE.LineBasicMaterial({
+      color: C.white,
       transparent: true,
-      opacity: isCompactViewport ? 0.06 : 0.1,
+      opacity: isCompactViewport ? 0.035 : 0.06,
     });
-    const primaryLines = new THREE.LineSegments(primaryLineGeometry, primaryLineMaterial);
-    group.add(primaryLines);
+    const bonds = new THREE.LineSegments(bondGeometry, bondMaterial);
+    group.add(bonds);
 
     const signalGeometry = new THREE.BufferGeometry();
     const signalPositions = new Float32Array(SIGNAL_PATHS.length * 3);
@@ -176,6 +205,14 @@ const BackgroundAnimation = () => {
         group.position.z = Math.sin(time * 0.09) * 0.08;
         group.rotation.y = Math.sin(time * 0.35) * 0.035;
         group.rotation.x = Math.cos(time * 0.24) * 0.018;
+        const nodePositionAttribute = nodeGeometry.attributes.position;
+        driftingLowerLeftNodes.forEach(({ sourceIndex, amplitude, speed }) => {
+          const visibleIndex = visibleNodeIndices.indexOf(sourceIndex);
+          if (visibleIndex < 0) return;
+          const baseY = NETWORK_NODES[sourceIndex].y;
+          nodePositionAttribute.setY(visibleIndex, baseY + Math.sin(time * speed + sourceIndex) * amplitude);
+        });
+        nodePositionAttribute.needsUpdate = true;
         SIGNAL_PATHS.slice(0, isCompactViewport ? 1 : SIGNAL_PATHS.length).forEach((path, pathIndex) => {
           const progress = (time * (0.11 + pathIndex * 0.035) + pathIndex * 0.5) % 1;
           const segment = progress * (path.length - 1);
@@ -201,10 +238,10 @@ const BackgroundAnimation = () => {
       window.removeEventListener('resize', resize);
       nodeGeometry.dispose();
       nodeMaterial.dispose();
-      lineGeometry.dispose();
-      lineMaterial.dispose();
-      primaryLineGeometry.dispose();
-      primaryLineMaterial.dispose();
+      centerGeometry.dispose();
+      centerMaterial.dispose();
+      bondGeometry.dispose();
+      bondMaterial.dispose();
       signalGeometry.dispose();
       signalMaterial.dispose();
       nodeTexture.dispose();
@@ -224,15 +261,15 @@ const BackgroundAnimation = () => {
       }}
     >
       <svg
-        className="absolute inset-0 h-full w-full opacity-40"
+        className="absolute inset-0 h-full w-full opacity-52"
         viewBox="0 0 100 60"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <g fill="none" stroke={C.green} strokeOpacity="0.28" strokeWidth="0.12">
-          {NETWORK_EDGES.map(([from, to]) => (
+        <g fill="none" stroke={C.white} strokeOpacity="0.14" strokeWidth="0.1">
+          {OUTER_EDGES.map(([from, to], index) => (
             <line
-              key={`${from}-${to}`}
+              key={`bond-${index}`}
               x1={NETWORK_NODES[from].x + 50}
               y1={30 - NETWORK_NODES[from].y * 2.3}
               x2={NETWORK_NODES[to].x + 50}
@@ -240,24 +277,37 @@ const BackgroundAnimation = () => {
             />
           ))}
         </g>
-        <g fill="none" stroke={C.lime} strokeOpacity="0.16" strokeWidth="0.14">
-          {PRIMARY_EDGES.map(([from, to]) => (
+        <g fill="none" stroke={C.white} strokeOpacity="0.14" strokeWidth="0.1">
+          {CENTER_MOLECULE_EDGES.map(([from, to], index) => (
             <line
-              key={`primary-${from}-${to}`}
-              x1={NETWORK_NODES[from].x + 50}
-              y1={30 - NETWORK_NODES[from].y * 2.3}
-              x2={NETWORK_NODES[to].x + 50}
-              y2={30 - NETWORK_NODES[to].y * 2.3}
+              key={`center-bond-${index}`}
+              x1={CENTER_MOLECULE[from].x + 50}
+              y1={30 - CENTER_MOLECULE[from].y * 2.3}
+              x2={CENTER_MOLECULE[to].x + 50}
+              y2={30 - CENTER_MOLECULE[to].y * 2.3}
             />
           ))}
         </g>
-        <g fill={C.white} fillOpacity="0.58">
-          {NETWORK_NODES.map((node, index) => (
+        <g fill={C.white} fillOpacity="0.82">
+          {OUTER_NODE_INDICES.map(index => {
+            const node = NETWORK_NODES[index];
+            return (
             <circle
               key={index}
               cx={node.x + 50}
               cy={30 - node.y * 2.3}
               r={Math.max(0.06, node.r * 0.045)}
+            />
+            );
+          })}
+        </g>
+        <g fill={C.white} fillOpacity="0.82">
+          {CENTER_MOLECULE.map((node, index) => (
+            <circle
+              key={`center-${index}`}
+              cx={node.x + 50}
+              cy={30 - node.y * 2.3}
+              r="0.1"
             />
           ))}
         </g>
