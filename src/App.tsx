@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
 import ReactGA from "react-ga4";
 import { FaWhatsapp } from 'react-icons/fa';
+import { SEO } from './components/SEO';
 
 // ✅ Load Measurement ID from .env
 const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID;
@@ -237,6 +238,7 @@ const AppContent = () => {
 
   return (
     <>
+      <SEO />
       <CookieBanner />
       <Suspense fallback={<PageLoader />}>
         <Routes>

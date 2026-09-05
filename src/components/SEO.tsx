@@ -27,11 +27,11 @@ const SITE_NAME = 'Velnix Solutions';
 const BASE_URL = 'https://velnixsolutions.com';
 const DEFAULT_IMAGE = `${BASE_URL}/image/preview.png`;
 const DEFAULT_DESCRIPTION =
-  'Velnix Solutions is a global AI development company specializing in healthcare AI, machine learning, NLP, computer vision, chatbot development, and intelligent automation solutions.';
+  'Velnix Solutions builds AI development, automation, machine learning, healthcare AI, and custom software systems for practical business workflows.';
 const DEFAULT_KEYWORDS =
   'AI development company, machine learning solutions, healthcare AI, NLP services, computer vision, chatbot development, predictive modeling, AI automation, deep learning, Velnix Solutions, agentic AI, custom software development';
 const TWITTER_HANDLE = '@VelnixSolutions';
-const THEME_COLOR = '#ff0ea3';
+const THEME_COLOR = '#050505';
 
 // ─── Route-Specific SEO Defaults ────────────────────────────────────────────────
 const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
@@ -52,6 +52,16 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     description:
       'Reach out to Velnix Solutions for AI development, machine learning, and custom software solutions. Get a free consultation today.',
     keywords: 'contact Velnix Solutions, AI consultation, hire AI developers',
+    schemaType: 'WebPage',
+  },
+  '/careers': {
+    title: 'Careers at Velnix Solutions | AI and Software Engineering',
+    description: 'Explore careers at Velnix Solutions, where AI, software engineering, automation, and business context meet.',
+    schemaType: 'WebPage',
+  },
+  '/cookie-policy': {
+    title: 'Cookie Policy | Velnix Solutions',
+    description: 'Read how Velnix Solutions uses cookies and similar technologies on this website.',
     schemaType: 'WebPage',
   },
   '/portfolio': {
@@ -210,6 +220,30 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
   },
 };
 
+const KNOWN_ROUTES = new Set([
+  ...Object.keys(ROUTE_SEO),
+  '/careers',
+  '/cookie-policy',
+  '/blog-admin',
+  '/portfolio/ai-powered-electronic-health-record',
+  '/portfolio/ai-powered-patient-management-system',
+  '/portfolio/ai-powered-telemedicine-systems',
+  '/portfolio/ai-clinical-documentation-system',
+  '/portfolio/diogenes-ai-chatbot',
+  '/portfolio/ai-powered-medical-imaging-system',
+  '/portfolio/ai-appointment-management-systems',
+  '/portfolio/ai-powered-hospital-management-system',
+]);
+
+function humanizePath(pathname: string) {
+  return pathname
+    .split('/')
+    .filter(Boolean)
+    .join(' ')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (character) => character.toUpperCase()) || 'Home';
+}
+
 // ─── Schema Generators ──────────────────────────────────────────────────────────
 function generateOrganizationSchema() {
   return {
@@ -217,7 +251,8 @@ function generateOrganizationSchema() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: BASE_URL,
-    logo: `${BASE_URL}/image/logo/Neurovex.png`,
+    '@id': `${BASE_URL}/#organization`,
+    logo: `${BASE_URL}/image/logo/logo1.png`,
     description: DEFAULT_DESCRIPTION,
     contactPoint: {
       '@type': 'ContactPoint',
@@ -238,6 +273,17 @@ function generateOrganizationSchema() {
       'https://x.com/VelnixSolutions',
       'https://www.instagram.com/velnixsolutions/',
     ],
+  };
+}
+
+function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    url: `${BASE_URL}/`,
+    name: SITE_NAME,
+    publisher: { '@id': `${BASE_URL}/#organization` },
   };
 }
 
@@ -392,13 +438,14 @@ export const SEO = ({
 
   // Merge route-level defaults with explicit props (props win)
   const routeDefaults = ROUTE_SEO[pathname] || {};
-  const resolvedTitle = title || routeDefaults.title || `${SITE_NAME} | AI Development Company`;
-  const resolvedDesc = description || routeDefaults.description || DEFAULT_DESCRIPTION;
+  const routeLabel = humanizePath(pathname);
+  const resolvedTitle = title || routeDefaults.title || `${routeLabel} | ${SITE_NAME}`;
+  const resolvedDesc = description || routeDefaults.description || `${routeLabel} from Velnix Solutions, an AI development and custom software engineering company.`;
   const resolvedKeywords = keywords || routeDefaults.keywords || DEFAULT_KEYWORDS;
   const resolvedImage = image || DEFAULT_IMAGE;
   const resolvedUrl = url || `${BASE_URL}${pathname}`;
   const resolvedSchema = schemaType || routeDefaults.schemaType || 'WebPage';
-  const resolvedNoIndex = noIndex || routeDefaults.noIndex || false;
+  const resolvedNoIndex = noIndex || routeDefaults.noIndex || !KNOWN_ROUTES.has(pathname) || pathname === '/blog-admin';
 
   const fullTitle = resolvedTitle.includes(SITE_NAME)
     ? resolvedTitle
@@ -459,12 +506,11 @@ export const SEO = ({
 
     // ── JSON-LD Structured Data ──
     // Always inject Organization schema on homepage
-    if (pathname === '/') {
-      upsertJsonLd('schema-org', generateOrganizationSchema());
-    }
+    const staticSchema = document.getElementById('schema-static');
+    if (staticSchema && pathname !== '/') staticSchema.remove();
 
     // Page-specific schema
-    switch (resolvedSchema) {
+    if (pathname !== '/') switch (resolvedSchema) {
       case 'Organization':
         upsertJsonLd('schema-page', generateOrganizationSchema());
         break;

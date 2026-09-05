@@ -39,7 +39,7 @@ const IndustryHero: React.FC<IndustryHeroProps> = React.memo(({ title, descripti
       </div>
 
       <div className="relative aspect-[4/3] min-h-[280px] overflow-hidden border border-white/15 bg-[#111111] shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:min-h-[360px]">
-        <img src={bgImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-80" />
+        <img src={bgImage} alt={`${title} industry technology`} className="absolute inset-0 h-full w-full object-cover opacity-80" />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,5,5,0.08),rgba(5,5,5,0.72))]" />
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-[#B6FF00]/30 bg-[#050505]/75 px-4 py-3 backdrop-blur-sm">
           <span className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#B6FF00]">Velnix / Applied AI</span>

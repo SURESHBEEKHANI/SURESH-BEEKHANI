@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Velnix Solutions — sitemap.xml
+  Only the homepage is included below because it's the only URL confirmed
+  during the audit (the site's internal navigation wasn't crawlable — see
+  the audit's Critical Finding). Once the SSR/prerendering fix ships,
+  add one <url> block per real page (About, Services, Blog posts, etc.),
+  each with its own <loc> and <lastmod>. Do not add guessed URLs —
+  a sitemap entry that 404s actively hurts crawl trust.
+
+  After updating, submit this file's URL in Google Search Console
+  and Bing Webmaster Tools.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://velnixsolutions.com/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

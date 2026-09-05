@@ -1,0 +1,97 @@
+<!--
+  VELNIX SOLUTIONS — STRUCTURED DATA (JSON-LD)
+  ==============================================
+  Paste these <script> blocks into <head> (or just before </body>).
+  IMPORTANT: none of this will help until the SSR/prerendering fix ships —
+  see ssr-fix-implementation-spec.md. Schema injected by client-side JS
+  is invisible to the same non-JS crawlers that can't see your body content
+  today.
+
+  Fields left OUT on purpose (unknown, not fabricated) — add before publishing:
+    - Organization.telephone
+    - Organization.address (PostalAddress)
+    - Organization.sameAs (array of your real LinkedIn/X/etc. profile URLs —
+      this is the single highest-impact addition for GEO entity recognition,
+      since currently no external profile for the brand exists anywhere
+      findable on the web)
+    - Organization.logo (confirm this should point at a real logo file,
+      not the social preview image — currently reusing /image/preview.png
+      as a placeholder)
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://velnixsolutions.com/#organization",
+  "name": "Velnix Solutions",
+  "url": "https://velnixsolutions.com/",
+  "description": "Velnix Solutions helps growing businesses automate internal workflows with AI, custom software, and intelligent systems that improve efficiency and scale operations.",
+  "image": "https://velnixsolutions.com/image/preview.png",
+  "logo": "https://velnixsolutions.com/image/preview.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://velnixsolutions.com/#website",
+  "url": "https://velnixsolutions.com/",
+  "name": "Velnix Solutions",
+  "publisher": { "@id": "https://velnixsolutions.com/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "AI Automation & Custom Software Development",
+  "provider": { "@id": "https://velnixsolutions.com/#organization" },
+  "description": "Custom AI development, machine learning, NLP, computer vision, and automation solutions that streamline internal workflows for growing businesses.",
+  "areaServed": "Worldwide"
+}
+</script>
+
+<!--
+  FAQPage schema — 3 entries grounded in Velnix's own stated positioning
+  plus standard, accurate industry framing. ADD 3-5 MORE before publishing:
+  real process steps, industries served, pricing model, or a specific
+  differentiator. Generic FAQ blocks earn far less GEO/AEO value than
+  ones with concrete, citable specifics only you can supply.
+  These must also appear as VISIBLE on-page text, not just schema —
+  see faq-content-aeo.html.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Velnix Solutions do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Velnix Solutions helps growing businesses automate internal workflows with AI, custom software, and intelligent systems that improve efficiency and scale operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is AI workflow automation for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI workflow automation is built for growing businesses that want to reduce repetitive manual work, cut operational costs, and free up staff time for higher-value tasks without adding headcount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between AI automation and custom software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom software is built to fit a specific business process from the ground up. AI automation adds intelligent decision-making, such as natural language processing or computer vision, on top of existing or new systems to handle tasks that previously required manual judgment."
+      }
+    }
+  ]
+}
+</script>

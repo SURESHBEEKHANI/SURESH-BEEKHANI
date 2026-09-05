@@ -160,7 +160,7 @@ const Industries: React.FC = () => {
               <motion.article key={industry.id} ref={element => { cardRefs.current[index] = element; }} transition={{ duration: 0.5, delay: Math.min(index * 0.06, 0.4) }} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[86vw] snap-start overflow-hidden rounded-[4px] border sm:min-w-[48%] lg:min-w-[calc((100%-48px)/4)]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
                 <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
                   <div className="relative h-[500px] overflow-hidden sm:h-[540px]">
-                    <img src={industry.image} alt="" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+                    <img src={industry.image} alt={`${industry.name} industry solution`} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.78) 0%, rgba(5,5,5,0.48) 28%, rgba(5,5,5,0.7) 64%, rgba(5,5,5,0.98) 100%)' }} />
                     <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">
                       <div className="text-lg font-bold tracking-[-0.02em]" style={{ color: C.WHITE, textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>{industry.name}</div>
