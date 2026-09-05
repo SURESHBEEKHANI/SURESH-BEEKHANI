@@ -23,7 +23,7 @@ const MeetFounder = () => {
               <BrainCircuit size={14} aria-hidden="true" />
               Technical leadership
             </div>
-            <img src="/image/sureshbeekhani.png" alt="Suresh Beekhani, Founder and Lead AI Architect" className="relative z-10 mx-auto block w-full max-w-[280px] object-contain object-bottom" loading="lazy" />
+            <img src="/image/sureshbeekhani.avif" alt="Suresh Beekhani, Founder and Lead AI Architect" className="relative z-10 mx-auto block w-full max-w-[280px] object-contain object-bottom" loading="lazy" />
           </div>
         </motion.div>
 
