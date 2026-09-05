@@ -1,4 +1,91 @@
+# ============================================
+# Velnix Solutions - Robots.txt
+# 2026 AI + Search Crawler Configuration
+# ============================================
+
+# Default: allow all crawlers
 User-agent: *
 Allow: /
+
+# --------------------------------------------
+# OpenAI / ChatGPT
+# --------------------------------------------
+
+# ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI crawler
+User-agent: GPTBot
+Allow: /
+
+# OpenAI Ads crawler
+User-agent: OAI-AdsBot
+Allow: /
+
+# --------------------------------------------
+# Anthropic / Claude
+# --------------------------------------------
+
+User-agent: ClaudeBot
+Allow: /
+
+# --------------------------------------------
+# Google Search / Gemini
+# --------------------------------------------
+
+# Google Search
+User-agent: Googlebot
+Allow: /
+
+# Google AI usage controls
+User-agent: Google-Extended
+Allow: /
+
+# --------------------------------------------
+# Microsoft / Bing / Copilot
+# --------------------------------------------
+
+User-agent: bingbot
+Allow: /
+
+# --------------------------------------------
+# Perplexity
+# --------------------------------------------
+
+User-agent: PerplexityBot
+Allow: /
+
+# --------------------------------------------
+# Apple
+# --------------------------------------------
+
+User-agent: Applebot
+Allow: /
+
+# --------------------------------------------
+# Meta AI
+# --------------------------------------------
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# --------------------------------------------
+# Amazon
+# --------------------------------------------
+
+User-agent: Amazonbot
+Allow: /
+
+# --------------------------------------------
+# ByteDance
+# --------------------------------------------
+
+User-agent: Bytespider
+Allow: /
+
+# --------------------------------------------
+# Sitemap
+# --------------------------------------------
 
 Sitemap: https://velnixsolutions.com/sitemap.xml
