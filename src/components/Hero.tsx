@@ -140,7 +140,6 @@ const Hero = () => {
         ref={heroRef}
         className="relative isolate w-full overflow-hidden"
         style={{
-          minHeight: 'clamp(85vh, 90vh, 95vh)',
           background: C.black,
         }}
         aria-label="Velnix Solutions hero section"
