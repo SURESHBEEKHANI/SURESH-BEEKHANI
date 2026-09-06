@@ -111,7 +111,6 @@ const INDUSTRIES: Industry[] = [
 ───────────────────────────────────────────────────────────── */
 const Industries: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
@@ -133,16 +132,6 @@ const Industries: React.FC = () => {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [activeIndex, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (prefersReducedMotion || isAutoScrollPaused) return;
-
-    const timer = window.setInterval(() => {
-      moveTo(activeIndex + 1);
-    }, 5000);
-
-    return () => window.clearInterval(timer);
-  }, [activeIndex, isAutoScrollPaused, prefersReducedMotion]);
 
   return (
     <section id="industries" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
@@ -167,10 +156,6 @@ const Industries: React.FC = () => {
         <div
           className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
           style={{ scrollbarWidth: 'none' }}
-          onMouseEnter={() => setIsAutoScrollPaused(true)}
-          onMouseLeave={() => setIsAutoScrollPaused(false)}
-          onFocusCapture={() => setIsAutoScrollPaused(true)}
-          onBlurCapture={() => setIsAutoScrollPaused(false)}
         >
           {INDUSTRIES.map((industry, index) => {
             const isActive = activeIndex === index;
