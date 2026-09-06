@@ -29,7 +29,6 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
   const checkScrollButtons = useCallback(() => {
     const container = scrollContainerRef.current;
@@ -47,28 +46,8 @@ const IndustrySuccessStories: React.FC<IndustrySuccessStoriesProps> = ({
         ? Math.max(0, container.scrollLeft - cardWidth)
         : Math.min(container.scrollWidth - container.clientWidth, container.scrollLeft + cardWidth);
       container.scrollTo({ left: targetScroll, behavior: 'smooth' });
-      setIsAutoScrolling(false);
-      setTimeout(() => setIsAutoScrolling(true), 10000);
     }
   }, []);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container || !isAutoScrolling) return;
-    
-    const autoScrollInterval = setInterval(() => {
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      const currentScroll = container.scrollLeft;
-      
-      if (currentScroll >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollTo({ left: currentScroll + 400, behavior: 'smooth' });
-      }
-    }, 4000);
-    
-    return () => clearInterval(autoScrollInterval);
-  }, [isAutoScrolling]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;

@@ -306,7 +306,7 @@ const Testimonials = () => {
               key={activeIndex}
               initial={shouldReduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={shouldReduce ? false : { opacity: 0, y: -14 }}
+              exit={shouldReduce ? {} : { opacity: 0, y: -14 }}
               transition={{ duration: 0.35, ease }}
               className="grid grid-cols-1 gap-4 md:grid-cols-3"
             >
