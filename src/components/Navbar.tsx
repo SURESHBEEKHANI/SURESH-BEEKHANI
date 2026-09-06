@@ -634,12 +634,13 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
           >
             <img
-              src="/image/logo/logo1.png"
+              src="/image/logo/logo1.avif"
               alt="Velnix Solutions"
               style={{
                 height: 48,
                 width: 'auto',
                 objectFit: 'contain',
+                background: 'transparent',
               }}
               decoding="async"
             />

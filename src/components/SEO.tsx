@@ -252,7 +252,7 @@ function generateOrganizationSchema() {
     name: SITE_NAME,
     url: BASE_URL,
     '@id': `${BASE_URL}/#organization`,
-    logo: `${BASE_URL}/image/logo/logo1.png`,
+    logo: `${BASE_URL}/image/logo/logo1.avif`,
     description: DEFAULT_DESCRIPTION,
     contactPoint: {
       '@type': 'ContactPoint',

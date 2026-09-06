@@ -543,7 +543,7 @@ const Footer = () => {
                 >
                   <a href="/" aria-label="Velnix Solutions home">
                     <img
-                      src="/image/logo/logo1.png"
+                      src="/image/logo/logo1.avif"
                       alt="Velnix Solutions"
                       style={{ height: 56, width: 'auto', objectFit: 'contain' }}
                     />
