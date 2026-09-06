@@ -35,7 +35,7 @@ interface NavGroup { label: string; href?: string; items?: NavItem[] }
 
 const NAV: NavGroup[] = [
   {
-    label: 'Solutions',
+    label: 'Services',
     items: [
       { label: 'AI Development',           href: '/ai-development',             icon: Sparkles,      desc: 'Custom AI systems built for your business.' },
       { label: 'AI Automation',             href: '/ai-automation',              icon: Zap,           desc: 'Eliminate manual work with intelligent workflows.' },
@@ -291,7 +291,7 @@ const DesktopNavItem = ({
             <DesktopDropdown
               items={group.items!}
               variant={
-                group.label === 'Solutions'
+                group.label === 'Services'
                   ? 'solutions'
                   : group.label === 'Industries'
                     ? 'industries'

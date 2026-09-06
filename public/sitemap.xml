@@ -1,31 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://velnixsolutions.com/</loc></url>
-  <url><loc>https://velnixsolutions.com/about</loc></url>
-  <url><loc>https://velnixsolutions.com/contact</loc></url>
-  <url><loc>https://velnixsolutions.com/blogs</loc></url>
-  <url><loc>https://velnixsolutions.com/portfolio</loc></url>
-  <url><loc>https://velnixsolutions.com/careers</loc></url>
-  <url><loc>https://velnixsolutions.com/ai-development</loc></url>
-  <url><loc>https://velnixsolutions.com/ai-automation</loc></url>
-  <url><loc>https://velnixsolutions.com/agentic-ai</loc></url>
-  <url><loc>https://velnixsolutions.com/ai-chatbot-development</loc></url>
-  <url><loc>https://velnixsolutions.com/predictive-modelling</loc></url>
-  <url><loc>https://velnixsolutions.com/natural-language-processing</loc></url>
-  <url><loc>https://velnixsolutions.com/machine-learning</loc></url>
-  <url><loc>https://velnixsolutions.com/computer-vision</loc></url>
-  <url><loc>https://velnixsolutions.com/custom-software-development</loc></url>
-  <url><loc>https://velnixsolutions.com/web-development</loc></url>
-  <url><loc>https://velnixsolutions.com/app-development</loc></url>
-  <url><loc>https://velnixsolutions.com/devops</loc></url>
-  <url><loc>https://velnixsolutions.com/big-data-analytics</loc></url>
-  <url><loc>https://velnixsolutions.com/ai-audit</loc></url>
-  <url><loc>https://velnixsolutions.com/healthcare</loc></url>
-  <url><loc>https://velnixsolutions.com/fintech</loc></url>
-  <url><loc>https://velnixsolutions.com/education</loc></url>
-  <url><loc>https://velnixsolutions.com/e-commerce</loc></url>
-  <url><loc>https://velnixsolutions.com/food-and-groceries</loc></url>
-  <url><loc>https://velnixsolutions.com/travel-and-tourism</loc></url>
-  <url><loc>https://velnixsolutions.com/insurance</loc></url>
-  <url><loc>https://velnixsolutions.com/on-demand</loc></url>
+
+  <!-- =====================================================
+       VELNIX SOLUTIONS — MAIN PAGES
+       ===================================================== -->
+
+  <url>
+    <loc>https://velnixsolutions.com/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/about</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/contact</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/blogs</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/portfolio</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/careers</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+
+  <!-- =====================================================
+       AI DEVELOPMENT SERVICES
+       ===================================================== -->
+
+  <url>
+    <loc>https://velnixsolutions.com/ai-development</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/ai-automation</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/agentic-ai</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/ai-chatbot-development</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/predictive-modelling</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/natural-language-processing</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/machine-learning</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/computer-vision</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/ai-audit</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+
+  <!-- =====================================================
+       SOFTWARE DEVELOPMENT SERVICES
+       ===================================================== -->
+
+  <url>
+    <loc>https://velnixsolutions.com/custom-software-development</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/web-development</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/app-development</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/devops</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/big-data-analytics</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+
+  <!-- =====================================================
+       INDUSTRY SOLUTIONS
+       ===================================================== -->
+
+  <url>
+    <loc>https://velnixsolutions.com/healthcare</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/fintech</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/education</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/e-commerce</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/food-and-groceries</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/travel-and-tourism</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/insurance</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/on-demand</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
 </urlset>
