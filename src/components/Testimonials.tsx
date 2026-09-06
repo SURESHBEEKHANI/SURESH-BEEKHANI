@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Quote, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS (Velnix Locked Color System)
@@ -17,6 +17,14 @@ const C = {
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const getInitials = (name: string) => name
+  .split(' ')
+  .filter(Boolean)
+  .map((part) => part[0])
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
 
 interface Testimonial {
   id: number;
@@ -106,6 +114,114 @@ const TESTIMONIALS: Testimonial[] = [
     solution: "Context-aware RAG Intelligent Chatbot.",
     outcome: "85% automated query resolution.",
   },
+  {
+    id: 7,
+    name: "Dr. Michael Williams",
+    role: "Chief Medical Officer",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "Velnix demonstrated a strong understanding of the realities of modern healthcare operations. Their AI approach helped us rethink how administrative workflows could be automated without disrupting clinical teams.",
+    image: "",
+    problem: "Administrative workflows slowed clinical operations.",
+    solution: "Healthcare workflow automation strategy.",
+    outcome: "More efficient administration without disrupting clinical teams.",
+  },
+  {
+    id: 8,
+    name: "Dr. Sarah Anderson",
+    role: "Medical Director",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "The team understood both the clinical and operational requirements of our organization. Their intelligent automation approach created a more connected workflow for our staff and patients.",
+    image: "",
+    problem: "Disconnected workflows between staff and patients.",
+    solution: "Connected intelligent automation workflows.",
+    outcome: "A more coordinated operational experience.",
+  },
+  {
+    id: 9,
+    name: "Dr. Robert Khan",
+    role: "Director of Clinical Informatics",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "What impressed us was Velnix's ability to translate complex healthcare workflows into practical AI systems. Their focus remained firmly on efficiency, usability, and measurable outcomes.",
+    image: "",
+    problem: "Complex healthcare workflows were difficult to optimize.",
+    solution: "Practical AI systems for clinical informatics.",
+    outcome: "Improved efficiency with measurable outcomes.",
+  },
+  {
+    id: 10,
+    name: "Dr. Emily Morgan",
+    role: "VP of Healthcare Technology",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "Velnix combines strong AI engineering with a genuine understanding of healthcare technology. They approached our challenges strategically and delivered a solution designed for real-world clinical environments.",
+    image: "",
+    problem: "Healthcare technology needed to work in real clinical environments.",
+    solution: "Strategic AI engineering for healthcare technology.",
+    outcome: "A practical solution designed for clinical use.",
+  },
+  {
+    id: 11,
+    name: "Dr. James Lewis",
+    role: "Healthcare Operations Director",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "Their team brought an impressive level of technical depth to healthcare automation. Velnix helped us identify opportunities where AI could reduce operational friction while supporting our teams.",
+    image: "",
+    problem: "Operational friction limited team productivity.",
+    solution: "Technical healthcare automation assessment.",
+    outcome: "Clearer opportunities to reduce operational friction.",
+  },
+  {
+    id: 12,
+    name: "Dr. Amanda Nelson",
+    role: "Healthcare Innovation Director",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "Velnix understands that successful healthcare AI must work within existing clinical and operational processes. Their approach was thoughtful, scalable, and focused on practical implementation.",
+    image: "",
+    problem: "New AI initiatives needed to fit existing processes.",
+    solution: "Scalable AI implementation within healthcare operations.",
+    outcome: "Thoughtful automation aligned with existing workflows.",
+  },
+  {
+    id: 13,
+    name: "Dr. Daniel Thompson",
+    role: "Hospital Operations Director",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "The combination of AI expertise and healthcare workflow knowledge made Velnix a valuable technology partner. They helped turn a complex operational challenge into an intelligent system.",
+    image: "",
+    problem: "A complex hospital operations challenge needed a clear solution.",
+    solution: "Intelligent system design grounded in healthcare workflows.",
+    outcome: "A complex challenge became a practical intelligent system.",
+  },
+  {
+    id: 14,
+    name: "Dr. Christopher Lee",
+    role: "Director of Digital Health",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "Velnix showed a clear understanding of how technology can support healthcare organizations without adding unnecessary complexity. Their engineering and strategic execution were both impressive.",
+    image: "",
+    problem: "Healthcare technology risked adding unnecessary complexity.",
+    solution: "Disciplined digital health engineering and strategy.",
+    outcome: "Effective technology support without extra complexity.",
+  },
+  {
+    id: 15,
+    name: "Dr. Natalie Parker",
+    role: "Chief Digital Health Officer",
+    company: "Healthcare Organization",
+    category: "Healthcare AI",
+    quote: "From workflow automation to intelligent decision support, Velnix approached our requirements with strong technical discipline and a clear understanding of healthcare's unique demands.",
+    image: "",
+    problem: "Healthcare teams needed automation and decision support together.",
+    solution: "Workflow automation and intelligent decision support.",
+    outcome: "A disciplined approach aligned with healthcare demands.",
+  },
 ];
 
 const Testimonials = () => {
@@ -114,6 +230,11 @@ const Testimonials = () => {
   const shouldReduce = useReducedMotion();
 
   const featured = TESTIMONIALS[activeIndex];
+  const visibleTestimonials = [
+    TESTIMONIALS[(activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length],
+    featured,
+    TESTIMONIALS[(activeIndex + 1) % TESTIMONIALS.length],
+  ];
 
   // Auto-play effect: changes active testimonial every 5 seconds unless paused
   useEffect(() => {
@@ -137,7 +258,7 @@ const Testimonials = () => {
   return (
     <section 
       className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
-      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
+      style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
       aria-label="Client Proof & Testimonials"
     >
       {/* Ambient background glows */}
@@ -158,149 +279,124 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-4"
+              className="mb-4 flex items-center gap-3"
             >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
-                  CLIENT PROOF & VERIFIED FEEDBACK
-                </span>
+              <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+                CLIENT TESTIMONIALS
               </span>
             </motion.div>
 
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Trusted To Turn Complex Problems Into{' '}
-              <span style={{ color: C.lime }}>Better Systems.</span>
+              Built with Velnix. <span style={{ color: C.lime }}>Proven in the real world.</span>
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-white/60 font-normal max-w-md leading-relaxed">
-            Real feedback from business owners, VPs of Engineering, and Product Directors who partnered with Velnix to build intelligent software and automated workflows.
-          </p>
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            SPOTLIGHT FEATURED TESTIMONIAL (AUTO-PLAY 5s)
+            TESTIMONIAL CARDS (AUTO-PLAY 5s)
         ══════════════════════════════════════════════════════ */}
         <div 
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div 
-            className="p-6 sm:p-8 lg:p-10 relative overflow-hidden"
-            style={{
-              background: C.graphite,
-              border: `1px solid ${C.wa(0.12)}`,
-              boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
-            }}
-          >
-            {/* Top Badge & Controls */}
-            <div className="flex items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={16} color={C.lime} />
-                <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF00]">
-                  Verified Client Partner
-                </span>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrev}
-                  className="p-2 transition-all duration-200"
-                  style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.1)}`, color: C.white }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = C.la(0.1); e.currentTarget.style.borderColor = C.lime; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = C.wa(0.04); e.currentTarget.style.borderColor = C.wa(0.1); }}
-                  aria-label="Previous testimonial"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={shouldReduce ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={shouldReduce ? false : { opacity: 0, y: -14 }}
+              transition={{ duration: 0.35, ease }}
+              className="grid grid-cols-1 gap-4 md:grid-cols-3"
+            >
+              {visibleTestimonials.map((testimonial) => (
+                <article
+                  key={testimonial.id}
+                  className="flex min-h-[260px] flex-col p-6 sm:p-7"
+                  style={{ background: 'rgba(8,8,14,0.98)', border: `1px solid ${C.wa(0.08)}`, boxShadow: '0 18px 40px rgba(0,0,0,0.3)' }}
                 >
-                  <ChevronLeft size={16} />
-                </button>
-                <span className="text-xs text-white/40 font-mono px-2">
-                  0{activeIndex + 1} / 0{TESTIMONIALS.length}
-                </span>
-                <button
-                  onClick={handleNext}
-                  className="p-2 transition-all duration-200"
-                  style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.1)}`, color: C.white }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = C.la(0.1); e.currentTarget.style.borderColor = C.lime; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = C.wa(0.04); e.currentTarget.style.borderColor = C.wa(0.1); }}
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-            </div>
-
-            {/* Testimonial Quote & Context */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={featured.id}
-                initial={shouldReduce ? false : { opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={shouldReduce ? false : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.35, ease }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-              >
-                {/* Left: Quote & Attribution */}
-                <div className="lg:col-span-7 flex flex-col justify-between">
-                  <div>
-                    <Quote size={36} color={C.la(0.25)} className="mb-4" />
-                    <blockquote className="text-base sm:text-xl font-medium text-white/95 leading-relaxed mb-8 italic">
-                      "{featured.quote}"
+                  <div className="mt-7">
+                    <div className="mb-5 flex gap-1" aria-label="5 out of 5 stars">
+                      {Array.from({ length: 5 }).map((_, index) => <Star key={index} size={14} fill={C.lime} color={C.lime} strokeWidth={1.5} />)}
+                    </div>
+                    <blockquote className="text-sm font-medium leading-6 text-white/85 sm:text-base">
+                      &quot;{testimonial.quote}&quot;
                     </blockquote>
                   </div>
-
-                  <div className="flex items-center gap-4 pt-4 border-t border-white/10">
-                    <img
-                      src={featured.image}
-                      alt={featured.name}
-                      className="w-12 h-12 rounded-full object-cover shrink-0"
-                      style={{ border: `2px solid ${C.lime}` }}
-                    />
+                  <div className="mt-auto flex items-center gap-3 pt-8">
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#111111]"
+                      style={{ background: `linear-gradient(135deg, ${C.lime} 0%, #B8C5FF 100%)` }}
+                      aria-hidden="true"
+                    >
+                      {getInitials(testimonial.name)}
+                    </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white">{featured.name}</h3>
-                      <p className="text-xs text-white/60">{featured.role} • <strong className="text-white/80">{featured.company}</strong></p>
+                      <h3 className="text-sm font-bold text-white">{testimonial.name}</h3>
+                      <p className="text-xs text-white/50">{testimonial.role}</p>
                     </div>
                   </div>
-                </div>
+                </article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
-                {/* Right: Problem -> Solution -> Outcome Summary */}
-                <div 
-                  className="lg:col-span-5 p-6 space-y-4"
-                  style={{ background: C.wa(0.02), border: `1px solid ${C.wa(0.08)}` }}
-                >
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#B6FF00] border-b border-white/10 pb-2">
-                    Operational Context
-                  </div>
-
-                  <div className="space-y-3 text-xs leading-relaxed">
-                    <div>
-                      <span className="text-white/50 block font-semibold uppercase text-[10px]">Business Challenge</span>
-                      <span className="text-white/80 font-medium">{featured.problem}</span>
-                    </div>
-
-                    <div>
-                      <span className="text-white/50 block font-semibold uppercase text-[10px]">Velnix Solution</span>
-                      <span className="text-white/80 font-medium">{featured.solution}</span>
-                    </div>
-
-                    <div className="pt-2 border-t border-white/5">
-                      <span className="text-[#B6FF00] block font-bold uppercase text-[10px]">Key Outcome</span>
-                      <span className="text-white font-bold text-sm">{featured.outcome}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
+          <div className="mx-auto mt-7 flex items-center justify-center gap-4">
+            <button onClick={handlePrev} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.12)}`, color: C.white }} aria-label="Previous testimonial">
+              <ChevronLeft size={16} />
+            </button>
+            <div className="flex w-40 flex-col items-center gap-2">
+              <span className="min-w-16 text-center font-mono text-xs text-white/45">{activeIndex + 1} / {TESTIMONIALS.length}</span>
+              <div className="h-1 w-full overflow-hidden rounded-full bg-white/10" aria-hidden="true">
+                <motion.div
+                  className="h-full rounded-full bg-[#B6FF00]"
+                  animate={{ width: `${((activeIndex + 1) / TESTIMONIALS.length) * 100}%` }}
+                  transition={{ duration: 0.3, ease }}
+                />
+              </div>
+            </div>
+            <button onClick={handleNext} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.12)}`, color: C.white }} aria-label="Next testimonial">
+              <ChevronRight size={16} />
+            </button>
           </div>
         </div>
+
+        <motion.div
+          initial={shouldReduce ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.55, ease }}
+          className="mt-14 border-t border-white/10 pt-12 text-center sm:mt-16 sm:pt-14"
+        >
+          <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[#B6FF00]">
+            <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+            Industry Platforms
+            <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+          </div>
+          <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Recognized across leading industry platforms.
+          </h2>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/35 sm:gap-x-12">
+            <span>PASHA</span>
+            <span>Clutch</span>
+            <span>GoodFirms</span>
+            <span>SoftwareWorld</span>
+            <span>P@SHA ICT Awards</span>
+          </div>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-white/35">
+            <span>AI Development</span>
+            <span className="text-[#B6FF00]">·</span>
+            <span>Custom Software</span>
+            <span className="text-[#B6FF00]">·</span>
+            <span>Automation</span>
+            <span className="text-[#B6FF00]">·</span>
+            <span>Data Science</span>
+          </div>
+          <div className="mt-5 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-white/30">
+            Trusted technology partner <span className="mx-2 text-[#B6FF00]">·</span> Global delivery <span className="mx-2 text-[#B6FF00]">·</span> Enterprise-ready engineering
+          </div>
+        </motion.div>
 
       </div>
     </section>

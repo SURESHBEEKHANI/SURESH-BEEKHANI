@@ -391,6 +391,7 @@ const HERO_IMAGES = [
 
 const HeroSystemVisual = () => {
   const [imageIndex, setImageIndex] = useState(0);
+  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
     const imageRotation = window.setInterval(() => {
