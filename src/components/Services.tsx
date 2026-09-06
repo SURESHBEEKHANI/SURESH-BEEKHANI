@@ -546,7 +546,7 @@ const ServiceRow: React.FC<{
       initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: 0.12 + index * 0.045, ease: [0.22, 1, 0.36, 1] }}
-      className="group border-t last:border-b"
+      className="group w-full border-t last:border-b"
       style={{
         borderColor: isExpanded ? 'rgba(182, 255, 0, 0.34)' : 'rgba(255, 255, 255, 0.14)',
         background: isExpanded ? 'rgba(182, 255, 0, 0.06)' : 'transparent',
@@ -559,7 +559,7 @@ const ServiceRow: React.FC<{
         onClick={onToggle}
         aria-expanded={isExpanded}
         aria-controls={panelId}
-        className="flex w-full items-center gap-4 py-6 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-inset sm:gap-8 sm:py-8 lg:gap-12 lg:py-9"
+        className="flex w-full items-center gap-4 px-4 py-6 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-inset sm:gap-8 sm:px-6 sm:py-8 lg:gap-12 lg:px-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))] lg:py-9"
       >
         <span className="w-10 shrink-0 font-mono text-xs tracking-[0.12em] sm:w-14 sm:text-sm" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
           {String(index + 1).padStart(2, '0')}
@@ -586,9 +586,9 @@ const ServiceRow: React.FC<{
         transition={{ duration: prefersReducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
         style={{ overflow: 'hidden' }}
       >
-        <div className="grid gap-8 pb-8 pl-14 sm:grid-cols-[1fr_220px] sm:pb-10 sm:pl-[5.5rem] lg:grid-cols-[1fr_280px] lg:gap-16 lg:pl-28">
+        <div className="grid gap-8 px-4 pb-8 pl-14 sm:grid-cols-[minmax(0,1fr)_220px] sm:px-6 sm:pb-10 sm:pl-[5.5rem] lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16 lg:pl-[max(7rem,calc((100vw-1320px)/2+7rem))] lg:pr-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))]">
           <div>
-            <p className="max-w-2xl text-sm leading-7 sm:text-base" style={{ color: 'rgba(255,255,255,0.64)' }}>{detail.description}</p>
+            <p className="max-w-3xl text-sm leading-7 sm:text-base" style={{ color: 'rgba(255,255,255,0.64)' }}>{detail.description}</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {detail.benefits.slice(0, 4).map((benefit) => (
                 <div key={benefit.title} className="flex items-start gap-2 text-xs leading-5" style={{ color: 'rgba(255,255,255,0.58)' }}>
@@ -597,7 +597,7 @@ const ServiceRow: React.FC<{
                 </div>
               ))}
             </div>
-            <button type="button" onClick={() => onNavigate(service)} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#B6FF00] px-5 py-3 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" aria-label={`Explore ${detail.title} service`}>
+            <button type="button" onClick={() => onNavigate(service)} className="mt-7 inline-flex min-w-[180px] items-center justify-center gap-2 rounded-full bg-[#B6FF00] px-5 py-3 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" aria-label={`Explore ${detail.title} service`}>
               Explore Service <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
@@ -629,7 +629,7 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="pb-8 pt-20 md:pb-10 md:pt-28 lg:pb-12 lg:pt-32 relative overflow-hidden scroll-mt-20"
+      className="pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20 relative overflow-hidden scroll-mt-20"
       style={{ background: C.BLACK }}
       aria-label="Services We Offer"
     >
@@ -682,11 +682,16 @@ const Services = () => {
 
         {/* ── Section Header ───────────────────────────────────── */}
         <motion.div
-          className="mb-12 grid gap-x-8 gap-y-2 pb-12 sm:mb-16 sm:gap-y-3 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-x-16 lg:gap-y-3 lg:pb-20"
+          className="mb-4 grid gap-x-8 gap-y-2 pb-0 sm:mb-6 sm:gap-y-3 sm:pb-0 lg:mb-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-x-16 lg:gap-y-3 lg:pb-0"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
+
+          <div className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00] lg:col-span-2">
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+            Our Services
+          </div>
 
           {/* H2 */}
           <h2
@@ -707,7 +712,7 @@ const Services = () => {
           </div>
         </motion.div>
 
-        <div aria-label="Available services">
+        <div className="relative left-1/2 w-screen -translate-x-1/2" aria-label="Available services">
           {SERVICES.slice(0, showAllServices ? SERVICES.length : 5).map((service, index) => (
             <ServiceRow
               key={service}

@@ -142,7 +142,7 @@ const SiteCursor = () => {
       `}</style>
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed left-0 top-0 z-[100] hidden transition-[width,height,color,opacity] duration-200 md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[110] hidden transition-[width,height,color,opacity] duration-200 md:block"
         aria-hidden="true"
         style={{
           width: 22,
@@ -158,6 +158,9 @@ const SiteCursor = () => {
             border: '1px solid currentColor',
             animation: 'velnix-cursor-pulse 2.2s ease-in-out infinite',
           }}
+        />
+        <span
+          className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-current"
         />
       </div>
     </>

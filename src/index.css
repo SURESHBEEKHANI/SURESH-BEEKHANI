@@ -115,6 +115,14 @@
     position: relative;
   }
 
+  @media (pointer: fine) and (min-width: 768px) {
+    *,
+    *::before,
+    *::after {
+      cursor: none !important;
+    }
+  }
+
   /* Force scrollbar to always show on body only */
   body::-webkit-scrollbar {
     width: 22px !important;

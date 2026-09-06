@@ -170,12 +170,17 @@ const DesktopDropdown = ({
                     style={{
                       width: 34,
                       height: 34,
-                      background: C.la(0.08),
-                      border: `1px solid ${C.la(0.22)}`,
-                      color: variant === 'industries' ? C.green : C.lime,
+                      background: variant === 'industries'
+                        ? `linear-gradient(145deg, ${C.green} 0%, #4f8f00 100%)`
+                        : `linear-gradient(145deg, ${C.lime} 0%, ${C.green} 100%)`,
+                      border: `1px solid ${variant === 'industries' ? C.green : C.lime}`,
+                      color: C.black,
+                      boxShadow: `inset 2px 2px 0 rgba(255,255,255,0.3), inset -2px -2px 0 rgba(0,0,0,0.22), 0 4px 0 rgba(0,0,0,0.28), 0 7px 14px ${variant === 'industries' ? C.ga(0.18) : C.la(0.18)}`,
+                      transform: 'translateY(-1px)',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                     }}
                   >
-                    <Icon size={16} strokeWidth={1.75} />
+                    <Icon size={16} strokeWidth={2.25} />
                   </span>
                 )}
                 <span className="flex flex-col gap-0.5 min-w-0">
@@ -199,15 +204,17 @@ const DesktopDropdown = ({
               key={item.href}
               href={item.href}
               className="flex items-center gap-3 px-5 py-3 transition-all duration-150"
-              style={{ fontSize: '0.85rem', fontWeight: 500, color: C.wa(0.75), textDecoration: 'none' }}
+              style={{ fontSize: '0.85rem', fontWeight: 500, color: C.wa(0.75), textDecoration: 'none', background: C.graphite }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.color = C.lime;
+                el.style.background = C.la(0.06);
                 el.style.paddingLeft = '1.375rem';
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.color = C.wa(0.75);
+                el.style.background = C.graphite;
                 el.style.paddingLeft = '1.25rem';
               }}
             >
@@ -586,12 +593,17 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
       <style>{`
         .velnix-nav-link { transition: color 0.2s; }
         .velnix-nav-link:focus-visible { outline: 2px solid #B6FF00; outline-offset: 2px; }
+        @media (pointer: fine) {
+          .velnix-navbar-cursor,
+          .velnix-navbar-cursor * { cursor: none !important; }
+        }
       `}</style>
 
       {/* ── NAVBAR ── */}
       <nav
         role="navigation"
         aria-label="Main navigation"
+        className="velnix-navbar-cursor"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
