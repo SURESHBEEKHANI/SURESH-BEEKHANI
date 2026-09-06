@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, MessageSquare, Search, FileText, Rocket } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System
@@ -166,9 +167,18 @@ const DesktopStepCard: React.FC<{
   onLeave: () => void;
 }> = ({ step, index, active, isLast, onEnter, onLeave }) => {
   const Icon = step.icon;
+  const shouldReduce = useReducedMotion();
 
   return (
-    <div className="relative flex flex-col items-center" style={{ flex: 1 }}>
+    <motion.div
+      className="relative flex flex-col items-center"
+      style={{ flex: 1 }}
+      initial={shouldReduce ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={shouldReduce ? undefined : { y: -4 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+    >
 
       {/* Timeline node + connector */}
       <div className="relative w-full flex items-center justify-center mb-6">
@@ -193,8 +203,8 @@ const DesktopStepCard: React.FC<{
         <div
           className="relative z-10 flex items-center justify-center"
           style={{
-            width: 44,
-            height: 44,
+            width: 48,
+            height: 48,
             borderRadius: '50%',
             background: active ? C.la(0.15) : C.wa(0.04),
             border: `1.5px solid ${active ? C.lime : C.wa(0.12)}`,
@@ -228,9 +238,11 @@ const DesktopStepCard: React.FC<{
       <div
         className="w-full mx-1 flex flex-col cursor-default"
         style={{
-          background: active ? C.graphite : 'transparent',
-          border: `1px solid ${active ? C.la(0.28) : C.wa(0.07)}`,
-          padding: '20px 18px',
+            background: active
+              ? `linear-gradient(160deg, ${C.graphite} 0%, rgba(17,17,17,0.88) 100%)`
+              : 'rgba(17,17,17,0.72)',
+            border: `1px solid ${active ? C.la(0.38) : C.wa(0.18)}`,
+            padding: '22px 20px',
           transition: 'all 0.3s ease',
           transform: active ? 'translateY(-3px)' : 'translateY(0)',
           boxShadow: active ? `0 10px 36px ${C.la(0.1)}` : 'none',
@@ -266,15 +278,15 @@ const DesktopStepCard: React.FC<{
         {/* Title */}
         <h3
           className="text-sm font-extrabold leading-snug mb-2"
-          style={{ color: active ? C.white : C.wa(0.6), transition: 'color 0.3s' }}
+            style={{ color: active ? C.white : C.wa(0.82), transition: 'color 0.3s' }}
         >
           {step.title}
         </h3>
 
         {/* Description */}
         <p
-          className="text-[0.7rem] leading-relaxed mb-4"
-          style={{ color: active ? C.wa(0.65) : C.wa(0.3), transition: 'color 0.3s' }}
+          className="text-[0.75rem] leading-relaxed mb-4"
+          style={{ color: active ? C.wa(0.72) : C.wa(0.58), transition: 'color 0.3s' }}
         >
           {step.description}
         </p>
@@ -284,15 +296,15 @@ const DesktopStepCard: React.FC<{
           {step.bullets.map((b) => (
             <li
               key={b}
-              className="flex items-center gap-2 text-[0.63rem]"
-              style={{ color: active ? C.wa(0.55) : C.wa(0.2), transition: 'color 0.3s' }}
+              className="flex items-center gap-2 text-[0.68rem]"
+              style={{ color: active ? C.wa(0.68) : C.wa(0.5), transition: 'color 0.3s' }}
             >
               <span
                 style={{
                   width: 3,
                   height: 3,
                   borderRadius: '50%',
-                  background: active ? C.lime : C.wa(0.18),
+                  background: active ? C.lime : C.wa(0.38),
                   flexShrink: 0,
                   transition: 'background 0.3s',
                 }}
@@ -314,7 +326,7 @@ const DesktopStepCard: React.FC<{
           aria-hidden="true"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -436,26 +448,9 @@ const Approach: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div className="max-w-2xl">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-5">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{ border: `1px solid ${C.la(0.3)}`, background: C.la(0.06) }}
-              >
-                <span
-                  style={{
-                    width: 6, height: 6, borderRadius: '50%',
-                    background: C.lime, boxShadow: `0 0 8px ${C.lime}`,
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: '0.62rem', fontWeight: 700,
-                    color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase',
-                  }}
-                >
-                  HOW WE WORK
-                </span>
-              </span>
+            <div className="mb-5 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+              <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+              HOW WE WORK
             </div>
 
             <h2
