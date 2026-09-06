@@ -111,6 +111,7 @@ const INDUSTRIES: Industry[] = [
 ───────────────────────────────────────────────────────────── */
 const Industries: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
@@ -133,6 +134,16 @@ const Industries: React.FC = () => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [activeIndex, prefersReducedMotion]);
 
+  useEffect(() => {
+    if (prefersReducedMotion || isAutoScrollPaused) return;
+
+    const timer = window.setInterval(() => {
+      moveTo(activeIndex + 1);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [activeIndex, isAutoScrollPaused, prefersReducedMotion]);
+
   return (
     <section id="industries" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)', filter: 'blur(10px)' }} />
@@ -153,7 +164,14 @@ const Industries: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12" style={{ scrollbarWidth: 'none' }}>
+        <div
+          className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
+          style={{ scrollbarWidth: 'none' }}
+          onMouseEnter={() => setIsAutoScrollPaused(true)}
+          onMouseLeave={() => setIsAutoScrollPaused(false)}
+          onFocusCapture={() => setIsAutoScrollPaused(true)}
+          onBlurCapture={() => setIsAutoScrollPaused(false)}
+        >
           {INDUSTRIES.map((industry, index) => {
             const isActive = activeIndex === index;
             return (
@@ -161,7 +179,7 @@ const Industries: React.FC = () => {
                 <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
                   <div className="relative h-[500px] overflow-hidden sm:h-[540px]">
                     <img src={industry.image} alt={`${industry.name} industry solution`} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.78) 0%, rgba(5,5,5,0.48) 28%, rgba(5,5,5,0.7) 64%, rgba(5,5,5,0.98) 100%)' }} />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.28) 34%, rgba(8,42,8,0.42) 64%, rgba(45,105,0,0.88) 100%)' }} />
                     <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">
                       <div className="text-lg font-bold tracking-[-0.02em]" style={{ color: C.WHITE, textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>{industry.name}</div>
                       <p className="mt-2 max-w-[27ch] text-xs leading-5 sm:text-sm" style={{ color: C.WHITE_MUTED, textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>{industry.challenge}</p>
