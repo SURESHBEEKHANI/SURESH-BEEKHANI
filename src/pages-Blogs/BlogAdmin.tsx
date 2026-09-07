@@ -228,7 +228,7 @@ const BlogAdmin: React.FC = () => {
     }
   };
 
-  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp", "image/avif"];
 
   const uploadBlogImage = async (file: File, prefix: "cover" | "content") => {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -236,7 +236,7 @@ const BlogAdmin: React.FC = () => {
     if (!user) throw new Error("You must be signed in to upload images.");
 
     if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
-      throw new Error(`File type "${file.type || "unknown"}" is not allowed. Use JPG, PNG, GIF, or WebP.`);
+      throw new Error(`File type "${file.type || "unknown"}" is not allowed. Use JPG, PNG, GIF, WebP, or AVIF.`);
     }
 
     const fileExt = file.name.split(".").pop()?.toLowerCase() || "jpg";
@@ -372,6 +372,11 @@ const BlogAdmin: React.FC = () => {
       if (!editingBlog?.title?.trim() || !editingBlog?.content?.trim()) {
         toast.error("Title and content are required!");
         return;
+      }
+
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError || !user) {
+        throw new Error("Your admin session has expired. Please sign in again.");
       }
 
       // Destructure to remove fields that shouldn't be in the update payload
@@ -840,7 +845,7 @@ const BlogAdmin: React.FC = () => {
                         <span className="font-bold text-xs tracking-wider uppercase">
                           {uploadingImage ? "Uploading..." : "Upload New Cover"}
                         </span>
-                        <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploadingImage} />
+                        <input type="file" accept="image/jpeg,image/png,image/gif,image/webp,image/avif" className="hidden" onChange={handleImageUpload} disabled={uploadingImage} />
                       </label>
                     </div>
                   </div>
@@ -908,7 +913,7 @@ const BlogAdmin: React.FC = () => {
                       <button type="button" onClick={() => insertMarkdown('```\n', '\n```')} className="p-2 text-gray-400 hover:text-white hover:bg-[#334155] transition flex items-center justify-center rounded-md" title="Code Block text"><Code size={18} /></button>
                       <label className="p-2 text-gray-400 hover:text-white hover:bg-[#334155] cursor-pointer transition flex items-center justify-center rounded-md" title="Upload Image">
                         <ImageIcon size={18} />
-                        <input type="file" accept="image/*" className="hidden" onChange={handleContentImageUpload} disabled={uploadingContentImage} />
+                        <input type="file" accept="image/jpeg,image/png,image/gif,image/webp,image/avif" className="hidden" onChange={handleContentImageUpload} disabled={uploadingContentImage} />
                       </label>
                     </div>
 

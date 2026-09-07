@@ -32,6 +32,9 @@ const CATEGORIES = [
   { id: "ai-development", label: "Software & AI Systems" },
   { id: "machine-deep-learning", label: "Data & Analytics" },
   { id: "chatbot-development", label: "Conversational AI" },
+  { id: "chatgpt-integration", label: "AI Integrations" },
+  { id: "computer-vision", label: "Computer Vision" },
+  { id: "nlp", label: "Language Intelligence" },
   { id: "predictive-modeling", label: "Operational Insights" },
 ];
 
@@ -55,6 +58,7 @@ const Blogs: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const [sidebarEmail, setSidebarEmail] = useState("");
   const [isSidebarSubmitting, setIsSidebarSubmitting] = useState(false);
@@ -106,6 +110,7 @@ const Blogs: React.FC = () => {
   const fetchPublishedBlogs = async (search = "") => {
     try {
       setLoading(true);
+      setFetchError(false);
       let query = supabase
         .from("blogs")
         .select("*")
@@ -121,6 +126,7 @@ const Blogs: React.FC = () => {
       setBlogs(data || []);
     } catch (error) {
       console.error("Error fetching published blogs:", error);
+      setFetchError(true);
     } finally {
       setLoading(false);
     }
@@ -196,6 +202,15 @@ const Blogs: React.FC = () => {
     const minutes = Math.ceil(words / 200);
     return `${minutes} min read`;
   };
+
+  const getExcerpt = (content: string, length = 180) => content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/[#>*_`[\]()]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, length)
+    .concat(content.length > length ? '...' : '');
 
   const renderContent = (content: string) => {
     const renderInline = (text: string, baseKey: string): React.ReactNode[] => {
@@ -462,7 +477,7 @@ const Blogs: React.FC = () => {
                     {selectedBlog.category || 'Strategic Insight'}
                   </span>
 
-                  <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight mb-6">
+                  <h1 className="max-w-4xl text-3xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
                     {selectedBlog.title}
                   </h1>
 
@@ -592,7 +607,7 @@ const Blogs: React.FC = () => {
 
                   </h3>
                   <p className="text-xs text-white/60 leading-relaxed mb-4">
-                    Have a question about AI, product development, or your next project? **Start a conversation with our team.
+                    Have a question about AI, product development, or your next project? Start a conversation with our team.
                   </p>
 
                   {isSidebarSubscribed ? (
@@ -693,7 +708,12 @@ const Blogs: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
-          <div className="max-w-3xl mb-12 sm:mb-16">
+          <div className="mb-12 grid max-w-6xl gap-8 sm:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-3xl">
+              <div className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
+                <span className="h-px w-10 bg-[#B6FF00]" aria-hidden="true" />
+                Velnix editorial desk
+              </div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -721,8 +741,13 @@ const Blogs: React.FC = () => {
                 fontWeight: 400,
               }}
             >
-              Practical intelligence, engineering frameworks, and strategic guidance for SMBs decision-makers evaluating AI, automation, software, and workflow optimization.
+              Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
             </motion.p>
+            </div>
+            <div className="hidden border-l border-white/15 pl-6 lg:block">
+              <p className="text-3xl font-semibold text-white">{blogs.length || '—'}</p>
+              <p className="mt-1 max-w-[8rem] text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] text-white/45">Published insights</p>
+            </div>
           </div>
 
           {/* ══════════════════════════════════════════════════════
@@ -827,7 +852,9 @@ const Blogs: React.FC = () => {
                 Featured Strategic Insight
               </span>
 
-              <div 
+              <article
+                role="button"
+                tabIndex={0}
                 className="group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 transition-all duration-300"
                 style={{
                   background: C.graphite,
@@ -839,6 +866,9 @@ const Blogs: React.FC = () => {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = C.wa(0.12);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setSearchParams({ article: featuredBlog.id });
                 }}
               >
                 {/* Image */}
@@ -869,7 +899,7 @@ const Blogs: React.FC = () => {
                     </h2>
 
                     <p className="text-xs sm:text-sm text-white/60 line-clamp-3 leading-relaxed mb-6">
-                      {featuredBlog.meta_description || featuredBlog.content.slice(0, 180)}...
+                      {featuredBlog.meta_description || getExcerpt(featuredBlog.content)}
                     </p>
                   </div>
 
@@ -885,7 +915,7 @@ const Blogs: React.FC = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           )}
 
@@ -901,6 +931,13 @@ const Blogs: React.FC = () => {
               <div className="flex justify-center py-20">
                 <Loader2 className="animate-spin text-[#B6FF00]" size={40} />
               </div>
+            ) : fetchError ? (
+              <div className="border border-white/10 bg-[#111111] px-6 py-16 text-center">
+                <p className="text-sm font-semibold text-white">Insights are temporarily unavailable.</p>
+                <button type="button" onClick={() => fetchPublishedBlogs(searchQuery)} className="mt-4 text-xs font-bold uppercase tracking-wider text-[#B6FF00] hover:underline">
+                  Try again
+                </button>
+              </div>
             ) : gridBlogs.length === 0 && (!featuredBlog || activeCategory !== "all") ? (
               <div className="text-center py-20 p-8" style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}>
                 <p className="text-sm text-white/60">No strategic insights found matching your criteria.</p>
@@ -909,7 +946,9 @@ const Blogs: React.FC = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {gridBlogs.map((blog) => (
-                  <div
+                  <article
+                    role="button"
+                    tabIndex={0}
                     key={blog.id}
                     className="group cursor-pointer flex flex-col justify-between p-6 transition-all duration-300"
                     style={{
@@ -922,6 +961,9 @@ const Blogs: React.FC = () => {
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = C.wa(0.08);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') setSearchParams({ article: blog.id });
                     }}
                   >
                     <div>
@@ -950,7 +992,7 @@ const Blogs: React.FC = () => {
                       </h4>
 
                       <p className="text-xs text-white/60 line-clamp-3 leading-relaxed mb-6">
-                        {blog.meta_description || blog.content.slice(0, 140)}...
+                        {blog.meta_description || getExcerpt(blog.content, 140)}
                       </p>
                     </div>
 
@@ -962,7 +1004,7 @@ const Blogs: React.FC = () => {
                         Read <ArrowRight size={13} />
                       </span>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             )}
