@@ -712,7 +712,7 @@ const Services = () => {
           </div>
         </motion.div>
 
-        <div className="relative left-1/2 w-screen -translate-x-1/2" aria-label="Available services">
+        <div className="relative left-1/2 w-screen -translate-x-1/2">
           {SERVICES.slice(0, showAllServices ? SERVICES.length : 5).map((service, index) => (
             <ServiceRow
               key={service}

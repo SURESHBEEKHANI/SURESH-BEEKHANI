@@ -317,7 +317,7 @@ const Testimonials = () => {
                   style={{ background: 'rgba(8,8,14,0.98)', border: `1px solid ${C.wa(0.08)}`, boxShadow: '0 18px 40px rgba(0,0,0,0.3)' }}
                 >
                   <div className="mt-7">
-                    <div className="mb-5 flex gap-1" aria-label="5 out of 5 stars">
+                    <div className="mb-5 flex gap-1" role="img" aria-label="5 out of 5 stars">
                       {Array.from({ length: 5 }).map((_, index) => <Star key={index} size={14} fill={C.lime} color={C.lime} strokeWidth={1.5} />)}
                     </div>
                     <blockquote className="text-sm font-medium leading-6 text-white/85 sm:text-base">

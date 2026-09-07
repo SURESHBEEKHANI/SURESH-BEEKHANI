@@ -174,12 +174,12 @@ const WhatsAppWidget = () => {
     `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div
+    <aside
       className="fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-2 sm:bottom-7 sm:right-7"
       aria-label="WhatsApp contact options"
     >
       {isOpen && (
-        <div className="flex flex-col items-end gap-2" aria-label="WhatsApp contact choices">
+        <div className="flex flex-col items-end gap-2">
           <a
             href={openWhatsApp('Hello, I would like to contact HR.')}
             target="_blank"
@@ -212,7 +212,7 @@ const WhatsAppWidget = () => {
       >
         <FaWhatsapp size={32} />
       </button>
-    </div>
+    </aside>
   );
 };
 

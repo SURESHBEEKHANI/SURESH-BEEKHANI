@@ -170,14 +170,10 @@ const DesktopDropdown = ({
                     style={{
                       width: 34,
                       height: 34,
-                      background: variant === 'industries'
-                        ? `linear-gradient(145deg, ${C.green} 0%, #4f8f00 100%)`
-                        : `linear-gradient(145deg, ${C.lime} 0%, ${C.green} 100%)`,
+                      background: variant === 'industries' ? C.green : C.lime,
                       border: `1px solid ${variant === 'industries' ? C.green : C.lime}`,
                       color: C.black,
-                      boxShadow: `inset 2px 2px 0 rgba(255,255,255,0.3), inset -2px -2px 0 rgba(0,0,0,0.22), 0 4px 0 rgba(0,0,0,0.28), 0 7px 14px ${variant === 'industries' ? C.ga(0.18) : C.la(0.18)}`,
-                      transform: 'translateY(-1px)',
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      transition: 'background-color 0.2s ease',
                     }}
                   >
                     <Icon size={16} strokeWidth={2.25} />
@@ -601,7 +597,6 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
 
       {/* ── NAVBAR ── */}
       <nav
-        role="navigation"
         aria-label="Main navigation"
         className="velnix-navbar-cursor"
         style={{
@@ -736,9 +731,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         {/* ── MOBILE MENU ── */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
+            <motion.nav
               id="velnix-mobile-menu"
-              role="menu"
               aria-label="Mobile navigation"
               initial={shouldReduce ? false : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -819,7 +813,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   Book a Strategy Call
                 </a>
               </div>
-            </motion.div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </nav>

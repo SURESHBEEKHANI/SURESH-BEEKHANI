@@ -170,7 +170,7 @@ const DesktopStepCard: React.FC<{
   const shouldReduce = useReducedMotion();
 
   return (
-    <motion.div
+    <motion.li
       className="relative flex flex-col items-center"
       style={{ flex: 1 }}
       initial={shouldReduce ? false : { opacity: 0, y: 18 }}
@@ -250,8 +250,6 @@ const DesktopStepCard: React.FC<{
         }}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        role="article"
-        aria-label={`Step ${step.num}: ${step.title}`}
       >
         {/* Micro label + number */}
         <div className="flex items-center justify-between mb-3">
@@ -326,7 +324,7 @@ const DesktopStepCard: React.FC<{
           aria-hidden="true"
         />
       </div>
-    </motion.div>
+    </motion.li>
   );
 };
 
@@ -341,7 +339,7 @@ const MobileStepRow: React.FC<{ step: (typeof STEPS)[number]; index: number; isL
   const Icon = step.icon;
 
   return (
-    <div className="flex gap-5">
+    <li className="flex gap-5">
       {/* Left: node + connector */}
       <div className="flex flex-col items-center">
         <div
@@ -401,7 +399,7 @@ const MobileStepRow: React.FC<{ step: (typeof STEPS)[number]; index: number; isL
           ))}
         </ul>
       </div>
-    </div>
+    </li>
   );
 };
 
@@ -488,9 +486,8 @@ const Approach: React.FC = () => {
         {/* ══════════════════════════════════════════════════════
             DESKTOP — Horizontal 4-step timeline
         ══════════════════════════════════════════════════════ */}
-        <div
+        <ol
           className="hidden lg:flex gap-3 mb-16"
-          role="list"
           aria-label="AI onboarding process steps"
           onMouseLeave={() => setActiveStep(0)}
         >
@@ -505,16 +502,16 @@ const Approach: React.FC = () => {
               onLeave={() => {}}
             />
           ))}
-        </div>
+        </ol>
 
         {/* ══════════════════════════════════════════════════════
             MOBILE — Vertical timeline
         ══════════════════════════════════════════════════════ */}
-        <div className="lg:hidden mb-12" role="list" aria-label="AI onboarding process steps">
+        <ol className="lg:hidden mb-12" aria-label="AI onboarding process steps">
           {STEPS.map((step, i) => (
             <MobileStepRow key={step.num} step={step} index={i} isLast={i === STEPS.length - 1} />
           ))}
-        </div>
+        </ol>
 
         {/* ══════════════════════════════════════════════════════
             TRUST BADGES

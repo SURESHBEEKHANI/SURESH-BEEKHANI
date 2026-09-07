@@ -95,7 +95,7 @@ const Careers = () => (
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .18, duration: .8, ease }} className="relative min-h-[360px] overflow-hidden border sm:min-h-[460px]" style={{ borderColor: C.wa(.15), background: `linear-gradient(145deg, ${C.graphite}, ${C.black})` }} aria-label="Intelligent Systems Architecture diagram showing people, ideas, code, and impact">
+        <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .18, duration: .8, ease }} className="relative min-h-[360px] overflow-hidden border sm:min-h-[460px]" style={{ borderColor: C.wa(.15), background: `linear-gradient(145deg, ${C.graphite}, ${C.black})` }} role="img" aria-label="Intelligent Systems Architecture diagram showing people, ideas, code, and impact">
           <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(${C.wa(.05)} 1px, transparent 1px), linear-gradient(90deg, ${C.wa(.05)} 1px, transparent 1px)`, backgroundSize: '42px 42px', opacity: .45 }} />
           <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b px-5 py-4" style={{ borderColor: C.wa(.1), color: C.wa(.48), fontSize: '.58rem', fontWeight: 700, letterSpacing: '.18em', textTransform: 'uppercase' }}>
             <span>Velnix / Systems</span>

@@ -48,8 +48,7 @@ export function CookieBanner() {
         @keyframes cookie-banner-in { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
         @media (prefers-reduced-motion: reduce) { .velnix-cookie-banner { animation: none; } }
       `}</style>
-      <aside
-        role="dialog"
+      <section
         aria-labelledby="cookie-banner-title"
         aria-describedby="cookie-banner-description"
         className="velnix-cookie-banner fixed bottom-0 left-0 right-0 z-50 border-t px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 sm:px-6 sm:pt-5"
@@ -61,7 +60,7 @@ export function CookieBanner() {
               <Cookie size={18} aria-hidden="true" />
             </span>
             <div className="min-w-0">
-              <p id="cookie-banner-title" className="mb-1 text-sm font-semibold tracking-wide" style={{ color: C.white }}>We use cookies</p>
+              <h2 id="cookie-banner-title" className="mb-1 text-sm font-semibold tracking-wide" style={{ color: C.white }}>We use cookies</h2>
               <p id="cookie-banner-description" className="max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(255,255,255,.68)" }}>
                 We use cookies to improve your experience, analyze site traffic, and personalize content. You can choose to accept all cookies, reject non-essential ones, or manage your preferences.
               </p>
@@ -83,7 +82,7 @@ export function CookieBanner() {
             </button>
           </div>
         </div>
-      </aside>
+      </section>
     </>
   );
 }

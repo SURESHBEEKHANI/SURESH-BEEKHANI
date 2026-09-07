@@ -410,6 +410,7 @@ const HeroSystemVisual = () => {
     style={{
       background: 'transparent',
     }}
+    role="img"
     aria-label="Agentic AI visual showing intelligent automation and business impact"
   >
     <div
