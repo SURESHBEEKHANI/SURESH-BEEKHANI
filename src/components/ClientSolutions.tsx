@@ -52,6 +52,8 @@ const SOLUTIONS: SolutionData[] = [
       { num: '03', label: 'Higher Radiologist Satisfaction' },
     ],
     image: '/image/Delivered For Clients/AI Medical Imaging Assistant.jpg',
+    imageWidth: 1024,
+    imageHeight: 1024,
     route: '/portfolio/ai-powered-medical-imaging-system',
     badge: 'PACS & EHR COMPATIBLE',
   },
@@ -76,6 +78,8 @@ const SOLUTIONS: SolutionData[] = [
       { num: '03', label: 'Significant Reduction in Clinician Burnout' },
     ],
     image: '/image/Delivered For Clients/Clinical Documentation AI.jpg',
+    imageWidth: 1024,
+    imageHeight: 1024,
     route: '/portfolio/ai-clinical-documentation-system',
     badge: 'AMBIENT VOICE AI',
   },
@@ -100,6 +104,8 @@ const SOLUTIONS: SolutionData[] = [
       { num: '03', label: 'Automated Tier-1 Support Resolution' },
     ],
     image: '/image/Portfolio-img/Diogenes AI ChatBot.png',
+    imageWidth: 1536,
+    imageHeight: 1024,
     route: '/portfolio/diogenes-ai-chatbot',
     badge: 'ENTERPRISE RAG ARCHITECTURE',
   },
@@ -265,6 +271,10 @@ const ClientSolutions: React.FC = () => {
               <img
                 src={current.image}
                 alt={current.title}
+                width={current.imageWidth}
+                height={current.imageHeight}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 style={{
                   transform: imgHovered ? 'scale(1.04)' : 'scale(1)',

@@ -67,24 +67,35 @@ const MetricChip = ({ value, label, delay }: { value: string; label: string; del
 // ─────────────────────────────────────────────────────────────────────────────
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const scanRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let frame = 0;
+
     const updateScrollProgress = () => {
       const hero = heroRef.current;
       if (!hero) return;
       const bounds = hero.getBoundingClientRect();
       const traveled = Math.max(0, -bounds.top);
       const range = Math.max(1, bounds.height - window.innerHeight);
-      setScrollProgress(Math.min(1, traveled / range));
+      scanRef.current?.style.setProperty('--hero-scan-progress', `${Math.min(1, traveled / range) * 500}%`);
+    };
+
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        updateScrollProgress();
+      });
     };
 
     updateScrollProgress();
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    window.addEventListener('resize', updateScrollProgress);
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
     return () => {
-      window.removeEventListener('scroll', updateScrollProgress);
-      window.removeEventListener('resize', updateScrollProgress);
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
     };
   }, []);
 
@@ -93,8 +104,8 @@ const Hero = () => {
       {/* Keyframe injections */}
       <style>{`
         @keyframes velnix-shimmer {
-          from { background-position: -200% center; }
-          to   { background-position:  200% center; }
+          from { transform: translateX(-50%); }
+          to   { transform: translateX(50%); }
         }
         @keyframes velnix-headline {
           from { transform: translateX(0); }
@@ -147,9 +158,10 @@ const Hero = () => {
 
         <div className="pointer-events-none absolute left-0 top-0 z-20 h-px w-full overflow-hidden" aria-hidden="true">
           <div
+            ref={scanRef}
             className="absolute left-0 top-0 h-px w-1/5"
             style={{
-              transform: `translateX(${scrollProgress * 500}%)`,
+              transform: 'translateX(var(--hero-scan-progress, 0%))',
               background: `linear-gradient(90deg, transparent, ${C.limeAlpha(0.85)}, transparent)`,
               boxShadow: `0 0 12px ${C.limeAlpha(0.55)}`,
               transition: 'transform 120ms linear',
@@ -384,9 +396,9 @@ export default Hero;
 // HERO SYSTEM VISUAL
 // ─────────────────────────────────────────────────────────────────────────────
 const HERO_IMAGES = [
-  '/image/Hero-section-image/hero-page-image-1.avif',
-  '/image/Hero-section-image/hero-page-image-2.avif',
-  '/image/Hero-section-image/hero-page-image-3.avif',
+  { src: '/image/Hero-section-image/hero-page-image-1.avif', width: 1537, height: 1023 },
+  { src: '/image/Hero-section-image/hero-page-image-2.avif', width: 1537, height: 1023 },
+  { src: '/image/Hero-section-image/hero-page-image-3.avif', width: 1199, height: 1312 },
 ];
 
 const HeroSystemVisual = () => {
@@ -421,7 +433,7 @@ const HeroSystemVisual = () => {
       }}
     />
     <div className="absolute inset-1 overflow-hidden border sm:inset-3" style={{ borderColor: C.limeAlpha(0.42), boxShadow: `0 0 70px ${C.limeAlpha(0.12)}` }}>
-      <img src={HERO_IMAGES[imageIndex]} alt="Velnix intelligent systems in action" className="h-full w-full object-cover" style={{ opacity: 0.78, filter: 'saturate(0.72) contrast(1.04)', transform: 'scale(1.04)', transition: 'opacity 700ms ease-in-out' }} />
+      <img src={HERO_IMAGES[imageIndex].src} alt="Velnix intelligent systems in action" width={HERO_IMAGES[imageIndex].width} height={HERO_IMAGES[imageIndex].height} fetchPriority="high" decoding="async" className="h-full w-full object-cover" style={{ opacity: 0.78, filter: 'saturate(0.72) contrast(1.04)', transform: 'scale(1.04)', transition: 'opacity 700ms ease-in-out' }} />
       <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${C.black}b8 0%, ${C.black}26 42%, ${C.black}c2 100%), linear-gradient(0deg, ${C.greenAlpha(0.2)}, transparent 48%), linear-gradient(115deg, ${C.limeAlpha(0.14)}, transparent 38%)`, mixBlendMode: 'screen', opacity: 0.82 }} />
       <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(90deg, transparent 10%, ${C.greenAlpha(0.12)} 50%, transparent 90%)`, mixBlendMode: 'color', opacity: 0.9 }} />
       <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(${C.whiteAlpha(0.06)} 1px, transparent 1px), linear-gradient(90deg, ${C.whiteAlpha(0.06)} 1px, transparent 1px)`, backgroundSize: '44px 44px', opacity: 0.22 }} />
@@ -489,9 +501,12 @@ const PrimaryButton = () => {
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
+          width: '200%',
+          left: '-50%',
+          right: 'auto',
           background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)',
-          backgroundSize: '200% auto',
           animation: 'velnix-shimmer 2.8s linear infinite',
+          willChange: 'transform',
         }}
       />
 

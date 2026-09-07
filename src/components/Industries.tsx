@@ -40,6 +40,8 @@ interface Industry {
   challenge: string;
   outcome: string;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   icon: LucideIcon;
   link: string;
 }
@@ -50,28 +52,28 @@ const INDUSTRIES: Industry[] = [
     id: 'healthcare',
     name: 'Healthcare',
     description: 'Advanced technology for healthcare excellence.', challenge: 'Reduce administrative load and disconnected care workflows.', outcome: 'More time for patients, with clearer operational control.', image: '/image/Industries-Img/Healthtech.jpg',
-    icon: HeartPulse,
+    imageWidth: 634, imageHeight: 1024, icon: HeartPulse,
     link: '/healthcare',
   },
   {
     id: 'fintech',
     name: 'Fintech',
     description: 'Financial technology solutions for modern markets.', challenge: 'Move risk, onboarding, and support work without losing control.', outcome: 'Faster decisions with an audit-ready operating model.', image: '/image/Industries-Img/Fintech.jpg',
-    icon: Landmark,
+    imageWidth: 634, imageHeight: 1024, icon: Landmark,
     link: '/fintech',
   },
   {
     id: 'education',
     name: 'Education',
     description: 'We promote education through innovative technology.', challenge: 'Support learners and staff while repetitive work keeps growing.', outcome: 'More teaching time and clearer progress insight.', image: '/image/Industries-Img/eduction.jpg',
-    icon: GraduationCap,
+    imageWidth: 634, imageHeight: 1024, icon: GraduationCap,
     link: '/education',
   },
   {
     id: 'e-commerce',
     name: 'E-Commerce',
     description: 'We enhance online commerce with tailored solutions.', challenge: 'Turn customer intent into revenue while keeping operations lean.', outcome: 'Better discovery, stronger margin, and fewer costly exceptions.', image: '/image/Industries-Img/e-commerce.jpg',
-    icon: ShoppingCart,
+    imageWidth: 634, imageHeight: 1024, icon: ShoppingCart,
     link: '/e-commerce',
   },
 
@@ -80,28 +82,28 @@ const INDUSTRIES: Industry[] = [
     id: 'food-groceries',
     name: 'Food & Groceries',
     description: 'Tech solutions revolutionizing food and grocery.', challenge: 'Balance perishable inventory, daily demand, and store execution.', outcome: 'Less waste, better availability, and faster daily operations.', image: '/image/Industries-Img/Food & Groceries.jpg',
-    icon: Utensils,
+    imageWidth: 634, imageHeight: 1024, icon: Utensils,
     link: '/food-and-groceries',
   },
   {
     id: 'travel-tourism',
     name: 'Travel & Tourism',
     description: 'Digital solutions for travel and hospitality.', challenge: 'Keep guest journeys smooth across bookings and live operations.', outcome: 'Faster answers, stronger occupancy decisions, happier guests.', image: '/image/Industries-Img/Travel & Tourism.jpg',
-    icon: Compass,
+    imageWidth: 634, imageHeight: 1024, icon: Compass,
     link: '/travel-and-tourism',
   },
   {
     id: 'insurance',
     name: 'Insurance',
     description: 'Innovative insurance technology solutions.', challenge: 'Handle claims and underwriting faster while preserving oversight.', outcome: 'Shorter cycle times and a clearer path through every case.', image: '/image/Industries-Img/Insurance.jpg',
-    icon: ShieldCheck,
+    imageWidth: 1024, imageHeight: 1024, icon: ShieldCheck,
     link: '/insurance',
   },
   {
     id: 'real-estate',
     name: 'Real Estate',
     description: 'Intelligent systems for modern property operations.', challenge: 'Connect listings, leads, viewings, and property workflows in one place.', outcome: 'Faster responses, clearer pipeline visibility, and smoother operations.', image: '/image/Industries-Img/real estate.jpg',
-    icon: Building2,
+    imageWidth: 634, imageHeight: 1024, icon: Building2,
     link: '/contact',
   },
 ];
@@ -163,7 +165,7 @@ const Industries: React.FC = () => {
               <motion.article key={industry.id} ref={element => { cardRefs.current[index] = element; }} transition={{ duration: 0.5, delay: Math.min(index * 0.06, 0.4) }} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[86vw] snap-start overflow-hidden rounded-[4px] border sm:min-w-[48%] lg:min-w-[calc((100%-48px)/4)]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
                 <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
                   <div className="relative h-[500px] overflow-hidden sm:h-[540px]">
-                    <img src={industry.image} alt={`${industry.name} industry solution`} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+                    <img src={industry.image} alt={`${industry.name} industry solution`} width={industry.imageWidth} height={industry.imageHeight} loading="lazy" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.28) 34%, rgba(8,42,8,0.42) 64%, rgba(45,105,0,0.88) 100%)' }} />
                     <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">
                       <div className="text-lg font-bold tracking-[-0.02em]" style={{ color: C.WHITE, textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>{industry.name}</div>

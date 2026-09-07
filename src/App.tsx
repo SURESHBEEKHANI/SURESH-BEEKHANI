@@ -8,19 +8,18 @@ import LoadingSpinner from "@/components/ui/loading-spinner";
 import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
-import ReactGA from "react-ga4";
 import { FaWhatsapp } from 'react-icons/fa';
 import { SEO } from './components/SEO';
 
-// ✅ Load Measurement ID from .env
-const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-HBZG5HGKQE';
 
-// ✅ Initialize Google Analytics once
-if (GA_MEASUREMENT_ID) {
-  ReactGA.initialize(GA_MEASUREMENT_ID);
-  console.log("✅ Google Analytics Initialized:", GA_MEASUREMENT_ID);
-} else {
-  console.warn("⚠️ Google Analytics Measurement ID not found!");
+type Gtag = (...args: [string, ...unknown[]]) => void;
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag?: Gtag;
+  }
 }
 
 // 🧭 Page tracking hook
@@ -30,24 +29,14 @@ function usePageTracking() {
   useEffect(() => {
     if (!GA_MEASUREMENT_ID) return;
 
-    // Track a page view
-    ReactGA.send({
-      hitType: "pageview",
-      page: location.pathname + location.search,
-      title: document.title,
+    window.gtag?.('config', GA_MEASUREMENT_ID, {
+      page_path: location.pathname + location.search,
+      page_title: document.title,
     });
-
-    // Capture user environment info
-    const userAgent = navigator.userAgent;
-    const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
-
-    // Send custom event (optional for deeper analytics)
-    ReactGA.event({
-      category: "User Info",
-      action: "Visit",
-      label: location.pathname,
-      nonInteraction: true,
+    window.gtag?.('event', 'visit', {
+      event_category: 'User Info',
+      event_label: location.pathname,
+      non_interaction: true,
     });
   }, [location]);
 }

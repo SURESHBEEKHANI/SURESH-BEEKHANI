@@ -545,7 +545,11 @@ const Footer = () => {
                     <img
                       src="/image/logo/logo1.avif"
                       alt="Velnix Solutions"
+                      width={2172}
+                      height={724}
                       style={{ height: 56, width: 'auto', objectFit: 'contain' }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </a>
                 </motion.div>
@@ -782,12 +786,13 @@ const FooterCTA = () => {
         aria-hidden="true"
         style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
+          width: '200%', left: '-50%', right: 'auto',
           background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%)',
-          backgroundSize: '200% auto',
           animation: 'velnix-footer-shimmer 2.8s linear infinite',
+          willChange: 'transform',
         }}
       />
-      <style>{`@keyframes velnix-footer-shimmer { from { background-position: -200% center; } to { background-position: 200% center; } }`}</style>
+      <style>{`@keyframes velnix-footer-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
       <span className="relative z-10">Book a Strategy Call</span>
       <ArrowRight

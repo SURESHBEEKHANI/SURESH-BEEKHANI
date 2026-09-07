@@ -631,6 +631,8 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             <img
               src="/image/logo/logo1.avif"
               alt="Velnix Solutions"
+              width={2172}
+              height={724}
               style={{
                 height: 48,
                 width: 'auto',

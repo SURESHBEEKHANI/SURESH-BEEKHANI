@@ -1,5 +1,6 @@
 # Node modules and build output
 node_modules/
+.venv/
 dist/
 build/
 out/
