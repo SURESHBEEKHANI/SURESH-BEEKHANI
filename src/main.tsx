@@ -40,11 +40,3 @@ requestIdleCallback(() => {
   lazyLoadImages();
 });
 
-// Service Worker registration for PWA capabilities (optional)
-if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
-      // Service worker registration failed - this is optional
-    });
-  });
-}
