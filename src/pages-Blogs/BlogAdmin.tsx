@@ -1199,11 +1199,11 @@ const BlogAdmin: React.FC = () => {
 
                       {/* Focus Keyword */}
                       <div className="bg-white p-0">
-                        <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] mb-5 uppercase">Focus Keyword</label>
+                        <label className="block text-xs font-black text-[#B6FF00] tracking-[0.2em] mb-5 uppercase">Focus Keyword</label>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.focus_keyword || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
-                            <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-[#0a0435] border border-gray-100 uppercase tracking-widest group transition-all hover:bg-white hover:border-[#ec4899]">
+                            <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-white border border-white/20 uppercase tracking-widest group transition-all hover:bg-white/10 hover:border-[#B6FF00]">
                               {kw}
                               <X 
                                 size={12} 
@@ -1219,7 +1219,7 @@ const BlogAdmin: React.FC = () => {
                         </div>
 
                         <div className="relative">
-                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" size={16} />
+                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#B6FF00]" size={16} />
                           <input
                             type="text"
                             placeholder="Add primary keyword..."
@@ -1241,7 +1241,7 @@ const BlogAdmin: React.FC = () => {
                                 }
                               }
                             }}
-                            className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 pl-12 pr-6 py-4 text-gray-900 font-bold outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm text-sm"
+                            className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 pl-12 pr-6 py-4 text-white placeholder:text-white/45 font-bold outline-none focus:border-[#B6FF00] focus:bg-white transition-all shadow-sm text-sm"
                           />
                         </div>
                       </div>
@@ -1252,7 +1252,7 @@ const BlogAdmin: React.FC = () => {
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.secondary_keywords || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
-                            <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-[#0a0435] border border-gray-100 uppercase tracking-widest group transition-all hover:bg-white hover:border-[#ec4899]">
+                            <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-white border border-white/20 uppercase tracking-widest group transition-all hover:bg-white/10 hover:border-[#ec4899]">
                               {kw}
                               <X 
                                 size={12} 
@@ -1288,7 +1288,7 @@ const BlogAdmin: React.FC = () => {
                               }
                             }
                           }}
-                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-4 text-gray-600 text-sm outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
+                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-4 text-white placeholder:text-white/45 text-sm outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
                         />
                         <p className="text-[9px] text-gray-400 mt-3 font-bold uppercase tracking-widest italic flex items-center gap-1.5">
                           Max 5 keywords (Press Enter)
