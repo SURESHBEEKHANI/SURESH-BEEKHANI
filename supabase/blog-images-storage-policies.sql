@@ -2,11 +2,11 @@
 -- Fixes "new row violates row-level security policy" / upload path mismatch
 -- for the blog-images bucket used by BlogAdmin.tsx
 
--- Remove old conflicting policies if they exist (adjust names to match your dashboard)
--- DROP POLICY IF EXISTS "blog_images_insert" ON storage.objects;
--- DROP POLICY IF EXISTS "blog_images_select" ON storage.objects;
--- DROP POLICY IF EXISTS "blog_images_update" ON storage.objects;
--- DROP POLICY IF EXISTS "blog_images_delete" ON storage.objects;
+-- Make this migration safe to run again when policies already exist.
+DROP POLICY IF EXISTS "blog_images_insert" ON storage.objects;
+DROP POLICY IF EXISTS "blog_images_select" ON storage.objects;
+DROP POLICY IF EXISTS "blog_images_update" ON storage.objects;
+DROP POLICY IF EXISTS "blog_images_delete" ON storage.objects;
 
 -- Authenticated admins upload into their own folder: {user_id}/filename.ext
 CREATE POLICY "blog_images_insert"

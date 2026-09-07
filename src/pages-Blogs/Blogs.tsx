@@ -28,14 +28,31 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const CATEGORIES = [
   { id: "all", label: "All Insights" },
-  { id: "ai-automation", label: "AI & Automation" },
-  { id: "ai-development", label: "Software & AI Systems" },
-  { id: "machine-deep-learning", label: "Data & Analytics" },
-  { id: "chatbot-development", label: "Conversational AI" },
-  { id: "chatgpt-integration", label: "AI Integrations" },
+  { id: "ai-development", label: "AI Development" },
+  { id: "ai-automation", label: "AI Automation" },
+  { id: "agentic-ai", label: "Agentic AI" },
+  { id: "chatbot-development", label: "Chatbot Development" },
+  { id: "chatgpt-integration", label: "ChatGPT Integration" },
+  { id: "machine-learning", label: "Machine Learning" },
+  { id: "machine-deep-learning", label: "Machine & Deep Learning" },
   { id: "computer-vision", label: "Computer Vision" },
-  { id: "nlp", label: "Language Intelligence" },
-  { id: "predictive-modeling", label: "Operational Insights" },
+  { id: "predictive-modeling", label: "Predictive Modeling" },
+  { id: "nlp", label: "NLP" },
+  { id: "natural-language-processing", label: "Natural Language Processing Services" },
+  { id: "ai-audit", label: "AI Audit" },
+  { id: "healthcare-in-ai", label: "Healthcare in AI" },
+  { id: "fintech-in-ai", label: "Fintech in AI" },
+  { id: "education-in-ai", label: "Education in AI" },
+  { id: "e-commerce-in-ai", label: "E-Commerce in AI" },
+  { id: "food-and-groceries-in-ai", label: "Food & Groceries in AI" },
+  { id: "travel-and-tourism-in-ai", label: "Travel & Tourism in AI" },
+  { id: "insurance-in-ai", label: "Insurance in AI" },
+  { id: "on-demand-in-ai", label: "On-Demand in AI" },
+  { id: "web-development", label: "Web Development" },
+  { id: "app-development", label: "App Development" },
+  { id: "custom-software-development", label: "Custom Software Development" },
+  { id: "big-data-analytics", label: "Big Data Analytics" },
+  { id: "devops", label: "DevOps" },
 ];
 
 interface Blog {
@@ -211,6 +228,8 @@ const Blogs: React.FC = () => {
     .trim()
     .slice(0, length)
     .concat(content.length > length ? '...' : '');
+
+  const getBlogImageUrl = (blog: Blog) => blog.image_url;
 
   const renderContent = (content: string) => {
     const renderInline = (text: string, baseKey: string): React.ReactNode[] => {
@@ -502,10 +521,10 @@ const Blogs: React.FC = () => {
                 </div>
 
                 {/* Hero Feature Image */}
-                {selectedBlog.image_url && (
+                {getBlogImageUrl(selectedBlog) && (
                   <div className="mb-10 overflow-hidden border border-white/10" style={{ background: C.graphite }}>
                     <img
-                      src={selectedBlog.image_url}
+                      src={getBlogImageUrl(selectedBlog)}
                       alt={selectedBlog.title}
                       className="w-full h-auto max-h-[440px] object-cover"
                     />
@@ -657,9 +676,9 @@ const Blogs: React.FC = () => {
                         }}
                       >
                         <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-[#050505] sm:h-20 sm:w-32">
-                          {post.image_url ? (
+                          {getBlogImageUrl(post) ? (
                             <img
-                              src={post.image_url}
+                              src={getBlogImageUrl(post)}
                               alt={post.title}
                               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                             />
@@ -790,7 +809,7 @@ const Blogs: React.FC = () => {
                   <div
                     role="listbox"
                     aria-label="Available insight categories"
-                    className="absolute left-0 right-0 z-30 mt-1 overflow-hidden"
+                    className="absolute left-0 right-0 z-30 mt-1 max-h-[220px] overflow-y-auto overscroll-contain"
                     style={{ background: C.graphite, border: `1px solid ${C.lime}` }}
                   >
                     {CATEGORIES.map((cat) => (
@@ -873,9 +892,9 @@ const Blogs: React.FC = () => {
               >
                 {/* Image */}
                 <div className="lg:col-span-6 overflow-hidden max-h-[320px] bg-[#050505]">
-                  {featuredBlog.image_url ? (
+                  {getBlogImageUrl(featuredBlog) ? (
                     <img
-                      src={featuredBlog.image_url}
+                      src={getBlogImageUrl(featuredBlog)}
                       alt={featuredBlog.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -969,9 +988,9 @@ const Blogs: React.FC = () => {
                     <div>
                       {/* Image Thumbnail */}
                       <div className="overflow-hidden h-40 mb-4 bg-[#050505]">
-                        {blog.image_url ? (
+                        {getBlogImageUrl(blog) ? (
                           <img 
-                            src={blog.image_url} 
+                            src={getBlogImageUrl(blog)}
                             alt={blog.title} 
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                           />

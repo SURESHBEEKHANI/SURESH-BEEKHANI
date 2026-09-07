@@ -15,6 +15,13 @@ to authenticated
 using (true)
 with check (true);
 
+drop policy if exists "Authenticated users can delete blogs" on public.blogs;
+create policy "Authenticated users can delete blogs"
+on public.blogs
+for delete
+to authenticated
+using (true);
+
 -- Keep public reads limited to published posts.
 drop policy if exists "Public can read published blogs" on public.blogs;
 create policy "Public can read published blogs"

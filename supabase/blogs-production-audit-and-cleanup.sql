@@ -42,10 +42,17 @@ set focus_keyword = 'computer vision'
 where id = '37cd9540-04fe-45d2-9d47-2f7080c92328'
   and (focus_keyword is null or btrim(focus_keyword) = '');
 
+-- Replace the confirmed missing EHR Storage object with the verified production
+-- asset. The application will continue to read this value from blogs.image_url.
+update public.blogs
+set image_url = 'https://korkozxilsxaslokckif.supabase.co/storage/v1/object/public/blog-images/a71acc4c-dd7c-49dd-b7f1-e3efcabb34a1/cover-1788781557881-1ixqs41t6v1.avif'
+where id = 'f50561fa-4aa6-4035-b260-ccdea40898c3'
+  and image_url = 'https://korkozxilsxaslokckif.supabase.co/storage/v1/object/public/blog-images/0.7646483726426966.png';
+
 commit;
 
 -- Post-migration verification queries:
-select id, title, focus_keyword
+select id, title, focus_keyword, image_url
 from public.blogs
 where id in (
   '4f359e03-a51c-44f1-b3e3-5be7dd3b48bc',

@@ -48,6 +48,8 @@ const formatDate = (iso: string): string =>
     year: 'numeric',
   });
 
+const getBlogImageUrl = (blog: Blog): string => blog.image_url;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SKELETON LOADER
 // ─────────────────────────────────────────────────────────────────────────────
@@ -100,9 +102,9 @@ const FeaturedCard: React.FC<{ blog: Blog }> = ({ blog }) => {
           }}
         />
 
-        {blog.image_url ? (
+        {getBlogImageUrl(blog) ? (
           <img
-            src={blog.image_url}
+            src={getBlogImageUrl(blog)}
             alt={blog.title}
             className="w-full h-full object-cover"
             style={{
@@ -234,9 +236,9 @@ const SupportingCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }
           }}
         />
 
-        {blog.image_url ? (
+        {getBlogImageUrl(blog) ? (
           <img
-            src={blog.image_url}
+            src={getBlogImageUrl(blog)}
             alt={blog.title}
             className="w-full h-full object-cover"
             style={{

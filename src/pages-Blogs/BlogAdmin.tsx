@@ -7,13 +7,30 @@ import { toast } from "sonner";
 
 const CATEGORIES = [
   { id: "ai-development", label: "AI Development" },
+  { id: "ai-automation", label: "AI Automation" },
+  { id: "agentic-ai", label: "Agentic AI" },
   { id: "chatbot-development", label: "Chatbot Development" },
   { id: "chatgpt-integration", label: "ChatGPT Integration" },
+  { id: "machine-learning", label: "Machine Learning" },
   { id: "machine-deep-learning", label: "Machine & Deep Learning" },
   { id: "computer-vision", label: "Computer Vision" },
   { id: "predictive-modeling", label: "Predictive Modeling" },
   { id: "nlp", label: "Natural Language Processing" },
-  { id: "ai-automation", label: "AI Automation" }
+  { id: "natural-language-processing", label: "Natural Language Processing Services" },
+  { id: "ai-audit", label: "AI Audit" },
+  { id: "healthcare-in-ai", label: "Healthcare in AI" },
+  { id: "fintech-in-ai", label: "Fintech in AI" },
+  { id: "education-in-ai", label: "Education in AI" },
+  { id: "e-commerce-in-ai", label: "E-Commerce in AI" },
+  { id: "food-and-groceries-in-ai", label: "Food & Groceries in AI" },
+  { id: "travel-and-tourism-in-ai", label: "Travel & Tourism in AI" },
+  { id: "insurance-in-ai", label: "Insurance in AI" },
+  { id: "on-demand-in-ai", label: "On-Demand in AI" },
+  { id: "web-development", label: "Web Development" },
+  { id: "app-development", label: "App Development" },
+  { id: "custom-software-development", label: "Custom Software Development" },
+  { id: "big-data-analytics", label: "Big Data Analytics" },
+  { id: "devops", label: "DevOps" }
 ];
 
 const BRAND = {
@@ -62,6 +79,8 @@ interface Blog {
   faqs?: { q: string; a: string }[];
   meta_title?: string;
   meta_description?: string;
+  slug?: string;
+  search_intent?: string;
   focus_keyword?: string;
   secondary_keywords?: string;
   views?: number;
@@ -73,6 +92,63 @@ const Summary = ({ label, value }: { label: string; value: number }) => (
     <p className="mt-2 text-2xl font-semibold text-white">{value}</p>
   </div>
 );
+
+const CategoryPicker = ({
+  value,
+  onChange,
+  includeAll = false,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  includeAll?: boolean;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const options = includeAll
+    ? [{ id: "all", label: "All categories" }, ...CATEGORIES]
+    : CATEGORIES;
+  const selected = options.find((category) => category.id === value) || options[0];
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        className="admin-control flex w-full items-center justify-between px-3 text-left text-sm font-semibold"
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        <span className="truncate">{selected.label}</span>
+        <ChevronDown size={16} className={`shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+      {isOpen && (
+        <div role="listbox" className="absolute left-0 right-0 top-full z-40 mt-1 max-h-[220px] overflow-y-auto overscroll-contain border border-white/20 bg-[#111111] shadow-2xl">
+          {options.map((category) => (
+            <button
+              key={category.id}
+              type="button"
+              role="option"
+              aria-selected={category.id === value}
+              className={`block w-full border-b border-white/10 px-3 py-3 text-left text-sm transition-colors hover:bg-[#B6FF00]/15 ${category.id === value ? "text-[#B6FF00]" : "text-white"}`}
+              onClick={() => {
+                onChange(category.id);
+                setIsOpen(false);
+              }}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const suggestSlug = (title: string) => title
+  .toLowerCase()
+  .trim()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .slice(0, 80);
 
 const BlogAdmin: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -251,7 +327,9 @@ const BlogAdmin: React.FC = () => {
         upsert: false,
       });
 
-    if (uploadError) throw uploadError;
+    if (uploadError) {
+      throw new Error(`Image upload failed: ${uploadError.message}. Run supabase/blog-images-storage-policies.sql in Supabase SQL Editor while signed in as an administrator.`);
+    }
 
     const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
     return data.publicUrl;
@@ -387,7 +465,9 @@ const BlogAdmin: React.FC = () => {
         status,
         category: editingBlog.category || CATEGORIES[0].id,
         meta_title: editingBlog.meta_title || editingBlog.title,
-        meta_description: editingBlog.meta_description || editingBlog.content?.slice(0, 160)
+        meta_description: editingBlog.meta_description || editingBlog.content?.slice(0, 160),
+        slug: editingBlog.slug || suggestSlug(editingBlog.title),
+        search_intent: editingBlog.search_intent || "Informational"
       };
 
       if (id) {
@@ -427,31 +507,34 @@ const BlogAdmin: React.FC = () => {
 
       if (fetchError) throw fetchError;
 
-      // 2. Extract and delete images from storage
+      // 2. Delete the database row first so a denied delete cannot remove images.
+      const { data: deletedBlog, error: deleteError } = await supabase
+        .from("blogs")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+
+      if (deleteError) throw deleteError;
+      if (!deletedBlog) {
+        throw new Error("Blog was not deleted. Apply the blogs authenticated write policy, then sign in again.");
+      }
+
+      // 3. Clean up associated Storage objects after the row is gone.
       if (blog) {
         const storagePaths = extractStoragePaths(blog.content || "", blog.image_url);
-        
+
         if (storagePaths.length > 0) {
-          console.log("Deleting associated files:", storagePaths);
           const { error: storageError } = await supabase.storage
             .from('blog-images')
             .remove(storagePaths);
-          
+
           if (storageError) {
             console.error("Error deleting files from storage:", storageError);
-            // We continue anyway to delete the database entry, or we could stop
-            toast.error("Some images could not be deleted from storage.");
+            toast.error("Post deleted, but some images could not be removed from storage.");
           }
         }
       }
-
-      // 3. Delete from database
-      const { error: deleteError } = await supabase
-        .from("blogs")
-        .delete()
-        .eq("id", id);
-
-      if (deleteError) throw deleteError;
       
       fetchBlogs();
       toast.success("Blog Post and all images permanently deleted.");
@@ -715,7 +798,7 @@ const BlogAdmin: React.FC = () => {
 
           <div className="admin-surface mb-5 flex flex-col gap-3 border p-3 sm:flex-row sm:items-center">
             <div className="relative min-w-0 flex-1"><Search size={17} className="admin-subtle absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" /><label htmlFor="blog-search" className="sr-only">Search posts</label><input id="blog-search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search posts..." className="admin-control w-full pl-10 pr-3 text-sm" /></div>
-            <div className="flex flex-col gap-3 sm:flex-row"><label className="sr-only" htmlFor="status-filter">Filter by status</label><select id="status-filter" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as "all" | "published" | "draft")} className="admin-control px-3 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option></select><label className="sr-only" htmlFor="category-filter">Filter by category</label><select id="category-filter" value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)} className="admin-control px-3 text-sm"><option value="all">All categories</option>{CATEGORIES.map((category) => <option key={category.id} value={category.id}>{category.label}</option>)}</select>{(searchQuery || statusFilter !== "all" || categoryFilter !== "all") && <button type="button" onClick={() => { setSearchQuery(""); setStatusFilter("all"); setCategoryFilter("all"); }} className="admin-control inline-flex items-center justify-center gap-2 px-3 text-sm"><X size={15} /> Clear</button>}</div>
+            <div className="flex flex-col gap-3 sm:flex-row"><label className="sr-only" htmlFor="status-filter">Filter by status</label><select id="status-filter" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as "all" | "published" | "draft")} className="admin-control px-3 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option></select><label className="sr-only" htmlFor="category-filter">Filter by category</label><div className="min-w-[220px]"><CategoryPicker value={categoryFilter} onChange={setCategoryFilter} includeAll /></div>{(searchQuery || statusFilter !== "all" || categoryFilter !== "all") && <button type="button" onClick={() => { setSearchQuery(""); setStatusFilter("all"); setCategoryFilter("all"); }} className="admin-control inline-flex items-center justify-center gap-2 px-3 text-sm"><X size={15} /> Clear</button>}</div>
           </div>
 
           {loading ? (
@@ -826,15 +909,10 @@ const BlogAdmin: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div>
                     <label className="block text-xs font-black text-gray-400 tracking-[0.2em] mb-3 uppercase">Category Selection</label>
-                    <select
+                    <CategoryPicker
                       value={editingBlog?.category || CATEGORIES[0].id}
-                      onChange={(e) => setEditingBlog({ ...editingBlog, category: e.target.value })}
-                      className="w-full h-14 px-5 rounded-none border border-gray-200 bg-white text-gray-900 outline-none focus:ring-2 focus:ring-[#ff0ea3]/10 focus:border-[#ff0ea3] transition-all text-sm font-semibold"
-                    >
-                      {CATEGORIES.map(cat => (
-                        <option key={cat.id} value={cat.id}>{cat.label}</option>
-                      ))}
-                    </select>
+                      onChange={(category) => setEditingBlog({ ...editingBlog, category })}
+                    />
                   </div>
 
                   <div>
@@ -1036,26 +1114,42 @@ const BlogAdmin: React.FC = () => {
                 </div>
 
                 {/* SEO Section (Modern Premium Dashboard Style) */}
-                <div className="pt-16 border-t border-gray-100 mb-16 px-1">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                <div className="pt-20 border-t border-gray-100 mb-20 px-1 md:px-3">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-12">
                     <div>
-                      <label className="block text-[10px] font-black text-gray-400 tracking-[0.3em] mb-2 uppercase">Google & Search Optimization</label>
-                      <h3 className="text-2xl font-black text-[#0a0435] flex items-center gap-3 italic uppercase tracking-tighter">
-                        <Lock className="text-[#ec4899]" size={24} />
+                      <label className="block text-xs font-black text-gray-400 tracking-[0.3em] mb-3 uppercase">Google & Search Optimization</label>
+                      <h3 className="text-3xl md:text-4xl font-black text-[#0a0435] flex items-center gap-3 italic uppercase tracking-tighter">
+                        <Lock className="text-[#ec4899]" size={28} />
                         SEO <span className="text-[#ec4899]">Settings</span>
                       </h3>
                     </div>
-                    <div className="flex items-center gap-3 px-5 py-2.5 bg-gray-50 border border-gray-100 text-[#0a0435] text-[10px] font-black uppercase tracking-widest">
-                      <CheckCircle size={14} className="text-green-500" /> SEO Readiness Check
+                    <div className="flex items-center gap-3 px-5 py-3 bg-gray-50 border border-gray-100 text-[#0a0435] text-xs font-black uppercase tracking-widest">
+                      <CheckCircle size={16} className="text-green-500" /> SEO Readiness Check
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    <div className="lg:col-span-8 space-y-10">
+                    <div className="lg:col-span-8 space-y-12">
+                      {/* Suggested URL Slug */}
+                      <div className="bg-white p-0 group/seo transition-all">
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] uppercase">Suggested URL Slug</label>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">/blog/...</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder={suggestSlug(editingBlog?.title || "your-blog-title")}
+                          value={editingBlog?.slug || ""}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') })}
+                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-5 text-gray-900 font-bold text-lg md:text-xl outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
+                        />
+                        <p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-gray-400">Use lowercase words separated by hyphens.</p>
+                      </div>
+
                       {/* Meta Title */}
                       <div className="bg-white p-0 group/seo transition-all">
                         <div className="flex justify-between items-center mb-4">
-                          <label className="block text-[10px] font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Title (Search Heading)</label>
+                          <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Title (Search Heading)</label>
                           <span className={`text-[9px] font-black uppercase tracking-tighter ${ (editingBlog?.meta_title?.length || 0) > 60 ? 'text-red-500' : 'text-gray-400'}`}>
                             {editingBlog?.meta_title?.length || 0} / 60 CHARS
                           </span>
@@ -1065,14 +1159,14 @@ const BlogAdmin: React.FC = () => {
                           placeholder="e.g. How AI Chatbots Are Transforming Customer Support in 2026"
                           value={editingBlog?.meta_title || ""}
                           onChange={(e) => setEditingBlog({ ...editingBlog, meta_title: e.target.value })}
-                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-4 text-gray-900 font-bold text-lg md:text-xl outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
+                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-5 text-gray-900 font-bold text-xl md:text-2xl outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
                         />
                       </div>
 
                       {/* Meta Description */}
                       <div className="bg-white p-0 group/seo transition-all">
                         <div className="flex justify-between items-center mb-4">
-                          <label className="block text-[10px] font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Description (Snippet)</label>
+                          <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Description (Snippet)</label>
                           <span className={`text-[9px] font-black uppercase tracking-tighter ${ (editingBlog?.meta_description?.length || 0) > 160 ? 'text-red-500' : 'text-gray-400'}`}>
                             {editingBlog?.meta_description?.length || 0} / 160 CHARS
                           </span>
@@ -1081,16 +1175,31 @@ const BlogAdmin: React.FC = () => {
                           placeholder="Discover how AI chatbots are revolutionizing customer support in 2026 — what they do, when to deploy, and how to get started."
                           value={editingBlog?.meta_description || ""}
                           onChange={(e) => setEditingBlog({ ...editingBlog, meta_description: e.target.value })}
-                          rows={4}
-                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-4 text-gray-600 text-sm md:text-base leading-relaxed outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm resize-none"
+                          rows={6}
+                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-5 text-gray-600 text-base md:text-lg leading-relaxed outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm resize-y"
                         />
                       </div>
                     </div>
 
                     <div className="lg:col-span-4 space-y-10">
+                      {/* Search Intent */}
+                      <div className="bg-white p-0">
+                        <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] mb-5 uppercase">Search Intent</label>
+                        <select
+                          value={editingBlog?.search_intent || "Informational"}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, search_intent: e.target.value })}
+                          className="w-full bg-gray-50 border-0 border-l-4 border-gray-200 px-6 py-5 text-gray-900 font-bold text-base outline-none focus:border-[#ec4899] focus:bg-white transition-all shadow-sm"
+                        >
+                          <option>Informational</option>
+                          <option>Commercial investigation</option>
+                          <option>Transactional</option>
+                          <option>Navigational</option>
+                        </select>
+                      </div>
+
                       {/* Focus Keyword */}
                       <div className="bg-white p-0">
-                        <label className="block text-[10px] font-black text-[#ec4899] tracking-[0.2em] mb-4 uppercase">Focus Keyword</label>
+                        <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] mb-5 uppercase">Focus Keyword</label>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.focus_keyword || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
@@ -1139,7 +1248,7 @@ const BlogAdmin: React.FC = () => {
 
                       {/* Secondary Keywords */}
                       <div className="bg-white p-0">
-                        <label className="block text-[10px] font-black text-[#ec4899] tracking-[0.2em] mb-4 uppercase">Secondary Keywords</label>
+                        <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] mb-5 uppercase">Secondary Keywords</label>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.secondary_keywords || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
