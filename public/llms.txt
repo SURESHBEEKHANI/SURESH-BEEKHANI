@@ -1,62 +1,65 @@
 # Velnix Solutions
 
-> Velnix Solutions is an AI development company building intelligent systems, AI agents, automation solutions, and scalable software products.
+> Velnix Solutions is an AI development and software development company building intelligent systems, AI agents, automation solutions, and scalable software products.
 
-## Website
+## About
 
-- https://velnixsolutions.com/
-- https://velnixsolutions.com/about
-- https://velnixsolutions.com/contact
-- https://velnixsolutions.com/blogs
-- https://velnixsolutions.com/portfolio
-- https://velnixsolutions.com/careers
+Velnix Solutions designs and builds intelligent software systems, AI agents, automation workflows, and scalable digital products for businesses.
 
-## What We Do
-
-We design and build intelligent software systems, AI agents, automation workflows, and scalable digital products for growing businesses.
+- [Homepage](https://velnixsolutions.com/)
+- [About Velnix Solutions](https://velnixsolutions.com/about)
+- [Portfolio](https://velnixsolutions.com/portfolio)
+- [Blogs](https://velnixsolutions.com/blogs)
+- [Careers](https://velnixsolutions.com/careers)
+- [Contact](https://velnixsolutions.com/contact)
 
 ## Services
 
-- https://velnixsolutions.com/ai-development
-- https://velnixsolutions.com/agentic-ai
-- https://velnixsolutions.com/ai-automation
-- https://velnixsolutions.com/ai-chatbot-development
-- https://velnixsolutions.com/machine-learning
-- https://velnixsolutions.com/natural-language-processing
-- https://velnixsolutions.com/computer-vision
-- https://velnixsolutions.com/predictive-modelling
-- https://velnixsolutions.com/web-development
-- https://velnixsolutions.com/app-development
-- https://velnixsolutions.com/custom-software-development
-- https://velnixsolutions.com/big-data-analytics
-- https://velnixsolutions.com/devops
-- https://velnixsolutions.com/ai-audit
+### Artificial Intelligence
+
+- [AI Development](https://velnixsolutions.com/ai-development)
+- [Agentic AI](https://velnixsolutions.com/agentic-ai)
+- [AI Automation](https://velnixsolutions.com/ai-automation)
+- [AI Chatbot Development](https://velnixsolutions.com/ai-chatbot-development)
+- [Machine Learning](https://velnixsolutions.com/machine-learning)
+- [Natural Language Processing](https://velnixsolutions.com/natural-language-processing)
+- [Computer Vision](https://velnixsolutions.com/computer-vision)
+- [Predictive Modelling](https://velnixsolutions.com/predictive-modelling)
+- [AI Audit](https://velnixsolutions.com/ai-audit)
+
+### Software and Data
+
+- [Web Development](https://velnixsolutions.com/web-development)
+- [App Development](https://velnixsolutions.com/app-development)
+- [Custom Software Development](https://velnixsolutions.com/custom-software-development)
+- [Big Data Analytics](https://velnixsolutions.com/big-data-analytics)
+- [DevOps](https://velnixsolutions.com/devops)
 
 ## Industries
 
-- https://velnixsolutions.com/healthcare
-- https://velnixsolutions.com/fintech
-- https://velnixsolutions.com/education
-- https://velnixsolutions.com/e-commerce
-- https://velnixsolutions.com/food-and-groceries
-- https://velnixsolutions.com/travel-and-tourism
-- https://velnixsolutions.com/insurance
-- https://velnixsolutions.com/on-demand
+- [Healthcare](https://velnixsolutions.com/healthcare)
+- [Fintech](https://velnixsolutions.com/fintech)
+- [Education](https://velnixsolutions.com/education)
+- [E-commerce](https://velnixsolutions.com/e-commerce)
+- [Food and Groceries](https://velnixsolutions.com/food-and-groceries)
+- [Travel and Tourism](https://velnixsolutions.com/travel-and-tourism)
+- [Insurance](https://velnixsolutions.com/insurance)
+- [On-Demand](https://velnixsolutions.com/on-demand)
 
 ## Contact
 
 - Email: info@velnixsolutions.com
 - Phone: +92 335 131 2852
 - Address: M.A. Jinnah Road, Near Taj Medical Complex, Street 13, Karachi, Sindh, Pakistan
-- Calendar: https://calendar.app.google/F63aBoA5vxJdtihj7
+- [Book a strategy call](https://calendar.app.google/F63aBoA5vxJdtihj7)
 
-## Social
+## Social Profiles
 
-- https://www.facebook.com/VelnixSolutions
-- https://www.linkedin.com/company/velnixsolutions/
-- https://www.instagram.com/velnixsolutions/
-- https://x.com/VelnixSolutions
+- [Facebook](https://www.facebook.com/VelnixSolutions)
+- [LinkedIn](https://www.linkedin.com/company/velnixsolutions/)
+- [Instagram](https://www.instagram.com/velnixsolutions/)
+- [X](https://x.com/VelnixSolutions)
 
 ## Sitemap
 
-- https://velnixsolutions.com/sitemap.xml
+- [XML Sitemap](https://velnixsolutions.com/sitemap.xml)
