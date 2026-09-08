@@ -7,6 +7,13 @@ alter table public.blogs enable row level security;
 grant select, insert, update, delete on table public.blogs to authenticated;
 grant select on table public.blogs to anon;
 
+drop policy if exists "Authenticated users can insert blogs" on public.blogs;
+create policy "Authenticated users can insert blogs"
+on public.blogs
+for insert
+to authenticated
+with check (true);
+
 drop policy if exists "Authenticated users can update blogs" on public.blogs;
 create policy "Authenticated users can update blogs"
 on public.blogs

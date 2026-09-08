@@ -67,5 +67,6 @@ Velnix Solutions designs and builds intelligent software systems, AI agents, aut
 <!-- GENERATED BLOG LINKS:START -->
 ## Blog Articles
 
-- [Which Business Process Should You Automate First? A Framework for SMB Decision-Makers](https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf)
+- [AI Agents vs. Traditional Automation: What's the Difference?](https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe)
+- [Which Business Process Should You Automate First? A Framework for SMB](https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf)
 <!-- GENERATED BLOG LINKS:END -->
