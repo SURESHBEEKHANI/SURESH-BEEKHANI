@@ -4,13 +4,6 @@ import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
 import { Plus, Edit2, Trash2, Image as ImageIcon, Loader2, LogOut, Lock, Bold, Italic, List, ListOrdered, Quote, Link as LinkIcon, Heading1, Heading2, Heading3, Code, Braces, Minus, Type, ChevronDown, CheckCircle, Search, X } from "lucide-react";
 import { toast } from "sonner";
-import {
-  getBlogImageUrl,
-  getBlogFallbackImage,
-  handleImageError,
-  compressImageFile,
-  CATEGORY_IMAGE_PRESETS
-} from "../lib/blogImageHelper";
 
 const CATEGORIES = [
   { id: "ai-development", label: "AI Development" },
