@@ -87,6 +87,12 @@
     --gradient-ai: linear-gradient(135deg, #7DCC00 0%, #B6FF00 100%);
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   * {
     @apply border-border;
   }
@@ -97,22 +103,37 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 16px;
-    overflow: hidden;
-    height: 100%;
+    font-size: 100%;
+    overflow-x: clip;
+    overflow-y: auto;
+    min-height: 100%;
   }
 
   body {
     @apply bg-background text-foreground dark;
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden !important;
-    overflow-y: scroll !important;
+    overflow-x: clip;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     line-height: 1.6;
     background: #050505;
     color: #FFFFFF;
-    height: 100%;
+    min-height: 100%;
+    min-width: 0;
     position: relative;
+    max-width: 100%;
+  }
+
+  #root {
+    isolation: isolate;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  img,
+  video {
+    max-width: 100%;
   }
 
   @media (pointer: fine) and (min-width: 768px) {
@@ -132,11 +153,6 @@
   /* Hide scrollbar on html */
   html::-webkit-scrollbar {
     display: none !important;
-  }
-
-  /* Prevent layout shift */
-  * {
-    box-sizing: border-box;
   }
 
   /* Optimize for mobile performance */
@@ -167,12 +183,12 @@
 
   /* Firefox scrollbar - styled (body only) */
   body {
-    scrollbar-width: auto !important;
-    scrollbar-color: #B6FF00 #050505 !important;
+    scrollbar-width: auto;
+    scrollbar-color: #B6FF00 #050505;
   }
 
   html {
-    scrollbar-width: none !important;
+    scrollbar-width: thin;
   }
 
   /* Focus styles */
