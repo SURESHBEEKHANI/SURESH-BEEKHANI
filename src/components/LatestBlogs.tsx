@@ -7,11 +7,11 @@ import { supabase } from "../lib/supabaseClient";
 // BRAND TOKENS — Velnix Locked Color System
 // ─────────────────────────────────────────────────────────────────────────────
 const C = {
-  black:    '#050505',
+  black: '#050505',
   graphite: '#111111',
-  white:    '#FFFFFF',
-  lime:     '#B6FF00',
-  green:    '#7DCC00',
+  white: '#FFFFFF',
+  lime: '#B6FF00',
+  green: '#7DCC00',
   la: (o: number) => `rgba(182,255,0,${o})`,
   wa: (o: number) => `rgba(255,255,255,${o})`,
   ga: (o: number) => `rgba(125,204,0,${o})`,

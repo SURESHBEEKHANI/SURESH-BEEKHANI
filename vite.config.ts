@@ -2,6 +2,48 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
+const seoSyncPlugin = () => ({
+  name: "seo-sync-plugin",
+  configureServer(server: any) {
+    server.middlewares.use("/api/sync-seo", async (req: any, res: any) => {
+      if (req.method === "POST") {
+        try {
+          const { updateSeoFiles } = await import("./scripts/seo-generator-core.mjs");
+          const result = await updateSeoFiles();
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ success: true, count: result.count }));
+        } catch (err: any) {
+          res.statusCode = 500;
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ error: err.message }));
+        }
+      } else {
+        res.statusCode = 405;
+        res.end("Method Not Allowed");
+      }
+    });
+  },
+  configurePreviewServer(server: any) {
+    server.middlewares.use("/api/sync-seo", async (req: any, res: any) => {
+      if (req.method === "POST") {
+        try {
+          const { updateSeoFiles } = await import("./scripts/seo-generator-core.mjs");
+          const result = await updateSeoFiles();
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ success: true, count: result.count }));
+        } catch (err: any) {
+          res.statusCode = 500;
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ error: err.message }));
+        }
+      } else {
+        res.statusCode = 405;
+        res.end("Method Not Allowed");
+      }
+    });
+  },
+});
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
@@ -11,6 +53,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    seoSyncPlugin(),
   ],
   resolve: {
     alias: {

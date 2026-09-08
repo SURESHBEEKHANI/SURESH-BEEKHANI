@@ -3,8 +3,8 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
-import { 
-  Loader2, ArrowLeft, Calendar, User, CheckCircle, Search, 
+import {
+  Loader2, ArrowLeft, Calendar, User, CheckCircle, Search,
   Eye, Plus, Minus, List, ArrowRight, Clock, BookOpen, Sparkles, Zap, ChevronDown
 } from "lucide-react";
 import { toast } from "sonner";
@@ -14,11 +14,11 @@ import { useSearchParams } from "react-router-dom";
 // BRAND TOKENS (Velnix Locked Color System)
 // ─────────────────────────────────────────────────────────────────────────────
 const C = {
-  black:    '#050505',
+  black: '#050505',
   graphite: '#111111',
-  white:    '#FFFFFF',
-  lime:     '#B6FF00',
-  green:    '#7DCC00',
+  white: '#FFFFFF',
+  lime: '#B6FF00',
+  green: '#7DCC00',
   la: (o: number) => `rgba(182,255,0,${o})`,
   wa: (o: number) => `rgba(255,255,255,${o})`,
   ga: (o: number) => `rgba(125,204,0,${o})`,
@@ -69,6 +69,7 @@ interface Blog {
   meta_description?: string;
   focus_keyword?: string;
   secondary_keywords?: string;
+  slug?: string;
 }
 
 const Blogs: React.FC = () => {
@@ -108,7 +109,7 @@ const Blogs: React.FC = () => {
     if (!articleId) {
       if (selectedBlog) setSelectedBlog(null);
     } else if (blogs.length > 0) {
-      const found = blogs.find((b) => b.id === articleId);
+      const found = blogs.find((b) => b.id === articleId || (b.slug && b.slug === articleId));
       if (found && found.id !== selectedBlog?.id) {
         setSelectedBlog(found);
         window.scrollTo(0, 0);
@@ -458,7 +459,7 @@ const Blogs: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
         {/* Reading Progress Indicator */}
-        <div 
+        <div
           className="fixed top-0 left-0 h-1 z-[110] transition-all duration-150"
           style={{ width: `${scrollProgress}%`, background: C.lime }}
         />
@@ -467,7 +468,7 @@ const Blogs: React.FC = () => {
 
         <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-            
+
             {/* Back Link */}
             <div className="mb-8">
               <button
@@ -486,7 +487,7 @@ const Blogs: React.FC = () => {
 
               {/* MAIN ARTICLE BODY */}
               <article className="lg:col-span-8">
-                
+
                 {/* Header Metadata */}
                 <div className="mb-8">
                   <span
@@ -534,7 +535,7 @@ const Blogs: React.FC = () => {
                 {/* Table of Contents */}
                 {getTOC(selectedBlog.content).length > 0 && (
                   <div className="mb-10 p-6" style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}>
-                    <div 
+                    <div
                       className="flex items-center justify-between cursor-pointer"
                       onClick={() => setIsTocOpen(!isTocOpen)}
                     >
@@ -615,14 +616,14 @@ const Blogs: React.FC = () => {
 
               {/* RIGHT SIDEBAR */}
               <aside className="lg:col-span-4 flex flex-col gap-10">
-                
+
                 {/* Newsletter Box */}
-                <div 
+                <div
                   className="p-6"
                   style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
                 >
                   <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">
-                  Talk to Velnix
+                    Talk to Velnix
 
                   </h3>
                   <p className="text-xs text-white/60 leading-relaxed mb-4">
@@ -663,8 +664,8 @@ const Blogs: React.FC = () => {
 
                   <div className="flex flex-col gap-4">
                     {recentBlogs.map(post => (
-                      <div 
-                        key={post.id} 
+                      <div
+                        key={post.id}
                         className="group flex cursor-pointer items-center gap-3 rounded-xl p-4 transition-all duration-200"
                         style={{ background: C.graphite, border: `1px solid ${C.wa(0.06)}` }}
                         onClick={() => setSearchParams({ article: post.id })}
@@ -733,35 +734,35 @@ const Blogs: React.FC = () => {
                 <span className="h-px w-10 bg-[#B6FF00]" aria-hidden="true" />
                 Velnix editorial desk
               </div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              style={{
-                fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
-                fontWeight: 800,
-                lineHeight: 1.08,
-                letterSpacing: '-0.03em',
-                color: C.white,
-                marginBottom: '1.25rem',
-              }}
-            >
-              Where Business Problems Meet{' '}<span style={{ color: C.lime }}>Intelligent Technology.</span>
-            </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                style={{
+                  fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
+                  fontWeight: 800,
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.03em',
+                  color: C.white,
+                  marginBottom: '1.25rem',
+                }}
+              >
+                Where Business Problems Meet{' '}<span style={{ color: C.lime }}>Intelligent Technology.</span>
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              style={{
-                fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
-                color: C.wa(0.72),
-                lineHeight: 1.75,
-                fontWeight: 400,
-              }}
-            >
-              Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                style={{
+                  fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
+                  color: C.wa(0.72),
+                  lineHeight: 1.75,
+                  fontWeight: 400,
+                }}
+              >
+                Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
+              </motion.p>
             </div>
             <div className="hidden border-l border-white/15 pl-6 lg:block">
               <p className="text-3xl font-semibold text-white">{blogs.length || '—'}</p>
@@ -773,7 +774,7 @@ const Blogs: React.FC = () => {
               CATEGORY NAVIGATION & SEARCH BAR
           ══════════════════════════════════════════════════════ */}
           <div className="flex flex-col md:flex-row gap-6 items-stretch md:items-center justify-between mb-12 pb-8 border-b border-white/10">
-            
+
             {/* Category Dropdown */}
             <div className="w-full md:max-w-sm">
               <div className="relative">
@@ -906,13 +907,13 @@ const Blogs: React.FC = () => {
                 {/* Content */}
                 <div className="lg:col-span-6 flex flex-col justify-between">
                   <div>
-                    <span 
+                    <span
                       className="inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider mb-3"
                       style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
                     >
                       {featuredBlog.category || 'Strategic Insight'}
                     </span>
-                    
+
                     <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-tight mb-4">
                       {featuredBlog.title}
                     </h2>
@@ -989,10 +990,10 @@ const Blogs: React.FC = () => {
                       {/* Image Thumbnail */}
                       <div className="overflow-hidden h-40 mb-4 bg-[#050505]">
                         {getBlogImageUrl(blog) ? (
-                          <img 
+                          <img
                             src={getBlogImageUrl(blog)}
-                            alt={blog.title} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                            alt={blog.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-xs text-white/20">Velnix Editorial</div>
@@ -1032,7 +1033,7 @@ const Blogs: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               BOTTOM CONVERSATION CTA BANNER
           ══════════════════════════════════════════════════════ */}
-          
+
 
         </div>
       </main>

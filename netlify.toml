@@ -8,6 +8,23 @@
   SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_ANON_KEY"
 
 [[redirects]]
+  from = "/api/sync-seo"
+  to = "/.netlify/functions/sync-seo"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/llms.txt"
+  to = "/.netlify/functions/llms"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*.js"
   to = "/404.html"
   status = 404

@@ -4,6 +4,13 @@ import Footer from "../components/Footer";
 import { supabase } from "../lib/supabaseClient";
 import { Plus, Edit2, Trash2, Image as ImageIcon, Loader2, LogOut, Lock, Bold, Italic, List, ListOrdered, Quote, Link as LinkIcon, Heading1, Heading2, Heading3, Code, Braces, Minus, Type, ChevronDown, CheckCircle, Search, X } from "lucide-react";
 import { toast } from "sonner";
+import {
+  getBlogImageUrl,
+  getBlogFallbackImage,
+  handleImageError,
+  compressImageFile,
+  CATEGORY_IMAGE_PRESETS
+} from "../lib/blogImageHelper";
 
 const CATEGORIES = [
   { id: "ai-development", label: "AI Development" },
@@ -236,7 +243,7 @@ const BlogAdmin: React.FC = () => {
     setAuthLoading(true);
     setAuthError("");
     setAuthSuccess("");
-    
+
     if (isSignUp) {
       if (password !== confirmPassword) {
         setAuthError("Passwords do not match.");
@@ -377,7 +384,7 @@ const BlogAdmin: React.FC = () => {
 
   const extractStoragePaths = (content: string, coverUrl?: string): string[] => {
     const paths: string[] = [];
-    
+
     // Add cover image path if it exists
     if (coverUrl) {
       const parts = coverUrl.split('/blog-images/');
@@ -415,7 +422,7 @@ const BlogAdmin: React.FC = () => {
   const handleRemoveCoverImage = async () => {
     try {
       if (!editingBlog?.image_url) return;
-      
+
       const fileUrl = editingBlog.image_url;
       const pathParts = fileUrl.split('/blog-images/');
       if (pathParts.length > 1) {
@@ -432,7 +439,7 @@ const BlogAdmin: React.FC = () => {
           .from("blogs")
           .update({ image_url: "" })
           .eq("id", editingBlog.id);
-        
+
         if (dbError) throw dbError;
       }
 
@@ -497,7 +504,7 @@ const BlogAdmin: React.FC = () => {
     // No more window.confirm as per user request for "the moment you click"
     try {
       setLoading(true);
-      
+
       // 1. Fetch the blog first to get image URLs
       const { data: blog, error: fetchError } = await supabase
         .from("blogs")
@@ -535,7 +542,7 @@ const BlogAdmin: React.FC = () => {
           }
         }
       }
-      
+
       fetchBlogs();
       toast.success("Blog Post and all images permanently deleted.");
     } catch (error: any) {
@@ -748,11 +755,11 @@ const BlogAdmin: React.FC = () => {
     <div className="blog-admin-page min-h-screen flex flex-col">
       <Navbar />
       <style>{ADMIN_STYLES}</style>
-      
+
       {/* Hero Section */}
       <section className="border-b border-white/10 px-4 pb-12 pt-28 shadow-inner relative overflow-hidden" style={{ background: BRAND.black }}>
         {/* Decorative background elements matching Footer */}
-        
+
         <div className="max-w-6xl mx-auto text-center text-white relative z-10">
           <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-none mb-6 border border-white/20">
             <Lock size={22} className="brand-lime" />
@@ -841,7 +848,7 @@ const BlogAdmin: React.FC = () => {
                             </div>
                           </td>
                           <td className="p-4">
-                              <span className={`px-2.5 py-1 rounded-none text-xs font-semibold tracking-wide ${blog.status === 'published' ? 'admin-status' : 'admin-draft'}`}>
+                            <span className={`px-2.5 py-1 rounded-none text-xs font-semibold tracking-wide ${blog.status === 'published' ? 'admin-status' : 'admin-draft'}`}>
                               {blog.status.toUpperCase()}
                             </span>
                           </td>
@@ -849,7 +856,7 @@ const BlogAdmin: React.FC = () => {
                             {CATEGORIES.find(c => c.id === blog.category)?.label || blog.category}
                           </td>
                           <td className="p-4 flex gap-2 justify-end">
-                              <button onClick={() => openForm(blog)} className="p-2 brand-lime hover:bg-white/10 rounded-none transition" title="Edit post" aria-label={`Edit ${blog.title}`}>
+                            <button onClick={() => openForm(blog)} className="p-2 brand-lime hover:bg-white/10 rounded-none transition" title="Edit post" aria-label={`Edit ${blog.title}`}>
                               <Edit2 size={18} />
                             </button>
                             <button onClick={() => handleDelete(blog.id)} className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-none transition" title="Delete post" aria-label={`Delete ${blog.title}`}>
@@ -880,7 +887,7 @@ const BlogAdmin: React.FC = () => {
                 {editingBlog?.id ? "EDIT POST" : "CREATE NEW POST"}
               </h2>
             </div>
-            <button 
+            <button
               onClick={() => setIsFormOpen(false)}
               className="group flex items-center gap-2 px-4 py-2 rounded-none hover:bg-gray-50 text-gray-500 hover:text-gray-900 transition-all font-bold text-sm tracking-widest"
             >
@@ -890,7 +897,7 @@ const BlogAdmin: React.FC = () => {
               </div>
             </button>
           </div>
-          
+
           <div className="flex-grow bg-gray-50/50">
             <div className="max-w-5xl mx-auto p-6 md:p-12 space-y-10">
               {/* Form Content Area */}
@@ -933,8 +940,8 @@ const BlogAdmin: React.FC = () => {
                   <div className="relative group">
                     <div className="w-full aspect-[4/3] md:aspect-[16/9] rounded-none overflow-hidden border border-gray-100 shadow-sm relative">
                       <img src={editingBlog.image_url} alt="Cover" className="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
-                      
-                      <button 
+
+                      <button
                         type="button"
                         onClick={handleRemoveCoverImage}
                         className="absolute top-4 right-4 bg-red-600/90 backdrop-blur text-white p-2.5 rounded-none hover:bg-black transition-all opacity-0 group-hover:opacity-100 z-10 shadow-xl border border-white/20"
@@ -1041,7 +1048,7 @@ const BlogAdmin: React.FC = () => {
                       <Plus size={14} /> Add FAQ Item
                     </button>
                   </div>
-                  
+
                   <div className="space-y-6">
                     {(editingBlog?.faqs || []).map((faq, index) => (
                       <div key={index} className="bg-gray-50 p-6 md:p-8 border border-gray-100 rounded-none relative group/faq transition-all hover:bg-white hover:shadow-xl hover:border-white">
@@ -1049,14 +1056,14 @@ const BlogAdmin: React.FC = () => {
                           type="button"
                           onClick={async () => {
                             const updatedFaqs = (editingBlog?.faqs || []).filter((_, i) => i !== index);
-                            
+
                             // Immediate DB update if editing an existing blog
                             if (editingBlog?.id) {
                               const { error } = await supabase
                                 .from("blogs")
                                 .update({ faqs: updatedFaqs })
                                 .eq("id", editingBlog.id);
-                              
+
                               if (error) {
                                 console.error("Failed to sync FAQ deletion:", error);
                                 toast.error("Database update failed.");
@@ -1064,7 +1071,7 @@ const BlogAdmin: React.FC = () => {
                                 toast.success("FAQ removed and database synced.");
                               }
                             }
-                            
+
                             setEditingBlog({ ...editingBlog, faqs: updatedFaqs });
                           }}
                           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-300 hover:text-white hover:bg-red-500 transition-all rounded-none opacity-0 group-hover/faq:opacity-100"
@@ -1072,7 +1079,7 @@ const BlogAdmin: React.FC = () => {
                         >
                           <Trash2 size={16} />
                         </button>
-                        
+
                         <div className="space-y-4 pr-6">
                           <div>
                             <span className="text-[10px] font-black text-[#ff0ea3] tracking-widest mb-2 block uppercase">Question {index + 1}</span>
@@ -1150,7 +1157,7 @@ const BlogAdmin: React.FC = () => {
                       <div className="bg-white p-0 group/seo transition-all">
                         <div className="flex justify-between items-center mb-4">
                           <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Title (Search Heading)</label>
-                          <span className={`text-[9px] font-black uppercase tracking-tighter ${ (editingBlog?.meta_title?.length || 0) > 60 ? 'text-red-500' : 'text-gray-400'}`}>
+                          <span className={`text-[9px] font-black uppercase tracking-tighter ${(editingBlog?.meta_title?.length || 0) > 60 ? 'text-red-500' : 'text-gray-400'}`}>
                             {editingBlog?.meta_title?.length || 0} / 60 CHARS
                           </span>
                         </div>
@@ -1167,7 +1174,7 @@ const BlogAdmin: React.FC = () => {
                       <div className="bg-white p-0 group/seo transition-all">
                         <div className="flex justify-between items-center mb-4">
                           <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] uppercase">Meta Description (Snippet)</label>
-                          <span className={`text-[9px] font-black uppercase tracking-tighter ${ (editingBlog?.meta_description?.length || 0) > 160 ? 'text-red-500' : 'text-gray-400'}`}>
+                          <span className={`text-[9px] font-black uppercase tracking-tighter ${(editingBlog?.meta_description?.length || 0) > 160 ? 'text-red-500' : 'text-gray-400'}`}>
                             {editingBlog?.meta_description?.length || 0} / 160 CHARS
                           </span>
                         </div>
@@ -1200,14 +1207,14 @@ const BlogAdmin: React.FC = () => {
                       {/* Focus Keyword */}
                       <div className="bg-white p-0">
                         <label className="block text-xs font-black text-[#B6FF00] tracking-[0.2em] mb-5 uppercase">Focus Keyword</label>
-                        
+
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.focus_keyword || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
                             <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-white border border-white/20 uppercase tracking-widest group transition-all hover:bg-white/10 hover:border-[#B6FF00]">
                               {kw}
-                              <X 
-                                size={12} 
-                                className="cursor-pointer text-gray-300 hover:text-red-500 transition-colors" 
+                              <X
+                                size={12}
+                                className="cursor-pointer text-gray-300 hover:text-red-500 transition-colors"
                                 onClick={() => {
                                   const tags = (editingBlog?.focus_keyword || "").split(",").map(k => k.trim()).filter(Boolean);
                                   const updated = tags.filter((_, idx) => idx !== i).join(", ");
@@ -1249,14 +1256,14 @@ const BlogAdmin: React.FC = () => {
                       {/* Secondary Keywords */}
                       <div className="bg-white p-0">
                         <label className="block text-xs font-black text-[#ec4899] tracking-[0.2em] mb-5 uppercase">Secondary Keywords</label>
-                        
+
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(editingBlog?.secondary_keywords || "").split(",").map(kw => kw.trim()).filter(Boolean).map((kw, i) => (
                             <div key={i} className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-none text-[10px] font-black text-white border border-white/20 uppercase tracking-widest group transition-all hover:bg-white/10 hover:border-[#ec4899]">
                               {kw}
-                              <X 
-                                size={12} 
-                                className="cursor-pointer text-gray-300 hover:text-red-500 transition-colors" 
+                              <X
+                                size={12}
+                                className="cursor-pointer text-gray-300 hover:text-red-500 transition-colors"
                                 onClick={() => {
                                   const tags = (editingBlog?.secondary_keywords || "").split(",").map(k => k.trim()).filter(Boolean);
                                   const updated = tags.filter((_, idx) => idx !== i).join(", ");
