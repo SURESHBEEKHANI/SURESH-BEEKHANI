@@ -236,57 +236,57 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Index />} />
 
-        {/* Industries */}
-        <Route path="/healthcare" element={<Healthcare />} />
-        <Route path="/fintech" element={<Fintech />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/e-commerce" element={<Ecommerce />} />
-        <Route path="/food-and-groceries" element={<FoodGroceries />} />
-        <Route path="/travel-and-tourism" element={<TravelTourism />} />
-        <Route path="/insurance" element={<Insurance />} />
-        <Route path="/on-demand" element={<OnDemand />} />
+          {/* Industries */}
+          <Route path="/healthcare" element={<Healthcare />} />
+          <Route path="/fintech" element={<Fintech />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/e-commerce" element={<Ecommerce />} />
+          <Route path="/food-and-groceries" element={<FoodGroceries />} />
+          <Route path="/travel-and-tourism" element={<TravelTourism />} />
+          <Route path="/insurance" element={<Insurance />} />
+          <Route path="/on-demand" element={<OnDemand />} />
 
-        {/* Blogs */}
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/blog-admin" element={<BlogAdmin />} />
+          {/* Blogs */}
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog-admin" element={<BlogAdmin />} />
 
-        {/* Services */}
-        <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
-        <Route path="/predictive-modelling" element={<PredictiveModelling />} />
-        <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
-        <Route path="/machine-learning" element={<MachineLearning />} />
-        <Route path="/computer-vision" element={<ComputerVisionPro />} />
-        <Route path="/ai-development" element={<AIDevelopment />} />
-        <Route path="/ai-automation" element={<AIAutomation />} />
-        <Route path="/web-development" element={<WebDevelopment />} />
-        <Route path="/app-development" element={<AppDevelopment />} />
-        <Route path="/devops" element={<DevOps />} />
-        <Route path="/custom-software-development" element={<CustomSoftware />} />
-        <Route path="/big-data-analytics" element={<BigDataAnalytics />} />
-        <Route path="/agentic-ai" element={<AgenticAI />} />
-        <Route path="/ai-audit" element={<AIAudit />} />
+          {/* Services */}
+          <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
+          <Route path="/predictive-modelling" element={<PredictiveModelling />} />
+          <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
+          <Route path="/machine-learning" element={<MachineLearning />} />
+          <Route path="/computer-vision" element={<ComputerVisionPro />} />
+          <Route path="/ai-development" element={<AIDevelopment />} />
+          <Route path="/ai-automation" element={<AIAutomation />} />
+          <Route path="/web-development" element={<WebDevelopment />} />
+          <Route path="/app-development" element={<AppDevelopment />} />
+          <Route path="/devops" element={<DevOps />} />
+          <Route path="/custom-software-development" element={<CustomSoftware />} />
+          <Route path="/big-data-analytics" element={<BigDataAnalytics />} />
+          <Route path="/agentic-ai" element={<AgenticAI />} />
+          <Route path="/ai-audit" element={<AIAudit />} />
 
-        {/* Portfolio */}
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/portfolio/ai-powered-electronic-health-record" element={<AIPoweredElectronicHealthRecord />} />
-        <Route path="/portfolio/ai-powered-patient-management-system" element={<AIPoweredPatientManagementSystem />} />
-        <Route path="/portfolio/ai-powered-telemedicine-systems" element={<AIPoweredTelemedicineSystems />} />
-        <Route path="/portfolio/ai-clinical-documentation-system" element={<AIClinicalDocumentationSystem />} />
-        <Route path="/portfolio/diogenes-ai-chatbot" element={<DiogenesAIChatBot />} />
-        <Route path="/portfolio/ai-powered-medical-imaging-system" element={<AIPoweredMedicalImagingSystem />} />
-        <Route path="/portfolio/ai-appointment-management-systems" element={<AIAppointmentManagementSystems />} />
-        <Route path="/portfolio/ai-powered-hospital-management-system" element={<AIPoweredHospitalManagementSystem />} />
+          {/* Portfolio */}
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/ai-powered-electronic-health-record" element={<AIPoweredElectronicHealthRecord />} />
+          <Route path="/portfolio/ai-powered-patient-management-system" element={<AIPoweredPatientManagementSystem />} />
+          <Route path="/portfolio/ai-powered-telemedicine-systems" element={<AIPoweredTelemedicineSystems />} />
+          <Route path="/portfolio/ai-clinical-documentation-system" element={<AIClinicalDocumentationSystem />} />
+          <Route path="/portfolio/diogenes-ai-chatbot" element={<DiogenesAIChatBot />} />
+          <Route path="/portfolio/ai-powered-medical-imaging-system" element={<AIPoweredMedicalImagingSystem />} />
+          <Route path="/portfolio/ai-appointment-management-systems" element={<AIAppointmentManagementSystems />} />
+          <Route path="/portfolio/ai-powered-hospital-management-system" element={<AIPoweredHospitalManagementSystem />} />
 
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };

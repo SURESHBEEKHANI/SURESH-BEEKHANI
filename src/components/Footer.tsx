@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
-  ArrowUp, ArrowRight,
+  ArrowRight,
   Linkedin, Twitter, Instagram, Facebook,
   MapPin, Mail, Phone,
   ChevronDown,
@@ -397,16 +397,7 @@ const NewsletterForm = () => {
 // MAIN FOOTER
 // ─────────────────────────────────────────────────────────────────────────────
 const Footer = () => {
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const shouldReduce = useReducedMotion();
-
-  useEffect(() => {
-    const onScroll = () => setShowScrollTop(window.scrollY > 500);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <>
@@ -689,42 +680,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* ── SCROLL TO TOP ── */}
-        <AnimatePresence>
-          {showScrollTop && (
-            <motion.button
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
-              transition={{ duration: 0.25 }}
-              onClick={scrollToTop}
-              className="fixed bottom-8 right-8 z-[100] flex items-center justify-center"
-              style={{
-                width: 44, height: 44,
-                background: C.lime,
-                color: C.black,
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: `0 8px 28px ${C.la(0.4)}`,
-                transition: 'background 0.2s, box-shadow 0.2s',
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = C.green;
-                el.style.boxShadow = `0 12px 36px ${C.la(0.6)}`;
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = C.lime;
-                el.style.boxShadow = `0 8px 28px ${C.la(0.4)}`;
-              }}
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={20} strokeWidth={2.5} />
-            </motion.button>
-          )}
-        </AnimatePresence>
       </footer>
     </>
   );
