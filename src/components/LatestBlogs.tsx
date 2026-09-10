@@ -59,7 +59,7 @@ const getBlogImageUrl = (blog: Blog): string => blog.image_url;
 const SkeletonCard: React.FC = () => (
   <div
     className="animate-pulse rounded-2xl overflow-hidden"
-    style={{ background: 'rgba(8,8,14,0.98)', border: `1px solid ${C.wa(0.08)}`, boxShadow: '0 18px 40px rgba(0,0,0,0.3)' }}
+    style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}
   >
     <div
       style={{ background: C.wa(0.05) }}
@@ -92,10 +92,10 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
         aria-label={`Read article: ${blog.title}`}
         className="group flex flex-col h-full focus:outline-none rounded-2xl overflow-hidden"
         style={{
-          background: 'rgba(8,8,14,0.98)',
+          background: C.graphite,
           border: `1px solid ${hovered ? C.la(0.3) : C.wa(0.08)}`,
-          boxShadow: '0 18px 40px rgba(0,0,0,0.3)',
-          transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+          transition: 'border-color 0.3s, transform 0.3s',
+          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -216,13 +216,13 @@ const LatestBlogs: React.FC = () => {
     return (
       <section
         className="py-12 sm:py-16 lg:py-20 relative overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
+        style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
         aria-label="Loading latest insights"
       >
-        {/* Ambient background glows */}
+        {/* Background ambient lighting */}
         <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
-          <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
+          <div className="absolute top-1/4 left-1/3 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
+          <div className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
         </div>
 
         <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
@@ -250,13 +250,13 @@ const LatestBlogs: React.FC = () => {
   return (
     <section
       className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
-      style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
+      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
       aria-labelledby="insights-heading"
     >
-      {/* Ambient background glows */}
+      {/* Background ambient lighting */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
-        <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
+        <div className="absolute top-1/4 left-1/3 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
+        <div className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
       </div>
 
       <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
