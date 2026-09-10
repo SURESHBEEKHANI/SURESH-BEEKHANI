@@ -267,7 +267,7 @@ const Testimonials = () => {
         <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
         
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER

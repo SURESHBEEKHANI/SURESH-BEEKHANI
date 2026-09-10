@@ -113,7 +113,7 @@ const Industries: React.FC = () => {
 
   return (
     <section id="industries" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
-      <div className="relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12">
         <div className="mb-8 grid gap-8 lg:mb-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-12">
           <div>
             <div className="mb-5 flex items-center gap-3"><span style={{ width: 28, height: 2, background: C.LIME }} /><span style={{ color: C.LIME, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em' }}>INDUSTRIES</span></div>

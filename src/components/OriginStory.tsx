@@ -18,7 +18,7 @@ const OriginStory = () => {
       <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.035) 1px, transparent 1px)', backgroundSize: '64px 64px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
       <div className="pointer-events-none absolute -right-40 top-10 h-[32rem] w-[32rem] rounded-full bg-[#7DCC00]/10 blur-[120px]" aria-hidden="true" />
 
-      <div className="relative mx-auto grid max-w-[1280px] items-start gap-10 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-16">
+      <div className="relative w-full grid items-start gap-10 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-16">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -67,7 +67,7 @@ const OriginStory = () => {
         transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="relative mx-auto mt-16 w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:mt-20 sm:px-10 sm:py-12 lg:mt-24 lg:px-16"
       >
-        <div className="relative mx-auto grid max-w-[1280px] grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
           {IMPACT_STATS.map(({ number, label }) => (
             <div key={label} className="relative px-3 text-center sm:px-5">
               <div className="text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>

@@ -466,7 +466,7 @@ const Services = () => {
         }}
       />
 
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-10 relative z-10">
 
         {/* ── Section Header ───────────────────────────────────── */}
         <motion.div

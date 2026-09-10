@@ -146,7 +146,7 @@ const ClientSolutions: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER

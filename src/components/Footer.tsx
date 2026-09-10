@@ -432,7 +432,7 @@ const Footer = () => {
           }}
         >
           <div
-            className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16"
+            className="w-full px-6 sm:px-10 lg:px-16"
             style={{ paddingTop: '5rem', paddingBottom: '5rem' }}
           >
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
@@ -515,7 +515,7 @@ const Footer = () => {
         ══════════════════════════════════════════════════════ */}
         <div className="relative z-10">
           <div
-            className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16"
+            className="w-full px-6 sm:px-10 lg:px-16"
             style={{ paddingTop: '4rem', paddingBottom: '4rem' }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">

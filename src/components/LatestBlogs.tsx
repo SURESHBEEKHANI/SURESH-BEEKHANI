@@ -352,7 +352,7 @@ const LatestBlogs: React.FC = () => {
         style={{ background: C.black, color: C.white }}
         aria-label="Loading latest insights"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+        <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
             <div className="space-y-3">
               <div className="h-2.5 w-28 rounded animate-pulse" style={{ background: C.wa(0.08) }} />
@@ -402,7 +402,7 @@ const LatestBlogs: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
@@ -453,7 +453,7 @@ const LatestBlogs: React.FC = () => {
 
             {/* Sub-copy */}
             <p
-              className="text-xs sm:text-sm font-normal leading-relaxed max-w-xl"
+              className="text-xs sm:text-sm font-normal leading-relaxed"
               style={{ color: C.wa(0.5) }}
             >
               Practical perspectives on AI, automation, software, and the systems helping modern businesses operate better.

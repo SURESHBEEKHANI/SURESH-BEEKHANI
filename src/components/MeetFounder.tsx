@@ -9,13 +9,13 @@ const MeetFounder = () => {
   return (
     <section id="founder" className="relative overflow-hidden border-b border-white/10 bg-[#050505] py-16 text-white sm:py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.03) 1px, transparent 1px)', backgroundSize: '64px 64px', maskImage: 'linear-gradient(to bottom, transparent, black 24%, transparent 95%)' }} />
-      <div className="relative mx-auto grid max-w-[1280px] items-center gap-10 px-6 sm:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:px-16">
+      <div className="relative w-full grid items-center gap-10 px-6 sm:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:px-16">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-sm"
+          className="relative w-full"
         >
           <div className="absolute inset-5 border border-[#B6FF00]/25" aria-hidden="true" />
           <div className="relative overflow-hidden border border-white/10 bg-[#111111] px-8 pt-8">

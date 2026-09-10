@@ -438,13 +438,13 @@ const Approach: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* ══════════════════════════════════════════════════════
             HEADER
         ══════════════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-          <div className="max-w-2xl">
+          <div className="w-full">
             {/* Eyebrow */}
             <div className="mb-5 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
               <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />

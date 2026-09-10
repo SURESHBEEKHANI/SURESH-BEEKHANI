@@ -442,7 +442,7 @@ const SearchOverlay = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -16, scale: 0.97 }}
             transition={{ duration: 0.2, ease }}
-            className="w-full max-w-2xl overflow-hidden"
+            className="w-full overflow-hidden"
             style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
           >
             {/* Input row */}
@@ -608,7 +608,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         }}
       >
         <div
-          className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between"
+          className="w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between"
           style={{
             minHeight: 72,
           }}
@@ -738,7 +738,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               style={{ overflow: 'hidden', background: `radial-gradient(ellipse 80% 45% at 78% 0%, ${C.ga(0.1)} 0%, transparent 72%), ${C.black}`, borderTop: `1px solid ${C.wa(0.07)}` }}
             >
               <div
-                className="max-w-[1280px] mx-auto px-6 sm:px-10"
+                className="w-full px-6 sm:px-10"
                 style={{ paddingTop: '1.25rem', paddingBottom: '2rem', maxHeight: 'calc(100vh - 72px)', overflowY: 'auto' }}
               >
                 {/* Nav items */}

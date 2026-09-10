@@ -306,7 +306,7 @@ const Contact = () => {
       </div>
 
       <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="w-full px-6 sm:px-10 lg:px-16">
           
           {/* ══════════════════════════════════════════════════════
               HERO HEADER

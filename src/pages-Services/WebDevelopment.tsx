@@ -93,7 +93,7 @@ const WebDevelopment: React.FC = () => {
 			<Navbar />
 
 			{/* ─── Hero Section ─── */}
-			<section className="relative w-full min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center bg-slate-950 overflow-hidden">
+			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
 				{/* Background Image */}
 				<div className="absolute inset-0 bg-[url('/image/pages_img/Web-Development.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
 

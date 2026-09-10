@@ -467,7 +467,7 @@ const Blogs: React.FC = () => {
         <Navbar isDark={true} />
 
         <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="w-full px-6 sm:px-10 lg:px-16">
 
             {/* Back Link */}
             <div className="mb-8">
@@ -497,7 +497,7 @@ const Blogs: React.FC = () => {
                     {selectedBlog.category || 'Strategic Insight'}
                   </span>
 
-                  <h1 className="max-w-4xl text-3xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
+                  <h1 className="w-full text-3xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
                     {selectedBlog.title}
                   </h1>
 
@@ -619,7 +619,7 @@ const Blogs: React.FC = () => {
 
                 {/* Newsletter Box */}
                 <div
-                  className="p-6"
+                  className="p-6 rounded-xl"
                   style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
                 >
                   <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">
@@ -641,13 +641,13 @@ const Blogs: React.FC = () => {
                         value={sidebarEmail}
                         onChange={(e) => setSidebarEmail(e.target.value)}
                         placeholder="Your work email"
-                        className="w-full h-10 px-3 bg-[#050505] text-white placeholder-white/40 text-xs outline-none"
+                        className="w-full h-10 px-3 bg-[#050505] text-white placeholder-white/40 text-xs outline-none rounded-lg"
                         style={{ border: `1px solid ${C.wa(0.15)}` }}
                       />
                       <button
                         type="submit"
                         disabled={isSidebarSubmitting}
-                        className="w-full h-10 font-bold text-xs text-black uppercase tracking-wider transition-all"
+                        className="w-full h-10 font-bold text-xs text-black uppercase tracking-wider transition-all rounded-lg"
                         style={{ background: C.lime }}
                       >
                         {isSidebarSubmitting ? "Processing..." : "Subscribe"}
@@ -728,8 +728,8 @@ const Blogs: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
-          <div className="mb-12 grid max-w-6xl gap-8 sm:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="max-w-3xl">
+          <div className="mb-12 grid w-full gap-8 sm:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="w-full">
               <div className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
                 <span className="h-px w-10 bg-[#B6FF00]" aria-hidden="true" />
                 Velnix editorial desk
@@ -776,7 +776,7 @@ const Blogs: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-6 items-stretch md:items-center justify-between mb-12 pb-8 border-b border-white/10">
 
             {/* Category Dropdown */}
-            <div className="w-full md:max-w-sm">
+            <div className="w-full">
               <div className="relative">
                 <button
                   type="button"

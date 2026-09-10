@@ -92,7 +92,7 @@ const MachineLearning: React.FC = () => {
       <Navbar />
 
       {/* ─── Hero Section ─── */}
-      <section className="relative w-full min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center bg-slate-950 overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 bg-[url('/image/pages_img/Machine-Learning.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
 
@@ -165,7 +165,7 @@ const MachineLearning: React.FC = () => {
                 <img
                   src="/image/pages_img/Machine-Learning-power.jpg"
                   alt="The Power of Machine Learning"
-                  className="w-full h-[350px] md:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+                  className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
                 />
                 {/* Premium gradient overlay for depth */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />

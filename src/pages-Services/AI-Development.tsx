@@ -477,20 +477,8 @@ const faqData: FaqItem[] = [
     a: "Yes. Autonomous agents and grounded RAG architectures are core specializations. We build agents capable of tool calling, deterministic multi-step reasoning, and state management, alongside hybrid RAG systems that query structured and unstructured data with strict citation boundaries.",
   },
   {
-    q: "Do we need our own AI model?",
-    a: "Not necessarily. Most enterprise applications achieve optimal cost-performance by orchestrating frontier foundation models (OpenAI, Anthropic, Gemini) combined with RAG and custom system instructions. When domain specificity, compliance, or cost demands it, we fine-tune or self-host open-source models (such as Llama or Mistral) in your private environment.",
-  },
-  {
     q: "Can AI use our private business data?",
     a: "Yes, securely. We configure architectures where models access your private documents and databases through isolated vector search or direct queries without using your proprietary data to train public models. We enforce strict role-based access control, encryption, and zero-data-retention parameters.",
-  },
-  {
-    q: "How do you evaluate AI accuracy?",
-    a: "We implement evaluation-driven engineering: building automated evaluation suites with curated golden test datasets, semantic similarity metrics, ground-truth comparison, edge-case adversarial testing, and human-in-the-loop review queues to verify accuracy, latency, and consistency before and after deployment.",
-  },
-  {
-    q: "Can the solution scale after launch?",
-    a: "Yes. All Velnix architectures are built on stateless containers, asynchronous queues, and horizontally scalable cloud infrastructure. We implement caching layers, model rate-limiting buffers, and fallback routing to ensure steady performance as user concurrency and query volume grow.",
   },
   {
     q: "How long does AI development take?",
@@ -590,14 +578,14 @@ export const AIDevelopment: React.FC = () => {
         />
         {/* Ambient Top Glow */}
         <div
-          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[760px] h-[520px] rounded-full blur-[170px]"
+          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] sm:w-[760px] sm:h-[520px] rounded-full blur-[170px]"
           style={{
             background: `radial-gradient(circle, ${C.la(0.09)} 0%, ${C.ga(0.02)} 55%, transparent 75%)`,
           }}
         />
         {/* Subtle mid-page accent glow */}
         <div
-          className="absolute top-[38%] right-[-100px] w-[560px] h-[560px] rounded-full blur-[190px]"
+          className="absolute top-[38%] right-[-100px] w-[400px] h-[400px] sm:w-[560px] sm:h-[560px] rounded-full blur-[190px]"
           style={{ background: `radial-gradient(circle, ${C.la(0.035)} 0%, transparent 70%)` }}
         />
       </div>
@@ -659,10 +647,10 @@ export const AIDevelopment: React.FC = () => {
           <div
             className="absolute"
             style={{
-              width: 560,
-              height: 560,
-              top: -160,
-              left: -120,
+              width: 400,
+              height: 400,
+              top: -120,
+              left: -80,
               background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 38%, transparent 72%)`,
               filter: 'blur(46px)',
             }}
@@ -672,10 +660,10 @@ export const AIDevelopment: React.FC = () => {
           <div
             className="absolute"
             style={{
-              width: 480,
-              height: 480,
-              bottom: -80,
-              right: -80,
+              width: 350,
+              height: 350,
+              bottom: -60,
+              right: -60,
               background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`,
               filter: 'blur(64px)',
             }}
@@ -684,27 +672,15 @@ export const AIDevelopment: React.FC = () => {
           {/* Bottom Divider Rule from Hero.tsx */}
           <div
             className="absolute bottom-0 left-0 right-0"
-            style={{ height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.2)}, transparent)` }}
+            style={{ height: '1px', background: `linear-gradient(90deg, transparent, ${C.la(0.2)}, transparent)` }}
           />
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
-            <div className="max-w-4xl flex flex-col items-start text-left">
-            {/* Eyebrow badge matching Hero.tsx */}
-            <motion.div
-              initial={shouldReduce ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05, duration: 0.55, ease }}
-              className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em]"
-              style={{ color: C.la(0.9) }}
-            >
-              <span style={{ width: 28, height: 1, background: C.lime }} aria-hidden="true" />
-              AI Innovation · Product Engineering · Enterprise Systems
-            </motion.div>
-
+            <div className="w-full flex flex-col items-start text-left">
             {/* H1 Headline matching Hero.tsx colors and typography */}
             <motion.h1
               initial={shouldReduce ? false : { opacity: 0, y: 24 }}
@@ -853,7 +829,7 @@ export const AIDevelopment: React.FC = () => {
               initial={shouldReduce ? false : { opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.55, ease }}
-              className="w-full max-w-2xl flex items-center gap-6 sm:gap-10 pt-8"
+              className="w-full flex items-center gap-6 sm:gap-10 pt-8"
               style={{ borderTop: `1px solid ${C.wa(0.08)}` }}
             >
               <div className="flex flex-col items-start">
@@ -864,7 +840,7 @@ export const AIDevelopment: React.FC = () => {
                   Production SLA
                 </span>
               </div>
-              <div style={{ width: 1, height: 36, background: C.wa(0.1) }} />
+              <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
               <div className="flex flex-col items-start">
                 <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>
                   Zero
@@ -873,7 +849,7 @@ export const AIDevelopment: React.FC = () => {
                   Vendor Lock-In
                 </span>
               </div>
-              <div style={{ width: 1, height: 36, background: C.wa(0.1) }} />
+              <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
               <div className="flex flex-col items-start">
                 <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>
                   3–5 Wks
@@ -892,14 +868,15 @@ export const AIDevelopment: React.FC = () => {
               transition={{ delay: 0.3, duration: 0.75, ease }}
               className="relative flex items-start justify-center z-20"
             >
-              <div className="relative w-full max-w-[500px] aspect-square">
+              <div className="relative w-full max-w-md">
                 {/* Image without card styling - blends into background */}
                 <img
                   src="/image/Servies/ai-development.avif"
                   alt="AI Development Professional Illustration"
-                  className="relative w-full h-full object-cover rounded-full z-30"
+                  className="relative w-full h-auto object-cover rounded-full z-30"
                   style={{
                     opacity: 1,
+                    maxHeight: '500px',
                   }}
                 />
               </div>
@@ -908,15 +885,40 @@ export const AIDevelopment: React.FC = () => {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════════════════════
+          STATISTICS SECTION (from OriginStory.tsx)
+      ══════════════════════════════════════════════════════ */}
+      <motion.div
+        initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:py-12 lg:px-16 lg:py-14"
+      >
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
+          {[
+            { number: '5+', label: 'Years of engineering experience' },
+            { number: '23+', label: 'Enterprise and SMBs clients' },
+            { number: '45+', label: 'Intelligent systems deployed' },
+            { number: '95%', label: 'Client satisfaction rate' },
+          ].map(({ number, label }) => (
+            <div key={label} className="relative px-3 text-center sm:px-5">
+              <div className="text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
+              <p className="mx-auto mt-4 max-w-[12ch] text-[0.62rem] font-semibold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch] sm:text-[0.68rem]">{label}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
       {/* Main Content Sections */}
       <main className="flex-grow relative z-10 pt-16 pb-24 sm:pt-20 sm:pb-32">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="w-full px-5 sm:px-8 lg:px-12">
 
           {/* ══════════════════════════════════════════════════════
               02 — VALUE STATEMENT
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36 py-12 sm:py-16 border-y border-white/10 relative">
-            <div className="max-w-4xl">
+            <div className="w-full">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 FROM IDEA TO PRODUCTION
@@ -926,7 +928,7 @@ export const AIDevelopment: React.FC = () => {
                 AI Should Improve the Way Your Business Operates.
               </h2>
 
-              <p className="text-base sm:text-xl text-white/70 font-light leading-relaxed mb-8 max-w-3xl">
+              <p className="text-base sm:text-xl text-white/70 font-light leading-relaxed mb-8">
                 We turn AI opportunities into reliable systems that integrate with the software,
                 data, and workflows your organization already depends on.
               </p>
@@ -988,7 +990,7 @@ export const AIDevelopment: React.FC = () => {
                 {/* Velnix Signature Gradient Accent Line */}
                 <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mt-4" />
               </div>
-              <p className="text-xs sm:text-sm text-white/60 font-mono max-w-sm">
+              <p className="text-xs sm:text-sm text-white/60 font-mono">
                 Structured 3-column engineering modules designed for reliability, high accuracy, and enterprise scalability.
               </p>
             </div>
@@ -1076,7 +1078,7 @@ export const AIDevelopment: React.FC = () => {
               04 — AI ARCHITECTURE
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="max-w-3xl mb-14">
+            <div className="w-full mb-14">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 SYSTEM TOPOLOGY
@@ -1106,7 +1108,7 @@ export const AIDevelopment: React.FC = () => {
                 }}
               />
 
-              <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-3">
+              <div className="relative z-10 w-full flex flex-col gap-3">
                 
                 {/* STAGE 1: USER / BUSINESS INPUT */}
                 <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1331,7 +1333,7 @@ export const AIDevelopment: React.FC = () => {
               05 — BUSINESS USE CASES
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="max-w-3xl mb-12">
+            <div className="w-full mb-12">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 OUTCOME-DRIVEN AI
@@ -1502,7 +1504,7 @@ export const AIDevelopment: React.FC = () => {
             />
             
             <div className="relative z-10">
-              <div className="max-w-3xl mb-14">
+              <div className="w-full mb-14">
                 <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                   HOW WE BUILD
@@ -1575,7 +1577,7 @@ export const AIDevelopment: React.FC = () => {
               07 — PRODUCTION AI (6 Technical Pillars)
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="max-w-3xl mb-14">
+            <div className="w-full mb-14">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 ENGINEERING STANDARDS
@@ -1643,7 +1645,7 @@ export const AIDevelopment: React.FC = () => {
               08 — TECHNOLOGY ECOSYSTEM
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="max-w-3xl mb-14">
+            <div className="w-full mb-14">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 ENGINEERING STACK
@@ -1713,7 +1715,7 @@ export const AIDevelopment: React.FC = () => {
               09 — WHY VELNIX (Visual Composition)
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="max-w-3xl mb-14">
+            <div className="w-full mb-14">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 THE VELNIX ADVANTAGE
@@ -1816,7 +1818,7 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               FAQ SECTION (8 Questions) - Premium Level
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-20 sm:mb-24 max-w-5xl mx-auto">
+          <section className="mb-20 sm:mb-24 w-full">
             <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.08), borderColor: C.la(0.4), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
@@ -1825,7 +1827,7 @@ export const AIDevelopment: React.FC = () => {
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-3">
                 Frequently Addressed Questions
               </h2>
-              <p className="text-sm sm:text-base text-white/60 font-light max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-white/60 font-light">
                 Common questions about our AI development process, integration capabilities, and production deployment.
               </p>
               {/* Signature Centered Line */}
@@ -1902,9 +1904,23 @@ export const AIDevelopment: React.FC = () => {
           </section>
 
           {/* ══════════════════════════════════════════════════════
-              LATEST STRATEGIC INSIGHTS EMBED
+              INSIGHTS & ARTICLES SECTION
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
+            <div className="w-full mb-14">
+              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+                INTELLIGENCE HUB
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
+                Insights & Articles
+              </h2>
+              {/* Signature Accent Line */}
+              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
+              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
+                Strategic intelligence, technical deep-dives, and practical guidance on AI development, automation, and enterprise systems.
+              </p>
+            </div>
             <LatestBlogs />
           </section>
 
