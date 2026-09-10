@@ -3,9 +3,8 @@ import {
   Menu, X, ChevronDown, Search, ArrowRight, Phone, Mail,
   HeartPulse, Landmark, GraduationCap, ShoppingCart,
   Utensils, Compass, ShieldCheck, Zap,
-  Sparkles, Bot, MessageCircle, Code2, Brain,
-  Languages, Eye, Globe, Smartphone, Cloud, Database,
-  type LucideIcon,
+  Sparkles, MessageCircle, Code2, Brain,
+  Eye, Workflow, type LucideIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
@@ -37,31 +36,25 @@ const NAV: NavGroup[] = [
   {
     label: 'Services',
     items: [
-      { label: 'AI Development',           href: '/ai-development',             icon: Sparkles,      desc: 'Custom AI systems built for your business.' },
-      { label: 'AI Automation',             href: '/ai-automation',              icon: Zap,           desc: 'Eliminate manual work with intelligent workflows.' },
-      { label: 'Agentic AI',                href: '/agentic-ai',                 icon: Bot,           desc: 'Deploy AI agents for autonomous operations.' },
-      { label: 'Chatbot Development',       href: '/ai-chatbot-development',     icon: MessageCircle, desc: 'Conversational AI for customer and internal use.' },
-      { label: 'Custom Software',           href: '/custom-software-development', icon: Code2,         desc: 'Bespoke applications built around your processes.' },
-      { label: 'Machine Learning',          href: '/machine-learning',           icon: Brain,         desc: 'Predictive models and intelligent data systems.' },
-      { label: 'NLP',                       href: '/natural-language-processing', icon: Languages,     desc: 'Text intelligence and language understanding.' },
-      { label: 'Computer Vision',           href: '/computer-vision',            icon: Eye,           desc: 'Image and video intelligence systems.' },
-      { label: 'Web Development',           href: '/web-development',            icon: Globe,         desc: 'Scalable, high-performance web products.' },
-      { label: 'App Development',           href: '/app-development',            icon: Smartphone,    desc: 'Mobile applications for iOS and Android.' },
-      { label: 'DevOps Engineering',        href: '/devops',                     icon: Cloud,         desc: 'Cloud infrastructure and deployment pipelines.' },
-      { label: 'Big Data Analytics',        href: '/big-data-analytics',         icon: Database,      desc: 'Turn raw data into actionable business insight.' },
+      { label: 'AI Automation',             href: '/ai-automation',              icon: Zap,           desc: 'Turn repetitive workflows into automated systems.' },
+      { label: 'AI Development',           href: '/ai-development',             icon: Sparkles,      desc: 'Build intelligent software around your business.' },
+      { label: 'Conversational AI',         href: '/ai-chatbot-development',     icon: MessageCircle, desc: 'Create AI systems that communicate with customers and teams.' },
+      { label: 'Machine Learning & Data',   href: '/machine-learning',           icon: Brain,         desc: 'Turn business data into predictions and decisions.' },
+      { label: 'Computer Vision & NLP',     href: '/computer-vision',            icon: Eye,           desc: 'Make software understand documents, images, and language.' },
+      { label: 'Custom Software',           href: '/custom-software-development', icon: Code2,         desc: 'Build the software infrastructure your business needs.' },
     ],
   },
   {
     label: 'Industries',
     items: [
-      { label: 'Healthcare',       href: '/healthcare',          icon: HeartPulse,    desc: 'Advanced technology for healthcare excellence.' },
-      { label: 'Fintech',          href: '/fintech',             icon: Landmark,      desc: 'Financial technology solutions for modern markets.' },
-      { label: 'Education',        href: '/education',           icon: GraduationCap, desc: 'We promote education through innovative technology.' },
-      { label: 'E-Commerce',       href: '/e-commerce',          icon: ShoppingCart,  desc: 'We enhance online commerce with tailored solutions.' },
-      { label: 'Food & Groceries', href: '/food-and-groceries',  icon: Utensils,      desc: 'Tech solutions revolutionizing food and grocery.' },
-      { label: 'Travel & Tourism', href: '/travel-and-tourism',  icon: Compass,       desc: 'Digital solutions for travel and hospitality.' },
-      { label: 'Insurance',        href: '/insurance',           icon: ShieldCheck,   desc: 'Innovative insurance technology solutions.' },
-      { label: 'On-Demand',        href: '/on-demand',           icon: Zap,           desc: 'Instant solutions tailored to your needs.' },
+      { label: 'Healthcare',       href: '/healthcare',          icon: HeartPulse,    desc: 'AI-powered healthcare solutions and clinical workflow automation.' },
+      { label: 'Fintech',          href: '/fintech',             icon: Landmark,      desc: 'Secure financial systems and intelligent payment processing.' },
+      { label: 'Education',        href: '/education',           icon: GraduationCap, desc: 'Smart learning platforms and educational AI systems.' },
+      { label: 'E-Commerce',       href: '/e-commerce',          icon: ShoppingCart,  desc: 'AI-driven shopping experiences and inventory optimization.' },
+      { label: 'Food & Groceries', href: '/food-and-groceries',  icon: Utensils,      desc: 'Supply chain automation and food delivery platforms.' },
+      { label: 'Travel & Tourism', href: '/travel-and-tourism',  icon: Compass,       desc: 'Smart booking systems and travel experience optimization.' },
+      { label: 'Insurance',        href: '/insurance',           icon: ShieldCheck,   desc: 'Automated claims processing and risk assessment AI.' },
+      { label: 'On-Demand',        href: '/on-demand',           icon: Zap,           desc: 'Real-time service platforms and on-demand delivery systems.' },
     ],
   },
   {
@@ -86,14 +79,16 @@ const ALL_SEARCHABLE: NavItem[] = [
   { label: 'Careers',          href: '/careers' },
   { label: 'Blogs',            href: '/blogs' },
   { label: 'Contact',          href: '/contact' },
-  { label: 'AI Development',   href: '/ai-development' },
   { label: 'AI Automation',    href: '/ai-automation' },
-  { label: 'Agentic AI',       href: '/agentic-ai' },
-  { label: 'Chatbot Dev',      href: '/ai-chatbot-development' },
+  { label: 'AI Development',   href: '/ai-development' },
+  { label: 'Conversational AI', href: '/ai-chatbot-development' },
+  { label: 'Machine Learning & Data', href: '/machine-learning' },
+  { label: 'Computer Vision & NLP', href: '/computer-vision' },
   { label: 'Custom Software',  href: '/custom-software-development' },
+  // Legacy service routes for search compatibility
+  { label: 'Agentic AI',       href: '/agentic-ai' },
   { label: 'Machine Learning', href: '/machine-learning' },
   { label: 'NLP',              href: '/natural-language-processing' },
-  { label: 'Computer Vision',  href: '/computer-vision' },
   { label: 'Predictive Modelling', href: '/predictive-modelling' },
   { label: 'Web Development',  href: '/web-development' },
   { label: 'App Development',  href: '/app-development' },
@@ -125,7 +120,7 @@ const DesktopDropdown = ({
     exit={{ opacity: 0, y: -8 }}
     transition={{ duration: 0.18, ease }}
     className="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-3"
-    style={{ minWidth: variant === 'solutions' ? 680 : variant === 'industries' ? 560 : 240 }}
+    style={{ minWidth: variant === 'solutions' ? 480 : variant === 'industries' ? 720 : 240 }}
   >
     {/* Arrow tip */}
     <div
@@ -150,7 +145,7 @@ const DesktopDropdown = ({
     >
       {variant === 'solutions' || variant === 'industries' ? (
         <div
-          className={variant === 'solutions' ? 'grid grid-cols-3 gap-px p-2' : 'grid grid-cols-2 gap-px p-2'}
+          className={variant === 'solutions' ? 'grid grid-cols-2 gap-px p-2' : 'grid grid-cols-2 gap-px p-2'}
           style={{ background: C.wa(0.04) }}
         >
           {items.map(item => {
@@ -159,32 +154,32 @@ const DesktopDropdown = ({
               <a
                 key={item.href}
                 href={item.href}
-                className="group flex items-start gap-3 px-4 py-3.5 transition-all duration-150"
+                className="group flex items-start gap-3 px-4 py-4 transition-all duration-150"
                 style={{ background: C.graphite, textDecoration: 'none' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.la(0.06); }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.la(0.08); }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = C.graphite; }}
               >
                 {Icon && (
                   <span
                     className="shrink-0 inline-flex items-center justify-center"
                     style={{
-                      width: 34,
-                      height: 34,
+                      width: 40,
+                      height: 40,
                       background: variant === 'industries' ? C.green : C.lime,
                       border: `1px solid ${variant === 'industries' ? C.green : C.lime}`,
                       color: C.black,
-                      transition: 'background-color 0.2s ease',
+                      transition: 'all 0.2s ease',
                     }}
                   >
-                    <Icon size={16} strokeWidth={2.25} />
+                    <Icon size={18} strokeWidth={2.25} />
                   </span>
                 )}
-                <span className="flex flex-col gap-0.5 min-w-0">
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: C.wa(0.92), lineHeight: 1.3 }}>
+                <span className="flex flex-col gap-1 min-w-0">
+                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: C.wa(0.95), lineHeight: 1.3 }}>
                     {item.label}
                   </span>
                   {item.desc && (
-                    <span style={{ fontSize: '0.68rem', color: C.wa(0.4), lineHeight: 1.4 }}>
+                    <span style={{ fontSize: '0.7rem', color: C.wa(0.5), lineHeight: 1.4 }}>
                       {item.desc}
                     </span>
                   )}

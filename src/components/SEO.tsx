@@ -16,215 +16,320 @@ interface SEOProps {
   noIndex?: boolean;
   locale?: string;
   alternateLocales?: string[];
-  schemaType?: 'Organization' | 'WebPage' | 'Article' | 'Service' | 'Product' | 'FAQPage' | 'Person';
+  schemaType?:
+    | 'Organization'
+    | 'WebPage'
+    | 'Article'
+    | 'Service'
+    | 'Product'
+    | 'FAQPage'
+    | 'Person';
   faqItems?: { question: string; answer: string }[];
   breadcrumbs?: { name: string; url: string }[];
-  serviceDetails?: { name: string; description: string; provider?: string };
+  serviceDetails?: {
+    name: string;
+    description: string;
+    provider?: string;
+  };
 }
 
 // ─── Constants ──────────────────────────────────────────────────────────────────
 const SITE_NAME = 'Velnix Solutions';
 const BASE_URL = 'https://velnixsolutions.com';
 const DEFAULT_IMAGE = `${BASE_URL}/image/preview.png`;
+
+const BRAND_TAGLINE =
+  'Building Intelligence. Accelerating Ambition with AI.';
+
 const DEFAULT_DESCRIPTION =
-  'Velnix Solutions builds AI development, automation, machine learning, healthcare AI, and custom software systems for practical business workflows.';
+  'Velnix Solutions is an AI development agency helping businesses transform repetitive workflows into intelligent systems with Agentic AI, AI automation, machine learning, and custom AI software.';
+
 const DEFAULT_KEYWORDS =
-  'AI development company, machine learning solutions, healthcare AI, NLP services, computer vision, chatbot development, predictive modeling, AI automation, deep learning, Velnix Solutions, agentic AI, custom software development';
+  'AI development agency, AI agency, Agentic AI, Agentic AI development, AI agents, autonomous AI agents, AI agent development, AI development, AI automation, machine learning, deep learning, generative AI, conversational AI, multi-agent systems, computer vision, natural language processing, data intelligence, custom AI software, custom software development, intelligent systems, SMB workflow automation, AI solutions for SMBs, Velnix Solutions';
+
 const TWITTER_HANDLE = '@VelnixSolutions';
 const THEME_COLOR = '#050505';
 
 // ─── Route-Specific SEO Defaults ────────────────────────────────────────────────
 const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
   '/': {
-    title: 'Velnix Solutions | AI Development Company & Healthcare AI Agency',
-    description: DEFAULT_DESCRIPTION,
+    title: 'Velnix Solutions | AI Development Agency',
+    description:
+      'Velnix Solutions is an AI development agency helping businesses transform repetitive workflows into intelligent systems with Agentic AI, AI automation, machine learning, and custom AI software.',
+    keywords: DEFAULT_KEYWORDS,
     schemaType: 'Organization',
   },
+
   '/about': {
-    title: 'About Velnix Solutions — Our Vision, Mission & Core Values',
+    title: 'About Velnix Solutions | AI Development Agency',
     description:
-      'Learn about Velnix Solutions — an emerging AI service provider leveraging cutting-edge technology to deliver smart, scalable AI solutions for businesses worldwide.',
-    keywords: 'about Velnix Solutions, AI company, AI vision, AI mission, AI team, AI agency',
+      'Learn about Velnix Solutions, an AI development agency building Agentic AI, AI agents, machine learning systems, automation workflows, and custom software for modern businesses.',
+    keywords:
+      'about Velnix Solutions, AI agency, AI development agency, Agentic AI company, AI agents, machine learning company, AI automation, intelligent software',
     schemaType: 'WebPage',
   },
+
   '/contact': {
-    title: 'Contact Velnix Solutions — Get a Free AI Consultation',
+    title: 'Contact Velnix Solutions | AI Development Agency',
     description:
-      'Reach out to Velnix Solutions for AI development, machine learning, and custom software solutions. Get a free consultation today.',
-    keywords: 'contact Velnix Solutions, AI consultation, hire AI developers',
+      'Contact Velnix Solutions for Agentic AI development, AI agents, machine learning, AI automation, conversational AI, and custom AI software.',
+    keywords:
+      'contact Velnix Solutions, AI consultation, AI development consultation, Agentic AI consultation, hire AI developers, AI automation',
     schemaType: 'WebPage',
   },
+
   '/careers': {
-    title: 'Careers at Velnix Solutions | AI and Software Engineering',
-    description: 'Explore careers at Velnix Solutions, where AI, software engineering, automation, and business context meet.',
+    title: 'Careers at Velnix Solutions | AI & Software Engineering',
+    description:
+      'Explore careers at Velnix Solutions and work on Agentic AI, AI agents, machine learning, automation, and intelligent software systems.',
+    keywords:
+      'Velnix careers, AI careers, machine learning jobs, AI engineering, software engineering, Agentic AI jobs',
     schemaType: 'WebPage',
   },
+
   '/cookie-policy': {
     title: 'Cookie Policy | Velnix Solutions',
-    description: 'Read how Velnix Solutions uses cookies and similar technologies on this website.',
+    description:
+      'Read how Velnix Solutions uses cookies and similar technologies on this website.',
     schemaType: 'WebPage',
   },
+
   '/portfolio': {
-    title: 'AI Portfolio — Case Studies & Projects | Velnix Solutions',
+    title: 'AI Portfolio | Agentic AI, AI Agents & ML Projects | Velnix Solutions',
     description:
-      'Explore our AI portfolio showcasing real-world projects in healthcare, finance, education, legal tech, and DevOps automation.',
-    keywords: 'AI portfolio, AI case studies, AI projects, machine learning portfolio',
+      'Explore Velnix Solutions projects across Agentic AI, AI agents, machine learning, AI automation, conversational AI, computer vision, and custom software.',
+    keywords:
+      'AI portfolio, Agentic AI projects, AI agent projects, machine learning portfolio, AI automation projects, AI case studies, custom AI software',
     schemaType: 'WebPage',
   },
+
   '/blogs': {
-    title: 'AI & Tech Blog — Insights & Trends | Velnix Solutions',
+    title: 'AI, Agentic AI & Machine Learning Blog | Velnix Solutions',
     description:
-      'Stay updated with the latest AI trends, machine learning insights, and technology deep-dives from the Velnix Solutions team.',
-    keywords: 'AI blog, machine learning blog, tech insights, AI trends',
+      'Explore insights on Agentic AI, AI agents, machine learning, AI automation, generative AI, software engineering, and intelligent business systems.',
+    keywords:
+      'AI blog, Agentic AI blog, AI agents blog, machine learning blog, AI automation blog, generative AI, AI trends, AI software development',
     schemaType: 'WebPage',
   },
+
   '/privacy-policy': {
     title: 'Privacy Policy | Velnix Solutions',
-    description: 'Read the Velnix Solutions privacy policy to understand how we collect, use, and protect your personal data.',
+    description:
+      'Read the Velnix Solutions privacy policy to understand how we collect, use, and protect your personal data.',
     noIndex: false,
     schemaType: 'WebPage',
   },
+
   '/terms-and-conditions': {
     title: 'Terms & Conditions | Velnix Solutions',
-    description: 'Review the terms and conditions for using Velnix Solutions services and website.',
+    description:
+      'Review the terms and conditions for using Velnix Solutions services and website.',
     noIndex: false,
     schemaType: 'WebPage',
   },
-  // ── Services ──
+
+  // ── Core Services ─────────────────────────────────────────────────────────────
+
   '/ai-development': {
-    title: 'AI Development Services — Custom AI Solutions | Velnix Solutions',
-    description: 'End-to-end AI development services including model training, deployment, and integration for enterprises.',
-    keywords: 'AI development services, custom AI solutions, AI model training, enterprise AI',
+    title: 'AI Development Services | Agentic AI & Custom AI | Velnix Solutions',
+    description:
+      'Build production-ready AI systems with Agentic AI, AI agents, machine learning, generative AI, and custom AI software development.',
+    keywords:
+      'AI development services, AI development agency, Agentic AI development, AI agents, custom AI solutions, machine learning development, generative AI',
     schemaType: 'Service',
   },
+
   '/ai-automation': {
-    title: 'AI Automation Solutions — Intelligent Process Automation | Velnix Solutions',
-    description: 'Automate workflows with AI-powered intelligent automation solutions that reduce costs and boost efficiency.',
-    keywords: 'AI automation, intelligent automation, RPA, workflow automation',
+    title: 'AI Automation Services | Intelligent Workflow Automation | Velnix Solutions',
+    description:
+      'Automate repetitive business workflows with AI-powered automation, AI agents, intelligent process orchestration, and integrated business systems.',
+    keywords:
+      'AI automation, AI workflow automation, intelligent automation, business process automation, SMB automation, AI agents, workflow automation',
     schemaType: 'Service',
   },
+
   '/ai-chatbot-development': {
-    title: 'AI Chatbot Development — Conversational AI Solutions | Velnix Solutions',
-    description: 'Build intelligent AI chatbots with NLP capabilities for customer support, healthcare, and enterprise use cases.',
-    keywords: 'AI chatbot development, conversational AI, NLP chatbot, customer support bot',
+    title: 'Conversational AI & Chatbot Development | Velnix Solutions',
+    description:
+      'Build intelligent conversational AI and chatbots powered by NLP, generative AI, retrieval systems, and AI agents for modern business workflows.',
+    keywords:
+      'AI chatbot development, conversational AI, NLP chatbot, generative AI chatbot, AI agents, business chatbots, conversational agents',
     schemaType: 'Service',
   },
+
   '/predictive-modelling': {
-    title: 'Predictive Modeling Services — Data-Driven Forecasting | Velnix Solutions',
-    description: 'Leverage predictive modeling and analytics to forecast trends, optimize operations, and make smarter decisions.',
-    keywords: 'predictive modeling, data analytics, forecasting, ML models',
+    title: 'Predictive Modeling Services | Machine Learning | Velnix Solutions',
+    description:
+      'Use machine learning and predictive modeling to forecast trends, identify patterns, optimize operations, and support data-driven business decisions.',
+    keywords:
+      'predictive modeling, machine learning forecasting, predictive analytics, data analytics, ML models, machine learning services',
     schemaType: 'Service',
   },
+
   '/natural-language-processing': {
-    title: 'NLP Services — Natural Language Processing Solutions | Velnix Solutions',
-    description: 'Advanced NLP solutions including text analysis, sentiment analysis, entity recognition, and language understanding.',
-    keywords: 'NLP services, natural language processing, text analytics, sentiment analysis',
+    title: 'Natural Language Processing Services | Velnix Solutions',
+    description:
+      'Build NLP systems for text analysis, information extraction, semantic search, language understanding, document processing, and intelligent automation.',
+    keywords:
+      'NLP services, natural language processing, NLP development, text analytics, semantic search, language AI, document AI',
     schemaType: 'Service',
   },
+
   '/machine-learning': {
-    title: 'Machine Learning Services — ML Model Development | Velnix Solutions',
-    description: 'Custom machine learning model development, training, and deployment for complex business challenges.',
-    keywords: 'machine learning services, ML development, model training, deep learning',
+    title: 'Machine Learning Services | ML Model Development | Velnix Solutions',
+    description:
+      'Develop and deploy custom machine learning models for prediction, classification, recommendation, forecasting, and intelligent business decision-making.',
+    keywords:
+      'machine learning services, machine learning development, ML development, machine learning agency, model training, deep learning, predictive analytics',
     schemaType: 'Service',
   },
+
   '/computer-vision': {
-    title: 'Computer Vision Solutions — Image & Video AI | Velnix Solutions',
-    description: 'Computer vision solutions for image recognition, object detection, medical imaging, and video analysis.',
-    keywords: 'computer vision, image recognition, object detection, visual AI',
+    title: 'Computer Vision Solutions | Image & Video AI | Velnix Solutions',
+    description:
+      'Build computer vision systems for image recognition, object detection, visual inspection, video analysis, OCR, and intelligent automation.',
+    keywords:
+      'computer vision, computer vision development, image recognition, object detection, video AI, OCR, visual AI',
     schemaType: 'Service',
   },
+
   '/web-development': {
-    title: 'Web Development Services — Modern Web Solutions | Velnix Solutions',
-    description: 'High-performance, SEO-optimized web development using React, Next.js, and modern frameworks.',
-    keywords: 'web development, React development, Next.js, modern web apps',
+    title: 'Web Development Services | AI-Powered Web Solutions | Velnix Solutions',
+    description:
+      'Build high-performance, SEO-optimized web applications with modern frameworks, AI integrations, automation, and scalable software architecture.',
+    keywords:
+      'web development, AI web development, React development, Next.js, modern web apps, custom web software',
     schemaType: 'Service',
   },
+
   '/app-development': {
-    title: 'App Development Services — Mobile & Cross-Platform Apps | Velnix Solutions',
-    description: 'Build high-quality mobile and cross-platform applications with modern technologies and AI integration.',
-    keywords: 'app development, mobile apps, cross-platform, React Native',
+    title: 'App Development Services | AI-Powered Applications | Velnix Solutions',
+    description:
+      'Build scalable mobile and cross-platform applications with modern technologies, AI integrations, intelligent automation, and custom software capabilities.',
+    keywords:
+      'app development, mobile app development, AI mobile apps, cross-platform apps, React Native, custom apps',
     schemaType: 'Service',
   },
+
   '/devops': {
-    title: 'DevOps Services — CI/CD & Cloud Infrastructure | Velnix Solutions',
-    description: 'Streamline your development pipeline with DevOps, CI/CD automation, and cloud infrastructure management.',
-    keywords: 'DevOps services, CI/CD, cloud infrastructure, Docker, Kubernetes',
+    title: 'DevOps Services | CI/CD & Cloud Infrastructure | Velnix Solutions',
+    description:
+      'Streamline AI and software delivery with DevOps, CI/CD automation, cloud infrastructure, containerization, monitoring, and scalable deployment systems.',
+    keywords:
+      'DevOps services, CI/CD, cloud infrastructure, Docker, Kubernetes, AI deployment, MLOps',
     schemaType: 'Service',
   },
+
   '/custom-software-development': {
-    title: 'Custom Software Development — Tailored Solutions | Velnix Solutions',
-    description: 'Bespoke software development solutions designed to address your unique business requirements.',
-    keywords: 'custom software development, bespoke software, enterprise solutions',
+    title: 'Custom Software Development | AI-Powered Business Software | Velnix Solutions',
+    description:
+      'Build tailored software systems combining AI, automation, machine learning, integrations, and scalable architecture around your business workflows.',
+    keywords:
+      'custom software development, AI software development, business software, bespoke software, AI-powered software, custom AI software',
     schemaType: 'Service',
   },
+
   '/big-data-analytics': {
-    title: 'Big Data Analytics — Data Engineering & Insights | Velnix Solutions',
-    description: 'Transform raw data into actionable insights with our big data analytics and engineering services.',
-    keywords: 'big data analytics, data engineering, data insights, data pipeline',
+    title: 'Big Data Analytics | Data Engineering & Intelligence | Velnix Solutions',
+    description:
+      'Transform business data into actionable intelligence with data engineering, analytics, machine learning pipelines, and scalable data systems.',
+    keywords:
+      'big data analytics, data engineering, data intelligence, machine learning data, data pipelines, business analytics',
     schemaType: 'Service',
   },
+
   '/agentic-ai': {
-    title: 'Agentic AI Solutions — Autonomous AI Agents | Velnix Solutions',
-    description: 'Build autonomous AI agents that reason, plan, and execute complex multi-step tasks independently.',
-    keywords: 'agentic AI, autonomous agents, AI agents, multi-agent systems',
+    title: 'Agentic AI Development | AI Agents & Autonomous Systems | Velnix Solutions',
+    description:
+      'Build Agentic AI systems and autonomous AI agents that reason, plan, use tools, coordinate tasks, and execute complex multi-step business workflows.',
+    keywords:
+      'Agentic AI, Agentic AI development, AI agents, autonomous AI agents, AI agent development, multi-agent systems, intelligent agents',
     schemaType: 'Service',
   },
-  // ── Industries ──
+
+  // ── Industries ────────────────────────────────────────────────────────────────
+
   '/healthcare': {
-    title: 'AI for Healthcare | Velnix Solutions',
-    description: 'Advanced technology for healthcare excellence — AI systems that improve care delivery and operations.',
-    keywords: 'healthcare AI, hospital AI, clinical workflow, healthcare software',
+    title: 'AI Software for Healthcare | Velnix Solutions',
+    description:
+      'Intelligent software and automation systems designed to improve healthcare workflows, operations, and digital experiences.',
+    keywords:
+      'AI software healthcare, healthcare software, healthcare automation, clinical workflow software',
     schemaType: 'Service',
   },
+
   '/fintech': {
     title: 'AI for Fintech | Velnix Solutions',
-    description: 'Financial technology solutions for modern markets — fraud, risk, onboarding, and operations AI.',
-    keywords: 'fintech AI, financial technology, fraud detection, risk scoring',
+    description:
+      'AI and automation solutions for financial workflows including fraud detection, risk analysis, onboarding, and operations.',
+    keywords:
+      'fintech AI, financial technology, fraud detection, risk scoring, financial automation',
     schemaType: 'Service',
   },
+
   '/education': {
     title: 'AI for Education | Velnix Solutions',
-    description: 'We promote education through innovative technology for learning, teaching, and student operations.',
-    keywords: 'education AI, EdTech, personalized learning, student support',
+    description:
+      'AI-powered software and automation for learning, teaching, student support, and education operations.',
+    keywords:
+      'education AI, EdTech, personalized learning, student support, education automation',
     schemaType: 'Service',
   },
+
   '/e-commerce': {
     title: 'AI for E-Commerce | Velnix Solutions',
-    description: 'We enhance online commerce with tailored solutions for conversion, search, and operations.',
-    keywords: 'ecommerce AI, product recommendations, commerce search, retail AI',
+    description:
+      'AI and automation solutions for e-commerce search, recommendations, customer workflows, conversion, and operations.',
+    keywords:
+      'ecommerce AI, product recommendations, commerce search, retail AI, ecommerce automation',
     schemaType: 'Service',
   },
+
   '/food-and-groceries': {
     title: 'AI for Food & Groceries | Velnix Solutions',
-    description: 'Tech solutions revolutionizing food and grocery — demand, inventory, waste, and store operations.',
-    keywords: 'grocery AI, foodtech, demand forecasting, inventory optimization',
+    description:
+      'AI and automation solutions for demand forecasting, inventory optimization, waste reduction, and grocery operations.',
+    keywords:
+      'grocery AI, foodtech, demand forecasting, inventory optimization, grocery automation',
     schemaType: 'Service',
   },
+
   '/travel-and-tourism': {
     title: 'AI for Travel & Tourism | Velnix Solutions',
-    description: 'Digital solutions for travel and hospitality — bookings, guest support, and property operations.',
-    keywords: 'travel AI, hospitality AI, hotel operations, booking assistant',
+    description:
+      'AI-powered digital solutions for travel and hospitality including booking workflows, guest support, and operational automation.',
+    keywords:
+      'travel AI, hospitality AI, hotel operations, booking assistant, travel automation',
     schemaType: 'Service',
   },
+
   '/insurance': {
     title: 'AI for Insurance | Velnix Solutions',
-    description: 'Innovative insurance technology solutions for claims, underwriting, and policyholder service.',
-    keywords: 'insurance AI, claims automation, underwriting, insurtech',
+    description:
+      'AI and automation solutions for insurance claims, underwriting, policy workflows, customer service, and operations.',
+    keywords:
+      'insurance AI, claims automation, underwriting, insurtech, insurance automation',
     schemaType: 'Service',
   },
+
   '/on-demand': {
     title: 'AI for On-Demand Services | Velnix Solutions',
-    description: 'Instant solutions tailored to your needs — dispatch, matching, and marketplace operations.',
-    keywords: 'on-demand AI, dispatch, marketplace operations, gig platform',
+    description:
+      'AI-powered solutions for dispatch, matching, customer workflows, marketplace operations, and on-demand service automation.',
+    keywords:
+      'on-demand AI, dispatch automation, marketplace operations, AI matching, service automation',
     schemaType: 'Service',
   },
 };
 
+// ─── Known Routes ───────────────────────────────────────────────────────────────
 const KNOWN_ROUTES = new Set([
   ...Object.keys(ROUTE_SEO),
+
   '/careers',
   '/cookie-policy',
   '/blog-admin',
+
   '/portfolio/ai-powered-electronic-health-record',
   '/portfolio/ai-powered-patient-management-system',
   '/portfolio/ai-powered-telemedicine-systems',
@@ -235,25 +340,59 @@ const KNOWN_ROUTES = new Set([
   '/portfolio/ai-powered-hospital-management-system',
 ]);
 
+// ─── Helpers ────────────────────────────────────────────────────────────────────
 function humanizePath(pathname: string) {
-  return pathname
-    .split('/')
-    .filter(Boolean)
-    .join(' ')
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (character) => character.toUpperCase()) || 'Home';
+  return (
+    pathname
+      .split('/')
+      .filter(Boolean)
+      .join(' ')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (character) => character.toUpperCase()) ||
+    'Home'
+  );
 }
 
 // ─── Schema Generators ──────────────────────────────────────────────────────────
+
 function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: SITE_NAME,
-    url: BASE_URL,
     '@id': `${BASE_URL}/#organization`,
+
+    name: SITE_NAME,
+    url: `${BASE_URL}/`,
     logo: `${BASE_URL}/image/logo/logo1.avif`,
+
     description: DEFAULT_DESCRIPTION,
+    slogan: BRAND_TAGLINE,
+
+    foundingDate: '2025',
+
+    knowsAbout: [
+      'Artificial Intelligence',
+      'AI Development',
+      'AI Development Agency',
+      'Agentic AI',
+      'Agentic AI Development',
+      'AI Agents',
+      'Autonomous AI Agents',
+      'Multi-Agent Systems',
+      'AI Automation',
+      'Machine Learning',
+      'Deep Learning',
+      'Generative AI',
+      'Conversational AI',
+      'Natural Language Processing',
+      'Computer Vision',
+      'Data Intelligence',
+      'Custom AI Software',
+      'Custom Software Development',
+      'Intelligent Business Systems',
+      'SMB Workflow Automation',
+    ],
+
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+92-335-131-2852',
@@ -262,11 +401,13 @@ function generateOrganizationSchema() {
       areaServed: ['US', 'GB', 'AE', 'PK'],
       availableLanguage: ['English'],
     },
+
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Karachi',
       addressCountry: 'PK',
     },
+
     sameAs: [
       'https://www.facebook.com/VelnixSolutions',
       'https://www.linkedin.com/company/velnixsolutions/',
@@ -281,36 +422,68 @@ function generateWebSiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${BASE_URL}/#website`,
+
     url: `${BASE_URL}/`,
     name: SITE_NAME,
-    publisher: { '@id': `${BASE_URL}/#organization` },
+
+    description:
+      'AI development agency building Agentic AI, AI automation, machine learning, and intelligent software systems.',
+
+    publisher: {
+      '@id': `${BASE_URL}/#organization`,
+    },
   };
 }
 
-function generateWebPageSchema(title: string, description: string, url: string) {
+function generateWebPageSchema(
+  title: string,
+  description: string,
+  url: string
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
+
+    '@id': `${url}#webpage`,
     name: title,
     description,
     url,
-    publisher: { '@type': 'Organization', name: SITE_NAME, url: BASE_URL },
+
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`,
+    },
+
+    about: {
+      '@id': `${BASE_URL}/#organization`,
+    },
+
+    publisher: {
+      '@id': `${BASE_URL}/#organization`,
+    },
   };
 }
 
-function generateServiceSchema(title: string, description: string, url: string) {
+function generateServiceSchema(
+  title: string,
+  description: string,
+  url: string
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
+
     name: title,
     description,
     url,
+
     provider: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: BASE_URL,
+      '@id': `${BASE_URL}/#organization`,
     },
-    areaServed: { '@type': 'Place', name: 'Worldwide' },
+
+    areaServed: {
+      '@type': 'Place',
+      name: 'Worldwide',
+    },
   };
 }
 
@@ -326,94 +499,176 @@ function generateArticleSchema(
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
+
     headline: title,
     description,
     url,
     image,
-    datePublished: publishedTime || new Date().toISOString(),
-    dateModified: modifiedTime || publishedTime || new Date().toISOString(),
-    author: { '@type': 'Person', name: author || SITE_NAME },
+
+    datePublished:
+      publishedTime || new Date().toISOString(),
+
+    dateModified:
+      modifiedTime ||
+      publishedTime ||
+      new Date().toISOString(),
+
+    author: {
+      '@type': 'Person',
+      name: author || SITE_NAME,
+    },
+
     publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/image/logo/Neurovex.png` },
+      '@id': `${BASE_URL}/#organization`,
     },
   };
 }
 
-function generateFAQSchema(items: { question: string; answer: string }[]) {
+function generateFAQSchema(
+  items: { question: string; answer: string }[]
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+
     mainEntity: items.map((item) => ({
       '@type': 'Question',
+
       name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   };
 }
 
-function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+
     itemListElement: items.map((item, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
+
+      item: item.url.startsWith('http')
+        ? item.url
+        : `${BASE_URL}${item.url}`,
     })),
   };
 }
 
-// ─── Helper: upsert meta tag ────────────────────────────────────────────────────
-function upsertMeta(attribute: 'name' | 'property', key: string, content: string) {
-  let el = document.querySelector(`meta[${attribute}="${key}"]`);
+// ─── Meta Helper ────────────────────────────────────────────────────────────────
+function upsertMeta(
+  attribute: 'name' | 'property',
+  key: string,
+  content: string
+) {
+  let el = document.querySelector(
+    `meta[${attribute}="${key}"]`
+  );
+
   if (!el) {
     el = document.createElement('meta');
     el.setAttribute(attribute, key);
     document.head.appendChild(el);
   }
+
   el.setAttribute('content', content);
 }
 
-// ─── Helper: upsert link tag ────────────────────────────────────────────────────
-function upsertLink(rel: string, href: string, attrs?: Record<string, string>) {
+// ─── Link Helper ────────────────────────────────────────────────────────────────
+function upsertLink(
+  rel: string,
+  href: string,
+  attrs?: Record<string, string>
+) {
   const selector = attrs
     ? `link[rel="${rel}"][hreflang="${attrs.hreflang || ''}"]`
     : `link[rel="${rel}"]`;
-  let el = document.querySelector(selector) as HTMLLinkElement | null;
+
+  let el = document.querySelector(
+    selector
+  ) as HTMLLinkElement | null;
+
   if (!el) {
     el = document.createElement('link');
     el.rel = rel;
-    if (attrs) Object.entries(attrs).forEach(([k, v]) => el!.setAttribute(k, v));
+
+    if (attrs) {
+      Object.entries(attrs).forEach(
+        ([key, value]) => {
+          el!.setAttribute(key, value);
+        }
+      );
+    }
+
     document.head.appendChild(el);
   }
+
   el.href = href;
 }
 
-// ─── Helper: upsert JSON-LD script ─────────────────────────────────────────────
-function upsertJsonLd(id: string, data: object) {
-  let el = document.getElementById(id) as HTMLScriptElement | null;
+// ─── JSON-LD Helper ─────────────────────────────────────────────────────────────
+function upsertJsonLd(
+  id: string,
+  data: object
+) {
+  let el = document.getElementById(
+    id
+  ) as HTMLScriptElement | null;
+
   if (!el) {
     el = document.createElement('script');
     el.id = id;
     el.type = 'application/ld+json';
     document.head.appendChild(el);
   }
+
   el.textContent = JSON.stringify(data);
 }
 
+// ─── SEO Component ──────────────────────────────────────────────────────────────
 /**
- * Professional SEO component for Velnix Solutions
+ * Professional SEO component for Velnix Solutions.
+ *
+ * Primary positioning:
+ * AI Development Agency
+ *
+ * Brand tagline:
+ * Building Intelligence. Accelerating Ambition with AI.
+ *
+ * Core positioning:
+ * - Agentic AI
+ * - AI Agents
+ * - AI Development
+ * - AI Automation
+ * - Machine Learning
+ * - Generative AI
+ * - Conversational AI
+ * - Computer Vision
+ * - NLP
+ * - Custom AI Software
+ * - SMB Workflow Automation
  *
  * Features:
- * - Auto-detects route and applies page-specific meta defaults
- * - Open Graph & Twitter Card meta tags
- * - JSON-LD structured data (Organization, WebPage, Service, Article, FAQ, Breadcrumb)
- * - Canonical URL management
+ * - Route-specific SEO
+ * - Dynamic document titles
+ * - Meta descriptions
+ * - Keywords
+ * - Open Graph
+ * - Twitter/X Cards
+ * - Canonical URLs
+ * - Hreflang
  * - Robots directives
- * - Locale & hreflang support
+ * - JSON-LD structured data
+ * - FAQ schema
+ * - Breadcrumb schema
  */
 export const SEO = ({
   title,
@@ -436,120 +691,517 @@ export const SEO = ({
   const location = useLocation();
   const pathname = location.pathname;
 
-  // Merge route-level defaults with explicit props (props win)
-  const routeDefaults = ROUTE_SEO[pathname] || {};
-  const routeLabel = humanizePath(pathname);
-  const resolvedTitle = title || routeDefaults.title || `${routeLabel} | ${SITE_NAME}`;
-  const resolvedDesc = description || routeDefaults.description || `${routeLabel} from Velnix Solutions, an AI development and custom software engineering company.`;
-  const resolvedKeywords = keywords || routeDefaults.keywords || DEFAULT_KEYWORDS;
-  const resolvedImage = image || DEFAULT_IMAGE;
-  const resolvedUrl = url || `${BASE_URL}${pathname}`;
-  const resolvedSchema = schemaType || routeDefaults.schemaType || 'WebPage';
-  const resolvedNoIndex = noIndex || routeDefaults.noIndex || !KNOWN_ROUTES.has(pathname) || pathname === '/blog-admin';
+  // ── Route defaults ──
+  const routeDefaults =
+    ROUTE_SEO[pathname] || {};
 
-  const fullTitle = resolvedTitle.includes(SITE_NAME)
-    ? resolvedTitle
-    : `${resolvedTitle} | ${SITE_NAME}`;
+  const routeLabel =
+    humanizePath(pathname);
+
+  // ── Resolved values ──
+  const resolvedTitle =
+    title ||
+    routeDefaults.title ||
+    `${routeLabel} | ${SITE_NAME}`;
+
+  const resolvedDesc =
+    description ||
+    routeDefaults.description ||
+    `${routeLabel} from ${SITE_NAME}, an AI development agency building Agentic AI, AI agents, machine learning, automation, and custom AI software.`;
+
+  const resolvedKeywords =
+    keywords ||
+    routeDefaults.keywords ||
+    DEFAULT_KEYWORDS;
+
+  const resolvedImage =
+    image || DEFAULT_IMAGE;
+
+  const resolvedUrl =
+    url || `${BASE_URL}${pathname}`;
+
+  const resolvedSchema =
+    schemaType ||
+    routeDefaults.schemaType ||
+    'WebPage';
+
+  const resolvedNoIndex =
+    noIndex ||
+    routeDefaults.noIndex ||
+    !KNOWN_ROUTES.has(pathname) ||
+    pathname === '/blog-admin';
+
+  const fullTitle =
+    resolvedTitle.includes(SITE_NAME)
+      ? resolvedTitle
+      : `${resolvedTitle} | ${SITE_NAME}`;
 
   useEffect(() => {
-    // ── Document title ──
+    // ──────────────────────────────────────────────────────────────────────────
+    // Document Title
+    // ──────────────────────────────────────────────────────────────────────────
     document.title = fullTitle;
 
-    // ── Primary meta tags ──
-    upsertMeta('name', 'title', fullTitle);
-    upsertMeta('name', 'description', resolvedDesc);
-    upsertMeta('name', 'keywords', resolvedKeywords);
-    upsertMeta('name', 'author', author || SITE_NAME);
-    upsertMeta('name', 'robots', resolvedNoIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1');
-    upsertMeta('name', 'theme-color', THEME_COLOR);
-    upsertMeta('name', 'generator', 'Vite + React');
+    // ──────────────────────────────────────────────────────────────────────────
+    // Primary Meta
+    // ──────────────────────────────────────────────────────────────────────────
+    upsertMeta(
+      'name',
+      'title',
+      fullTitle
+    );
 
-    // ── Open Graph ──
-    upsertMeta('property', 'og:type', type);
-    upsertMeta('property', 'og:url', resolvedUrl);
-    upsertMeta('property', 'og:title', fullTitle);
-    upsertMeta('property', 'og:description', resolvedDesc);
-    upsertMeta('property', 'og:image', resolvedImage);
-    upsertMeta('property', 'og:image:width', '1200');
-    upsertMeta('property', 'og:image:height', '630');
-    upsertMeta('property', 'og:image:alt', fullTitle);
-    upsertMeta('property', 'og:site_name', SITE_NAME);
-    upsertMeta('property', 'og:locale', locale);
+    upsertMeta(
+      'name',
+      'description',
+      resolvedDesc
+    );
 
+    upsertMeta(
+      'name',
+      'keywords',
+      resolvedKeywords
+    );
+
+    upsertMeta(
+      'name',
+      'author',
+      author || SITE_NAME
+    );
+
+    upsertMeta(
+      'name',
+      'robots',
+      resolvedNoIndex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    );
+
+    upsertMeta(
+      'name',
+      'theme-color',
+      THEME_COLOR
+    );
+
+    upsertMeta(
+      'name',
+      'generator',
+      'Vite + React'
+    );
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Open Graph
+    // ──────────────────────────────────────────────────────────────────────────
+    upsertMeta(
+      'property',
+      'og:type',
+      type
+    );
+
+    upsertMeta(
+      'property',
+      'og:url',
+      resolvedUrl
+    );
+
+    upsertMeta(
+      'property',
+      'og:title',
+      fullTitle
+    );
+
+    upsertMeta(
+      'property',
+      'og:description',
+      resolvedDesc
+    );
+
+    upsertMeta(
+      'property',
+      'og:image',
+      resolvedImage
+    );
+
+    upsertMeta(
+      'property',
+      'og:image:width',
+      '1200'
+    );
+
+    upsertMeta(
+      'property',
+      'og:image:height',
+      '630'
+    );
+
+    upsertMeta(
+      'property',
+      'og:image:alt',
+      fullTitle
+    );
+
+    upsertMeta(
+      'property',
+      'og:site_name',
+      SITE_NAME
+    );
+
+    upsertMeta(
+      'property',
+      'og:locale',
+      locale
+    );
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Alternate OG Locales
+    // ──────────────────────────────────────────────────────────────────────────
     if (alternateLocales) {
-      alternateLocales.forEach((loc) => upsertMeta('property', 'og:locale:alternate', loc));
+      alternateLocales.forEach(
+        (loc) =>
+          upsertMeta(
+            'property',
+            'og:locale:alternate',
+            loc
+          )
+      );
     }
 
-    // Article-specific OG tags
+    // ──────────────────────────────────────────────────────────────────────────
+    // Article OG
+    // ──────────────────────────────────────────────────────────────────────────
     if (type === 'article') {
-      if (publishedTime) upsertMeta('property', 'article:published_time', publishedTime);
-      if (modifiedTime) upsertMeta('property', 'article:modified_time', modifiedTime);
-      if (author) upsertMeta('property', 'article:author', author);
-      if (section) upsertMeta('property', 'article:section', section);
-    }
-
-    // ── Twitter Card (uses name attribute per Twitter spec) ──
-    upsertMeta('name', 'twitter:card', 'summary_large_image');
-    upsertMeta('name', 'twitter:site', TWITTER_HANDLE);
-    upsertMeta('name', 'twitter:creator', TWITTER_HANDLE);
-    upsertMeta('name', 'twitter:title', fullTitle);
-    upsertMeta('name', 'twitter:description', resolvedDesc);
-    upsertMeta('name', 'twitter:image', resolvedImage);
-    upsertMeta('name', 'twitter:image:alt', fullTitle);
-
-    // ── Canonical URL ──
-    upsertLink('canonical', resolvedUrl);
-
-    // ── Hreflang ──
-    upsertLink('alternate', resolvedUrl, { hreflang: 'en', type: '' });
-    upsertLink('alternate', resolvedUrl, { hreflang: 'x-default', type: '' });
-
-    // ── JSON-LD Structured Data ──
-    // Always inject Organization schema on homepage
-    const staticSchema = document.getElementById('schema-static');
-    if (staticSchema && pathname !== '/') staticSchema.remove();
-
-    // Page-specific schema
-    if (pathname !== '/') switch (resolvedSchema) {
-      case 'Organization':
-        upsertJsonLd('schema-page', generateOrganizationSchema());
-        break;
-      case 'Service':
-        upsertJsonLd('schema-page', generateServiceSchema(fullTitle, resolvedDesc, resolvedUrl));
-        break;
-      case 'Article':
-        upsertJsonLd(
-          'schema-page',
-          generateArticleSchema(fullTitle, resolvedDesc, resolvedUrl, resolvedImage, publishedTime, modifiedTime, author)
+      if (publishedTime) {
+        upsertMeta(
+          'property',
+          'article:published_time',
+          publishedTime
         );
-        break;
-      case 'FAQPage':
-        if (faqItems?.length) upsertJsonLd('schema-page', generateFAQSchema(faqItems));
-        break;
-      case 'WebPage':
-      default:
-        upsertJsonLd('schema-page', generateWebPageSchema(fullTitle, resolvedDesc, resolvedUrl));
-        break;
+      }
+
+      if (modifiedTime) {
+        upsertMeta(
+          'property',
+          'article:modified_time',
+          modifiedTime
+        );
+      }
+
+      if (author) {
+        upsertMeta(
+          'property',
+          'article:author',
+          author
+        );
+      }
+
+      if (section) {
+        upsertMeta(
+          'property',
+          'article:section',
+          section
+        );
+      }
     }
 
-    // Breadcrumb schema
+    // ──────────────────────────────────────────────────────────────────────────
+    // Twitter / X
+    // ──────────────────────────────────────────────────────────────────────────
+    upsertMeta(
+      'name',
+      'twitter:card',
+      'summary_large_image'
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:site',
+      TWITTER_HANDLE
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:creator',
+      TWITTER_HANDLE
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:title',
+      fullTitle
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:description',
+      resolvedDesc
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:image',
+      resolvedImage
+    );
+
+    upsertMeta(
+      'name',
+      'twitter:image:alt',
+      fullTitle
+    );
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Canonical
+    // ──────────────────────────────────────────────────────────────────────────
+    upsertLink(
+      'canonical',
+      resolvedUrl
+    );
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Hreflang
+    // ──────────────────────────────────────────────────────────────────────────
+    upsertLink(
+      'alternate',
+      resolvedUrl,
+      {
+        hreflang: 'en',
+      }
+    );
+
+    upsertLink(
+      'alternate',
+      resolvedUrl,
+      {
+        hreflang: 'x-default',
+      }
+    );
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Remove static schema from index.html
+    //
+    // SEO.tsx becomes the single authoritative schema manager.
+    // ──────────────────────────────────────────────────────────────────────────
+    const staticSchema =
+      document.getElementById(
+        'schema-static'
+      );
+
+    if (staticSchema) {
+      staticSchema.remove();
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Remove old dynamic schemas that may no longer apply
+    // ──────────────────────────────────────────────────────────────────────────
+    [
+      'schema-organization',
+      'schema-website',
+      'schema-page',
+      'schema-faq',
+      'schema-breadcrumb',
+    ].forEach((id) => {
+      const existing =
+        document.getElementById(id);
+
+      if (existing) {
+        existing.remove();
+      }
+    });
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Homepage Structured Data
+    // ──────────────────────────────────────────────────────────────────────────
+    if (pathname === '/') {
+      upsertJsonLd(
+        'schema-organization',
+        generateOrganizationSchema()
+      );
+
+      upsertJsonLd(
+        'schema-website',
+        generateWebSiteSchema()
+      );
+
+      if (faqItems?.length) {
+        upsertJsonLd(
+          'schema-faq',
+          generateFAQSchema(
+            faqItems
+          )
+        );
+      }
+
+      // Default homepage FAQ schema
+      if (!faqItems?.length) {
+        upsertJsonLd(
+          'schema-faq',
+          generateFAQSchema([
+            {
+              question:
+                'What does Velnix Solutions do?',
+              answer:
+                'Velnix Solutions is an AI development agency that builds Agentic AI, AI agents, AI automation, machine learning, conversational AI, and custom AI software systems for businesses.',
+            },
+            {
+              question:
+                'What is Agentic AI?',
+              answer:
+                'Agentic AI enables intelligent software systems to reason about goals, plan actions, use tools, make decisions, and execute multi-step tasks with limited human intervention.',
+            },
+            {
+              question:
+                'How can AI automate business workflows?',
+              answer:
+                'AI can interpret business information, process documents, make decisions, use connected tools, coordinate tasks, and automate repetitive workflows across business systems.',
+            },
+            {
+              question:
+                'What technologies does Velnix use?',
+              answer:
+                'Velnix works across Agentic AI, AI agents, machine learning, generative AI, conversational AI, computer vision, natural language processing, data intelligence, AI automation, and custom software development.',
+            },
+          ])
+        );
+      }
+    } else {
+      // ────────────────────────────────────────────────────────────────────────
+      // Non-Homepage Structured Data
+      // ────────────────────────────────────────────────────────────────────────
+      switch (resolvedSchema) {
+        case 'Organization':
+          upsertJsonLd(
+            'schema-page',
+            generateOrganizationSchema()
+          );
+          break;
+
+        case 'Service':
+          upsertJsonLd(
+            'schema-page',
+            generateServiceSchema(
+              fullTitle,
+              resolvedDesc,
+              resolvedUrl
+            )
+          );
+          break;
+
+        case 'Article':
+          upsertJsonLd(
+            'schema-page',
+            generateArticleSchema(
+              fullTitle,
+              resolvedDesc,
+              resolvedUrl,
+              resolvedImage,
+              publishedTime,
+              modifiedTime,
+              author
+            )
+          );
+          break;
+
+        case 'FAQPage':
+          if (faqItems?.length) {
+            upsertJsonLd(
+              'schema-page',
+              generateFAQSchema(
+                faqItems
+              )
+            );
+          }
+          break;
+
+        case 'WebPage':
+        default:
+          upsertJsonLd(
+            'schema-page',
+            generateWebPageSchema(
+              fullTitle,
+              resolvedDesc,
+              resolvedUrl
+            )
+          );
+          break;
+      }
+
+      // ────────────────────────────────────────────────────────────────────────
+      // FAQ Schema
+      // ────────────────────────────────────────────────────────────────────────
+      if (faqItems?.length) {
+        upsertJsonLd(
+          'schema-faq',
+          generateFAQSchema(
+            faqItems
+          )
+        );
+      }
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Breadcrumb Schema
+    // ──────────────────────────────────────────────────────────────────────────
     if (breadcrumbs?.length) {
-      upsertJsonLd('schema-breadcrumb', generateBreadcrumbSchema(breadcrumbs));
+      upsertJsonLd(
+        'schema-breadcrumb',
+        generateBreadcrumbSchema(
+          breadcrumbs
+        )
+      );
     } else if (pathname !== '/') {
-      // Auto-generate breadcrumbs from pathname
-      const segments = pathname.split('/').filter(Boolean);
-      const autoBreadcrumbs = [{ name: 'Home', url: '/' }];
+      const segments =
+        pathname
+          .split('/')
+          .filter(Boolean);
+
+      const autoBreadcrumbs = [
+        {
+          name: 'Home',
+          url: '/',
+        },
+      ];
+
       let currentPath = '';
+
       segments.forEach((seg) => {
         currentPath += `/${seg}`;
+
         autoBreadcrumbs.push({
-          name: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+          name: seg
+            .replace(/-/g, ' ')
+            .replace(
+              /\b\w/g,
+              (c) => c.toUpperCase()
+            ),
           url: currentPath,
         });
       });
-      upsertJsonLd('schema-breadcrumb', generateBreadcrumbSchema(autoBreadcrumbs));
+
+      upsertJsonLd(
+        'schema-breadcrumb',
+        generateBreadcrumbSchema(
+          autoBreadcrumbs
+        )
+      );
     }
-  }, [fullTitle, resolvedDesc, resolvedKeywords, resolvedImage, resolvedUrl, type, pathname, locale, resolvedNoIndex, resolvedSchema]);
+  }, [
+    fullTitle,
+    resolvedDesc,
+    resolvedKeywords,
+    resolvedImage,
+    resolvedUrl,
+    type,
+    pathname,
+    locale,
+    resolvedNoIndex,
+    resolvedSchema,
+    author,
+    publishedTime,
+    modifiedTime,
+    section,
+    alternateLocales,
+    faqItems,
+    breadcrumbs,
+  ]);
 
   return null;
 };

@@ -30,7 +30,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 // ─────────────────────────────────────────────────────────────────────────────
 const NAV_COLS = [
   {
-    title: 'Solutions',
+    title: 'Services',
     links: [
       { label: 'AI Development',       href: '/ai-development' },
       { label: 'AI Automation',         href: '/ai-automation' },
@@ -58,10 +58,8 @@ const NAV_COLS = [
     links: [
       { label: 'About Velnix',          href: '/about' },
       { label: 'Careers',               href: '/careers' },
-      { label: 'Our Process',           href: '/#approach' },
       { label: 'Portfolio',             href: '/portfolio' },
       { label: 'Blog & Insights',       href: '/blogs' },
-      { label: 'Customer Central',      href: '/contact' },
       { label: 'Contact',               href: '/contact' },
     ],
   },
