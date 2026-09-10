@@ -193,17 +193,17 @@ const Portfolio: React.FC = () => {
 
       {/* ── BACKGROUND AMBIENT GLOWS ── */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ width: 600, height: 600, background: C.la(0.04) }} />
-        <div className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.ga(0.03) }} />
+        <div className="absolute top-0 left-1/3 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[140px]" style={{ background: C.la(0.04) }} />
+        <div className="absolute bottom-1/3 right-1/4 w-56 h-56 sm:w-72 sm:h-72 rounded-full blur-[140px]" style={{ background: C.ga(0.03) }} />
       </div>
 
       <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="w-full px-6 sm:px-10 lg:px-16">
 
           {/* ══════════════════════════════════════════════════════
               1. HERO SECTION
           ══════════════════════════════════════════════════════ */}
-          <div className="max-w-3xl mb-16 sm:mb-20">
+          <div className="w-full mb-16 sm:mb-20">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -217,7 +217,7 @@ const Portfolio: React.FC = () => {
                   background: C.la(0.06),
                 }}
               >
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                   SELECTED WORK & PROOF OF EXECUTION
                 </span>
@@ -278,7 +278,7 @@ const Portfolio: React.FC = () => {
                   <img
                     src={featuredProject.image}
                     alt={featuredProject.title}
-                    className="w-full h-auto max-h-[360px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto max-h-[250px] sm:max-h-[300px] object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 </div>
@@ -380,7 +380,7 @@ const Portfolio: React.FC = () => {
               >
                 <div>
                   {/* Thumbnail Image */}
-                  <div className="overflow-hidden h-44 mb-5 bg-[#050505] border border-white/5 relative">
+                  <div className="overflow-hidden h-36 sm:h-44 mb-5 bg-[#050505] border border-white/5 relative">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -434,110 +434,6 @@ const Portfolio: React.FC = () => {
                 </Link>
               </div>
             ))}
-          </div>
-
-          {/* ══════════════════════════════════════════════════════
-              4. THE VELNIX TRANSFORMATION FRAMEWORK (Before vs After)
-          ══════════════════════════════════════════════════════ */}
-          <div className="mb-24 p-8 sm:p-12" style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}>
-            <div className="max-w-3xl mb-10">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6FF00] mb-2 block">
-                SYSTEM TRANSFORMATIONS
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                How Velnix Redefines Operational Workflows
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* BEFORE */}
-              <div className="p-6" style={{ background: C.wa(0.02), border: `1px solid ${C.wa(0.06)}` }}>
-                <div className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-red-500" />
-                  BEFORE VELNIX
-                </div>
-                <ul className="space-y-3 text-xs sm:text-sm text-white/60">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 font-bold">✕</span>
-                    <span>Repetitive manual data entry across disconnected software tools</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 font-bold">✕</span>
-                    <span>Administrative bottlenecks slowing customer and patient delivery</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 font-bold">✕</span>
-                    <span>Fragmented data leading to delayed decision-making and blindspots</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 font-bold">✕</span>
-                    <span>High error rates and team burnout from mundane work</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* AFTER */}
-              <div className="p-6" style={{ background: C.la(0.04), border: `1px solid ${C.la(0.25)}` }}>
-                <div className="text-xs font-bold uppercase tracking-widest text-[#B6FF00] mb-4 flex items-center gap-2">
-                  <CheckCircle2 size={14} color={C.lime} />
-                  AFTER VELNIX INTELLIGENCE
-                </div>
-                <ul className="space-y-3 text-xs sm:text-sm text-white/90">
-                  <li className="flex items-start gap-2">
-                    <span style={{ color: C.lime }} className="font-bold">✓</span>
-                    <span>Automated AI workflows connecting core business systems seamlessly</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span style={{ color: C.lime }} className="font-bold">✓</span>
-                    <span>Substantial reduction in manual turnaround time and operational delays</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span style={{ color: C.lime }} className="font-bold">✓</span>
-                    <span>Real-time operational dashboards providing complete system visibility</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span style={{ color: C.lime }} className="font-bold">✓</span>
-                    <span>Scalable architecture engineered for long-term business growth</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* ══════════════════════════════════════════════════════
-              5. BOTTOM STRATEGIC CONVERSION CTA BANNER
-          ══════════════════════════════════════════════════════ */}
-          <div 
-            className="p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
-            style={{
-              background: C.graphite,
-              border: `1px solid ${C.la(0.3)}`,
-              boxShadow: `0 16px 48px ${C.la(0.1)}`,
-            }}
-          >
-            <div className="max-w-2xl">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-[#B6FF00] mb-2 block">
-                START YOUR TRANSFORMATION
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Have a complex business workflow worth automating?
-              </h3>
-              <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
-                Tell us about your operational bottlenecks. Our engineering leads will evaluate your requirements and outline a working system strategy.
-              </p>
-            </div>
-
-            <a
-              href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-4 text-xs font-bold text-black uppercase tracking-wider shrink-0 transition-all"
-              style={{ background: C.lime, boxShadow: `0 6px 20px ${C.la(0.35)}` }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = C.green; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = C.lime; }}
-            >
-              Book A Strategy Call <ArrowRight size={16} />
-            </a>
           </div>
 
         </div>

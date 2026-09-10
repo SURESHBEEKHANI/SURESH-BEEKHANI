@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, ArrowRight, Clock, Zap } from "lucide-react";
 import { supabase } from "../lib/supabaseClient";
+import { motion } from "framer-motion";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System
@@ -16,6 +17,8 @@ const C = {
   wa: (o: number) => `rgba(255,255,255,${o})`,
   ga: (o: number) => `rgba(125,204,0,${o})`,
 };
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -53,18 +56,18 @@ const getBlogImageUrl = (blog: Blog): string => blog.image_url;
 // ─────────────────────────────────────────────────────────────────────────────
 // SKELETON LOADER
 // ─────────────────────────────────────────────────────────────────────────────
-const SkeletonCard: React.FC<{ featured?: boolean }> = ({ featured }) => (
+const SkeletonCard: React.FC = () => (
   <div
-    className={`animate-pulse ${featured ? 'h-full' : ''}`}
-    style={{ background: C.graphite, border: `1px solid ${C.wa(0.06)}` }}
+    className="animate-pulse rounded-2xl overflow-hidden"
+    style={{ background: 'rgba(8,8,14,0.98)', border: `1px solid ${C.wa(0.08)}`, boxShadow: '0 18px 40px rgba(0,0,0,0.3)' }}
   >
     <div
       style={{ background: C.wa(0.05) }}
-      className={featured ? 'h-64 sm:h-80' : 'h-28'}
+      className="h-48"
     />
-    <div className="p-5 space-y-3">
-      <div className="h-2 w-16 rounded" style={{ background: C.wa(0.08) }} />
-      <div className="h-4 w-3/4 rounded" style={{ background: C.wa(0.08) }} />
+    <div className="p-6 sm:p-7 space-y-4">
+      <div className="h-2 w-24 rounded-full" style={{ background: C.wa(0.08) }} />
+      <div className="h-5 w-3/4 rounded" style={{ background: C.wa(0.08) }} />
       <div className="h-3 w-full rounded" style={{ background: C.wa(0.05) }} />
       <div className="h-3 w-2/3 rounded" style={{ background: C.wa(0.05) }} />
     </div>
@@ -72,244 +75,109 @@ const SkeletonCard: React.FC<{ featured?: boolean }> = ({ featured }) => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FEATURED ARTICLE CARD
+// UNIFIED ARTICLE CARD
 // ─────────────────────────────────────────────────────────────────────────────
-const FeaturedCard: React.FC<{ blog: Blog }> = ({ blog }) => {
+const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link
-      to={`/blogs?article=${blog.id}`}
-      aria-label={`Read featured article: ${blog.title}`}
-      className="group flex flex-col h-full focus:outline-none"
-      style={{
-        border: `1px solid ${hovered ? C.la(0.3) : C.wa(0.08)}`,
-        background: C.graphite,
-        transition: 'border-color 0.3s',
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
     >
-      {/* Image */}
-      <div className="relative overflow-hidden" style={{ height: '320px' }}>
-        {/* Lime top accent bar */}
-        <div
-          style={{
-            height: 3,
-            background: C.lime,
-            width: hovered ? '100%' : '40%',
-            transition: 'width 0.5s ease',
-          }}
-        />
-
-        {getBlogImageUrl(blog) ? (
-          <img
-            src={getBlogImageUrl(blog)}
-            alt={blog.title}
-            className="w-full h-full object-cover"
-            style={{
-              transform: hovered ? 'scale(1.04)' : 'scale(1)',
-              transition: 'transform 0.7s cubic-bezier(0.22,1,0.36,1)',
-            }}
-          />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{ background: C.wa(0.03) }}
-          >
-            <Zap size={40} color={C.la(0.3)} />
-          </div>
-        )}
-
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(17,17,17,0.9) 0%, rgba(17,17,17,0.2) 60%, transparent 100%)',
-          }}
-        />
-
-        {/* Category badge */}
-        <div className="absolute top-4 left-4">
-          <span
-            className="text-[0.6rem] font-bold uppercase tracking-widest px-2.5 py-1"
-            style={{ background: C.lime, color: C.black }}
-          >
-            {blog.category ?? 'AI & Automation'}
-          </span>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-grow p-6 sm:p-8">
-        {/* Meta */}
-        <div className="flex items-center gap-4 mb-4">
-          <span
-            className="flex items-center gap-1.5 text-[0.7rem] font-medium"
-            style={{ color: C.wa(0.45) }}
-          >
-            <Calendar size={12} />
-            {formatDate(blog.created_at)}
-          </span>
-          <span
-            className="flex items-center gap-1.5 text-[0.7rem] font-medium"
-            style={{ color: C.wa(0.45) }}
-          >
-            <Clock size={12} />
-            {blog.read_time ?? '5 min read'}
-          </span>
-        </div>
-
-        {/* Title */}
-        <h3
-          className="text-xl sm:text-2xl lg:text-[1.6rem] font-extrabold leading-snug mb-4 line-clamp-3"
-          style={{ color: hovered ? C.lime : C.white, transition: 'color 0.3s' }}
-        >
-          {blog.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p
-          className="text-sm leading-relaxed line-clamp-2 mb-6 flex-grow"
-          style={{ color: C.wa(0.55) }}
-        >
-          {stripMarkdown(blog.content)}
-        </p>
-
-        {/* CTA */}
-        <div
-          className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mt-auto"
-          style={{ color: C.lime }}
-        >
-          Read Article
-          <ArrowRight
-            size={14}
-            style={{
-              transform: hovered ? 'translateX(5px)' : 'translateX(0)',
-              transition: 'transform 0.3s ease',
-            }}
-          />
-        </div>
-      </div>
-    </Link>
-  );
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SUPPORTING ARTICLE CARD
-// ─────────────────────────────────────────────────────────────────────────────
-const fallbackCategories = ['Business Operations', 'Software', 'Data & Analytics'];
-
-const SupportingCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <Link
-      to={`/blogs?article=${blog.id}`}
-      aria-label={`Read article: ${blog.title}`}
-      className="group flex overflow-hidden focus:outline-none"
-      style={{
-        background: C.graphite,
-        border: `1px solid ${hovered ? C.la(0.25) : C.wa(0.07)}`,
-        transition: 'border-color 0.3s, transform 0.3s',
-        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Thumbnail */}
-      <div
-        className="relative shrink-0 overflow-hidden"
-        style={{ width: '38%', minHeight: '160px' }}
+      <Link
+        to={`/blogs?article=${blog.id}`}
+        aria-label={`Read article: ${blog.title}`}
+        className="group flex flex-col h-full focus:outline-none rounded-2xl overflow-hidden"
+        style={{
+          background: 'rgba(8,8,14,0.98)',
+          border: `1px solid ${hovered ? C.la(0.3) : C.wa(0.08)}`,
+          boxShadow: '0 18px 40px rgba(0,0,0,0.3)',
+          transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        {/* Lime left accent bar */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: 3,
-            background: C.lime,
-            zIndex: 2,
-          }}
-        />
+        {/* Image */}
+        <div className="relative overflow-hidden" style={{ height: '200px' }}>
+          {getBlogImageUrl(blog) ? (
+            <img
+              src={getBlogImageUrl(blog)}
+              alt={blog.title}
+              className="w-full h-full object-cover"
+              style={{
+                transform: hovered ? 'scale(1.05)' : 'scale(1)',
+                transition: 'transform 0.5s cubic-bezier(0.22,1,0.36,1)',
+              }}
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center"
+              style={{ background: C.wa(0.03) }}
+            >
+              <Zap size={32} color={C.la(0.3)} />
+            </div>
+          )}
+        </div>
 
-        {getBlogImageUrl(blog) ? (
-          <img
-            src={getBlogImageUrl(blog)}
-            alt={blog.title}
-            className="w-full h-full object-cover"
-            style={{
-              transform: hovered ? 'scale(1.06)' : 'scale(1)',
-              transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)',
-            }}
-          />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{ background: C.wa(0.03) }}
-          >
-            <Zap size={24} color={C.la(0.3)} />
+        {/* Content */}
+        <div className="flex flex-col flex-grow p-6 sm:p-7">
+          {/* Meta */}
+          <div className="flex items-center gap-4 mb-4">
+            <span
+              className="flex items-center gap-1.5 text-[0.7rem] font-medium"
+              style={{ color: C.wa(0.5) }}
+            >
+              <Calendar size={12} color={C.lime} />
+              {formatDate(blog.created_at)}
+            </span>
+            <span
+              className="flex items-center gap-1.5 text-[0.7rem] font-medium"
+              style={{ color: C.wa(0.5) }}
+            >
+              <Clock size={12} color={C.lime} />
+              {blog.read_time ?? '5 min read'}
+            </span>
           </div>
-        )}
-
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to right, rgba(17,17,17,0.4), transparent)',
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div
-        className="flex flex-col justify-between p-4 sm:p-5"
-        style={{ width: '62%' }}
-      >
-        <div>
-          {/* Category */}
-          <span
-            className="text-[0.58rem] font-bold uppercase tracking-widest mb-2 inline-block"
-            style={{ color: C.lime }}
-          >
-            {blog.category ?? fallbackCategories[index % fallbackCategories.length]}
-          </span>
 
           {/* Title */}
-          <h4
-            className="text-sm font-bold leading-snug mb-2 line-clamp-2"
+          <h3
+            className="text-base sm:text-lg font-bold leading-snug mb-3 line-clamp-2"
             style={{ color: hovered ? C.lime : C.white, transition: 'color 0.3s' }}
           >
             {blog.title}
-          </h4>
+          </h3>
 
           {/* Excerpt */}
           <p
-            className="text-[0.72rem] leading-relaxed line-clamp-2"
-            style={{ color: C.wa(0.45) }}
+            className="text-sm leading-relaxed line-clamp-2 mb-5 flex-grow"
+            style={{ color: C.wa(0.6) }}
           >
             {stripMarkdown(blog.content)}
           </p>
-        </div>
 
-        {/* CTA */}
-        <div
-          className="flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-wider mt-3"
-          style={{ color: C.lime }}
-        >
-          Read Article
-          <ArrowRight
-            size={11}
+          {/* CTA */}
+          <div
+            className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mt-auto pt-8"
             style={{
-              transform: hovered ? 'translateX(4px)' : 'translateX(0)',
-              transition: 'transform 0.3s ease',
+              color: C.lime,
+              borderTop: `1px solid ${C.wa(0.1)}`,
             }}
-          />
+          >
+            Read Article
+            <ArrowRight
+              size={14}
+              style={{
+                transform: hovered ? 'translateX(6px)' : 'translateX(0)',
+                transition: 'transform 0.3s ease',
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.article>
   );
 };
 
@@ -320,7 +188,6 @@ const LatestBlogs: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [viewAllHovered, setViewAllHovered] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -330,7 +197,7 @@ const LatestBlogs: React.FC = () => {
           .select('*')
           .eq('status', 'published')
           .order('created_at', { ascending: false })
-          .limit(4);
+          .limit(3);
 
         if (error) throw error;
         setBlogs(data || []);
@@ -349,26 +216,27 @@ const LatestBlogs: React.FC = () => {
     return (
       <section
         className="py-12 sm:py-16 lg:py-20 relative overflow-hidden"
-        style={{ background: C.black, color: C.white }}
+        style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
         aria-label="Loading latest insights"
       >
+        {/* Ambient background glows */}
+        <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
+          <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
+        </div>
+
         <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
-            <div className="space-y-3">
-              <div className="h-2.5 w-28 rounded animate-pulse" style={{ background: C.wa(0.08) }} />
-              <div className="h-8 w-72 rounded animate-pulse" style={{ background: C.wa(0.08) }} />
-              <div className="h-3 w-96 rounded animate-pulse" style={{ background: C.wa(0.05) }} />
+            <div className="space-y-4">
+              <div className="h-2.5 w-32 rounded-full animate-pulse" style={{ background: C.wa(0.08) }} />
+              <div className="h-8 w-80 rounded animate-pulse" style={{ background: C.wa(0.08) }} />
+              <div className="h-4 w-96 rounded animate-pulse" style={{ background: C.wa(0.05) }} />
             </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            <div className="lg:col-span-7">
-              <SkeletonCard featured />
-            </div>
-            <div className="lg:col-span-5 flex flex-col gap-4">
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-            </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
           </div>
         </div>
       </section>
@@ -377,29 +245,18 @@ const LatestBlogs: React.FC = () => {
 
   if (blogs.length === 0) return null;
 
-  const featuredBlog = blogs[0];
-  const supportingBlogs = blogs.slice(1, 4);
+  const displayBlogs = blogs.slice(0, 3);
 
   return (
     <section
-      ref={sectionRef}
       className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
-      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
+      style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
       aria-labelledby="insights-heading"
     >
-      {/* Ambient background glow */}
-      <div
-        className="pointer-events-none select-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div
-          className="absolute top-1/3 left-1/4 rounded-full blur-[180px]"
-          style={{ width: 480, height: 480, background: C.la(0.025) }}
-        />
-        <div
-          className="absolute bottom-0 right-1/3 rounded-full blur-[140px]"
-          style={{ width: 360, height: 360, background: C.ga(0.018) }}
-        />
+      {/* Ambient background glows */}
+      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
+        <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
       </div>
 
       <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
@@ -407,126 +264,74 @@ const LatestBlogs: React.FC = () => {
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
         ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/10">
           <div>
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span
-                  style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: '50%',
-                    background: C.lime,
-                    boxShadow: `0 0 8px ${C.lime}`,
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: '0.62rem',
-                    fontWeight: 700,
-                    color: C.lime,
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  INSIGHTS & ARTICLES
-                </span>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-4 flex items-center gap-3"
+            >
+              <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+                LATEST INSIGHTS
               </span>
-            </div>
+            </motion.div>
 
-            {/* Headline */}
-            <h2
-              id="insights-heading"
-              className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-3"
-              style={{ color: C.white }}
-            >
-              Ideas for Building{' '}
-              <span style={{ color: C.lime }}>Smarter Businesses.</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Insights on technology, <span style={{ color: C.lime }}>AI and innovation</span>
             </h2>
-
-            {/* Sub-copy */}
-            <p
-              className="text-xs sm:text-sm font-normal leading-relaxed"
-              style={{ color: C.wa(0.5) }}
-            >
-              Practical perspectives on AI, automation, software, and the systems helping modern businesses operate better.
-            </p>
           </div>
 
           {/* View All CTA */}
           <Link
             to="/blogs"
-            className="shrink-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-5 py-3"
+            className="shrink-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full"
             style={{
-              color: viewAllHovered ? C.black : C.lime,
-              background: viewAllHovered ? C.lime : 'transparent',
+              color: viewAllHovered ? C.black : C.black,
+              background: viewAllHovered ? C.lime : C.lime,
               border: `1px solid ${C.la(0.4)}`,
-              boxShadow: viewAllHovered ? `0 4px 16px ${C.la(0.3)}` : 'none',
-              transition: 'all 0.25s ease',
+              boxShadow: viewAllHovered ? `0 8px 24px ${C.la(0.4)}` : `0 4px 12px ${C.la(0.15)}`,
+              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
             }}
             aria-label="View all insights and articles"
             onMouseEnter={() => setViewAllHovered(true)}
             onMouseLeave={() => setViewAllHovered(false)}
           >
-            View All Insights
+            Explore More
             <ArrowRight
-              size={13}
+              size={14}
               style={{
-                transform: viewAllHovered ? 'translateX(4px)' : 'translateX(0)',
-                transition: 'transform 0.25s ease',
+                transform: viewAllHovered ? 'translateX(6px)' : 'translateX(0)',
+                transition: 'transform 0.3s ease',
               }}
             />
           </Link>
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            ARTICLE GRID — Featured + Supporting
+            ARTICLE GRID — 3 Card Layout
         ══════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {displayBlogs.map((blog, index) => (
+            <BlogCard key={blog.id} blog={blog} index={index} />
+          ))}
 
-          {/* FEATURED ARTICLE */}
-          <div className="lg:col-span-7">
-            <FeaturedCard blog={featuredBlog} />
-          </div>
-
-          {/* SUPPORTING ARTICLES */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {supportingBlogs.map((blog, i) => (
-              <SupportingCard key={blog.id} blog={blog} index={i} />
-            ))}
-
-            {supportingBlogs.length === 0 && (
-              <div
-                className="flex-1 flex items-center justify-center text-xs"
-                style={{
-                  color: C.wa(0.3),
-                  border: `1px dashed ${C.wa(0.1)}`,
-                  padding: '2rem',
-                }}
-              >
-                More articles coming soon.
-              </div>
-            )}
-          </div>
+          {displayBlogs.length === 0 && (
+            <div
+              className="col-span-full flex items-center justify-center text-sm rounded-2xl"
+              style={{
+                color: C.wa(0.3),
+                border: `1px dashed ${C.wa(0.1)}`,
+                padding: '4rem',
+                background: C.graphite,
+              }}
+            >
+              More articles coming soon.
+            </div>
+          )}
         </div>
-
-        {/* ══════════════════════════════════════════════════════
-            BOTTOM GRADIENT RULE
-        ══════════════════════════════════════════════════════ */}
-        <div
-          className="mt-16 h-px"
-          style={{
-            background: `linear-gradient(to right, ${C.la(0.2)}, transparent)`,
-          }}
-          aria-hidden="true"
-        />
       </div>
     </section>
   );

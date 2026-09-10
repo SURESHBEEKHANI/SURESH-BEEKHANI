@@ -94,7 +94,7 @@ const AboutPage = () => {
 
       {/* ── BACKGROUND AMBIENT GLOWS ── */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ width: 600, height: 600, background: C.la(0.04) }} />
+        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ background: C.la(0.04) }} />
       </div>
 
       <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-24">
@@ -102,7 +102,7 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             1. HERO SECTION
         ══════════════════════════════════════════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-20 sm:mb-28">
+        <section className="mb-20 sm:mb-28">
           <div className="max-w-3xl">
             {/* Eyebrow */}
             <motion.div
@@ -118,7 +118,7 @@ const AboutPage = () => {
                   background: C.la(0.06),
                 }}
               >
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
+                <span style={{ borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                   ABOUT VELNIX SOLUTIONS
                 </span>
@@ -163,8 +163,8 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             2. VISION & MISSION
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--graphite w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-          <div className="mx-auto max-w-7xl">
+        <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
+          <div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             
             {/* Mission Card */}
@@ -180,8 +180,8 @@ const AboutPage = () => {
               }}
             >
               <div>
-                <div 
-                  className="w-12 h-12 flex items-center justify-center mb-6"
+                <div
+                  className="flex items-center justify-center mb-6"
                   style={{ background: C.la(0.1), border: `1px solid ${C.la(0.25)}` }}
                 >
                   <Target size={22} color={C.lime} />
@@ -210,8 +210,8 @@ const AboutPage = () => {
               }}
             >
               <div>
-                <div 
-                  className="w-12 h-12 flex items-center justify-center mb-6"
+                <div
+                  className="flex items-center justify-center mb-6"
                   style={{ background: C.la(0.1), border: `1px solid ${C.la(0.25)}` }}
                 >
                   <Zap size={22} color={C.lime} />
@@ -234,8 +234,8 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             3. CORE VALUES
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--black w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-          <div className="mx-auto max-w-7xl">
+        <section className="about-band about-band--black w-full py-16 sm:py-20 lg:py-24">
+          <div>
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
@@ -270,8 +270,8 @@ const AboutPage = () => {
                   e.currentTarget.style.background = C.graphite;
                 }}
               >
-                <div 
-                  className="w-12 h-12 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
+                <div
+                  className="flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
                   style={{ background: C.la(0.1), border: `1px solid ${C.la(0.2)}` }}
                 >
                   <Icon size={22} color={C.lime} />
@@ -287,8 +287,8 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
           5. THE VELNIX ADVANTAGE (WHY US)
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--graphite w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-          <div className="mx-auto max-w-7xl">
+        <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
+          <div>
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
@@ -323,8 +323,8 @@ const AboutPage = () => {
                   e.currentTarget.style.background = C.graphite;
                 }}
               >
-                <div 
-                  className="w-12 h-12 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
+                <div
+                  className="flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
                   style={{ background: C.la(0.1), border: `1px solid ${C.la(0.2)}` }}
                 >
                   <Icon size={22} color={C.lime} />

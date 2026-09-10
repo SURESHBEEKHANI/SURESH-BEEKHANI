@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import LoadingSpinner from "@/components/ui/loading-spinner";
 import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
@@ -207,8 +206,17 @@ const WhatsAppWidget = () => {
 
 // Loader
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0435' }}>
-    <LoadingSpinner size="lg" text="Loading..." className="text-primary" />
+  <div className="min-h-screen flex items-center justify-center" style={{ background: '#050505' }}>
+    <div className="flex flex-col items-center gap-4">
+      <div className="relative w-16 h-16">
+        <div className="absolute inset-0 rounded-full border-t-[#B6FF00] border-r-transparent border-b-[#B6FF00]/30 border-l-transparent border-2.5 animate-spin" style={{ animationDuration: '1s' }} />
+        <div className="absolute inset-0 rounded-full border-t-transparent border-r-[#B6FF00]/50 border-b-transparent border-l-[#B6FF00]/20 border-2.5 animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }} />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full bg-[#B6FF00] animate-pulse" />
+        </div>
+      </div>
+      <span className="text-sm text-white/70 animate-pulse">Loading...</span>
+    </div>
   </div>
 );
 

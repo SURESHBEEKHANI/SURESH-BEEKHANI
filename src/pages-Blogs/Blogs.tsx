@@ -376,7 +376,7 @@ const Blogs: React.FC = () => {
           <ul key={`ul-${i}`} className="my-4 space-y-2 pl-2">
             {items.map((item, li) => (
               <li key={li} className="flex gap-3 items-start text-sm sm:text-base text-white/80 leading-relaxed">
-                <span className="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+                <span className="shrink-0 mt-2 rounded-full bg-[#B6FF00]" />
                 <span>{renderInline(item, `ul-${i}-${li}`)}</span>
               </li>
             ))}
@@ -467,7 +467,7 @@ const Blogs: React.FC = () => {
         <Navbar isDark={true} />
 
         <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-          <div className="w-full px-6 sm:px-10 lg:px-16">
+          <div>
 
             {/* Back Link */}
             <div className="mb-8">
@@ -676,7 +676,7 @@ const Blogs: React.FC = () => {
                           e.currentTarget.style.borderColor = C.wa(0.06);
                         }}
                       >
-                        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-[#050505] sm:h-20 sm:w-32">
+                        <div className="shrink-0 overflow-hidden rounded-lg bg-[#050505]">
                           {getBlogImageUrl(post) ? (
                             <img
                               src={getBlogImageUrl(post)}
@@ -719,11 +719,11 @@ const Blogs: React.FC = () => {
 
       {/* ── BACKGROUND AMBIENT GLOWS ── */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ width: 600, height: 600, background: C.la(0.04) }} />
+        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ background: C.la(0.04) }} />
       </div>
 
       <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div>
 
           {/* ══════════════════════════════════════════════════════
               HERO HEADER
@@ -731,7 +731,7 @@ const Blogs: React.FC = () => {
           <div className="mb-12 grid w-full gap-8 sm:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="w-full">
               <div className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
-                <span className="h-px w-10 bg-[#B6FF00]" aria-hidden="true" />
+                <span className="bg-[#B6FF00]" aria-hidden="true" />
                 Velnix editorial desk
               </div>
               <motion.h1
@@ -900,7 +900,7 @@ const Blogs: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-48 flex items-center justify-center text-xs text-white/30">Velnix Editorial</div>
+                    <div className="w-full flex items-center justify-center text-xs text-white/30">Velnix Editorial</div>
                   )}
                 </div>
 
