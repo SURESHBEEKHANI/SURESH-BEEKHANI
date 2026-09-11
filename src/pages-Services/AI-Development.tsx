@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -540,6 +540,88 @@ export const AIDevelopment: React.FC = () => {
     >
       <Navbar isDark={true} />
 
+      {/* ─────────────────────────────────────────────────────
+          BREADCRUMB NAVIGATION
+      ───────────────────────────────────────────────────── */}
+      <nav
+        aria-label="Breadcrumb"
+        className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-16 pt-28 pb-10"
+      >
+        <ol
+          className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm"
+          style={{ color: C.wa(0.55) }}
+        >
+          {/* Home */}
+          <li>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#B6FF00]"
+              aria-label="Go to Home"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              Home
+            </Link>
+          </li>
+
+          <li
+            className="flex items-center gap-2 sm:gap-3"
+            aria-hidden="true"
+          >
+            <span
+              style={{ color: C.wa(0.3) }}
+              className="text-base sm:text-lg leading-none"
+            >
+              /
+            </span>
+          </li>
+
+          {/* Services */}
+          <li>
+            <Link
+              to="/ai-development"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#B6FF00]"
+              aria-label="Go to Services"
+            >
+              Services
+            </Link>
+          </li>
+
+          <li
+            className="flex items-center gap-2 sm:gap-3"
+            aria-hidden="true"
+          >
+            <span
+              style={{ color: C.wa(0.3) }}
+              className="text-base sm:text-lg leading-none"
+            >
+              /
+            </span>
+          </li>
+
+          {/* Current Page */}
+          <li
+            className="inline-flex items-center gap-1.5 font-semibold"
+            style={{ color: C.lime }}
+            aria-current="page"
+          >
+            AI Development
+          </li>
+        </ol>
+      </nav>
+
       {/* Keyframe injections matching Hero.tsx */}
       <style>{`
         @keyframes velnix-shimmer {
@@ -560,6 +642,10 @@ export const AIDevelopment: React.FC = () => {
         @keyframes velnix-scroll-line {
           from { transform: translateY(-120%); }
           to   { transform: translateY(420%); }
+        }
+        @keyframes velnix-node-pulse {
+          0%, 100% { opacity: 0.7; r: 3; }
+          50%      { opacity: 1;   r: 4; }
         }
       `}</style>
 
@@ -591,15 +677,13 @@ export const AIDevelopment: React.FC = () => {
       </div>
 
       {/* ══════════════════════════════════════════════════════
-          01 — HERO (Exact Color Scheme & Atmospheric Visuals from Hero.tsx)
+          01 — HERO (Premium AI Network Visual)
       ══════════════════════════════════════════════════════ */}
       <section
         id="hero"
         ref={heroRef}
         className="relative isolate w-full overflow-hidden"
-        style={{
-          background: C.black,
-        }}
+        style={{ background: C.black }}
         aria-label="Velnix AI Development hero section"
       >
         {/* Dynamic laser scan line */}
@@ -616,268 +700,241 @@ export const AIDevelopment: React.FC = () => {
           />
         </div>
 
-
-        {/* Radial Lighting from Hero.tsx */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          aria-hidden="true"
-          style={{
-            background:
-              'radial-gradient(ellipse 72% 55% at 50% -8%, rgba(182,255,0,0.16) 0%, rgba(125,204,0,0.07) 38%, transparent 74%), radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.17) 0%, rgba(125,204,0,0.05) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.1) 0%, rgba(125,204,0,0.03) 42%, transparent 76%)',
-            filter: 'blur(10px)',
-          }}
-        />
-
-        {/* 64px Grid Overlay with vertical mask from Hero.tsx */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          aria-hidden="true"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 78%)',
-            opacity: 0.32,
-          }}
-        />
-
-        {/* Ambient Glow Orbs from Hero.tsx */}
-        <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
-          {/* Lime glow top-left */}
+        {/* Atmospheric glows */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <div
             className="absolute"
             style={{
-              width: 400,
-              height: 400,
-              top: -120,
-              left: -80,
-              background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 38%, transparent 72%)`,
-              filter: 'blur(46px)',
+              width: 600, height: 400, top: -100, left: '50%', marginLeft: -300,
+              background: `radial-gradient(ellipse, ${C.la(0.12)} 0%, ${C.ga(0.04)} 40%, transparent 70%)`,
+              filter: 'blur(120px)',
             }}
           />
-
-          {/* Green glow bottom-right */}
           <div
             className="absolute"
             style={{
-              width: 350,
-              height: 350,
-              bottom: -60,
-              right: -60,
-              background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`,
-              filter: 'blur(64px)',
+              width: 400, height: 400, bottom: -80, right: -100,
+              background: `radial-gradient(ellipse, ${C.ga(0.1)} 0%, transparent 70%)`,
+              filter: 'blur(100px)',
             }}
-          />
-
-          {/* Bottom Divider Rule from Hero.tsx */}
-          <div
-            className="absolute bottom-0 left-0 right-0"
-            style={{ height: '1px', background: `linear-gradient(90deg, transparent, ${C.la(0.2)}, transparent)` }}
           />
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             {/* Left Content */}
             <div className="w-full flex flex-col items-start text-left">
-            {/* H1 Headline matching Hero.tsx colors and typography */}
-            <motion.h1
-              initial={shouldReduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.65, ease }}
-              style={{
-                fontSize: 'clamp(2.35rem, 4.5vw, 3.75rem)',
-                fontWeight: 800,
-                color: C.white,
-                lineHeight: 1.06,
-                letterSpacing: '-0.03em',
-                marginBottom: '1.25rem',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              Build AI That Works{' '}
-              <span
-                style={{
-                  color: C.lime,
-                  display: 'inline',
-                }}
+              {/* Eyebrow */}
+              <motion.div
+                initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6, ease }}
+                className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]"
+                style={{ color: C.lime }}
               >
-                in the Real World.
-              </span>
-            </motion.h1>
+                <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
+                AI Development
+                <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
+              </motion.div>
 
-            {/* Supporting copy */}
-            <motion.p
-              initial={shouldReduce ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.65, ease }}
-              style={{
-                fontSize: 'clamp(0.975rem, 1.6vw, 1.125rem)',
-                color: C.wa(0.72),
-                lineHeight: 1.75,
-                maxWidth: '56ch',
-                marginBottom: '2rem',
-                fontWeight: 400,
-                letterSpacing: '0.01em',
-              }}
-            >
-              We design, develop, integrate, and deploy production-ready AI systems that
-              connect intelligence with your data, enterprise products, and operational workflows.
-            </motion.p>
-
-            {/* CTA Row */}
-            <motion.div
-              initial={shouldReduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.55, ease }}
-              className="flex flex-wrap items-center gap-4 mb-4"
-            >
-              {/* Primary CTA (Magnetic/Shimmer Button from Hero.tsx) */}
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300"
+              {/* H1 Headline */}
+              <motion.h1
+                initial={shouldReduce ? false : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.65, ease }}
                 style={{
-                  background: C.lime,
-                  color: C.black,
-                  fontSize: '0.9rem',
-                  letterSpacing: '0.01em',
-                  padding: '0.8rem 1.75rem',
-                  textDecoration: 'none',
-                  border: `1px solid ${C.la(0.5)}`,
-                  boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`,
-                  lineHeight: 1,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = C.green;
-                  e.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = C.lime;
-                  e.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`;
-                }}
-                aria-label="Build Your AI Solution"
-              >
-                {/* Shimmer sweep */}
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    width: '200%',
-                    left: '-50%',
-                    background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)',
-                    animation: 'velnix-shimmer 2.8s linear infinite',
-                    willChange: 'transform',
-                  }}
-                />
-                <span className="relative z-10">Build Your AI Solution</span>
-                <ArrowRight
-                  size={16}
-                  strokeWidth={2.5}
-                  className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200"
-                />
-              </Link>
-
-              {/* Secondary CTA (Hero.tsx style) */}
-              <a
-                href="#capabilities"
-                className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300"
-                style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 700,
+                  fontSize: 'clamp(2rem, 4.2vw, 3.5rem)',
+                  fontWeight: 800,
                   color: C.white,
-                  borderColor: C.wa(0.25),
-                  background: C.wa(0.04),
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = C.lime;
-                  e.currentTarget.style.color = C.lime;
-                  e.currentTarget.style.background = C.la(0.08);
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = C.wa(0.25);
-                  e.currentTarget.style.color = C.white;
-                  e.currentTarget.style.background = C.wa(0.04);
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.03em',
+                  marginBottom: '1.25rem',
                 }}
               >
-                Explore Capabilities
-                <ArrowRight size={15} />
-              </a>
-            </motion.div>
+                Build Intelligent Systems That Drive Real Business Outcomes.
+              </motion.h1>
 
-            {/* Consultation helper link */}
-            <motion.div
-              initial={shouldReduce ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.42, duration: 0.5, ease }}
-              className="mb-8"
-            >
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 text-xs font-semibold transition-colors duration-200"
-                style={{ color: C.wa(0.52), textDecoration: 'none', letterSpacing: '0.04em' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = C.lime; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = C.wa(0.52); }}
+              {/* Supporting copy */}
+              <motion.p
+                initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.65, ease }}
+                style={{
+                  fontSize: 'clamp(0.95rem, 1.4vw, 1.1rem)',
+                  color: C.wa(0.72),
+                  lineHeight: 1.75,
+                  maxWidth: '56ch',
+                  marginBottom: '2.5rem',
+                  fontWeight: 400,
+                }}
               >
-                Not sure where to start? Talk to our AI architects <ArrowRight size={13} />
-              </Link>
-            </motion.div>
+                We design and build production-ready AI systems that automate complex workflows,
+                unlock data, and help businesses operate smarter.
+              </motion.p>
 
-            {/* Technical Trust Strip (exact MetricChip layout from Hero.tsx) */}
-            <motion.div
-              initial={shouldReduce ? false : { opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.55, ease }}
-              className="w-full flex items-center gap-6 sm:gap-10 pt-8"
-              style={{ borderTop: `1px solid ${C.wa(0.08)}` }}
-            >
-              <div className="flex flex-col items-start">
-                <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>
-                  99.9%
-                </span>
-                <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>
-                  Production SLA
-                </span>
-              </div>
-              <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
-              <div className="flex flex-col items-start">
-                <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>
-                  Zero
-                </span>
-                <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>
-                  Vendor Lock-In
-                </span>
-              </div>
-              <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
-              <div className="flex flex-col items-start">
-                <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>
-                  3–5 Wks
-                </span>
-                <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>
-                  Pilot to Prod
-                </span>
-              </div>
-            </motion.div>
+              {/* CTA Row */}
+              <motion.div
+                initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.55, ease }}
+                className="flex flex-wrap items-center gap-4 mb-6"
+              >
+                {/* Primary CTA */}
+                <Link
+                  to="/contact"
+                  className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300"
+                  style={{
+                    background: C.lime,
+                    color: C.black,
+                    fontSize: '0.9rem',
+                    letterSpacing: '0.01em',
+                    padding: '0.85rem 1.75rem',
+                    textDecoration: 'none',
+                    border: `1px solid ${C.la(0.5)}`,
+                    boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`,
+                    lineHeight: 1,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = C.green;
+                    e.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = C.lime;
+                    e.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`;
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      width: '200%',
+                      left: '-50%',
+                      background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)',
+                      animation: 'velnix-shimmer 2.8s linear infinite',
+                      willChange: 'transform',
+                    }}
+                  />
+                  <span className="relative z-10">Start Your AI Project</span>
+                  <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
+                </Link>
+
+                {/* Secondary CTA */}
+                <a
+                  href="#capabilities"
+                  className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300"
+                  style={{
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    color: C.white,
+                    borderColor: C.wa(0.25),
+                    background: C.wa(0.04),
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = C.lime;
+                    e.currentTarget.style.color = C.lime;
+                    e.currentTarget.style.background = C.la(0.08);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = C.wa(0.25);
+                    e.currentTarget.style.color = C.white;
+                    e.currentTarget.style.background = C.wa(0.04);
+                  }}
+                >
+                  Explore Our Capabilities
+                  <ArrowRight size={15} />
+                </a>
+              </motion.div>
+
+              {/* Technical Trust Strip */}
+              <motion.div
+                initial={shouldReduce ? false : { opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.55, ease }}
+                className="w-full flex items-center gap-6 sm:gap-10 pt-6"
+                style={{ borderTop: `1px solid ${C.wa(0.08)}` }}
+              >
+                <div className="flex flex-col items-start">
+                  <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>99.9%</span>
+                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Production SLA</span>
+                </div>
+                <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
+                <div className="flex flex-col items-start">
+                  <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>Zero</span>
+                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Vendor Lock-In</span>
+                </div>
+                <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
+                <div className="flex flex-col items-start">
+                  <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>3–5 Wks</span>
+                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Pilot to Prod</span>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Right Side - Professional Image (Background Integrated) */}
+            {/* Right Side — CSS/React AI Network Visual */}
             <motion.div
               initial={shouldReduce ? false : { opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.75, ease }}
-              className="relative flex items-start justify-center z-20"
+              transition={{ delay: 0.35, duration: 0.8, ease }}
+              className="relative flex items-center justify-center"
+              aria-hidden="true"
             >
-              <div className="relative w-full max-w-md">
-                {/* Image without card styling - blends into background */}
-                <img
-                  src="/image/Servies/ai-development.avif"
-                  alt="AI Development Professional Illustration"
-                  className="relative w-full h-auto object-cover rounded-full z-30"
-                  style={{
-                    opacity: 1,
-                    maxHeight: '500px',
-                  }}
+              <div className="relative w-full max-w-lg aspect-square">
+                {/* Outer ring */}
+                <div className="absolute inset-0 rounded-full border border-white/[0.06]" />
+                {/* Inner ring */}
+                <div className="absolute inset-8 rounded-full border border-white/[0.04]" />
+                {/* Core glow */}
+                <div
+                  className="absolute inset-16 rounded-full"
+                  style={{ background: `radial-gradient(circle, ${C.la(0.08)} 0%, transparent 70%)` }}
+                />
+
+                {/* Animated signal dots — connected nodes */}
+                {/* Node positions arranged in a network pattern */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Connections */}
+                  <line x1="200" y1="80" x2="120" y2="160" stroke={C.la(0.15)} strokeWidth="0.5" />
+                  <line x1="200" y1="80" x2="280" y2="160" stroke={C.la(0.15)} strokeWidth="0.5" />
+                  <line x1="120" y1="160" x2="200" y2="200" stroke={C.la(0.12)} strokeWidth="0.5" />
+                  <line x1="280" y1="160" x2="200" y2="200" stroke={C.la(0.12)} strokeWidth="0.5" />
+                  <line x1="200" y1="200" x2="100" y2="280" stroke={C.la(0.1)} strokeWidth="0.5" />
+                  <line x1="200" y1="200" x2="300" y2="280" stroke={C.la(0.1)} strokeWidth="0.5" />
+                  <line x1="100" y1="280" x2="200" y2="320" stroke={C.la(0.08)} strokeWidth="0.5" />
+                  <line x1="300" y1="280" x2="200" y2="320" stroke={C.la(0.08)} strokeWidth="0.5" />
+                  <line x1="120" y1="160" x2="100" y2="280" stroke={C.la(0.08)} strokeWidth="0.5" />
+                  <line x1="280" y1="160" x2="300" y2="280" stroke={C.la(0.08)} strokeWidth="0.5" />
+
+                  {/* Signal pulses along connections */}
+                  <circle r="2" fill={C.lime}>
+                    <animateMotion dur="4s" repeatCount="indefinite" path="M200,80 L120,160 L200,200 L100,280 L200,320" />
+                  </circle>
+                  <circle r="2" fill={C.green}>
+                    <animateMotion dur="5s" repeatCount="indefinite" path="M200,80 L280,160 L300,280 L200,320" />
+                  </circle>
+                  <circle r="1.5" fill={C.lime}>
+                    <animateMotion dur="3.5s" repeatCount="indefinite" path="M120,160 L200,200 L300,280" />
+                  </circle>
+
+                  {/* Nodes */}
+                  <circle cx="200" cy="80" r="4" fill={C.lime} opacity="0.9" />
+                  <circle cx="120" cy="160" r="3" fill={C.white} opacity="0.6" />
+                  <circle cx="280" cy="160" r="3" fill={C.white} opacity="0.6" />
+                  <circle cx="200" cy="200" r="5" fill={C.lime} opacity="0.7" />
+                  <circle cx="100" cy="280" r="3" fill={C.white} opacity="0.5" />
+                  <circle cx="300" cy="280" r="3" fill={C.white} opacity="0.5" />
+                  <circle cx="200" cy="320" r="4" fill={C.green} opacity="0.7" />
+
+                  {/* Core node */}
+                  <circle cx="200" cy="200" r="8" fill={C.lime} opacity="0.15" />
+                  <circle cx="200" cy="200" r="3.5" fill={C.lime} opacity="0.9" />
+                </svg>
+
+                {/* Rotating ring decoration */}
+                <div
+                  className="absolute inset-4 rounded-full border border-white/[0.03]"
+                  style={{ animation: 'velnix-scroll-line 20s linear infinite' }}
                 />
               </div>
             </motion.div>
@@ -987,88 +1044,78 @@ export const AIDevelopment: React.FC = () => {
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
                   AI Systems Built Around Your Business.
                 </h2>
-                {/* Velnix Signature Gradient Accent Line */}
                 <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mt-4" />
               </div>
-              <p className="text-xs sm:text-sm text-white/60 font-mono">
-                Structured 3-column engineering modules designed for reliability, high accuracy, and enterprise scalability.
-              </p>
             </div>
 
-            {/* 3-column grid on desktop, 2 on tablet, 1 on mobile */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {aiCapabilities.map((cap) => {
+              {aiCapabilities.map((cap, idx) => {
                 const Icon = cap.icon;
+                const isLeft = idx % 3 === 0;
+                const isCenter = idx % 3 === 1;
+                const isRight = idx % 3 === 2;
                 return (
-                  <div
+                  <motion.div
                     key={cap.id}
-                    className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden"
-                    style={{ 
-                      background: C.graphite, 
-                      borderColor: C.wa(0.1)
-                    }}
+                    initial={shouldReduce ? false : { opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.6, delay: idx * 0.08, ease }}
+                    className={`group flex flex-col justify-between p-7 sm:p-8 rounded-2xl border transition-all duration-500 relative overflow-hidden ${
+                      isLeft ? 'border-white/[0.12]' : isCenter ? 'border-white/[0.12]' : 'border-white/[0.12]'
+                    }`}
+                    style={{ background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, ${C.graphite} 100%)` }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = C.lime;
-                      e.currentTarget.style.boxShadow = `0 8px 32px ${C.la(0.12)}`;
+                      e.currentTarget.style.boxShadow = `0 8px 40px ${C.la(0.12)}, inset 0 1px 0 ${C.la(0.15)}`;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = C.wa(0.1);
-                      e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.borderColor = C.wa(0.12);
+                      e.currentTarget.style.boxShadow = 'none';
                     }}
                   >
-                    <div>
-                      {/* Header with Icon Badge & Num */}
-                      <div className="flex items-center gap-4 mb-5">
-                        {/* Icon Badge - Professional Velnix Style */}
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shrink-0" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                          <Icon size={24} strokeWidth={2} />
-                        </div>
-                        
-                        <span className="text-xs font-mono font-bold tracking-widest" style={{ color: C.lime }}>
+                    {/* Hover glow overlay */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.la(0.06)} 0%, transparent 60%)` }} />
+
+                    <div className="relative z-10">
+                      {/* Header */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="font-mono text-xs font-bold tracking-widest" style={{ color: C.lime }}>
                           {cap.num}
+                        </span>
+                        <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: C.wa(0.4) }}>
+                          {cap.category}
                         </span>
                       </div>
 
-                      <span className="text-[10px] font-mono uppercase tracking-widest block mb-2" style={{ color: C.wa(0.4) }}>
-                        {cap.category}
-                      </span>
-
-                      <h3 className="font-display text-xl font-bold text-white group-hover:transition-colors leading-snug mb-3" style={{ color: C.white }}>
+                      <h3 className="font-display text-xl font-bold text-white mb-3 leading-snug group-hover:text-[#B6FF00] transition-colors">
                         {cap.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm leading-relaxed font-light mb-6" style={{ color: C.wa(0.7) }}>
+                      <p className="text-sm leading-relaxed font-light mb-5" style={{ color: C.wa(0.7) }}>
                         {cap.description}
                       </p>
 
-                      {/* Key Engineering Deliverables */}
-                      <div className="space-y-2 mb-6 pt-4" style={{ borderTop: `1px solid ${C.wa(0.05)}` }}>
-                        {cap.keyOutputs.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-[11px] font-light" style={{ color: C.wa(0.6) }}>
-                            <span className="w-1.5 h-1.5 rounded-full mt-1 shrink-0" style={{ background: C.lime }} />
-                            <span>{item}</span>
-                          </div>
+                      {/* Key Deliverables */}
+                      <ul className="space-y-2 mb-5">
+                        {cap.keyOutputs.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs font-light" style={{ color: C.wa(0.6) }}>
+                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: C.lime }} />
+                            {item}
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
 
-                    {/* Bottom Specs Badges */}
-                    <div className="pt-4 flex flex-wrap gap-1.5" style={{ borderTop: `1px solid ${C.wa(0.1)}` }}>
+                    {/* Bottom Specs */}
+                    <div className="pt-5 flex flex-wrap gap-1.5" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
                       {cap.specs.map((spec, si) => (
-                        <span
-                          key={si}
-                          className="text-[9px] font-mono px-2.5 py-0.5 rounded-full border"
-                          style={{ 
-                            background: C.la(0.08), 
-                            color: C.lime,
-                            borderColor: C.la(0.2)
-                          }}
-                        >
+                        <span key={si} className="text-[9px] font-mono px-2.5 py-0.5 rounded-full border" style={{ background: C.la(0.08), color: C.lime, borderColor: C.la(0.2) }}>
                           {spec}
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -1731,175 +1778,137 @@ export const AIDevelopment: React.FC = () => {
               </p>
             </div>
 
-            {/* Asymmetric Visual Composition Layout with Polished Icon Badges */}
+            {/* Premium Visual Advantage Grid */}
             <div
               className="p-8 sm:p-14 rounded-2xl border border-white/15 relative overflow-hidden"
-              style={{ background: C.graphite }}
+              style={{
+                background: `linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%), ${C.graphite}`,
+                backdropFilter: 'blur(12px)'
+              }}
             >
               {/* Subtle ambient corner glow */}
               <div
                 className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[140px] pointer-events-none"
-                style={{ background: C.la(0.04) }}
+                style={{ background: `radial-gradient(circle, ${C.la(0.04)} 0%, transparent 70%)` }}
               />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
-                
+
                 {/* 01: Business-First */}
-                <div className="p-6 sm:p-8 rounded-xl bg-[#080808] border border-white/10 hover:border-[#B6FF00]/40 transition-colors group">
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">01 // PURPOSE</span>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                      <TrendingUp className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
+                <div
+                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
+                >
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+
+                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">01 // PURPOSE</span>
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
+                        border: `1px solid ${C.lime}`,
+                        color: C.black
+                      }}
+                    >
+                      <TrendingUp className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[#B6FF00] transition-colors">Business-First</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Business-First</h3>
+                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
                     Start with the problem, not the technology. We identify where AI delivers
                     verifiable economic leverage before writing code, ensuring projects drive real ROI.
                   </p>
+
+                  {/* Subtle corner highlight */}
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#B6FF00]/10 to-transparent rounded-br-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
 
                 {/* 02: Production-Minded */}
-                <div className="p-6 sm:p-8 rounded-xl bg-[#080808] border border-white/10 hover:border-[#B6FF00]/40 transition-colors group">
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">02 // RELIABILITY</span>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                      <ShieldCheck className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
+                <div
+                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+
+                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">02 // RELIABILITY</span>
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
+                        border: `1px solid ${C.lime}`,
+                        color: C.black
+                      }}
+                    >
+                      <ShieldCheck className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[#B6FF00] transition-colors">Production-Minded</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Production-Minded</h3>
+                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
                     Design for reliability beyond the prototype. We implement deterministic evaluation
                     harnesses, latency budgets, fallback models, and full-stack observability.
                   </p>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                 </div>
 
                 {/* 03: Integration-Ready */}
-                <div className="p-6 sm:p-8 rounded-xl bg-[#080808] border border-white/10 hover:border-[#B6FF00]/40 transition-colors group">
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">03 // ADOPTION</span>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                      <Layers className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
+                <div
+                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+
+                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">03 // ADOPTION</span>
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
+                        border: `1px solid ${C.lime}`,
+                        color: C.black
+                      }}
+                    >
+                      <Layers className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[#B6FF00] transition-colors">Integration-Ready</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Integration-Ready</h3>
+                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
                     Connect AI to existing products and workflows. Our solutions integrate smoothly
                     with legacy ERPs, internal databases, CRMs, and modern APIs without friction.
                   </p>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                 </div>
 
                 {/* 04: Built to Evolve */}
-                <div className="p-6 sm:p-8 rounded-xl bg-[#080808] border border-white/10 hover:border-[#B6FF00]/40 transition-colors group">
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">04 // AGILITY</span>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                      <RefreshCw className="w-4 h-4" strokeWidth={2} />
+                <div
+                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+
+                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">04 // AGILITY</span>
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
+                        border: `1px solid ${C.lime}`,
+                        color: C.black
+                      }}
+                    >
+                      <RefreshCw className="w-5 h-5" strokeWidth={2} />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[#B6FF00] transition-colors">Built to Evolve</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Built to Evolve</h3>
+                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
                     Architecture that can adapt as models and requirements change. Modular orchestration
                     means you can swap foundation models seamlessly without refactoring business logic.
                   </p>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                 </div>
 
               </div>
-            </div>
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              CROSS-INDUSTRY REUSABLE COMPONENT EMBED
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
-            <Industries />
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              FAQ SECTION (8 Questions) - Premium Level
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-20 sm:mb-24 w-full">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.08), borderColor: C.la(0.4), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                INTELLIGENCE Q&A
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-3">
-                Frequently Addressed Questions
-              </h2>
-              <p className="text-sm sm:text-base text-white/60 font-light">
-                Common questions about our AI development process, integration capabilities, and production deployment.
-              </p>
-              {/* Signature Centered Line */}
-              <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mx-auto mt-4" />
-            </div>
-
-            <div className="space-y-3">
-              {faqData.map((faq, index) => {
-                const isOpen = openFaq === index;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={false}
-                    animate={{
-                      borderColor: isOpen ? C.lime : C.wa(0.1),
-                      boxShadow: isOpen ? `0 8px 32px ${C.la(0.15)}` : 'none',
-                    }}
-                    transition={{ duration: 0.3, ease }}
-                    className="rounded-xl border transition-all duration-300"
-                    style={{
-                      background: C.graphite,
-                    }}
-                  >
-                    <button
-                      onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full p-4 sm:p-5 flex items-center justify-between text-left group"
-                    >
-                      <div className="flex items-start gap-3 flex-1">
-                        <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ 
-                          background: isOpen ? C.lime : C.la(0.08),
-                          border: isOpen ? `1px solid ${C.lime}` : `1px solid ${C.la(0.2)}`,
-                          color: isOpen ? C.black : C.lime
-                        }}>
-                          <span className="text-xs font-mono font-bold">{String(index + 1).padStart(2, '0')}</span>
-                        </div>
-                        <span className="font-display text-sm sm:text-base font-semibold text-white pr-4 leading-snug group-hover:text-[#B6FF00] transition-colors">
-                          {faq.q}
-                        </span>
-                      </div>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300" style={{
-                        background: isOpen ? C.lime : C.wa(0.05),
-                        color: isOpen ? C.black : C.wa(0.4)
-                      }}>
-                        {isOpen ? (
-                          <Minus size={18} strokeWidth={2.5} />
-                        ) : (
-                          <Plus size={18} strokeWidth={2.5} />
-                        )}
-                      </div>
-                    </button>
-
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-2 text-sm leading-relaxed" style={{ color: C.wa(0.75), borderTop: `1px solid ${C.wa(0.08)}`, marginTop: '1px' }}>
-                            <div className="flex gap-3">
-                              <div className="w-7 shrink-0" />
-                              <p className="font-light">{faq.a}</p>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                );
-              })}
             </div>
           </section>
 

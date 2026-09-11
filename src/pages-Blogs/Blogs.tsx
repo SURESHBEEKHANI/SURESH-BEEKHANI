@@ -26,6 +26,50 @@ const C = {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const SkeletonCard: React.FC = () => (
+  <div
+    className="animate-pulse overflow-hidden flex flex-col rounded-2xl"
+    style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}
+  >
+    <div style={{ background: C.wa(0.05) }} className="aspect-video w-full rounded-t-2xl" />
+    <div className="p-5 space-y-3 flex-grow flex flex-col justify-between">
+      <div className="space-y-3">
+        <div className="h-2 w-24 rounded-full" style={{ background: C.wa(0.08) }} />
+        <div className="h-4 w-5/6 rounded" style={{ background: C.wa(0.08) }} />
+        <div className="h-3 w-full rounded" style={{ background: C.wa(0.05) }} />
+        <div className="h-3 w-4/6 rounded" style={{ background: C.wa(0.05) }} />
+        <div className="h-3 w-2/3 rounded" style={{ background: C.wa(0.05) }} />
+      </div>
+      <div className="pt-3 mt-3 border-t border-white/5 flex justify-between">
+        <div className="h-2 w-20 rounded" style={{ background: C.wa(0.06) }} />
+        <div className="h-2 w-14 rounded" style={{ background: C.wa(0.06) }} />
+      </div>
+    </div>
+  </div>
+);
+
+const SkeletonFeatured: React.FC = () => (
+  <div
+    className="animate-pulse grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8"
+    style={{ background: C.graphite, border: `1px solid ${C.wa(0.12)}` }}
+  >
+    <div className="lg:col-span-6">
+      <div style={{ background: C.wa(0.05) }} className="h-64 sm:h-72 rounded" />
+    </div>
+    <div className="lg:col-span-6 space-y-4">
+      <div className="h-2.5 w-28 rounded-full" style={{ background: C.wa(0.08) }} />
+      <div className="h-8 w-5/6 rounded" style={{ background: C.wa(0.08) }} />
+      <div className="h-4 w-full rounded" style={{ background: C.wa(0.05) }} />
+      <div className="h-4 w-5/6 rounded" style={{ background: C.wa(0.05) }} />
+      <div className="h-4 w-2/3 rounded" style={{ background: C.wa(0.05) }} />
+      <div className="pt-6 mt-6 border-t border-white/10 flex justify-between">
+        <div className="h-3 w-40 rounded" style={{ background: C.wa(0.06) }} />
+        <div className="h-3 w-32 rounded" style={{ background: C.wa(0.06) }} />
+      </div>
+    </div>
+  </div>
+);
+
 const CATEGORIES = [
   { id: "all", label: "All Insights" },
   { id: "ai-development", label: "AI Development" },
@@ -195,8 +239,7 @@ const Blogs: React.FC = () => {
     return activeCategory === "all" || blog.category === activeCategory;
   });
 
-  const featuredBlog = filteredBlogs.length > 0 ? filteredBlogs[0] : null;
-  const gridBlogs = filteredBlogs.length > 0 ? (activeCategory === "all" ? filteredBlogs.slice(1) : filteredBlogs) : [];
+  const gridBlogs = filteredBlogs;
 
   const incrementViewCount = async (blogId: string, currentViews: number = 0) => {
     if (viewedArticles.current.has(blogId)) return;
@@ -239,26 +282,26 @@ const Blogs: React.FC = () => {
         if (seg.startsWith('```') && seg.endsWith('```')) {
           const code = seg.slice(3, -3).replace(/^\n/, '');
           return (
-            <pre key={`${baseKey}-cb-${si}`} className="bg-[#111111] text-white/90 text-xs sm:text-sm rounded-none p-5 my-6 overflow-x-auto font-mono leading-relaxed border border-white/10">
+            <pre key={`${baseKey}-cb-${si}`} className="bg-[#111111] text-white/95 text-sm sm:text-[0.95rem] rounded-xl p-5 sm:p-6 my-6 sm:my-8 overflow-x-auto font-mono leading-[1.75]">
               <code>{code}</code>
             </pre>
           );
         }
         if (seg.startsWith('`') && seg.endsWith('`') && seg.length > 2) {
           return (
-            <code key={`${baseKey}-ic-${si}`} className="bg-[#B6FF00]/10 text-[#B6FF00] px-1.5 py-0.5 text-xs font-mono font-semibold">
+            <code key={`${baseKey}-ic-${si}`} className="bg-[#B6FF00]/12 text-[#B6FF00] px-2 py-0.5 text-[0.85rem] sm:text-sm font-mono font-bold rounded border border-[#B6FF00]/20">
               {seg.slice(1, -1)}
             </code>
           );
         }
         return seg.split(/(\*\*[\s\S]*?\*\*|\*[\s\S]*?\*|\[.*?\]\(.*?\))/g).map((sub, i) => {
           if (sub.startsWith('**') && sub.endsWith('**'))
-            return <strong key={`${baseKey}-${si}-b${i}`} className="text-white font-bold">{sub.slice(2, -2)}</strong>;
+            return <strong key={`${baseKey}-${si}-b${i}`} className="text-white font-extrabold">{sub.slice(2, -2)}</strong>;
           if (sub.startsWith('*') && sub.endsWith('*') && sub.length > 2)
-            return <em key={`${baseKey}-${si}-em${i}`} className="italic text-white/80">{sub.slice(1, -1)}</em>;
+            return <em key={`${baseKey}-${si}-em${i}`} className="italic text-white/92">{sub.slice(1, -1)}</em>;
           const lm = sub.match(/\[(.*?)\]\((.*?)\)/);
           if (lm)
-            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#B6FF00] hover:underline font-semibold">{lm[1]}</a>;
+            return <a key={`${baseKey}-${si}-lk${i}`} href={lm[2]} target="_blank" rel="noopener noreferrer" className="text-[#B6FF00] hover:underline font-bold decoration-[#B6FF00]/40 underline-offset-2">{lm[1]}</a>;
           return <React.Fragment key={`${baseKey}-${si}-t${i}`}>{sub}</React.Fragment>;
         });
       });
@@ -280,13 +323,13 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <div key={`code-${i}`} className="my-6 rounded-none overflow-hidden border border-white/10 shadow-2xl">
+          <div key={`code-${i}`} className="my-6 sm:my-8 rounded-xl overflow-hidden shadow-2xl">
             {lang && (
-              <div className="bg-[#111111] px-4 py-2 border-b border-white/10 flex items-center justify-between">
-                <span className="text-[10px] font-bold text-[#B6FF00] uppercase tracking-widest">{lang}</span>
+              <div className="bg-[#0d0d0d] px-4 sm:px-5 py-2.5 flex items-center justify-between">
+                <span className="text-[11px] font-extrabold text-[#B6FF00] uppercase tracking-[0.18em]">{lang}</span>
               </div>
             )}
-            <pre className="bg-[#050505] text-white/90 text-xs sm:text-sm p-5 overflow-x-auto font-mono leading-relaxed">
+            <pre className="bg-[#070707] text-white/95 text-sm sm:text-[0.95rem] p-5 sm:p-6 overflow-x-auto font-mono leading-[1.75]">
               <code>{codeLines.join('\n')}</code>
             </pre>
           </div>
@@ -298,15 +341,15 @@ const Blogs: React.FC = () => {
       const imgMatch = line.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
       if (imgMatch) {
         elements.push(
-          <div key={`img-${i}`} className="my-8">
-            <div className="border-l-2 border-[#B6FF00] overflow-hidden bg-[#111111]">
+          <div key={`img-${i}`} className="my-8 sm:my-10">
+            <div className="overflow-hidden bg-[#111111] rounded-xl shadow-xl">
               <img
                 src={imgMatch[2]}
                 alt={imgMatch[1]}
-                className="w-full h-auto max-h-[420px] object-cover"
+                className="w-full h-auto max-h-[480px] object-cover"
               />
               {imgMatch[1] && (
-                <div className="bg-[#111111] text-white/70 text-xs px-4 py-2 italic border-t border-white/5">
+                <div className="bg-[#0f0f0f] text-white/85 text-xs sm:text-sm px-4 sm:px-5 py-2.5 italic leading-relaxed">
                   {imgMatch[1]}
                 </div>
               )}
@@ -324,9 +367,9 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <blockquote key={`bq-${i}`} className="border-l-2 border-[#B6FF00] bg-[#111111] px-6 py-4 my-6">
+          <blockquote key={`bq-${i}`} className="bg-gradient-to-r from-[#141414] to-[#0d0d0d] px-6 sm:px-8 py-5 sm:py-6 my-6 sm:my-8 rounded-xl shadow-lg">
             {bqLines.map((bl, bi) => (
-              <p key={bi} className="italic text-white/80 text-sm sm:text-base leading-relaxed">
+              <p key={bi} className="italic text-white/92 text-[0.95rem] sm:text-lg leading-[1.85] font-medium">
                 {renderInline(bl, `bq-${i}-${bi}`)}
               </p>
             ))}
@@ -337,20 +380,20 @@ const Blogs: React.FC = () => {
 
       const headerMatch = line.match(/^(#{1,6})\s+(.+)$/);
       if (headerMatch) {
-        const level = headerMatch[1].length;
+        const mdLevel = headerMatch[1].length;
         const text = headerMatch[2];
         const id = text.toLowerCase().replace(/\s+/g, '-');
+        const semanticLevel = Math.min(mdLevel + 1, 6);
         const headingClasses: Record<number, string> = {
-          1: 'text-2xl sm:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight scroll-mt-32',
-          2: 'text-xl sm:text-2xl font-bold text-white mt-8 mb-4 tracking-tight scroll-mt-32 pb-2 border-b border-white/10',
-          3: 'text-lg sm:text-xl font-bold text-white mt-6 mb-3 scroll-mt-32',
-          4: 'text-base sm:text-lg font-semibold text-white mt-5 mb-2 scroll-mt-32',
-          5: 'text-sm font-semibold text-white/90 mt-4 mb-2 scroll-mt-32',
-          6: 'text-xs font-semibold text-white/70 mt-4 mb-2 scroll-mt-32 uppercase tracking-wider',
+          2: 'text-2xl sm:text-3xl font-extrabold text-white mt-10 sm:mt-12 mb-4 tracking-tight scroll-mt-32 leading-[1.2]',
+          3: 'text-xl sm:text-2xl font-bold text-white mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 leading-[1.25]',
+          4: 'text-lg sm:text-xl font-bold text-white mt-6 mb-3 scroll-mt-32 leading-[1.3]',
+          5: 'text-base sm:text-lg font-bold text-white mt-5 mb-2.5 scroll-mt-32 leading-[1.35]',
+          6: 'text-sm sm:text-base font-bold text-white/95 mt-4 mb-2 scroll-mt-32 leading-snug',
         };
-        const Tag = `h${Math.min(level + 1, 6)}` as keyof JSX.IntrinsicElements;
+        const Tag = `h${semanticLevel}` as keyof JSX.IntrinsicElements;
         elements.push(
-          <Tag key={`h-${i}`} id={id} className={headingClasses[level] || headingClasses[3]}>
+          <Tag key={`h-${i}`} id={id} className={headingClasses[semanticLevel] || headingClasses[4]}>
             {text}
           </Tag>
         );
@@ -360,7 +403,7 @@ const Blogs: React.FC = () => {
 
       if (/^---+$/.test(line.trim())) {
         elements.push(
-          <div key={`hr-${i}`} className="my-8 border-t border-white/10" />
+          <div key={`hr-${i}`} className="my-10 sm:my-12" />
         );
         i++;
         continue;
@@ -373,10 +416,10 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <ul key={`ul-${i}`} className="my-4 space-y-2 pl-2">
+          <ul key={`ul-${i}`} className="my-5 sm:my-6 space-y-3 pl-3">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3 items-start text-sm sm:text-base text-white/80 leading-relaxed">
-                <span className="shrink-0 mt-2 rounded-full bg-[#B6FF00]" />
+              <li key={li} className="flex gap-3.5 items-start text-[0.95rem] sm:text-lg text-white/92 leading-[1.75]">
+                <span className="shrink-0 mt-[0.55rem] w-2.5 h-2.5 rounded-full bg-[#B6FF00] shadow-[0_0_0_3px_rgba(182,255,0,0.12)]" />
                 <span>{renderInline(item, `ul-${i}-${li}`)}</span>
               </li>
             ))}
@@ -392,10 +435,10 @@ const Blogs: React.FC = () => {
           i++;
         }
         elements.push(
-          <ol key={`ol-${i}`} className="my-4 space-y-2 pl-2">
+          <ol key={`ol-${i}`} className="my-5 sm:my-6 space-y-3 pl-3">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3 items-start text-sm sm:text-base text-white/80 leading-relaxed">
-                <span className="shrink-0 font-bold text-xs px-2 py-0.5 bg-[#111111] text-[#B6FF00] border border-white/10">
+              <li key={li} className="flex gap-3.5 items-start text-[0.95rem] sm:text-lg text-white/92 leading-[1.75]">
+                <span className="shrink-0 font-extrabold text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-gradient-to-br from-[#B6FF00] to-[#7DCC00] text-black border border-[#B6FF00]/30 shadow-sm min-w-[2rem] text-center">
                   {li + 1}
                 </span>
                 <span>{renderInline(item, `ol-${i}-${li}`)}</span>
@@ -412,7 +455,7 @@ const Blogs: React.FC = () => {
       }
 
       elements.push(
-        <p key={`p-${i}`} className="text-white/80 text-sm sm:text-base leading-relaxed mb-4 font-normal">
+        <p key={`p-${i}`} className="text-white/92 text-[0.95rem] sm:text-lg leading-[1.85] mb-5 sm:mb-6 font-medium">
           {renderInline(line, `p-${i}`)}
         </p>
       );
@@ -456,32 +499,34 @@ const Blogs: React.FC = () => {
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
       .slice(0, 4);
 
+    const relatedBlogs = blogs
+      .filter(b => b.id !== selectedBlog.id)
+      .sort((a, b) => {
+        const aMatch = a.category === selectedBlog.category ? 1 : 0;
+        const bMatch = b.category === selectedBlog.category ? 1 : 0;
+        if (bMatch !== aMatch) return bMatch - aMatch;
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      })
+      .slice(0, 4);
+
     return (
-      <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
-        {/* Reading Progress Indicator */}
-        <div
-          className="fixed top-0 left-0 h-1 z-[110] transition-all duration-150"
-          style={{ width: `${scrollProgress}%`, background: C.lime }}
-        />
+      <div
+        className="min-h-screen flex flex-col antialiased relative overflow-hidden"
+        style={{
+          background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
+          color: C.white,
+        }}
+      >
+        {/* ── FOOTER-STYLE AMBIENT BACKGROUND GLOWS ── */}
+        <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
+          <div style={{ position: 'absolute', top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 40%, transparent 72%)`, filter: 'blur(48px)' }} />
+          <div style={{ position: 'absolute', bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`, filter: 'blur(58px)' }} />
+        </div>
 
         <Navbar isDark={true} />
 
         <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-          <div>
-
-            {/* Back Link */}
-            <div className="mb-8">
-              <button
-                onClick={() => {
-                  setSelectedBlog(null);
-                  setSearchParams({});
-                  window.scrollTo(0, 0);
-                }}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white/70 hover:text-[#B6FF00] transition-colors"
-              >
-                <ArrowLeft size={16} /> Back to Insights
-              </button>
-            </div>
+          <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-16 2xl:px-20">
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
@@ -489,75 +534,72 @@ const Blogs: React.FC = () => {
               <article className="lg:col-span-8">
 
                 {/* Header Metadata */}
-                <div className="mb-8">
-                  <span
-                    className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4"
-                    style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
-                  >
-                    {selectedBlog.category || 'Strategic Insight'}
-                  </span>
+                <div className="mb-10 sm:mb-12">
+                  <div className="mb-6 text-[0.75rem] font-extrabold uppercase tracking-[0.24em] text-[#B6FF00]">
+                    {selectedBlog.category?.replace(/-/g, ' ') || 'Strategic Insight'}
+                  </div>
 
-                  <h1 className="w-full text-3xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
+                  <h1 className="w-full text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.08] tracking-[-0.03em] mb-7 sm:mb-8">
                     {selectedBlog.title}
                   </h1>
 
-                  <div className="flex flex-wrap items-center gap-6 text-xs text-white/50 border-b border-white/10 pb-6">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={14} color={C.lime} />
-                      <span>{new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <div className="flex flex-wrap items-center gap-5 sm:gap-8 text-sm sm:text-[0.95rem] text-white/80 pb-8 sm:pb-10">
+                    <div className="flex items-center gap-2.5">
+                      <Calendar size={18} color={C.lime} />
+                      <span className="font-medium">{new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock size={14} color={C.lime} />
-                      <span>{estimateReadingTime(selectedBlog.content)}</span>
+                    <div className="flex items-center gap-2.5">
+                      <Clock size={18} color={C.lime} />
+                      <span className="font-medium">{estimateReadingTime(selectedBlog.content)}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Eye size={14} color={C.lime} />
-                      <span>{selectedBlog.views || 0} Views</span>
+                    <div className="flex items-center gap-2.5">
+                      <Eye size={18} color={C.lime} />
+                      <span className="font-medium">{selectedBlog.views || 0} Views</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <User size={14} color={C.lime} />
-                      <span>Suresh Beekhani</span>
+                    <div className="flex items-center gap-2.5">
+                      <User size={18} color={C.lime} />
+                      <span className="font-bold text-white">Suresh Beekhani</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Hero Feature Image */}
                 {getBlogImageUrl(selectedBlog) && (
-                  <div className="mb-10 overflow-hidden border border-white/10" style={{ background: C.graphite }}>
+                  <div className="mb-12 sm:mb-14 overflow-hidden rounded-3xl shadow-2xl" style={{ background: C.graphite }}>
                     <img
                       src={getBlogImageUrl(selectedBlog)}
                       alt={selectedBlog.title}
-                      className="w-full h-auto max-h-[440px] object-cover"
+                      className="w-full h-auto max-h-[520px] object-cover"
                     />
                   </div>
                 )}
 
                 {/* Table of Contents */}
                 {getTOC(selectedBlog.content).length > 0 && (
-                  <div className="mb-10 p-6" style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}>
+                  <div className="mb-12 p-6 sm:p-8 rounded-2xl" style={{ background: C.graphite }}>
                     <div
                       className="flex items-center justify-between cursor-pointer"
                       onClick={() => setIsTocOpen(!isTocOpen)}
                     >
-                      <div className="flex items-center gap-2">
-                        <List size={16} color={C.lime} />
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-white">
+                      <div className="flex items-center gap-3">
+                        <List size={20} color={C.lime} />
+                        <h3 className="text-sm sm:text-base font-extrabold uppercase tracking-[0.16em] text-white">
                           Table of Contents
                         </h3>
                       </div>
-                      <ChevronDown size={16} className={`transition-transform ${isTocOpen ? 'rotate-180' : ''}`} color={C.wa(0.5)} />
+                      <ChevronDown size={20} className={`transition-transform ${isTocOpen ? 'rotate-180' : ''}`} color={C.wa(0.6)} />
                     </div>
 
                     {isTocOpen && (
-                      <nav className="flex flex-col gap-2.5 mt-4 pt-4 border-t border-white/10 text-xs">
+                      <nav className="flex flex-col gap-3.5 mt-6 pt-6 text-sm sm:text-[0.95rem]">
                         {getTOC(selectedBlog.content).map((header, i) => (
                           <a
                             key={i}
                             href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="text-white/70 hover:text-[#B6FF00] transition-colors"
+                            className="text-white/88 hover:text-[#B6FF00] transition-colors flex items-start gap-3 group leading-[1.5]"
                           >
-                            <span className="text-white/30 mr-2">{i + 1}.</span>
-                            {header.text}
+                            <span className="text-[#B6FF00]/80 group-hover:text-[#B6FF00] font-extrabold shrink-0 mt-0.5">{i + 1}.</span>
+                            <span className="font-medium">{header.text}</span>
                           </a>
                         ))}
                       </nav>
@@ -566,43 +608,55 @@ const Blogs: React.FC = () => {
                 )}
 
                 {/* Article Content */}
-                <div className="prose prose-invert max-w-none mb-12">
+                <div className="prose prose-invert max-w-none mb-16">
                   {renderContent(selectedBlog.content)}
                 </div>
 
                 {/* FAQ Section */}
                 {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
-                  <div className="mt-14 pt-10 mb-12">
-                    <h3 className="text-xl font-bold text-white mb-6">
-                      Frequently Asked Questions
-                    </h3>
+                  <div className="mt-16 sm:mt-20 mb-16 sm:mb-20">
+                    <div className="mb-8 sm:mb-10">
+                      <div className="mb-4 text-[0.72rem] font-extrabold uppercase tracking-[0.22em] text-[#B6FF00]">
+                        FAQ
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight">
+                        Frequently Asked <span className="text-[#B6FF00]">Questions</span>
+                      </h3>
+                    </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-5">
                       {selectedBlog.faqs.map((faq, index) => (
                         <div
                           key={index}
-                          className="border transition-all duration-200"
+                          className="rounded-2xl overflow-hidden transition-all duration-300"
                           style={{
-                            background: C.graphite,
-                            borderColor: openFaq === index ? C.la(0.4) : C.wa(0.08),
+                            background: openFaq === index ? '#0f0f0f' : C.graphite,
+                            boxShadow: openFaq === index ? `0 12px 40px ${C.la(0.08)}` : 'none',
                           }}
                         >
                           <button
                             onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                            className="w-full p-4 flex items-center justify-between text-left"
+                            className="w-full p-5 sm:p-7 flex items-center justify-between text-left gap-5"
                           >
-                            <span className="text-sm font-semibold text-white">
+                            <span className="text-base sm:text-xl font-bold text-white leading-[1.4]">
                               {faq.q}
                             </span>
-                            {openFaq === index ? (
-                              <Minus size={16} color={C.lime} className="shrink-0" />
-                            ) : (
-                              <Plus size={16} color={C.wa(0.4)} className="shrink-0" />
-                            )}
+                            <div
+                              className="shrink-0 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300"
+                              style={{
+                                background: openFaq === index ? C.la(0.2) : C.wa(0.06),
+                              }}
+                            >
+                              {openFaq === index ? (
+                                <Minus size={18} color={C.lime} />
+                              ) : (
+                                <Plus size={18} color={openFaq === index ? C.lime : C.wa(0.6)} />
+                              )}
+                            </div>
                           </button>
 
                           {openFaq === index && (
-                            <div className="px-4 pb-4 pt-1 border-t border-white/5 text-xs text-white/70 leading-relaxed">
+                            <div className="px-5 sm:px-7 pb-7 pt-3 text-[0.95rem] sm:text-lg text-white/90 leading-[1.85] font-medium">
                               {faq.a}
                             </div>
                           )}
@@ -615,87 +669,114 @@ const Blogs: React.FC = () => {
               </article>
 
               {/* RIGHT SIDEBAR */}
-              <aside className="lg:col-span-4 flex flex-col gap-10">
+              <aside className="lg:col-span-4 flex flex-col gap-10 lg:sticky lg:top-36">
 
                 {/* Newsletter Box */}
                 <div
-                  className="p-6 rounded-xl"
+                  className="p-6 sm:p-7 rounded-2xl relative overflow-hidden"
                   style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
                 >
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">
-                    Talk to Velnix
+                  <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full blur-[80px]" style={{ background: C.la(0.1) }} aria-hidden="true" />
 
-                  </h3>
-                  <p className="text-xs text-white/60 leading-relaxed mb-4">
-                    Have a question about AI, product development, or your next project? Start a conversation with our team.
-                  </p>
-
-                  {isSidebarSubscribed ? (
-                    <div className="p-3 bg-[#B6FF00]/10 border border-[#B6FF00]/30 text-xs text-[#B6FF00] font-bold">
-                      ✓ Subscribed! You will receive our latest updates.
+                  <div className="relative z-10">
+                    <div className="mb-4 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+                      Talk to Velnix
                     </div>
-                  ) : (
-                    <form onSubmit={handleSidebarSubscribe} className="space-y-3">
-                      <input
-                        type="email"
-                        value={sidebarEmail}
-                        onChange={(e) => setSidebarEmail(e.target.value)}
-                        placeholder="Your work email"
-                        className="w-full h-10 px-3 bg-[#050505] text-white placeholder-white/40 text-xs outline-none rounded-lg"
-                        style={{ border: `1px solid ${C.wa(0.15)}` }}
-                      />
-                      <button
-                        type="submit"
-                        disabled={isSidebarSubmitting}
-                        className="w-full h-10 font-bold text-xs text-black uppercase tracking-wider transition-all rounded-lg"
-                        style={{ background: C.lime }}
-                      >
-                        {isSidebarSubmitting ? "Processing..." : "Subscribe"}
-                      </button>
-                    </form>
-                  )}
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
+                      Let's build something <span className="text-[#B6FF00]">together</span>
+                    </h3>
+                    <p className="text-sm text-white/60 leading-relaxed mb-5">
+                      Have a question about AI, product development, or your next project? Start a conversation with our team.
+                    </p>
+
+                    {isSidebarSubscribed ? (
+                      <div className="p-4 rounded-xl bg-[#B6FF00]/10 border border-[#B6FF00]/30 text-sm text-[#B6FF00] font-bold flex items-center gap-2.5">
+                        <CheckCircle size={18} />
+                        Subscribed! You will receive our latest updates.
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSidebarSubscribe} className="space-y-3.5">
+                        <input
+                          type="email"
+                          value={sidebarEmail}
+                          onChange={(e) => setSidebarEmail(e.target.value)}
+                          placeholder="Your work email"
+                          className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none rounded-xl transition-all duration-200 focus:border-[#B6FF00]"
+                          style={{ border: `1px solid ${C.wa(0.15)}` }}
+                        />
+                        <button
+                          type="submit"
+                          disabled={isSidebarSubmitting}
+                          className="w-full h-12 font-bold text-sm text-black uppercase tracking-wider transition-all duration-200 rounded-xl hover:shadow-[0_6px_20px_rgba(182,255,0,0.3)] active:scale-[0.98]"
+                          style={{ background: C.lime }}
+                        >
+                          {isSidebarSubmitting ? (
+                            <span className="flex items-center justify-center gap-2">
+                              <Loader2 size={16} className="animate-spin" /> Processing...
+                            </span>
+                          ) : (
+                            <span className="flex items-center justify-center gap-2">
+                              Subscribe <ArrowRight size={16} />
+                            </span>
+                          )}
+                        </button>
+                      </form>
+                    )}
+                  </div>
                 </div>
 
-                {/* Recent Articles */}
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4 pb-2 border-b border-white/10">
-                    Recent Insights
-                  </h3>
+                {/* Related Articles Sidebar - Single Card */}
+                <div
+                  className="p-5 sm:p-6 rounded-2xl relative overflow-hidden"
+                  style={{ background: C.graphite, border: `1px solid ${C.wa(0.1)}` }}
+                >
+                  <div className="pointer-events-none absolute -top-16 -right-16 h-32 w-32 rounded-full blur-[70px]" style={{ background: C.la(0.08) }} aria-hidden="true" />
 
-                  <div className="flex flex-col gap-4">
-                    {recentBlogs.map(post => (
-                      <div
-                        key={post.id}
-                        className="group flex cursor-pointer items-center gap-3 rounded-xl p-4 transition-all duration-200"
-                        style={{ background: C.graphite, border: `1px solid ${C.wa(0.06)}` }}
-                        onClick={() => setSearchParams({ article: post.id })}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = C.la(0.3);
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = C.wa(0.06);
-                        }}
-                      >
-                        <div className="shrink-0 overflow-hidden rounded-lg bg-[#050505]">
-                          {getBlogImageUrl(post) ? (
-                            <img
-                              src={getBlogImageUrl(post)}
-                              alt={post.title}
-                              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                          ) : (
-                            <div className="flex h-full items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white/20">
-                              Velnix Editorial
+                  <div className="relative z-10">
+                    <div className="mb-5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+                      Related Articles
+                    </div>
+
+                    <div className="flex flex-col">
+                      {relatedBlogs.map((post, idx) => (
+                        <div
+                          key={post.id}
+                          className={`group cursor-pointer transition-all duration-300 ${idx > 0 ? 'pt-4 mt-4' : ''}`}
+                          style={idx > 0 ? { borderTop: `1px solid ${C.wa(0.08)}` } : {}}
+                          onClick={() => {
+                            setSelectedBlog(post);
+                            setSearchParams({ article: post.id });
+                            window.scrollTo(0, 0);
+                            incrementViewCount(post.id, post.views || 0);
+                          }}
+                        >
+                          <div className="flex items-start gap-3.5">
+                            <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 overflow-hidden rounded-xl bg-[#050505]">
+                              {getBlogImageUrl(post) ? (
+                                <img
+                                  src={getBlogImageUrl(post)}
+                                  alt={post.title}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                              ) : (
+                                <div className="flex h-full items-center justify-center text-[9px] font-bold uppercase tracking-widest text-white/20 p-1 text-center">
+                                  Velnix
+                                </div>
+                              )}
                             </div>
-                          )}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2 mb-1.5 text-[10px] text-white/40">
+                                <Calendar size={10} color={C.lime} />
+                                <span>{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                              </div>
+                              <h4 className="text-sm font-bold leading-snug text-white transition-colors duration-200 group-hover:text-[#B6FF00] line-clamp-3">
+                                {post.title}
+                              </h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <h4 className="text-xs font-bold leading-snug text-white transition-colors group-hover:text-[#B6FF00] line-clamp-3">
-                            {post.title}
-                          </h4>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -714,76 +795,84 @@ const Blogs: React.FC = () => {
   // VIEW: INSIGHTS HOMEPAGE
   // ───────────────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
+    <div
+      className="min-h-screen flex flex-col antialiased relative overflow-hidden"
+      style={{
+        background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
+        color: C.white,
+      }}
+    >
       <Navbar />
 
-      {/* ── BACKGROUND AMBIENT GLOWS ── */}
-      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/3 rounded-full blur-[140px]" style={{ background: C.la(0.04) }} />
+      {/* ── FOOTER-STYLE AMBIENT BACKGROUND GLOWS ── */}
+      <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
+        <div style={{ position: 'absolute', top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 40%, transparent 72%)`, filter: 'blur(48px)' }} />
+        <div style={{ position: 'absolute', bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`, filter: 'blur(58px)' }} />
       </div>
 
       <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div>
+        <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-16 2xl:px-20">
 
           {/* ══════════════════════════════════════════════════════
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
-          <div className="mb-12 grid w-full gap-8 sm:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="w-full">
-              <div className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
-                <span className="bg-[#B6FF00]" aria-hidden="true" />
-                Velnix editorial desk
-              </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                style={{
-                  fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
-                  fontWeight: 800,
-                  lineHeight: 1.08,
-                  letterSpacing: '-0.03em',
-                  color: C.white,
-                  marginBottom: '1.25rem',
-                }}
-              >
-                Where Business Problems Meet{' '}<span style={{ color: C.lime }}>Intelligent Technology.</span>
-              </motion.h1>
+          <div className="mb-12 w-full pb-10 sm:mb-16 sm:pb-12 border-b border-white/10">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+              <div className="w-full lg:max-w-4xl">
+                <div className="mb-5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
+                  Insights
+                </div>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.6 }}
+                  style={{
+                    fontSize: 'clamp(1.4rem, 3.2vw, 2.75rem)',
+                    fontWeight: 800,
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.03em',
+                    color: C.white,
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  Stay up to date with our {' '}<span style={{ color: C.lime }}>latest posts.</span>
+                </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                style={{
-                  fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
-                  color: C.wa(0.72),
-                  lineHeight: 1.75,
-                  fontWeight: 400,
-                }}
-              >
-                Practical intelligence, engineering frameworks, and strategic guidance for SMB decision-makers evaluating AI, automation, software, and workflow optimization.
-              </motion.p>
-            </div>
-            <div className="hidden border-l border-white/15 pl-6 lg:block">
-              <p className="text-3xl font-semibold text-white">{blogs.length || '—'}</p>
-              <p className="mt-1 max-w-[8rem] text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] text-white/45">Published insights</p>
+                <motion.p
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  style={{
+                    fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
+                    color: C.wa(0.72),
+                    lineHeight: 1.75,
+                    fontWeight: 400,
+                  }}
+                >
+                  Practical insights on Agentic AI, AI automation, machine learning, and intelligent software systems from Velnix Solutions.
+                </motion.p>
+              </div>
+              <div className="shrink-0 lg:text-right">
+                <p className="text-3xl sm:text-4xl font-extrabold text-white">{blogs.length || '—'}</p>
+                <p className="mt-1 text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] text-white/45">Published insights</p>
+              </div>
             </div>
           </div>
 
           {/* ══════════════════════════════════════════════════════
               CATEGORY NAVIGATION & SEARCH BAR
           ══════════════════════════════════════════════════════ */}
-          <div className="flex flex-col md:flex-row gap-6 items-stretch md:items-center justify-between mb-12 pb-8 border-b border-white/10">
+          <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between mb-8">
 
             {/* Category Dropdown */}
-            <div className="w-full">
+            <div className="w-full md:w-60">
               <div className="relative">
                 <button
                   type="button"
                   aria-haspopup="listbox"
                   aria-expanded={isCategoryOpen}
                   aria-label="Select insight category"
-                  className="flex h-10 w-full items-center justify-between px-4 text-left text-xs font-semibold uppercase tracking-wider outline-none transition-all duration-200"
+                  className="flex h-8 w-full items-center justify-between px-3 text-left text-[11px] font-semibold uppercase tracking-wider outline-none transition-all duration-200"
                   style={{
                     background: isCategoryOpen ? C.la(0.08) : C.graphite,
                     border: `1px solid ${isCategoryOpen ? C.lime : C.wa(0.12)}`,
@@ -804,13 +893,13 @@ const Blogs: React.FC = () => {
                   }}
                 >
                   {CATEGORIES.find(cat => cat.id === activeCategory)?.label || 'All Insights'}
-                  <ChevronDown size={16} color={isCategoryOpen ? C.lime : C.wa(0.6)} className={`transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={14} color={isCategoryOpen ? C.lime : C.wa(0.6)} className={`transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isCategoryOpen && (
                   <div
                     role="listbox"
                     aria-label="Available insight categories"
-                    className="absolute left-0 right-0 z-30 mt-1 max-h-[220px] overflow-y-auto overscroll-contain"
+                    className="absolute left-0 right-0 z-30 mt-1 max-h-[200px] overflow-y-auto overscroll-contain"
                     style={{ background: C.graphite, border: `1px solid ${C.lime}` }}
                   >
                     {CATEGORIES.map((cat) => (
@@ -819,7 +908,7 @@ const Blogs: React.FC = () => {
                         type="button"
                         role="option"
                         aria-selected={activeCategory === cat.id}
-                        className="block w-full px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-200"
+                        className="block w-full px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider transition-colors duration-200"
                         style={{
                           background: activeCategory === cat.id ? C.la(0.18) : C.graphite,
                           color: activeCategory === cat.id ? C.lime : C.white,
@@ -847,109 +936,38 @@ const Blogs: React.FC = () => {
             </div>
 
             {/* Search Input */}
-            <div className="relative w-full md:w-72">
+            <div className="relative w-full md:w-60">
               <input
                 type="text"
                 placeholder="Search insights..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 pl-4 pr-10 bg-[#111111] text-white placeholder-white/40 text-xs outline-none transition-all duration-200"
+                className="w-full h-8 pl-3 pr-8 bg-[#111111] text-white placeholder-white/40 text-[11px] outline-none transition-all duration-200"
                 style={{ border: `1px solid ${C.wa(0.12)}` }}
                 onFocus={(e) => e.target.style.borderColor = C.lime}
                 onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
               />
-              <Search size={14} color={C.lime} className="absolute right-3 top-1/2 -translate-y-1/2" />
+              <Search size={12} color={C.lime} className="absolute right-2.5 top-1/2 -translate-y-1/2" />
             </div>
 
           </div>
 
           {/* ══════════════════════════════════════════════════════
-              FEATURED ARTICLE CARD
-          ══════════════════════════════════════════════════════ */}
-          {!loading && featuredBlog && activeCategory === "all" && !searchQuery && (
-            <div className="mb-16">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6FF00] mb-3 block">
-                Featured Strategic Insight
-              </span>
-
-              <article
-                role="button"
-                tabIndex={0}
-                className="group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 transition-all duration-300"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.12)}`,
-                }}
-                onClick={() => setSearchParams({ article: featuredBlog.id })}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = C.la(0.4);
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = C.wa(0.12);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') setSearchParams({ article: featuredBlog.id });
-                }}
-              >
-                {/* Image */}
-                <div className="lg:col-span-6 overflow-hidden max-h-[320px] bg-[#050505]">
-                  {getBlogImageUrl(featuredBlog) ? (
-                    <img
-                      src={getBlogImageUrl(featuredBlog)}
-                      alt={featuredBlog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full flex items-center justify-center text-xs text-white/30">Velnix Editorial</div>
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="lg:col-span-6 flex flex-col justify-between">
-                  <div>
-                    <span
-                      className="inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider mb-3"
-                      style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
-                    >
-                      {featuredBlog.category || 'Strategic Insight'}
-                    </span>
-
-                    <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-tight mb-4">
-                      {featuredBlog.title}
-                    </h2>
-
-                    <p className="text-xs sm:text-sm text-white/60 line-clamp-3 leading-relaxed mb-6">
-                      {featuredBlog.meta_description || getExcerpt(featuredBlog.content)}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
-                    <div className="flex items-center gap-4 text-white/40">
-                      <span>{new Date(featuredBlog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                      <span>•</span>
-                      <span>{estimateReadingTime(featuredBlog.content)}</span>
-                    </div>
-
-                    <span className="inline-flex items-center gap-2 text-[#B6FF00] font-bold text-xs group-hover:translate-x-1 transition-transform">
-                      Read Strategic Insight <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          )}
-
-          {/* ══════════════════════════════════════════════════════
               ARTICLE GRID
           ══════════════════════════════════════════════════════ */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/50 mb-6 pb-2 border-b border-white/10">
-              {activeCategory === "all" ? "Latest Published Insights" : `Insights in ${CATEGORIES.find(c => c.id === activeCategory)?.label}`}
-            </h3>
-
+          <div className="px-2 sm:px-4 lg:px-6">
             {loading ? (
-              <div className="flex justify-center py-20">
-                <Loader2 className="animate-spin text-[#B6FF00]" size={40} />
+              <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                </div>
               </div>
             ) : fetchError ? (
               <div className="border border-white/10 bg-[#111111] px-6 py-16 text-center">
@@ -958,19 +976,23 @@ const Blogs: React.FC = () => {
                   Try again
                 </button>
               </div>
-            ) : gridBlogs.length === 0 && (!featuredBlog || activeCategory !== "all") ? (
+            ) : gridBlogs.length === 0 ? (
               <div className="text-center py-20 p-8" style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}>
                 <p className="text-sm text-white/60">No strategic insights found matching your criteria.</p>
                 <p className="text-xs text-white/40 mt-1">Try resetting search or switching categories.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {gridBlogs.map((blog) => (
-                  <article
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {gridBlogs.map((blog, index) => (
+                  <motion.article
                     role="button"
                     tabIndex={0}
                     key={blog.id}
-                    className="group cursor-pointer flex flex-col justify-between p-6 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: (index % 8) * 0.06, duration: 0.5 }}
+                    className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300 rounded-2xl"
                     style={{
                       background: C.graphite,
                       border: `1px solid ${C.wa(0.08)}`,
@@ -986,45 +1008,47 @@ const Blogs: React.FC = () => {
                       if (e.key === 'Enter' || e.key === ' ') setSearchParams({ article: blog.id });
                     }}
                   >
-                    <div>
-                      {/* Image Thumbnail */}
-                      <div className="overflow-hidden h-40 mb-4 bg-[#050505]">
+                    <div className="flex flex-col flex-grow">
+                      {/* Image Thumbnail - Full Bleed */}
+                      <div className="overflow-hidden aspect-video w-full bg-[#050505] rounded-t-2xl">
                         {getBlogImageUrl(blog) ? (
                           <img
                             src={getBlogImageUrl(blog)}
                             alt={blog.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-full object-cover"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-xs text-white/20">Velnix Editorial</div>
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] text-white/40 mb-2">
-                        <span className="font-bold uppercase tracking-wider text-[#B6FF00]">
-                          {blog.category || 'Insight'}
-                        </span>
-                        <span>{estimateReadingTime(blog.content)}</span>
+                      <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between">
+                        <div>
+                          <div className="flex items-center justify-end text-xs text-white/60 mb-3 gap-1.5">
+                            <Clock size={13} color={C.lime} />
+                            <span>{estimateReadingTime(blog.content)}</span>
+                          </div>
+
+                          <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug mb-4 line-clamp-2">
+                            {blog.title}
+                          </h4>
+
+                          <p className="text-sm sm:text-base text-white/70 line-clamp-3 leading-relaxed mb-6">
+                            {blog.meta_description || getExcerpt(blog.content, 160)}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-5 border-t border-white/10">
+                          <span className="text-[11px] sm:text-sm text-white/50">
+                            {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 text-[#B6FF00] font-bold text-xs sm:text-sm">
+                            Read <ArrowRight size={14} />
+                          </span>
+                        </div>
                       </div>
-
-                      <h4 className="text-base font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug mb-3 line-clamp-2">
-                        {blog.title}
-                      </h4>
-
-                      <p className="text-xs text-white/60 line-clamp-3 leading-relaxed mb-6">
-                        {blog.meta_description || getExcerpt(blog.content, 140)}
-                      </p>
                     </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
-                      <span className="text-[11px] text-white/40">
-                        {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 text-[#B6FF00] font-bold text-xs group-hover:translate-x-1 transition-transform">
-                        Read <ArrowRight size={13} />
-                      </span>
-                    </div>
-                  </article>
+                  </motion.article>
                 ))}
               </div>
             )}

@@ -26,8 +26,8 @@ const CONFIG = {
   // ============================================================
   // VISUAL
   // ============================================================
-  nodeOpacity: 0.56,
-  lineOpacity: 0.12,
+  nodeOpacity: 0.42,
+  lineOpacity: 0.07,
 
   nodeSize: 1.15,
   minNodeSize: 0.65,
@@ -36,14 +36,14 @@ const CONFIG = {
   // ============================================================
   // MOTION
   // ============================================================
-  driftSpeed: 0.000052,
-  clusterSpeed: 0.000016,
+  driftSpeed: 0.000040,
+  clusterSpeed: 0.000013,
   depthStrength: 0.00013,
 
   // ============================================================
   // SIGNALS
   // ============================================================
-  signalFrequency: 0.000095,
+  signalFrequency: 0.000070,
   signalSpeed: 0.00040,
 
   // ============================================================
@@ -63,6 +63,10 @@ const CONFIG = {
   // ============================================================
   orbitChance: 0.08,
   pulseChance: 0.025,
+
+  heroChance: 0.035,
+  heroPulseSpeed: 0.0009,
+  twinkleSpeed: 0.0014,
 };
 
 type NodeShape =
@@ -95,6 +99,10 @@ type NetworkNode = {
   orbitSpeed: number;
 
   pulseOffset: number;
+
+  hero: boolean;
+
+  twinkle: number;
 };
 
 type NetworkEdge = {
@@ -136,6 +144,60 @@ const seededRandom = (seed: number) => {
       2147483646
     );
   };
+};
+
+const makeGlowSprite = (
+  color: [number, number, number],
+  peakAlpha: number,
+): HTMLCanvasElement => {
+  const canvas = document.createElement(
+    'canvas',
+  );
+
+  canvas.width = 64;
+  canvas.height = 64;
+
+  const spriteContext =
+    canvas.getContext('2d');
+
+  if (spriteContext) {
+    const gradient =
+      spriteContext.createRadialGradient(
+        32,
+        32,
+        0,
+        32,
+        32,
+        32,
+      );
+
+    gradient.addColorStop(
+      0,
+      `rgba(${color[0]},${color[1]},${color[2]},${peakAlpha})`,
+    );
+
+    gradient.addColorStop(
+      0.35,
+      `rgba(${color[0]},${color[1]},${color[2]},${peakAlpha * 0.20})`,
+    );
+
+    gradient.addColorStop(
+      1,
+      `rgba(${color[0]},${color[1]},${color[2]},0)`,
+    );
+
+    spriteContext.fillStyle =
+      gradient;
+
+    spriteContext.fillRect(
+      0,
+      0,
+      64,
+      64,
+    );
+  }
+
+  return canvas;
 };
 
 const createNetwork = (
@@ -286,6 +348,15 @@ const createNetwork = (
 
               pulseOffset:
                 random(),
+
+              hero:
+                random() <
+                CONFIG.heroChance,
+
+              twinkle:
+                random() *
+                Math.PI *
+                2,
             };
           },
         );
@@ -768,6 +839,18 @@ const BackgroundAnimation =
       let clusters =
         createNetwork(
           CONFIG.desktopNodes,
+        );
+
+      const glowLime =
+        makeGlowSprite(
+          [182, 255, 0],
+          0.85,
+        );
+
+      const glowWhite =
+        makeGlowSprite(
+          [255, 255, 255],
+          0.5,
         );
 
       const resize = () => {
@@ -1524,7 +1607,7 @@ const BackgroundAnimation =
                     : node.layer ===
                         0
                       ? `rgba(${COLORS.green},${
-                          0.32 *
+                          0.24 *
                           centerQuiet
                         })`
                       : `rgba(${COLORS.white},${
@@ -1549,6 +1632,71 @@ const BackgroundAnimation =
 
                   context.shadowBlur =
                     5;
+                }
+
+                /*
+                 * Pin-light halo for hero nodes.
+                 */
+                if (
+                  node.hero &&
+                  !active
+                ) {
+                  const heroPulse =
+                    reducedMotion
+                      ? 0.5
+                      : 0.5 +
+                        0.5 *
+                          Math.sin(
+                            elapsed *
+                              CONFIG.heroPulseSpeed +
+                              node.phase,
+                          );
+
+                  const glowDiameter =
+                    radius *
+                    (
+                      3.6 +
+                      heroPulse *
+                        1.6
+                    );
+
+                  context.globalAlpha =
+                    0.55 *
+                    centerQuiet;
+
+                  context.drawImage(
+                    glowLime,
+                    point.x -
+                      glowDiameter /
+                        2,
+                    point.y -
+                      glowDiameter /
+                        2,
+                    glowDiameter,
+                    glowDiameter,
+                  );
+
+                  context.globalAlpha =
+                    1;
+                }
+
+                /*
+                 * Organic twinkle.
+
+                 */
+                if (
+                  !active &&
+                  !node.hero &&
+                  !reducedMotion
+                ) {
+                  context.globalAlpha =
+                    0.86 +
+                    0.14 *
+                      Math.sin(
+                        elapsed *
+                          CONFIG.twinkleSpeed +
+                          node.twinkle,
+                      );
                 }
 
                 drawNodeShape(

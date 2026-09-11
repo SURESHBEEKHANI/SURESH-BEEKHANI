@@ -94,8 +94,7 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
         style={{
           background: C.graphite,
           border: `1px solid ${hovered ? C.la(0.3) : C.wa(0.08)}`,
-          transition: 'border-color 0.3s, transform 0.3s',
-          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          transition: 'border-color 0.3s',
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -107,10 +106,6 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
               src={getBlogImageUrl(blog)}
               alt={blog.title}
               className="w-full h-full object-cover"
-              style={{
-                transform: hovered ? 'scale(1.05)' : 'scale(1)',
-                transition: 'transform 0.5s cubic-bezier(0.22,1,0.36,1)',
-              }}
             />
           ) : (
             <div
@@ -197,7 +192,7 @@ const LatestBlogs: React.FC = () => {
           .select('*')
           .eq('status', 'published')
           .order('created_at', { ascending: false })
-          .limit(3);
+          .limit(4);
 
         if (error) throw error;
         setBlogs(data || []);
@@ -233,7 +228,8 @@ const LatestBlogs: React.FC = () => {
               <div className="h-4 w-96 rounded animate-pulse" style={{ background: C.wa(0.05) }} />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
@@ -245,7 +241,7 @@ const LatestBlogs: React.FC = () => {
 
   if (blogs.length === 0) return null;
 
-  const displayBlogs = blogs.slice(0, 3);
+  const displayBlogs = blogs.slice(0, 4);
 
   return (
     <section
@@ -311,9 +307,9 @@ const LatestBlogs: React.FC = () => {
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            ARTICLE GRID — 3 Card Layout
+            ARTICLE GRID — 4 Card Layout
         ══════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {displayBlogs.map((blog, index) => (
             <BlogCard key={blog.id} blog={blog} index={index} />
           ))}
