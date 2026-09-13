@@ -104,7 +104,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
         <li key={l.label}>
           <a
             href={l.href}
-            className="group inline-flex items-center gap-2 text-sm transition-colors duration-200"
+            className="group inline-flex items-center gap-2 text-sm leading-6 transition-colors duration-200"
             style={{ color: C.wa(0.55), textDecoration: 'none' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
@@ -127,16 +127,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
   if (!mobile) {
     return (
       <div>
-        <h3
-          style={{
-            fontSize: '0.65rem',
-            fontWeight: 700,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: C.lime,
-            marginBottom: '1rem',
-          }}
-        >
+        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           {title}
         </h3>
         {list}
@@ -152,7 +143,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         aria-expanded={open}
       >
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.lime }}>
+        <span className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           {title}
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
@@ -201,7 +192,7 @@ const FooterContactCol = () => {
         const inner = (
           <>
             <Icon size={13} color={C.la(0.7)} strokeWidth={1.5} className="mt-1 shrink-0" />
-            <span style={item.href ? undefined : { whiteSpace: 'pre-line', fontSize: '0.75rem', lineHeight: 1.5 }}>{item.label}</span>
+            <span className={item.href ? undefined : 'whitespace-pre-line text-sm leading-6'}>{item.label}</span>
           </>
         );
         return (
@@ -209,7 +200,7 @@ const FooterContactCol = () => {
             {item.href ? (
               <a
                 href={item.href}
-                className="inline-flex items-start gap-2 text-sm transition-colors duration-200"
+                className="inline-flex items-start gap-2 text-sm leading-6 transition-colors duration-200"
                 style={{ color: C.wa(0.55), textDecoration: 'none' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
@@ -230,16 +221,7 @@ const FooterContactCol = () => {
   if (!mobile) {
     return (
       <div>
-        <h3
-          style={{
-            fontSize: '0.65rem',
-            fontWeight: 700,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: C.lime,
-            marginBottom: '1rem',
-          }}
-        >
+        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           Contact
         </h3>
         {list}
@@ -255,7 +237,7 @@ const FooterContactCol = () => {
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         aria-expanded={open}
       >
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.lime }}>
+        <span className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           Contact
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
@@ -312,20 +294,15 @@ const NewsletterForm = () => {
 
   return (
     <div>
-      <p className="flex items-center gap-2" style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.lime, marginBottom: 12 }}>
+      <p className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
         Stay Updated
         {alreadySubscribed && (
           <span
+            className="whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold normal-case tracking-[0.04em]"
             style={{
               border: `1px solid ${C.la(0.35)}`,
-              borderRadius: 999,
               background: C.la(0.1),
               color: C.lime,
-              padding: '0.25rem 0.55rem',
-              fontSize: '0.58rem',
-              letterSpacing: '0.04em',
-              textTransform: 'none',
-              whiteSpace: 'nowrap',
             }}
           >
             Already subscribed!
@@ -333,7 +310,7 @@ const NewsletterForm = () => {
         )}
       </p>
       {done ? (
-        <p style={{ fontSize: '0.875rem', color: C.lime, fontWeight: 600 }}>Welcome to Velnix. ✓</p>
+        <p className="text-sm font-bold" style={{ color: C.lime }}>Welcome to Velnix. ✓</p>
       ) : (
         <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 240 }}>
           <div style={{ position: 'relative' }}>
@@ -351,8 +328,8 @@ const NewsletterForm = () => {
                 background: C.wa(0.04),
                 border: `1px solid ${C.wa(0.1)}`,
                 color: C.white,
-                fontSize: '0.8rem',
-                padding: '0.6rem 6.5rem 0.6rem 0.875rem',
+                fontSize: '0.875rem',
+                padding: '0.7rem 6.5rem 0.7rem 0.875rem',
                 outline: 'none',
                 borderRadius: 999,
               }}
@@ -370,8 +347,8 @@ const NewsletterForm = () => {
                 background: C.lime,
                 color: C.black,
                 fontWeight: 700,
-                fontSize: '0.75rem',
-                padding: '0 0.65rem',
+                fontSize: '0.875rem',
+                padding: '0 0.85rem',
                 border: 'none',
                 borderRadius: 999,
                 cursor: submitting ? 'not-allowed' : 'pointer',
@@ -407,6 +384,7 @@ const Footer = () => {
       `}</style>
 
       <footer
+        className="font-display"
         style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white, position: 'relative', overflow: 'hidden' }}
         aria-label="Velnix Solutions site footer"
       >

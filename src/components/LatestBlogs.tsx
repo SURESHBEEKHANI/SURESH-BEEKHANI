@@ -120,26 +120,20 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
         {/* Content */}
         <div className="flex flex-col flex-grow p-6 sm:p-7">
           {/* Meta */}
-          <div className="flex items-center gap-4 mb-4">
-            <span
-              className="flex items-center gap-1.5 text-[0.7rem] font-medium"
-              style={{ color: C.wa(0.5) }}
-            >
-              <Calendar size={12} color={C.lime} />
+          <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
+            <span className="flex items-center gap-1.5">
+              <Calendar size={14} color={C.lime} />
               {formatDate(blog.created_at)}
             </span>
-            <span
-              className="flex items-center gap-1.5 text-[0.7rem] font-medium"
-              style={{ color: C.wa(0.5) }}
-            >
-              <Clock size={12} color={C.lime} />
+            <span className="flex items-center gap-1.5">
+              <Clock size={14} color={C.lime} />
               {blog.read_time ?? '5 min read'}
             </span>
           </div>
 
           {/* Title */}
           <h3
-            className="text-base sm:text-lg font-bold leading-snug mb-3 line-clamp-2"
+            className="mb-3 line-clamp-2 text-lg font-bold"
             style={{ color: hovered ? C.lime : C.white, transition: 'color 0.3s' }}
           >
             {blog.title}
@@ -147,15 +141,15 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
 
           {/* Excerpt */}
           <p
-            className="text-sm leading-relaxed line-clamp-2 mb-5 flex-grow"
-            style={{ color: C.wa(0.6) }}
+            className="mb-5 line-clamp-2 flex-grow text-sm leading-6"
+            style={{ color: 'rgba(255,255,255,0.55)' }}
           >
             {stripMarkdown(blog.content)}
           </p>
 
           {/* CTA */}
           <div
-            className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mt-auto pt-8"
+            className="mt-auto flex items-center gap-2 pt-8 text-sm font-bold"
             style={{
               color: C.lime,
               borderTop: `1px solid ${C.wa(0.1)}`,
@@ -163,7 +157,7 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
           >
             Read Article
             <ArrowRight
-              size={14}
+              size={17}
               style={{
                 transform: hovered ? 'translateX(6px)' : 'translateX(0)',
                 transition: 'transform 0.3s ease',
@@ -210,7 +204,7 @@ const LatestBlogs: React.FC = () => {
   if (loading) {
     return (
       <section
-        className="py-12 sm:py-16 lg:py-20 relative overflow-hidden"
+        className="relative overflow-hidden py-16 font-display sm:py-20 lg:py-24"
         style={{ color: C.white }}
         aria-label="Loading latest insights"
       >
@@ -239,7 +233,7 @@ const LatestBlogs: React.FC = () => {
 
   return (
     <section
-      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
+      className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
       style={{ color: C.white }}
       aria-labelledby="insights-heading"
     >
@@ -248,22 +242,21 @@ const LatestBlogs: React.FC = () => {
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
         ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/10">
+        <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-6 md:flex-row md:items-end">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-4 flex items-center gap-3"
+              className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: C.lime }}
             >
-              <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
-              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-                LATEST INSIGHTS
-              </span>
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+              Latest Insights
             </motion.div>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h2 id="insights-heading" className="max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
               Insights on technology, <span style={{ color: C.lime }}>AI and innovation</span>
             </h2>
           </div>
@@ -271,7 +264,7 @@ const LatestBlogs: React.FC = () => {
           {/* View All CTA */}
           <Link
             to="/blogs"
-            className="shrink-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full"
+            className="inline-flex shrink-0 items-center gap-3 rounded-full px-6 py-4 text-sm font-bold"
             style={{
               color: viewAllHovered ? C.black : C.black,
               background: viewAllHovered ? C.lime : C.lime,
@@ -285,7 +278,7 @@ const LatestBlogs: React.FC = () => {
           >
             Explore More
             <ArrowRight
-              size={14}
+              size={17}
               style={{
                 transform: viewAllHovered ? 'translateX(6px)' : 'translateX(0)',
                 transition: 'transform 0.3s ease',

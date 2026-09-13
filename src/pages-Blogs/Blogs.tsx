@@ -296,7 +296,7 @@ const Blogs: React.FC = () => {
         }
         return seg.split(/(\*\*[\s\S]*?\*\*|\*[\s\S]*?\*|\[.*?\]\(.*?\))/g).map((sub, i) => {
           if (sub.startsWith('**') && sub.endsWith('**'))
-            return <strong key={`${baseKey}-${si}-b${i}`} className="text-white font-extrabold">{sub.slice(2, -2)}</strong>;
+            return <strong key={`${baseKey}-${si}-b${i}`} className="font-bold text-white">{sub.slice(2, -2)}</strong>;
           if (sub.startsWith('*') && sub.endsWith('*') && sub.length > 2)
             return <em key={`${baseKey}-${si}-em${i}`} className="italic text-white/92">{sub.slice(1, -1)}</em>;
           const lm = sub.match(/\[(.*?)\]\((.*?)\)/);
@@ -369,7 +369,7 @@ const Blogs: React.FC = () => {
         elements.push(
           <blockquote key={`bq-${i}`} className="bg-gradient-to-r from-[#141414] to-[#0d0d0d] px-6 sm:px-8 py-5 sm:py-6 my-6 sm:my-8 rounded-xl shadow-lg">
             {bqLines.map((bl, bi) => (
-              <p key={bi} className="italic text-white/92 text-[0.95rem] sm:text-lg leading-[1.85] font-medium">
+              <p key={bi} className="text-lg italic leading-8 text-white/55">
                 {renderInline(bl, `bq-${i}-${bi}`)}
               </p>
             ))}
@@ -385,11 +385,11 @@ const Blogs: React.FC = () => {
         const id = text.toLowerCase().replace(/\s+/g, '-');
         const semanticLevel = Math.min(mdLevel + 1, 6);
         const headingClasses: Record<number, string> = {
-          2: 'text-2xl sm:text-3xl font-extrabold text-white mt-10 sm:mt-12 mb-4 tracking-tight scroll-mt-32 leading-[1.2]',
-          3: 'text-xl sm:text-2xl font-bold text-white mt-8 mb-3 tracking-tight scroll-mt-32 pb-2 leading-[1.25]',
-          4: 'text-lg sm:text-xl font-bold text-white mt-6 mb-3 scroll-mt-32 leading-[1.3]',
-          5: 'text-base sm:text-lg font-bold text-white mt-5 mb-2.5 scroll-mt-32 leading-[1.35]',
-          6: 'text-sm sm:text-base font-bold text-white/95 mt-4 mb-2 scroll-mt-32 leading-snug',
+          2: 'mt-10 mb-4 scroll-mt-32 text-4xl font-black leading-tight tracking-[-0.04em] sm:mt-12 sm:text-5xl',
+          3: 'mt-8 mb-3 scroll-mt-32 text-xl font-bold leading-tight',
+          4: 'mt-6 mb-3 scroll-mt-32 text-lg font-bold leading-tight',
+          5: 'mt-5 mb-2.5 scroll-mt-32 text-lg font-bold leading-tight',
+          6: 'mt-4 mb-2 scroll-mt-32 text-sm font-bold uppercase tracking-[0.2em] text-white/95',
         };
         const Tag = `h${semanticLevel}` as keyof JSX.IntrinsicElements;
         elements.push(
@@ -418,7 +418,7 @@ const Blogs: React.FC = () => {
         elements.push(
           <ul key={`ul-${i}`} className="my-5 sm:my-6 space-y-3 pl-3">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3.5 items-start text-[0.95rem] sm:text-lg text-white/92 leading-[1.75]">
+              <li key={li} className="flex items-start gap-3.5 leading-7 text-white/55">
                 <span className="shrink-0 mt-[0.55rem] w-2.5 h-2.5 rounded-full bg-[#B6FF00] shadow-[0_0_0_3px_rgba(182,255,0,0.12)]" />
                 <span>{renderInline(item, `ul-${i}-${li}`)}</span>
               </li>
@@ -437,8 +437,8 @@ const Blogs: React.FC = () => {
         elements.push(
           <ol key={`ol-${i}`} className="my-5 sm:my-6 space-y-3 pl-3">
             {items.map((item, li) => (
-              <li key={li} className="flex gap-3.5 items-start text-[0.95rem] sm:text-lg text-white/92 leading-[1.75]">
-                <span className="shrink-0 font-extrabold text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-gradient-to-br from-[#B6FF00] to-[#7DCC00] text-black border border-[#B6FF00]/30 shadow-sm min-w-[2rem] text-center">
+              <li key={li} className="flex items-start gap-3.5 leading-7 text-white/55">
+                <span className="min-w-[2rem] shrink-0 rounded-lg border border-[#B6FF00]/30 bg-gradient-to-br from-[#B6FF00] to-[#7DCC00] px-2.5 py-1 text-center text-xs font-bold text-black sm:text-sm">
                   {li + 1}
                 </span>
                 <span>{renderInline(item, `ol-${i}-${li}`)}</span>
@@ -455,7 +455,7 @@ const Blogs: React.FC = () => {
       }
 
       elements.push(
-        <p key={`p-${i}`} className="text-white/92 text-[0.95rem] sm:text-lg leading-[1.85] mb-5 sm:mb-6 font-medium">
+        <p key={`p-${i}`} className="mb-5 leading-7 text-white/55 sm:mb-6">
           {renderInline(line, `p-${i}`)}
         </p>
       );
@@ -511,7 +511,7 @@ const Blogs: React.FC = () => {
 
     return (
       <div
-        className="min-h-screen flex flex-col antialiased relative overflow-hidden"
+        className="relative flex min-h-screen flex-col overflow-hidden font-display antialiased"
         style={{
           background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
           color: C.white,
@@ -535,30 +535,31 @@ const Blogs: React.FC = () => {
 
                 {/* Header Metadata */}
                 <div className="mb-10 sm:mb-12">
-                  <div className="mb-6 text-[0.75rem] font-extrabold uppercase tracking-[0.24em] text-[#B6FF00]">
+                  <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+                    <span className="h-px w-8" style={{ background: C.lime }} />
                     {selectedBlog.category?.replace(/-/g, ' ') || 'Strategic Insight'}
                   </div>
 
-                  <h1 className="w-full text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.08] tracking-[-0.03em] mb-7 sm:mb-8">
+                  <h1 className="mb-8 w-full max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl">
                     {selectedBlog.title}
                   </h1>
 
-                  <div className="flex flex-wrap items-center gap-5 sm:gap-8 text-sm sm:text-[0.95rem] text-white/80 pb-8 sm:pb-10">
-                    <div className="flex items-center gap-2.5">
-                      <Calendar size={18} color={C.lime} />
-                      <span className="font-medium">{new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pb-8 text-xs font-semibold uppercase tracking-[0.14em] sm:pb-10" style={{ color: 'rgba(255,255,255,0.42)' }}>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={14} color={C.lime} />
+                      <span>{new Date(selectedBlog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <Clock size={18} color={C.lime} />
-                      <span className="font-medium">{estimateReadingTime(selectedBlog.content)}</span>
+                    <div className="flex items-center gap-2">
+                      <Clock size={14} color={C.lime} />
+                      <span>{estimateReadingTime(selectedBlog.content)}</span>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <Eye size={18} color={C.lime} />
-                      <span className="font-medium">{selectedBlog.views || 0} Views</span>
+                    <div className="flex items-center gap-2">
+                      <Eye size={14} color={C.lime} />
+                      <span>{selectedBlog.views || 0} Views</span>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <User size={18} color={C.lime} />
-                      <span className="font-bold text-white">Suresh Beekhani</span>
+                    <div className="flex items-center gap-2">
+                      <User size={14} color={C.lime} />
+                      <span>Suresh Beekhani</span>
                     </div>
                   </div>
                 </div>
@@ -583,7 +584,7 @@ const Blogs: React.FC = () => {
                     >
                       <div className="flex items-center gap-3">
                         <List size={20} color={C.lime} />
-                        <h3 className="text-sm sm:text-base font-extrabold uppercase tracking-[0.16em] text-white">
+                        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white">
                           Table of Contents
                         </h3>
                       </div>
@@ -591,15 +592,15 @@ const Blogs: React.FC = () => {
                     </div>
 
                     {isTocOpen && (
-                      <nav className="flex flex-col gap-3.5 mt-6 pt-6 text-sm sm:text-[0.95rem]">
+                      <nav className="mt-6 flex flex-col gap-3.5 pt-6 text-sm leading-6">
                         {getTOC(selectedBlog.content).map((header, i) => (
                           <a
                             key={i}
                             href={`#${header.text.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="text-white/88 hover:text-[#B6FF00] transition-colors flex items-start gap-3 group leading-[1.5]"
+                            className="group flex items-start gap-3 leading-6 text-white/55 transition-colors hover:text-[#B6FF00]"
                           >
-                            <span className="text-[#B6FF00]/80 group-hover:text-[#B6FF00] font-extrabold shrink-0 mt-0.5">{i + 1}.</span>
-                            <span className="font-medium">{header.text}</span>
+                            <span className="mt-0.5 shrink-0 font-bold text-[#B6FF00]/80 group-hover:text-[#B6FF00]">{i + 1}.</span>
+                            <span>{header.text}</span>
                           </a>
                         ))}
                       </nav>
@@ -616,12 +617,12 @@ const Blogs: React.FC = () => {
                 {selectedBlog.faqs && selectedBlog.faqs.length > 0 && (
                   <div className="mt-16 sm:mt-20 mb-16 sm:mb-20">
                     <div className="mb-8 sm:mb-10">
-                      <div className="mb-4 text-[0.72rem] font-extrabold uppercase tracking-[0.22em] text-[#B6FF00]">
-                        FAQ
-                      </div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight">
+                      <p className="text-sm font-bold uppercase tracking-[0.2em]" style={{ color: C.lime }}>
+                        Common questions
+                      </p>
+                      <h2 className="mt-5 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
                         Frequently Asked <span className="text-[#B6FF00]">Questions</span>
-                      </h3>
+                      </h2>
                     </div>
 
                     <div className="space-y-5">
@@ -638,7 +639,7 @@ const Blogs: React.FC = () => {
                             onClick={() => setOpenFaq(openFaq === index ? null : index)}
                             className="w-full p-5 sm:p-7 flex items-center justify-between text-left gap-5"
                           >
-                            <span className="text-base sm:text-xl font-bold text-white leading-[1.4]">
+                            <span className="text-lg font-bold leading-tight text-white">
                               {faq.q}
                             </span>
                             <div
@@ -656,7 +657,7 @@ const Blogs: React.FC = () => {
                           </button>
 
                           {openFaq === index && (
-                            <div className="px-5 sm:px-7 pb-7 pt-3 text-[0.95rem] sm:text-lg text-white/90 leading-[1.85] font-medium">
+                            <div className="px-5 pb-7 pt-4 leading-7 text-white/55 sm:px-7">
                               {faq.a}
                             </div>
                           )}
@@ -679,13 +680,13 @@ const Blogs: React.FC = () => {
                   <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full blur-[80px]" style={{ background: C.la(0.1) }} aria-hidden="true" />
 
                   <div className="relative z-10">
-                    <div className="mb-4 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+                    <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
                       Talk to Velnix
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
+                    <h3 className="mb-3 text-lg font-bold leading-tight text-white">
                       Let's build something <span className="text-[#B6FF00]">together</span>
                     </h3>
-                    <p className="text-sm text-white/60 leading-relaxed mb-5">
+                    <p className="mb-5 text-sm leading-6 text-white/55">
                       Have a question about AI, product development, or your next project? Start a conversation with our team.
                     </p>
 
@@ -707,7 +708,7 @@ const Blogs: React.FC = () => {
                         <button
                           type="submit"
                           disabled={isSidebarSubmitting}
-                          className="w-full h-12 font-bold text-sm text-black uppercase tracking-wider transition-all duration-200 rounded-xl hover:shadow-[0_6px_20px_rgba(182,255,0,0.3)] active:scale-[0.98]"
+                          className="h-12 w-full rounded-xl text-sm font-bold text-black transition-all duration-200 hover:shadow-[0_6px_20px_rgba(182,255,0,0.3)] active:scale-[0.98]"
                           style={{ background: C.lime }}
                         >
                           {isSidebarSubmitting ? (
@@ -733,7 +734,7 @@ const Blogs: React.FC = () => {
                   <div className="pointer-events-none absolute -top-16 -right-16 h-32 w-32 rounded-full blur-[70px]" style={{ background: C.la(0.08) }} aria-hidden="true" />
 
                   <div className="relative z-10">
-                    <div className="mb-5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+                    <div className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
                       Related Articles
                     </div>
 
@@ -765,11 +766,11 @@ const Blogs: React.FC = () => {
                               )}
                             </div>
                             <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-2 mb-1.5 text-[10px] text-white/40">
-                                <Calendar size={10} color={C.lime} />
+                              <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
+                                <Calendar size={14} color={C.lime} />
                                 <span>{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                               </div>
-                              <h4 className="text-sm font-bold leading-snug text-white transition-colors duration-200 group-hover:text-[#B6FF00] line-clamp-3">
+                              <h4 className="line-clamp-3 text-lg font-bold leading-tight text-white transition-colors duration-200 group-hover:text-[#B6FF00]">
                                 {post.title}
                               </h4>
                             </div>
@@ -796,7 +797,7 @@ const Blogs: React.FC = () => {
   // ───────────────────────────────────────────────────────────────────────────
   return (
     <div
-      className="min-h-screen flex flex-col antialiased relative overflow-hidden"
+      className="relative flex min-h-screen flex-col overflow-hidden font-display antialiased"
       style={{
         background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
         color: C.white,
@@ -816,24 +817,17 @@ const Blogs: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               HERO HEADER
           ══════════════════════════════════════════════════════ */}
-          <div className="mb-12 w-full pb-10 sm:mb-16 sm:pb-12 border-b border-white/10">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+          <div className="mb-12 w-full border-b border-white/10 pb-10 sm:mb-16 sm:pb-12">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
               <div className="w-full lg:max-w-4xl">
-                <div className="mb-5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#B6FF00]">
-                  Insights
+                <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+                  <span className="h-px w-8" style={{ background: C.lime }} /> Insights
                 </div>
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, duration: 0.6 }}
-                  style={{
-                    fontSize: 'clamp(1.4rem, 3.2vw, 2.75rem)',
-                    fontWeight: 800,
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.03em',
-                    color: C.white,
-                    marginBottom: '1.25rem',
-                  }}
+                  className="mb-8 max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl"
                 >
                   Stay up to date with our {' '}<span style={{ color: C.lime }}>latest posts.</span>
                 </motion.h1>
@@ -842,19 +836,15 @@ const Blogs: React.FC = () => {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  style={{
-                    fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
-                    color: C.wa(0.72),
-                    lineHeight: 1.75,
-                    fontWeight: 400,
-                  }}
+                  className="max-w-xl text-lg leading-8 sm:text-xl"
+                  style={{ color: C.wa(0.64) }}
                 >
                   Practical insights on Agentic AI, AI automation, machine learning, and intelligent software systems from Velnix Solutions.
                 </motion.p>
               </div>
               <div className="shrink-0 lg:text-right">
-                <p className="text-3xl sm:text-4xl font-extrabold text-white">{blogs.length || '—'}</p>
-                <p className="mt-1 text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] text-white/45">Published insights</p>
+                <p className="text-4xl font-black tracking-[-0.04em] sm:text-5xl">{blogs.length || '—'}</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">Published insights</p>
               </div>
             </div>
           </div>
@@ -872,7 +862,7 @@ const Blogs: React.FC = () => {
                   aria-haspopup="listbox"
                   aria-expanded={isCategoryOpen}
                   aria-label="Select insight category"
-                  className="flex h-8 w-full items-center justify-between px-3 text-left text-[11px] font-semibold uppercase tracking-wider outline-none transition-all duration-200"
+                  className="flex h-12 w-full items-center justify-between px-4 text-left text-sm font-semibold outline-none transition-all duration-200"
                   style={{
                     background: isCategoryOpen ? C.la(0.08) : C.graphite,
                     border: `1px solid ${isCategoryOpen ? C.lime : C.wa(0.12)}`,
@@ -908,7 +898,7 @@ const Blogs: React.FC = () => {
                         type="button"
                         role="option"
                         aria-selected={activeCategory === cat.id}
-                        className="block w-full px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider transition-colors duration-200"
+                        className="block w-full px-4 py-3 text-left text-sm font-semibold transition-colors duration-200"
                         style={{
                           background: activeCategory === cat.id ? C.la(0.18) : C.graphite,
                           color: activeCategory === cat.id ? C.lime : C.white,
@@ -942,12 +932,12 @@ const Blogs: React.FC = () => {
                 placeholder="Search insights..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-8 pl-3 pr-8 bg-[#111111] text-white placeholder-white/40 text-[11px] outline-none transition-all duration-200"
+                className="h-12 w-full bg-[#111111] pl-4 pr-10 text-sm text-white outline-none placeholder-white/40 transition-all duration-200"
                 style={{ border: `1px solid ${C.wa(0.12)}` }}
                 onFocus={(e) => e.target.style.borderColor = C.lime}
                 onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
               />
-              <Search size={12} color={C.lime} className="absolute right-2.5 top-1/2 -translate-y-1/2" />
+              <Search size={16} color={C.lime} className="absolute right-3.5 top-1/2 -translate-y-1/2" />
             </div>
 
           </div>
@@ -972,14 +962,14 @@ const Blogs: React.FC = () => {
             ) : fetchError ? (
               <div className="border border-white/10 bg-[#111111] px-6 py-16 text-center">
                 <p className="text-sm font-semibold text-white">Insights are temporarily unavailable.</p>
-                <button type="button" onClick={() => fetchPublishedBlogs(searchQuery)} className="mt-4 text-xs font-bold uppercase tracking-wider text-[#B6FF00] hover:underline">
+                <button type="button" onClick={() => fetchPublishedBlogs(searchQuery)} className="mt-4 text-sm font-bold text-[#B6FF00] hover:underline">
                   Try again
                 </button>
               </div>
             ) : gridBlogs.length === 0 ? (
               <div className="text-center py-20 p-8" style={{ background: C.graphite, border: `1px solid ${C.wa(0.08)}` }}>
-                <p className="text-sm text-white/60">No strategic insights found matching your criteria.</p>
-                <p className="text-xs text-white/40 mt-1">Try resetting search or switching categories.</p>
+                <p className="text-sm leading-6 text-white/55">No strategic insights found matching your criteria.</p>
+                <p className="mt-1 text-sm leading-6 text-white/40">Try resetting search or switching categories.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -1024,26 +1014,26 @@ const Blogs: React.FC = () => {
 
                       <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between">
                         <div>
-                          <div className="flex items-center justify-end text-xs text-white/60 mb-3 gap-1.5">
-                            <Clock size={13} color={C.lime} />
+                          <div className="mb-3 flex items-center justify-end gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
+                            <Clock size={14} color={C.lime} />
                             <span>{estimateReadingTime(blog.content)}</span>
                           </div>
 
-                          <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#B6FF00] transition-colors leading-snug mb-4 line-clamp-2">
+                          <h3 className="mb-4 line-clamp-2 text-lg font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00]">
                             {blog.title}
-                          </h4>
+                          </h3>
 
-                          <p className="text-sm sm:text-base text-white/70 line-clamp-3 leading-relaxed mb-6">
+                          <p className="mb-6 line-clamp-3 text-sm leading-6 text-white/55">
                             {blog.meta_description || getExcerpt(blog.content, 160)}
                           </p>
                         </div>
 
-                        <div className="flex items-center justify-between pt-5 border-t border-white/10">
-                          <span className="text-[11px] sm:text-sm text-white/50">
+                        <div className="flex items-center justify-between border-t border-white/10 pt-5">
+                          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
                             {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                           </span>
-                          <span className="inline-flex items-center gap-1.5 text-[#B6FF00] font-bold text-xs sm:text-sm">
-                            Read <ArrowRight size={14} />
+                          <span className="inline-flex items-center gap-2 text-sm font-bold text-[#B6FF00]">
+                            Read <ArrowRight size={17} />
                           </span>
                         </div>
                       </div>
