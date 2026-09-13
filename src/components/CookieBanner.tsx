@@ -51,33 +51,31 @@ export function CookieBanner() {
       <section
         aria-labelledby="cookie-banner-title"
         aria-describedby="cookie-banner-description"
-        className="velnix-cookie-banner fixed bottom-0 left-0 right-0 z-50 border-t px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 sm:px-6 sm:pt-5"
+        className="velnix-cookie-banner fixed bottom-0 left-0 right-0 z-50 border-t px-4 py-2 sm:px-6"
         style={{ background: C.black, borderColor: "rgba(182,255,0,.22)", boxShadow: "0 -12px 40px rgba(0,0,0,.35)" }}
       >
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
-          <div className="flex min-w-0 flex-1 items-start gap-3">
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center border" style={{ background: C.graphite, borderColor: "rgba(255,255,255,.12)", color: C.lime }}>
-              <Cookie size={18} aria-hidden="true" />
+        <div className="mx-auto flex max-w-[1240px] flex-row items-center justify-between gap-6">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center border" style={{ background: C.graphite, borderColor: "rgba(255,255,255,.12)", color: C.lime }}>
+              <Cookie size={14} aria-hidden="true" />
             </span>
             <div className="min-w-0">
-              <h2 id="cookie-banner-title" className="mb-1 text-sm font-semibold tracking-wide" style={{ color: C.white }}>We use cookies</h2>
-              <p id="cookie-banner-description" className="max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(255,255,255,.68)" }}>
-                We use cookies to improve your experience, analyze site traffic, and personalize content. You can choose to accept all cookies, reject non-essential ones, or manage your preferences.
-              </p>
-              <p className="mt-2 text-xs" style={{ color: "rgba(255,255,255,.48)" }}>
-                Read our <Link to="/cookie-policy" className="font-medium underline underline-offset-4" style={{ color: C.lime }}>Cookie Policy</Link> and <Link to="/privacy-policy" className="font-medium underline underline-offset-4" style={{ color: C.lime }}>Privacy Policy</Link>.
+              <p id="cookie-banner-description" className="text-xs leading-snug" style={{ color: "rgba(255,255,255,.68)" }}>
+                We use cookies to improve your experience and analyze traffic. Read our{" "}
+                <Link to="/cookie-policy" className="font-medium underline underline-offset-2" style={{ color: C.lime }}>Cookie Policy</Link>{" "}
+                and <Link to="/privacy-policy" className="font-medium underline underline-offset-2" style={{ color: C.lime }}>Privacy Policy</Link>.
               </p>
             </div>
           </div>
 
-          <div className="grid w-full shrink-0 grid-cols-1 gap-2 sm:grid-cols-3 lg:w-auto lg:min-w-[390px]">
-            <button type="button" onClick={handleCustomize} className="inline-flex min-h-11 items-center justify-center gap-2 border px-4 py-2 text-sm font-medium transition-colors hover:border-white/40 hover:bg-white/5" style={{ background: C.graphite, borderColor: "rgba(255,255,255,.18)", color: C.white }}>
-              <Settings size={15} aria-hidden="true" /> Manage preferences
+          <div className="flex shrink-0 items-center gap-2">
+            <button type="button" onClick={handleCustomize} className="inline-flex h-8 items-center justify-center gap-1.5 border px-3 text-xs font-medium transition-colors hover:border-white/40 hover:bg-white/5" style={{ background: C.graphite, borderColor: "rgba(255,255,255,.18)", color: C.white }}>
+              <Settings size={12} aria-hidden="true" /> Manage
             </button>
-            <button type="button" onClick={handleReject} className="min-h-11 border px-4 py-2 text-sm font-medium transition-colors hover:border-white/40 hover:bg-white/5" style={{ background: "transparent", borderColor: "rgba(255,255,255,.25)", color: C.white }}>
+            <button type="button" onClick={handleReject} className="h-8 border px-3 text-xs font-medium transition-colors hover:border-white/40 hover:bg-white/5" style={{ background: "transparent", borderColor: "rgba(255,255,255,.25)", color: C.white }}>
               Reject
             </button>
-            <button type="button" onClick={handleAcceptAll} className="min-h-11 border px-4 py-2 text-sm font-semibold transition-colors hover:bg-[#7DCC00]" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
+            <button type="button" onClick={handleAcceptAll} className="h-8 border px-3 text-xs font-semibold transition-colors hover:bg-[#7DCC00]" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
               Accept All
             </button>
           </div>
