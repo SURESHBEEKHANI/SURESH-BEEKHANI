@@ -72,9 +72,13 @@ const Hero = () => {
       });
     };
 
-    updateScrollProgress();
-    window.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate);
+    // Defer scroll listener initialization to avoid blocking initial render
+    requestAnimationFrame(() => {
+      updateScrollProgress();
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleUpdate);
+    });
+
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener('scroll', scheduleUpdate);

@@ -7,8 +7,8 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
-import { FaWhatsapp } from 'react-icons/fa';
 import { SEO } from './components/SEO';
+import { MessageCircle } from 'lucide-react';
 
 const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-HBZG5HGKQE';
 
@@ -175,7 +175,7 @@ const WhatsAppWidget = () => {
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
             style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <FaWhatsapp size={18} />
+            <MessageCircle size={18} />
             Contact HR
           </a>
           <a
@@ -185,7 +185,7 @@ const WhatsAppWidget = () => {
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
             style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <FaWhatsapp size={18} />
+            <MessageCircle size={18} />
             For Business
           </a>
         </div>
@@ -198,7 +198,7 @@ const WhatsAppWidget = () => {
         className="inline-flex h-16 w-16 items-center justify-center rounded-full text-white shadow-xl transition-transform duration-200 hover:scale-105"
         style={{ background: '#25D366', boxShadow: '0 12px 28px rgba(37,211,102,0.32)' }}
       >
-        <FaWhatsapp size={32} />
+        <MessageCircle size={32} />
       </button>
     </aside>
   );
