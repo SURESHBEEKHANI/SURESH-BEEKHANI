@@ -10,6 +10,8 @@ import {
   ShieldCheck,
   ArrowUpRight,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Building2,
   type LucideIcon,
 } from 'lucide-react';
@@ -131,65 +133,68 @@ const Industries: React.FC = () => {
     }
   }, [activeIndex]);
 
+  const moveCarousel = (direction: -1 | 1) => {
+    setActiveIndex((current) => (current + direction + INDUSTRIES.length) % INDUSTRIES.length);
+  };
+
   return (
-    <section id="industries" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ background: C.BLACK, color: C.WHITE }} aria-labelledby="industries-heading">
+    <section id="industries" className="relative overflow-visible py-16 sm:py-20 lg:py-24 scroll-mt-20" style={{ color: C.WHITE }} aria-labelledby="industries-heading">
       <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12">
         <div className="mb-8 grid gap-8 lg:mb-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
           <div>
             <div className="mb-5 flex items-center gap-3"><span style={{ width: 28, height: 2, background: C.LIME }} /><span style={{ color: C.LIME, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em' }}>INDUSTRIES</span></div>
-            <h2 id="industries-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Intelligent solutions for <span style={{ color: C.LIME }}>real-world industries.</span></h2>
+            <h2 id="industries-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-6xl">AI systems built for <span style={{ color: C.LIME }}>the work that matters.</span></h2>
           </div>
           <div className="flex flex-col items-end gap-4 lg:pb-1">
-            <p className="max-w-lg text-base leading-7 text-right" style={{ color: C.WHITE_MUTED }}>Velnix builds around the way your business actually operates, connecting AI, automation, data, and software to the workflows that matter.</p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-bold transition-all duration-300"
-              style={{
-                borderColor: C.LIME,
-                color: C.WHITE,
-                background: 'transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = C.LIME;
-                e.currentTarget.style.color = C.BLACK;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = C.WHITE;
-              }}
-            >
-              Explore All Industries
-              <ArrowRight size={16} />
-            </Link>
+            <p className="max-w-lg text-base leading-7 text-right" style={{ color: C.WHITE_MUTED }}>Velnix engineers AI, automation, data, and software around the operational realities that shape your industry and your bottom line.</p>
           </div>
         </div>
 
-        <div
-          ref={scrollContainerRef}
-          className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {INDUSTRIES.map((industry, index) => {
-            const isActive = activeIndex === index;
-            return (
-              <article key={industry.id} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[86vw] snap-start overflow-hidden rounded-2xl border sm:min-w-[48%] lg:min-w-[calc((100%-48px)/4)]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
-                <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
-                  <div className="relative h-[400px] overflow-hidden sm:h-[500px]">
-                    <img src={industry.image} alt={`${industry.name} industry solution`} width={industry.imageWidth} height={industry.imageHeight} loading="lazy" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.28) 34%, rgba(8,42,8,0.42) 64%, rgba(45,105,0,0.88) 100%)' }} />
-                    <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">
-                      <div className="text-lg font-bold tracking-[-0.02em]" style={{ color: C.WHITE, textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>{industry.name}</div>
-                      <p className="mt-2 max-w-[27ch] text-xs leading-5 sm:text-sm" style={{ color: C.WHITE_MUTED, textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>{industry.challenge}</p>
-                      <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#B6FF00] px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#050505] transition-colors group-hover:bg-[#7DCC00]">
-                        Learn More <ArrowRight size={14} />
-                      </span>
+        <div className="relative">
+          <button
+            type="button"
+            aria-label="Previous industries"
+            onClick={() => moveCarousel(-1)}
+            className="absolute -left-5 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#7DCC00] bg-[#111111] text-[#B6FF00] shadow-[0_0_0_4px_rgba(5,5,5,0.9)] transition-all hover:border-[#B6FF00] hover:bg-[#B6FF00] hover:text-[#050505] lg:flex"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            type="button"
+            aria-label="Next industries"
+            onClick={() => moveCarousel(1)}
+            className="absolute -right-5 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#7DCC00] bg-[#111111] text-[#B6FF00] shadow-[0_0_0_4px_rgba(5,5,5,0.9)] transition-all hover:border-[#B6FF00] hover:bg-[#B6FF00] hover:text-[#050505] lg:flex"
+          >
+            <ChevronRight size={18} />
+          </button>
+
+          <div
+            ref={scrollContainerRef}
+            className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
+            style={{ scrollbarWidth: 'none', overscrollBehaviorX: 'contain', scrollBehavior: 'smooth' }}
+          >
+            {INDUSTRIES.map((industry, index) => {
+              const isActive = activeIndex === index;
+              return (
+                <article key={industry.id} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[86vw] snap-start overflow-hidden rounded-2xl border sm:min-w-[48%] lg:min-w-[calc((100%-48px)/4)]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
+                  <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
+                    <div className="relative h-[400px] overflow-hidden sm:h-[500px]">
+                      <img src={industry.image} alt={`${industry.name} industry solution`} width={industry.imageWidth} height={industry.imageHeight} loading="lazy" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.28) 34%, rgba(8,42,8,0.42) 64%, rgba(45,105,0,0.88) 100%)' }} />
+                      <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">
+                        <div className="text-lg font-bold tracking-[-0.02em]" style={{ color: C.WHITE, textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>{industry.name}</div>
+                        <p className="mt-2 max-w-[27ch] text-xs leading-5 sm:text-sm" style={{ color: C.WHITE_MUTED, textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>{industry.challenge}</p>
+                        <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#B6FF00] px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#050505] transition-colors group-hover:bg-[#7DCC00]">
+                          Learn More <ArrowRight size={14} />
+                        </span>
+                      </div>
+                      <ArrowUpRight className="absolute right-5 top-5 opacity-0 transition-opacity group-hover:opacity-100" style={{ color: C.LIME }} size={20} />
                     </div>
-                    <ArrowUpRight className="absolute right-5 top-5 opacity-0 transition-opacity group-hover:opacity-100" style={{ color: C.LIME }} size={20} />
-                  </div>
-                </Link>
-              </article>
-            );
-          })}
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

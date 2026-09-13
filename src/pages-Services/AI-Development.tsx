@@ -56,7 +56,7 @@ const C = {
 const ease = [0.22, 1, 0.36, 1] as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 03 — CAPABILITIES DATA (6 Structured Modules)
+// 03 — CAPABILITIES DATA (9 Structured Modules)
 // ─────────────────────────────────────────────────────────────────────────────
 interface AICapability {
   id: string;
@@ -73,14 +73,14 @@ const aiCapabilities: AICapability[] = [
   {
     id: "ai-agents",
     num: "01",
-    title: "AI Agent Development",
-    category: "Autonomous Systems",
-    description:"Intelligent agents that reason through tasks, use tools, interact with APIs, and execute multi-step workflows.",
+    title: "Agentic AI Systems",
+    category: "Autonomous Intelligence",
+    description: "Production-grade agents that reason through complex work, use business tools, and execute multi-step operations.",
     icon: Bot,
     keyOutputs: [
-      "Autonomous ReAct reasoning loops",
-      "Deterministic tool & API invocation",
-      "Stateful memory & multi-agent coordination",
+      "Reliable tool and API execution",
+      "Multi-agent orchestration",
+      "Stateful reasoning and memory",
     ],
     specs: ["Tool Calling", "ReAct Framework", "Multi-Agent"],
   },
@@ -88,14 +88,14 @@ const aiCapabilities: AICapability[] = [
     id: "gen-ai-llm",
     num: "02",
     title: "Generative AI & LLM Applications",
-    category: "Intelligent Interfaces",
+    category: "Intelligent Products",
     description:
-      "AI-powered products, copilots, content systems, summarization, classification, and intelligent interfaces.",
+      "High-value AI products, copilots, and content systems built around how your teams work.",
     icon: Sparkles,
     keyOutputs: [
-      "Domain-adapted enterprise copilots",
-      "Deterministic structured JSON outputs",
-      "Streaming token user experiences",
+      "Domain-specific copilots",
+      "Production content systems",
+      "Reliable structured outputs",
     ],
     specs: ["Custom Copilots", "Prompt Systems", "Fine-Tuning"],
   },
@@ -105,12 +105,12 @@ const aiCapabilities: AICapability[] = [
     title: "RAG & Knowledge Systems",
     category: "Grounded Intelligence",
     description:
-      "Ground AI responses in your private documents, databases, knowledge bases, and business data.",
+      "Grounded intelligence that turns private documents, databases, and business knowledge into trusted answers.",
     icon: Database,
     keyOutputs: [
-      "Hybrid vector + lexical semantic retrieval",
-      "Multi-tenant document chunking & parsing",
-      "Citations with zero-hallucination bounds",
+      "Secure knowledge retrieval",
+      "Document and data grounding",
+      "Cited, auditable answers",
     ],
     specs: ["Hybrid Search", "Vector Embeddings", "Zero Drift"],
   },
@@ -120,44 +120,89 @@ const aiCapabilities: AICapability[] = [
     title: "AI Workflow Automation",
     category: "Operational Efficiency",
     description:
-      "Automate repetitive operational processes using AI, APIs, business logic, and workflow orchestration.",
+      "AI-powered workflows that connect systems, automate execution, and remove operational bottlenecks.",
     icon: Workflow,
     keyOutputs: [
-      "Self-healing multi-system execution pipelines",
-      "Human-in-the-loop review & approval gates",
-      "Event-driven trigger & background worker sync",
+      "Cross-system orchestration",
+      "Human approval and control gates",
+      "Event-driven automation",
     ],
     specs: ["Self-Healing", "Approval Gates", "Zero Bottlenecks"],
   },
   {
-    id: "computer-vision",
+    id: "conversational-ai",
     num: "05",
+    title: "Conversational AI",
+    category: "Intelligent Interfaces",
+    description:
+      "Business-aware voice and chat experiences that resolve requests and trigger real workflow actions.",
+    icon: Headphones,
+    keyOutputs: [
+      "Context-aware conversations",
+      "Voice and text actions",
+      "Intelligent human handoff",
+    ],
+    specs: ["Voice + Chat", "Context Memory", "System Actions"],
+  },
+  {
+    id: "machine-learning",
+    num: "06",
+    title: "Machine Learning & Predictive AI",
+    category: "Predictive Intelligence",
+    description:
+      "Predictive intelligence for forecasting, recommendations, classification, and higher-confidence decisions.",
+    icon: Brain,
+    keyOutputs: [
+      "Forecasting and prediction models",
+      "Recommendation and classification engines",
+      "Decision intelligence pipelines",
+    ],
+    specs: ["Forecasting", "Prediction", "Decision Systems"],
+  },
+  {
+    id: "computer-vision",
+    num: "07",
     title: "Computer Vision",
     category: "Visual Intelligence",
     description:
-      "Build systems for image understanding, document processing, OCR, detection, classification, and visual inspection.",
+      "Visual systems for document intelligence, OCR, detection, classification, and automated inspection.",
     icon: Eye,
     keyOutputs: [
-      "Dense document OCR & semantic parsing",
-      "Industrial defect & anomaly detection",
-      "Real-time video & visual inspection pipelines",
+      "Image understanding and OCR",
+      "Detection and classification engines",
+      "Automated visual inspection",
     ],
     specs: ["Dense OCR", "Visual QA", "Spatial Detection"],
   },
   {
     id: "custom-ai-software",
-    num: "06",
+    num: "08",
     title: "Custom AI Software",
     category: "Purpose-Built Solutions",
     description:
-      "Design and develop complete AI-powered applications around specific business requirements.",
+      "End-to-end AI software tailored to your workflows, users, data, and business model.",
     icon: Code2,
     keyOutputs: [
-      "Proprietary model pipelines & private VPCs",
-      "Secure backend architecture with low latency",
-      "Full-stack web, mobile, and API integration",
+      "Purpose-built product architecture",
+      "Secure full-stack delivery",
+      "Workflow-specific interfaces",
     ],
     specs: ["Private VPC", "Custom Frontends", "SLA Performance"],
+  },
+  {
+    id: "ai-data-analytics",
+    num: "09",
+    title: "AI Data & Analytics",
+    category: "Actionable Intelligence",
+    description:
+      "Turn fragmented business data into clear intelligence through pipelines, dashboards, and AI-powered insight.",
+    icon: LineChart,
+    keyOutputs: [
+      "Reliable data foundations",
+      "Operational dashboards and reporting",
+      "AI-powered decision support",
+    ],
+    specs: ["Data Pipelines", "Dashboards", "AI Insights"],
   },
 ];
 
@@ -335,6 +380,37 @@ const developmentSteps: ProcessStep[] = [
   },
 ];
 
+const deliveryStages: ProcessStep[] = [
+  {
+    num: "01",
+    title: "Assess",
+    description: "Identify the highest-value use case, validate the data, and define the outcome worth building toward.",
+    icon: Search,
+    deliverables: ["Use Case Viability", "Data Readiness", "Success Metrics"],
+  },
+  {
+    num: "02",
+    title: "Prototype",
+    description: "Build against real workflows and data, proving accuracy, usability, and technical feasibility early.",
+    icon: Code2,
+    deliverables: ["Working Prototype", "Model Strategy", "Evaluation Baseline"],
+  },
+  {
+    num: "03",
+    title: "Productionize",
+    description: "Integrate the system with your stack, add security and guardrails, and prepare it for reliable adoption.",
+    icon: ShieldCheck,
+    deliverables: ["System Integration", "Security Controls", "Production Readiness"],
+  },
+  {
+    num: "04",
+    title: "Operate & Improve",
+    description: "Launch with observability, measure business impact, and continuously improve the system as needs evolve.",
+    icon: Zap,
+    deliverables: ["Monitoring & Telemetry", "Outcome Reporting", "Continuous Improvement"],
+  },
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 07 — PRODUCTION AI PILLARS (6 Technical Pillars)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -493,6 +569,7 @@ export const AIDevelopment: React.FC = () => {
   const [activeUseCase, setActiveUseCase] = useState<string>(businessUseCases[0].id);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeTimelineStep, setActiveTimelineStep] = useState(0);
+  const [showAllCapabilities, setShowAllCapabilities] = useState(false);
   const shouldReduce = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const scanRef = useRef<HTMLDivElement>(null);
@@ -656,7 +733,7 @@ export const AIDevelopment: React.FC = () => {
                   marginBottom: '1.25rem',
                 }}
               >
-                Build Intelligent Systems That Drive Real Business Outcomes.
+                Production AI Systems Built for Business-Critical Work.
               </motion.h1>
 
               {/* Supporting copy */}
@@ -673,8 +750,8 @@ export const AIDevelopment: React.FC = () => {
                   fontWeight: 400,
                 }}
               >
-                We design and build production-ready AI systems that automate complex workflows,
-                unlock data, and help businesses operate smarter.
+                We engineer secure AI systems that connect to your data, integrate with your operations,
+                and turn complex workflows into measurable business advantage.
               </motion.p>
 
               {/* CTA Row */}
@@ -719,7 +796,7 @@ export const AIDevelopment: React.FC = () => {
                       willChange: 'transform',
                     }}
                   />
-                  <span className="relative z-10">Start Your AI Project</span>
+                  <span className="relative z-10">Build Your AI System</span>
                   <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Link>
 
@@ -746,7 +823,7 @@ export const AIDevelopment: React.FC = () => {
                     e.currentTarget.style.background = C.wa(0.04);
                   }}
                 >
-                  Explore Our Capabilities
+                  Explore AI Capabilities
                   <ArrowRight size={15} />
                 </a>
               </motion.div>
@@ -761,7 +838,7 @@ export const AIDevelopment: React.FC = () => {
               >
                 <div className="flex flex-col items-start">
                   <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>99.9%</span>
-                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Production SLA</span>
+                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Production Reliability</span>
                 </div>
                 <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
                 <div className="flex flex-col items-start">
@@ -771,7 +848,7 @@ export const AIDevelopment: React.FC = () => {
                 <div style={{ width: '1px', height: '36px', background: C.wa(0.1) }} />
                 <div className="flex flex-col items-start">
                   <span style={{ fontSize: '1.75rem', fontWeight: 800, color: C.lime, lineHeight: 1, letterSpacing: '-0.03em' }}>3–5 Wks</span>
-                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Pilot to Prod</span>
+                  <span style={{ fontSize: '0.7rem', color: C.wa(0.55), marginTop: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 500 }}>Pilot to Production</span>
                 </div>
               </motion.div>
             </div>
@@ -896,7 +973,7 @@ export const AIDevelopment: React.FC = () => {
                   style={{ color: C.lime }}
                 >
                   <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
-                  FROM IDEA TO PRODUCTION
+                  THE BUSINESS CASE FOR AI
                 </motion.div>
 
                 <div className="mb-10">
@@ -907,7 +984,7 @@ export const AIDevelopment: React.FC = () => {
                     transition={{ duration: 0.65, delay: 0.1, ease }}
                     className="whitespace-nowrap font-display text-2xl sm:text-4xl lg:text-[2.9rem] font-extrabold text-white tracking-[-0.03em] leading-[1.06]"
                   >
-                    AI That Works Inside Your Business.
+                    Turn Friction Into Advantage.
                   </motion.h2>
                   <motion.p
                     initial={shouldReduce ? false : { opacity: 0, y: 12 }}
@@ -916,7 +993,7 @@ export const AIDevelopment: React.FC = () => {
                     transition={{ duration: 0.6, delay: 0.2, ease }}
                     className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base"
                   >
-                    We connect intelligent systems to the workflows, data, and decisions that move your business forward.
+                    We identify where work breaks down, then design AI systems that reduce friction, connect the right information, and help your teams make faster, more confident decisions.
                   </motion.p>
                 </div>
 
@@ -949,28 +1026,28 @@ export const AIDevelopment: React.FC = () => {
                     {[
                       {
                         num: "01",
-                        title: "Identify",
-                        desc: "Surface the highest-value AI opportunities and the outcomes worth pursuing.",
+                        title: "Repetitive Work",
+                        desc: "Teams spend valuable time on manual tasks that could be automated, streamlined, or handled by intelligent systems.",
                       },
                       {
                         num: "02",
-                        title: "Design",
-                        desc: "Architect the right solution around your workflows, data, and operating reality.",
+                        title: "Disconnected Systems",
+                        desc: "Business data, tools, and workflows operate in silos, creating unnecessary handoffs and operational friction.",
                       },
                       {
                         num: "03",
-                        title: "Build",
-                        desc: "Develop reliable AI systems, integrations, and interfaces for the work they need to do.",
+                        title: "Scattered Knowledge",
+                        desc: "Critical information is buried across documents, databases, inboxes, and internal systems, making it difficult to find and use.",
                       },
                       {
                         num: "04",
-                        title: "Implement",
-                        desc: "Connect the system to real operations, secure it, and put it into production.",
+                        title: "Slow Decisions",
+                        desc: "Teams lack timely, actionable intelligence because extracting, analyzing, and interpreting business data takes too much effort.",
                       },
                       {
                         num: "05",
-                        title: "Enable",
-                        desc: "Equip your people to use AI confidently so value compounds after launch.",
+                        title: "AI Without Integration",
+                        desc: "AI experiments remain isolated from real operations without the workflows, integrations, and controls required to create lasting business value.",
                       },
                     ].map(({ num, title, desc }, i) => (
                       <motion.div
@@ -1020,25 +1097,25 @@ export const AIDevelopment: React.FC = () => {
               03 — AI DEVELOPMENT CAPABILITIES
           ══════════════════════════════════════════════════════ */}
           <section id="capabilities" className="mb-28 sm:mb-36 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-white/10 gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
               <div>
-                <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+                <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
                   WHAT WE BUILD
-                </span>
+                </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
-                  AI Systems Built Around Your Business.
+                  AI Systems That Move the Business Forward.
                 </h2>
-                <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mt-4" />
+                <p className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">
+                  We build secure, integrated AI capabilities that move beyond prototypes and create measurable leverage across the way your business operates.
+                </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {aiCapabilities.map((cap, idx) => {
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {aiCapabilities.slice(0, showAllCapabilities ? aiCapabilities.length : 3).map((cap, idx) => {
                 const Icon = cap.icon;
-                const isLeft = idx % 3 === 0;
-                const isCenter = idx % 3 === 1;
-                const isRight = idx % 3 === 2;
+                const isFeatured = idx === 1;
                 return (
                   <motion.div
                     key={cap.id}
@@ -1046,63 +1123,91 @@ export const AIDevelopment: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease }}
-                    className={`group flex flex-col justify-between p-7 sm:p-8 rounded-2xl border transition-all duration-500 relative overflow-hidden ${
-                      isLeft ? 'border-white/[0.12]' : isCenter ? 'border-white/[0.12]' : 'border-white/[0.12]'
-                    }`}
-                    style={{ background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, ${C.graphite} 100%)` }}
+                    className="group relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-xl border border-white/[0.12] p-5 transition-[transform,box-shadow,border-color] duration-500 sm:p-6"
+                    style={{
+                      background: C.black,
+                      borderColor: isFeatured ? C.lime : C.wa(0.12),
+                      boxShadow: isFeatured ? `0 12px 34px ${C.la(0.1)}, inset 0 1px 0 ${C.la(0.16)}` : 'none',
+                    }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = C.lime;
-                      e.currentTarget.style.boxShadow = `0 8px 40px ${C.la(0.12)}, inset 0 1px 0 ${C.la(0.15)}`;
+                      e.currentTarget.style.transform = 'translateY(-3px)';
+                      e.currentTarget.style.boxShadow = `0 16px 42px ${C.la(0.14)}, inset 0 1px 0 ${C.la(0.2)}`;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = C.wa(0.12);
-                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.borderColor = isFeatured ? C.lime : C.wa(0.12);
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = isFeatured ? `0 12px 34px ${C.la(0.1)}, inset 0 1px 0 ${C.la(0.16)}` : 'none';
                     }}
                   >
                     {/* Hover glow overlay */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.la(0.06)} 0%, transparent 60%)` }} />
+                    <div className="absolute left-6 right-6 top-0 h-px opacity-70" style={{ background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)` }} aria-hidden="true" />
 
-                    <div className="relative z-10">
+                    <div className="relative z-10 flex flex-1 flex-col">
                       {/* Header */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="font-mono text-xs font-bold tracking-widest" style={{ color: C.lime }}>
+                      <div className="mb-4 flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border transition-all duration-300 group-hover:brightness-110" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
+                          <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-105" fill="currentColor" fillOpacity={0.16} strokeWidth={1.8} />
+                        </div>
+                        <span className="rounded-full border px-2.5 py-1 font-mono text-[10px] font-bold tracking-[0.16em]" style={{ color: C.lime, borderColor: C.la(0.25), background: C.la(0.05) }}>
                           {cap.num}
                         </span>
-                        <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: C.wa(0.4) }}>
+                      </div>
+
+                      <div className="mb-3 flex items-center gap-2">
+                        <span className="h-px w-5" style={{ background: C.lime }} aria-hidden="true" />
+                        <span className="text-[10px] font-mono uppercase tracking-[0.16em]" style={{ color: C.wa(0.45) }}>
                           {cap.category}
                         </span>
                       </div>
 
-                      <h3 className="font-display text-xl font-bold text-white mb-3 leading-snug group-hover:text-[#B6FF00] transition-colors">
+                      <h3 className="mb-2 font-display text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#B6FF00]">
                         {cap.title}
                       </h3>
 
-                      <p className="text-sm leading-relaxed font-light mb-5" style={{ color: C.wa(0.7) }}>
+                      <p className="mb-4 text-sm font-light leading-relaxed" style={{ color: C.wa(0.7) }}>
                         {cap.description}
                       </p>
 
                       {/* Key Deliverables */}
-                      <ul className="space-y-2 mb-5">
+                      <ul className="mb-4 space-y-1.5">
                         {cap.keyOutputs.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-xs font-light" style={{ color: C.wa(0.6) }}>
-                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: C.lime }} />
                             {item}
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    {/* Bottom Specs */}
-                    <div className="pt-5 flex flex-wrap gap-1.5" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
-                      {cap.specs.map((spec, si) => (
-                        <span key={si} className="text-[9px] font-mono px-2.5 py-0.5 rounded-full border" style={{ background: C.la(0.08), color: C.lime, borderColor: C.la(0.2) }}>
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
                   </motion.div>
                 );
               })}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllCapabilities((current) => !current)}
+                aria-expanded={showAllCapabilities}
+                className="group/service inline-flex items-center gap-3 rounded-full border px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#050505] transition-all duration-300"
+                style={{
+                  background: C.lime,
+                  borderColor: C.la(0.5),
+                  boxShadow: `0 8px 28px ${C.la(0.25)}`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = C.green;
+                  e.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.4)}`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = C.lime;
+                  e.currentTarget.style.boxShadow = `0 8px 28px ${C.la(0.25)}`;
+                }}
+              >
+                {showAllCapabilities ? "Hide services" : "Explore our capabilities"}
+                <ChevronRight className={`h-4 w-4 transition-transform duration-300 group-hover/service:translate-x-1 ${showAllCapabilities ? "-rotate-90" : "rotate-90"}`} />
+              </button>
             </div>
           </section>
 
@@ -1111,24 +1216,30 @@ export const AIDevelopment: React.FC = () => {
               05 — BUSINESS USE CASES
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-12">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                OUTCOME-DRIVEN AI
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                AI Applied Where It Matters.
+            <div className="mx-auto mb-14 w-full max-w-4xl text-center">
+              <div className="mb-5 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+                  AI THAT DELIVERS
+              </div>
+              <h2 className="mb-6 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-[4.25rem]">
+                  AI That Drives Results.
               </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                We design AI solutions around high-friction operational realities,
-                connecting business problems directly to verifiable outcomes.
+              <p className="mx-auto max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
+                  We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
               </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white/45">
+                  <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: C.lime }} />Problem</span>
+                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                  <span>Intelligence</span>
+                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                  <span>Execution</span>
+                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                  <span style={{ color: C.lime }}>Outcome</span>
+              </div>
             </div>
 
-            {/* Interactive Tab Selector (8 Categories) with Rich Icon Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 mb-8">
+            {/* Interactive domain selector */}
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
               {businessUseCases.map((uc) => {
                 const Icon = uc.icon;
                 const isActive = activeUseCase === uc.id;
@@ -1136,30 +1247,25 @@ export const AIDevelopment: React.FC = () => {
                   <button
                     key={uc.id}
                     onClick={() => setActiveUseCase(uc.id)}
-                    className="p-3 rounded-xl text-left border transition-all duration-200 flex flex-col justify-between group"
+                    className="group inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-left transition-all duration-200"
                     style={{
-                      background: isActive ? C.la(0.08) : C.graphite,
+                      background: isActive ? C.lime : C.black,
                       borderColor: isActive ? C.lime : C.wa(0.1),
+                      color: isActive ? C.black : C.wa(0.65),
                     }}
                   >
                     <div
-                      className={`w-9 h-9 rounded-lg mb-2.5 flex items-center justify-center transition-all ${
-                        isActive
-                          ? "bg-[#B6FF00] text-black shadow-[0_0_15px_rgba(182,255,0,0.4)]"
-                          : "bg-[#181818] text-white/50 border border-white/10 group-hover:border-[#B6FF00]/30 group-hover:text-white"
-                      }`}
+                      className={`flex h-5 w-5 items-center justify-center rounded-full transition-all ${isActive ? "text-black" : "text-white/45 group-hover:text-[#B6FF00]"}`}
                     >
                       <Icon
-                        className="w-4 h-4"
+                        className="h-3.5 w-3.5"
                         fill={isActive ? "currentColor" : "rgba(255,255,255,0.08)"}
                         fillOpacity={isActive ? 0.3 : 0.15}
                         strokeWidth={2}
                       />
                     </div>
                     <span
-                      className={`text-[11px] font-mono font-bold tracking-tight block ${
-                        isActive ? "text-white" : "text-white/60"
-                      }`}
+                      className="block text-[10px] font-mono font-bold uppercase tracking-[0.08em]"
                     >
                       {uc.category}
                     </span>
@@ -1176,8 +1282,8 @@ export const AIDevelopment: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3, ease }}
-                className="p-8 sm:p-12 rounded-2xl border border-white/15 relative overflow-hidden"
-                style={{ background: C.graphite }}
+                className="relative mx-auto max-w-[1360px] overflow-hidden rounded-2xl border border-white/10 p-5 sm:p-8 lg:p-10"
+                style={{ background: `linear-gradient(135deg, ${C.graphite} 0%, ${C.black} 62%, ${C.ga(0.08)} 100%)` }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-white/10 gap-4">
                   <div className="flex items-center gap-4">
@@ -1205,15 +1311,15 @@ export const AIDevelopment: React.FC = () => {
                 </div>
 
                 {/* Three-Box Flow: Problem -> AI System -> Outcome */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+                <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
                   
                   {/* Problem */}
-                  <div className="p-6 rounded-xl bg-[#080808] border border-white/10 flex flex-col justify-between">
+                  <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#080808] p-5 transition-colors duration-300 hover:border-[#7DCC00]/50">
                     <div>
-                      <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center mb-3">
+                      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg border border-[#7DCC00]/30 bg-[#7DCC00]/10 text-[#7DCC00]">
                         <Search className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
                       </div>
-                      <span className="text-[10px] font-mono text-red-400 uppercase tracking-wider block mb-2 font-bold">
+                      <span className="mb-2 block text-[10px] font-mono font-bold uppercase tracking-wider text-[#7DCC00]">
                         [01] Business Problem
                       </span>
                       <p className="text-sm text-white/75 leading-relaxed font-light">
@@ -1226,7 +1332,7 @@ export const AIDevelopment: React.FC = () => {
                   </div>
 
                   {/* AI System */}
-                  <div className="p-6 rounded-xl bg-[#080808] border border-[#B6FF00]/30 shadow-[0_0_20px_rgba(182,255,0,0.05)] flex flex-col justify-between">
+                  <div className="flex flex-col justify-between rounded-xl border border-[#B6FF00]/35 bg-[#080808] p-5 shadow-[0_0_24px_rgba(182,255,0,0.06)]">
                     <div>
                       <div className="w-8 h-8 rounded-lg bg-[#B6FF00]/15 border border-[#B6FF00]/40 text-[#B6FF00] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(182,255,0,0.2)]">
                         <Cpu className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
@@ -1244,7 +1350,7 @@ export const AIDevelopment: React.FC = () => {
                   </div>
 
                   {/* Outcome */}
-                  <div className="p-6 rounded-xl bg-[#080808] border border-white/10 flex flex-col justify-between">
+                  <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#080808] p-5 transition-colors duration-300 hover:border-[#B6FF00]/50">
                     <div>
                       <div className="w-8 h-8 rounded-lg bg-[#7DCC00]/15 border border-[#7DCC00]/40 text-[#7DCC00] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(125,204,0,0.2)]">
                         <TrendingUp className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
@@ -1267,79 +1373,60 @@ export const AIDevelopment: React.FC = () => {
           </section>
 
           {/* ══════════════════════════════════════════════════════
-              06 — DEVELOPMENT PROCESS (6 Steps)
+              06 — DEVELOPMENT PROCESS (4 Steps)
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36 relative">
-            {/* Background Image */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-10"
-              style={{
-                backgroundImage: 'url(/image/Servies/ai-development.avif)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                filter: 'blur(8px)',
-              }}
-            />
+          <section
+            className="relative mb-28 overflow-hidden py-12 sm:mb-36 sm:py-16"
+          >
             
             <div className="relative z-10">
-              <div className="w-full mb-14">
-                <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                  HOW WE BUILD
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                  From AI Opportunity to Production System.
+              <div className="mx-auto mb-10 max-w-3xl text-center">
+                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+                  PROCESS
+                </div>
+                <h2 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
+                  Our AI Delivery Steps.
                 </h2>
-                {/* Signature Accent Line */}
-                <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-                <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                  A disciplined six-phase delivery framework that ensures model precision,
-                  bulletproof security boundaries, and enterprise readiness.
+                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                  From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
                 </p>
               </div>
 
-              {/* 6-step responsive grid with Icon Badges */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {developmentSteps.map((step) => {
+              {/* Compact process grid */}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {deliveryStages.map((step) => {
                 const StepIcon = step.icon;
                 return (
                   <div
                     key={step.num}
-                    className="p-7 sm:p-8 rounded-2xl border border-white/10 flex flex-col justify-between transition-all duration-300 hover:border-[#B6FF00]/40 group"
-                    style={{ background: C.graphite }}
+                    className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
                   >
+                    <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
                     <div>
-                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                        <span className="text-xs font-mono font-bold text-[#B6FF00] tracking-widest">
+                      <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+                        <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
                           {step.num}
                         </span>
-                        
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center border group-hover:scale-105 transition-all duration-300" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                          <StepIcon
-                            className="w-5 h-5 text-[#B6FF00]"
-                            fill="currentColor"
-                            fillOpacity={0.25}
-                            strokeWidth={2}
-                          />
-                        </div>
+                        <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
                       </div>
 
-                      <h3 className="font-display text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#B6FF00] transition-colors">
+                      <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
                         {step.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-light mb-6">
+                      <p className="text-xs font-light leading-6 text-white/65">
                         {step.description}
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-white/5 space-y-2">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-white/40 block mb-1">
+                    <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
+                      <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
                         Key Deliverables
                       </span>
                       {step.deliverables.map((item, di) => (
-                        <div key={di} className="flex items-center gap-2 text-[11px] text-white/60 font-light">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+                        <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
+                          <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -1423,69 +1510,34 @@ export const AIDevelopment: React.FC = () => {
               08 — TECHNOLOGY ECOSYSTEM
           ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-14">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
+            <div className="mx-auto mb-12 max-w-4xl text-center">
+              <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                 ENGINEERING STACK
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                The Right AI Stack for the Right Problem.
+                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+              </div>
+              <h2 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
+                The Right Stack for the Right Problem.
               </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                We select the optimal frameworks, storage engines, and model architectures based on
-                your latency requirements, cost budgets, and security posture.
+              <p className="mx-auto max-w-[64ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                We select the models, frameworks, and infrastructure that fit your data, security posture, latency requirements, and growth plans.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {techCategories.map((cat, idx) => {
+            <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-2.5">
+              {techCategories.flatMap((cat) => cat.items.map((item) => {
                 const Icon = cat.icon;
                 return (
-                  <div
-                    key={idx}
-                    className="p-7 rounded-2xl border border-white/10 flex flex-col justify-between group hover:border-[#B6FF00]/40 transition-colors"
-                    style={{ background: C.graphite }}
+                  <span
+                    key={`${cat.title}-${item.name}`}
+                    title={`${cat.title}: ${item.tag}`}
+                    className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#111111] px-4 py-2.5 font-mono text-[11px] font-bold tracking-[0.04em] text-white/75 transition-all duration-300 hover:border-[#B6FF00]/60 hover:bg-[#B6FF00]/10 hover:text-[#B6FF00]"
                   >
-                    <div>
-                      <div className="flex items-center gap-3 pb-4 mb-4 border-b border-white/10">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center border shrink-0" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                          <Icon
-                            className="w-5 h-5 text-[#B6FF00]"
-                            fill="currentColor"
-                            fillOpacity={0.25}
-                            strokeWidth={2}
-                          />
-                        </div>
-                        <h3 className="font-display text-base font-bold text-white tracking-tight">
-                          {cat.title}
-                        </h3>
-                      </div>
-
-                      <p className="text-xs text-white/60 font-light leading-relaxed mb-6">
-                        {cat.desc}
-                      </p>
-
-                      <div className="space-y-3">
-                        {cat.items.map((item, ii) => (
-                          <div
-                            key={ii}
-                            className="p-2.5 rounded-lg bg-[#080808] border border-white/5 flex flex-col"
-                          >
-                            <span className="text-xs font-mono font-bold text-white">
-                              {item.name}
-                            </span>
-                            <span className="text-[10px] font-mono text-white/45 mt-0.5">
-                              {item.tag}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                    <Icon className="h-3.5 w-3.5 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" fill="currentColor" fillOpacity={0.16} strokeWidth={1.8} />
+                    {item.name}
+                  </span>
                 );
-              })}
+              }))}
             </div>
           </section>
 
@@ -1641,6 +1693,10 @@ export const AIDevelopment: React.FC = () => {
 
               </div>
             </div>
+          </section>
+
+          <section className="mb-28 sm:mb-36">
+            <Industries />
           </section>
 
           <section className="mb-28 sm:mb-36">

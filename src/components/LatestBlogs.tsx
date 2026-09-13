@@ -211,15 +211,9 @@ const LatestBlogs: React.FC = () => {
     return (
       <section
         className="py-12 sm:py-16 lg:py-20 relative overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
+        style={{ color: C.white }}
         aria-label="Loading latest insights"
       >
-        {/* Background ambient lighting */}
-        <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/3 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
-          <div className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
-        </div>
-
         <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
             <div className="space-y-4">
@@ -246,15 +240,9 @@ const LatestBlogs: React.FC = () => {
   return (
     <section
       className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
-      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
+      style={{ color: C.white }}
       aria-labelledby="insights-heading"
     >
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/3 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
-        <div className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
-      </div>
-
       <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* ══════════════════════════════════════════════════════
