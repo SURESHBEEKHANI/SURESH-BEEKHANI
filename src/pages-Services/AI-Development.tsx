@@ -941,8 +941,8 @@ export const AIDevelopment: React.FC = () => {
             { number: '95%', label: 'Client satisfaction rate' },
           ].map(({ number, label }) => (
             <div key={label} className="relative px-3 text-center sm:px-5">
-              <div className="text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
-              <p className="mx-auto mt-4 max-w-[12ch] text-[0.62rem] font-semibold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch] sm:text-[0.68rem]">{label}</p>
+              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
+              <p className="mx-auto mt-4 max-w-[12ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch]">{label}</p>
             </div>
           ))}
         </div>

@@ -62,14 +62,7 @@ const STEPS = [
   },
 ] as const;
 
-const TRUST_BADGES = [
-  'Clear Scope',
-  'Transparent Estimates',
-  'Strategic Guidance',
-  'Dedicated Specialists',
-  'Open Communication',
-  'Structured Delivery',
-];
+const TRUST_BADGES = [];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STEP VISUAL — minimal system diagram per step
@@ -254,13 +247,13 @@ const DesktopStepCard: React.FC<{
         {/* Micro label + number */}
         <div className="flex items-center justify-between mb-3">
           <span
-            className="text-[0.55rem] font-bold uppercase tracking-[0.2em]"
+            className="text-xs font-bold uppercase tracking-[0.24em]"
             style={{ color: active ? C.lime : C.wa(0.25) }}
           >
             {step.micro}
           </span>
           <span
-            className="font-mono font-black text-[1.4rem] leading-none"
+            className="font-mono text-xs"
             style={{
               color: active ? C.lime : C.wa(0.1),
               transition: 'color 0.3s',
@@ -275,7 +268,7 @@ const DesktopStepCard: React.FC<{
 
         {/* Title */}
         <h3
-          className="text-sm font-extrabold leading-snug mb-2"
+          className="text-xl font-bold mb-2"
             style={{ color: active ? C.white : C.wa(0.82), transition: 'color 0.3s' }}
         >
           {step.title}
@@ -283,8 +276,8 @@ const DesktopStepCard: React.FC<{
 
         {/* Description */}
         <p
-          className="text-[0.75rem] leading-relaxed mb-4"
-          style={{ color: active ? C.wa(0.72) : C.wa(0.58), transition: 'color 0.3s' }}
+          className="text-sm leading-6 mb-3"
+          style={{ color: active ? C.wa(0.5) : C.wa(0.4), transition: 'color 0.3s' }}
         >
           {step.description}
         </p>
@@ -294,8 +287,8 @@ const DesktopStepCard: React.FC<{
           {step.bullets.map((b) => (
             <li
               key={b}
-              className="flex items-center gap-2 text-[0.68rem]"
-              style={{ color: active ? C.wa(0.68) : C.wa(0.5), transition: 'color 0.3s' }}
+              className="flex items-center gap-2 text-sm"
+              style={{ color: active ? C.wa(0.5) : C.wa(0.4), transition: 'color 0.3s' }}
             >
               <span
                 style={{
@@ -371,26 +364,26 @@ const MobileStepRow: React.FC<{ step: (typeof STEPS)[number]; index: number; isL
       {/* Right: content */}
       <div className="flex-1 pb-8">
         <div className="flex items-center gap-2 mb-2">
-          <span className="font-mono font-black text-xs" style={{ color: C.lime }}>
+          <span className="font-mono text-xs" style={{ color: C.lime }}>
             {step.num}
           </span>
           <span
-            className="text-[0.5rem] font-bold uppercase tracking-widest px-2 py-0.5"
+            className="text-xs font-bold uppercase tracking-[0.24em] px-2 py-0.5"
             style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.25)}` }}
           >
             {step.micro}
           </span>
         </div>
 
-        <h3 className="text-sm font-extrabold mb-2" style={{ color: C.white }}>
+        <h3 className="text-xl font-bold mb-2" style={{ color: C.white }}>
           {step.title}
         </h3>
-        <p className="text-[0.7rem] leading-relaxed mb-3" style={{ color: C.wa(0.5) }}>
+        <p className="text-sm leading-6 mb-3" style={{ color: C.wa(0.5) }}>
           {step.description}
         </p>
         <ul className="space-y-1.5">
           {step.bullets.map((b) => (
-            <li key={b} className="flex items-center gap-2 text-[0.63rem]" style={{ color: C.wa(0.5) }}>
+            <li key={b} className="flex items-center gap-2 text-sm" style={{ color: C.wa(0.5) }}>
               <span
                 style={{ width: 3, height: 3, borderRadius: '50%', background: C.lime, flexShrink: 0 }}
               />
@@ -446,20 +439,20 @@ const Approach: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div className="w-full">
             {/* Eyebrow */}
-            <div className="mb-5 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
-              <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+            <div className="mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em]" style={{ color: C.lime }}>
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
               HOW WE WORK
             </div>
 
             <h2
               id="approach-heading"
-              className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4"
+              className="text-4xl font-black tracking-[-0.04em] sm:text-5xl"
             >
               From First Conversation{' '}
               <span style={{ color: C.lime }}>to Project Delivery.</span>
             </h2>
 
-            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: C.wa(0.5) }}>
+            <p className="mt-6 max-w-md leading-7" style={{ color: C.wa(0.55) }}>
               A simple, transparent process designed to turn your business goals into a clear
               technical roadmap and successful solution.
             </p>
@@ -470,7 +463,7 @@ const Approach: React.FC = () => {
             {(['Contact', 'Discover', 'Define', 'Deliver'] as const).map((label, i, arr) => (
               <React.Fragment key={label}>
                 <span
-                  className="text-[0.58rem] font-bold uppercase tracking-wider"
+                  className="text-xs font-bold uppercase tracking-[0.14em]"
                   style={{ color: activeStep === i ? C.lime : C.wa(0.25) }}
                 >
                   {label}
@@ -516,21 +509,23 @@ const Approach: React.FC = () => {
         {/* ══════════════════════════════════════════════════════
             TRUST BADGES
         ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {TRUST_BADGES.map((badge) => (
-            <span
-              key={badge}
-              className="text-[0.6rem] font-bold uppercase tracking-wider px-3 py-1.5"
-              style={{
-                border: `1px solid ${C.wa(0.08)}`,
-                background: C.wa(0.02),
-                color: C.wa(0.4),
-              }}
-            >
-              {badge}
-            </span>
-          ))}
-        </div>
+        {TRUST_BADGES.length > 0 && (
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {TRUST_BADGES.map((badge) => (
+              <span
+                key={badge}
+                className="text-sm font-bold uppercase tracking-[0.14em] px-4 py-2"
+                style={{
+                  border: `1px solid ${C.wa(0.15)}`,
+                  background: C.wa(0.02),
+                  color: C.wa(0.42),
+                }}
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

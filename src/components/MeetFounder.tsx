@@ -33,14 +33,14 @@ const MeetFounder = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="max-w-2xl text-4xl font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
+          <h2 className="max-w-2xl text-4xl font-black tracking-[-0.04em] sm:text-5xl">
             Strategy is stronger when it is grounded in <span className="text-[#B6FF00]">engineering.</span>
           </h2>
-          <p className="mt-7 text-sm font-bold uppercase tracking-[0.16em] text-white/45">CEO & Co-founder-Velnix Solutions</p>
-          <p className="mt-6 max-w-xl text-base leading-8 text-white/65 sm:text-lg">
+          <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white/45">CEO & Co-founder-Velnix Solutions</p>
+          <p className="mt-6 max-w-xl leading-7 text-white/55">
             Suresh founded Velnix Solutions to close the gap between what AI can do and what businesses can actually use. He leads every engagement with a practical question: which system will create the most meaningful capacity next?
           </p>
-          <p className="mt-5 max-w-xl text-base leading-8 text-white/65 sm:text-lg">
+          <p className="mt-4 max-w-xl leading-7 text-white/55">
             That means clear decisions, disciplined architecture, and software that earns its place in the workflow.
           </p>
           <Link to="/contact" className="group mt-9 inline-flex items-center gap-2 rounded-full bg-[#B6FF00] px-6 py-3.5 text-sm font-bold text-[#050505] transition-transform hover:-translate-y-0.5">

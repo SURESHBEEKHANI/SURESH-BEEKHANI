@@ -423,7 +423,8 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, ease }}
-                  className="inline-flex items-center gap-2 mb-6"
+                  className="mb-7 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+                  style={{ color: C.lime }}
                 >
                   <span
                     style={{
@@ -434,9 +435,7 @@ const Footer = () => {
                       animation: shouldReduce ? 'none' : 'velnix-footer-blink 2s ease-in-out infinite',
                     }}
                   />
-                  <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.la(0.8) }}>
-                    Start the Conversation
-                  </span>
+                  Start the Conversation
                 </motion.div>
 
                 {/* CTA Headline */}
@@ -445,14 +444,7 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08, duration: 0.6, ease }}
-                  style={{
-                    fontSize: 'clamp(1.9rem, 3.5vw, 2.75rem)',
-                    fontWeight: 800,
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.03em',
-                    color: C.white,
-                    marginBottom: '1.25rem',
-                  }}
+                  className="mb-5 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
                 >
                   Ready to automate what{' '}
                   <span style={{ color: C.lime }}>slows your</span>
@@ -465,7 +457,8 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.16, duration: 0.55, ease }}
-                  style={{ fontSize: '1rem', color: C.wa(0.6), lineHeight: 1.7, fontWeight: 400 }}
+                  className="max-w-xl text-lg leading-8"
+                  style={{ color: C.wa(0.64) }}
                 >
                   Tell us where your operation loses time. We'll identify what to automate
                   and build the system to make it work.
@@ -510,11 +503,11 @@ const Footer = () => {
                 >
                   <a href="/" aria-label="Velnix Solutions home">
                     <img
-                      src="/image/logo/logo1.avif"
+                      src="/image/logo/logo1.png"
                       alt="Velnix Solutions"
                       width={2172}
                       height={724}
-                      style={{ height: 56, width: 'auto', objectFit: 'contain' }}
+                      style={{ height: 56, width: 'auto' }}
                       loading="lazy"
                       decoding="async"
                     />
@@ -527,7 +520,8 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08, duration: 0.5, ease }}
-                  style={{ fontSize: '0.9rem', color: C.wa(0.55), lineHeight: 1.75, maxWidth: '34ch' }}
+                  className="max-w-[34ch] text-sm leading-6"
+                  style={{ color: C.wa(0.55) }}
                 >
                   AI systems, software, and automation built around real business operations.
                   We turn operational complexity into scalable intelligence.
@@ -625,7 +619,7 @@ const Footer = () => {
             style={{ paddingTop: '1.25rem', paddingBottom: '1.25rem' }}
           >
             {/* Copyright */}
-            <p style={{ fontSize: '0.7rem', color: C.wa(0.35), letterSpacing: '0.08em', fontWeight: 500 }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
               © {new Date().getFullYear()}{' '}
               <span style={{ color: C.la(0.8), fontWeight: 700 }}>Velnix Solutions</span>
               {' '}— All rights reserved.
@@ -638,16 +632,14 @@ const Footer = () => {
                   {i > 0 && <span style={{ color: C.wa(0.15), fontSize: '0.6rem' }}>•</span>}
                   <a
                     href={l.href}
+                    className="text-xs font-semibold uppercase tracking-[0.14em]"
                     style={{
-                      fontSize: '0.7rem',
-                      color: C.wa(0.35),
-                      fontWeight: 500,
-                      letterSpacing: '0.06em',
+                      color: C.wa(0.42),
                       textDecoration: 'none',
                       transition: 'color 0.2s',
                     }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.35); }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.42); }}
                   >
                     {l.label}
                   </a>
@@ -697,14 +689,11 @@ const FooterCTA = () => {
         (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 36px ${C.la(0.55)}`;
       }}
       onMouseLeave={handleLeave}
-      className="group inline-flex items-center gap-2.5 relative overflow-hidden rounded-full"
+      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full text-sm font-bold"
       style={{
         background: C.lime,
         color: C.black,
-        fontWeight: 700,
-        fontSize: '0.875rem',
-        letterSpacing: '0.01em',
-        padding: '0.875rem 2rem',
+        padding: '1rem 1.5rem',
         textDecoration: 'none',
         transition: 'background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease',
         boxShadow: `0 8px 28px ${C.la(0.35)}`,
@@ -727,7 +716,7 @@ const FooterCTA = () => {
 
       <span className="relative z-10">Book a Strategy Call</span>
       <ArrowRight
-        size={16}
+        size={17}
         strokeWidth={2.5}
         className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200"
       />

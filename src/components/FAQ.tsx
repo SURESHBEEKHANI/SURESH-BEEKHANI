@@ -78,7 +78,7 @@ const FAQ = () => {
 
   return (
     <section
-      className="relative overflow-hidden py-16 antialiased sm:py-20 lg:py-24"
+      className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
       style={{
         background: `
           radial-gradient(
@@ -140,17 +140,17 @@ const FAQ = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={shouldReduce ? { duration: 0 } : { duration: 0.5, ease }}
-            className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[#B6FF00]"
+            className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"
           >
             <span
-              className="h-px w-7 bg-gradient-to-r from-transparent to-[#B6FF00]"
+              className="h-px w-8 bg-gradient-to-r from-transparent to-[#B6FF00]"
               aria-hidden="true"
             />
 
             Before We Build
 
             <span
-              className="h-px w-7 bg-gradient-to-l from-transparent to-[#B6FF00]"
+              className="h-px w-8 bg-gradient-to-l from-transparent to-[#B6FF00]"
               aria-hidden="true"
             />
           </motion.div>
@@ -161,7 +161,7 @@ const FAQ = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease }}
-            className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
+            className="mb-4 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
           >
             Know Before{' '}
             <span
@@ -232,7 +232,7 @@ const FAQ = () => {
                   {/* Editorial index */}
                   <span
                     className={[
-                      'w-8 shrink-0 text-left font-mono text-[0.7rem] font-medium tracking-[0.18em] tabular-nums',
+                      'w-8 shrink-0 text-left font-mono text-xs font-medium tracking-[0.12em] tabular-nums',
                       'transition-colors duration-300',
                       isOpen
                         ? 'text-[#B6FF00]'
@@ -245,7 +245,7 @@ const FAQ = () => {
 
                   <h3
                     className={[
-                      'min-w-0 flex-1 text-[0.95rem] font-semibold leading-snug tracking-tight sm:text-lg',
+                      'min-w-0 flex-1 text-lg font-bold leading-tight',
                       'transition-colors duration-300',
                       isOpen
                         ? 'text-white'
@@ -306,10 +306,7 @@ const FAQ = () => {
                         className="border-t pt-5 pb-6 pr-5 pl-[4.25rem] sm:pt-5 sm:pb-7 sm:pr-7 sm:pl-[5.25rem]"
                         style={{ borderColor: C.wa(0.06) }}
                       >
-                        <p
-                          className="max-w-2xl text-sm leading-7 sm:text-[0.95rem]"
-                          style={{ color: C.wa(0.62) }}
-                        >
+                        <p className="max-w-2xl leading-7 text-white/55">
                           {item.answer}
                         </p>
                       </div>

@@ -174,12 +174,12 @@ const DesktopDropdown = ({
                     <Icon size={18} strokeWidth={2.25} />
                   </span>
                 )}
-                <span className="flex flex-col gap-1 min-w-0">
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: C.wa(0.95), lineHeight: 1.3 }}>
+                <span className="flex min-w-0 flex-col gap-1">
+                  <span className="text-sm font-bold leading-tight" style={{ color: C.wa(0.95) }}>
                     {item.label}
                   </span>
                   {item.desc && (
-                    <span style={{ fontSize: '0.7rem', color: C.wa(0.5), lineHeight: 1.4 }}>
+                    <span className="text-sm leading-6" style={{ color: C.wa(0.55) }}>
                       {item.desc}
                     </span>
                   )}
@@ -194,8 +194,8 @@ const DesktopDropdown = ({
             <a
               key={item.href}
               href={item.href}
-              className="flex items-center gap-3 px-5 py-3 transition-all duration-150"
-              style={{ fontSize: '0.85rem', fontWeight: 500, color: C.wa(0.75), textDecoration: 'none', background: C.graphite }}
+              className="flex items-center gap-3 px-5 py-3 text-sm font-semibold transition-all duration-150"
+              style={{ color: C.wa(0.75), textDecoration: 'none', background: C.graphite }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.color = C.lime;
@@ -243,14 +243,11 @@ const DesktopNavItem = ({
       <a
         href={group.href ?? '#'}
         onClick={e => hasDropdown && e.preventDefault()}
-        className="inline-flex items-center gap-1 relative"
+        className="velnix-nav-link relative inline-flex items-center gap-1 text-sm font-semibold"
         style={{
-          fontSize: '0.85rem',
-          fontWeight: 600,
           color: isActive ? C.lime : C.wa(0.85),
           textDecoration: 'none',
           padding: '0.5rem 0.75rem',
-          letterSpacing: '0.01em',
           transition: 'color 0.2s',
           outline: 'none',
         }}
@@ -313,9 +310,8 @@ const MobileAccordion = ({
       <a
         href={group.href}
         onClick={onNavigate}
-        className="flex items-center justify-between py-4"
+        className="flex items-center justify-between py-4 text-lg font-bold"
         style={{
-          fontSize: '1.05rem', fontWeight: 600,
           color: C.white, textDecoration: 'none',
           borderBottom: `1px solid ${C.wa(0.06)}`,
         }}
@@ -336,7 +332,7 @@ const MobileAccordion = ({
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         aria-expanded={open}
       >
-        <span style={{ fontSize: '1.05rem', fontWeight: 600, color: open ? C.lime : C.white }}>
+        <span className="text-lg font-bold" style={{ color: open ? C.lime : C.white }}>
           {group.label}
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.22 }}>
@@ -361,10 +357,10 @@ const MobileAccordion = ({
                     key={item.href}
                     href={item.href}
                     onClick={onNavigate}
-                    className="flex items-center gap-3 py-3 pl-4"
-                    style={{ fontSize: '0.875rem', color: C.wa(0.6), textDecoration: 'none', transition: 'color 0.2s' }}
+                    className="flex items-center gap-3 py-3 pl-4 text-sm leading-6"
+                    style={{ color: C.wa(0.55), textDecoration: 'none', transition: 'color 0.2s' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.6); }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
                   >
                     {Icon ? (
                       <Icon size={16} strokeWidth={1.75} color={group.label === 'Industries' ? C.green : C.lime} className="shrink-0" />
@@ -433,7 +429,7 @@ const SearchOverlay = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[200] flex justify-center items-start pt-[15vh] px-4"
+          className="fixed inset-0 z-[200] flex items-start justify-center px-4 pt-[15vh] font-display"
           style={{ background: 'rgba(0,0,0,0.85)' }}
           onClick={e => { if (e.target === e.currentTarget) onClose(); }}
         >
@@ -454,8 +450,8 @@ const SearchOverlay = ({
                 placeholder="Search pages, services, industries, projects..."
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="flex-1 bg-transparent outline-none"
-                style={{ fontSize: '0.95rem', color: C.white, border: 'none' }}
+                className="flex-1 bg-transparent text-lg outline-none"
+                style={{ color: C.white, border: 'none' }}
               />
               <button
                 onClick={onClose}
@@ -475,8 +471,8 @@ const SearchOverlay = ({
                       key={`${l.href}-${i}`}
                       href={l.href}
                       onClick={onClose}
-                      className="flex items-center gap-3 px-4 py-3 transition-all duration-150"
-                      style={{ fontSize: '0.875rem', color: C.wa(0.75), textDecoration: 'none', borderRadius: 2 }}
+                      className="flex items-center gap-3 px-4 py-3 text-sm transition-all duration-150"
+                      style={{ color: C.wa(0.75), textDecoration: 'none', borderRadius: 2 }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement;
                         el.style.background = C.la(0.08);
@@ -494,11 +490,11 @@ const SearchOverlay = ({
                   ))}
                 </div>
               ) : query ? (
-                <div className="py-12 text-center" style={{ color: C.wa(0.35), fontSize: '0.9rem' }}>
+                <div className="py-12 text-center text-sm leading-6" style={{ color: C.wa(0.42) }}>
                   No results for "{query}"
                 </div>
               ) : (
-                <div className="py-12 text-center" style={{ color: C.wa(0.25), fontSize: '0.9rem' }}>
+                <div className="py-12 text-center text-sm leading-6" style={{ color: C.wa(0.42) }}>
                   <Search size={32} style={{ margin: '0 auto 12px', opacity: 0.15 }} />
                   Type to search pages, services, and more
                 </div>
@@ -593,7 +589,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
       {/* ── NAVBAR ── */}
       <nav
         aria-label="Main navigation"
-        className="velnix-navbar-cursor"
+        className="velnix-navbar-cursor font-display"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
@@ -624,15 +620,13 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
           >
             <img
-              src="/image/logo/logo1.avif"
+              src="/image/logo/logo1.png"
               alt="Velnix Solutions"
               width={2172}
               height={724}
               style={{
                 height: 48,
                 width: 'auto',
-                objectFit: 'contain',
-                background: 'transparent',
               }}
               decoding="async"
             />
@@ -671,10 +665,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             {/* Phone (compact) */}
             <a
               href="tel:+923351312852"
-              className="velnix-nav-link hidden xl:flex items-center gap-1.5"
-              style={{ fontSize: '0.78rem', fontWeight: 600, color: C.wa(0.5), textDecoration: 'none', transition: 'color 0.2s' }}
+              className="velnix-nav-link hidden items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] xl:flex"
+              style={{ color: C.wa(0.42), textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.white; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.5); }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.42); }}
             >
               <Phone size={13} strokeWidth={2} />
               +92 335 131 2852
@@ -766,23 +760,23 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = C.wa(0.08); }}
                 >
                   <Search size={16} strokeWidth={2} />
-                  <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Search the site...</span>
+                  <span className="text-sm font-semibold">Search the site...</span>
                 </button>
 
                 {/* Contact info */}
                 <div className="flex flex-col gap-3 mb-6">
                   <a
                     href="mailto:info@velnixsolutions.com"
-                    className="inline-flex items-center gap-2"
-                    style={{ fontSize: '0.8rem', color: C.wa(0.45), textDecoration: 'none' }}
+                    className="inline-flex items-center gap-2 text-sm leading-6"
+                    style={{ color: C.wa(0.55), textDecoration: 'none' }}
                   >
                     <Mail size={13} strokeWidth={1.5} />
                     info@velnixsolutions.com
                   </a>
                   <a
                     href="tel:+923351312852"
-                    className="inline-flex items-center gap-2"
-                    style={{ fontSize: '0.8rem', color: C.wa(0.45), textDecoration: 'none' }}
+                    className="inline-flex items-center gap-2 text-sm leading-6"
+                    style={{ color: C.wa(0.55), textDecoration: 'none' }}
                   >
                     <Phone size={13} strokeWidth={1.5} />
                     +92 335 131 2852
@@ -795,11 +789,10 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 w-full rounded-full py-4"
+                  className="flex w-full items-center justify-center gap-3 rounded-full py-4 text-sm font-bold"
                   style={{
                     background: C.lime, color: C.black,
-                    fontWeight: 700, fontSize: '0.9rem',
-                    textDecoration: 'none', letterSpacing: '0.01em',
+                    textDecoration: 'none',
                     transition: 'background 0.2s',
                   }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.green; }}
@@ -857,14 +850,11 @@ const NavCTA = ({ scrolled }: { scrolled: boolean }) => {
         cur.style.background = C.lime;
         cur.style.boxShadow = `0 4px 16px ${C.la(0.3)}`;
       }}
-      className="inline-flex items-center gap-2 rounded-full velnix-nav-link"
+      className="velnix-nav-link inline-flex items-center gap-3 rounded-full text-sm font-bold"
       style={{
         background: C.lime,
         color: C.black,
-        fontWeight: 700,
-        fontSize: '0.82rem',
-        letterSpacing: '0.01em',
-        padding: scrolled ? '0.5rem 1.25rem' : '0.6rem 1.4rem',
+        padding: scrolled ? '0.75rem 1.5rem' : '1rem 1.5rem',
         textDecoration: 'none',
         boxShadow: `0 4px 16px ${C.la(0.3)}`,
         transition: 'background 0.2s, box-shadow 0.2s, padding 0.35s, transform 0.2s',
@@ -873,7 +863,7 @@ const NavCTA = ({ scrolled }: { scrolled: boolean }) => {
       aria-label="Book a Strategy Call with Velnix Solutions"
     >
       Book a Strategy Call
-      <ArrowRight size={14} strokeWidth={2.5} />
+      <ArrowRight size={17} strokeWidth={2.5} />
     </a>
   );
 };

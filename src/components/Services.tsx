@@ -329,10 +329,10 @@ const ServiceRow: React.FC<{
           {service.num}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
+          <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
             {service.tag}
           </span>
-          <span className="block text-xl font-bold leading-tight tracking-[-0.03em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-2xl lg:text-4xl">
+          <span className="block text-xl font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-2xl lg:text-4xl">
             {service.title}
           </span>
         </span>
@@ -352,22 +352,20 @@ const ServiceRow: React.FC<{
       >
         <div className="grid gap-8 px-4 pb-8 pl-14 sm:grid-cols-[minmax(0,1fr)_220px] sm:px-6 sm:pb-10 sm:pl-[5.5rem] lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16 lg:pl-[max(7rem,calc((100vw-1320px)/2+7rem))] lg:pr-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))]">
           <div>
-            <p className="max-w-3xl text-sm leading-7 sm:text-base" style={{ color: 'rgba(255,255,255,0.64)' }}>{service.description}</p>
+            <p className="max-w-3xl text-lg leading-8 text-white/55">{service.description}</p>
             
             {/* Capabilities */}
             <div className="mt-6">
-              <span className="text-[10px] font-mono uppercase tracking-wider mb-3 block" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>
+              <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: 'rgba(255, 255, 255, 0.42)' }}>
                 Capabilities
               </span>
               <div className="flex flex-wrap gap-2">
                 {service.capabilities.map((capability, capIndex) => (
                   <span
                     key={capIndex}
-                    className="inline-flex items-center text-[11px] px-2.5 py-1 rounded-md transition-all duration-200 cursor-pointer"
+                    className="inline-flex cursor-pointer items-center rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition-all duration-200"
                     style={{
                       background: 'rgba(255, 255, 255, 0.05)',
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
                     }}
                     onClick={() => capability.route && onNavigate(capability.route)}
                   >
@@ -385,10 +383,10 @@ const ServiceRow: React.FC<{
                   onNavigate(firstCapabilityWithRoute.route!);
                 }
               }} 
-              className="mt-7 inline-flex min-w-[180px] items-center justify-center gap-2 rounded-full bg-[#B6FF00] px-5 py-3 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" 
+              className="mt-7 inline-flex min-h-12 min-w-[180px] items-center justify-center gap-3 rounded-full bg-[#B6FF00] px-6 py-4 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" 
               aria-label={`Explore ${service.title} service`}
             >
-              Explore Service <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              Explore Service <ArrowRight size={17} aria-hidden="true" />
             </button>
           </div>
           <div className="hidden items-center justify-center border-l border-[#B6FF00]/10 sm:flex" aria-hidden="true">
@@ -417,7 +415,7 @@ const Services = () => {
     <section
       ref={ref}
       id="services"
-      className="pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20 relative overflow-hidden scroll-mt-20"
+      className="relative overflow-hidden pb-8 pt-12 font-display scroll-mt-20 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
       style={{ background: C.BLACK }}
       aria-label="Services We Offer"
     >
@@ -476,14 +474,14 @@ const Services = () => {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
 
-          <div className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00] lg:col-span-2">
+          <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] lg:col-span-2">
             <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             Our Services
           </div>
 
           {/* H2 */}
           <h2
-            className="max-w-[18ch] text-3xl font-bold leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-5xl"
+            className="max-w-[18ch] text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
             style={{ color: C.WHITE }}
           >
             Services{' '}
@@ -492,8 +490,8 @@ const Services = () => {
 
           <div className="lg:col-start-1">
             <p
-              className="max-w-xl text-left text-base leading-7 sm:text-lg"
-              style={{ color: 'rgba(255, 255, 255, 0.58)' }}
+              className="max-w-xl text-left text-lg leading-8 sm:text-xl"
+              style={{ color: 'rgba(255, 255, 255, 0.64)' }}
             >
               From intelligence to automation. Systems that scale.
             </p>

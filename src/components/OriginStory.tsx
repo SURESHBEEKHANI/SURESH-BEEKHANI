@@ -14,7 +14,7 @@ const OriginStory = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="about" className="relative overflow-hidden border-y border-white/10 bg-[#111111] pb-0 pt-16 text-white sm:pb-0 sm:pt-20 lg:pb-0 lg:pt-24">
+    <section id="about" className="relative overflow-hidden border-y border-white/10 bg-[#111111] pb-0 pt-16 font-display text-white sm:pb-0 sm:pt-20 lg:pb-0 lg:pt-24">
       <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(182,255,0,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,0,0.035) 1px, transparent 1px)', backgroundSize: '64px 64px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
       <div className="pointer-events-none absolute -right-40 top-10 h-[32rem] w-[32rem] rounded-full bg-[#7DCC00]/10 blur-[120px]" aria-hidden="true" />
 
@@ -26,23 +26,23 @@ const OriginStory = () => {
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="lg:pt-4"
         >
-          <div className="mb-7 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B6FF00]">
+          <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
             <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             The Origin Story
           </div>
-          <h2 className="max-w-xl text-3xl font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-4xl lg:max-w-none lg:text-4xl">
+          <h2 className="max-w-xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl lg:max-w-none">
             <span className="block">Built from a simple belief</span>
             <span className="block text-[#B6FF00]">technology should create capacity.</span>
           </h2>
-          <p className="mt-7 max-w-lg text-base leading-8 text-white/65 sm:text-lg">
+          <p className="mt-8 max-w-lg text-lg leading-8 text-white/55 sm:text-xl">
             Velnix Solutions began at the intersection of ambitious businesses and the operational weight holding them back. We saw teams spending their best hours moving data between tools, repeating decisions, and managing work software should have handled.
           </p>
-          <p className="mt-5 max-w-lg text-base leading-8 text-white/65 sm:text-lg">
+          <p className="mt-5 max-w-lg text-lg leading-8 text-white/55 sm:text-xl">
             So we built a different kind of AI partner: close to the business, rigorous about engineering, and focused on systems that make people faster without making their work feel less human.
           </p>
-          <Link to="/about" className="group mt-9 inline-flex items-center gap-2 rounded-full border border-[#B6FF00] bg-[#B6FF00] px-5 py-3 text-sm font-bold text-[#050505] transition-colors hover:bg-transparent hover:text-[#B6FF00]">
+          <Link to="/about" className="group mt-9 inline-flex min-h-12 items-center gap-3 rounded-full border border-[#B6FF00] bg-[#B6FF00] px-6 py-4 text-sm font-bold text-[#050505] transition-colors hover:bg-transparent hover:text-[#B6FF00]">
             Meet Velnix
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </motion.div>
 
@@ -70,8 +70,8 @@ const OriginStory = () => {
         <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
           {IMPACT_STATS.map(({ number, label }) => (
             <div key={label} className="relative px-3 text-center sm:px-5">
-              <div className="text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
-              <p className="mx-auto mt-4 max-w-[12ch] text-[0.62rem] font-semibold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch] sm:text-[0.68rem]">{label}</p>
+              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
+              <p className="mx-auto mt-4 max-w-[12ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch]">{label}</p>
             </div>
           ))}
         </div>

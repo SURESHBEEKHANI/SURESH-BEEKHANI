@@ -15,6 +15,7 @@ const C = {
   ga: (o: number) => `rgba(125,204,0,${o})`,
 };
 
+const PAGE_BG = "radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505";
 const LAST_UPDATED = "16/06/2026";
 
 const TOC = [
@@ -31,7 +32,6 @@ const TOC = [
 const CookiePolicy = () => {
   const [activeId, setActiveId] = useState<string>("overview");
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,7 +42,6 @@ const CookiePolicy = () => {
     const offset = 110;
 
     const update = () => {
-      setShowBackToTop(window.scrollY > 280);
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -63,15 +62,11 @@ const CookiePolicy = () => {
     el?.focus({ preventScroll: true });
   }, []);
 
-  const scrollToTop = useCallback(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  }, []);
-
   return (
     <>
       <style>{`
-        .cookie-policy-page { scroll-behavior: smooth; }
+        .cookie-policy-page { scroll-behavior: smooth; font-family: 'Space Grotesk', 'Inter', sans-serif; background: ${PAGE_BG}; color: #FFFFFF; }
+        .cookie-policy-page > header { background: linear-gradient(180deg, ${C.graphite}55 0%, transparent 100%); }
         .cookie-policy-page a:focus-visible,
         .cookie-policy-page button:focus-visible {
           outline: 2px solid #B6FF00;
@@ -100,35 +95,25 @@ const CookiePolicy = () => {
       <Navbar />
 
       <div
-        className="cookie-policy-page min-h-screen"
-        style={{ background: C.black, color: C.white }}
+        className="cookie-policy-page relative min-h-screen overflow-hidden font-display"
+        style={{ background: PAGE_BG, color: C.white }}
       >
+        <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
+          <div style={{ position: "absolute", top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 40%, transparent 72%)`, filter: "blur(48px)" }} />
+          <div style={{ position: "absolute", bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`, filter: "blur(58px)" }} />
+        </div>
         <header
-          className="pt-28 sm:pt-32 pb-10 sm:pb-14 px-5 sm:px-8 lg:px-12"
-          style={{ borderBottom: `1px solid ${C.wa(0.08)}` }}
+          className="relative z-10 px-5 pb-10 pt-28 sm:px-8 sm:pb-14 sm:pt-32 lg:px-12"
+          style={{ borderBottom: `1px solid ${C.wa(0.07)}` }}
         >
           <div className="max-w-[1200px] mx-auto">
-            <p
-              className="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase mb-4"
-              style={{ color: C.lime }}
-            >
-              Privacy &amp; Cookies
+            <p className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+              <span className="h-px w-8" style={{ background: C.lime }} /> Privacy &amp; Cookies
             </p>
-            <h1
-              className="font-bold tracking-tight mb-4"
-              style={{
-                fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-                fontSize: "clamp(2.15rem, 5vw, 3.5rem)",
-                lineHeight: 1.1,
-                color: C.white,
-              }}
-            >
+            <h1 className="mb-8 max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl">
               Cookie Policy
             </h1>
-            <p
-              className="max-w-2xl text-base sm:text-lg mb-8"
-              style={{ color: C.wa(0.72), lineHeight: 1.7 }}
-            >
+            <p className="mb-8 max-w-xl text-lg leading-8 sm:text-xl" style={{ color: C.wa(0.64) }}>
               This page describes how cookies and similar tracking technologies are used on this website.
             </p>
             <dl
@@ -139,7 +124,7 @@ const CookiePolicy = () => {
               }}
             >
               <dt
-                className="text-[11px] font-semibold tracking-[0.16em] uppercase"
+                className="text-[11px] font-semibold uppercase tracking-[0.14em]"
                 style={{ color: C.wa(0.45) }}
               >
                 Last updated
@@ -151,7 +136,7 @@ const CookiePolicy = () => {
           </div>
         </header>
 
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-16 lg:py-20">
+        <div className="relative z-10 mx-auto max-w-[1200px] px-5 py-10 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
           {/* Mobile: On this page */}
           <div className="lg:hidden mb-8 cookie-print-hide">
             <button
@@ -166,7 +151,7 @@ const CookiePolicy = () => {
                 color: C.white,
               }}
             >
-              <span className="text-sm font-medium tracking-wide">On this page</span>
+              <span className="text-sm font-bold">On this page</span>
               {mobileTocOpen ? (
                 <ChevronUp size={18} aria-hidden="true" style={{ color: C.lime }} />
               ) : (
@@ -196,7 +181,7 @@ const CookiePolicy = () => {
                 className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2"
               >
                 <p
-                  className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4"
+                  className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]"
                   style={{ color: C.wa(0.4) }}
                 >
                   On this page
@@ -211,10 +196,7 @@ const CookiePolicy = () => {
             >
               <section id="overview" className="cookie-section" tabIndex={-1}>
                 <h2 className="sr-only">Overview</h2>
-                <p
-                  className="text-[1.05rem] sm:text-[1.125rem]"
-                  style={{ color: C.wa(0.82), lineHeight: 1.75 }}
-                >
+                <p className="cookie-p">
                   This Cookie Policy explains how our website uses cookies and similar tracking technologies to recognize you when you visit our site. It explains what these technologies are, why we use them, and your right to control our use of them.
                 </p>
               </section>
@@ -296,22 +278,6 @@ const CookiePolicy = () => {
             </article>
           </div>
         </div>
-
-        {showBackToTop && (
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="cookie-print-hide fixed bottom-6 right-5 z-40 px-3.5 py-2.5 text-xs font-semibold tracking-[0.12em] uppercase"
-            style={{
-              background: C.graphite,
-              color: C.white,
-              border: `1px solid ${C.wa(0.12)}`,
-            }}
-            aria-label="Back to top"
-          >
-            Back to top
-          </button>
-        )}
       </div>
 
       <Footer />
@@ -319,16 +285,16 @@ const CookiePolicy = () => {
       <style>{`
         .cookie-h2 {
           font-family: 'Space Grotesk', 'Inter', sans-serif;
-          font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-          font-weight: 600;
-          letter-spacing: -0.02em;
+          font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+          font-weight: 900;
+          letter-spacing: -0.04em;
           color: #FFFFFF;
           margin: 0 0 1.25rem;
-          line-height: 1.25;
+          line-height: 1.2;
         }
         .cookie-p {
-          color: rgba(255,255,255,0.74);
-          font-size: 1.015rem;
+          color: rgba(255,255,255,0.55);
+          font-size: 1rem;
           line-height: 1.75;
           margin: 0;
         }
@@ -354,12 +320,12 @@ function TocList({
               href={`#${item.id}`}
               onClick={() => onSelect(item.id)}
               aria-current={active ? "location" : undefined}
-              className="block py-1.5 px-2.5 text-[13px] leading-snug transition-colors"
+              className="block px-2.5 py-1.5 text-sm leading-6 transition-colors"
               style={{
                 color: active ? C.lime : C.wa(item.nested ? 0.48 : 0.62),
                 background: active ? C.graphite : "transparent",
                 borderLeft: `2px solid ${active ? C.lime : "transparent"}`,
-                fontWeight: active ? 600 : 400,
+                fontWeight: active ? 700 : 400,
               }}
               onMouseEnter={(e) => {
                 if (!active) e.currentTarget.style.color = C.green;
@@ -414,20 +380,8 @@ function CookieType({
         borderLeft: `2px solid ${C.wa(0.12)}`,
       }}
     >
-      <h3
-        className="mb-5"
-        style={{
-          fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-          fontSize: "1.15rem",
-          fontWeight: 600,
-          color: C.white,
-          lineHeight: 1.3,
-        }}
-      >
-        <span
-          className="text-xs font-semibold tracking-wider mr-2.5"
-          style={{ color: C.lime, fontVariantNumeric: "tabular-nums" }}
-        >
+      <h3 className="mb-5 text-lg font-bold leading-tight">
+        <span className="mr-2.5 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime, fontVariantNumeric: "tabular-nums" }}>
           {index}.
         </span>
         {title}

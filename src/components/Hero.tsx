@@ -36,27 +36,10 @@ const MetricChip = ({ value, label, delay }: { value: string; label: string; del
     transition={{ delay, duration: 0.55, ease }}
     className="flex flex-col items-start"
   >
-    <span
-      style={{
-        fontSize: '1.75rem',
-        fontWeight: 800,
-        color: C.lime,
-        lineHeight: 1,
-        letterSpacing: '-0.03em',
-      }}
-    >
+    <span className="text-4xl font-black leading-none tracking-[-0.04em]" style={{ color: C.lime }}>
       {value}
     </span>
-    <span
-      style={{
-        fontSize: '0.7rem',
-        color: C.whiteAlpha(0.55),
-        marginTop: 3,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
-        fontWeight: 500,
-      }}
-    >
+    <span className="mt-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.whiteAlpha(0.42) }}>
       {label}
     </span>
   </motion.div>
@@ -149,7 +132,7 @@ const Hero = () => {
       <section
         id="hero"
         ref={heroRef}
-        className="relative isolate w-full overflow-hidden"
+        className="relative isolate w-full overflow-hidden font-display"
         style={{
           background: C.black,
         }}
@@ -240,10 +223,10 @@ const Hero = () => {
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.05, duration: 0.55, ease }}
-              className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.22em]"
-              style={{ color: C.limeAlpha(0.9) }}
+              className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: C.lime }}
             >
-              <span style={{ width: 28, height: 1, background: C.lime }} aria-hidden="true" />
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
               AI Innovation · Product Engineering · Strategic Consulting
             </motion.div>
 
@@ -251,23 +234,11 @@ const Hero = () => {
             <motion.h1
               {...fadeUp}
               transition={{ delay: 0.15, duration: 0.65, ease }}
-              style={{
-                fontSize: 'clamp(2.35rem, 4.5vw, 3.75rem)',
-                fontWeight: 800,
-                color: C.white,
-                lineHeight: 1.06,
-                letterSpacing: '-0.03em',
-                marginBottom: '1.25rem',
-                WebkitFontSmoothing: 'antialiased',
-              }}
+              className="mb-8 max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl lg:text-[6.5rem]"
+              style={{ WebkitFontSmoothing: 'antialiased' }}
             >
               Turn Repetitive{' '}
-              <span
-                style={{
-                  color: C.lime,
-                  display: 'inline',
-                }}
-              >
+              <span style={{ color: C.lime, display: 'inline' }}>
                  Operations Into
               </span>{' '}
               Into Intelligent Systems.
@@ -277,15 +248,8 @@ const Hero = () => {
             <motion.p
               {...fadeUp}
               transition={{ delay: 0.25, duration: 0.65, ease }}
-              style={{
-                fontSize: 'clamp(0.975rem, 1.6vw, 1.125rem)',
-                color: C.whiteAlpha(0.72),
-                lineHeight: 1.75,
-                maxWidth: '42ch',
-                marginBottom: '2rem',
-                fontWeight: 400,
-                letterSpacing: '0.01em',
-              }}
+              className="mb-8 max-w-xl text-lg leading-8 sm:text-xl"
+              style={{ color: C.whiteAlpha(0.64) }}
             >
               Velnix develops custom AI solutions that replace manual spreadsheets with automated workflows,
               helping your team focus on growth instead of administration.
@@ -302,7 +266,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.32, duration: 0.5, ease }}
-                className="pointer-events-none hidden flex-col items-center gap-2 text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-white/40 sm:flex"
+                className="pointer-events-none hidden flex-col items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em] text-white/40 sm:flex"
                 aria-hidden="true"
               >
                 <span style={{ writingMode: 'vertical-rl' }}>Scroll</span>
@@ -324,12 +288,10 @@ const Hero = () => {
               {/* AI Audit CTA */}
               <a
                 href="/ai-audit"
-                className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border px-6 py-4 text-sm font-semibold transition-all duration-300"
                 style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 700,
                   color: C.white,
-                  borderColor: C.whiteAlpha(0.25),
+                  borderColor: C.whiteAlpha(0.2),
                   background: C.whiteAlpha(0.04),
                   textDecoration: 'none',
                 }}
@@ -339,13 +301,13 @@ const Hero = () => {
                   e.currentTarget.style.background = C.limeAlpha(0.08);
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = C.whiteAlpha(0.25);
+                  e.currentTarget.style.borderColor = C.whiteAlpha(0.2);
                   e.currentTarget.style.color = C.white;
                   e.currentTarget.style.background = C.whiteAlpha(0.04);
                 }}
               >
                 Get the AI Audit — $1,000
-                <ArrowRight size={15} />
+                <ArrowRight size={16} />
               </a>
 
             </motion.div>
@@ -354,8 +316,8 @@ const Hero = () => {
               href="/contact"
               {...fadeUp}
               transition={{ delay: 0.43, duration: 0.5, ease }}
-              className="mb-6 inline-flex items-center gap-2 text-xs font-semibold transition-colors duration-200"
-              style={{ color: C.whiteAlpha(0.52), textDecoration: 'none', letterSpacing: '0.04em' }}
+              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
+              style={{ color: C.whiteAlpha(0.52), textDecoration: 'none' }}
               onMouseEnter={e => { e.currentTarget.style.color = C.lime; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.whiteAlpha(0.52); }}
             >
@@ -478,14 +440,11 @@ const PrimaryButton = () => {
       onMouseMove={handleMove}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="group inline-flex items-center gap-2.5 relative overflow-hidden rounded-full transition-transform duration-200"
+      className="group relative inline-flex min-h-12 items-center gap-3 overflow-hidden rounded-full text-sm font-bold transition-transform duration-200"
       style={{
         background: C.lime,
         color: C.black,
-        fontWeight: 700,
-        fontSize: '0.9rem',
-        letterSpacing: '0.01em',
-        padding: '0.8rem 1.75rem',
+        padding: '1rem 1.5rem',
         textDecoration: 'none',
         border: `1px solid ${C.limeAlpha(0.5)}`,
         boxShadow: `0 0 0 0 ${C.limeAlpha(0)}, 0 8px 28px ${C.limeAlpha(0.35)}`,
@@ -510,7 +469,7 @@ const PrimaryButton = () => {
 
       <span className="relative z-10">Identify What to Automate</span>
       <ArrowRight
-        size={16}
+        size={17}
         strokeWidth={2.5}
         className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200"
       />

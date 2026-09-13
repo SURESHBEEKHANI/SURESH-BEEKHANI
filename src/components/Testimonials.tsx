@@ -257,7 +257,7 @@ const Testimonials = () => {
 
   return (
     <section 
-      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden antialiased"
+      className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
       style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
       aria-label="Client Proof & Testimonials"
     >
@@ -279,15 +279,14 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-4 flex items-center gap-3"
+              className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: C.lime }}
             >
-              <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
-              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-                CLIENT TESTIMONIALS
-              </span>
+              <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+              Client Testimonials
             </motion.div>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h2 className="max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
               Built with Velnix. <span style={{ color: C.lime }}>Proven in the real world.</span>
             </h2>
           </div>
@@ -320,7 +319,7 @@ const Testimonials = () => {
                     <div className="mb-5 flex gap-1" role="img" aria-label="5 out of 5 stars">
                       {Array.from({ length: 5 }).map((_, index) => <Star key={index} size={14} fill={C.lime} color={C.lime} strokeWidth={1.5} />)}
                     </div>
-                    <blockquote className="text-sm font-medium leading-6 text-white/85 sm:text-base">
+                    <blockquote className="text-sm leading-6 text-white/55 sm:text-lg sm:leading-8">
                       &quot;{testimonial.quote}&quot;
                     </blockquote>
                   </div>
@@ -333,8 +332,8 @@ const Testimonials = () => {
                       {getInitials(testimonial.name)}
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white">{testimonial.name}</h3>
-                      <p className="text-xs text-white/50">{testimonial.role}</p>
+                      <h3 className="text-lg font-bold text-white">{testimonial.name}</h3>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/42">{testimonial.role}</p>
                     </div>
                   </div>
                 </article>
@@ -369,22 +368,22 @@ const Testimonials = () => {
           transition={{ duration: 0.55, ease }}
           className="mt-14 border-t border-white/10 pt-12 text-center sm:mt-16 sm:pt-14"
         >
-          <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[#B6FF00]">
-            <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+          <div className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             Industry Platforms
-            <span className="h-px w-7 bg-[#B6FF00]" aria-hidden="true" />
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
           </div>
-          <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
             Recognized across leading industry platforms.
           </h2>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/35 sm:gap-x-12">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/42 sm:gap-x-12">
             <span>PASHA</span>
             <span>Clutch</span>
             <span>GoodFirms</span>
             <span>SoftwareWorld</span>
             <span>P@SHA ICT Awards</span>
           </div>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-white/35">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/42">
             <span>AI Development</span>
             <span className="text-[#B6FF00]">·</span>
             <span>Custom Software</span>
@@ -393,7 +392,7 @@ const Testimonials = () => {
             <span className="text-[#B6FF00]">·</span>
             <span>Data Science</span>
           </div>
-          <div className="mt-5 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-white/30">
+          <div className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/42">
             Trusted technology partner <span className="mx-2 text-[#B6FF00]">·</span> Global delivery <span className="mx-2 text-[#B6FF00]">·</span> Enterprise-ready engineering
           </div>
         </motion.div>
