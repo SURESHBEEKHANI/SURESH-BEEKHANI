@@ -8,7 +8,6 @@ import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
 import { SEO } from './components/SEO';
-import { MessageCircle } from 'lucide-react';
 
 const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-HBZG5HGKQE';
 
@@ -155,6 +154,13 @@ const SiteCursor = () => {
   );
 };
 
+const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.523 5.854L.057 23.882a.5.5 0 0 0 .61.61l6.102-1.458A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.376l-.36-.214-3.724.89.907-3.63-.235-.373A9.818 9.818 0 1 1 12 21.818z"/>
+  </svg>
+);
+
 const WhatsAppWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const whatsappNumber = '923351312852';
@@ -175,7 +181,7 @@ const WhatsAppWidget = () => {
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
             style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <MessageCircle size={18} />
+            <WhatsAppIcon size={18} />
             Contact HR
           </a>
           <a
@@ -185,7 +191,7 @@ const WhatsAppWidget = () => {
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
             style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <MessageCircle size={18} />
+            <WhatsAppIcon size={18} />
             For Business
           </a>
         </div>
@@ -198,7 +204,7 @@ const WhatsAppWidget = () => {
         className="inline-flex h-16 w-16 items-center justify-center rounded-full text-white shadow-xl transition-transform duration-200 hover:scale-105"
         style={{ background: '#25D366', boxShadow: '0 12px 28px rgba(37,211,102,0.32)' }}
       >
-        <MessageCircle size={32} />
+        <WhatsAppIcon size={32} />
       </button>
     </aside>
   );
