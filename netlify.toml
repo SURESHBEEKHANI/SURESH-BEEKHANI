@@ -8,6 +8,12 @@
   SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_ANON_KEY"
 
 [[redirects]]
+  from = "/rss.xml"
+  to = "/.netlify/functions/rss"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/api/sync-seo"
   to = "/.netlify/functions/sync-seo"
   status = 200

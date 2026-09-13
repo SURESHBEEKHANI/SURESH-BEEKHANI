@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <channel>
+    <title>Velnix Solutions — Blog &amp; Insights</title>
+    <link>https://velnixsolutions.com/blogs</link>
+    <description>AI development insights, agentic AI, machine learning, and intelligent automation from the Velnix Solutions team.</description>
+    <language>en-us</language>
+    <copyright>© 2026 Velnix Solutions. All rights reserved.</copyright>
+    <managingEditor>info@velnixsolutions.com (Velnix Solutions)</managingEditor>
+    <webMaster>info@velnixsolutions.com (Velnix Solutions)</webMaster>
+    <lastBuildDate>Sat, 13 Sep 2026 00:00:00 +0000</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://velnixsolutions.com/image/logo/url%20logo.png</url>
+      <title>Velnix Solutions</title>
+      <link>https://velnixsolutions.com</link>
+    </image>
+    <atom:link href="https://velnixsolutions.com/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Blog Article</title>
+      <link>https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49</link>
+      <guid isPermaLink="true">https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49</guid>
+      <pubDate>Sat, 13 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Velnix Solutions</dc:creator>
+    </item>
+
+    <item>
+      <title>Blog Article</title>
+      <link>https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb</link>
+      <guid isPermaLink="true">https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb</guid>
+      <pubDate>Thu, 11 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Velnix Solutions</dc:creator>
+    </item>
+
+    <item>
+      <title>Blog Article</title>
+      <link>https://velnixsolutions.com/blogs?article=3c4c12a9-79af-497e-92c5-b1944fcc48ac</link>
+      <guid isPermaLink="true">https://velnixsolutions.com/blogs?article=3c4c12a9-79af-497e-92c5-b1944fcc48ac</guid>
+      <pubDate>Wed, 10 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Velnix Solutions</dc:creator>
+    </item>
+
+    <item>
+      <title>Blog Article</title>
+      <link>https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf</link>
+      <guid isPermaLink="true">https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf</guid>
+      <pubDate>Sun, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Velnix Solutions</dc:creator>
+    </item>
+
+    <item>
+      <title>Blog Article</title>
+      <link>https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe</link>
+      <guid isPermaLink="true">https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe</guid>
+      <pubDate>Mon, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Velnix Solutions</dc:creator>
+    </item>
+
+  </channel>
+</rss>
