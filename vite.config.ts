@@ -8,8 +8,9 @@ const seoSyncPlugin = () => ({
     server.middlewares.use("/api/sync-seo", async (req: any, res: any) => {
       if (req.method === "POST") {
         try {
-          const { updateSeoFiles } = await import("./scripts/seo-generator-core.mjs");
-          const result = await updateSeoFiles();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const mod = await (import("./scripts/seo-generator-core.mjs") as any);
+          const result = await mod.updateSeoFiles();
           res.setHeader("Content-Type", "application/json");
           res.end(JSON.stringify({ success: true, count: result.count }));
         } catch (err: any) {
@@ -27,8 +28,9 @@ const seoSyncPlugin = () => ({
     server.middlewares.use("/api/sync-seo", async (req: any, res: any) => {
       if (req.method === "POST") {
         try {
-          const { updateSeoFiles } = await import("./scripts/seo-generator-core.mjs");
-          const result = await updateSeoFiles();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const mod = await (import("./scripts/seo-generator-core.mjs") as any);
+          const result = await mod.updateSeoFiles();
           res.setHeader("Content-Type", "application/json");
           res.end(JSON.stringify({ success: true, count: result.count }));
         } catch (err: any) {
@@ -48,7 +50,6 @@ const seoSyncPlugin = () => ({
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    // Use a non-sensitive default port and allow override via env; avoid hardcoding typical PORT values
     port: Number(process.env.VITE_DEV_PORT || 5173),
   },
   plugins: [
@@ -64,60 +65,46 @@ export default defineConfig(({ mode }) => ({
     dedupe: ["react", "react-dom"],
   },
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     sourcemap: false,
-    minify: 'terser',
+    minify: "terser",
     cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('react-router-dom')) {
-              return 'vendor-router';
-            }
-            if (id.includes('@tanstack/react-query')) {
-              return 'vendor-query';
-            }
-            if (id.includes('framer-motion')) {
-              return 'vendor-motion';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'vendor-ui';
-            }
-            if (id.includes('lucide-react')) {
-              return 'vendor-icons';
-            }
-            if (id.includes('supabase')) {
-              return 'vendor-supabase';
-            }
-            return 'vendor';
+          if (id.includes("node_modules")) {
+            if (id.includes("react-dom")) return "vendor-react";
+            if (id.includes("/react/") || id.includes("/react\\")) return "vendor-react";
+            if (id.includes("react-router-dom") || id.includes("react-router/")) return "vendor-router";
+            if (id.includes("@tanstack/react-query")) return "vendor-query";
+            if (id.includes("framer-motion")) return "vendor-motion";
+            if (id.includes("@radix-ui") || id.includes("next-themes")) return "vendor-ui";
+            if (id.includes("lucide-react")) return "vendor-icons";
+            if (id.includes("supabase")) return "vendor-supabase";
+            return "vendor";
           }
         },
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name?.split('.');
+          const info = assetInfo.name?.split(".");
           const ext = info?.[info.length - 1];
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|avif/i.test(ext || '')) {
-            return `assets/images/[name]-[hash][extname]`;
-          } else if (/woff|woff2|eot|ttf|otf/i.test(ext || '')) {
-            return `assets/fonts/[name]-[hash][extname]`;
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|avif/i.test(ext || "")) {
+            return "assets/images/[name]-[hash][extname]";
+          } else if (/woff|woff2|eot|ttf|otf/i.test(ext || "")) {
+            return "assets/fonts/[name]-[hash][extname]";
           }
-          return `assets/[name]-[hash][extname]`;
+          return "assets/[name]-[hash][extname]";
         },
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
-      }
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
+      },
     },
     chunkSizeWarningLimit: 500,
     assetsInlineLimit: 4096,
     cssCodeSplit: true,
     reportCompressedSize: false,
-    target: 'esnext',
+    target: "esnext",
   },
   define: {
-    'process.env.NODE_ENV': JSON.stringify(mode)
-  }
+    "process.env.NODE_ENV": JSON.stringify(mode),
+  },
 }));
