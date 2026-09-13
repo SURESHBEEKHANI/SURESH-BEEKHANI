@@ -177,11 +177,11 @@ export const ecommerceConfig: IndustryPageConfig = {
   ],
   capabilities: [
     { icon: I.lightning, title: "Higher Conversion", description: "Make discovery, search, and checkout easier with relevant recommendations.", gradient: "from-primary to-accent" },
-    { icon: I.coin, title: "Better Margin", description: "Reduce overstock, stockouts, and costly returns with predictive operations.", gradient: "from-emerald-500 to-teal-500" },
+    { icon: I.coin, title: "Better Margin", description: "Reduce overstock, stockouts, and costly returns with predictive operations.", gradient: "from-accent to-primary" },
     { icon: I.check, title: "Richer Customer Experience", description: "Answer product questions instantly and personalize the path to purchase.", gradient: "from-primary to-accent" },
-    { icon: I.chart, title: "Clearer Merchandising Insight", description: "See what actually drives demand across SKUs, channels, and campaigns.", gradient: "from-orange-500 to-red-500" },
-    { icon: I.bars, title: "Leaner Operations", description: "Handle catalog, support, and fulfillment exceptions without adding headcount at the same rate.", gradient: "from-accent to-primary" },
-    { icon: I.star, title: "Tailored to Your Stack", description: "Works with Shopify, custom storefronts, ERPs, and the tools you already run.", gradient: "from-amber-500 to-yellow-500" },
+    { icon: I.chart, title: "Clearer Merchandising Insight", description: "See what actually drives demand across SKUs, channels, and campaigns.", gradient: "from-accent to-primary" },
+    { icon: I.bars, title: "Leaner Operations", description: "Handle catalog, support, and fulfillment exceptions without adding headcount at the same rate.", gradient: "from-primary to-accent" },
+    { icon: I.star, title: "Tailored to Your Stack", description: "Works with Shopify, custom storefronts, ERPs, and the tools you already run.", gradient: "from-accent to-primary" },
   ],
   faqData: [
     { id: 1, question: "Do you only work with large marketplaces?", answer: "No. We work with growing D2C brands, retailers, and marketplaces. The first build is scoped to the highest-friction part of the funnel." },

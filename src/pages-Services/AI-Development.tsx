@@ -492,6 +492,7 @@ const faqData: FaqItem[] = [
 export const AIDevelopment: React.FC = () => {
   const [activeUseCase, setActiveUseCase] = useState<string>(businessUseCases[0].id);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeTimelineStep, setActiveTimelineStep] = useState(0);
   const shouldReduce = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const scanRef = useRef<HTMLDivElement>(null);
@@ -539,88 +540,6 @@ export const AIDevelopment: React.FC = () => {
       }}
     >
       <Navbar isDark={true} />
-
-      {/* ─────────────────────────────────────────────────────
-          BREADCRUMB NAVIGATION
-      ───────────────────────────────────────────────────── */}
-      <nav
-        aria-label="Breadcrumb"
-        className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-16 pt-28 pb-10"
-      >
-        <ol
-          className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm"
-          style={{ color: C.wa(0.55) }}
-        >
-          {/* Home */}
-          <li>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#B6FF00]"
-              aria-label="Go to Home"
-            >
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-              </svg>
-              Home
-            </Link>
-          </li>
-
-          <li
-            className="flex items-center gap-2 sm:gap-3"
-            aria-hidden="true"
-          >
-            <span
-              style={{ color: C.wa(0.3) }}
-              className="text-base sm:text-lg leading-none"
-            >
-              /
-            </span>
-          </li>
-
-          {/* Services */}
-          <li>
-            <Link
-              to="/ai-development"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#B6FF00]"
-              aria-label="Go to Services"
-            >
-              Services
-            </Link>
-          </li>
-
-          <li
-            className="flex items-center gap-2 sm:gap-3"
-            aria-hidden="true"
-          >
-            <span
-              style={{ color: C.wa(0.3) }}
-              className="text-base sm:text-lg leading-none"
-            >
-              /
-            </span>
-          </li>
-
-          {/* Current Page */}
-          <li
-            className="inline-flex items-center gap-1.5 font-semibold"
-            style={{ color: C.lime }}
-            aria-current="page"
-          >
-            AI Development
-          </li>
-        </ol>
-      </nav>
 
       {/* Keyframe injections matching Hero.tsx */}
       <style>{`
@@ -686,20 +605,6 @@ export const AIDevelopment: React.FC = () => {
         style={{ background: C.black }}
         aria-label="Velnix AI Development hero section"
       >
-        {/* Dynamic laser scan line */}
-        <div className="pointer-events-none absolute left-0 top-0 z-20 h-px w-full overflow-hidden" aria-hidden="true">
-          <div
-            ref={scanRef}
-            className="absolute left-0 top-0 h-px w-1/5"
-            style={{
-              transform: 'translateX(var(--hero-scan-progress, 0%))',
-              background: `linear-gradient(90deg, transparent, ${C.la(0.85)}, transparent)`,
-              boxShadow: `0 0 12px ${C.la(0.55)}`,
-              transition: 'transform 120ms linear',
-            }}
-          />
-        </div>
-
         {/* Atmospheric glows */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <div
@@ -735,7 +640,6 @@ export const AIDevelopment: React.FC = () => {
               >
                 <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
                 AI Development
-                <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
               </motion.div>
 
               {/* H1 Headline */}
@@ -974,59 +878,140 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               02 — VALUE STATEMENT
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36 py-12 sm:py-16 border-y border-white/10 relative">
-            <div className="w-full">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                FROM IDEA TO PRODUCTION
-              </span>
+          <section className="mb-28 sm:mb-36 relative">
+            <div
+              className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none"
+              style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }}
+              aria-hidden="true"
+            />
 
-              <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-[1.12] mb-6">
-                AI Should Improve the Way Your Business Operates.
-              </h2>
+            <div className="relative z-10 w-full py-4 sm:py-8 lg:py-10">
+              <div className="relative z-10">
+                <motion.div
+                  initial={shouldReduce ? false : { opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, ease }}
+                  className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]"
+                  style={{ color: C.lime }}
+                >
+                  <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
+                  FROM IDEA TO PRODUCTION
+                </motion.div>
 
-              <p className="text-base sm:text-xl text-white/70 font-light leading-relaxed mb-8">
-                We turn AI opportunities into reliable systems that integrate with the software,
-                data, and workflows your organization already depends on.
-              </p>
-
-              {/* Differentiator Pillars with Vibrant Icon Badges */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/10">
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                    <Workflow className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">01 // DEEP INTEGRATION</span>
-                    <p className="text-xs text-white/60 leading-relaxed font-light">
-                      Built directly into your databases, CRMs, and operational software—not isolated chatbots.
-                    </p>
-                  </div>
+                <div className="mb-10">
+                  <motion.h2
+                    initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, delay: 0.1, ease }}
+                    className="whitespace-nowrap font-display text-2xl sm:text-4xl lg:text-[2.9rem] font-extrabold text-white tracking-[-0.03em] leading-[1.06]"
+                  >
+                    AI That Works Inside Your Business.
+                  </motion.h2>
+                  <motion.p
+                    initial={shouldReduce ? false : { opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2, ease }}
+                    className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base"
+                  >
+                    We connect intelligent systems to the workflows, data, and decisions that move your business forward.
+                  </motion.p>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                    <CheckCircle2 className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">02 // DETERMINISTIC EVALS</span>
-                    <p className="text-xs text-white/60 leading-relaxed font-light">
-                      Benchmarked with automated regression tests to guarantee accuracy and eliminate hallucinations.
-                    </p>
-                  </div>
+                <div className="w-full">
+                  <motion.div
+                    initial={shouldReduce ? false : { opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.2, ease }}
+                    className="relative grid w-full grid-cols-1 gap-10 sm:grid-cols-5 sm:gap-0 sm:pt-2"
+                  >
+                    <div
+                      className="absolute left-[4%] right-[4%] top-[2.75rem] hidden h-[2px] sm:block"
+                      style={{ background: `linear-gradient(90deg, ${C.la(0.45)}, ${C.lime}, ${C.la(0.45)})` }}
+                      aria-hidden="true"
+                    />
+                    <motion.div
+                      initial={{ left: "0%" }}
+                      animate={shouldReduce ? { left: "50%" } : { left: ["0%", "25%", "50%", "75%", "100%"] }}
+                      transition={shouldReduce ? { duration: 0 } : { duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.2, 0.4, 0.6, 1] }}
+                      onUpdate={({ left }) => {
+                        const progress = parseFloat(String(left)) / 100;
+                        const nextStep = progress >= 0.75 ? 4 : progress >= 0.5 ? 3 : progress >= 0.25 ? 2 : 0;
+                        setActiveTimelineStep((currentStep) => currentStep === nextStep ? currentStep : nextStep);
+                      }}
+                      className="pointer-events-none absolute top-[calc(2.75rem-4px)] z-10 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-[#B6FF00] shadow-[0_0_14px_rgba(182,255,0,0.85)] sm:block"
+                      style={{ left: "4%" }}
+                      aria-hidden="true"
+                    />
+                    {[
+                      {
+                        num: "01",
+                        title: "Identify",
+                        desc: "Surface the highest-value AI opportunities and the outcomes worth pursuing.",
+                      },
+                      {
+                        num: "02",
+                        title: "Design",
+                        desc: "Architect the right solution around your workflows, data, and operating reality.",
+                      },
+                      {
+                        num: "03",
+                        title: "Build",
+                        desc: "Develop reliable AI systems, integrations, and interfaces for the work they need to do.",
+                      },
+                      {
+                        num: "04",
+                        title: "Implement",
+                        desc: "Connect the system to real operations, secure it, and put it into production.",
+                      },
+                      {
+                        num: "05",
+                        title: "Enable",
+                        desc: "Equip your people to use AI confidently so value compounds after launch.",
+                      },
+                    ].map(({ num, title, desc }, i) => (
+                      <motion.div
+                        key={num}
+                        initial={shouldReduce ? false : { opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.55, delay: 0.3 + i * 0.08, ease }}
+                        className="group relative z-10 flex min-h-[188px] flex-col items-center text-center sm:px-3"
+                        onMouseEnter={(e) => {
+                          const circle = e.currentTarget.querySelector('[data-step-circle]') as HTMLElement | null;
+                          if (circle) {
+                            circle.style.borderColor = C.lime;
+                            circle.style.boxShadow = `0 0 24px ${C.la(0.3)}`;
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          const circle = e.currentTarget.querySelector('[data-step-circle]') as HTMLElement | null;
+                          if (circle) {
+                            const isActive = circle.dataset.active === "true";
+                            circle.style.borderColor = isActive ? C.lime : C.la(0.5);
+                            circle.style.boxShadow = isActive ? `0 0 20px ${C.la(0.22)}, inset 0 0 0 5px ${C.wa(0.025)}` : 'none';
+                          }
+                        }}
+                      >
+                        <div
+                          data-step-circle
+                          data-active={activeTimelineStep === i ? "true" : "false"}
+                          className={`mx-auto mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border font-mono text-xs font-bold tracking-[0.16em] transition-all duration-300 ${activeTimelineStep === i ? "text-[#050505]" : "text-[#B6FF00]"}`}
+                          style={{ borderColor: activeTimelineStep === i ? C.lime : C.la(0.5), background: activeTimelineStep === i ? C.lime : C.black, boxShadow: activeTimelineStep === i ? `0 0 20px ${C.la(0.3)}, inset 0 0 0 5px ${C.wa(0.08)}` : `inset 0 0 0 5px ${C.wa(0.025)}` }}
+                        >
+                          {num}
+                        </div>
+
+                        <h3 className={`mb-3 text-xl font-bold tracking-tight transition-colors duration-300 ${activeTimelineStep === i ? "text-[#B6FF00]" : "text-white group-hover:text-[#B6FF00]"}`}>{title}</h3>
+                        <p className="mx-auto max-w-[22ch] text-[13px] leading-6 font-light text-white/55">{desc}</p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: C.lime, border: `1px solid ${C.lime}`, color: C.black }}>
-                    <ShieldCheck className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00]">03 // ENTERPRISE BOUNDARIES</span>
-                    <p className="text-xs text-white/60 leading-relaxed font-light">
-                      Zero model training on proprietary data, complete tenant isolation, and auditable outputs.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
@@ -1121,260 +1106,6 @@ export const AIDevelopment: React.FC = () => {
             </div>
           </section>
 
-          {/* ══════════════════════════════════════════════════════
-              04 — AI ARCHITECTURE
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-14">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                SYSTEM TOPOLOGY
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                From Models to Intelligent Systems.
-              </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                Raw models are not products. We engineer the complete operational scaffolding:
-                grounding responses, enforcing guardrails, orchestrating tools, and verifying business state.
-              </p>
-            </div>
-
-            {/* Visual Technical Architecture Board */}
-            <div
-              className="p-6 sm:p-12 rounded-2xl border border-white/15 relative overflow-hidden"
-              style={{ background: C.graphite }}
-            >
-              {/* Background technical grid pattern */}
-              <div
-                className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                  backgroundImage: `linear-gradient(${C.wa(0.1)} 1px, transparent 1px), linear-gradient(90deg, ${C.wa(0.1)} 1px, transparent 1px)`,
-                  backgroundSize: "28px 28px",
-                }}
-              />
-
-              <div className="relative z-10 w-full flex flex-col gap-3">
-                
-                {/* STAGE 1: USER / BUSINESS INPUT */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white/70 flex items-center justify-center">
-                      <FileText className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                        01. User / Business Input
-                      </div>
-                      <div className="text-[11px] text-white/50 font-light">
-                        API Requests, Webhook Events, PDF Documents, Database CDC Streams
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40 bg-white/5 px-2.5 py-0.5 rounded-full w-fit">
-                    RAW INGESTION
-                  </span>
-                </div>
-
-                {/* FLOW ARROW */}
-                <div className="flex justify-center -my-1">
-                  <div className="w-0.5 h-4 bg-[#B6FF00]/40" />
-                </div>
-
-                {/* STAGE 2: AI INTERFACE */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white/70 flex items-center justify-center">
-                      <Terminal className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                        02. AI Interface Layer
-                      </div>
-                      <div className="text-[11px] text-white/50 font-light">
-                        Streaming Token UI, Copilot Ingestion, Slack/Teams Bot, REST/gRPC Endpoints
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40 bg-white/5 px-2.5 py-0.5 rounded-full w-fit">
-                    PROTOCOL ADAPTER
-                  </span>
-                </div>
-
-                {/* FLOW ARROW */}
-                <div className="flex justify-center -my-1">
-                  <div className="w-0.5 h-4 bg-[#B6FF00]/40" />
-                </div>
-
-                {/* STAGE 3: AI MODEL */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-[#B6FF00]/40 shadow-[0_0_20px_rgba(182,255,0,0.06)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#B6FF00]/15 border border-[#B6FF00]/40 text-[#B6FF00] flex items-center justify-center shadow-[0_0_12px_rgba(182,255,0,0.2)]">
-                      <Brain className="w-4 h-4 text-[#B6FF00]" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-[#B6FF00] uppercase tracking-wider">
-                        03. AI Model Layer
-                      </div>
-                      <div className="text-[11px] text-white/70 font-light">
-                        Frontier Reasoning (OpenAI / Claude / Gemini) + Open-Source Local Weights (Llama / Mistral)
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#B6FF00] bg-[#B6FF00]/10 px-2.5 py-0.5 rounded-full border border-[#B6FF00]/30 w-fit">
-                    COGNITIVE ROUTING
-                  </span>
-                </div>
-
-                {/* BRANCHING LAYER: RAG / TOOLS / MEMORY */}
-                <div className="relative my-2">
-                  <div className="flex justify-center">
-                    <div className="w-0.5 h-4 bg-[#B6FF00]/50" />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
-                    {/* RAG */}
-                    <div className="p-3.5 rounded-xl bg-[#050505] border border-white/15 flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-white">RAG</span>
-                        <div className="w-7 h-7 rounded-lg bg-[#B6FF00]/10 border border-[#B6FF00]/30 flex items-center justify-center">
-                          <Database className="w-3.5 h-3.5 text-[#B6FF00]" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-white/60 font-light">
-                        Hybrid Vector Search + BM25 Lexical with Citation Bounds
-                      </p>
-                    </div>
-
-                    {/* TOOLS */}
-                    <div className="p-3.5 rounded-xl bg-[#050505] border border-white/15 flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-white">TOOLS</span>
-                        <div className="w-7 h-7 rounded-lg bg-[#B6FF00]/10 border border-[#B6FF00]/30 flex items-center justify-center">
-                          <Sliders className="w-3.5 h-3.5 text-[#B6FF00]" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-white/60 font-light">
-                        Strict Function Calling & Deterministic Schema Handlers
-                      </p>
-                    </div>
-
-                    {/* MEMORY */}
-                    <div className="p-3.5 rounded-xl bg-[#050505] border border-white/15 flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-white">MEMORY</span>
-                        <div className="w-7 h-7 rounded-lg bg-[#B6FF00]/10 border border-[#B6FF00]/30 flex items-center justify-center">
-                          <Cpu className="w-3.5 h-3.5 text-[#B6FF00]" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-white/60 font-light">
-                        Session Thread Cache & Long-Term Cross-Execution State
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex justify-center pt-2">
-                    <div className="w-0.5 h-4 bg-[#B6FF00]/50" />
-                  </div>
-                </div>
-
-                {/* STAGE 4: AGENT LOGIC */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white/70 flex items-center justify-center">
-                      <ShieldCheck className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                        04. Agent Logic & Guardrails
-                      </div>
-                      <div className="text-[11px] text-white/50 font-light">
-                        Multi-Turn ReAct Loops, Self-Correction, Escalation Criteria & Human Verification
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40 bg-white/5 px-2.5 py-0.5 rounded-full w-fit">
-                    GOVERNANCE
-                  </span>
-                </div>
-
-                {/* FLOW ARROW */}
-                <div className="flex justify-center -my-1">
-                  <div className="w-0.5 h-4 bg-[#B6FF00]/40" />
-                </div>
-
-                {/* STAGE 5: API / SYSTEMS */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white/70 flex items-center justify-center">
-                      <Workflow className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                        05. API & Business Systems
-                      </div>
-                      <div className="text-[11px] text-white/50 font-light">
-                        Salesforce, SAP, PostgreSQL, Stripe, Slack, Internal Core Banking / ERPs
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40 bg-white/5 px-2.5 py-0.5 rounded-full w-fit">
-                    INTEGRATION
-                  </span>
-                </div>
-
-                {/* FLOW ARROW */}
-                <div className="flex justify-center -my-1">
-                  <div className="w-0.5 h-4 bg-[#B6FF00]/40" />
-                </div>
-
-                {/* STAGE 6: ACTION */}
-                <div className="p-4 rounded-xl bg-[#080808] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white/70 flex items-center justify-center">
-                      <Zap className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                        06. Deterministic Action Execution
-                      </div>
-                      <div className="text-[11px] text-white/50 font-light">
-                        Database Writes, Notification Dispatch, Invoice Settlement, Ticket Resolution
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40 bg-white/5 px-2.5 py-0.5 rounded-full w-fit">
-                    FULFILLMENT
-                  </span>
-                </div>
-
-                {/* FLOW ARROW */}
-                <div className="flex justify-center -my-1">
-                  <div className="w-0.5 h-4 bg-[#B6FF00]" />
-                </div>
-
-                {/* STAGE 7: MONITORING */}
-                <div className="p-4 rounded-xl bg-[#B6FF00]/10 border border-[#B6FF00]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#B6FF00]/20 border border-[#B6FF00]/40 text-[#B6FF00] flex items-center justify-center shadow-[0_0_12px_rgba(182,255,0,0.25)]">
-                      <Activity className="w-4 h-4 text-[#B6FF00] animate-pulse" strokeWidth={2.5} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-mono font-bold text-[#B6FF00] uppercase tracking-wider">
-                        07. Continuous Monitoring & Telemetry
-                      </div>
-                      <div className="text-[11px] text-white/80 font-light">
-                        Token Cost Profiling, Latency Traces, Output Eval Scoring, Model Drift Alerts
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#B6FF00] bg-black/60 px-3 py-0.5 rounded-full border border-[#B6FF00]/30 w-fit">
-                    ACTIVE OBSERVED
-                  </span>
-                </div>
-
-              </div>
-            </div>
-          </section>
 
           {/* ══════════════════════════════════════════════════════
               05 — BUSINESS USE CASES
@@ -1912,24 +1643,7 @@ export const AIDevelopment: React.FC = () => {
             </div>
           </section>
 
-          {/* ══════════════════════════════════════════════════════
-              INSIGHTS & ARTICLES SECTION
-          ══════════════════════════════════════════════════════ */}
           <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-14">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                INTELLIGENCE HUB
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                Insights & Articles
-              </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                Strategic intelligence, technical deep-dives, and practical guidance on AI development, automation, and enterprise systems.
-              </p>
-            </div>
             <LatestBlogs />
           </section>
 

@@ -36,12 +36,12 @@ const NAV: NavGroup[] = [
   {
     label: 'Services',
     items: [
-      { label: 'AI Automation',             href: '/ai-automation',              icon: Zap,           desc: 'Turn repetitive workflows into automated systems.' },
-      { label: 'AI Development',           href: '/ai-development',             icon: Sparkles,      desc: 'Build intelligent software around your business.' },
-      { label: 'Conversational AI',         href: '/ai-chatbot-development',     icon: MessageCircle, desc: 'Create AI systems that communicate with customers and teams.' },
-      { label: 'Machine Learning & Data',   href: '/machine-learning',           icon: Brain,         desc: 'Turn business data into predictions and decisions.' },
-      { label: 'Computer Vision & NLP',     href: '/computer-vision',            icon: Eye,           desc: 'Make software understand documents, images, and language.' },
-      { label: 'Custom Software',           href: '/custom-software-development', icon: Code2,         desc: 'Build the software infrastructure your business needs.' },
+      { label: 'AI Automation',             href: '/ai-automation',                       desc: 'Turn repetitive workflows into automated systems.' },
+      { label: 'AI Development',           href: '/ai-development',                desc: 'Build intelligent software around your business.' },
+      { label: 'Conversational AI',         href: '/ai-chatbot-development',      desc: 'Create AI systems that communicate with customers and teams.' },
+      { label: 'Machine Learning & Data',   href: '/machine-learning',                   desc: 'Turn business data into predictions and decisions.' },
+      { label: 'Computer Vision & NLP',     href: '/computer-vision',                       desc: 'Make software understand documents, images, and language.' },
+      { label: 'Custom Software',           href: '/custom-software-development',         desc: 'Build the software infrastructure your business needs.' },
     ],
   },
   {
