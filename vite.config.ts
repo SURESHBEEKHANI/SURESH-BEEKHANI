@@ -71,19 +71,6 @@ export default defineConfig(({ mode }) => ({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes("node_modules")) {
-            if (id.includes("react-dom")) return "vendor-react";
-            if (id.includes("/react/") || id.includes("/react\\")) return "vendor-react";
-            if (id.includes("react-router-dom") || id.includes("react-router/")) return "vendor-router";
-            if (id.includes("@tanstack/react-query")) return "vendor-query";
-            if (id.includes("framer-motion")) return "vendor-motion";
-            if (id.includes("@radix-ui") || id.includes("next-themes")) return "vendor-ui";
-            if (id.includes("lucide-react")) return "vendor-icons";
-            if (id.includes("supabase")) return "vendor-supabase";
-            return "vendor";
-          }
-        },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name?.split(".");
           const ext = info?.[info.length - 1];
