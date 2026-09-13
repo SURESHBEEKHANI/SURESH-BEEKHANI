@@ -238,7 +238,7 @@ const Hero = () => {
             <motion.h1
               {...fadeUp}
               transition={{ delay: 0.15, duration: 0.65, ease }}
-              className="mb-8 max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl lg:text-[6.5rem]"
+              className="mb-8 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
               style={{ WebkitFontSmoothing: 'antialiased' }}
             >
               Turn Repetitive{' '}
