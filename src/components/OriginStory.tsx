@@ -30,7 +30,7 @@ const OriginStory = () => {
             <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             The Origin Story
           </div>
-          <h2 className="max-w-xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl lg:max-w-none">
+          <h2 className="max-w-xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl lg:max-w-none">
             <span className="block">Built from a simple belief</span>
             <span className="block text-[#B6FF00]">technology should create capacity.</span>
           </h2>

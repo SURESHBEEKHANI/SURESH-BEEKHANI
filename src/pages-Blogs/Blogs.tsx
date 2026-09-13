@@ -540,7 +540,7 @@ const Blogs: React.FC = () => {
                     {selectedBlog.category?.replace(/-/g, ' ') || 'Strategic Insight'}
                   </div>
 
-                  <h1 className="mb-8 w-full max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl">
+                  <h1 className="mb-8 w-full max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
                     {selectedBlog.title}
                   </h1>
 
