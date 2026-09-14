@@ -703,7 +703,7 @@ export const AIDevelopment: React.FC = () => {
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             {/* Left Content */}
             <div className="w-full flex flex-col items-start text-left">
@@ -724,16 +724,10 @@ export const AIDevelopment: React.FC = () => {
                 initial={shouldReduce ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.65, ease }}
-                style={{
-                  fontSize: 'clamp(2rem, 4.2vw, 3.5rem)',
-                  fontWeight: 800,
-                  color: C.white,
-                  lineHeight: 1.08,
-                  letterSpacing: '-0.03em',
-                  marginBottom: '1.25rem',
-                }}
+                className="mb-5 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl"
               >
-                Production AI Systems Built for Business-Critical Work.
+                Production AI Systems Built for{' '}
+                <span style={{ color: C.lime }}>Business-Critical Work.</span>
               </motion.h1>
 
               {/* Supporting copy */}
@@ -939,23 +933,31 @@ export const AIDevelopment: React.FC = () => {
             { number: '23+', label: 'Enterprise and SMBs clients' },
             { number: '45+', label: 'Intelligent systems deployed' },
             { number: '95%', label: 'Client satisfaction rate' },
-          ].map(({ number, label }) => (
-            <div key={label} className="relative px-3 text-center sm:px-5">
-              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
-              <p className="mx-auto mt-4 max-w-[12ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch]">{label}</p>
+          ].map(({ number, label }, i) => (
+            <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">
+              {i > 0 && (
+                <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
+              )}
+              <span className="font-display text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
+                {number.replace('+', '').replace('%', '')}
+                <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
+              </span>
+              <p className="mx-auto mt-3 max-w-[16ch] text-[0.65rem] font-bold uppercase leading-5 tracking-[0.25em] text-[#050505]/60">
+                {label}
+              </p>
             </div>
           ))}
         </div>
       </motion.div>
 
       {/* Main Content Sections */}
-      <main className="flex-grow relative z-10 pt-16 pb-24 sm:pt-20 sm:pb-32">
+      <main className="flex-grow relative z-10 pt-14 pb-24 sm:pt-18 sm:pb-28">
         <div className="w-full px-5 sm:px-8 lg:px-12">
 
           {/* ══════════════════════════════════════════════════════
               02 — VALUE STATEMENT
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36 relative">
+          <section className="mb-8 sm:mb-20 relative">
             <div
               className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none"
               style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }}
@@ -982,9 +984,9 @@ export const AIDevelopment: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.65, delay: 0.1, ease }}
-                    className="whitespace-nowrap font-display text-2xl sm:text-4xl lg:text-[2.9rem] font-extrabold text-white tracking-[-0.03em] leading-[1.06]"
+                    className="whitespace-nowrap font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight"
                   >
-                    Turn Friction Into Advantage.
+                    Turn Friction Into <span style={{ color: C.lime }}>Advantage.</span>
                   </motion.h2>
                   <motion.p
                     initial={shouldReduce ? false : { opacity: 0, y: 12 }}
@@ -1096,15 +1098,15 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               03 — AI DEVELOPMENT CAPABILITIES
           ══════════════════════════════════════════════════════ */}
-          <section id="capabilities" className="mb-28 sm:mb-36 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <section id="capabilities" className="mb-8 sm:mb-20 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
               <div>
                 <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
                   WHAT WE BUILD
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
-                  AI Systems That Move the Business Forward.
+                <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  AI Systems That Move the <span style={{ color: C.lime }}>Business Forward.</span>
                 </h2>
                 <p className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">
                   We build secure, integrated AI capabilities that move beyond prototypes and create measurable leverage across the way your business operates.
@@ -1215,14 +1217,14 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               05 — BUSINESS USE CASES
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
-            <div className="mx-auto mb-14 w-full max-w-4xl text-center">
+          <section className="mb-8 sm:mb-20">
+            <div className="mx-auto mb-10 w-full max-w-4xl text-center">
               <div className="mb-5 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                   AI THAT DELIVERS
               </div>
-              <h2 className="mb-6 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-[4.25rem]">
-                  AI That Drives Results.
+              <h2 className="mb-6 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  AI That Drives <span style={{ color: C.lime }}>Results.</span>
               </h2>
               <p className="mx-auto max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
                   We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
@@ -1376,7 +1378,7 @@ export const AIDevelopment: React.FC = () => {
               06 — DEVELOPMENT PROCESS (4 Steps)
           ══════════════════════════════════════════════════════ */}
           <section
-            className="relative mb-28 overflow-hidden py-12 sm:mb-36 sm:py-16"
+            className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
             
             <div className="relative z-10">
@@ -1385,8 +1387,8 @@ export const AIDevelopment: React.FC = () => {
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                   PROCESS
                 </div>
-                <h2 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
-                  Our AI Delivery Steps.
+                <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  Our AI <span style={{ color: C.lime }}>Delivery Steps.</span>
                 </h2>
                 <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
                   From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
@@ -1439,16 +1441,152 @@ export const AIDevelopment: React.FC = () => {
           </section>
 
           {/* ══════════════════════════════════════════════════════
+              06b — ENGAGEMENT MODELS
+          ══════════════════════════════════════════════════════ */}
+          <section className="mb-8 sm:mb-20">
+
+            {/* Two-column header: label+title left, description right */}
+            <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-end">
+              <div>
+                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
+                  ENGAGEMENT MODELS
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  From First Assessment to <span style={{ color: C.lime }}>Long-Term AI Operations.</span>
+                </h2>
+              </div>
+              <div className="lg:pb-1">
+                <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed border-l-2 pl-5" style={{ borderColor: C.la(0.4) }}>
+                  We work with businesses across the full AI lifecycle — from identifying the right opportunity to building, deploying, and continuously improving production AI systems.
+                </p>
+              </div>
+            </div>
+
+            {/* Lifecycle cards — 2-up on md, 4-up on lg with connecting line */}
+            <div className="relative">
+              {/* Horizontal connector line (desktop only) */}
+              <div
+                className="pointer-events-none absolute left-[6%] right-[6%] top-9 hidden h-px lg:block"
+                style={{ background: `linear-gradient(90deg, transparent, ${C.la(0.3)}, ${C.lime}, ${C.la(0.3)}, transparent)` }}
+                aria-hidden="true"
+              />
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  {
+                    num: "01",
+                    phase: "AI AUDIT",
+                    title: "Find the right opportunity before you build.",
+                    description: "Assess workflows, data, systems, and operational bottlenecks to identify where AI can create measurable business value.",
+                    focus: ["Workflow assessment", "AI opportunity identification", "Data readiness", "Technical feasibility", "Success metrics"],
+                    icon: Search,
+                  },
+                  {
+                    num: "02",
+                    phase: "PILOT",
+                    title: "Prove the value with a focused use case.",
+                    description: "Validate one high-value workflow with a working AI solution, real-world data, and measurable evaluation criteria before moving to a full production build.",
+                    focus: ["Working prototype", "Model strategy", "Evaluation baseline", "Workflow validation", "Proof of value"],
+                    icon: Code2,
+                  },
+                  {
+                    num: "03",
+                    phase: "AI BUILD",
+                    title: "Turn a validated use case into production software.",
+                    description: "Engineer the complete AI system, integrate it with existing business infrastructure, and deploy it with the reliability and controls required for real operations.",
+                    focus: ["AI system development", "API and system integration", "Security and guardrails", "Production deployment", "Reliability engineering"],
+                    icon: Layers,
+                  },
+                  {
+                    num: "04",
+                    phase: "AI OPERATIONS",
+                    title: "Keep the system reliable as your business evolves.",
+                    description: "Continuously monitor, evaluate, optimize, and improve AI systems as workflows, data, models, and business requirements change.",
+                    focus: ["Monitoring and telemetry", "Performance evaluation", "Cost and latency optimization", "Model improvement", "Continuous iteration"],
+                    icon: RefreshCw,
+                  },
+                ].map((model, i) => {
+                  const Icon = model.icon;
+                  return (
+                    <motion.div
+                      key={model.num}
+                      initial={shouldReduce ? false : { opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.12 }}
+                      transition={{ duration: 0.55, delay: i * 0.09, ease }}
+                      className="group relative flex flex-col rounded-2xl border border-white/10 bg-[#111111] overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = C.la(0.5);
+                        e.currentTarget.style.boxShadow = `0 16px 40px ${C.la(0.1)}`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = C.wa(0.1);
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      {/* Lime top bar */}
+                      <div className="h-[3px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(90deg, ${C.green}, ${C.lime})` }} aria-hidden="true" />
+
+                      {/* Step number + icon row */}
+                      <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-white/[0.07]">
+                        <div
+                          className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-2xl border transition-all duration-300 group-hover:scale-105"
+                          style={{ background: C.lime, borderColor: C.lime, color: C.black }}
+                        >
+                          <Icon className="h-6 w-6" strokeWidth={1.8} />
+                        </div>
+                        <span
+                          className="font-mono text-[2.25rem] font-black leading-none tracking-[-0.04em] transition-colors duration-300"
+                          style={{ color: C.wa(0.06) }}
+                        >
+                          {model.num}
+                        </span>
+                      </div>
+
+                      {/* Body */}
+                      <div className="flex flex-1 flex-col px-6 pt-5 pb-6">
+                        <span className="mb-2 block text-[10px] font-mono font-bold uppercase tracking-[0.18em]" style={{ color: C.lime }}>
+                          {model.phase}
+                        </span>
+                        <h3 className="mb-3 text-base font-bold leading-snug tracking-tight text-white transition-colors duration-200 group-hover:text-[#B6FF00]">
+                          {model.title}
+                        </h3>
+                        <p className="mb-5 text-[13px] font-light leading-[1.75] text-white/55">
+                          {model.description}
+                        </p>
+
+                        {/* Focus list */}
+                        <div className="mt-auto space-y-2 border-t border-white/[0.07] pt-4">
+                          <span className="mb-2.5 block text-[9px] font-mono uppercase tracking-[0.18em] text-white/30">
+                            Focus
+                          </span>
+                          {model.focus.map((item, fi) => (
+                            <div key={fi} className="flex items-center gap-2.5 text-[11px] font-light text-white/50">
+                              <span className="h-px w-3 shrink-0" style={{ background: C.la(0.6) }} />
+                              {item}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
               07 — PRODUCTION AI (6 Technical Pillars)
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-14">
+          <section className="mb-8 sm:mb-20">
+            <div className="w-full mb-10">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 ENGINEERING STANDARDS
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                Built for Production. Not Just Prototypes.
+              <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">
+                Built for Production. <span style={{ color: C.lime }}>Not Just Prototypes.</span>
               </h2>
               {/* Signature Accent Line */}
               <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
@@ -1509,15 +1647,15 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               08 — TECHNOLOGY ECOSYSTEM
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
+          <section className="mb-8 sm:mb-20">
             <div className="mx-auto mb-12 max-w-4xl text-center">
               <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                 <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                 ENGINEERING STACK
                 <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
               </div>
-              <h2 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
-                The Right Stack for the Right Problem.
+              <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                The Right Stack for the <span style={{ color: C.lime }}>Right Problem.</span>
               </h2>
               <p className="mx-auto max-w-[64ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
                 We select the models, frameworks, and infrastructure that fit your data, security posture, latency requirements, and growth plans.
@@ -1544,14 +1682,14 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               09 — WHY VELNIX (Visual Composition)
           ══════════════════════════════════════════════════════ */}
-          <section className="mb-28 sm:mb-36">
-            <div className="w-full mb-14">
+          <section className="mb-8 sm:mb-20">
+            <div className="w-full mb-10">
               <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
                 THE VELNIX ADVANTAGE
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight mb-4">
-                Engineering AI Around Your Business.
+              <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">
+                Engineering AI Around <span style={{ color: C.lime }}>Your Business.</span>
               </h2>
               {/* Signature Accent Line */}
               <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
@@ -1695,13 +1833,15 @@ export const AIDevelopment: React.FC = () => {
             </div>
           </section>
 
-          <section className="mb-28 sm:mb-36">
+          <section className="mb-8 sm:mb-20">
             <Industries />
           </section>
 
-          <section className="mb-28 sm:mb-36">
+          <section className="mb-8 sm:mb-20">
             <LatestBlogs />
           </section>
+
+
 
         </div>
       </main>
