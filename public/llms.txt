@@ -67,6 +67,9 @@ Velnix Solutions designs and builds intelligent software systems, AI agents, aut
 <!-- GENERATED BLOG LINKS:START -->
 ## Blog Articles
 
+- [Vibe Coding vs. Vibe Engineering: Why "It Works" Isn't the Same as "It's Built Right"](https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49)
+- [AI Agents for SMBs: 10 Real Business Workflows They Can Automate](https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb)
+- [How to Identify Which Business Processes Your SMB Should Automate First](https://velnixsolutions.com/blogs?article=3c4c12a9-79af-497e-92c5-b1944fcc48ac)
 - [AI Agents vs. Traditional Automation: What's the Difference?](https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe)
 - [Which Business Process Should You Automate First? A Framework for SMB](https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf)
 <!-- GENERATED BLOG LINKS:END -->

@@ -7,7 +7,7 @@ import {
   Eye, Workflow, type LucideIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -46,6 +46,7 @@ const NAV: NavGroup[] = [
   },
   {
     label: 'Industries',
+    href: '/#industries',
     items: [
       { label: 'Healthcare',       href: '/healthcare',          icon: HeartPulse,    desc: 'AI-powered healthcare solutions and clinical workflow automation.' },
       { label: 'Fintech',          href: '/fintech',             icon: Landmark,      desc: 'Secure financial systems and intelligent payment processing.' },
@@ -151,9 +152,9 @@ const DesktopDropdown = ({
           {items.map(item => {
             const Icon = item.icon;
             return (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="group flex items-start gap-3 px-4 py-4 transition-all duration-150"
                 style={{ background: C.graphite, textDecoration: 'none' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.la(0.08); }}
@@ -184,16 +185,16 @@ const DesktopDropdown = ({
                     </span>
                   )}
                 </span>
-              </a>
+              </Link>
             );
           })}
         </div>
       ) : (
         <div className="py-1.5">
           {items.map(item => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="flex items-center gap-3 px-5 py-3 text-sm font-semibold transition-all duration-150"
               style={{ color: C.wa(0.75), textDecoration: 'none', background: C.graphite }}
               onMouseEnter={e => {
@@ -213,7 +214,7 @@ const DesktopDropdown = ({
                 style={{ width: 4, height: 4, borderRadius: '50%', background: C.la(0.4), flexShrink: 0, display: 'inline-block' }}
               />
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       )}
@@ -240,9 +241,18 @@ const DesktopNavItem = ({
       onMouseEnter={() => hasDropdown && setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <a
-        href={group.href ?? '#'}
-        onClick={e => hasDropdown && e.preventDefault()}
+      <Link
+        to={group.href ?? '#'}
+        onClick={e => {
+          if (!group.href || group.href === '#') {
+            if (hasDropdown) {
+              e.preventDefault();
+              setOpen(o => !o);
+            }
+          } else {
+            setOpen(false);
+          }
+        }}
         className="velnix-nav-link relative inline-flex items-center gap-1 text-sm font-semibold"
         style={{
           color: isActive ? C.lime : C.wa(0.85),
@@ -262,16 +272,10 @@ const DesktopNavItem = ({
             <ChevronDown size={13} strokeWidth={2.5} />
           </motion.div>
         )}
-        {/* Active indicator */}
-        {isActive && (
-          <span
-            style={{
-              position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
-              width: '60%', height: 2, background: C.lime, borderRadius: 1,
-            }}
-          />
-        )}
-      </a>
+
+      </Link>
+
+
 
       {hasDropdown && (
         <AnimatePresence>
@@ -353,9 +357,9 @@ const MobileAccordion = ({
               {group.items.map(item => {
                 const Icon = item.icon;
                 return (
-                  <a
+                  <Link
                     key={item.href}
-                    href={item.href}
+                    to={item.href}
                     onClick={onNavigate}
                     className="flex items-center gap-3 py-3 pl-4 text-sm leading-6"
                     style={{ color: C.wa(0.55), textDecoration: 'none', transition: 'color 0.2s' }}
@@ -368,7 +372,7 @@ const MobileAccordion = ({
                       <span style={{ width: 4, height: 4, borderRadius: '50%', background: C.la(0.5), flexShrink: 0, display: 'inline-block' }} />
                     )}
                     {item.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

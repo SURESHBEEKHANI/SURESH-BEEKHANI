@@ -13,6 +13,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Building2,
+  Zap,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -99,11 +100,11 @@ const INDUSTRIES: Industry[] = [
     link: '/insurance',
   },
   {
-    id: 'real-estate',
-    name: 'Real Estate',
-    description: 'Intelligent systems for modern property operations.', challenge: 'Connect listings, leads, viewings, and property workflows in one place.', outcome: 'Faster responses, clearer pipeline visibility, and smoother operations.', image: '/image/Industries-Img/real estate.avif',
-    imageWidth: 634, imageHeight: 1024, icon: Building2,
-    link: '/contact',
+    id: 'on-demand',
+    name: 'On-Demand',
+    description: 'Instant AI solutions tailored to marketplace platforms.', challenge: 'Keep dispatch, live matching, and support aligned in real time.', outcome: 'Faster fulfillment, higher provider utilization, and less chaos.', image: '/image/Industries-Img/On-Demand.avif',
+    imageWidth: 634, imageHeight: 1024, icon: Zap,
+    link: '/on-demand',
   },
 ];
 
@@ -178,9 +179,9 @@ const Industries: React.FC = () => {
             {INDUSTRIES.map((industry, index) => {
               const isActive = activeIndex === index;
               return (
-                <article key={industry.id} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[86vw] snap-start overflow-hidden rounded-2xl border sm:min-w-[48%] lg:min-w-[calc((100%-48px)/4)]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
+                <article key={industry.id} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} className="group relative min-w-[72vw] snap-start overflow-hidden rounded-2xl border sm:min-w-[340px] lg:min-w-[270px] xl:min-w-[290px]" style={{ background: C.GRAPHITE, borderColor: isActive ? C.LIME : C.WHITE_SUBTLE }}>
                   <Link to={industry.link} className="block h-full outline-none" aria-label={`${industry.name}: ${industry.description}`}>
-                    <div className="relative h-[400px] overflow-hidden sm:h-[500px]">
+                    <div className="relative h-[420px] overflow-hidden sm:h-[510px]">
                       <img src={industry.image} alt={`${industry.name} industry solution`} width={industry.imageWidth} height={industry.imageHeight} loading="lazy" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.28) 34%, rgba(8,42,8,0.42) 64%, rgba(45,105,0,0.88) 100%)' }} />
                       <div className="absolute left-4 right-4 top-4 px-4 py-3 sm:left-5 sm:right-5 sm:top-5">

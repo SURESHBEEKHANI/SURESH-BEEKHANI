@@ -17,7 +17,7 @@ const img = {
   food: "/image/pages_img/Predictive-Analytics-Services.jpg",
   travel: "/image/pages_img/WHY-CHOOSE-US.jpg",
   insurance: "/image/pages_img/ai-automation.jpg",
-  ondemand: "/image/pages_img/ai-automation.jpg",
+  ondemand: "/image/Industries-Img/On-Demand.avif",
 };
 
 export const healthcareConfig: IndustryPageConfig = {

@@ -20,9 +20,21 @@ declare global {
   }
 }
 
-// 🧭 Page tracking hook
+// 🧭 Page tracking & scroll restoration hook
 function usePageTracking() {
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 80);
+      }
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (!GA_MEASUREMENT_ID) return;

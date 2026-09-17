@@ -1220,23 +1220,23 @@ export const AIDevelopment: React.FC = () => {
           <section className="mb-8 sm:mb-20">
             <div className="mx-auto mb-10 w-full max-w-4xl text-center">
               <div className="mb-5 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                  AI THAT DELIVERS
+                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+                AI THAT DELIVERS
               </div>
               <h2 className="mb-6 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  AI That Drives <span style={{ color: C.lime }}>Results.</span>
+                AI That Drives <span style={{ color: C.lime }}>Results.</span>
               </h2>
               <p className="mx-auto max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
-                  We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
+                We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white/45">
-                  <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: C.lime }} />Problem</span>
-                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                  <span>Intelligence</span>
-                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                  <span>Execution</span>
-                  <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                  <span style={{ color: C.lime }}>Outcome</span>
+                <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: C.lime }} />Problem</span>
+                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                <span>Intelligence</span>
+                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                <span>Execution</span>
+                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
+                <span style={{ color: C.lime }}>Outcome</span>
               </div>
             </div>
 
@@ -1314,7 +1314,7 @@ export const AIDevelopment: React.FC = () => {
 
                 {/* Three-Box Flow: Problem -> AI System -> Outcome */}
                 <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
-                  
+
                   {/* Problem */}
                   <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#080808] p-5 transition-colors duration-300 hover:border-[#7DCC00]/50">
                     <div>
@@ -1380,7 +1380,7 @@ export const AIDevelopment: React.FC = () => {
           <section
             className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
-            
+
             <div className="relative z-10">
               <div className="mx-auto mb-10 max-w-3xl text-center">
                 <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
@@ -1397,46 +1397,46 @@ export const AIDevelopment: React.FC = () => {
 
               {/* Compact process grid */}
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {deliveryStages.map((step) => {
-                const StepIcon = step.icon;
-                return (
-                  <div
-                    key={step.num}
-                    className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
-                  >
-                    <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
-                    <div>
-                      <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
-                        <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
-                          {step.num}
-                        </span>
-                        <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                {deliveryStages.map((step) => {
+                  const StepIcon = step.icon;
+                  return (
+                    <div
+                      key={step.num}
+                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
+                    >
+                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
+                      <div>
+                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
+                            {step.num}
+                          </span>
+                          <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                        </div>
+
+                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
+                          {step.title}
+                        </h3>
+
+                        <p className="text-xs font-light leading-6 text-white/65">
+                          {step.description}
+                        </p>
                       </div>
 
-                      <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
-                        {step.title}
-                      </h3>
-
-                      <p className="text-xs font-light leading-6 text-white/65">
-                        {step.description}
-                      </p>
+                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
+                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
+                          Key Deliverables
+                        </span>
+                        {step.deliverables.map((item, di) => (
+                          <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
+                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-
-                    <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
-                      <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
-                        Key Deliverables
-                      </span>
-                      {step.deliverables.map((item, di) => (
-                        <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
-                          <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
 

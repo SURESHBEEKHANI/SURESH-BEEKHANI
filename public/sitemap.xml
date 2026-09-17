@@ -217,17 +217,17 @@
     <priority>0.70</priority>
   </url>
 
-                                  <!-- GENERATED BLOG LINKS:START -->
+                                                                        <!-- GENERATED BLOG LINKS:START -->
   <url>
-    <loc>https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
@@ -235,21 +235,21 @@
   <url>
     <loc>https://velnixsolutions.com/blogs?article=3c4c12a9-79af-497e-92c5-b1944fcc48ac</loc>
     <lastmod>2026-09-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-   <url>
-    <loc>https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49</loc>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://velnixsolutions.com/blogs?article=36b603f6-3002-461b-8a65-3d1761175bbe</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <!-- GENERATED BLOG LINKS:END -->

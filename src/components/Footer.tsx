@@ -7,6 +7,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 import { supabase } from '@/supabaseClient';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -100,15 +101,10 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
 
   const list = (
     <ul className="flex flex-col gap-3 mt-4">
-      {links.map(l => (
-        <li key={l.label}>
-          <a
-            href={l.href}
-            className="group inline-flex items-center gap-2 text-sm leading-6 transition-colors duration-200"
-            style={{ color: C.wa(0.55), textDecoration: 'none' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
-          >
+      {links.map(l => {
+        const isInternal = l.href.startsWith('/');
+        const content = (
+          <>
             <span
               className="shrink-0 rounded-full transition-all duration-200"
               style={{
@@ -118,18 +114,60 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
               }}
             />
             {l.label}
-          </a>
-        </li>
-      ))}
+          </>
+        );
+        const className = "group inline-flex items-center gap-2 text-sm leading-6 transition-colors duration-200";
+        const style = { color: C.wa(0.55), textDecoration: 'none' };
+
+        return (
+          <li key={l.label}>
+            {isInternal ? (
+              <Link
+                to={l.href}
+                className={className}
+                style={style}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
+              >
+                {content}
+              </Link>
+            ) : (
+              <a
+                href={l.href}
+                className={className}
+                style={style}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
+              >
+                {content}
+              </a>
+            )}
+          </li>
+        );
+      })}
     </ul>
+  );
+
+  const titleHeader = title === 'Industries' ? (
+    <Link
+      to="/#industries"
+      className="inline-block text-[11px] font-bold uppercase tracking-[0.24em] transition-colors duration-200 hover:text-white"
+      style={{ color: C.lime, textDecoration: 'none' }}
+    >
+      {title}
+    </Link>
+  ) : (
+    <h3 className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+      {title}
+    </h3>
   );
 
   if (!mobile) {
     return (
       <div>
-        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
-          {title}
-        </h3>
+        <div className="mb-4">
+          {titleHeader}
+        </div>
         {list}
       </div>
     );
@@ -501,7 +539,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, ease }}
                 >
-                  <a href="/" aria-label="Velnix Solutions home">
+                  <Link to="/" aria-label="Velnix Solutions home">
                     <img
                       src="/image/logo/logo1.png"
                       alt="Velnix Solutions"
@@ -511,7 +549,7 @@ const Footer = () => {
                       loading="lazy"
                       decoding="async"
                     />
-                  </a>
+                  </Link>
                 </motion.div>
 
                 {/* Brand statement */}
@@ -630,8 +668,8 @@ const Footer = () => {
               {LEGAL_LINKS.map((l, i) => (
                 <React.Fragment key={l.label}>
                   {i > 0 && <span style={{ color: C.wa(0.15), fontSize: '0.6rem' }}>•</span>}
-                  <a
-                    href={l.href}
+                  <Link
+                    to={l.href}
                     className="text-xs font-semibold uppercase tracking-[0.14em]"
                     style={{
                       color: C.wa(0.42),
@@ -642,7 +680,7 @@ const Footer = () => {
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.42); }}
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </React.Fragment>
               ))}
             </div>
