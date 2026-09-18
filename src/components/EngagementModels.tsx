@@ -76,16 +76,7 @@ const EngagementModels = () => (
           className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] mb-5"
           style={{ color: C.lime }}
         >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              background: C.lime,
-              display: 'inline-block',
-              boxShadow: `0 0 8px ${C.lime}`,
-            }}
-          />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           How We Engage
         </div>
 

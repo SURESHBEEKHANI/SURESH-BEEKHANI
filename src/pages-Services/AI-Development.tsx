@@ -36,7 +36,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
 import LatestBlogs from "../components/LatestBlogs";
+import { IMPACT_STATS } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System (Consistent with src/components)
@@ -474,64 +476,6 @@ const productionPillars: ProductionPillar[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 08 — TECHNOLOGY ECOSYSTEM DATA
-// ─────────────────────────────────────────────────────────────────────────────
-interface TechCategory {
-  title: string;
-  desc: string;
-  icon: React.ElementType;
-  items: { name: string; tag: string }[];
-}
-
-const techCategories: TechCategory[] = [
-  {
-    title: "AI / Models",
-    desc: "Frontier and open-source models selected for specific task latency and capability profiles.",
-    icon: Brain,
-    items: [
-      { name: "OpenAI", tag: "GPT-4o & Reasoning" },
-      { name: "Anthropic", tag: "Claude 3.5 Sonnet" },
-      { name: "Google Gemini", tag: "Multimodal 1.5 Pro" },
-      { name: "Open-source models", tag: "Llama 3.3 / Mistral" },
-    ],
-  },
-  {
-    title: "AI Engineering",
-    desc: "Robust frameworks for deterministic reasoning loops, orchestration, and interface development.",
-    icon: Terminal,
-    items: [
-      { name: "Python", tag: "Core AI Engine" },
-      { name: "TypeScript", tag: "Full-Stack & APIs" },
-      { name: "FastAPI", tag: "Low-Latency Microservices" },
-      { name: "LangChain", tag: "Tool Integrations" },
-      { name: "LangGraph", tag: "Stateful Agent Graphs" },
-    ],
-  },
-  {
-    title: "Data & Retrieval",
-    desc: "High-performance storage, indexing, and hybrid semantic retrieval systems.",
-    icon: Database,
-    items: [
-      { name: "PostgreSQL", tag: "pgvector & Relational" },
-      { name: "Vector Search", tag: "Pinecone / Qdrant" },
-      { name: "Embeddings", tag: "Dense & Sparse Hybrid" },
-      { name: "RAG", tag: "Context Assembly Pipelines" },
-    ],
-  },
-  {
-    title: "Cloud & Infrastructure",
-    desc: "Enterprise compute environments with secure network boundaries and scalable runtime containers.",
-    icon: Server,
-    items: [
-      { name: "AWS", tag: "Bedrock & ECS / EKS" },
-      { name: "Azure", tag: "Azure OpenAI & Cognitive" },
-      { name: "Google Cloud", tag: "Vertex AI & Cloud Run" },
-      { name: "Docker", tag: "Containerized Workloads" },
-    ],
-  },
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
 // FAQ DATA (8 Specified Questions)
 // ─────────────────────────────────────────────────────────────────────────────
 interface FaqItem {
@@ -847,72 +791,14 @@ export const AIDevelopment: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Right Side — CSS/React AI Network Visual */}
-            <motion.div
-              initial={shouldReduce ? false : { opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.35, duration: 0.8, ease }}
-              className="relative flex items-center justify-center"
-              aria-hidden="true"
-            >
-              <div className="relative w-full max-w-lg aspect-square">
-                {/* Outer ring */}
-                <div className="absolute inset-0 rounded-full border border-white/[0.06]" />
-                {/* Inner ring */}
-                <div className="absolute inset-8 rounded-full border border-white/[0.04]" />
-                {/* Core glow */}
-                <div
-                  className="absolute inset-16 rounded-full"
-                  style={{ background: `radial-gradient(circle, ${C.la(0.08)} 0%, transparent 70%)` }}
-                />
-
-                {/* Animated signal dots — connected nodes */}
-                {/* Node positions arranged in a network pattern */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Connections */}
-                  <line x1="200" y1="80" x2="120" y2="160" stroke={C.la(0.15)} strokeWidth="0.5" />
-                  <line x1="200" y1="80" x2="280" y2="160" stroke={C.la(0.15)} strokeWidth="0.5" />
-                  <line x1="120" y1="160" x2="200" y2="200" stroke={C.la(0.12)} strokeWidth="0.5" />
-                  <line x1="280" y1="160" x2="200" y2="200" stroke={C.la(0.12)} strokeWidth="0.5" />
-                  <line x1="200" y1="200" x2="100" y2="280" stroke={C.la(0.1)} strokeWidth="0.5" />
-                  <line x1="200" y1="200" x2="300" y2="280" stroke={C.la(0.1)} strokeWidth="0.5" />
-                  <line x1="100" y1="280" x2="200" y2="320" stroke={C.la(0.08)} strokeWidth="0.5" />
-                  <line x1="300" y1="280" x2="200" y2="320" stroke={C.la(0.08)} strokeWidth="0.5" />
-                  <line x1="120" y1="160" x2="100" y2="280" stroke={C.la(0.08)} strokeWidth="0.5" />
-                  <line x1="280" y1="160" x2="300" y2="280" stroke={C.la(0.08)} strokeWidth="0.5" />
-
-                  {/* Signal pulses along connections */}
-                  <circle r="2" fill={C.lime}>
-                    <animateMotion dur="4s" repeatCount="indefinite" path="M200,80 L120,160 L200,200 L100,280 L200,320" />
-                  </circle>
-                  <circle r="2" fill={C.green}>
-                    <animateMotion dur="5s" repeatCount="indefinite" path="M200,80 L280,160 L300,280 L200,320" />
-                  </circle>
-                  <circle r="1.5" fill={C.lime}>
-                    <animateMotion dur="3.5s" repeatCount="indefinite" path="M120,160 L200,200 L300,280" />
-                  </circle>
-
-                  {/* Nodes */}
-                  <circle cx="200" cy="80" r="4" fill={C.lime} opacity="0.9" />
-                  <circle cx="120" cy="160" r="3" fill={C.white} opacity="0.6" />
-                  <circle cx="280" cy="160" r="3" fill={C.white} opacity="0.6" />
-                  <circle cx="200" cy="200" r="5" fill={C.lime} opacity="0.7" />
-                  <circle cx="100" cy="280" r="3" fill={C.white} opacity="0.5" />
-                  <circle cx="300" cy="280" r="3" fill={C.white} opacity="0.5" />
-                  <circle cx="200" cy="320" r="4" fill={C.green} opacity="0.7" />
-
-                  {/* Core node */}
-                  <circle cx="200" cy="200" r="8" fill={C.lime} opacity="0.15" />
-                  <circle cx="200" cy="200" r="3.5" fill={C.lime} opacity="0.9" />
-                </svg>
-
-                {/* Rotating ring decoration */}
-                <div
-                  className="absolute inset-4 rounded-full border border-white/[0.03]"
-                  style={{ animation: 'velnix-scroll-line 20s linear infinite' }}
-                />
-              </div>
-            </motion.div>
+            {/* Right Side — Hero Image */}
+            <div className="relative flex items-center justify-center">
+              <img
+                src="/image/Servies/service-page image-hero.png"
+                alt="AI Development Hero"
+                className="relative z-10 w-full max-w-lg"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -925,24 +811,19 @@ export const AIDevelopment: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:py-12 lg:px-16 lg:py-14"
+        className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16"
       >
-        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
-          {[
-            { number: '5+', label: 'Years of engineering experience' },
-            { number: '23+', label: 'Enterprise and SMBs clients' },
-            { number: '45+', label: 'Intelligent systems deployed' },
-            { number: '95%', label: 'Client satisfaction rate' },
-          ].map(({ number, label }, i) => (
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">
+          {IMPACT_STATS.map(({ number, label }, i) => (
             <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">
               {i > 0 && (
                 <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
               )}
-              <span className="font-display text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
+              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
                 {number.replace('+', '').replace('%', '')}
                 <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
-              </span>
-              <p className="mx-auto mt-3 max-w-[16ch] text-[0.65rem] font-bold uppercase leading-5 tracking-[0.25em] text-[#050505]/60">
+              </div>
+              <p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">
                 {label}
               </p>
             </div>
@@ -1648,35 +1529,7 @@ export const AIDevelopment: React.FC = () => {
               08 — TECHNOLOGY ECOSYSTEM
           ══════════════════════════════════════════════════════ */}
           <section className="mb-8 sm:mb-20">
-            <div className="mx-auto mb-12 max-w-4xl text-center">
-              <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                ENGINEERING STACK
-                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-              </div>
-              <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                The Right Stack for the <span style={{ color: C.lime }}>Right Problem.</span>
-              </h2>
-              <p className="mx-auto max-w-[64ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
-                We select the models, frameworks, and infrastructure that fit your data, security posture, latency requirements, and growth plans.
-              </p>
-            </div>
-
-            <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-2.5">
-              {techCategories.flatMap((cat) => cat.items.map((item) => {
-                const Icon = cat.icon;
-                return (
-                  <span
-                    key={`${cat.title}-${item.name}`}
-                    title={`${cat.title}: ${item.tag}`}
-                    className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#111111] px-4 py-2.5 font-mono text-[11px] font-bold tracking-[0.04em] text-white/75 transition-all duration-300 hover:border-[#B6FF00]/60 hover:bg-[#B6FF00]/10 hover:text-[#B6FF00]"
-                  >
-                    <Icon className="h-3.5 w-3.5 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" fill="currentColor" fillOpacity={0.16} strokeWidth={1.8} />
-                    {item.name}
-                  </span>
-                );
-              }))}
-            </div>
+            <TechnologyStack />
           </section>
 
           {/* ══════════════════════════════════════════════════════

@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useReducedMotion } from '@/hooks/useAnimations';
 
-const IMPACT_STATS = [
+export const IMPACT_STATS = [
   { number: '5+', label: 'Years of engineering experience' },
   { number: '23+', label: 'Enterprise and SMBs clients' },
   { number: '45+', label: 'Intelligent systems deployed' },

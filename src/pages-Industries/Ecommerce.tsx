@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { ArrowRight, Brain, Zap, BarChart3, Shield, TrendingUp, Star, ShoppingBag, Bot, Workflow, Sparkles, Headphones, Search, Cpu, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EngagementModels from "../components/EngagementModels";
+import { IMPACT_STATS } from "../components/OriginStory";
+import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
+import Testimonials from "../components/Testimonials";
 
 // ─── Footer Color Palette ─────────────────────────────────────────────
 const C = {
@@ -150,32 +155,29 @@ const faqData = [
 ];
 
 
+// ─── Shared footer-style background ──────────────────────────────────
+const footerBg = `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.22)} 0%, ${C.ga(0.07)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.12)} 0%, ${C.ga(0.035)} 42%, transparent 76%), ${C.black}`;
+
 // ─── Hero Section ─────────────────────────────────────────────────────
 const Hero = () => (
-  <section className="relative isolate w-full overflow-hidden text-white" style={{ background: C.black }}>
+  <section className="relative isolate w-full overflow-hidden text-white" style={{ background: footerBg }}>
     {/* Ambient background */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full" style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)`, filter: 'blur(80px)' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.25)}, transparent)` }} />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full" style={{ background: `radial-gradient(circle, ${C.la(0.1)} 0%, transparent 70%)`, filter: 'blur(80px)' }} />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full" style={{ background: `radial-gradient(circle, ${C.ga(0.1)} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
     </div>
 
     <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-6 pt-20 pb-10 sm:px-10 sm:pt-24 sm:pb-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,1.08fr)] lg:gap-16 lg:px-16 lg:pt-24 lg:pb-14">
       {/* Left Content */}
       <div className="max-w-2xl">
-        {/* Eyebrow — matches Footer CTA eyebrow */}
+        {/* Eyebrow */}
         <div className="mb-7 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
-          <span
-            style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: C.lime,
-              display: 'inline-block',
-              boxShadow: `0 0 8px ${C.lime}`,
-            }}
-          />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           AI Development Ecommerce Services
         </div>
 
-        {/* Headline — matches Hero.tsx typography */}
+        {/* Headline */}
         <h1
           className="mb-6 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
           style={{ WebkitFontSmoothing: 'antialiased' }}
@@ -184,8 +186,8 @@ const Hero = () => (
           <span style={{ color: C.lime }}>Intelligent, Automated Systems</span>
         </h1>
 
-        {/* Body — matches Footer supporting copy */}
-        <p className="max-w-xl text-lg leading-8" style={{ color: C.wa(0.64) }}>
+        {/* Supporting copy */}
+        <p className="max-w-xl text-lg leading-8 sm:text-xl" style={{ color: C.wa(0.64) }}>
           We build AI-powered ecommerce solutions that automate repetitive tasks, personalize customer experiences, improve decision-making, and help online businesses operate more efficiently.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -244,12 +246,13 @@ const Hero = () => (
 
 // ─── AI Ecommerce Services Section ────────────────────────────────────
 const EcommerceServices = () => (
-  <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: C.graphite }}>
+  <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: `radial-gradient(ellipse 60% 70% at 96% 10%, ${C.la(0.13)} 0%, ${C.ga(0.04)} 42%, transparent 76%), radial-gradient(ellipse 50% 60% at 5% 85%, ${C.ga(0.18)} 0%, ${C.ga(0.06)} 40%, transparent 76%), ${C.black}` }}>
     {/* Ambient subtle glow */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.15)}, transparent)` }} />
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full"
-        style={{ background: `radial-gradient(circle, ${C.la(0.06)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
+        style={{ background: `radial-gradient(circle, ${C.la(0.05)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
       />
     </div>
 
@@ -257,25 +260,16 @@ const EcommerceServices = () => (
       {/* Header */}
       <div className="text-center space-y-4 mb-12 sm:mb-16 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              background: C.lime,
-              display: 'inline-block',
-              boxShadow: `0 0 8px ${C.lime}`,
-            }}
-          />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           End-to-End Capabilities
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
           AI Ecommerce Services Built for{" "}
           <span style={{ color: C.lime }}>Smarter Growth</span>
         </h2>
 
-        <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
           At Velnix, we combine ecommerce development, AI, and automation to build intelligent commerce systems that reduce manual work, improve customer experiences, and scale operations efficiently.
         </p>
       </div>
@@ -285,7 +279,8 @@ const EcommerceServices = () => (
         {ecommerceServices.map((service, index) => (
           <div
             key={index}
-            className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-none border border-white/10 bg-[#080808] transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
+            className="group relative flex flex-col justify-between p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
+            style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
           >
             {/* Top edge glow line on hover */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -295,11 +290,11 @@ const EcommerceServices = () => (
                 <service.icon className="w-6 h-6" />
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#B6FF00] transition-colors duration-200">
+              <h3 className="text-lg sm:text-xl font-bold tracking-[-0.04em] text-white mb-3 group-hover:text-[#B6FF00] transition-colors duration-200">
                 {service.title}
               </h3>
 
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm leading-6" style={{ color: C.wa(0.6) }}>
                 {service.description}
               </p>
             </div>
@@ -313,12 +308,13 @@ const EcommerceServices = () => (
 
 // ─── AI Ecommerce Development Process Section ─────────────────────────
 const DevelopmentProcess = () => (
-  <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: C.black }}>
+  <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.18)} 0%, ${C.ga(0.06)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.1)} 0%, ${C.ga(0.03)} 42%, transparent 76%), ${C.black}` }}>
     {/* Ambient subtle glow */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.12)}, transparent)` }} />
       <div
         className="absolute bottom-0 right-0 w-[550px] h-[450px] rounded-full"
-        style={{ background: `radial-gradient(circle, ${C.ga(0.06)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
+        style={{ background: `radial-gradient(circle, ${C.ga(0.05)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
       />
     </div>
 
@@ -326,24 +322,15 @@ const DevelopmentProcess = () => (
       {/* Header */}
       <div className="text-center space-y-4 mb-12 sm:mb-16 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              background: C.lime,
-              display: 'inline-block',
-              boxShadow: `0 0 8px ${C.lime}`,
-            }}
-          />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           Execution Roadmap
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
           Our AI Ecommerce <span style={{ color: C.lime }}>Development Process</span>
         </h2>
 
-        <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
           A streamlined process combining ecommerce, AI, automation, and integrations to build smarter commerce systems.
         </p>
       </div>
@@ -353,7 +340,8 @@ const DevelopmentProcess = () => (
         {developmentProcess.map((item, index) => (
           <div
             key={index}
-            className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-none border border-white/10 bg-[#111111] transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
+            className="group relative flex flex-col justify-between p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
+            style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
           >
             {/* Top accent line on hover */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -372,11 +360,11 @@ const DevelopmentProcess = () => (
                 <item.icon className="w-5 h-5" />
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#B6FF00] transition-colors duration-200">
+              <h3 className="text-lg sm:text-xl font-bold tracking-[-0.04em] text-white mb-3 group-hover:text-[#B6FF00] transition-colors duration-200">
                 {item.title}
               </h3>
 
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm leading-6" style={{ color: C.wa(0.6) }}>
                 {item.description}
               </p>
             </div>
@@ -392,17 +380,18 @@ const DevelopmentProcess = () => (
 const Capabilities = () => (
   <section
     className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-    style={{ background: C.graphite }}
+    style={{ background: `radial-gradient(ellipse 60% 70% at 96% 10%, ${C.la(0.13)} 0%, ${C.ga(0.04)} 42%, transparent 76%), radial-gradient(ellipse 50% 60% at 5% 85%, ${C.ga(0.2)} 0%, ${C.ga(0.07)} 40%, transparent 76%), ${C.black}` }}
   >
     {/* Ambient glows */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.15)}, transparent)` }} />
       <div
         className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full"
-        style={{ background: `radial-gradient(circle, ${C.la(0.07)} 0%, transparent 70%)`, filter: 'blur(100px)' }}
+        style={{ background: `radial-gradient(circle, ${C.la(0.06)} 0%, transparent 70%)`, filter: 'blur(100px)' }}
       />
       <div
         className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full"
-        style={{ background: `radial-gradient(circle, ${C.ga(0.06)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
+        style={{ background: `radial-gradient(circle, ${C.ga(0.05)} 0%, transparent 70%)`, filter: 'blur(90px)' }}
       />
     </div>
 
@@ -411,20 +400,14 @@ const Capabilities = () => (
       {/* ── Section Header ── */}
       <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
         <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] mb-5" style={{ color: C.lime }}>
-          <span
-            style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: C.lime, display: 'inline-block',
-              boxShadow: `0 0 8px ${C.lime}`,
-            }}
-          />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           Why AI Changes Everything
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white mb-4">
           Capabilities &amp; Benefits of{" "}
           <span style={{ color: C.lime }}>AI in E-Commerce</span>
         </h2>
-        <p className="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: C.wa(0.6) }}>
+        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
           Every card below maps to a measurable outcome. We build the systems that deliver these numbers — not just the roadmap.
         </p>
       </div>
@@ -434,7 +417,8 @@ const Capabilities = () => (
         {capabilities.map((cap, index) => (
           <div
             key={index}
-            className="group relative flex flex-col p-7 sm:p-8 border border-white/10 bg-[#080808] transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden"
+            className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden"
+            style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
           >
             {/* Top accent line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -454,12 +438,12 @@ const Capabilities = () => (
             </div>
 
             {/* Title */}
-            <h3 className="text-base sm:text-lg font-bold text-white mb-2 tracking-tight group-hover:text-[#B6FF00] transition-colors duration-200">
+            <h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">
               {cap.title}
             </h3>
 
             {/* Description */}
-            <p className="text-sm text-white/55 leading-relaxed mb-6 flex-1">
+            <p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>
               {cap.description}
             </p>
 
@@ -468,7 +452,7 @@ const Capabilities = () => (
               <span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>
                 {cap.metric}
               </span>
-              <span className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: C.wa(0.38) }}>
+              <span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
                 {cap.metricLabel}
               </span>
             </div>
@@ -486,13 +470,16 @@ const FAQ = () => {
   const [openId, setOpenId] = useState<number | null>(null);
 
   return (
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ background: C.graphite }}>
-      <div className="max-w-3xl mx-auto">
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.18)} 0%, ${C.ga(0.06)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.1)} 0%, ${C.ga(0.03)} 42%, transparent 76%), ${C.black}` }}>
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.15)}, transparent)` }} />
+      </div>
+      <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center space-y-4 mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
             Frequently Asked <span style={{ color: C.lime }}>Questions</span>
           </h2>
-          <p className="text-base text-white/60">
+          <p className="text-base leading-8" style={{ color: C.wa(0.64) }}>
             Everything you need to know about AI for <span style={{ color: C.lime }}>E-Commerce</span>
           </p>
         </div>
@@ -501,14 +488,15 @@ const FAQ = () => {
           {faqData.map((item) => (
             <div
               key={item.id}
-              className="border border-white/10 bg-[#050505] overflow-hidden transition-all duration-300"
+              className="border border-white/10 overflow-hidden transition-all duration-300 hover:border-[#B6FF00]/30"
+              style={{ background: C.wa(0.03) }}
             >
               <button
                 onClick={() => setOpenId(openId === item.id ? null : item.id)}
                 className="flex w-full items-center justify-between py-4 px-6 text-left"
                 style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%' }}
               >
-                <span className="text-sm sm:text-base font-medium text-white pr-4">{item.question}</span>
+                <span className="text-sm sm:text-base font-semibold tracking-[-0.02em] text-white pr-4">{item.question}</span>
                 <svg
                   className={`w-5 h-5 text-[#B6FF00] shrink-0 transition-transform duration-300 ${openId === item.id ? 'rotate-180' : ''}`}
                   fill="none"
@@ -521,13 +509,45 @@ const FAQ = () => {
               <div
                 className={`overflow-hidden transition-all duration-300 ${openId === item.id ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
               >
-                <p className="px-6 pb-4 text-sm text-white/60 leading-relaxed">{item.answer}</p>
+                <p className="px-6 pb-4 text-sm leading-6" style={{ color: C.wa(0.6) }}>{item.answer}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+// ─── Impact Statistics Section ────────────────────────────────────────
+const ImpactStats = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16"
+    >
+      <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">
+        {IMPACT_STATS.map(({ number, label }, i) => (
+          <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">
+            {i > 0 && (
+              <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
+            )}
+            <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
+              {number.replace('+', '').replace('%', '')}
+              <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
+            </div>
+            <p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">
+              {label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 };
 
@@ -541,6 +561,13 @@ const Ecommerce = () => {
       <DevelopmentProcess />
       <Capabilities />
       <EngagementModels />
+      <ImpactStats />
+      <TechnologyStack
+        eyebrow="Built with the Best"
+        heading="Technology Stack Behind Our Ecommerce Solutions"
+        subheading="The frameworks, AI models, databases, and cloud tools we use to build intelligent, scalable ecommerce systems."
+      />
+      <Testimonials />
       <FAQ />
       <Footer />
     </div>

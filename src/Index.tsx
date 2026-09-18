@@ -9,7 +9,8 @@ const OriginStory = lazy(() => import('@/components/OriginStory'));
 const MeetFounder = lazy(() => import('@/components/MeetFounder'));
 const Services = lazy(() => import('@/components/Services'));
 const Industries = lazy(() => import('@/components/Industries'));
-const ClientSolutions = lazy(() => import('@/components/ClientSolutions'));
+const TechnologyStack = lazy(() => import('@/components/TechnologyStack').then(m => ({ default: m.TechnologyStack })));
+const EngagementModels = lazy(() => import('@/components/EngagementModels'));
 const Approach = lazy(() => import('@/components/Approach'));
 const Testimonials = lazy(() => import('@/components/Testimonials'));
 const LatestBlogs = lazy(() => import('@/components/LatestBlogs'));
@@ -42,7 +43,11 @@ const Index = () => {
           </div>
 
           <AnimatedSection threshold={0.08}>
-              <ClientSolutions />
+              <TechnologyStack />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
+              <EngagementModels />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>

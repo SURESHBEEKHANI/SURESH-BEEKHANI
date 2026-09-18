@@ -191,9 +191,9 @@ const WhatsAppWidget = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
-            style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
+            style={{ background: '#B6FF00', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <WhatsAppIcon size={18} />
+            <WhatsAppIcon size={15} />
             Contact HR
           </a>
           <a
@@ -201,9 +201,9 @@ const WhatsAppWidget = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
-            style={{ background: '#25D366', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
+            style={{ background: '#B6FF00', boxShadow: '0 10px 24px rgba(0,0,0,0.24)' }}
           >
-            <WhatsAppIcon size={18} />
+            <WhatsAppIcon size={15} />
             For Business
           </a>
         </div>
@@ -213,10 +213,10 @@ const WhatsAppWidget = () => {
         onClick={() => setIsOpen(open => !open)}
         aria-expanded={isOpen}
         aria-label={isOpen ? 'Close WhatsApp contact options' : 'Open WhatsApp contact options'}
-        className="inline-flex h-16 w-16 items-center justify-center rounded-full text-white shadow-xl transition-transform duration-200 hover:scale-105"
-        style={{ background: '#25D366', boxShadow: '0 12px 28px rgba(37,211,102,0.32)' }}
+        className="inline-flex h-12 w-12 items-center justify-center rounded-full text-black shadow-xl transition-transform duration-200 hover:scale-105"
+        style={{ background: '#B6FF00', boxShadow: '0 8px 20px rgba(182,255,0,0.32)' }}
       >
-        <WhatsAppIcon size={32} />
+        <WhatsAppIcon size={22} />
       </button>
     </aside>
   );
