@@ -40,8 +40,7 @@ const FAQ_DATA: FAQItem[] = [
   },
   {
     id: 'faq-2',
-    question:
-      'Do I need to know exactly what technology I need before reaching out?',
+    question: 'Do we need an AI strategy before starting?',
     answer:
       'No. Start with the problem, not the technology. We assess your workflow and recommend the simplest solution that can deliver the desired business outcome.',
   },
@@ -185,7 +184,7 @@ const FAQ = () => {
                   <button
                     type="button"
                     onClick={() => toggleExpand(item.id)}
-                    className="group flex w-full cursor-pointer items-center justify-between gap-4 py-6 text-left transition-colors duration-300 hover:text-[#B6FF00]"
+                    className="group flex w-full cursor-pointer items-center justify-between gap-4 py-4 text-left transition-colors duration-300 hover:text-[#B6FF00]"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                   >
@@ -234,7 +233,7 @@ const FAQ = () => {
                         }
                         className="overflow-hidden"
                       >
-                        <div className="pb-6">
+                        <div className="pb-4">
                           <p className="max-w-2xl leading-7 text-white/55">
                             {item.answer}
                           </p>
