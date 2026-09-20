@@ -130,192 +130,122 @@ const FAQ = () => {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16">
         {/* ───────────────────────────────────────────────────────────────────
-            SECTION HEADER
+            TWO COLUMN LAYOUT
         ─────────────────────────────────────────────────────────────────── */}
-        <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-14">
-          <motion.div
-            initial={shouldReduce ? undefined : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={shouldReduce ? { duration: 0 } : { duration: 0.5, ease }}
-            className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"
-          >
-            <span
-              className="h-px w-8 bg-gradient-to-r from-transparent to-[#B6FF00]"
-              aria-hidden="true"
-            />
-
-            Before We Build
-
-            <span
-              className="h-px w-8 bg-gradient-to-l from-transparent to-[#B6FF00]"
-              aria-hidden="true"
-            />
-          </motion.div>
-
-          <motion.h2
-            id="faq-heading"
-            initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease }}
-            className="mb-4 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
-          >
-            Know Before{' '}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(100deg, ${C.lime} 0%, ${C.green} 100%)`,
-              }}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-start">
+          
+          {/* LEFT COLUMN - HEADER CONTENT */}
+          <div className="lg:sticky lg:top-24">
+            <motion.div
+              initial={shouldReduce ? undefined : { opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={shouldReduce ? { duration: 0 } : { duration: 0.5, ease }}
+              className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"
             >
-              We Build Together
-            </span>
-          </motion.h2>
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+              Before We Build
+            </motion.div>
 
-        </div>
+            <motion.h2
+              id="faq-heading"
+              initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease }}
+              className="text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl"
+            >
+              Know Before{' '}
+              <span style={{ color: C.lime }}>We Build Together.</span>
+            </motion.h2>
+          </div>
 
-        {/* ───────────────────────────────────────────────────────────────────
-            FAQ ACCORDION
-        ─────────────────────────────────────────────────────────────────── */}
-        <div
-          className="mx-auto max-w-3xl space-y-3"
-          role="list"
-          aria-label="Frequently asked questions"
-        >
-          {FAQ_DATA.map((item, index) => {
-            const isOpen = expandedId === item.id;
-            const answerId = `${item.id}-answer`;
-            const num = String(index + 1).padStart(2, '0');
+          {/* RIGHT COLUMN - FAQ ACCORDION */}
+          <div className="space-y-3">
+            {FAQ_DATA.map((item, index) => {
+              const isOpen = expandedId === item.id;
+              const answerId = `${item.id}-answer`;
 
-            return (
-              <motion.div
-                key={item.id}
-                role="listitem"
-                initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={
-                  shouldReduce
-                    ? { duration: 0 }
-                    : { duration: 0.55, ease, delay: index * 0.05 }
-                }
-                className={[
-                  'overflow-hidden rounded-2xl border transition-[box-shadow,border-color] duration-300',
-                  isOpen
-                    ? 'border-[#B6FF00]/25'
-                    : 'border-white/[0.08] hover:border-white/[0.18]',
-                ].join(' ')}
-                style={{
-                  background: isOpen
-                    ? `linear-gradient(180deg, ${C.la(0.05)} 0%, ${C.wa(0.012)} 100%), ${C.graphite}`
-                    : `linear-gradient(180deg, ${C.wa(0.035)} 0%, ${C.wa(0.008)} 100%), ${C.graphite}`,
-                  boxShadow: isOpen
-                    ? `inset 0 1px 0 ${C.la(0.18)}, 0 24px 70px -28px ${C.la(0.22)}, 0 2px 0 rgba(0,0,0,0.35)`
-                    : `inset 0 1px 0 ${C.wa(0.05)}, 0 12px 40px -20px rgba(0,0,0,0.6)`,
-                }}
-              >
-                {/* Question */}
-                <button
-                  type="button"
-                  onClick={() => toggleExpand(item.id)}
-                  className={[
-                    'group flex w-full cursor-pointer items-center gap-4 px-4 py-2.5 text-left sm:gap-6 sm:px-6 sm:py-3',
-                    'transition-colors duration-300',
-                    isOpen ? '' : 'hover:bg-white/[0.02]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]',
-                  ].join(' ')}
-                  aria-expanded={isOpen}
-                  aria-controls={answerId}
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={
+                    shouldReduce
+                      ? { duration: 0 }
+                      : { duration: 0.55, ease, delay: index * 0.05 }
+                  }
+                  className="overflow-hidden border-b border-white/[0.08] last:border-b-0"
                 >
-                  {/* Editorial index */}
-                  <span
-                    className={[
-                      'w-8 shrink-0 text-left font-mono text-xs font-medium tracking-[0.12em] tabular-nums',
-                      'transition-colors duration-300',
-                      isOpen
-                        ? 'text-[#B6FF00]'
-                        : 'text-[#B6FF00]/35 group-hover:text-[#B6FF00]/60',
-                    ].join(' ')}
-                    aria-hidden="true"
+                  {/* Question */}
+                  <button
+                    type="button"
+                    onClick={() => toggleExpand(item.id)}
+                    className="group flex w-full cursor-pointer items-center justify-between gap-4 py-6 text-left transition-colors duration-300 hover:text-[#B6FF00]"
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
                   >
-                    {num}
-                  </span>
+                    <h3 className="text-lg font-bold leading-tight text-white group-hover:text-[#B6FF00] transition-colors duration-300">
+                      {item.question}
+                    </h3>
 
-                  <h3
-                    className={[
-                      'min-w-0 flex-1 text-lg font-bold leading-tight',
-                      'transition-colors duration-300',
-                      isOpen
-                        ? 'text-white'
-                        : 'text-white/[0.88] group-hover:text-white',
-                    ].join(' ')}
-                  >
-                    {item.question}
-                  </h3>
-
-                  {/* Rotating plus */}
-                  <span
-                    className={[
-                      'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border',
-                      'transition-all duration-300',
-                      isOpen
-                        ? 'bg-[#B6FF00]/10 border-[#B6FF00]/30 text-[#B6FF00]'
-                        : 'bg-white/[0.04] border-white/[0.08] text-white/60 group-hover:bg-white/[0.08] group-hover:text-white/85',
-                    ].join(' ')}
-                    style={{
-                      transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Plus size={16} strokeWidth={2} />
-                  </span>
-                </button>
-
-                {/* Answer */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={answerId}
-                      role="region"
-                      aria-labelledby={item.id}
-                      initial={
-                        shouldReduce
-                          ? { opacity: 1 }
-                          : { opacity: 0, height: 0 }
-                      }
-                      animate={
-                        shouldReduce
-                          ? { opacity: 1 }
-                          : { opacity: 1, height: 'auto' }
-                      }
-                      exit={
-                        shouldReduce
-                          ? { opacity: 0 }
-                          : { opacity: 0, height: 0 }
-                      }
-                      transition={
-                        shouldReduce
-                          ? { duration: 0 }
-                          : { duration: 0.3, ease }
-                      }
-                      className="overflow-hidden"
+                    {/* Rotating chevron */}
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center text-white/60 group-hover:text-[#B6FF00] transition-all duration-300"
+                      style={{
+                        transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
+                      }}
+                      aria-hidden="true"
                     >
-                      <div
-                        className="border-t pt-5 pb-6 pr-5 pl-[4.25rem] sm:pt-5 sm:pb-7 sm:pr-7 sm:pl-[5.25rem]"
-                        style={{ borderColor: C.wa(0.06) }}
+                      <Plus size={16} strokeWidth={2} />
+                    </span>
+                  </button>
+
+                  {/* Answer */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={answerId}
+                        role="region"
+                        aria-labelledby={item.id}
+                        initial={
+                          shouldReduce
+                            ? { opacity: 1 }
+                            : { opacity: 0, height: 0 }
+                        }
+                        animate={
+                          shouldReduce
+                            ? { opacity: 1 }
+                            : { opacity: 1, height: 'auto' }
+                        }
+                        exit={
+                          shouldReduce
+                            ? { opacity: 0 }
+                            : { opacity: 0, height: 0 }
+                        }
+                        transition={
+                          shouldReduce
+                            ? { duration: 0 }
+                            : { duration: 0.3, ease }
+                        }
+                        className="overflow-hidden"
                       >
-                        <p className="max-w-2xl leading-7 text-white/55">
-                          {item.answer}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+                        <div className="pb-6">
+                          <p className="max-w-2xl leading-7 text-white/55">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         </div>
