@@ -1,4 +1,5 @@
-import { ArrowRight, Search, FileText, Clock, Target, Wrench } from 'lucide-react';
+import { ArrowRight, Search, FileText, Clock, Target, Wrench, MessageCircle } from 'lucide-react';
+
 
 // ─── Brand Tokens ──────────────────────────────────────────────────────────────
 const C = {
@@ -54,8 +55,8 @@ const engagementModels = [
 // ─── Component ─────────────────────────────────────────────────────────────────
 const EngagementModels = () => (
   <section
-    className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-    style={{ background: C.black }}
+    className="font-display py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505' }}
   >
     {/* Subtle ambient glow */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -89,13 +90,7 @@ const EngagementModels = () => (
         </p>
       </div>
 
-      {/* ── Lime divider ── */}
-      <div
-        className="w-full h-px mb-10 sm:mb-12"
-        style={{
-          background: `linear-gradient(90deg, ${C.la(0.3)} 0%, transparent 60%)`,
-        }}
-      />
+
 
       {/* ── Cards grid (5 models + 1 CTA = 6 cells → 2×3) ── */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06]">
@@ -159,7 +154,7 @@ const EngagementModels = () => (
         ))}
 
         {/* ── CTA tile — fills the 6th cell ── */}
-        <div className="group relative flex flex-col justify-between gap-6 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden">
+        <div className="group relative flex flex-col gap-5 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden">
           <div
             className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{
@@ -167,31 +162,45 @@ const EngagementModels = () => (
             }}
           />
 
-          <div>
-            <p
-              className="text-[11px] font-black uppercase tracking-[0.22em] mb-4"
-              style={{ color: C.wa(0.28) }}
+          {/* Number + icon row */}
+          <div className="flex items-center justify-between">
+            <span
+              className="text-[11px] font-black uppercase tracking-[0.22em] tabular-nums"
+              style={{ color: C.lime }}
             >
-              Not sure which fits?
-            </p>
-            <h3 className="text-base sm:text-lg font-bold text-white leading-snug mb-3">
-              Talk through your project with our team.
-            </h3>
-            <p className="text-sm leading-relaxed" style={{ color: C.wa(0.45) }}>
-              We scope the engagement model after understanding your requirements — no commitment required.
-            </p>
+              06
+            </span>
+            <div
+              className="w-10 h-10 flex items-center justify-center border transition-all duration-300"
+              style={{ borderColor: C.wa(0.1), color: C.wa(0.45) }}
+            >
+              <MessageCircle className="w-[18px] h-[18px] transition-colors duration-300 group-hover:text-[#B6FF00]" />
+            </div>
           </div>
 
-          <a
-            href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 self-start px-5 py-2.5 text-sm font-bold uppercase tracking-wider border transition-all duration-300 hover:bg-[#B6FF00] hover:text-black hover:border-[#B6FF00]"
-            style={{ color: C.lime, borderColor: C.la(0.35) }}
+          {/* Label */}
+          <h3
+            className="text-base sm:text-lg font-bold tracking-tight leading-snug transition-colors duration-200 group-hover:text-[#B6FF00]"
+            style={{ color: C.white }}
           >
-            Schedule a Call
-            <ArrowRight className="w-4 h-4" />
-          </a>
+            Not Sure Which Model Fits?
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm leading-relaxed flex-1" style={{ color: C.wa(0.5) }}>
+            We scope the engagement model after understanding your requirements — no commitment required.
+          </p>
+
+          {/* Arrow — slides in on hover */}
+          <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
+            <ArrowRight className="w-4 h-4" style={{ color: C.lime }} />
+            <span
+              className="text-[11px] font-bold uppercase tracking-[0.18em]"
+              style={{ color: C.lime }}
+            >
+              Let's Talk
+            </span>
+          </div>
         </div>
 
       </div>

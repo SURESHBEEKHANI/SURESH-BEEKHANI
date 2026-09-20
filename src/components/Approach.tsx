@@ -173,59 +173,7 @@ const DesktopStepCard: React.FC<{
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
 
-      {/* Timeline node + connector */}
-      <div className="relative w-full flex items-center justify-center mb-6">
-        {/* Left connector line */}
-        {index > 0 && (
-          <div
-            className="absolute right-1/2 top-1/2 -translate-y-1/2"
-            style={{
-              left: 0,
-              right: '50%',
-              height: 1,
-              background: active
-                ? `linear-gradient(to right, ${C.la(0.2)}, ${C.lime})`
-                : C.wa(0.1),
-              transition: 'background 0.4s ease',
-            }}
-            aria-hidden="true"
-          />
-        )}
 
-        {/* Node */}
-        <div
-          className="relative z-10 flex items-center justify-center"
-          style={{
-            width: 48,
-            height: 48,
-            borderRadius: '50%',
-            background: active ? C.la(0.15) : C.wa(0.04),
-            border: `1.5px solid ${active ? C.lime : C.wa(0.12)}`,
-            boxShadow: active ? `0 0 20px ${C.la(0.35)}` : 'none',
-            transition: 'all 0.35s ease',
-            transform: active ? 'scale(1.1)' : 'scale(1)',
-          }}
-        >
-          <Icon size={16} color={active ? C.lime : C.wa(0.35)} style={{ transition: 'color 0.3s' }} />
-        </div>
-
-        {/* Right connector line */}
-        {!isLast && (
-          <div
-            className="absolute left-1/2 top-1/2 -translate-y-1/2"
-            style={{
-              left: '50%',
-              right: 0,
-              height: 1,
-              background: active
-                ? `linear-gradient(to right, ${C.lime}, ${C.la(0.2)})`
-                : C.wa(0.1),
-              transition: 'background 0.4s ease',
-            }}
-            aria-hidden="true"
-          />
-        )}
-      </div>
 
       {/* Card */}
       <div
@@ -235,6 +183,7 @@ const DesktopStepCard: React.FC<{
               ? `linear-gradient(160deg, ${C.graphite} 0%, rgba(17,17,17,0.88) 100%)`
               : 'rgba(17,17,17,0.72)',
             border: `1px solid ${active ? C.la(0.38) : C.wa(0.18)}`,
+            borderRadius: 12,
             padding: '22px 20px',
           transition: 'all 0.3s ease',
           transform: active ? 'translateY(-3px)' : 'translateY(0)',
@@ -404,20 +353,12 @@ const Approach: React.FC = () => {
 
   return (
     <section
-      className="py-16 sm:py-24 relative overflow-hidden antialiased scroll-mt-20"
+      className="font-display py-16 sm:py-24 relative overflow-hidden antialiased scroll-mt-20"
       id="approach"
       style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
       aria-labelledby="approach-heading"
     >
-      {/* Grid texture */}
-      <div
-        className="pointer-events-none select-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `linear-gradient(${C.wa(0.022)} 1px, transparent 1px), linear-gradient(90deg, ${C.wa(0.022)} 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+
 
       {/* Ambient glow */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -458,22 +399,7 @@ const Approach: React.FC = () => {
             </p>
           </div>
 
-          {/* Narrative chain */}
-          <div className="hidden sm:flex items-center gap-2 shrink-0">
-            {(['Contact', 'Discover', 'Define', 'Deliver'] as const).map((label, i, arr) => (
-              <React.Fragment key={label}>
-                <span
-                  className="text-xs font-bold uppercase tracking-[0.14em]"
-                  style={{ color: activeStep === i ? C.lime : C.wa(0.25) }}
-                >
-                  {label}
-                </span>
-                {i < arr.length - 1 && (
-                  <ArrowRight size={10} color={C.wa(0.2)} />
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+          {/* Narrative chain removed */}
         </div>
 
         {/* ══════════════════════════════════════════════════════
