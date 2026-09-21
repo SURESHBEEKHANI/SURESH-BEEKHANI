@@ -208,7 +208,7 @@ const LatestBlogs: React.FC = () => {
         style={{ color: C.white }}
         aria-label="Loading latest insights"
       >
-        <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
             <div className="space-y-4">
               <div className="h-2.5 w-32 rounded-full animate-pulse" style={{ background: C.wa(0.08) }} />
@@ -237,7 +237,7 @@ const LatestBlogs: React.FC = () => {
       style={{ color: C.white }}
       aria-labelledby="insights-heading"
     >
-      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER

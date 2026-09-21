@@ -39,6 +39,8 @@ import LatestBlogs from "../components/LatestBlogs";
 import { IMPACT_STATS } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
+import EngagementModels from "../components/EngagementModels";
+import Testimonials from "../components/Testimonials";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System (Consistent with src/components)
@@ -556,7 +558,7 @@ export const AIDevelopment: React.FC = () => {
     <div
       className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black"
       style={{
-        background: `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.18)} 0%, ${C.ga(0.05)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.1)} 0%, ${C.ga(0.02)} 42%, transparent 76%), ${C.black}`,
+        background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
         color: C.white,
       }}
     >
@@ -647,7 +649,7 @@ export const AIDevelopment: React.FC = () => {
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             {/* Left Content */}
             <div className="w-full flex flex-col items-start text-left">
@@ -796,7 +798,7 @@ export const AIDevelopment: React.FC = () => {
               <img
                 src="/image/Servies/service-page image-hero.png"
                 alt="AI Development Hero"
-                className="relative z-10 w-full max-w-lg"
+                className="relative z-10 w-full max-w-2xl"
               />
             </div>
           </div>
@@ -833,7 +835,7 @@ export const AIDevelopment: React.FC = () => {
 
       {/* Main Content Sections */}
       <main className="flex-grow relative z-10 pt-14 pb-24 sm:pt-18 sm:pb-28">
-        <div className="w-full px-5 sm:px-8 lg:px-12">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* ══════════════════════════════════════════════════════
               02 — VALUE STATEMENT
@@ -1094,9 +1096,102 @@ export const AIDevelopment: React.FC = () => {
             </div>
           </section>
 
+          {/* ══════════════════════════════════════════════════════
+              04 — INDUSTRIES
+          ══════════════════════════════════════════════════════ */}
+          <section className="mb-8 sm:mb-20">
+            <Industries />
+          </section>
 
           {/* ══════════════════════════════════════════════════════
-              05 — BUSINESS USE CASES
+              05 — ENGAGEMENT MODELS
+          ══════════════════════════════════════════════════════ */}
+          <section className="mb-8 sm:mb-20">
+            <EngagementModels />
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
+              06 — DEVELOPMENT PROCESS (4 Steps)
+          ══════════════════════════════════════════════════════ */}
+          <section
+            className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
+          >
+
+            <div className="relative z-10">
+              <div className="mx-auto mb-10 max-w-3xl text-center">
+                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+                  PROCESS
+                </div>
+                <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  Our AI <span style={{ color: C.lime }}>Delivery Steps.</span>
+                </h2>
+                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                  From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
+                </p>
+              </div>
+
+              {/* Compact process grid */}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+                {deliveryStages.map((step) => {
+                  const StepIcon = step.icon;
+                  return (
+                    <div
+                      key={step.num}
+                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
+                    >
+                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
+                      <div>
+                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
+                            {step.num}
+                          </span>
+                          <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                        </div>
+
+                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
+                          {step.title}
+                        </h3>
+
+                        <p className="text-xs font-light leading-6 text-white/65">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
+                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
+                          Key Deliverables
+                        </span>
+                        {step.deliverables.map((item, di) => (
+                          <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
+                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
+              07 — CLIENT TESTIMONIALS
+          ══════════════════════════════════════════════════════ */}
+          <section className="mb-8 sm:mb-20">
+            <Testimonials />
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
+              09 — TECHNOLOGY ECOSYSTEM
+          ══════════════════════════════════════════════════════ */}
+          <section className="mb-8 sm:mb-20">
+            <TechnologyStack />
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
+              10 — BUSINESS USE CASES
           ══════════════════════════════════════════════════════ */}
           <section className="mb-8 sm:mb-20">
             <div className="mx-auto mb-10 w-full max-w-4xl text-center">
@@ -1110,15 +1205,6 @@ export const AIDevelopment: React.FC = () => {
               <p className="mx-auto max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
                 We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
               </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white/45">
-                <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: C.lime }} />Problem</span>
-                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                <span>Intelligence</span>
-                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                <span>Execution</span>
-                <span className="h-px w-8" style={{ background: C.wa(0.2) }} aria-hidden="true" />
-                <span style={{ color: C.lime }}>Outcome</span>
-              </div>
             </div>
 
             {/* Interactive domain selector */}
@@ -1256,58 +1342,149 @@ export const AIDevelopment: React.FC = () => {
           </section>
 
           {/* ══════════════════════════════════════════════════════
-              06 — DEVELOPMENT PROCESS (4 Steps)
+              11 — PRODUCTION AI (6 Technical Pillars - Process Style)
           ══════════════════════════════════════════════════════ */}
           <section
             className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
-
             <div className="relative z-10">
               <div className="mx-auto mb-10 max-w-3xl text-center">
                 <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                  PROCESS
+                  ENGINEERING STANDARDS
                 </div>
                 <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  Our AI <span style={{ color: C.lime }}>Delivery Steps.</span>
+                  Built for Production. <span style={{ color: C.lime }}>Not Just Prototypes.</span>
                 </h2>
                 <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
-                  From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
+                  Enterprise AI requires more than a prompt. We embed rigorous evaluation, guardrails, auditing, and security into every layer of the architecture.
                 </p>
               </div>
 
-              {/* Compact process grid */}
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-                {deliveryStages.map((step) => {
-                  const StepIcon = step.icon;
+              {/* Process-style pillars grid */}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {productionPillars.map((pillar, i) => {
+                  const PillarIcon = pillar.icon;
                   return (
                     <div
-                      key={step.num}
+                      key={i}
                       className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
                     >
                       <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
                       <div>
                         <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
                           <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
-                            {step.num}
+                            {String(i + 1).padStart(2, '0')}
                           </span>
-                          <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                          <PillarIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
                         </div>
 
                         <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
-                          {step.title}
+                          {pillar.title}
                         </h3>
 
                         <p className="text-xs font-light leading-6 text-white/65">
-                          {step.description}
+                          {pillar.details}
                         </p>
                       </div>
 
                       <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
                         <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
-                          Key Deliverables
+                          {pillar.tag}
                         </span>
-                        {step.deliverables.map((item, di) => (
+                        <div className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
+                          <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
+                          <span>{pillar.description}</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════════════════════
+              09 — WHY VELNIX (Process-Style Grid)
+          ══════════════════════════════════════════════════════ */}
+          <section
+            className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
+          >
+            <div className="relative z-10">
+              <div className="mx-auto mb-10 max-w-3xl text-center">
+                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+                  THE VELNIX ADVANTAGE
+                </div>
+                <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                  Engineering AI Around <span style={{ color: C.lime }}>Your Business.</span>
+                </h2>
+                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                  Why forward-thinking enterprises partner with Velnix to move past proof-of-concepts into reliable production deployment.
+                </p>
+              </div>
+
+              {/* Process-style advantage grid */}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  {
+                    num: "01",
+                    title: "Business-First",
+                    description: "Start with the problem, not the technology. We identify where AI delivers verifiable economic leverage before writing code.",
+                    icon: TrendingUp,
+                    deliverables: ["Use Case Validation", "ROI Modeling", "Success Metrics"]
+                  },
+                  {
+                    num: "02", 
+                    title: "Production-Minded",
+                    description: "Design for reliability beyond the prototype. We implement deterministic evaluation harnesses, latency budgets, and full-stack observability.",
+                    icon: ShieldCheck,
+                    deliverables: ["Evaluation Benchmarks", "Performance Monitoring", "Fallback Systems"]
+                  },
+                  {
+                    num: "03",
+                    title: "Integration-Native", 
+                    description: "Build AI that works with your existing operations. We connect models directly to your data, tools, and workflows.",
+                    icon: Workflow,
+                    deliverables: ["API Integrations", "Data Pipelines", "Workflow Automation"]
+                  },
+                  {
+                    num: "04",
+                    title: "Security-First",
+                    description: "Enterprise AI requires enterprise security. We implement zero-trust architectures, role-based access, and audit trails.",
+                    icon: Lock,
+                    deliverables: ["Access Controls", "Encryption Standards", "Audit Logging"]
+                  }
+                ].map((advantage) => {
+                  const AdvantageIcon = advantage.icon;
+                  return (
+                    <div
+                      key={advantage.num}
+                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
+                    >
+                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
+                      <div>
+                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
+                            {advantage.num}
+                          </span>
+                          <AdvantageIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                        </div>
+
+                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
+                          {advantage.title}
+                        </h3>
+
+                        <p className="text-xs font-light leading-6 text-white/65">
+                          {advantage.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
+                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
+                          Key Capabilities
+                        </span>
+                        {advantage.deliverables.map((item, di) => (
                           <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
                             <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
                             <span>{item}</span>
@@ -1321,380 +1498,9 @@ export const AIDevelopment: React.FC = () => {
             </div>
           </section>
 
-          {/* ══════════════════════════════════════════════════════
-              06b — ENGAGEMENT MODELS
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-8 sm:mb-20">
-
-            {/* Two-column header: label+title left, description right */}
-            <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-end">
-              <div>
-                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                  <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
-                  ENGAGEMENT MODELS
-                </div>
-                <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  From First Assessment to <span style={{ color: C.lime }}>Long-Term AI Operations.</span>
-                </h2>
-              </div>
-              <div className="lg:pb-1">
-                <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed border-l-2 pl-5" style={{ borderColor: C.la(0.4) }}>
-                  We work with businesses across the full AI lifecycle — from identifying the right opportunity to building, deploying, and continuously improving production AI systems.
-                </p>
-              </div>
-            </div>
-
-            {/* Lifecycle cards — 2-up on md, 4-up on lg with connecting line */}
-            <div className="relative">
-              {/* Horizontal connector line (desktop only) */}
-              <div
-                className="pointer-events-none absolute left-[6%] right-[6%] top-9 hidden h-px lg:block"
-                style={{ background: `linear-gradient(90deg, transparent, ${C.la(0.3)}, ${C.lime}, ${C.la(0.3)}, transparent)` }}
-                aria-hidden="true"
-              />
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {[
-                  {
-                    num: "01",
-                    phase: "AI AUDIT",
-                    title: "Find the right opportunity before you build.",
-                    description: "Assess workflows, data, systems, and operational bottlenecks to identify where AI can create measurable business value.",
-                    focus: ["Workflow assessment", "AI opportunity identification", "Data readiness", "Technical feasibility", "Success metrics"],
-                    icon: Search,
-                  },
-                  {
-                    num: "02",
-                    phase: "PILOT",
-                    title: "Prove the value with a focused use case.",
-                    description: "Validate one high-value workflow with a working AI solution, real-world data, and measurable evaluation criteria before moving to a full production build.",
-                    focus: ["Working prototype", "Model strategy", "Evaluation baseline", "Workflow validation", "Proof of value"],
-                    icon: Code2,
-                  },
-                  {
-                    num: "03",
-                    phase: "AI BUILD",
-                    title: "Turn a validated use case into production software.",
-                    description: "Engineer the complete AI system, integrate it with existing business infrastructure, and deploy it with the reliability and controls required for real operations.",
-                    focus: ["AI system development", "API and system integration", "Security and guardrails", "Production deployment", "Reliability engineering"],
-                    icon: Layers,
-                  },
-                  {
-                    num: "04",
-                    phase: "AI OPERATIONS",
-                    title: "Keep the system reliable as your business evolves.",
-                    description: "Continuously monitor, evaluate, optimize, and improve AI systems as workflows, data, models, and business requirements change.",
-                    focus: ["Monitoring and telemetry", "Performance evaluation", "Cost and latency optimization", "Model improvement", "Continuous iteration"],
-                    icon: RefreshCw,
-                  },
-                ].map((model, i) => {
-                  const Icon = model.icon;
-                  return (
-                    <motion.div
-                      key={model.num}
-                      initial={shouldReduce ? false : { opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.12 }}
-                      transition={{ duration: 0.55, delay: i * 0.09, ease }}
-                      className="group relative flex flex-col rounded-2xl border border-white/10 bg-[#111111] overflow-hidden transition-all duration-300 hover:-translate-y-1"
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = C.la(0.5);
-                        e.currentTarget.style.boxShadow = `0 16px 40px ${C.la(0.1)}`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = C.wa(0.1);
-                        e.currentTarget.style.boxShadow = 'none';
-                      }}
-                    >
-                      {/* Lime top bar */}
-                      <div className="h-[3px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(90deg, ${C.green}, ${C.lime})` }} aria-hidden="true" />
-
-                      {/* Step number + icon row */}
-                      <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-white/[0.07]">
-                        <div
-                          className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-2xl border transition-all duration-300 group-hover:scale-105"
-                          style={{ background: C.lime, borderColor: C.lime, color: C.black }}
-                        >
-                          <Icon className="h-6 w-6" strokeWidth={1.8} />
-                        </div>
-                        <span
-                          className="font-mono text-[2.25rem] font-black leading-none tracking-[-0.04em] transition-colors duration-300"
-                          style={{ color: C.wa(0.06) }}
-                        >
-                          {model.num}
-                        </span>
-                      </div>
-
-                      {/* Body */}
-                      <div className="flex flex-1 flex-col px-6 pt-5 pb-6">
-                        <span className="mb-2 block text-[10px] font-mono font-bold uppercase tracking-[0.18em]" style={{ color: C.lime }}>
-                          {model.phase}
-                        </span>
-                        <h3 className="mb-3 text-base font-bold leading-snug tracking-tight text-white transition-colors duration-200 group-hover:text-[#B6FF00]">
-                          {model.title}
-                        </h3>
-                        <p className="mb-5 text-[13px] font-light leading-[1.75] text-white/55">
-                          {model.description}
-                        </p>
-
-                        {/* Focus list */}
-                        <div className="mt-auto space-y-2 border-t border-white/[0.07] pt-4">
-                          <span className="mb-2.5 block text-[9px] font-mono uppercase tracking-[0.18em] text-white/30">
-                            Focus
-                          </span>
-                          {model.focus.map((item, fi) => (
-                            <div key={fi} className="flex items-center gap-2.5 text-[11px] font-light text-white/50">
-                              <span className="h-px w-3 shrink-0" style={{ background: C.la(0.6) }} />
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              07 — PRODUCTION AI (6 Technical Pillars)
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-8 sm:mb-20">
-            <div className="w-full mb-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                ENGINEERING STANDARDS
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">
-                Built for Production. <span style={{ color: C.lime }}>Not Just Prototypes.</span>
-              </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                Enterprise AI requires more than a prompt. We embed rigorous evaluation, guardrails,
-                auditing, and security into every layer of the architecture.
-              </p>
-            </div>
-
-            {/* 6 Technical Pillars Grid with Rich Filled Icons */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {productionPillars.map((pillar, i) => {
-                const Icon = pillar.icon;
-                return (
-                  <div
-                    key={i}
-                    className="p-7 sm:p-8 rounded-2xl border border-white/10 flex flex-col justify-between transition-all duration-300 hover:border-[#B6FF00]/40 group"
-                    style={{ background: C.graphite }}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                        <div className="w-11 h-11 rounded-xl flex items-center justify-center border group-hover:scale-105 transition-all duration-300" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                          <Icon
-                            className="w-5 h-5 text-[#B6FF00]"
-                            fill="currentColor"
-                            fillOpacity={0.25}
-                            strokeWidth={2}
-                          />
-                        </div>
-                        <span className="text-[10px] font-mono text-[#B6FF00] tracking-wider">
-                          {pillar.tag}
-                        </span>
-                      </div>
-
-                      <h3 className="font-display text-lg font-bold text-white mb-2 tracking-tight group-hover:text-[#B6FF00] transition-colors">
-                        {pillar.title}
-                      </h3>
-
-                      <p className="text-xs font-mono text-white/50 mb-4">
-                        {pillar.description}
-                      </p>
-
-                      <p className="text-xs text-white/70 leading-relaxed font-light">
-                        {pillar.details}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-white/40">
-                      <span>STANDARD: ENFORCED</span>
-                      <CheckCircle2 className="w-4 h-4 text-[#B6FF00]" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              08 — TECHNOLOGY ECOSYSTEM
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-8 sm:mb-20">
-            <TechnologyStack />
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              09 — WHY VELNIX (Visual Composition)
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-8 sm:mb-20">
-            <div className="w-full mb-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border text-xs font-mono font-bold tracking-[0.2em] uppercase" style={{ background: C.la(0.06), borderColor: C.la(0.3), color: C.lime }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" />
-                THE VELNIX ADVANTAGE
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">
-                Engineering AI Around <span style={{ color: C.lime }}>Your Business.</span>
-              </h2>
-              {/* Signature Accent Line */}
-              <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7DCC00] to-[#B6FF00] rounded-full mb-6" />
-              <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-                Why forward-thinking enterprises partner with Velnix to move past proof-of-concepts
-                into reliable production deployment.
-              </p>
-            </div>
-
-            {/* Premium Visual Advantage Grid */}
-            <div
-              className="p-8 sm:p-14 rounded-2xl border border-white/15 relative overflow-hidden"
-              style={{
-                background: `linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%), ${C.graphite}`,
-                backdropFilter: 'blur(12px)'
-              }}
-            >
-              {/* Subtle ambient corner glow */}
-              <div
-                className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[140px] pointer-events-none"
-                style={{ background: `radial-gradient(circle, ${C.la(0.04)} 0%, transparent 70%)` }}
-              />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
-
-                {/* 01: Business-First */}
-                <div
-                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
-                >
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-
-                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">01 // PURPOSE</span>
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
-                        border: `1px solid ${C.lime}`,
-                        color: C.black
-                      }}
-                    >
-                      <TrendingUp className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
-                    </div>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Business-First</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
-                    Start with the problem, not the technology. We identify where AI delivers
-                    verifiable economic leverage before writing code, ensuring projects drive real ROI.
-                  </p>
-
-                  {/* Subtle corner highlight */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#B6FF00]/10 to-transparent rounded-br-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                </div>
-
-                {/* 02: Production-Minded */}
-                <div
-                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-
-                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">02 // RELIABILITY</span>
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
-                        border: `1px solid ${C.lime}`,
-                        color: C.black
-                      }}
-                    >
-                      <ShieldCheck className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
-                    </div>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Production-Minded</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
-                    Design for reliability beyond the prototype. We implement deterministic evaluation
-                    harnesses, latency budgets, fallback models, and full-stack observability.
-                  </p>
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                </div>
-
-                {/* 03: Integration-Ready */}
-                <div
-                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-
-                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">03 // ADOPTION</span>
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
-                        border: `1px solid ${C.lime}`,
-                        color: C.black
-                      }}
-                    >
-                      <Layers className="w-5 h-5" fill="currentColor" fillOpacity={0.3} strokeWidth={2} />
-                    </div>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Integration-Ready</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
-                    Connect AI to existing products and workflows. Our solutions integrate smoothly
-                    with legacy ERPs, internal databases, CRMs, and modern APIs without friction.
-                  </p>
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                </div>
-
-                {/* 04: Built to Evolve */}
-                <div
-                  className="group p-6 sm:p-8 rounded-xl bg-gradient-to-br from-[#080808] to-[#0a0a0a] border border-white/10 hover:border-[#B6FF00]/50 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-
-                  <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#B6FF00] group-hover:text-white transition-colors">04 // AGILITY</span>
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[#B6FF00]/30 transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, ${C.lime}, ${C.green})`,
-                        border: `1px solid ${C.lime}`,
-                        color: C.black
-                      }}
-                    >
-                      <RefreshCw className="w-5 h-5" strokeWidth={2} />
-                    </div>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#B6FF00] transition-colors">Built to Evolve</h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed group-hover:text-white/90 transition-colors">
-                    Architecture that can adapt as models and requirements change. Modular orchestration
-                    means you can swap foundation models seamlessly without refactoring business logic.
-                  </p>
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#B6FF00]/0 to-[#B6FF00]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                </div>
-
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-8 sm:mb-20">
-            <Industries />
-          </section>
-
           <section className="mb-8 sm:mb-20">
             <LatestBlogs />
           </section>
-
-
 
         </div>
       </main>

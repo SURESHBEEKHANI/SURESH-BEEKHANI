@@ -140,7 +140,7 @@ const Industries: React.FC = () => {
 
   return (
     <section id="industries" className="relative overflow-visible py-16 font-display sm:py-20 lg:py-24 scroll-mt-20" style={{ color: C.WHITE }} aria-labelledby="industries-heading">
-      <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8 grid gap-8 lg:mb-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
           <div>
             <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.LIME }}>

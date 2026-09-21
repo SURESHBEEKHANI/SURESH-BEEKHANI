@@ -216,7 +216,7 @@ const Hero = () => {
 
         {/* ── MAIN CONTENT ── */}
         <div
-          className="relative z-10 w-full px-6 sm:px-10 lg:px-16 grid items-center gap-6 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:gap-4 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-28 lg:pb-20"
+          className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid items-center gap-6 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:gap-4 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-28 lg:pb-20"
         >
 
           {/* ═══════════════════════════════════════════

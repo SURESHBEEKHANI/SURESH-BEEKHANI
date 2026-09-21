@@ -54,22 +54,8 @@ const engagementModels = [
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 const EngagementModels = () => (
-  <section
-    className="font-display py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-    style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505' }}
-  >
-    {/* Subtle ambient glow */}
-    <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full"
-        style={{
-          background: `radial-gradient(ellipse, ${C.la(0.05)} 0%, transparent 70%)`,
-          filter: 'blur(100px)',
-        }}
-      />
-    </div>
-
-    <div className="max-w-7xl mx-auto relative z-10">
+  <section className="font-display py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       {/* ── Header ── */}
       <div className="max-w-2xl mb-12 sm:mb-16">

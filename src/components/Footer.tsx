@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/supabaseClient';
+import { supabase } from '@/lib';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS
@@ -100,7 +100,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
   }, []);
 
   const list = (
-    <ul className="flex flex-col gap-3 mt-4">
+    <ul className="flex flex-col gap-4 mt-5">
       {links.map(l => {
         const isInternal = l.href.startsWith('/');
         const content = (
@@ -108,16 +108,16 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
             <span
               className="shrink-0 rounded-full transition-all duration-200"
               style={{
-                width: 4, height: 4,
-                background: C.wa(0.2),
+                width: 3, height: 3,
+                background: C.wa(0.25),
                 display: 'inline-block',
               }}
             />
             {l.label}
           </>
         );
-        const className = "group inline-flex items-center gap-2 text-sm leading-6 transition-colors duration-200";
-        const style = { color: C.wa(0.55), textDecoration: 'none' };
+        const className = "group inline-flex items-center gap-3 text-sm leading-6 font-inter transition-colors duration-200";
+        const style = { color: C.wa(0.60), textDecoration: 'none' };
 
         return (
           <li key={l.label}>
@@ -127,7 +127,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
                 className={className}
                 style={style}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.60); }}
               >
                 {content}
               </Link>
@@ -137,7 +137,7 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
                 className={className}
                 style={style}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.60); }}
               >
                 {content}
               </a>
@@ -151,13 +151,13 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
   const titleHeader = title === 'Industries' ? (
     <Link
       to="/#industries"
-      className="inline-block text-[11px] font-bold uppercase tracking-[0.24em] transition-colors duration-200 hover:text-white"
+      className="inline-block text-[10px] font-semibold uppercase tracking-[0.20em] font-inter transition-colors duration-200 hover:text-white"
       style={{ color: C.lime, textDecoration: 'none' }}
     >
       {title}
     </Link>
   ) : (
-    <h3 className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+    <h3 className="text-[10px] font-semibold uppercase tracking-[0.20em] font-inter" style={{ color: C.lime }}>
       {title}
     </h3>
   );
@@ -174,14 +174,14 @@ const FooterCol = ({ title, links }: { title: string; links: { label: string; hr
   }
 
   return (
-    <div style={{ borderBottom: `1px solid ${C.wa(0.07)}` }}>
+    <div style={{ borderBottom: `1px solid ${C.wa(0.08)}` }}>
       <button
         onClick={() => setOpen(o => !o)}
-        className="flex w-full items-center justify-between py-4"
+        className="flex w-full items-center justify-between py-5"
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         aria-expanded={open}
       >
-        <span className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.20em] font-inter" style={{ color: C.lime }}>
           {title}
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
@@ -224,13 +224,13 @@ const FooterContactCol = () => {
   }, []);
 
   const list = (
-    <ul className="flex flex-col gap-3 mt-4">
+    <ul className="flex flex-col gap-4 mt-5">
       {CONTACT_DETAILS.map(item => {
         const Icon = item.icon;
         const inner = (
           <>
-            <Icon size={13} color={C.la(0.7)} strokeWidth={1.5} className="mt-1 shrink-0" />
-            <span className={item.href ? undefined : 'whitespace-pre-line text-sm leading-6'}>{item.label}</span>
+            <Icon size={14} color={C.la(0.6)} strokeWidth={1.5} className="mt-0.5 shrink-0" />
+            <span className={item.href ? undefined : 'whitespace-pre-line text-sm leading-6 font-inter'}>{item.label}</span>
           </>
         );
         return (
@@ -238,15 +238,15 @@ const FooterContactCol = () => {
             {item.href ? (
               <a
                 href={item.href}
-                className="inline-flex items-start gap-2 text-sm leading-6 transition-colors duration-200"
-                style={{ color: C.wa(0.55), textDecoration: 'none' }}
+                className="inline-flex items-start gap-3 text-sm leading-6 font-inter transition-colors duration-200"
+                style={{ color: C.wa(0.60), textDecoration: 'none' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.55); }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.60); }}
               >
                 {inner}
               </a>
             ) : (
-              <span className="inline-flex items-start gap-2 text-sm" style={{ color: C.wa(0.55) }}>
+              <span className="inline-flex items-start gap-3 text-sm font-inter" style={{ color: C.wa(0.60) }}>
                 {inner}
               </span>
             )}
@@ -259,7 +259,7 @@ const FooterContactCol = () => {
   if (!mobile) {
     return (
       <div>
-        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+        <h3 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.20em] font-inter" style={{ color: C.lime }}>
           Contact
         </h3>
         {list}
@@ -268,14 +268,14 @@ const FooterContactCol = () => {
   }
 
   return (
-    <div style={{ borderBottom: `1px solid ${C.wa(0.07)}` }}>
+    <div style={{ borderBottom: `1px solid ${C.wa(0.08)}` }}>
       <button
         onClick={() => setOpen(o => !o)}
-        className="flex w-full items-center justify-between py-4"
+        className="flex w-full items-center justify-between py-5"
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         aria-expanded={open}
       >
-        <span className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.20em] font-inter" style={{ color: C.lime }}>
           Contact
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
@@ -332,25 +332,25 @@ const NewsletterForm = () => {
 
   return (
     <div>
-      <p className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
-        Stay Updated
+      <p className="mb-4 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.20em] font-inter" style={{ color: C.lime }}>
+        Technology Insights
         {alreadySubscribed && (
           <span
-            className="whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold normal-case tracking-[0.04em]"
+            className="whitespace-nowrap rounded px-2.5 py-1 text-xs font-medium normal-case tracking-[0.02em]"
             style={{
-              border: `1px solid ${C.la(0.35)}`,
-              background: C.la(0.1),
+              border: `1px solid ${C.la(0.25)}`,
+              background: C.la(0.08),
               color: C.lime,
             }}
           >
-            Already subscribed!
+            Already subscribed
           </span>
         )}
       </p>
       {done ? (
-        <p className="text-sm font-bold" style={{ color: C.lime }}>Welcome to Velnix. ✓</p>
+        <p className="text-sm font-semibold font-inter" style={{ color: C.lime }}>Thank you for subscribing. ✓</p>
       ) : (
-        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 240 }}>
+        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 280 }}>
           <div style={{ position: 'relative' }}>
             <input
               type="email"
@@ -359,36 +359,38 @@ const NewsletterForm = () => {
                 setEmail(e.target.value);
                 setAlreadySubscribed(false);
               }}
-              placeholder="Your work email"
+              placeholder="Enter your email"
               disabled={submitting}
+              className="font-inter"
               style={{
                 width: '100%',
-                background: C.wa(0.04),
-                border: `1px solid ${C.wa(0.1)}`,
+                background: C.wa(0.06),
+                border: `1px solid ${C.wa(0.12)}`,
                 color: C.white,
-                fontSize: '0.875rem',
-                padding: '0.7rem 6.5rem 0.7rem 0.875rem',
+                fontSize: '14px',
+                padding: '12px 120px 12px 16px',
                 outline: 'none',
-                borderRadius: 999,
+                borderRadius: 8,
               }}
-              onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = C.la(0.5); }}
-              onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = C.wa(0.1); }}
+              onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = C.la(0.4); }}
+              onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = C.wa(0.12); }}
             />
             <button
               type="submit"
               disabled={submitting}
+              className="font-inter"
               style={{
                 position: 'absolute',
-                top: 4,
-                right: 4,
-                bottom: 4,
+                top: 6,
+                right: 6,
+                bottom: 6,
                 background: C.lime,
                 color: C.black,
-                fontWeight: 700,
-                fontSize: '0.875rem',
-                padding: '0 0.85rem',
+                fontWeight: 600,
+                fontSize: '13px',
+                padding: '0 16px',
                 border: 'none',
-                borderRadius: 999,
+                borderRadius: 6,
                 cursor: submitting ? 'not-allowed' : 'pointer',
                 whiteSpace: 'nowrap',
                 opacity: submitting ? 0.7 : 1,
@@ -422,19 +424,42 @@ const Footer = () => {
       `}</style>
 
       <footer
-        className="font-display"
-        style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white, position: 'relative', overflow: 'hidden' }}
+        className="font-inter"
+        style={{ 
+          background: `linear-gradient(180deg, ${C.black} 0%, ${C.graphite} 100%)`,
+          color: C.white, 
+          position: 'relative', 
+          overflow: 'hidden',
+          borderTop: `1px solid ${C.wa(0.08)}`
+        }}
         aria-label="Velnix Solutions site footer"
       >
 
         {/* ── AMBIENT BACKGROUND ── */}
         <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
           {/* Top separator line */}
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.25)}, transparent)` }} />
-          {/* Subtle lime glow top-left */}
-          <div style={{ position: 'absolute', top: -120, left: -100, width: 500, height: 500, background: `radial-gradient(circle, ${C.la(0.1)} 0%, ${C.ga(0.035)} 40%, transparent 72%)`, filter: 'blur(48px)' }} />
-          {/* Subtle green glow bottom-right */}
-          <div style={{ position: 'absolute', bottom: -80, right: -60, width: 400, height: 400, background: `radial-gradient(circle, ${C.ga(0.12)} 0%, ${C.ga(0.04)} 42%, transparent 74%)`, filter: 'blur(58px)' }} />
+          <div style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: '50%', 
+            transform: 'translateX(-50%)',
+            width: '100%',
+            maxWidth: '1280px',
+            height: 1, 
+            background: `linear-gradient(90deg, transparent, ${C.wa(0.12)} 50%, transparent)` 
+          }} />
+          
+          {/* Subtle brand accent - very restrained */}
+          <div style={{ 
+            position: 'absolute', 
+            top: -200, 
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 600, 
+            height: 400, 
+            background: `radial-gradient(ellipse 60% 40%, ${C.la(0.03)} 0%, transparent 70%)`, 
+            filter: 'blur(80px)' 
+          }} />
         </div>
 
         {/* ══════════════════════════════════════════════════════
@@ -443,37 +468,34 @@ const Footer = () => {
         <div
           className="relative z-10"
           style={{
-            borderBottom: `1px solid ${C.wa(0.07)}`,
-            background: `linear-gradient(180deg, ${C.graphite}55 0%, transparent 100%)`,
+            borderBottom: `1px solid ${C.wa(0.08)}`,
+            background: `linear-gradient(180deg, ${C.wa(0.02)} 0%, transparent 100%)`,
           }}
         >
-          <div
-            className="w-full px-6 sm:px-10 lg:px-16"
-            style={{ paddingTop: '5rem', paddingBottom: '5rem' }}
-          >
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
 
               {/* Left — Headline + copy */}
-              <div style={{ maxWidth: 560 }}>
+              <div style={{ maxWidth: 600 }}>
                 {/* CTA Eyebrow */}
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, ease }}
-                  className="mb-7 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+                  className="mb-8 inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.20em]"
                   style={{ color: C.lime }}
                 >
                   <span
                     style={{
-                      width: 6, height: 6, borderRadius: '50%',
+                      width: 4, height: 4, borderRadius: '50%',
                       background: C.lime,
                       display: 'inline-block',
-                      boxShadow: `0 0 8px ${C.lime}`,
-                      animation: shouldReduce ? 'none' : 'velnix-footer-blink 2s ease-in-out infinite',
+                      boxShadow: `0 0 6px ${C.la(0.4)}`,
+                      animation: shouldReduce ? 'none' : 'velnix-footer-blink 3s ease-in-out infinite',
                     }}
                   />
-                  Start the Conversation
+                  Ready to Transform
                 </motion.div>
 
                 {/* CTA Headline */}
@@ -482,11 +504,10 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08, duration: 0.6, ease }}
-                  className="mb-5 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
+                  className="mb-6 font-space-grotesk text-4xl font-bold leading-tight tracking-[-0.04em] sm:text-5xl xl:text-6xl"
                 >
-                  Ready to automate what{' '}
-                  <span style={{ color: C.lime }}>slows your</span>
-                  {' '}business down?
+                  Scale your business with{' '}
+                  <span style={{ color: C.lime }}>intelligent systems</span>
                 </motion.h2>
 
                 {/* CTA Supporting copy */}
@@ -495,11 +516,10 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.16, duration: 0.55, ease }}
-                  className="max-w-xl text-lg leading-8"
-                  style={{ color: C.wa(0.64) }}
+                  className="max-w-lg text-lg leading-7 font-inter"
+                  style={{ color: C.wa(0.70) }}
                 >
-                  Tell us where your operation loses time. We'll identify what to automate
-                  and build the system to make it work.
+                  Partner with Velnix Solutions to transform operational complexity into competitive advantage through AI, automation, and enterprise software.
                 </motion.p>
               </div>
 
@@ -522,15 +542,12 @@ const Footer = () => {
         {/* ══════════════════════════════════════════════════════
             ZONE 2 — BRAND + NAVIGATION GRID
         ══════════════════════════════════════════════════════ */}
-        <div className="relative z-10">
-          <div
-            className="w-full px-6 sm:px-10 lg:px-16"
-            style={{ paddingTop: '4rem', paddingBottom: '4rem' }}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+        <div className="relative z-10" style={{ background: C.graphite }}>
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 
-              {/* Brand column */}
-              <div className="lg:col-span-4 flex flex-col gap-8">
+              {/* Brand column - more prominent */}
+              <div className="lg:col-span-2 flex flex-col gap-8">
 
                 {/* Logo */}
                 <motion.div
@@ -545,7 +562,7 @@ const Footer = () => {
                       alt="Velnix Solutions"
                       width={2172}
                       height={724}
-                      style={{ height: 56, width: 'auto' }}
+                      style={{ height: 48, width: 'auto' }}
                       loading="lazy"
                       decoding="async"
                     />
@@ -558,19 +575,30 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08, duration: 0.5, ease }}
-                  className="max-w-[34ch] text-sm leading-6"
-                  style={{ color: C.wa(0.55) }}
+                  className="max-w-[42ch] text-base leading-7 font-inter"
+                  style={{ color: C.wa(0.65) }}
                 >
-                  AI systems, software, and automation built around real business operations.
-                  We turn operational complexity into scalable intelligence.
+                  Engineering intelligent systems that transform business operations. 
+                  We build AI solutions, automation platforms, and enterprise software 
+                  for forward-thinking organizations.
                 </motion.p>
 
-                {/* Social links */}
+                {/* Newsletter */}
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.16, duration: 0.5, ease }}
+                >
+                  <NewsletterForm />
+                </motion.div>
+
+                {/* Social links - more refined */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.5, ease }}
                   className="flex items-center gap-3"
                 >
                   {SOCIAL_LINKS.map(s => (
@@ -582,44 +610,34 @@ const Footer = () => {
                       aria-label={s.name}
                       className="inline-flex items-center justify-center transition-all duration-200"
                       style={{
-                        width: 34, height: 34,
-                        borderRadius: '50%',
-                        background: C.wa(0.05),
-                        border: `1px solid ${C.wa(0.1)}`,
-                        color: C.wa(0.5),
+                        width: 36, height: 36,
+                        borderRadius: 6,
+                        background: C.wa(0.04),
+                        border: `1px solid ${C.wa(0.08)}`,
+                        color: C.wa(0.50),
                       }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement;
                         el.style.color = C.lime;
-                        el.style.borderColor = C.la(0.4);
-                        el.style.background = C.la(0.07);
+                        el.style.borderColor = C.la(0.3);
+                        el.style.background = C.la(0.05);
                       }}
                       onMouseLeave={e => {
                         const el = e.currentTarget as HTMLElement;
-                        el.style.color = C.wa(0.5);
-                        el.style.borderColor = C.wa(0.1);
-                        el.style.background = C.wa(0.05);
+                        el.style.color = C.wa(0.50);
+                        el.style.borderColor = C.wa(0.08);
+                        el.style.background = C.wa(0.04);
                       }}
                     >
                       {s.icon}
                     </a>
                   ))}
                 </motion.div>
-
-                {/* Newsletter */}
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.5, ease }}
-                >
-                  <NewsletterForm />
-                </motion.div>
               </div>
 
-              {/* Navigation columns */}
-              <div className="lg:col-span-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-6">
+              {/* Navigation columns - refined grid */}
+              <div className="lg:col-span-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10">
                   {NAV_COLS.map((col, i) => (
                     <motion.div
                       key={col.title}
@@ -650,34 +668,34 @@ const Footer = () => {
         ══════════════════════════════════════════════════════ */}
         <div
           className="relative z-10"
-          style={{ borderTop: `1px solid ${C.wa(0.07)}` }}
+          style={{ 
+            borderTop: `1px solid ${C.wa(0.08)}`,
+            background: C.black 
+          }}
         >
-          <div
-            className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4"
-            style={{ paddingTop: '1.25rem', paddingBottom: '1.25rem' }}
-          >
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
             {/* Copyright */}
-            <p className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
+            <p className="text-xs font-medium uppercase tracking-[0.12em] font-inter" style={{ color: C.wa(0.45) }}>
               © {new Date().getFullYear()}{' '}
-              <span style={{ color: C.la(0.8), fontWeight: 700 }}>Velnix Solutions</span>
-              {' '}— All rights reserved.
+              <span style={{ color: C.lime, fontWeight: 600 }}>Velnix Solutions</span>
+              {' '}— Engineering the future of business technology.
             </p>
 
             {/* Legal links */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
               {LEGAL_LINKS.map((l, i) => (
                 <React.Fragment key={l.label}>
-                  {i > 0 && <span style={{ color: C.wa(0.15), fontSize: '0.6rem' }}>•</span>}
+                  {i > 0 && <span style={{ color: C.wa(0.15), fontSize: '0.5rem' }}>•</span>}
                   <Link
                     to={l.href}
-                    className="text-xs font-semibold uppercase tracking-[0.14em]"
+                    className="text-xs font-medium uppercase tracking-[0.12em] font-inter"
                     style={{
-                      color: C.wa(0.42),
+                      color: C.wa(0.45),
                       textDecoration: 'none',
                       transition: 'color 0.2s',
                     }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.lime; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.42); }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.wa(0.45); }}
                   >
                     {l.label}
                   </Link>
@@ -703,8 +721,8 @@ const FooterCTA = () => {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.15;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.08;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.08;
     el.style.transform = `translate(${x}px, ${y}px)`;
   };
 
@@ -712,7 +730,7 @@ const FooterCTA = () => {
     const el = ref.current;
     if (el) el.style.transform = 'translate(0,0)';
     (e.currentTarget as HTMLElement).style.background = C.lime;
-    (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 28px ${C.la(0.35)}`;
+    (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 32px ${C.la(0.25)}`;
   };
 
   return (
@@ -724,39 +742,43 @@ const FooterCTA = () => {
       onMouseMove={handleMove}
       onMouseEnter={e => {
         (e.currentTarget as HTMLElement).style.background = C.green;
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 36px ${C.la(0.55)}`;
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 40px ${C.la(0.35)}`;
       }}
       onMouseLeave={handleLeave}
-      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full text-sm font-bold"
+      className="group relative inline-flex items-center gap-3 overflow-hidden font-inter text-sm font-semibold"
       style={{
         background: C.lime,
         color: C.black,
-        padding: '1rem 1.5rem',
+        padding: '16px 24px',
         textDecoration: 'none',
-        transition: 'background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease',
-        boxShadow: `0 8px 28px ${C.la(0.35)}`,
+        transition: 'all 0.25s ease',
+        boxShadow: `0 8px 32px ${C.la(0.25)}`,
         whiteSpace: 'nowrap',
+        borderRadius: 8,
       }}
       aria-label="Book a strategy call with Velnix Solutions"
     >
-      {/* Shimmer */}
+      {/* Subtle shimmer effect - more restrained */}
       <span
         aria-hidden="true"
         style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          width: '200%', left: '-50%', right: 'auto',
-          background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%)',
-          animation: 'velnix-footer-shimmer 2.8s linear infinite',
+          position: 'absolute', 
+          inset: 0, 
+          pointerEvents: 'none',
+          width: '200%', 
+          left: '-50%',
+          background: 'linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)',
+          animation: 'velnix-footer-shimmer 3.5s linear infinite',
           willChange: 'transform',
         }}
       />
       <style>{`@keyframes velnix-footer-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
-      <span className="relative z-10">Book a Strategy Call</span>
+      <span className="relative z-10">Book Strategy Call</span>
       <ArrowRight
-        size={17}
-        strokeWidth={2.5}
-        className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200"
+        size={16}
+        strokeWidth={2}
+        className="relative z-10 group-hover:translate-x-1 transition-transform duration-200"
       />
     </a>
   );

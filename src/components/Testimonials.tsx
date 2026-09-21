@@ -258,16 +258,10 @@ const Testimonials = () => {
   return (
     <section 
       className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
-      style={{ background: 'radial-gradient(ellipse 58% 90% at 100% 0%, rgba(125,204,0,0.08) 0%, transparent 66%), #08080f', color: C.white }}
+      style={{ color: C.white }}
       aria-label="Client Proof & Testimonials"
     >
-      {/* Ambient background glows */}
-      <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/3 left-1/4 rounded-full blur-[140px]" style={{ width: 500, height: 500, background: C.la(0.03) }} />
-        <div className="absolute bottom-1/4 right-1/4 rounded-full blur-[140px]" style={{ width: 450, height: 450, background: C.ga(0.02) }} />
-      </div>
-
-      <div className="w-full px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
@@ -313,7 +307,6 @@ const Testimonials = () => {
                 <article
                   key={testimonial.id}
                   className="flex min-h-[260px] flex-col p-6 sm:p-7"
-                  style={{ background: 'rgba(8,8,14,0.98)', border: `1px solid ${C.wa(0.08)}`, boxShadow: '0 18px 40px rgba(0,0,0,0.3)' }}
                 >
                   <div className="mt-7">
                     <div className="mb-5 flex gap-1" role="img" aria-label="5 out of 5 stars">
@@ -342,7 +335,7 @@ const Testimonials = () => {
           </AnimatePresence>
 
           <div className="mx-auto mt-7 flex items-center justify-center gap-4">
-            <button onClick={handlePrev} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.12)}`, color: C.white }} aria-label="Previous testimonial">
+            <button onClick={handlePrev} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" aria-label="Previous testimonial">
               <ChevronLeft size={16} />
             </button>
             <div className="flex w-40 flex-col items-center gap-2">
@@ -355,7 +348,7 @@ const Testimonials = () => {
                 />
               </div>
             </div>
-            <button onClick={handleNext} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" style={{ background: C.wa(0.04), border: `1px solid ${C.wa(0.12)}`, color: C.white }} aria-label="Next testimonial">
+            <button onClick={handleNext} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors" aria-label="Next testimonial">
               <ChevronRight size={16} />
             </button>
           </div>

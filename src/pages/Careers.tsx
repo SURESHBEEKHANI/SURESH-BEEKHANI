@@ -63,7 +63,7 @@ const Reveal = ({ children, delay = 0, className = '' }: { children: React.React
 );
 
 const Careers = () => (
-  <div className="min-h-screen antialiased" style={{ background: C.black, color: C.white }}>
+  <div className="min-h-screen antialiased" style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}>
     <style>{`
       @keyframes careers-signal { 0%, 100% { opacity: .25; transform: scale(.9); } 50% { opacity: 1; transform: scale(1); } }
       @keyframes careers-scan { from { transform: translateX(-110%); } to { transform: translateX(110%); } }
@@ -73,7 +73,7 @@ const Careers = () => (
     <main className="overflow-hidden pt-24 sm:pt-32">
       <section className="relative grid gap-14 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:pb-32">
         <div className="pointer-events-none absolute -right-48 top-0 rounded-full" style={{ background: C.la(0.06), filter: 'blur(120px)' }} />
-        <div className="relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} className="mb-6 flex items-center gap-3">
             <span style={{ background: C.lime }} />
             <span style={{ color: C.lime, fontSize: '.68rem', fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>Careers at Velnix</span>
@@ -120,7 +120,7 @@ const Careers = () => (
       </section>
 
       <section className="border-y py-20 lg:py-28" style={{ borderColor: C.wa(.08), background: C.graphite }}>
-        <div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>Why Velnix</p><h2 className="max-w-2xl" style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Serious technology. <span style={{ color: C.lime }}>Human judgment.</span></h2></Reveal>
           <div className="mt-14 grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: C.wa(.1) }}>
             {principles.map((item, index) => { const Icon = item.icon; return <Reveal key={item.title} delay={index * .06} className="h-full"><div className="h-full p-7" style={{ background: C.graphite }}><Icon size={23} color={C.lime} strokeWidth={1.6} /><h3 className="mt-8 text-lg font-bold">{item.title}</h3><p className="mt-3 text-sm leading-7" style={{ color: C.wa(.58) }}>{item.text}</p></div></Reveal>; })}
@@ -129,15 +129,20 @@ const Careers = () => (
       </section>
 
       <section className="py-20 lg:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>What you will work on</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>From complexity<br /><span style={{ color: C.lime }}>to capability.</span></h2></div><p className="max-w-sm text-sm leading-7" style={{ color: C.wa(.58) }}>Our work sits where AI, software engineering, automation, data, and real business context meet.</p></div></Reveal>
         <div className="mt-14 grid gap-4 md:grid-cols-2">{workAreas.map((item, index) => { const Icon = item.icon; return <Reveal key={item.title} delay={index * .06}><div className="group flex gap-5 border p-7 transition-colors duration-300 hover:border-[#B6FF00]" style={{ borderColor: C.wa(.12), background: C.graphite }}><div className="flex shrink-0 items-center justify-center" style={{ background: C.la(.09), color: C.lime }}><Icon size={21} strokeWidth={1.6} /></div><div><h3 className="text-lg font-bold">{item.title}</h3><p className="mt-2 text-sm leading-7" style={{ color: C.wa(.58) }}>{item.text}</p></div></div></Reveal>; })}</div>
+        </div>
       </section>
 
       <section id="how-we-work" className="border-y py-20 lg:py-28" style={{ borderColor: C.wa(.08), background: C.graphite }}>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:items-start"><Reveal><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>How we work</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Context before<br /><span style={{ color: C.lime }}>complexity.</span></h2><p className="mt-6 max-w-md text-sm leading-7" style={{ color: C.wa(.58) }}>Good work starts with understanding the problem. We move deliberately, test our thinking early, and keep improving what reaches the customer.</p></Reveal><div className="border-l pl-6 sm:pl-10" style={{ borderColor: C.la(.35) }}>{process.map((step, index) => <Reveal key={step} delay={index * .07}><div className="relative flex gap-5 border-b py-5" style={{ borderColor: C.wa(.1) }}><span className="-ml-[2.05rem] flex shrink-0 items-center justify-center rounded-full text-xs font-bold" style={{ background: index === process.length - 1 ? C.lime : C.graphite, border: `1px solid ${C.la(.55)}`, color: index === process.length - 1 ? C.black : C.lime }}>{index + 1}</span><span className="font-semibold">{step}</span></div></Reveal>)}</div></div>
+        </div>
       </section>
 
-      <section id="open-positions" className="py-20 lg:py-28"><Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>Open positions</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Find where you can<br /><span style={{ color: C.lime }}>make an impact.</span></h2></div><p className="max-w-sm text-sm leading-7" style={{ color: C.wa(.58) }}>We are interested in thoughtful people across engineering, design, data, and product. Tell us where you can contribute.</p></div></Reveal><div className="mt-12 border-t" style={{ borderColor: C.wa(.15) }}>{roles.map((role, index) => <Reveal key={role.title} delay={index * .05}><a href="mailto:info@velnixsolutions.com?subject=Careers%20at%20Velnix" className="group grid gap-3 border-b py-6 transition-colors duration-200 hover:bg-[#111111] sm:grid-cols-[1fr_auto_auto] sm:items-center sm:gap-8 sm:px-5" style={{ borderColor: C.wa(.12), color: C.white, textDecoration: 'none' }}><span><strong className="block text-base sm:text-lg">{role.title}</strong><span className="mt-1 block text-sm" style={{ color: C.wa(.5) }}>{role.text}</span></span><span className="text-xs font-bold uppercase tracking-[.14em]" style={{ color: C.lime }}>{role.group}</span><ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" color={C.lime} /></a></Reveal>)}</div></section>
+      <section id="open-positions" className="py-20 lg:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>Open positions</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Find where you can<br /><span style={{ color: C.lime }}>make an impact.</span></h2></div><p className="max-w-sm text-sm leading-7" style={{ color: C.wa(.58) }}>We are interested in thoughtful people across engineering, design, data, and product. Tell us where you can contribute.</p></div></Reveal><div className="mt-12 border-t" style={{ borderColor: C.wa(.15) }}>{roles.map((role, index) => <Reveal key={role.title} delay={index * .05}><a href="mailto:info@velnixsolutions.com?subject=Careers%20at%20Velnix" className="group grid gap-3 border-b py-6 transition-colors duration-200 hover:bg-[#111111] sm:grid-cols-[1fr_auto_auto] sm:items-center sm:gap-8 sm:px-5" style={{ borderColor: C.wa(.12), color: C.white, textDecoration: 'none' }}><span><strong className="block text-base sm:text-lg">{role.title}</strong><span className="mt-1 block text-sm" style={{ color: C.wa(.5) }}>{role.text}</span></span><span className="text-xs font-bold uppercase tracking-[.14em]" style={{ color: C.lime }}>{role.group}</span><ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" color={C.lime} /></a></Reveal>)}</div></div></section>
 
     </main>
     <Footer />

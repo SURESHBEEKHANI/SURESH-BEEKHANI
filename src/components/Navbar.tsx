@@ -608,7 +608,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         }}
       >
         <div
-          className="w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between"
+          className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between"
           style={{
             minHeight: 72,
           }}
@@ -736,7 +736,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               style={{ overflow: 'hidden', background: `radial-gradient(ellipse 80% 45% at 78% 0%, ${C.ga(0.1)} 0%, transparent 72%), ${C.black}`, borderTop: `1px solid ${C.wa(0.07)}` }}
             >
               <div
-                className="w-full px-6 sm:px-10"
+                className="max-w-7xl mx-auto px-6 lg:px-8"
                 style={{ paddingTop: '1.25rem', paddingBottom: '2rem', maxHeight: 'calc(100vh - 72px)', overflowY: 'auto' }}
               >
                 {/* Nav items */}

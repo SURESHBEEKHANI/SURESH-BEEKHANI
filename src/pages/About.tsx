@@ -103,6 +103,7 @@ const AboutPage = () => {
             1. HERO SECTION
         ══════════════════════════════════════════════════════ */}
         <section className="mb-20 sm:mb-28">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             {/* Eyebrow */}
             <motion.div
@@ -158,13 +159,14 @@ const AboutPage = () => {
               Velnix Solutions is an AI development company that helps growing businesses eliminate operational complexity. We turn repetitive manual processes into scalable, intelligent software systems.
             </motion.p>
           </div>
+          </div>
         </section>
 
         {/* ══════════════════════════════════════════════════════
             2. VISION & MISSION
         ══════════════════════════════════════════════════════ */}
         <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
-          <div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             
             {/* Mission Card */}
@@ -235,7 +237,7 @@ const AboutPage = () => {
             3. CORE VALUES
         ══════════════════════════════════════════════════════ */}
         <section className="about-band about-band--black w-full py-16 sm:py-20 lg:py-24">
-          <div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
@@ -288,7 +290,7 @@ const AboutPage = () => {
           5. THE VELNIX ADVANTAGE (WHY US)
         ══════════════════════════════════════════════════════ */}
         <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
-          <div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <span 
               className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"

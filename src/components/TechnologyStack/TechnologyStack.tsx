@@ -60,19 +60,7 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
       id="technology-stack"
       aria-label="Technology Stack"
       className={`font-display relative w-full text-white py-20 sm:py-24 lg:py-28 overflow-hidden border-t border-white/10 ${className}`}
-      style={{
-        background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
-      }}
     >
-      {/* Background Decorative Ambient Glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] bg-[#B6FF00]/5 blur-[140px] rounded-full"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#B6FF00]/3 blur-[160px] rounded-full"
-      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
