@@ -141,36 +141,37 @@ const Industries: React.FC = () => {
   return (
     <section id="industries" className="relative overflow-visible py-16 font-display sm:py-20 lg:py-24 scroll-mt-20" style={{ color: C.WHITE }} aria-labelledby="industries-heading">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 grid gap-8 lg:mb-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
+        <div className="mb-8 flex items-end justify-between lg:mb-10">
           <div>
             <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.LIME }}>
               <span className="h-px w-8" style={{ background: C.LIME }} /> Industries
             </div>
-            <h2 id="industries-heading" className="max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">AI systems built for <span style={{ color: C.LIME }}>the work that matters.</span></h2>
+            <h2 id="industries-heading" className="mb-4 max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">AI Built for <span style={{ color: C.LIME }}>Your Industry.</span></h2>
+            <p className="max-w-2xl text-lg leading-8 sm:text-xl" style={{ color: C.WHITE_MUTED }}>Tailored solutions for your workflows, compliance needs, and operational challenges.</p>
           </div>
-          <div className="flex flex-col items-end gap-4 lg:pb-1">
-            <p className="max-w-lg text-right text-lg leading-8 sm:text-xl" style={{ color: C.WHITE_MUTED }}>Velnix engineers AI, automation, data, and software around the operational realities that shape your industry and your bottom line.</p>
+          
+          {/* Navigation Buttons - Top Right */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              type="button"
+              aria-label="Previous industries"
+              onClick={() => moveCarousel(-1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#B6FF00] text-[#050505] transition-all hover:bg-[#7DCC00] hover:scale-105"
+            >
+              <ChevronLeft size={18} strokeWidth={2.5} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next industries"
+              onClick={() => moveCarousel(1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#B6FF00] text-[#050505] transition-all hover:bg-[#7DCC00] hover:scale-105"
+            >
+              <ChevronRight size={18} strokeWidth={2.5} />
+            </button>
           </div>
         </div>
 
         <div className="relative">
-          <button
-            type="button"
-            aria-label="Previous industries"
-            onClick={() => moveCarousel(-1)}
-            className="absolute -left-5 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#7DCC00] bg-[#111111] text-[#B6FF00] shadow-[0_0_0_4px_rgba(5,5,5,0.9)] transition-all hover:border-[#B6FF00] hover:bg-[#B6FF00] hover:text-[#050505] lg:flex"
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <button
-            type="button"
-            aria-label="Next industries"
-            onClick={() => moveCarousel(1)}
-            className="absolute -right-5 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#7DCC00] bg-[#111111] text-[#B6FF00] shadow-[0_0_0_4px_rgba(5,5,5,0.9)] transition-all hover:border-[#B6FF00] hover:bg-[#B6FF00] hover:text-[#050505] lg:flex"
-          >
-            <ChevronRight size={18} />
-          </button>
-
           <div
             ref={scrollContainerRef}
             className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"

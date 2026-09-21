@@ -794,13 +794,61 @@ export const AIDevelopment: React.FC = () => {
             </div>
 
             {/* Right Side — Hero Image */}
-            <div className="relative flex items-center justify-center">
-              <img
-                src="/image/Servies/service-page image-hero.png"
-                alt="AI Development Hero"
-                className="relative z-10 w-full max-w-2xl"
+            <motion.div 
+              className="relative flex items-center justify-center"
+              initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8, ease }}
+            >
+              {/* Professional container with refined shadows */}
+              <div 
+                className="relative group"
+                style={{
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+                }}
+              >
+                <img
+                  src="/image/Servies/service-page image-hero.png"
+                  alt="AI Development Hero - Professional AI Systems"
+                  className="w-full max-w-2xl transition-all duration-500"
+                  style={{
+                    borderRadius: '16px',
+                    boxShadow: `
+                      0 25px 50px -12px rgba(0,0,0,0.25),
+                      0 0 0 1px rgba(255,255,255,0.05),
+                      0 8px 16px -4px rgba(182,255,0,0.1)
+                    `,
+                  }}
+                />
+                
+                {/* Subtle highlight overlay */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `linear-gradient(135deg, ${C.wa(0.05)} 0%, transparent 60%)`,
+                    border: `1px solid ${C.wa(0.08)}`,
+                  }}
+                />
+                
+                {/* Professional corner accent */}
+                <div 
+                  className="absolute -top-2 -right-2 w-4 h-4 rounded-full border-2 border-white/20"
+                  style={{ 
+                    background: C.lime,
+                    boxShadow: `0 0 20px ${C.la(0.3)}`,
+                  }}
+                />
+              </div>
+              
+              {/* Minimal background enhancement */}
+              <div 
+                className="absolute inset-0 -m-12 rounded-3xl opacity-30 blur-2xl"
+                style={{
+                  background: `radial-gradient(ellipse 60% 70% at 50% 50%, ${C.la(0.08)} 0%, transparent 70%)`,
+                }}
+                aria-hidden="true"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -988,10 +1036,10 @@ export const AIDevelopment: React.FC = () => {
                   <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
                   WHAT WE BUILD
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
+                <h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">
                   AI Systems That Move the <span style={{ color: C.lime }}>Business Forward.</span>
                 </h2>
-                <p className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">
+                <p className="max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">
                   We build secure, integrated AI capabilities that move beyond prototypes and create measurable leverage across the way your business operates.
                 </p>
               </div>
@@ -1118,15 +1166,15 @@ export const AIDevelopment: React.FC = () => {
           >
 
             <div className="relative z-10">
-              <div className="mx-auto mb-10 max-w-3xl text-center">
-                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+              <div className="mb-10">
+                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                   PROCESS
                 </div>
                 <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
                   Our AI <span style={{ color: C.lime }}>Delivery Steps.</span>
                 </h2>
-                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
                   From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
                 </p>
               </div>
@@ -1194,15 +1242,15 @@ export const AIDevelopment: React.FC = () => {
               10 — BUSINESS USE CASES
           ══════════════════════════════════════════════════════ */}
           <section className="mb-8 sm:mb-20">
-            <div className="mx-auto mb-10 w-full max-w-4xl text-center">
-              <div className="mb-5 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+            <div className="mb-10 w-full">
+              <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                 <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                 AI THAT DELIVERS
               </div>
               <h2 className="mb-6 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
                 AI That Drives <span style={{ color: C.lime }}>Results.</span>
               </h2>
-              <p className="mx-auto max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
+              <p className="max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
                 We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
               </p>
             </div>
@@ -1216,7 +1264,7 @@ export const AIDevelopment: React.FC = () => {
                   <button
                     key={uc.id}
                     onClick={() => setActiveUseCase(uc.id)}
-                    className="group inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-left transition-all duration-200"
+                    className="group inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-left transition-all duration-200"
                     style={{
                       background: isActive ? C.lime : C.black,
                       borderColor: isActive ? C.lime : C.wa(0.1),
@@ -1224,17 +1272,17 @@ export const AIDevelopment: React.FC = () => {
                     }}
                   >
                     <div
-                      className={`flex h-5 w-5 items-center justify-center rounded-full transition-all ${isActive ? "text-black" : "text-white/45 group-hover:text-[#B6FF00]"}`}
+                      className={`flex h-4 w-4 items-center justify-center rounded-full transition-all ${isActive ? "text-black" : "text-white/45 group-hover:text-[#B6FF00]"}`}
                     >
                       <Icon
-                        className="h-3.5 w-3.5"
+                        className="h-3 w-3"
                         fill={isActive ? "currentColor" : "rgba(255,255,255,0.08)"}
                         fillOpacity={isActive ? 0.3 : 0.15}
                         strokeWidth={2}
                       />
                     </div>
                     <span
-                      className="block text-[10px] font-mono font-bold uppercase tracking-[0.08em]"
+                      className="block text-[9px] font-mono font-bold uppercase tracking-[0.06em]"
                     >
                       {uc.category}
                     </span>
@@ -1348,15 +1396,15 @@ export const AIDevelopment: React.FC = () => {
             className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
             <div className="relative z-10">
-              <div className="mx-auto mb-10 max-w-3xl text-center">
-                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+              <div className="mb-10">
+                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                   ENGINEERING STANDARDS
                 </div>
                 <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
                   Built for Production. <span style={{ color: C.lime }}>Not Just Prototypes.</span>
                 </h2>
-                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
                   Enterprise AI requires more than a prompt. We embed rigorous evaluation, guardrails, auditing, and security into every layer of the architecture.
                 </p>
               </div>
@@ -1411,15 +1459,15 @@ export const AIDevelopment: React.FC = () => {
             className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
             <div className="relative z-10">
-              <div className="mx-auto mb-10 max-w-3xl text-center">
-                <div className="mb-4 flex items-center justify-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
+              <div className="mb-10">
+                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
                   THE VELNIX ADVANTAGE
                 </div>
                 <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
                   Engineering AI Around <span style={{ color: C.lime }}>Your Business.</span>
                 </h2>
-                <p className="mx-auto max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
+                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
                   Why forward-thinking enterprises partner with Velnix to move past proof-of-concepts into reliable production deployment.
                 </p>
               </div>

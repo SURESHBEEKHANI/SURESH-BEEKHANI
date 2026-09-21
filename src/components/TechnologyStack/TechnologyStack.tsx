@@ -64,17 +64,17 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="mb-12 sm:mb-16">
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF00]" style={{ boxShadow: '0 0 8px #B6FF00' }} />
+            <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: '#B6FF00' }}>
+              <span className="h-px w-8" style={{ background: '#B6FF00' }} aria-hidden="true" />
               {eyebrow}
-            </span>
+            </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
               {heading.includes('Velnix Systems') ? (
@@ -88,7 +88,7 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
               )}
             </h2>
 
-            <p className="text-sm sm:text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-white/60 leading-relaxed max-w-2xl">
               {subheading}
             </p>
           </motion.div>
