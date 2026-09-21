@@ -869,7 +869,7 @@ export const AIDevelopment: React.FC = () => {
               {i > 0 && (
                 <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
               )}
-              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
+              <div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl">
                 {number.replace('+', '').replace('%', '')}
                 <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
               </div>
@@ -1453,95 +1453,109 @@ export const AIDevelopment: React.FC = () => {
           </section>
 
           {/* ══════════════════════════════════════════════════════
-              09 — WHY VELNIX (Process-Style Grid)
+              09 — WHY AI CHANGES EVERYTHING (Professional Column Cards)
           ══════════════════════════════════════════════════════ */}
           <section
             className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
           >
             <div className="relative z-10">
-              <div className="mb-10">
+              <div className="mb-14 sm:mb-18">
                 <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                  THE VELNIX ADVANTAGE
+                  Why AI Changes Everything
                 </div>
                 <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  Engineering AI Around <span style={{ color: C.lime }}>Your Business.</span>
+                  Capabilities &amp; Benefits of <span style={{ color: C.lime }}>Enterprise AI</span>
                 </h2>
-                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
-                  Why forward-thinking enterprises partner with Velnix to move past proof-of-concepts into reliable production deployment.
+                <p className="max-w-2xl text-sm sm:text-base leading-8" style={{ color: C.wa(0.64) }}>
+                  Every card below maps to a measurable outcome. We build the systems that deliver these numbers — not just the roadmap.
                 </p>
               </div>
 
-              {/* Process-style advantage grid */}
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {/* ── Professional Column Cards Grid ── */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">
                 {[
                   {
                     num: "01",
-                    title: "Business-First",
-                    description: "Start with the problem, not the technology. We identify where AI delivers verifiable economic leverage before writing code.",
-                    icon: TrendingUp,
-                    deliverables: ["Use Case Validation", "ROI Modeling", "Success Metrics"]
+                    metric: "+34%",
+                    metricLabel: "productivity gain",
+                    title: "Automated Operations",
+                    description: "AI systems handle repetitive workflows, document processing, and manual tasks — freeing teams to focus on high-value, revenue-driving work.",
                   },
                   {
-                    num: "02", 
-                    title: "Production-Minded",
-                    description: "Design for reliability beyond the prototype. We implement deterministic evaluation harnesses, latency budgets, and full-stack observability.",
-                    icon: ShieldCheck,
-                    deliverables: ["Evaluation Benchmarks", "Performance Monitoring", "Fallback Systems"]
+                    num: "02",
+                    metric: "−60%",
+                    metricLabel: "decision latency",
+                    title: "Faster Decisions",
+                    description: "Real-time analytics, dashboards, and AI-generated insights deliver the right information to stakeholders at the moment they need it.",
                   },
                   {
                     num: "03",
-                    title: "Integration-Native", 
-                    description: "Build AI that works with your existing operations. We connect models directly to your data, tools, and workflows.",
-                    icon: Workflow,
-                    deliverables: ["API Integrations", "Data Pipelines", "Workflow Automation"]
+                    metric: "99.9%",
+                    metricLabel: "output reliability",
+                    title: "Consistent Quality",
+                    description: "Evaluation-driven AI, guardrails, and deterministic outputs ensure consistent, auditable results across every interaction and workflow.",
                   },
                   {
                     num: "04",
-                    title: "Security-First",
-                    description: "Enterprise AI requires enterprise security. We implement zero-trust architectures, role-based access, and audit trails.",
-                    icon: Lock,
-                    deliverables: ["Access Controls", "Encryption Standards", "Audit Logging"]
-                  }
-                ].map((advantage) => {
-                  const AdvantageIcon = advantage.icon;
-                  return (
-                    <div
-                      key={advantage.num}
-                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
+                    metric: "< 1.2s",
+                    metricLabel: "avg. retrieval",
+                    title: "Unified Knowledge",
+                    description: "Ground AI answers in private documents, policies, and systems — every answer cited, auditable, and accessible across the organization.",
+                  },
+                  {
+                    num: "05",
+                    metric: "3.2x",
+                    metricLabel: "throughput scale",
+                    title: "Scalable Capacity",
+                    description: "Handle 3x the volume without adding headcount. AI agents, automations, and workflows scale horizontally across business operations.",
+                  },
+                  {
+                    num: "06",
+                    metric: "Zero",
+                    metricLabel: "vendor lock-in",
+                    title: "Future-Proof Stack",
+                    description: "Modular architectures, open standards, and clean integrations mean your systems adapt as your business and the AI landscape evolve.",
+                  },
+                ].map((cap, index) => (
+                  <div
+                    key={cap.num}
+                    className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
+                  >
+                    {/* Top accent line on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Corner watermark number */}
+                    <span
+                      className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none transition-colors duration-300"
+                      style={{ color: C.wa(0.04) }}
+                      aria-hidden="true"
                     >
-                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
-                      <div>
-                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
-                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
-                            {advantage.num}
-                          </span>
-                          <AdvantageIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
-                        </div>
+                      {cap.num}
+                    </span>
 
-                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
-                          {advantage.title}
-                        </h3>
+                    {/* Title */}
+                    <h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">
+                      {cap.title}
+                    </h3>
 
-                        <p className="text-xs font-light leading-6 text-white/65">
-                          {advantage.description}
-                        </p>
-                      </div>
+                    {/* Description */}
+                    <p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>
+                      {cap.description}
+                    </p>
 
-                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
-                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
-                          Key Capabilities
-                        </span>
-                        {advantage.deliverables.map((item, di) => (
-                          <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
-                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
+                    {/* Metric pill at bottom */}
+                    <div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]">
+                      <span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>
+                        {cap.metric}
+                      </span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
+                        {cap.metricLabel}
+                      </span>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </div>
           </section>

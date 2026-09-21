@@ -280,7 +280,7 @@ const Testimonials = () => {
               Client Testimonials
             </motion.div>
 
-            <h2 className="max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 className="max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
               Built with Velnix. <span style={{ color: C.lime }}>Proven in the real world.</span>
             </h2>
           </div>
@@ -366,7 +366,7 @@ const Testimonials = () => {
             Industry Platforms
             <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
           </div>
-          <h2 className="text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
+          <h2 className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
             Recognized across leading industry platforms.
           </h2>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/42 sm:gap-x-12">

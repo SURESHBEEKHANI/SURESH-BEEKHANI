@@ -33,7 +33,7 @@ const MeetFounder = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="max-w-2xl text-4xl font-black tracking-[-0.04em] sm:text-5xl">
+          <h2 className="max-w-2xl text-3xl font-black tracking-[-0.04em] sm:text-4xl">
             Strategy is stronger when it is grounded in <span className="text-[#B6FF00]">engineering.</span>
           </h2>
           <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white/45">CEO & Co-founder-Velnix Solutions</p>

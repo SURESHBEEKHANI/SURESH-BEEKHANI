@@ -1,4 +1,4 @@
-import { ArrowRight, Search, FileText, Clock, Target, Wrench, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 
 // ─── Brand Tokens ──────────────────────────────────────────────────────────────
@@ -17,35 +17,30 @@ const C = {
 const engagementModels = [
   {
     num: '01',
-    icon: Search,
     label: 'Consulting & Discovery',
     description:
       'Define the right strategy, architecture, AI opportunities, and implementation roadmap before a single line of code is written.',
   },
   {
     num: '02',
-    icon: FileText,
     label: 'Fixed Price',
     description:
       'A clearly scoped project with defined deliverables, timeline, and budget — suited for well-established requirements and predictable outcomes.',
   },
   {
     num: '03',
-    icon: Clock,
     label: 'Time & Material',
     description:
       'Flexible development for evolving requirements, shifting priorities, and projects that require continuous iteration over a sustained period.',
   },
   {
     num: '04',
-    icon: Target,
     label: 'Milestone-Based',
     description:
       'Break complex projects into measurable phases — each with defined deliverables, acceptance criteria, and a corresponding payment milestone.',
   },
   {
     num: '05',
-    icon: Wrench,
     label: 'Maintenance & Support',
     description:
       'Keep your systems reliable and optimized with ongoing monitoring, technical maintenance, iterative improvements, and dedicated support coverage.',
@@ -95,22 +90,14 @@ const EngagementModels = () => (
               }}
             />
 
-            {/* Number + icon row */}
-            <div className="flex items-center justify-between">
+            {/* Number */}
+            <div>
               <span
                 className="text-[11px] font-black uppercase tracking-[0.22em] tabular-nums"
                 style={{ color: C.lime }}
               >
                 {model.num}
               </span>
-              <div
-                className="w-10 h-10 flex items-center justify-center border transition-all duration-300"
-                style={{ borderColor: C.wa(0.1), color: C.wa(0.45) }}
-              >
-                <model.icon
-                  className="w-[18px] h-[18px] transition-colors duration-300 group-hover:text-[#B6FF00]"
-                />
-              </div>
             </div>
 
             {/* Label */}
@@ -148,20 +135,14 @@ const EngagementModels = () => (
             }}
           />
 
-          {/* Number + icon row */}
-          <div className="flex items-center justify-between">
+          {/* Number */}
+          <div>
             <span
               className="text-[11px] font-black uppercase tracking-[0.22em] tabular-nums"
               style={{ color: C.lime }}
             >
               06
             </span>
-            <div
-              className="w-10 h-10 flex items-center justify-center border transition-all duration-300"
-              style={{ borderColor: C.wa(0.1), color: C.wa(0.45) }}
-            >
-              <MessageCircle className="w-[18px] h-[18px] transition-colors duration-300 group-hover:text-[#B6FF00]" />
-            </div>
           </div>
 
           {/* Label */}

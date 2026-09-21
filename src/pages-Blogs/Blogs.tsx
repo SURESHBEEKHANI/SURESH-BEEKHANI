@@ -620,7 +620,7 @@ const Blogs: React.FC = () => {
                       <p className="text-sm font-bold uppercase tracking-[0.2em]" style={{ color: C.lime }}>
                         Common questions
                       </p>
-                      <h2 className="mt-5 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
+                      <h2 className="mt-5 text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
                         Frequently Asked <span className="text-[#B6FF00]">Questions</span>
                       </h2>
                     </div>
@@ -827,7 +827,7 @@ const Blogs: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, duration: 0.6 }}
-                  className="mb-8 max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.045em] sm:text-6xl"
+                  className="mb-8 max-w-4xl text-3xl font-black leading-[0.96] tracking-[-0.045em] sm:text-4xl"
                 >
                   Stay up to date with our {' '}<span style={{ color: C.lime }}>latest posts.</span>
                 </motion.h1>
@@ -843,7 +843,7 @@ const Blogs: React.FC = () => {
                 </motion.p>
               </div>
               <div className="shrink-0 lg:text-right">
-                <p className="text-4xl font-black tracking-[-0.04em] sm:text-5xl">{blogs.length || '—'}</p>
+                <p className="text-3xl font-black tracking-[-0.04em] sm:text-4xl">{blogs.length || '—'}</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">Published insights</p>
               </div>
             </div>

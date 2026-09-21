@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ArrowRight, Brain, Zap, BarChart3, Shield, TrendingUp, Star, ShoppingBag, Bot, Workflow, Sparkles, Headphones, Search, Cpu, Rocket } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EngagementModels from "../components/EngagementModels";
@@ -24,42 +24,36 @@ const C = {
 
 const capabilities = [
   {
-    icon: Zap,
     title: "Higher Conversion",
     metric: "+34%",
     metricLabel: "avg. conversion lift",
     description: "Make discovery, search, and checkout frictionless. AI-powered recommendations surface the right product at the right moment — from first click to final payment.",
   },
   {
-    icon: TrendingUp,
     title: "Better Margin",
     metric: "−28%",
     metricLabel: "inventory waste",
     description: "Cut overstock, eliminate stockouts, and slash costly returns using demand forecasting and predictive replenishment tuned to your catalog and seasonality.",
   },
   {
-    icon: Shield,
     title: "Richer Customer Experience",
     metric: "24 / 7",
     metricLabel: "instant product answers",
     description: "Answer product questions in real time and personalize every step of the path to purchase — from landing page to post-purchase follow-up.",
   },
   {
-    icon: BarChart3,
     title: "Clearer Merchandising Insight",
     metric: "360°",
     metricLabel: "demand visibility",
     description: "See what actually moves product across SKUs, channels, and campaigns. Replace gut-feel decisions with clear, actionable signals from your own commerce data.",
   },
   {
-    icon: Brain,
     title: "Leaner Operations",
     metric: "−60%",
     metricLabel: "manual ops tasks",
     description: "Handle catalog updates, support queues, and fulfillment exceptions automatically. Scale order volume without scaling headcount.",
   },
   {
-    icon: Star,
     title: "Tailored to Your Stack",
     metric: "100%",
     metricLabel: "stack compatible",
@@ -69,34 +63,28 @@ const capabilities = [
 
 const ecommerceServices = [
   {
-    icon: ShoppingBag,
-    title: "AI-Powered Ecommerce Development",
-    description: "Build intelligent ecommerce platforms with AI-driven search, recommendations, personalization, automated workflows, and business-specific functionality.",
+    title: "Ecommerce Development",
+    description: "Smart platforms with AI search, recommendations, personalization, and automated workflows.",
   },
   {
-    icon: Bot,
-    title: "AI Shopping & Sales Agents",
-    description: "Deploy AI agents that help customers discover products, answer questions, recommend products, handle inquiries, and guide shoppers toward purchase.",
+    title: "Shopping & Sales Agents",
+    description: "AI agents that help customers discover products, answer questions, and guide purchases.",
   },
   {
-    icon: Workflow,
-    title: "Ecommerce Workflow Automation",
-    description: "Automate repetitive operations across orders, customer support, inventory, product management, notifications, and internal workflows using AI and intelligent integrations.",
+    title: "Workflow Automation",
+    description: "Automate orders, support, inventory, product management, and internal operations.",
   },
   {
-    icon: Sparkles,
-    title: "Personalized Ecommerce Experiences",
-    description: "Use customer behavior and commerce data to deliver personalized product recommendations, search experiences, offers, and customer journeys.",
+    title: "Personalized Experiences",
+    description: "Personalized recommendations, search, offers, and journeys using customer behavior data.",
   },
   {
-    icon: Headphones,
-    title: "AI Customer Support & Service",
-    description: "Automate customer interactions with AI assistants that handle FAQs, order updates, product questions, returns, and support requests across web and messaging channels.",
+    title: "Customer Support",
+    description: "AI assistants handle FAQs, order updates, product questions, returns, and support requests.",
   },
   {
-    icon: BarChart3,
-    title: "Ecommerce AI Integrations & Analytics",
-    description: "Connect your ecommerce platform with CRM, ERP, payment, shipping, inventory, and marketing systems while using AI-powered analytics to identify trends and improve decisions.",
+    title: "Integrations & Analytics",
+    description: "Connect CRM, ERP, payments, and marketing with AI-powered analytics for better decisions.",
   },
 ];
 
@@ -104,44 +92,44 @@ const developmentProcess = [
   {
     step: "STEP 01",
     num: "01",
-    icon: Search,
-    title: "Discovery & AI Strategy",
-    description: "We identify your business goals, customer needs, operational challenges, and AI automation opportunities.",
+    title: "Discovery & Strategy",
+    shortTitle: "DISCOVERY & STRATEGY",
+    description: "Define goals, needs, challenges, and AI opportunities.",
   },
   {
     step: "STEP 02",
     num: "02",
-    icon: Cpu,
-    title: "Architecture & Experience Design",
-    description: "We map your ecommerce architecture, customer journeys, AI touchpoints, and automation workflows.",
+    title: "Architecture Design",
+    shortTitle: "ARCHITECTURE DESIGN",
+    description: "Map architecture, journeys, and AI touchpoints.",
   },
   {
     step: "STEP 03",
     num: "03",
-    icon: Sparkles,
-    title: "UI/UX & Intelligent Experiences",
-    description: "We design intuitive storefronts with AI-powered search, recommendations, personalization, and shopping experiences.",
+    title: "UI/UX Design",
+    shortTitle: "UI / UX DESIGN",
+    description: "Design storefronts with search, recommendations, personalization.",
   },
   {
     step: "STEP 04",
     num: "04",
-    icon: Zap,
-    title: "Ecommerce & AI Development",
-    description: "We build your ecommerce platform, AI capabilities, backend systems, and automated workflows.",
+    title: "Development",
+    shortTitle: "DEVELOPMENT",
+    description: "Build platform, AI capabilities, and workflows.",
   },
   {
     step: "STEP 05",
     num: "05",
-    icon: Workflow,
-    title: "Integrations & Automation",
-    description: "We connect CRM, ERP, payments, inventory, shipping, and marketing systems to automate operations.",
+    title: "Integrations",
+    shortTitle: "INTEGRATIONS",
+    description: "Connect CRM, ERP, payments, shipping, marketing.",
   },
   {
     step: "STEP 06",
     num: "06",
-    icon: Rocket,
-    title: "Testing, Launch & Optimization",
-    description: "We test, deploy, monitor, and continuously optimize your ecommerce and AI systems.",
+    title: "Launch & Optimize",
+    shortTitle: "LAUNCH & OPTIMIZE",
+    description: "Test, deploy, monitor, and continuously optimize.",
   },
 ];
 
@@ -258,43 +246,48 @@ const EcommerceServices = () => (
 
     <div className="max-w-7xl mx-auto relative z-10">
       {/* Header */}
-      <div className="text-center space-y-4 mb-12 sm:mb-16 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+      <div className="mb-12 sm:mb-16">
+        <div className="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           End-to-End Capabilities
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
-          AI Ecommerce Services Built for{" "}
-          <span style={{ color: C.lime }}>Smarter Growth</span>
+        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
+          AI Ecommerce That <span style={{ color: C.lime }}>Drives Growth.</span>
         </h2>
 
-        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
-          At Velnix, we combine ecommerce development, AI, and automation to build intelligent commerce systems that reduce manual work, improve customer experiences, and scale operations efficiently.
+        <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
+          Intelligent commerce systems that automate operations, personalize experiences, and scale your business.
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl">
         {ecommerceServices.map((service, index) => (
           <div
             key={index}
             className="group relative flex flex-col justify-between p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
             style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
           >
+            {/* Number badge top-left */}
+            <span
+              className="absolute top-4 left-4 text-[11px] font-bold tracking-[0.15em] transition-colors duration-300"
+              style={{ color: C.wa(0.35) }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = C.lime)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = C.wa(0.35))}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
             {/* Top edge glow line on hover */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-            <div>
-              <div className="w-12 h-12 rounded-none flex items-center justify-center bg-[#B6FF00]/10 border border-[#B6FF00]/25 text-[#B6FF00] mb-6 transition-all duration-300 group-hover:bg-[#B6FF00] group-hover:text-black group-hover:shadow-[0_0_20px_rgba(182,255,0,0.4)]">
-                <service.icon className="w-6 h-6" />
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-bold tracking-[-0.04em] text-white mb-3 group-hover:text-[#B6FF00] transition-colors duration-200">
+            <div className="pt-5">
+              <h3 className="text-base sm:text-lg font-bold tracking-[-0.03em] text-[#B6FF00] mb-2.5 transition-colors duration-200">
                 {service.title}
               </h3>
 
-              <p className="text-sm leading-6" style={{ color: C.wa(0.6) }}>
+              <p className="text-xs sm:text-sm leading-6" style={{ color: C.wa(0.6) }}>
                 {service.description}
               </p>
             </div>
@@ -320,56 +313,118 @@ const DevelopmentProcess = () => (
 
     <div className="max-w-7xl mx-auto relative z-10">
       {/* Header */}
-      <div className="text-center space-y-4 mb-12 sm:mb-16 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
+      <div className="mb-14 sm:mb-18">
+        <div className="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           Execution Roadmap
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
+        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
           Our AI Ecommerce <span style={{ color: C.lime }}>Development Process</span>
         </h2>
 
-        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
+        <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
           A streamlined process combining ecommerce, AI, automation, and integrations to build smarter commerce systems.
         </p>
       </div>
 
-      {/* Steps Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-        {developmentProcess.map((item, index) => (
-          <div
-            key={index}
-            className="group relative flex flex-col justify-between p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_35px_rgba(182,255,0,0.12)] hover:-translate-y-1"
-            style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
-          >
-            {/* Top accent line on hover */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Horizontal Timeline - desktop */}
+      <div className="hidden lg:block relative pb-8">
+        {/* Connecting baseline */}
+        <div className="absolute top-[30px] left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, ${C.wa(0.08)} 0%, ${C.lime} 50%, ${C.wa(0.08)} 100%)` }} />
 
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] bg-[#B6FF00]/10 text-[#B6FF00] border border-[#B6FF00]/25">
+        <div className="grid grid-cols-6 gap-4 relative">
+          {developmentProcess.map((item, index) => (
+            <div key={index} className="relative flex flex-col items-center text-center group">
+              {/* STEP label on top */}
+              <div className="mb-6">
+                <span
+                  className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] transition-colors duration-300"
+                  style={{ color: C.lime }}
+                >
                   {item.step}
                 </span>
-                <span className="text-2xl font-black tracking-tight text-white/15 group-hover:text-[#B6FF00]/35 transition-colors duration-300">
-                  {item.num}
-                </span>
               </div>
 
-              <div className="w-11 h-11 rounded-none flex items-center justify-center bg-white/[0.04] border border-white/10 text-white mb-5 transition-all duration-300 group-hover:border-[#B6FF00]/40 group-hover:text-[#B6FF00] group-hover:bg-[#B6FF00]/[0.08]">
-                <item.icon className="w-5 h-5" />
+              {/* Dot node on the line */}
+              <div className="absolute top-[22px] z-20">
+                <div
+                  className="w-4 h-4 rounded-full border-2 transition-all duration-300 group-hover:scale-125"
+                  style={{
+                    background: C.lime,
+                    borderColor: C.lime,
+                    boxShadow: `0 0 15px ${C.la(0.5)}`,
+                  }}
+                />
+                <div className="absolute inset-0 w-4 h-4 rounded-full animate-ping opacity-0 group-hover:opacity-30" style={{ background: C.lime }} />
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold tracking-[-0.04em] text-white mb-3 group-hover:text-[#B6FF00] transition-colors duration-200">
-                {item.title}
-              </h3>
-
-              <p className="text-sm leading-6" style={{ color: C.wa(0.6) }}>
-                {item.description}
-              </p>
+              {/* Content below line */}
+              <div className="pt-12 px-1">
+                <h3
+                  className="text-sm font-bold tracking-[-0.02em] text-white mb-2 transition-colors duration-300"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = C.lime)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = C.white)}
+                >
+                  {item.title}
+                </h3>
+                <p className="text-xs leading-5" style={{ color: C.wa(0.55) }}>
+                  {item.description}
+                </p>
+              </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Vertical Timeline - mobile & tablet */}
+      <div className="lg:hidden">
+        <div className="relative pl-10 sm:pl-14">
+          {/* Vertical line */}
+          <div
+            className="absolute top-0 bottom-0 left-5 sm:left-7 w-px"
+            style={{ background: `linear-gradient(180deg, ${C.wa(0.08)} 0%, ${C.lime} 50%, ${C.wa(0.08)} 100%)` }}
+          />
+
+          <div className="space-y-7">
+            {developmentProcess.map((item, index) => (
+              <div key={index} className="relative group">
+                {/* Dot node on line */}
+                <div className="absolute -left-[22px] sm:-left-[30px] top-1 z-20">
+                  <div
+                    className="w-4 h-4 rounded-full border-2 transition-all duration-300 group-hover:scale-125"
+                    style={{
+                      background: C.lime,
+                      borderColor: C.lime,
+                      boxShadow: `0 0 15px ${C.la(0.5)}`,
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  {/* STEP label on top */}
+                  <span className="block mb-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: C.lime }}>
+                    {item.step}
+                  </span>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3
+                      className="text-base sm:text-lg font-bold tracking-[-0.02em] text-white mb-1 transition-colors duration-300"
+                      onMouseEnter={(e) => (e.currentTarget.style.color = C.lime)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = C.white)}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm leading-6" style={{ color: C.wa(0.55) }}>
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>
@@ -397,17 +452,19 @@ const Capabilities = () => (
 
     <div className="max-w-7xl mx-auto relative z-10">
 
-      {/* ── Section Header ── */}
-      <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-        <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] mb-5" style={{ color: C.lime }}>
+      {/* Section Header */}
+      <div className="mb-14 sm:mb-18">
+        <div className="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           Why AI Changes Everything
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white mb-4">
+        
+        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
           Capabilities &amp; Benefits of{" "}
           <span style={{ color: C.lime }}>AI in E-Commerce</span>
         </h2>
-        <p className="text-base sm:text-lg leading-8 max-w-2xl mx-auto" style={{ color: C.wa(0.64) }}>
+        
+        <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
           Every card below maps to a measurable outcome. We build the systems that deliver these numbers — not just the roadmap.
         </p>
       </div>
@@ -431,11 +488,6 @@ const Capabilities = () => (
             >
               {String(index + 1).padStart(2, '0')}
             </span>
-
-            {/* Icon */}
-            <div className="w-12 h-12 flex items-center justify-center bg-[#B6FF00]/10 border border-[#B6FF00]/25 text-[#B6FF00] mb-5 transition-all duration-300 group-hover:bg-[#B6FF00] group-hover:text-black group-hover:shadow-[0_0_20px_rgba(182,255,0,0.4)]">
-              <cap.icon className="w-6 h-6" />
-            </div>
 
             {/* Title */}
             <h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">
@@ -467,52 +519,133 @@ const Capabilities = () => (
 
 // ─── FAQ Section ──────────────────────────────────────────────────────
 const FAQ = () => {
-  const [openId, setOpenId] = useState<number | null>(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const shouldReduce = useReducedMotion();
+
+  const toggleExpand = (id: number) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   return (
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.18)} 0%, ${C.ga(0.06)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.1)} 0%, ${C.ga(0.03)} 42%, transparent 76%), ${C.black}` }}>
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.15)}, transparent)` }} />
+    <section 
+      className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24" 
+      style={{ 
+        background: `radial-gradient(ellipse 52% 74% at 4% 44%, ${C.ga(0.16)} 0%, ${C.ga(0.05)} 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, ${C.la(0.08)} 0%, ${C.ga(0.025)} 42%, transparent 76%), ${C.black}`,
+        color: C.white,
+      }}
+    >
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden="true">
+        <div className="absolute left-1/2 top-0 h-[420px] w-[720px] max-w-full -translate-x-1/2 rounded-full blur-[160px]" style={{ background: C.la(0.035) }} />
+        <div className="absolute left-1/4 top-1/2 rounded-full blur-[140px]" style={{ width: 480, height: 480, background: C.ga(0.02) }} />
+        <div className="absolute bottom-0 right-1/5 rounded-full blur-[150px]" style={{ width: 420, height: 420, background: C.la(0.022) }} />
       </div>
-      <div className="max-w-3xl mx-auto relative z-10">
-        <div className="text-center space-y-4 mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
-            Frequently Asked <span style={{ color: C.lime }}>Questions</span>
-          </h2>
-          <p className="text-base leading-8" style={{ color: C.wa(0.64) }}>
-            Everything you need to know about AI for <span style={{ color: C.lime }}>E-Commerce</span>
-          </p>
-        </div>
 
-        <div className="space-y-3">
-          {faqData.map((item) => (
-            <div
-              key={item.id}
-              className="border border-white/10 overflow-hidden transition-all duration-300 hover:border-[#B6FF00]/30"
-              style={{ background: C.wa(0.03) }}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Two Column Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-start">
+          
+          {/* Left Column - Header Content */}
+          <div className="lg:sticky lg:top-24">
+            <motion.div
+              initial={shouldReduce ? undefined : { opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={shouldReduce ? { duration: 0 } : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: C.lime }}
             >
-              <button
-                onClick={() => setOpenId(openId === item.id ? null : item.id)}
-                className="flex w-full items-center justify-between py-4 px-6 text-left"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%' }}
-              >
-                <span className="text-sm sm:text-base font-semibold tracking-[-0.02em] text-white pr-4">{item.question}</span>
-                <svg
-                  className={`w-5 h-5 text-[#B6FF00] shrink-0 transition-transform duration-300 ${openId === item.id ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+              Common Questions
+            </motion.div>
+
+            <motion.h2
+              initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl"
+            >
+              Everything You Need to Know About{' '}
+              <span style={{ color: C.lime }}>AI for E-Commerce</span>
+            </motion.h2>
+
+            <motion.p
+              initial={shouldReduce ? undefined : { opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={shouldReduce ? { duration: 0 } : { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="mt-6 text-base leading-7"
+              style={{ color: C.wa(0.64) }}
+            >
+              Clear answers to help you understand how AI can transform your ecommerce operations and drive measurable results.
+            </motion.p>
+          </div>
+
+          {/* Right Column - FAQ Accordion */}
+          <div className="space-y-3">
+            {faqData.map((item, index) => {
+              const isOpen = expandedId === item.id;
+
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={shouldReduce ? undefined : { opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.05 }}
+                  className="overflow-hidden border-b border-white/[0.08] last:border-b-0"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${openId === item.id ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
-              >
-                <p className="px-6 pb-4 text-sm leading-6" style={{ color: C.wa(0.6) }}>{item.answer}</p>
-              </div>
-            </div>
-          ))}
+                  {/* Question */}
+                  <button
+                    type="button"
+                    onClick={() => toggleExpand(item.id)}
+                    className="group flex w-full cursor-pointer items-center justify-between gap-4 py-4 text-left transition-colors duration-300 hover:text-[#B6FF00]"
+                    aria-expanded={isOpen}
+                    style={{ background: 'none', border: 'none' }}
+                  >
+                    <h3 className="text-lg font-bold leading-tight text-white group-hover:text-[#B6FF00] transition-colors duration-300">
+                      {item.question}
+                    </h3>
+
+                    {/* Rotating plus icon */}
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center text-white/60 group-hover:text-[#B6FF00] transition-all duration-300"
+                      style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                      aria-hidden="true"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  {/* Answer */}
+                  <motion.div
+                    initial={false}
+                    animate={{ 
+                      height: isOpen ? 'auto' : 0,
+                      opacity: isOpen ? 1 : 0 
+                    }}
+                    transition={shouldReduce ? { duration: 0 } : { duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-4">
+                      <p className="max-w-2xl leading-7" style={{ color: C.wa(0.55) }}>
+                        {item.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -537,7 +670,7 @@ const ImpactStats = () => {
             {i > 0 && (
               <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
             )}
-            <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">
+            <div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl">
               {number.replace('+', '').replace('%', '')}
               <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
             </div>

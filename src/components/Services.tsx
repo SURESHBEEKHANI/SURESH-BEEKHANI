@@ -290,110 +290,49 @@ const ServiceVisual: React.FC<{ serviceId: string; featured?: boolean }> = ({ se
 };
 
 /* ─────────────────────────────────────────────────────────────
-   EDITORIAL SERVICE ROW (Old Display Style)
+   SERVICE ROW - Direct Navigation (No Expansion)
 ───────────────────────────────────────────────────────────── */
 const ServiceRow: React.FC<{
   service: CoreService;
   index: number;
-  isExpanded: boolean;
   prefersReducedMotion: boolean;
   isInView: boolean;
-  onToggle: () => void;
   onNavigate: (route: string) => void;
-}> = ({ service, index, isExpanded, prefersReducedMotion, isInView, onToggle, onNavigate }) => {
-  const Icon = service.icon;
-  const rowId = `service-row-${index}`;
-  const panelId = `${rowId}-details`;
+}> = ({ service, index, prefersReducedMotion, isInView, onNavigate }) => {
+  const handleClick = () => {
+    const firstCapabilityWithRoute = service.capabilities.find(cap => cap.route);
+    if (firstCapabilityWithRoute) {
+      onNavigate(firstCapabilityWithRoute.route!);
+    }
+  };
 
   return (
     <motion.article
       initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: 0.12 + index * 0.045, ease: [0.22, 1, 0.36, 1] }}
-      className="group w-full border-t last:border-b"
+      className="group w-full border-t last:border-b transition-all duration-300 hover:border-[#B6FF00]/40 hover:bg-[#B6FF00]/5 cursor-pointer"
       style={{
-        borderColor: isExpanded ? 'rgba(182, 255, 0, 0.34)' : 'rgba(255, 255, 255, 0.14)',
-        background: isExpanded ? 'rgba(182, 255, 0, 0.06)' : 'transparent',
-        transition: 'background 300ms ease, border-color 300ms ease',
+        borderColor: 'rgba(255, 255, 255, 0.14)',
       }}
+      onClick={handleClick}
     >
-      <button
-        id={rowId}
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isExpanded}
-        aria-controls={panelId}
-        className="flex w-full items-center gap-4 px-4 py-6 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-inset sm:gap-8 sm:px-6 sm:py-8 lg:gap-12 lg:px-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))] lg:py-9"
-      >
-        <span className="w-10 shrink-0 font-mono text-xs tracking-[0.12em] sm:w-14 sm:text-sm" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
+      <div className="flex w-full items-center gap-4 px-4 py-6 text-left sm:gap-8 sm:px-6 sm:py-8 lg:gap-12 lg:px-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))] lg:py-9">
+        <span className="w-8 shrink-0 font-mono text-xs tracking-[0.12em] transition-colors duration-300 group-hover:text-[#B6FF00] sm:w-10 sm:text-xs" style={{ color: 'rgba(255,255,255,0.38)' }}>
           {service.num}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: isExpanded ? C.LIME : 'rgba(255,255,255,0.38)' }}>
+          <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.24em] transition-colors duration-300 group-hover:text-[#B6FF00]" style={{ color: 'rgba(255,255,255,0.38)' }}>
             {service.tag}
           </span>
-          <span className="block text-xl font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-2xl lg:text-4xl">
+          <span className="block text-lg font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-xl lg:text-2xl">
             {service.title}
           </span>
         </span>
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border sm:h-12 sm:w-12" style={{ borderColor: isExpanded ? C.LIME : C.DEEP_GREEN, background: isExpanded ? C.LIME : C.DEEP_GREEN, color: C.BLACK, transition: 'transform 300ms ease, background 300ms ease, border-color 300ms ease' }}>
-          <span className="text-2xl font-light leading-none" style={{ transform: isExpanded ? 'rotate(45deg)' : 'none', transition: 'transform 300ms ease' }}>+</span>
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 group-hover:bg-[#B6FF00] group-hover:text-[#050505] sm:h-10 sm:w-10" style={{ borderColor: C.DEEP_GREEN, background: C.DEEP_GREEN, color: C.BLACK }}>
+          <ArrowRight size={16} />
         </span>
-      </button>
-
-      <motion.div
-        id={panelId}
-        role="region"
-        aria-labelledby={rowId}
-        initial={false}
-        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
-        transition={{ duration: prefersReducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
-        style={{ overflow: 'hidden' }}
-      >
-        <div className="grid gap-8 px-4 pb-8 pl-14 sm:grid-cols-[minmax(0,1fr)_220px] sm:px-6 sm:pb-10 sm:pl-[5.5rem] lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16 lg:pl-[max(7rem,calc((100vw-1320px)/2+7rem))] lg:pr-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))]">
-          <div>
-            <p className="max-w-3xl text-lg leading-8 text-white/55">{service.description}</p>
-            
-            {/* Capabilities */}
-            <div className="mt-6">
-              <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: 'rgba(255, 255, 255, 0.42)' }}>
-                Capabilities
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {service.capabilities.map((capability, capIndex) => (
-                  <span
-                    key={capIndex}
-                    className="inline-flex cursor-pointer items-center rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition-all duration-200"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                    }}
-                    onClick={() => capability.route && onNavigate(capability.route)}
-                  >
-                    {capability.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <button 
-              type="button" 
-              onClick={() => {
-                const firstCapabilityWithRoute = service.capabilities.find(cap => cap.route);
-                if (firstCapabilityWithRoute) {
-                  onNavigate(firstCapabilityWithRoute.route!);
-                }
-              }} 
-              className="mt-7 inline-flex min-h-12 min-w-[180px] items-center justify-center gap-3 rounded-full bg-[#B6FF00] px-6 py-4 text-sm font-bold text-[#050505] outline-none transition-colors hover:bg-[#7DCC00] focus-visible:ring-2 focus-visible:ring-[#B6FF00]" 
-              aria-label={`Explore ${service.title} service`}
-            >
-              Explore Service <ArrowRight size={17} aria-hidden="true" />
-            </button>
-          </div>
-          <div className="hidden items-center justify-center border-l border-[#B6FF00]/10 sm:flex" aria-hidden="true">
-            <div className="opacity-80 transition-transform duration-500 group-hover:scale-105"><ServiceVisual serviceId={service.id} featured /></div>
-          </div>
-        </div>
-      </motion.div>
+      </div>
     </motion.article>
   );
 };
@@ -405,7 +344,6 @@ const Services = () => {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true });
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const handleNavigate = (route: string) => {
     if (route) navigate(route);
@@ -481,7 +419,7 @@ const Services = () => {
 
           {/* H2 */}
           <h2
-            className="max-w-[18ch] text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl"
+            className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
             style={{ color: C.WHITE }}
           >
             Services{' '}
@@ -504,10 +442,8 @@ const Services = () => {
               key={service.id}
               service={service}
               index={index}
-              isExpanded={expandedIndex === index}
               prefersReducedMotion={prefersReducedMotion}
               isInView={isInView}
-              onToggle={() => setExpandedIndex(current => current === index ? null : index)}
               onNavigate={handleNavigate}
             />
           ))}
