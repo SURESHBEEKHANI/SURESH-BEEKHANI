@@ -252,7 +252,7 @@ const EcommerceServices = () => (
           End-to-End Capabilities
         </div>
 
-        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
+        <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
           AI Ecommerce That <span style={{ color: C.lime }}>Drives Growth.</span>
         </h2>
 
@@ -319,7 +319,7 @@ const DevelopmentProcess = () => (
           Execution Roadmap
         </div>
 
-        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
+        <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
           Our AI Ecommerce <span style={{ color: C.lime }}>Development Process</span>
         </h2>
 
@@ -459,7 +459,7 @@ const Capabilities = () => (
           Why AI Changes Everything
         </div>
         
-        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.04em] text-white">
+        <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
           Capabilities &amp; Benefits of{" "}
           <span style={{ color: C.lime }}>AI in E-Commerce</span>
         </h2>
@@ -470,7 +470,7 @@ const Capabilities = () => (
       </div>
 
       {/* ── Cards Grid ── */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">
         {capabilities.map((cap, index) => (
           <div
             key={index}
@@ -564,7 +564,7 @@ const FAQ = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl"
+              className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
             >
               Everything You Need to Know About{' '}
               <span style={{ color: C.lime }}>AI for E-Commerce</span>

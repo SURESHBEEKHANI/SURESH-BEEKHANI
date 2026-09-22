@@ -133,19 +133,11 @@ const BlogCard: React.FC<{ blog: Blog; index: number }> = ({ blog, index }) => {
 
           {/* Title */}
           <h3
-            className="mb-3 line-clamp-2 text-lg font-bold"
+            className="mb-5 line-clamp-2 text-lg font-bold flex-grow"
             style={{ color: hovered ? C.lime : C.white, transition: 'color 0.3s' }}
           >
             {blog.title}
           </h3>
-
-          {/* Excerpt */}
-          <p
-            className="mb-5 line-clamp-2 flex-grow text-sm leading-6"
-            style={{ color: 'rgba(255,255,255,0.55)' }}
-          >
-            {stripMarkdown(blog.content)}
-          </p>
 
           {/* CTA */}
           <div
@@ -256,7 +248,7 @@ const LatestBlogs: React.FC = () => {
               Latest Insights
             </motion.div>
 
-            <h2 id="insights-heading" className="max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 id="insights-heading" className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
               Insights on technology, <span style={{ color: C.lime }}>AI and innovation</span>
             </h2>
           </div>

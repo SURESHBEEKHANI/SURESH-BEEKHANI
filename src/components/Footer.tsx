@@ -504,7 +504,7 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08, duration: 0.6, ease }}
-                  className="mb-6 font-space-grotesk text-4xl font-bold leading-tight tracking-[-0.04em] sm:text-5xl xl:text-6xl"
+                  className="mb-6 max-w-[18ch] font-space-grotesk text-3xl font-bold leading-tight tracking-[-0.04em] sm:text-4xl"
                 >
                   Scale your business with{' '}
                   <span style={{ color: C.lime }}>intelligent systems</span>

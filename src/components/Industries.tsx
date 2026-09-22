@@ -146,7 +146,7 @@ const Industries: React.FC = () => {
             <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.LIME }}>
               <span className="h-px w-8" style={{ background: C.LIME }} /> Industries
             </div>
-            <h2 id="industries-heading" className="mb-4 max-w-2xl text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">AI Built for <span style={{ color: C.LIME }}>Your Industry.</span></h2>
+            <h2 id="industries-heading" className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">AI Built for <span style={{ color: C.LIME }}>Your Industry.</span></h2>
             <p className="max-w-2xl text-lg leading-8 sm:text-xl" style={{ color: C.WHITE_MUTED }}>Tailored solutions for your workflows, compliance needs, and operational challenges.</p>
           </div>
           

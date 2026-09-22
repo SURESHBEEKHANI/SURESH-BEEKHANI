@@ -387,7 +387,7 @@ const Approach: React.FC = () => {
 
             <h2
               id="approach-heading"
-              className="text-4xl font-black tracking-[-0.04em] sm:text-5xl"
+              className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
             >
               From First Conversation{' '}
               <span style={{ color: C.lime }}>to Project Delivery.</span>

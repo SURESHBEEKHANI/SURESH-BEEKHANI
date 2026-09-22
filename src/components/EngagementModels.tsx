@@ -62,7 +62,7 @@ const EngagementModels = () => (
           How We Engage
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-4">
+        <h2 className="max-w-[18ch] text-3xl font-black text-white tracking-tight leading-tight mb-4 sm:text-4xl">
           Engagement <span style={{ color: C.lime }}>Models</span>
         </h2>
 

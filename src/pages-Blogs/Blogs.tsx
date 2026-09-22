@@ -842,10 +842,6 @@ const Blogs: React.FC = () => {
                   Practical insights on Agentic AI, AI automation, machine learning, and intelligent software systems from Velnix Solutions.
                 </motion.p>
               </div>
-              <div className="shrink-0 lg:text-right">
-                <p className="text-3xl font-black tracking-[-0.04em] sm:text-4xl">{blogs.length || '—'}</p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">Published insights</p>
-              </div>
             </div>
           </div>
 
@@ -862,7 +858,7 @@ const Blogs: React.FC = () => {
                   aria-haspopup="listbox"
                   aria-expanded={isCategoryOpen}
                   aria-label="Select insight category"
-                  className="flex h-12 w-full items-center justify-between px-4 text-left text-sm font-semibold outline-none transition-all duration-200"
+                  className="flex h-12 w-full items-center justify-between px-4 text-left text-sm font-semibold outline-none transition-all duration-200 rounded-full"
                   style={{
                     background: isCategoryOpen ? C.la(0.08) : C.graphite,
                     border: `1px solid ${isCategoryOpen ? C.lime : C.wa(0.12)}`,
@@ -889,7 +885,7 @@ const Blogs: React.FC = () => {
                   <div
                     role="listbox"
                     aria-label="Available insight categories"
-                    className="absolute left-0 right-0 z-30 mt-1 max-h-[200px] overflow-y-auto overscroll-contain"
+                    className="absolute left-0 right-0 z-30 mt-2 max-h-[260px] overflow-y-auto overscroll-contain rounded-2xl"
                     style={{ background: C.graphite, border: `1px solid ${C.lime}` }}
                   >
                     {CATEGORIES.map((cat) => (
@@ -898,7 +894,7 @@ const Blogs: React.FC = () => {
                         type="button"
                         role="option"
                         aria-selected={activeCategory === cat.id}
-                        className="block w-full px-4 py-3 text-left text-sm font-semibold transition-colors duration-200"
+                        className="block w-full px-4 py-3 text-left text-sm font-semibold transition-colors duration-200 first:rounded-t-2xl last:rounded-b-2xl"
                         style={{
                           background: activeCategory === cat.id ? C.la(0.18) : C.graphite,
                           color: activeCategory === cat.id ? C.lime : C.white,
@@ -932,7 +928,7 @@ const Blogs: React.FC = () => {
                 placeholder="Search insights..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-12 w-full bg-[#111111] pl-4 pr-10 text-sm text-white outline-none placeholder-white/40 transition-all duration-200"
+                className="h-12 w-full bg-[#111111] pl-4 pr-10 text-sm text-white outline-none placeholder-white/40 transition-all duration-200 rounded-full"
                 style={{ border: `1px solid ${C.wa(0.12)}` }}
                 onFocus={(e) => e.target.style.borderColor = C.lime}
                 onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
@@ -1019,13 +1015,9 @@ const Blogs: React.FC = () => {
                             <span>{estimateReadingTime(blog.content)}</span>
                           </div>
 
-                          <h3 className="mb-4 line-clamp-2 text-lg font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00]">
+                          <h3 className="mb-6 line-clamp-2 text-lg font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] flex-grow">
                             {blog.title}
                           </h3>
-
-                          <p className="mb-6 line-clamp-3 text-sm leading-6 text-white/55">
-                            {blog.meta_description || getExcerpt(blog.content, 160)}
-                          </p>
                         </div>
 
                         <div className="flex items-center justify-between border-t border-white/10 pt-5">

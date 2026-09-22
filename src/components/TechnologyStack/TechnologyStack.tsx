@@ -76,12 +76,18 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
               {eyebrow}
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight mb-4">
+            <h2 className="max-w-[18ch] text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight mb-4">
               {heading.includes('Velnix Systems') ? (
                 <>
                   {heading.split('Velnix Systems')[0]}
                   <span className="text-[#B6FF00]">Velnix Systems</span>
                   {heading.split('Velnix Systems')[1]}
+                </>
+              ) : heading.includes('Our Ecommerce Solutions') ? (
+                <>
+                  {heading.split('Our Ecommerce Solutions')[0]}
+                  <span className="text-[#B6FF00]">Our Ecommerce Solutions</span>
+                  {heading.split('Our Ecommerce Solutions')[1]}
                 </>
               ) : (
                 heading

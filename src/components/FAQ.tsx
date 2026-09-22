@@ -154,7 +154,7 @@ const FAQ = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={shouldReduce ? { duration: 0 } : { duration: 0.55, ease }}
-              className="text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl"
+              className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
             >
               Know Before{' '}
               <span style={{ color: C.lime }}>We Build Together.</span>
