@@ -67,6 +67,7 @@ Velnix Solutions designs and builds intelligent software systems, AI agents, aut
 <!-- GENERATED BLOG LINKS:START -->
 ## Blog Articles
 
+- [AI Automation vs. AI Agents: Which Does Your SMB Actually Need?](https://velnixsolutions.com/blogs?article=99173409-84cb-4c98-b821-20824aa50ca8)
 - [Vibe Coding vs. Vibe Engineering: Why "It Works" Isn't the Same as "It's Built Right"](https://velnixsolutions.com/blogs?article=43ac3961-8c80-4f4f-a9a8-ed774270bc49)
 - [AI Agents for SMBs: 10 Real Business Workflows They Can Automate](https://velnixsolutions.com/blogs?article=4df27b49-d493-4a6a-810e-aed3c81e80bb)
 - [How to Identify Which Business Processes Your SMB Should Automate First](https://velnixsolutions.com/blogs?article=3c4c12a9-79af-497e-92c5-b1944fcc48ac)

@@ -67,11 +67,16 @@ const OriginStory = () => {
         transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="relative mx-auto mt-16 w-full border-y border-[#050505]/20 bg-[#B6FF00] text-[#050505] sm:mt-20 sm:py-12 lg:mt-24"
       >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-2 gap-y-10 px-4 py-10 sm:grid-cols-4 sm:gap-y-0 sm:px-6 sm:py-12 lg:px-8">
           {IMPACT_STATS.map(({ number, label }) => (
             <div key={label} className="relative px-3 text-center sm:px-5">
-              <div className="text-4xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-5xl">{number.replace('+', '')}<span className="text-[#050505]">{number.includes('+') ? '+' : ''}</span></div>
-              <p className="mx-auto mt-4 max-w-[12ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65 sm:max-w-[15ch]">{label}</p>
+              <div className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
+                {number.replace('+', '').replace('%', '')}
+                <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
+              </div>
+              <p className="mx-auto mt-4 max-w-[15ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/70 sm:max-w-[18ch]">
+                {label}
+              </p>
             </div>
           ))}
         </div>

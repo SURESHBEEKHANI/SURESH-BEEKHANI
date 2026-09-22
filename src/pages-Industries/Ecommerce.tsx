@@ -9,6 +9,7 @@ import { IMPACT_STATS } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
 import Testimonials from "../components/Testimonials";
+import LatestBlogs from "../components/LatestBlogs";
 
 // ─── Footer Color Palette ─────────────────────────────────────────────
 const C = {
@@ -25,66 +26,60 @@ const C = {
 const capabilities = [
   {
     title: "Higher Conversion",
-    metric: "+34%",
-    metricLabel: "avg. conversion lift",
-    description: "Make discovery, search, and checkout frictionless. AI-powered recommendations surface the right product at the right moment — from first click to final payment.",
+    metric: "",
+    description: "Reduce friction across discovery, search, and checkout.",
   },
   {
     title: "Better Margin",
-    metric: "−28%",
-    metricLabel: "inventory waste",
-    description: "Cut overstock, eliminate stockouts, and slash costly returns using demand forecasting and predictive replenishment tuned to your catalog and seasonality.",
+    metric: "",
+    description: "Cut waste with smarter demand forecasting and inventory control.",
   },
   {
-    title: "Richer Customer Experience",
-    metric: "24 / 7",
-    metricLabel: "instant product answers",
-    description: "Answer product questions in real time and personalize every step of the path to purchase — from landing page to post-purchase follow-up.",
+    title: "Better Experience",
+    metric: "",
+    description: "Deliver helpful guidance and personalized storefront journeys.",
   },
   {
-    title: "Clearer Merchandising Insight",
-    metric: "360°",
-    metricLabel: "demand visibility",
-    description: "See what actually moves product across SKUs, channels, and campaigns. Replace gut-feel decisions with clear, actionable signals from your own commerce data.",
+    title: "Clearer Insight",
+    metric: "",
+    description: "Turn data into clear merchandising and demand signals.",
   },
   {
-    title: "Leaner Operations",
-    metric: "−60%",
-    metricLabel: "manual ops tasks",
-    description: "Handle catalog updates, support queues, and fulfillment exceptions automatically. Scale order volume without scaling headcount.",
+    title: "Leaner Ops",
+    metric: "",
+    description: "Automate repetitive tasks and scale without added overhead.",
   },
   {
-    title: "Tailored to Your Stack",
-    metric: "100%",
-    metricLabel: "stack compatible",
-    description: "Works natively with Shopify, custom storefronts, ERPs, PIMs, and the tools you already run — no rip-and-replace, no lock-in.",
+    title: "Works With Your Stack",
+    metric: "",
+    description: "Integrate with your current commerce ecosystem without disruption.",
   },
 ];
 
 const ecommerceServices = [
   {
-    title: "Ecommerce Development",
-    description: "Smart platforms with AI search, recommendations, personalization, and automated workflows.",
+    title: "Ecommerce Build",
+    description: "Conversion-focused platforms with AI search and personalization.",
   },
   {
-    title: "Shopping & Sales Agents",
-    description: "AI agents that help customers discover products, answer questions, and guide purchases.",
+    title: "Shopping Agents",
+    description: "AI agents that guide customers from discovery to purchase.",
   },
   {
-    title: "Workflow Automation",
-    description: "Automate orders, support, inventory, product management, and internal operations.",
+    title: "Automation",
+    description: "Automate orders, support, inventory, and internal operations.",
   },
   {
-    title: "Personalized Experiences",
-    description: "Personalized recommendations, search, offers, and journeys using customer behavior data.",
+    title: "Personalization",
+    description: "Tailored recommendations, offers, and customer journeys.",
   },
   {
-    title: "Customer Support",
-    description: "AI assistants handle FAQs, order updates, product questions, returns, and support requests.",
+    title: "Support",
+    description: "AI-powered help for questions, updates, and returns.",
   },
   {
-    title: "Integrations & Analytics",
-    description: "Connect CRM, ERP, payments, and marketing with AI-powered analytics for better decisions.",
+    title: "Integrations",
+    description: "Connect CRM, ERP, payments, and marketing data in one flow.",
   },
 ];
 
@@ -92,44 +87,44 @@ const developmentProcess = [
   {
     step: "STEP 01",
     num: "01",
-    title: "Discovery & Strategy",
-    shortTitle: "DISCOVERY & STRATEGY",
-    description: "Define goals, needs, challenges, and AI opportunities.",
+    title: "Discovery",
+    shortTitle: "DISCOVERY",
+    description: "Define goals and AI opportunities.",
   },
   {
     step: "STEP 02",
     num: "02",
-    title: "Architecture Design",
-    shortTitle: "ARCHITECTURE DESIGN",
-    description: "Map architecture, journeys, and AI touchpoints.",
+    title: "Architecture",
+    shortTitle: "ARCHITECTURE",
+    description: "Map systems, journeys, and data flow.",
   },
   {
     step: "STEP 03",
     num: "03",
-    title: "UI/UX Design",
-    shortTitle: "UI / UX DESIGN",
-    description: "Design storefronts with search, recommendations, personalization.",
+    title: "UX Design",
+    shortTitle: "UX DESIGN",
+    description: "Design effective product journeys and storefronts.",
   },
   {
     step: "STEP 04",
     num: "04",
-    title: "Development",
-    shortTitle: "DEVELOPMENT",
-    description: "Build platform, AI capabilities, and workflows.",
+    title: "Build",
+    shortTitle: "BUILD",
+    description: "Develop the platform, AI, and workflows.",
   },
   {
     step: "STEP 05",
     num: "05",
-    title: "Integrations",
-    shortTitle: "INTEGRATIONS",
-    description: "Connect CRM, ERP, payments, shipping, marketing.",
+    title: "Connect",
+    shortTitle: "CONNECT",
+    description: "Link CRM, ERP, and sales systems.",
   },
   {
     step: "STEP 06",
     num: "06",
-    title: "Launch & Optimize",
-    shortTitle: "LAUNCH & OPTIMIZE",
-    description: "Test, deploy, monitor, and continuously optimize.",
+    title: "Launch",
+    shortTitle: "LAUNCH",
+    description: "Test, deploy, monitor, and improve.",
   },
 ];
 
@@ -170,13 +165,12 @@ const Hero = () => (
           className="mb-6 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
           style={{ WebkitFontSmoothing: 'antialiased' }}
         >
-          Turn Your Ecommerce Operations Into{" "}
-          <span style={{ color: C.lime }}>Intelligent, Automated Systems</span>
+          Smarter Ecommerce, <br /><span style={{ color: C.lime }}>Built to Scale</span>
         </h1>
 
         {/* Supporting copy */}
         <p className="max-w-xl text-lg leading-8 sm:text-xl" style={{ color: C.wa(0.64) }}>
-          We build AI-powered ecommerce solutions that automate repetitive tasks, personalize customer experiences, improve decision-making, and help online businesses operate more efficiently.
+          AI solutions that streamline operations, improve customer journeys, and help ecommerce teams grow efficiently.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           {/* Primary CTA */}
@@ -253,11 +247,11 @@ const EcommerceServices = () => (
         </div>
 
         <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
-          AI Ecommerce That <span style={{ color: C.lime }}>Drives Growth.</span>
+          AI Commerce <span style={{ color: C.lime }}>Growth</span>
         </h2>
 
         <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
-          Intelligent commerce systems that automate operations, personalize experiences, and scale your business.
+          Smarter commerce systems that automate work and improve every customer touchpoint.
         </p>
       </div>
 
@@ -320,11 +314,11 @@ const DevelopmentProcess = () => (
         </div>
 
         <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
-          Our AI Ecommerce <span style={{ color: C.lime }}>Development Process</span>
+          Our AI <span style={{ color: C.lime }}>Process</span>
         </h2>
 
         <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
-          A streamlined process combining ecommerce, AI, automation, and integrations to build smarter commerce systems.
+          A focused path from strategy to launch for smarter ecommerce systems.
         </p>
       </div>
 
@@ -437,7 +431,6 @@ const Capabilities = () => (
     className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     style={{ background: `radial-gradient(ellipse 60% 70% at 96% 10%, ${C.la(0.13)} 0%, ${C.ga(0.04)} 42%, transparent 76%), radial-gradient(ellipse 50% 60% at 5% 85%, ${C.ga(0.2)} 0%, ${C.ga(0.07)} 40%, transparent 76%), ${C.black}` }}
   >
-    {/* Ambient glows */}
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${C.la(0.15)}, transparent)` }} />
       <div
@@ -451,62 +444,61 @@ const Capabilities = () => (
     </div>
 
     <div className="max-w-7xl mx-auto relative z-10">
-
-      {/* Section Header */}
       <div className="mb-14 sm:mb-18">
         <div className="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: C.lime }}>
           <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           Why AI Changes Everything
         </div>
-        
+
         <h2 className="mb-4 max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
-          Capabilities &amp; Benefits of{" "}
-          <span style={{ color: C.lime }}>AI in E-Commerce</span>
+          AI Benefits for <span style={{ color: C.lime }}>Commerce</span>
         </h2>
-        
+
         <p className="max-w-2xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.64) }}>
-          Every card below maps to a measurable outcome. We build the systems that deliver these numbers — not just the roadmap.
+          Practical capabilities built to improve growth, efficiency, and customer experience.
         </p>
       </div>
 
-      {/* ── Cards Grid ── */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">
+      <div className="grid gap-0 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-0 max-w-6xl">
         {capabilities.map((cap, index) => (
           <div
             key={index}
-            className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden"
-            style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}
+            className="group relative border-t border-white/[0.08] py-7 sm:py-8"
+            style={{
+              borderTopColor: index === 0 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.08)',
+            }}
           >
-            {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="flex items-start gap-5 sm:gap-6">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center border text-lg font-black"
+                style={{
+                  color: C.lime,
+                  borderColor: 'rgba(182,255,0,0.22)',
+                  background: 'rgba(182,255,0,0.04)',
+                }}
+              >
+                {String(index + 1).padStart(2, '0')}
+              </div>
 
-            {/* Corner watermark number */}
-            <span
-              className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none transition-colors duration-300"
-              style={{ color: C.wa(0.04) }}
-              aria-hidden="true"
-            >
-              {String(index + 1).padStart(2, '0')}
-            </span>
+              <div className="flex-1 min-w-0">
+                <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <h3 className="text-xl font-bold tracking-[-0.04em] text-white transition-colors duration-200 group-hover:text-[#B6FF00]">
+                    {cap.title}
+                  </h3>
 
-            {/* Title */}
-            <h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">
-              {cap.title}
-            </h3>
+                  {cap.metric ? (
+                    <div className="flex items-baseline">
+                      <span className="text-2xl font-black tracking-[-0.05em]" style={{ color: C.lime }}>
+                        {cap.metric}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
 
-            {/* Description */}
-            <p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>
-              {cap.description}
-            </p>
-
-            {/* Metric pill */}
-            <div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]">
-              <span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>
-                {cap.metric}
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>
-                {cap.metricLabel}
-              </span>
+                <p className="max-w-xl text-sm sm:text-base leading-7" style={{ color: C.wa(0.62) }}>
+                  {cap.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
@@ -664,17 +656,17 @@ const ImpactStats = () => {
       transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
       className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16"
     >
-      <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
         {IMPACT_STATS.map(({ number, label }, i) => (
           <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">
             {i > 0 && (
               <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
             )}
-            <div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl">
+            <div className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
               {number.replace('+', '').replace('%', '')}
               <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
             </div>
-            <p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">
+            <p className="mx-auto mt-4 max-w-[15ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/70 sm:max-w-[18ch]">
               {label}
             </p>
           </div>
@@ -696,11 +688,12 @@ const Ecommerce = () => {
       <EngagementModels />
       <ImpactStats />
       <TechnologyStack
-        eyebrow="Built with the Best"
-        heading="Technology Stack Behind Our Ecommerce Solutions"
-        subheading="The frameworks, AI models, databases, and cloud tools we use to build intelligent, scalable ecommerce systems."
+        eyebrow="Tech Stack"
+        heading="Built for Ecommerce Scale"
+        subheading="The tools and platforms we use to build fast, intelligent commerce systems."
       />
       <Testimonials />
+      <LatestBlogs />
       <FAQ />
       <Footer />
     </div>

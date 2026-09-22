@@ -76,22 +76,18 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
               {eyebrow}
             </div>
 
-            <h2 className="max-w-[18ch] text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight mb-4">
-              {heading.includes('Velnix Systems') ? (
-                <>
-                  {heading.split('Velnix Systems')[0]}
-                  <span className="text-[#B6FF00]">Velnix Systems</span>
-                  {heading.split('Velnix Systems')[1]}
-                </>
-              ) : heading.includes('Our Ecommerce Solutions') ? (
-                <>
-                  {heading.split('Our Ecommerce Solutions')[0]}
-                  <span className="text-[#B6FF00]">Our Ecommerce Solutions</span>
-                  {heading.split('Our Ecommerce Solutions')[1]}
-                </>
-              ) : (
-                heading
-              )}
+            <h2 className="mb-4 whitespace-nowrap text-3xl font-black tracking-tight leading-tight text-white sm:text-4xl">
+              {(() => {
+                const words = heading.trim().split(/\s+/);
+                if (words.length <= 1) return heading;
+                const lastWord = words.pop();
+                return (
+                  <>
+                    {words.join(' ')}{' '}
+                    <span className="text-[#B6FF00]">{lastWord}</span>
+                  </>
+                );
+              })()}
             </h2>
 
             <p className="text-sm sm:text-base text-white/60 leading-relaxed max-w-2xl">
