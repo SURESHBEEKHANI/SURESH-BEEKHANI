@@ -75,20 +75,20 @@ const StepVisual: React.FC<{ stepIndex: number; active: boolean }> = ({ stepInde
   const visuals = [
     // 01 — Contact: message node + connection
     <svg key="v1" width="80" height="56" viewBox="0 0 80 56" fill="none">
-      <rect x="8" y="4" width="64" height="40" rx="2" stroke={lineC} strokeWidth="1"/>
+      <rect x="8" y="4" width="64" height="40" rx="2" stroke={lineC} strokeWidth="1.5"/>
       <rect x="16" y="14" width="32" height="2" rx="1" fill={dimC}/>
       <rect x="16" y="20" width="22" height="2" rx="1" fill={dimC}/>
       <rect x="16" y="26" width="28" height="2" rx="1" fill={dimC}/>
-      <circle cx="62" cy="10" r="6" fill={limeC} fillOpacity="0.15" stroke={limeC} strokeWidth="1"/>
-      <circle cx="62" cy="10" r="2" fill={limeC}/>
-      <line x1="36" y1="44" x2="36" y2="52" stroke={lineC} strokeWidth="1"/>
+      <circle cx="62" cy="10" r="4.5" fill={limeC} fillOpacity="0.15" stroke={limeC} strokeWidth="1"/>
+      <circle cx="62" cy="10" r="1.5" fill={limeC}/>
+      <line x1="36" y1="44" x2="36" y2="52" stroke={lineC} strokeWidth="1.5"/>
       <circle cx="36" cy="52" r="2" fill={limeC}/>
     </svg>,
     // 02 — Discovery: node matrix
     <svg key="v2" width="80" height="56" viewBox="0 0 80 56" fill="none">
       {[12,36,60].map((x,i) => (
         <React.Fragment key={x}>
-          <circle cx={x} cy="16" r="5" fill={i===1 ? limeC : dimC} fillOpacity={i===1 ? 0.2 : 1} stroke={i===1 ? limeC : lineC} strokeWidth="1"/>
+          <circle cx={x} cy="16" r="4" fill={i===1 ? limeC : dimC} fillOpacity={i===1 ? 0.2 : 1} stroke={i===1 ? limeC : lineC} strokeWidth="1.5"/>
           {i===1 && <circle cx={x} cy="16" r="2" fill={limeC}/>}
           {i<2 && <line x1={x+5} y1="16" x2={x+21} y2="16" stroke={lineC} strokeWidth="1" strokeDasharray="3 2"/>}
         </React.Fragment>
@@ -102,11 +102,11 @@ const StepVisual: React.FC<{ stepIndex: number; active: boolean }> = ({ stepInde
     </svg>,
     // 03 — Proposal: structured document blocks
     <svg key="v3" width="80" height="56" viewBox="0 0 80 56" fill="none">
-      <rect x="12" y="2" width="56" height="52" rx="1" stroke={lineC} strokeWidth="1" fill={dimC} fillOpacity="0.15"/>
+      <rect x="12" y="2" width="56" height="52" rx="1.5" stroke={lineC} strokeWidth="1.5" fill={dimC} fillOpacity="0.15"/>
       {['PROJECT SCOPE','TIMELINE','DELIVERABLES','ESTIMATE'].map((label,i) => (
         <React.Fragment key={label}>
-          <rect x="18" y={8 + i*11} width={i===0 ? 30 : i===1 ? 20 : i===2 ? 36 : 16} height="2" rx="1" fill={i===0 ? limeC : dimC}/>
-          {i<3 && <line x1="18" y1={12 + i*11} x2="62" y2={12 + i*11} stroke={lineC} strokeWidth="0.5" strokeDasharray="2 2"/>}
+          <rect x="18" y={8 + i*11} width={i===0 ? 30 : i===1 ? 20 : i===2 ? 36 : 16} height="1.5" rx="1" fill={i===0 ? limeC : dimC}/>
+          {i<3 && <line x1="18" y1={11 + i*11} x2="60" y2={11 + i*11} stroke={lineC} strokeWidth="0.5" strokeDasharray="2 2"/>}
         </React.Fragment>
       ))}
     </svg>,
@@ -115,13 +115,13 @@ const StepVisual: React.FC<{ stepIndex: number; active: boolean }> = ({ stepInde
       <line x1="8" y1="28" x2="72" y2="28" stroke={lineC} strokeWidth="1"/>
       {[8,26,44,62,72].map((x,i) => (
         <React.Fragment key={x}>
-          <circle cx={x} cy="28" r={i===4 ? 6 : 4}
+          <circle cx={x} cy="28" r={i===4 ? 4.5 : 3.5}
             fill={i < 4 ? limeC : dimC}
             fillOpacity={i < 4 ? (i===3 ? 1 : 0.4) : 0.3}
             stroke={limeC}
-            strokeWidth="1"
+            strokeWidth="1.5"
           />
-          {i===4 && <circle cx={x} cy="28" r="2.5" fill={limeC}/>}
+          {i===4 && <circle cx={x} cy="28" r="2" fill={limeC}/>}
           {i<4 && i>0 && (
             <line x1={x} y1="32" x2={x} y2="44" stroke={lineC} strokeWidth="0.5"/>
           )}
@@ -180,19 +180,31 @@ const DesktopStepCard: React.FC<{
         className="w-full mx-1 flex flex-col cursor-default"
         style={{
             background: active
-              ? `linear-gradient(160deg, ${C.graphite} 0%, rgba(17,17,17,0.88) 100%)`
-              : 'rgba(17,17,17,0.72)',
-            border: `1px solid ${active ? C.la(0.38) : C.wa(0.18)}`,
-            borderRadius: 12,
-            padding: '22px 20px',
-          transition: 'all 0.3s ease',
-          transform: active ? 'translateY(-3px)' : 'translateY(0)',
-          boxShadow: active ? `0 10px 36px ${C.la(0.1)}` : 'none',
-          flex: 1,
+              ? `linear-gradient(180deg, rgba(28,28,28,0.95) 0%, rgba(17,17,17,0.92) 100%)`
+              : 'rgba(17,17,17,0.68)',
+            border: `1px solid ${active ? C.la(0.45) : C.wa(0.14)}`,
+            borderRadius: 16,
+            padding: '24px 22px',
+            transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+            transform: active ? 'translateY(-6px)' : 'translateY(0)',
+            boxShadow: active
+              ? `0 24px 60px ${C.la(0.12)}, inset 0 1px 0 ${C.wa(0.08)}`
+              : `0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 ${C.wa(0.05)}`,
+            flex: 1,
+            position: 'relative',
+            overflow: 'hidden',
         }}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
       >
+        {/* Subtle top highlight sheen */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
+          style={{
+            background: `linear-gradient(90deg, transparent, ${active ? C.la(0.6) : C.wa(0.12)}, transparent)`,
+          }}
+          aria-hidden="true"
+        />
         {/* Micro label + number */}
         <div className="flex items-center justify-between mb-3">
           <span
@@ -217,8 +229,8 @@ const DesktopStepCard: React.FC<{
 
         {/* Title */}
         <h3
-          className="text-xl font-bold mb-2"
-            style={{ color: active ? C.white : C.wa(0.82), transition: 'color 0.3s' }}
+          className="text-xl font-black mb-3"
+            style={{ color: active ? C.white : C.wa(0.82), transition: 'color 0.35s ease' }}
         >
           {step.title}
         </h3>
@@ -290,9 +302,9 @@ const MobileStepRow: React.FC<{ step: (typeof STEPS)[number]; index: number; isL
             width: 40,
             height: 40,
             borderRadius: '50%',
-            background: C.la(0.12),
-            border: `1.5px solid ${C.la(0.35)}`,
-            boxShadow: `0 0 12px ${C.la(0.2)}`,
+            background: `radial-gradient(circle at 35% 30%, ${C.la(0.2)} 0%, ${C.la(0.05)} 60%, transparent 80%), ${C.graphite}`,
+            border: `1.5px solid ${C.la(0.4)}`,
+            boxShadow: `0 0 16px ${C.la(0.25)}, inset 0 -2px 6px rgba(0,0,0,0.4)`,
           }}
         >
           <Icon size={15} color={C.lime} />
@@ -324,7 +336,7 @@ const MobileStepRow: React.FC<{ step: (typeof STEPS)[number]; index: number; isL
           </span>
         </div>
 
-        <h3 className="text-xl font-bold mb-2" style={{ color: C.white }}>
+        <h3 className="text-xl font-black mb-2" style={{ color: C.white }}>
           {step.title}
         </h3>
         <p className="text-sm leading-6 mb-3" style={{ color: C.wa(0.5) }}>
@@ -355,7 +367,11 @@ const Approach: React.FC = () => {
     <section
       className="font-display py-16 sm:py-24 relative overflow-hidden antialiased scroll-mt-20"
       id="approach"
-      style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}
+      style={{
+        background:
+          'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
+        color: C.white,
+      }}
       aria-labelledby="approach-heading"
     >
 
@@ -369,6 +385,16 @@ const Approach: React.FC = () => {
         <div
           className="absolute bottom-0 right-0 rounded-full blur-[160px]"
           style={{ width: 300, height: 300, background: C.ga(0.015) }}
+        />
+        {/* Subtle grid texture for depth */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(${C.wa(0.025)} 1px, transparent 1px), linear-gradient(90deg, ${C.wa(0.025)} 1px, transparent 1px)`,
+            backgroundSize: '64px 64px',
+            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%)',
+          }}
         />
       </div>
 
@@ -425,13 +451,15 @@ const Approach: React.FC = () => {
                     <div
                       className="flex items-center justify-center font-mono text-xs font-bold"
                       style={{
-                        width: 28,
-                        height: 28,
+                        width: 30,
+                        height: 30,
                         borderRadius: '50%',
-                        background: active ? C.lime : C.white,
+                        background: active ? C.lime : C.graphite,
                         color: C.black,
-                        border: `2px solid ${active ? C.lime : C.wa(0.9)}`,
-                        boxShadow: active ? `0 0 12px ${C.la(0.6)}` : '0 2px 8px rgba(0,0,0,0.15)',
+                        border: `2px solid ${active ? C.lime : C.wa(0.25)}`,
+                        boxShadow: active
+                          ? `0 0 16px ${C.la(0.5)}, 0 2px 8px rgba(0,0,0,0.2)`
+                          : '0 2px 8px rgba(0,0,0,0.3)',
                         transition: 'all 0.3s ease',
                       }}
                     >
@@ -443,36 +471,58 @@ const Approach: React.FC = () => {
                   <div
                     className="group relative flex items-center justify-center"
                     style={{
-                      width: 'clamp(88px, 12vw, 140px)',
-                      height: 'clamp(88px, 12vw, 140px)',
+                      width: 'clamp(92px, 13vw, 150px)',
+                      height: 'clamp(92px, 13vw, 150px)',
                       borderRadius: '50%',
                       background: active
-                        ? `radial-gradient(circle at 40% 35%, ${C.la(0.25)} 0%, ${C.la(0.05)} 55%, transparent 80%), ${C.graphite}`
-                        : `radial-gradient(circle at 40% 35%, ${C.wa(0.08)} 0%, ${C.wa(0.02)} 55%, transparent 80%), ${C.graphite}`,
-                      border: `2px solid ${active ? C.la(0.6) : C.wa(0.1)}`,
+                        ? `radial-gradient(circle at 35% 30%, ${C.la(0.3)} 0%, ${C.la(0.08)} 45%, transparent 75%), radial-gradient(circle at 70% 70%, ${C.graphite} 0%, ${C.graphite} 100%)`
+                        : `radial-gradient(circle at 35% 30%, ${C.wa(0.06)} 0%, ${C.wa(0.02)} 45%, transparent 75%), radial-gradient(circle at 70% 70%, ${C.graphite} 0%, ${C.graphite} 100%)`,
+                      border: `1.5px solid ${active ? C.la(0.5) : C.wa(0.1)}`,
                       boxShadow: active
-                        ? `0 18px 50px ${C.la(0.18)}, 0 0 0 6px ${C.la(0.08)}`
-                        : '0 14px 40px rgba(0,0,0,0.35)',
-                      transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
-                      transform: active ? 'translateY(-4px) scale(1.02)' : 'translateY(0) scale(1)',
+                        ? `0 20px 56px ${C.la(0.15)}, 0 0 0 8px ${C.la(0.06)}, inset 0 -4px 12px rgba(0,0,0,0.4)`
+                        : `0 12px 36px rgba(0,0,0,0.35), inset 0 -2px 8px rgba(0,0,0,0.3)`,
+                      transition: 'all 0.4s cubic-bezier(0.22,1,0.36,1)',
+                      transform: active ? 'translateY(-6px) scale(1.04)' : 'translateY(0) scale(1)',
                     }}
                   >
-                    {/* Inner dashed ring (on inactive steps, matching image) */}
+                    {/* Inner glow ring (on active steps) */}
+                    {active && (
+                      <div
+                        className="absolute inset-1 rounded-full"
+                        style={{
+                          border: `1px solid ${C.la(0.25)}`,
+                          boxShadow: `0 0 20px ${C.la(0.1)}`,
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+                    {/* Subtle inner sheen */}
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: active ? `linear-gradient(135deg, ${C.la(0.08)} 0%, transparent 50%)` : 'none',
+                        pointerEvents: 'none',
+                      }}
+                      aria-hidden="true"
+                    />
+                    {/* Inner dashed ring (on inactive steps) */}
                     {!active && (
                       <div
                         className="absolute inset-2 rounded-full"
                         style={{
-                          border: `1px dashed ${C.wa(0.18)}`,
+                          border: `1px dashed ${C.wa(0.12)}`,
                         }}
                         aria-hidden="true"
                       />
                     )}
                     <Icon
-                      size="clamp(28px, 4vw, 48px)"
+                      size="clamp(30px, 4.5vw, 52px)"
                       style={{
-                        color: active ? C.lime : C.la(0.65),
-                        filter: active ? `drop-shadow(0 0 10px ${C.la(0.5)})` : 'none',
-                        transition: 'all 0.3s ease',
+                        color: active ? C.lime : C.la(0.55),
+                        filter: active ? `drop-shadow(0 0 14px ${C.la(0.45)})` : 'none',
+                        transition: 'all 0.35s ease',
+                        position: 'relative',
+                        zIndex: 1,
                       }}
                       strokeWidth={1.5}
                     />
@@ -481,7 +531,7 @@ const Approach: React.FC = () => {
                   {/* Curved dashed connector (skip last) */}
                   {!isLast && (
                     <svg
-                      className="hidden lg:block absolute top-[calc(clamp(88px,12vw,140px)/2)] left-full w-full h-16 -translate-y-1/2 z-0 pointer-events-none"
+                      className="hidden lg:block absolute top-[calc(clamp(92px,13vw,150px)/2)] left-full w-full h-16 -translate-y-1/2 z-0 pointer-events-none"
                       viewBox="0 0 100 80"
                       preserveAspectRatio="none"
                       aria-hidden="true"
@@ -491,18 +541,18 @@ const Approach: React.FC = () => {
                       </defs>
                       <use
                         href={`#conn-${i}`}
-                        stroke={active || activeStep === i + 1 ? C.lime : C.wa(0.22)}
-                        strokeWidth="2"
-                        strokeDasharray="5 5"
-                        opacity={active || activeStep === i + 1 ? 0.85 : 0.6}
-                        style={{ transition: 'all 0.3s ease' }}
+                        stroke={active || activeStep === i + 1 ? C.lime : C.wa(0.2)}
+                        strokeWidth="1.5"
+                        strokeDasharray="4 4"
+                        opacity={active || activeStep === i + 1 ? 0.9 : 0.55}
+                        style={{ transition: 'all 0.35s ease' }}
                       />
                     </svg>
                   )}
 
                   {/* Step Title */}
                   <h3
-                    className="mt-6 sm:mt-8 text-lg sm:text-xl font-black leading-tight tracking-tight"
+                    className="mt-6 sm:mt-8 text-xl sm:text-2xl font-black leading-tight tracking-tight"
                     style={{
                       color: active ? C.lime : C.white,
                       transition: 'color 0.3s ease',
