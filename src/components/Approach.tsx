@@ -25,7 +25,7 @@ const STEPS = [
     micro: 'CONNECT',
     title: 'Contact Us',
     description:
-      'Reach out and share your vision. We listen to understand your goals, challenges, and what success looks like for your business.',
+      'Share your vision — we listen to understand your goals.',
     icon: MessageSquare,
     cta: 'Start a Conversation',
     bullets: ['Share your idea', 'Describe your challenge', 'No commitment required'],
@@ -35,7 +35,7 @@ const STEPS = [
     micro: 'DISCOVER',
     title: 'Consultation & Discovery',
     description:
-      'Schedule a professional consultation. We assess feasibility, map your workflows, and identify the right AI or software approach.',
+      'Assess feasibility and map workflows with expert analysis.',
     icon: Search,
     cta: null,
     bullets: ['Technical feasibility', 'Workflow analysis', 'Strategic recommendations'],
@@ -45,7 +45,7 @@ const STEPS = [
     micro: 'DEFINE',
     title: 'Detailed Proposal',
     description:
-      'Receive a comprehensive proposal — project scope, timeline, deliverables, and a transparent cost estimate. No hidden surprises.',
+      'Clear scope, timeline, and transparent cost estimate.',
     icon: FileText,
     cta: null,
     bullets: ['Clear project scope', 'Honest timeline', 'Transparent investment'],
@@ -55,7 +55,7 @@ const STEPS = [
     micro: 'DELIVER',
     title: 'Kickoff & Delivery',
     description:
-      'Once approved, our specialists launch with a clear plan. Open communication and structured milestones ensure smooth, successful delivery.',
+      'Structured milestones for smooth, successful deployment.',
     icon: Rocket,
     cta: 'Start Your Project',
     bullets: ['Dedicated team', 'Milestone reviews', 'Production deployment'],
@@ -375,58 +375,159 @@ const Approach: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
         {/* ══════════════════════════════════════════════════════
-            HEADER
+            CENTERED TOP HEADER
         ══════════════════════════════════════════════════════ */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-          <div className="w-full">
-            {/* Eyebrow */}
-            <div className="mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em]" style={{ color: C.lime }}>
-              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-              HOW WE WORK
-            </div>
+        <div className="mb-16 sm:mb-20 lg:mb-24 max-w-3xl">
 
-            <h2
-              id="approach-heading"
-              className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
-            >
-              From First Conversation{' '}
-              <span style={{ color: C.lime }}>to Project Delivery.</span>
-            </h2>
-
-            <p className="mt-6 max-w-md leading-7" style={{ color: C.wa(0.55) }}>
-              A simple, transparent process designed to turn your business goals into a clear
-              technical roadmap and successful solution.
-            </p>
+          {/* Eyebrow */}
+          <div className="mb-5 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em]" style={{ color: C.lime }}>
+            <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+            HOW WE WORK
           </div>
 
-          {/* Narrative chain removed */}
+          <h2
+            id="approach-heading"
+            className="max-w-[20ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
+          >
+            From Strategy to Solution{' '}
+            <span style={{ color: C.lime }}>Process</span>
+          </h2>
+
+          <p className="mt-6 max-w-xl text-base sm:text-lg leading-8" style={{ color: C.wa(0.55) }}>
+            A simple, transparent process designed to turn your business goals into a clear technical roadmap and successful solution.
+          </p>
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            DESKTOP — Horizontal 4-step timeline
+            HORIZONTAL PROCESS FLOW (Desktop + mobile grid)
         ══════════════════════════════════════════════════════ */}
-        <ol
-          className="hidden lg:flex gap-3 mb-16"
-          aria-label="AI onboarding process steps"
-          onMouseLeave={() => setActiveStep(0)}
-        >
-          {STEPS.map((step, i) => (
-            <DesktopStepCard
-              key={step.num}
-              step={step}
-              index={i}
-              active={activeStep === i}
-              isLast={i === STEPS.length - 1}
-              onEnter={() => setActiveStep(i)}
-              onLeave={() => {}}
-            />
-          ))}
-        </ol>
+        <div className="relative">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-6 xl:gap-10 items-start">
+            {STEPS.map((step, i) => {
+              const Icon = step.icon;
+              const isLast = i === STEPS.length - 1;
+              const active = activeStep === i;
+
+              return (
+                <motion.div
+                  key={step.num}
+                  className="relative flex flex-col items-center text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                  onMouseEnter={() => setActiveStep(i)}
+                  onMouseLeave={() => setActiveStep(0)}
+                >
+
+                  {/* Step Number Badge (top-left of circle) */}
+                  <div className="absolute left-0 sm:left-4 lg:left-0 -top-2 z-20">
+                    <div
+                      className="flex items-center justify-center font-mono text-xs font-bold"
+                      style={{
+                        width: 28,
+                        height: 28,
+                        borderRadius: '50%',
+                        background: active ? C.lime : C.white,
+                        color: C.black,
+                        border: `2px solid ${active ? C.lime : C.wa(0.9)}`,
+                        boxShadow: active ? `0 0 12px ${C.la(0.6)}` : '0 2px 8px rgba(0,0,0,0.15)',
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      {parseInt(step.num, 10)}
+                    </div>
+                  </div>
+
+                  {/* Large Icon Circle */}
+                  <div
+                    className="group relative flex items-center justify-center"
+                    style={{
+                      width: 'clamp(88px, 12vw, 140px)',
+                      height: 'clamp(88px, 12vw, 140px)',
+                      borderRadius: '50%',
+                      background: active
+                        ? `radial-gradient(circle at 40% 35%, ${C.la(0.25)} 0%, ${C.la(0.05)} 55%, transparent 80%), ${C.graphite}`
+                        : `radial-gradient(circle at 40% 35%, ${C.wa(0.08)} 0%, ${C.wa(0.02)} 55%, transparent 80%), ${C.graphite}`,
+                      border: `2px solid ${active ? C.la(0.6) : C.wa(0.1)}`,
+                      boxShadow: active
+                        ? `0 18px 50px ${C.la(0.18)}, 0 0 0 6px ${C.la(0.08)}`
+                        : '0 14px 40px rgba(0,0,0,0.35)',
+                      transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+                      transform: active ? 'translateY(-4px) scale(1.02)' : 'translateY(0) scale(1)',
+                    }}
+                  >
+                    {/* Inner dashed ring (on inactive steps, matching image) */}
+                    {!active && (
+                      <div
+                        className="absolute inset-2 rounded-full"
+                        style={{
+                          border: `1px dashed ${C.wa(0.18)}`,
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <Icon
+                      size="clamp(28px, 4vw, 48px)"
+                      style={{
+                        color: active ? C.lime : C.la(0.65),
+                        filter: active ? `drop-shadow(0 0 10px ${C.la(0.5)})` : 'none',
+                        transition: 'all 0.3s ease',
+                      }}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+
+                  {/* Curved dashed connector (skip last) */}
+                  {!isLast && (
+                    <svg
+                      className="hidden lg:block absolute top-[calc(clamp(88px,12vw,140px)/2)] left-full w-full h-16 -translate-y-1/2 z-0 pointer-events-none"
+                      viewBox="0 0 100 80"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <defs>
+                        <path id={`conn-${i}`} d="M0,20 C25,60 75,0 100,40" fill="none" />
+                      </defs>
+                      <use
+                        href={`#conn-${i}`}
+                        stroke={active || activeStep === i + 1 ? C.lime : C.wa(0.22)}
+                        strokeWidth="2"
+                        strokeDasharray="5 5"
+                        opacity={active || activeStep === i + 1 ? 0.85 : 0.6}
+                        style={{ transition: 'all 0.3s ease' }}
+                      />
+                    </svg>
+                  )}
+
+                  {/* Step Title */}
+                  <h3
+                    className="mt-6 sm:mt-8 text-lg sm:text-xl font-black leading-tight tracking-tight"
+                    style={{
+                      color: active ? C.lime : C.white,
+                      transition: 'color 0.3s ease',
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+
+                  {/* Short Description */}
+                  <p
+                    className="mt-3 max-w-[22ch] text-sm leading-6"
+                    style={{ color: active ? C.wa(0.62) : C.wa(0.45), transition: 'color 0.3s ease' }}
+                  >
+                    {step.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
 
         {/* ══════════════════════════════════════════════════════
-            MOBILE — Vertical timeline
+            MOBILE — Vertical timeline (compact fallback)
         ══════════════════════════════════════════════════════ */}
-        <ol className="lg:hidden mb-12" aria-label="AI onboarding process steps">
+        <ol className="lg:hidden mt-16 mb-12 space-y-8" aria-label="AI onboarding process steps">
           {STEPS.map((step, i) => (
             <MobileStepRow key={step.num} step={step} index={i} isLast={i === STEPS.length - 1} />
           ))}

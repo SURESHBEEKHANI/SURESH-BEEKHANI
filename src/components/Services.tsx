@@ -4,7 +4,7 @@ import {
   Globe, Smartphone, Cloud, Server, Database, Bot, ArrowRight, CheckCircle2,
   Brain, MessageSquare, Eye, FileText, Cpu, Workflow
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation, useReducedMotion } from '@/hooks/useAnimations';
 
@@ -344,10 +344,14 @@ const Services = () => {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true });
+  const [showAll, setShowAll] = useState(false);
 
   const handleNavigate = (route: string) => {
     if (route) navigate(route);
   };
+
+  const displayedServices = showAll ? CORE_SERVICES : CORE_SERVICES.slice(0, 5);
+  const hasMore = CORE_SERVICES.length > 5;
 
   return (
     <section
@@ -437,17 +441,59 @@ const Services = () => {
         </motion.div>
 
         <div className="relative left-1/2 w-screen -translate-x-1/2">
-          {CORE_SERVICES.map((service, index) => (
-            <ServiceRow
-              key={service.id}
-              service={service}
-              index={index}
-              prefersReducedMotion={prefersReducedMotion}
-              isInView={isInView}
-              onNavigate={handleNavigate}
-            />
-          ))}
+          <AnimatePresence initial={false}>
+            {displayedServices.map((service, index) => (
+              <ServiceRow
+                key={service.id}
+                service={service}
+                index={index}
+                prefersReducedMotion={prefersReducedMotion}
+                isInView={isInView}
+                onNavigate={handleNavigate}
+              />
+            ))}
+          </AnimatePresence>
         </div>
+
+        {/* See More Button */}
+        {hasMore && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="group inline-flex items-center gap-2.5 rounded-full border-2 px-7 py-3.5 text-sm font-extrabold transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                borderColor: showAll ? 'rgba(255,255,255,0.2)' : C.LIME,
+                background: showAll ? 'rgba(255,255,255,0.04)' : C.LIME,
+                color: showAll ? C.WHITE : C.BLACK,
+                boxShadow: showAll ? 'none' : '0 0 30px rgba(182,255,0,0.25)',
+              }}
+              onMouseEnter={(e) => {
+                if (!showAll) {
+                  e.currentTarget.style.boxShadow = '0 0 45px rgba(182,255,0,0.45)';
+                } else {
+                  e.currentTarget.style.borderColor = C.LIME;
+                  e.currentTarget.style.color = C.LIME;
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!showAll) {
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(182,255,0,0.25)';
+                } else {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                  e.currentTarget.style.color = C.WHITE;
+                }
+              }}
+            >
+              {showAll ? 'Show Less' : 'See More Services'}
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+                style={{ transform: showAll ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
