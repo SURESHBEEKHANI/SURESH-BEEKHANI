@@ -83,6 +83,7 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
+const CaseStudyDetail = lazy(() => import("./pages-Portfolio/CaseStudyDetail"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
@@ -286,6 +287,8 @@ const AppContent = () => {
 
           {/* Portfolio */}
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/Portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/:slug" element={<CaseStudyDetail />} />
 
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

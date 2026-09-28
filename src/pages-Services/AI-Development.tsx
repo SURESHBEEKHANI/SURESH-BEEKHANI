@@ -812,7 +812,6 @@ export const AIDevelopment: React.FC = () => {
                   alt="AI Development Hero - Professional AI Systems"
                   className="w-full max-w-2xl transition-all duration-500"
                   style={{
-                    borderRadius: '16px',
                     boxShadow: `
                       0 25px 50px -12px rgba(0,0,0,0.25),
                       0 0 0 1px rgba(255,255,255,0.05),

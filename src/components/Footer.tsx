@@ -542,7 +542,7 @@ const Footer = () => {
         {/* ══════════════════════════════════════════════════════
             ZONE 2 — BRAND + NAVIGATION GRID
         ══════════════════════════════════════════════════════ */}
-        <div className="relative z-10" style={{ background: C.graphite }}>
+        <div className="relative z-10" style={{ background: `linear-gradient(180deg, ${C.wa(0.02)} 0%, transparent 100%)` }}>
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 

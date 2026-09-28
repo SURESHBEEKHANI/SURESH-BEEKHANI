@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EngagementModels from "../components/EngagementModels";
-import { IMPACT_STATS } from "../components/OriginStory";
+import { ImpactStatsBanner } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
 import Testimonials from "../components/Testimonials";
@@ -199,26 +199,10 @@ const Hero = () => (
 
       {/* Right Image */}
       <div className="relative flex items-center justify-center">
-        {/* Soft backdrop framing disc for contrast */}
-        <div
-          className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full border border-white/10 bg-gradient-to-b from-white/[0.05] via-[#B6FF00]/[0.03] to-transparent shadow-[0_0_60px_rgba(182,255,0,0.12)]"
-          aria-hidden="true"
-        />
-
-        {/* Ambient colored shadow glow behind image */}
-        <div
-          className="pointer-events-none absolute h-80 w-80 sm:h-[420px] sm:w-[420px] rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${C.la(0.42)} 0%, ${C.ga(0.22)} 42%, transparent 70%)`,
-            filter: 'blur(55px)',
-          }}
-          aria-hidden="true"
-        />
-
         <img
           src="/image/Industries-Img/Ecommerce-page-hero.png"
           alt="E-Commerce technology"
-          className="relative z-10 w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto object-contain brightness-110 contrast-105 drop-shadow-[0_0_45px_rgba(182,255,0,0.45)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)] transition-transform duration-700 hover:scale-105"
+          className="relative z-10 w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto object-contain brightness-110 contrast-105 drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)] transition-transform duration-700 hover:scale-105"
         />
       </div>
     </div>
@@ -644,49 +628,23 @@ const FAQ = () => {
   );
 };
 
-// ─── Impact Statistics Section ────────────────────────────────────────
-const ImpactStats = () => {
-  const prefersReducedMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16"
-    >
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0">
-        {IMPACT_STATS.map(({ number, label }, i) => (
-          <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">
-            {i > 0 && (
-              <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
-            )}
-            <div className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
-              {number.replace('+', '').replace('%', '')}
-              <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
-            </div>
-            <p className="mx-auto mt-4 max-w-[15ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/70 sm:max-w-[18ch]">
-              {label}
-            </p>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
 // ─── Main Ecommerce Page ──────────────────────────────────────────────
 const Ecommerce = () => {
   return (
-    <div className="min-h-screen bg-white flex flex-col" style={{ background: C.black }}>
+    <div
+      className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black text-white"
+      style={{
+        background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
+        color: C.white,
+      }}
+    >
       <Navbar />
       <Hero />
       <EcommerceServices />
       <DevelopmentProcess />
       <Capabilities />
       <EngagementModels />
-      <ImpactStats />
+      <ImpactStatsBanner />
       <TechnologyStack
         eyebrow="Tech Stack"
         heading="Built for Ecommerce Scale"

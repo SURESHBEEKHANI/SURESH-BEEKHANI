@@ -51,37 +51,51 @@ const OriginStory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[16/10] bg-cover bg-[center_60%] bg-no-repeat lg:mt-16"
-          style={{ backgroundImage: "url('/image/Hero-section-image/The Origin Story.avif')" }}
-          whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-          aria-label="The Origin Story"
-          role="img"
+          className="relative flex items-center justify-center rounded-2xl bg-[#050505] border border-white/10 p-6 sm:p-8 shadow-[0_24px_64px_rgba(0,0,0,0.6)] group overflow-hidden lg:mt-4"
         >
+          {/* Ambient subtle glow behind image */}
+          <div
+            className="absolute inset-0 bg-radial from-[#B6FF00]/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            aria-hidden="true"
+          />
+          <img
+            src="/image/Hero-section-image/The Origin Story.avif"
+            alt="The Origin Story"
+            className="relative z-10 w-full max-h-[440px] object-contain transition-transform duration-500 group-hover:scale-105"
+          />
         </motion.div>
       </div>
 
-      <motion.div
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto mt-16 w-full border-y border-[#050505]/20 bg-[#B6FF00] text-[#050505] sm:mt-20 sm:py-12 lg:mt-24"
-      >
-        <div className="relative max-w-7xl mx-auto grid grid-cols-2 gap-y-10 px-4 py-10 sm:grid-cols-4 sm:gap-y-0 sm:px-6 sm:py-12 lg:px-8">
-          {IMPACT_STATS.map(({ number, label }) => (
-            <div key={label} className="relative px-3 text-center sm:px-5">
-              <div className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
-                {number.replace('+', '').replace('%', '')}
-                <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
-              </div>
-              <p className="mx-auto mt-4 max-w-[15ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/70 sm:max-w-[18ch]">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <ImpactStatsBanner />
     </section>
+  );
+};
+
+export const ImpactStatsBanner = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto mt-16 w-full border-y border-[#050505]/20 bg-[#B6FF00] text-[#050505] sm:mt-20 sm:py-12 lg:mt-24"
+    >
+      <div className="relative max-w-7xl mx-auto grid grid-cols-2 gap-y-10 px-4 py-10 sm:grid-cols-4 sm:gap-y-0 sm:px-6 sm:py-12 lg:px-8">
+        {IMPACT_STATS.map(({ number, label }) => (
+          <div key={label} className="relative px-3 text-center sm:px-5">
+            <div className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
+              {number.replace('+', '').replace('%', '')}
+              <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
+            </div>
+            <p className="mx-auto mt-4 max-w-[15ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/70 sm:max-w-[18ch]">
+              {label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 };
 

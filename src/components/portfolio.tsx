@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -108,28 +107,160 @@ const PROJECTS: Project[] = [
     image: "/image/Portfolio-img/ai-workflow-automation.png",
     link: "/portfolio/ai-workflow-automation",
   },
-];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FILTERS
-// ─────────────────────────────────────────────────────────────────────────────
+  {
+    id: "clinical-decision-support",
+    title: "Clinical Decision Support AI",
+    category: "Healthcare AI",
+    industry: "Healthcare",
+    problem:
+      "Diagnostic data retrieval and medical charting was slowing clinical consultations and patient diagnosis.",
+    solution:
+      "Developed an AI decision-support copilot integrated directly into EHR systems with automated clinical summarization.",
+    outcome:
+      "Reduced physician charting time by 55% with faster diagnostic accuracy.",
+    metrics: [
+      {
+        stat: "55%",
+        label: "Faster Charting",
+      },
+      {
+        stat: "4×",
+        label: "Diagnosis Retrieval",
+      },
+      {
+        stat: "HIPAA",
+        label: "Compliant",
+      },
+    ],
+    tags: ["Healthcare AI", "Clinical NLP", "EHR", "Predictive Analytics"],
+    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
+    link: "/portfolio/clinical-decision-support",
+  },
+  {
+    id: "real-estate-ai-platform",
+    title: "Real Estate AI Lead Intelligence",
+    category: "Custom Software",
+    industry: "Real Estate",
+    problem:
+      "Agents spent hours manually qualifying leads with no predictive insight into buyer intent or closing probability.",
+    solution:
+      "Built a custom AI platform that scores, segments, and nurtures leads automatically using behavioral data and NLP.",
+    outcome:
+      "Conversion rates doubled with 80% less manual follow-up effort.",
+    metrics: [
+      { stat: "2×", label: "Conversion Rate" },
+      { stat: "80%", label: "Less Manual Work" },
+      { stat: "< 2min", label: "Lead Response" },
+    ],
+    tags: ["Lead Scoring", "NLP", "CRM Integration", "Automation"],
+    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
+    link: "/portfolio/real-estate-ai-platform",
+  },
 
-const CATEGORY_FILTERS = [
   {
-    id: "all",
-    label: "All Case Studies",
+    id: "ecommerce-ai-personalization",
+    title: "E-Commerce AI Personalization Engine",
+    category: "AI & Automation",
+    industry: "E-Commerce",
+    problem:
+      "Generic product recommendations resulted in low engagement and high cart abandonment rates.",
+    solution:
+      "Developed a real-time AI personalization engine analyzing browsing behavior, purchase history, and intent signals.",
+    outcome:
+      "Revenue per visitor increased by 38% within 90 days of deployment.",
+    metrics: [
+      { stat: "38%", label: "Revenue Per Visitor" },
+      { stat: "22%", label: "Cart Abandonment Drop" },
+      { stat: "5×", label: "Recommendation CTR" },
+    ],
+    tags: ["Recommendation Engine", "ML", "Real-Time AI", "E-Commerce"],
+    image: "/image/Portfolio-img/ai-workflow-automation.png",
+    link: "/portfolio/ecommerce-ai-personalization",
   },
+
   {
-    id: "Healthcare AI",
-    label: "Healthcare AI",
+    id: "fintech-risk-analytics",
+    title: "FinTech Credit Risk Analytics Platform",
+    category: "AI & Automation",
+    industry: "Financial Services",
+    problem:
+      "Traditional credit scoring models failed to capture non-traditional borrower signals, causing high default rates.",
+    solution:
+      "Engineered an ML-driven risk analytics platform processing 200+ alternative data signals for real-time credit decisions.",
+    outcome:
+      "Default rates reduced by 42% while approvals increased for creditworthy underserved borrowers.",
+    metrics: [
+      { stat: "42%", label: "Default Rate Reduction" },
+      { stat: "200+", label: "Data Signals" },
+      { stat: "< 3s", label: "Decision Time" },
+    ],
+    tags: ["FinTech", "Risk Modeling", "Machine Learning", "Real-Time"],
+    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
+    link: "/portfolio/fintech-risk-analytics",
   },
+
   {
-    id: "AI & Automation",
-    label: "AI & Automation",
+    id: "legal-document-ai",
+    title: "Legal Document Intelligence System",
+    category: "Custom Software",
+    industry: "Legal Tech",
+    problem:
+      "Law firms were spending thousands of billable hours manually reviewing contracts and extracting key clauses.",
+    solution:
+      "Built an AI-powered document intelligence platform that extracts, classifies, and risk-scores legal clauses instantly.",
+    outcome:
+      "Contract review time reduced from days to minutes with 94% extraction accuracy.",
+    metrics: [
+      { stat: "94%", label: "Extraction Accuracy" },
+      { stat: "90%", label: "Time Saved" },
+      { stat: "10k+", label: "Docs Processed" },
+    ],
+    tags: ["Legal AI", "NLP", "Document Processing", "Classification"],
+    image: "/image/Portfolio-img/ai-workflow-automation.png",
+    link: "/portfolio/legal-document-ai",
   },
+
   {
-    id: "Custom Software",
-    label: "Custom Software",
+    id: "edtech-adaptive-learning",
+    title: "Adaptive Learning AI for EdTech",
+    category: "Healthcare AI",
+    industry: "Education",
+    problem:
+      "One-size-fits-all course content failed students who learned at different paces, leading to high dropout rates.",
+    solution:
+      "Designed an adaptive AI engine that personalizes learning paths, pacing, and content difficulty per student in real time.",
+    outcome:
+      "Student completion rates improved by 65% with measurable learning outcome gains.",
+    metrics: [
+      { stat: "65%", label: "Completion Rate Up" },
+      { stat: "3×", label: "Engagement" },
+      { stat: "48h", label: "Avg. Onboarding Cut" },
+    ],
+    tags: ["EdTech", "Adaptive AI", "Personalization", "LMS Integration"],
+    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
+    link: "/portfolio/edtech-adaptive-learning",
+  },
+
+  {
+    id: "supply-chain-ai-optimization",
+    title: "AI-Driven Supply Chain Optimization",
+    category: "AI & Automation",
+    industry: "Logistics & Supply Chain",
+    problem:
+      "Supply chain disruptions and inaccurate demand forecasting led to excess inventory and missed delivery windows.",
+    solution:
+      "Implemented an AI forecasting and optimization system integrating live supplier, logistics, and market demand data.",
+    outcome:
+      "Inventory costs cut by 30% with 98% on-time delivery performance achieved.",
+    metrics: [
+      { stat: "30%", label: "Inventory Cost Cut" },
+      { stat: "98%", label: "On-Time Delivery" },
+      { stat: "15+", label: "Data Sources Unified" },
+    ],
+    tags: ["Supply Chain", "Forecasting", "Optimization", "Logistics AI"],
+    image: "/image/Portfolio-img/ai-workflow-automation.png",
+    link: "/portfolio/supply-chain-ai-optimization",
   },
 ];
 
@@ -138,18 +269,8 @@ const CATEGORY_FILTERS = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 const Portfolio: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const filteredProjects = PROJECTS.filter((project) => {
-    if (activeFilter === "all") {
-      return true;
-    }
-
-    return project.category === activeFilter;
-  });
-
-  const featuredProject =
-    PROJECTS.find((project) => project.featured) || PROJECTS[0];
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6);
 
   return (
     <div
@@ -188,441 +309,280 @@ const Portfolio: React.FC = () => {
       {/* MAIN */}
       {/* ─────────────────────────────────────────────────────────────────── */}
 
-      <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+      <main className="flex-grow relative z-10">
+        {/* HERO BANNER - PROFESSIONAL 3D CURVED EMERALD DESIGN */}
+        <section className="relative w-full overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32 text-center border-b border-white/10">
+          {/* Deep dark green curved professional backdrop */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+            {/* 1. Base Multi-Stop Lime Radial Gradient */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 95% 85% at 50% 25%, #1e3300 0%, #111d00 36%, #080f00 68%, #050505 100%)",
+              }}
+            />
 
-          {/* HERO */}
-          <section className="w-full mb-16 sm:mb-20">
+            {/* 2. Volumetric Central Lime Light Cone */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] rounded-full blur-[110px] pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, rgba(182,255,0,0.18) 0%, rgba(100,160,0,0.09) 60%, transparent 80%)",
+              }}
+            />
+
+            {/* 3. Ultra-subtle Engineering Tech Grid */}
+            <div
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
+                backgroundSize: "28px 28px",
+              }}
+            />
+
+
+
+            {/* 5. Edge Vignette & Bottom Seamless Fade to Black */}
+            <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#050505] to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-[#050505] to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+          </div>
+
+          {/* CONTENT */}
+          <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 flex flex-col items-center">
+            {/* Eyebrow */}
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 16,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="inline-flex items-center gap-2 mb-6"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-5 sm:mb-6 text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.32em] text-white/80"
             >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span
-                  style={{
-                    width: "6px",
-                    height: "6px",
-                    borderRadius: "50%",
-                    background: C.lime,
-                    boxShadow: `0 0 8px ${C.lime}`,
-                  }}
-                />
-
-                <span
-                  style={{
-                    fontSize: "0.6875rem",
-                    fontWeight: 700,
-                    color: C.lime,
-                    letterSpacing: "0.24em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Selected Work & Proof of Execution
-                </span>
-              </span>
+              PORTFOLIO
             </motion.div>
 
+            {/* Headline */}
             <motion.h1
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.1,
-                duration: 0.6,
-              }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="mb-6 max-w-4xl text-3xl sm:text-4xl font-black leading-tight tracking-[-0.04em]"
               style={{
-                fontSize: "clamp(1.875rem, 3vw, 2.25rem)",
-                fontWeight: 900,
-                lineHeight: 1.15,
-                letterSpacing: "-0.04em",
-                color: C.white,
-                marginBottom: "2rem",
+                color: "#B6FF00",
+                textShadow: "0 0 60px rgba(182,255,0,0.30)",
                 WebkitFontSmoothing: "antialiased",
               }}
             >
-              Engineering AI Systems That{" "}
-              <span style={{ color: C.lime }}>
-                Move Businesses Forward.
-              </span>
+              Engineering AI Systems That<br className="hidden sm:inline" /> Move Businesses Forward.
             </motion.h1>
 
+            {/* Description */}
             <motion.p
-              initial={{
-                opacity: 0,
-                y: 16,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.2,
-                duration: 0.6,
-              }}
-              style={{
-                fontSize: "clamp(1.125rem, 1.5vw, 1.25rem)",
-                color: C.wa(0.64),
-                lineHeight: "1.5rem",
-                fontWeight: 400,
-                maxWidth: "850px",
-              }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-9 max-w-2xl text-sm sm:text-base lg:text-[17px] leading-relaxed text-white/75"
             >
-              Explore detailed case studies demonstrating how Velnix
-              transforms operational complexity into intelligent software
-              systems, automated workflows, and high-performance digital
-              products.
+              Explore detailed case studies demonstrating how Velnix transforms operational complexity into intelligent software systems, automated workflows, and high-performance digital products.
             </motion.p>
-          </section>
 
-          {/* STATS */}
-          <section className="grid grid-cols-1 gap-6 sm:grid-cols-3 mb-20">
-            {[
-              {
-                number: "45+",
-                label: "AI Systems Built",
-              },
-              {
-                number: "23+",
-                label: "Clients Served",
-              },
-              {
-                number: "95%",
-                label: "Client Satisfaction",
-              },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{
-                  opacity: 0,
-                  y: 16,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.2 + index * 0.1,
-                }}
-                className="relative p-8"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.08)}`,
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-                }}
-              >
-                <div
-                  className="text-4xl font-black leading-none tracking-[-0.04em]"
-                  style={{
-                    color: C.lime,
-                  }}
-                >
-                  {stat.number}
-                </div>
-
-                <div
-                  className="mt-2 text-xs font-semibold uppercase tracking-[0.14em]"
-                  style={{
-                    color: C.wa(0.42),
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </section>
-
-          {/* FEATURED CASE STUDY */}
-          {featuredProject && activeFilter === "all" && (
-            <section className="mb-20">
-              <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] mb-4 block">
-                Featured Case Study
+            {/* Inline Stats in Frosted Glass Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 py-3 px-6 sm:px-8 rounded-full bg-black/40 border border-white/[0.08] backdrop-blur-md shadow-[0_12px_32px_rgba(0,0,0,0.5)] text-sm sm:text-base font-medium text-white/90"
+            >
+              <span className="flex items-center gap-2">
+                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">45+</strong>
+                <span className="text-white/75 text-xs sm:text-sm">AI Systems Built</span>
               </span>
+              <span className="hidden sm:inline text-[#74DF36]/40 select-none">|</span>
+              <span className="flex items-center gap-2">
+                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">23+</strong>
+                <span className="text-white/75 text-xs sm:text-sm">Clients Served</span>
+              </span>
+              <span className="hidden sm:inline text-[#74DF36]/40 select-none">|</span>
+              <span className="flex items-center gap-2">
+                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">95%</strong>
+                <span className="text-white/75 text-xs sm:text-sm">Client Satisfaction</span>
+              </span>
+            </motion.div>
+          </div>
+        </section>
 
-              <div
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-12"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.12)}`,
-                  boxShadow: "0 24px 64px rgba(0,0,0,0.5)",
-                }}
-              >
-                {/* IMAGE */}
-                <div className="lg:col-span-6 overflow-hidden bg-[#050505] border border-white/10 relative group">
-                  <img
-                    src={featuredProject.image}
-                    alt={featuredProject.title}
-                    className="w-full h-auto max-h-[300px] object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* CONTENT */}
-                <div className="lg:col-span-6 flex flex-col">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className="px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.24em]"
-                      style={{
-                        background: C.la(0.08),
-                        color: C.lime,
-                        border: `1px solid ${C.la(0.2)}`,
-                      }}
-                    >
-                      {featuredProject.industry}
-                    </span>
-
-                    <span className="text-[11px] text-white/50 font-mono">
-                      {featuredProject.category}
-                    </span>
-                  </div>
-
-                  <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight tracking-[-0.04em] mb-4">
-                    {featuredProject.title}
-                  </h2>
-
-                  <div className="space-y-3 mb-6 text-base sm:text-lg text-white/64 leading-[1.5rem]">
-                    <p>
-                      <strong className="text-white">
-                        The Challenge:
-                      </strong>{" "}
-                      {featuredProject.problem}
-                    </p>
-
-                    <p>
-                      <strong className="text-white">
-                        Velnix Solution:
-                      </strong>{" "}
-                      {featuredProject.solution}
-                    </p>
-                  </div>
-
-                  {/* METRICS */}
-                  {featuredProject.metrics &&
-                    featuredProject.metrics.length > 0 && (
-                      <div
-                        className="grid grid-cols-3 gap-3 mb-8 p-4"
-                        style={{
-                          background: C.wa(0.02),
-                          border: `1px solid ${C.wa(0.06)}`,
-                        }}
-                      >
-                        {featuredProject.metrics.map((metric) => (
-                          <div
-                            key={metric.label}
-                            className="text-center"
-                          >
-                            <div
-                              className="text-2xl sm:text-3xl font-black leading-none tracking-[-0.04em]"
-                              style={{
-                                color: C.lime,
-                              }}
-                            >
-                              {metric.stat}
-                            </div>
-
-                            <div className="text-[11px] text-white/42 uppercase font-semibold tracking-[0.14em] mt-0.5">
-                              {metric.label}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                  <Link
-                    to={featuredProject.link}
-                    className="group/btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-black uppercase tracking-[0.24em] transition-all"
-                    style={{
-                      background: C.lime,
-                    }}
-                    onMouseEnter={(event) => {
-                      event.currentTarget.style.background = C.green;
-                    }}
-                    onMouseLeave={(event) => {
-                      event.currentTarget.style.background = C.lime;
-                    }}
-                  >
-                    View Full Case Study
-
-                    <ArrowRight
-                      size={15}
-                      className="group-hover/btn:translate-x-1 transition-transform"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* FILTERS */}
-          <section className="mb-12 flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-white/10">
-            <div className="flex flex-wrap gap-2">
-              {CATEGORY_FILTERS.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setActiveFilter(category.id)}
-                  className="px-4 py-2 text-[11px] font-bold uppercase tracking-[0.24em] transition-all duration-200"
-                  style={{
-                    background:
-                      activeFilter === category.id
-                        ? C.lime
-                        : C.graphite,
-
-                    color:
-                      activeFilter === category.id
-                        ? C.black
-                        : C.wa(0.7),
-
-                    border: `1px solid ${activeFilter === category.id
-                        ? C.lime
-                        : C.wa(0.1)
-                      }`,
-                  }}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/42">
-              Showing {filteredProjects.length} Verified Solutions
-            </div>
-          </section>
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-24">
 
           {/* CASE STUDY GRID */}
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-            {filteredProjects.map((project) => (
-              <article
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-24">
+            {visibleProjects.map((project, i) => (
+              <motion.article
                 key={project.id}
-                className="group flex flex-col justify-between p-6 transition-all duration-300 relative overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group relative flex flex-col justify-between overflow-hidden p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5"
                 style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.08)}`,
+                  background: "linear-gradient(160deg, #141414 0%, #0d0d0d 100%)",
+                  borderRadius: 22,
+                  border: `1px solid ${C.wa(0.09)}`,
+                  boxShadow: "0 10px 32px rgba(0, 0, 0, 0.45)",
                 }}
-                onMouseEnter={(event) => {
-                  event.currentTarget.style.borderColor =
-                    C.la(0.35);
-
-                  event.currentTarget.style.background =
-                    C.la(0.02);
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = C.la(0.35);
+                  e.currentTarget.style.boxShadow = `0 16px 44px ${C.la(0.09)}`;
                 }}
-                onMouseLeave={(event) => {
-                  event.currentTarget.style.borderColor =
-                    C.wa(0.08);
-
-                  event.currentTarget.style.background =
-                    C.graphite;
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = C.wa(0.09);
+                  e.currentTarget.style.boxShadow = "0 10px 32px rgba(0, 0, 0, 0.45)";
                 }}
               >
-                <div>
-                  {/* THUMBNAIL */}
-                  <div className="overflow-hidden h-36 sm:h-44 mb-5 bg-[#050505] border border-white/5 relative">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                {/* LIME GLOW — Top-Right (matches hero light cone) */}
+                <div
+                  className="absolute -top-10 -right-10 w-44 h-44 rounded-full blur-[72px] pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle, rgba(182,255,0,0.13) 0%, rgba(100,160,0,0.06) 60%, transparent 80%)",
+                  }}
+                />
 
-                    <span
-                      className="absolute top-3 left-3 px-2 py-0.5 text-[11px] font-bold uppercase tracking-[0.24em]"
-                      style={{
-                        background: C.black,
-                        color: C.lime,
-                        border: `1px solid ${C.la(0.3)}`,
-                      }}
-                    >
-                      {project.industry}
-                    </span>
+                {/* ORGANIC CURVED PETAL WATERMARK (Top-Right in Brand Lime) */}
+                <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none overflow-hidden rounded-tr-[22px]">
+                  <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
+                    {/* Outer soft petal */}
+                    <path
+                      d="M 50,0 C 70,85 125,140 200,150 L 200,0 Z"
+                      fill={C.la(0.04)}
+                    />
+                    {/* Inner soft petal */}
+                    <path
+                      d="M 105,0 C 120,60 150,95 200,105 L 200,0 Z"
+                      fill={C.la(0.08)}
+                    />
+                  </svg>
+                </div>
+
+                {/* ORGANIC SUBTLE CURVE (Bottom-Right) */}
+                <div className="absolute bottom-0 right-0 w-36 h-36 pointer-events-none overflow-hidden rounded-br-[22px] opacity-40">
+                  <svg viewBox="0 0 150 150" fill="none" className="w-full h-full">
+                    <path
+                      d="M 150,55 C 95,65 65,110 55,150 L 150,150 Z"
+                      fill={C.ga(0.04)}
+                    />
+                  </svg>
+                </div>
+
+                {/* LIME GLOW — Bottom-Right (matches top-right) */}
+                <div
+                  className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full blur-[72px] pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle, rgba(182,255,0,0.13) 0%, rgba(100,160,0,0.06) 60%, transparent 80%)",
+                  }}
+                />
+
+                {/* CARD CONTENT */}
+                <div className="relative z-10 flex flex-col flex-1">
+                  {/* Top Label: CASE STUDY */}
+                  <div
+                    className="text-[11px] font-bold uppercase tracking-[0.24em] mb-3"
+                    style={{ color: C.lime }}
+                  >
+                    CASE STUDY
                   </div>
 
-                  {/* TITLE */}
-                  <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#B6FF00] transition-colors leading-tight tracking-[-0.04em] mb-3">
+                  {/* Title */}
+                  <h3
+                    className="text-[22px] font-extrabold tracking-[-0.025em] leading-snug mb-3.5 transition-colors duration-200 group-hover:text-[#B6FF00]"
+                    style={{ color: C.white }}
+                  >
                     {project.title}
                   </h3>
 
-                  {/* PROBLEM */}
-                  <p className="text-sm sm:text-base text-white/64 leading-[1.5rem] mb-4 line-clamp-2">
-                    <strong className="text-white/80">
-                      Problem:
-                    </strong>{" "}
+                  {/* Divider */}
+                  <div
+                    className="h-[1px] w-full mb-4"
+                    style={{
+                      background: `linear-gradient(90deg, ${C.la(0.35)}, ${C.wa(0.07)})`,
+                    }}
+                  />
+
+                  {/* Description / Summary */}
+                  <p
+                    className="text-[14px] leading-[1.65] mb-6 flex-1 font-normal"
+                    style={{ color: C.wa(0.68) }}
+                  >
                     {project.problem}
                   </p>
 
-                  {/* OUTCOME */}
-                  <div
-                    className="p-3 mb-6"
-                    style={{
-                      background: C.wa(0.03),
-                      borderLeft: `2px solid ${C.lime}`,
-                    }}
-                  >
-                    <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-white/42 mb-0.5">
-                      Key Outcome
-                    </div>
-
-                    <div className="text-sm sm:text-base font-semibold text-white/90 leading-[1.5rem]">
-                      {project.outcome}
-                    </div>
-                  </div>
-
-                  {/* TAGS */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
+                  {/* Tags / Pills */}
+                  <div className="flex flex-wrap gap-2 mb-7">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[11px] font-semibold text-white/64 tracking-[0.08em]"
+                        className="inline-flex items-center px-3.5 py-1.5 text-[12px] font-semibold tracking-[0.01em] rounded-full transition-colors duration-200"
                         style={{
-                          background: C.wa(0.04),
-                          border: `1px solid ${C.wa(0.08)}`,
+                          background: C.la(0.06),
+                          border: `1px solid ${C.la(0.22)}`,
+                          color: C.lime,
                         }}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
+
+                  {/* View Project Details Button */}
+                  <Link
+                    to={project.link}
+                    className="inline-flex items-center justify-center w-full py-3.5 px-5 text-sm font-bold transition-all duration-200 active:scale-[0.99] text-center"
+                    style={{
+                      background: C.lime,
+                      color: C.black,
+                      borderRadius: 12,
+                      boxShadow: `0 4px 20px ${C.la(0.24)}`,
+                      textDecoration: "none",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = C.green;
+                      e.currentTarget.style.boxShadow = `0 6px 28px ${C.la(0.45)}`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = C.lime;
+                      e.currentTarget.style.boxShadow = `0 4px 20px ${C.la(0.24)}`;
+                    }}
+                  >
+                    View Project Details
+                  </Link>
                 </div>
-
-                {/* LINK */}
-                <Link
-                  to={project.link}
-                  className="inline-flex items-center justify-between w-full pt-4 border-t border-white/10 text-[11px] font-bold uppercase tracking-[0.24em] text-white hover:text-[#B6FF00] transition-colors"
-                >
-                  <span>View Case Study</span>
-
-                  <ArrowRight
-                    size={14}
-                    color={C.lime}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </Link>
-              </article>
+              </motion.article>
             ))}
           </section>
 
+          {/* VIEW ALL CASE STUDIES BUTTON */}
+          {!showAll && PROJECTS.length > 6 && (
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center -mt-10 mb-20"
+            >
+              <Link
+                to="/portfolio"
+                onClick={() => setShowAll(true)}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-black transition-all hover:scale-[1.02] active:scale-[0.98] hover:opacity-90"
+                style={{
+                  background: C.lime,
+                  boxShadow: `0 4px 24px ${C.la(0.3)}`,
+                  textDecoration: "none",
+                }}
+              >
+                View All Case Studies
+                <span aria-hidden="true">→</span>
+              </Link>
+            </motion.div>
+          )}
+
           {/* EMPTY STATE */}
-          {filteredProjects.length === 0 && (
+          {PROJECTS.length === 0 && (
             <div
               className="py-20 text-center"
               style={{

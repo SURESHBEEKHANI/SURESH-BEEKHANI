@@ -13,6 +13,7 @@ const TechnologyStack = lazy(() => import('@/components/TechnologyStack').then(m
 const EngagementModels = lazy(() => import('@/components/EngagementModels'));
 const Approach = lazy(() => import('@/components/Approach'));
 const Testimonials = lazy(() => import('@/components/Testimonials'));
+const Portfolio = lazy(() => import('@/components/PortfolioSection'));
 const LatestBlogs = lazy(() => import('@/components/LatestBlogs'));
 const FAQ = lazy(() => import('@/components/FAQ'));
 const Footer = lazy(() => import('@/components/Footer'));
@@ -52,6 +53,10 @@ const Index = () => {
 
           <AnimatedSection threshold={0.08}>
               <Approach />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
+              <Portfolio />
           </AnimatedSection>
 
           <AnimatedSection id="testimonials" threshold={0.08}>
