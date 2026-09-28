@@ -83,7 +83,7 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
-const CaseStudyDetail = lazy(() => import("./pages-Portfolio/CaseStudyDetail"));
+const CaseStudyDetail = lazy(() => import("./Pages-Portfolio/CaseStudyDetail"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
