@@ -248,9 +248,12 @@ const LatestBlogs: React.FC = () => {
               Latest Insights
             </motion.div>
 
-            <h2 id="insights-heading" className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
+            <h2 id="insights-heading" className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl whitespace-nowrap">
               Insights on technology, <span style={{ color: C.lime }}>AI and innovation</span>
             </h2>
+            <p className="mt-3 max-w-lg text-base text-white/60 leading-relaxed">
+              Explore expert articles, technical breakdowns, and deep dives into engineering & AI.
+            </p>
           </div>
 
           {/* View All CTA */}

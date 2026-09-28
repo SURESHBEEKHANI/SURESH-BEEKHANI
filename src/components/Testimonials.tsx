@@ -6,11 +6,11 @@ import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 // BRAND TOKENS (Velnix Locked Color System)
 // ─────────────────────────────────────────────────────────────────────────────
 const C = {
-  black:    '#050505',
+  black: '#050505',
   graphite: '#111111',
-  white:    '#FFFFFF',
-  lime:     '#B6FF00',
-  green:    '#7DCC00',
+  white: '#FFFFFF',
+  lime: '#B6FF00',
+  green: '#7DCC00',
   la: (o: number) => `rgba(182,255,0,${o})`,
   wa: (o: number) => `rgba(255,255,255,${o})`,
   ga: (o: number) => `rgba(125,204,0,${o})`,
@@ -256,13 +256,13 @@ const Testimonials = () => {
   };
 
   return (
-    <section 
+    <section
       className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
       style={{ color: C.white }}
       aria-label="Client Proof & Testimonials"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* ══════════════════════════════════════════════════════
             SECTION HEADER
         ══════════════════════════════════════════════════════ */}
@@ -281,8 +281,11 @@ const Testimonials = () => {
             </motion.div>
 
             <h2 className="max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
-              Built with Velnix. <span style={{ color: C.lime }}>Proven in the real world.</span>
+              Built with Velnix. <span style={{ color: C.lime }}>Proven in the real world</span>
             </h2>
+            <p className="mt-3 max-w-lg text-base text-white/60 leading-relaxed">
+              Real stories from leaders who trust Velnix to build and scale high-impact software.
+            </p>
           </div>
 
         </div>
@@ -290,7 +293,7 @@ const Testimonials = () => {
         {/* ══════════════════════════════════════════════════════
             TESTIMONIAL CARDS (AUTO-PLAY 5s)
         ══════════════════════════════════════════════════════ */}
-        <div 
+        <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >

@@ -329,15 +329,6 @@ const KNOWN_ROUTES = new Set([
   '/careers',
   '/cookie-policy',
   '/blog-admin',
-
-  '/portfolio/ai-powered-electronic-health-record',
-  '/portfolio/ai-powered-patient-management-system',
-  '/portfolio/ai-powered-telemedicine-systems',
-  '/portfolio/ai-clinical-documentation-system',
-  '/portfolio/diogenes-ai-chatbot',
-  '/portfolio/ai-powered-medical-imaging-system',
-  '/portfolio/ai-appointment-management-systems',
-  '/portfolio/ai-powered-hospital-management-system',
 ]);
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────
