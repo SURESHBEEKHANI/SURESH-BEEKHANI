@@ -9,7 +9,7 @@ import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
 import { SEO } from './components/SEO';
 
-const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-HBZG5HGKQE';
+const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-64RV35HGEC';
 
 type Gtag = (...args: [string, ...unknown[]]) => void;
 

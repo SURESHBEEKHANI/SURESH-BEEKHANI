@@ -8,10 +8,16 @@ if (!root) throw new Error('Root element not found');
 
 createRoot(root).render(<App />);
 
-const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-HBZG5HGKQE';
+const GA_MEASUREMENT_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-64RV35HGEC';
 
 const loadAnalytics = () => {
-  if (!GA_MEASUREMENT_ID || document.querySelector('script[data-velnix-analytics]')) return;
+  if (
+    !GA_MEASUREMENT_ID ||
+    document.querySelector('script[data-velnix-analytics]') ||
+    document.querySelector('script[src*="googletagmanager.com/gtag/js"]')
+  ) {
+    return;
+  }
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = (...args: unknown[]) => window.dataLayer.push(args);
