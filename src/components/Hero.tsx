@@ -142,20 +142,6 @@ const Hero = () => {
         }}
         aria-label="Velnix Solutions hero section"
       >
-
-        <div className="pointer-events-none absolute left-0 top-0 z-20 h-px w-full overflow-hidden" aria-hidden="true">
-          <div
-            ref={scanRef}
-            className="absolute left-0 top-0 h-px w-1/5"
-            style={{
-              transform: 'translateX(var(--hero-scan-progress, 0%))',
-              background: `linear-gradient(90deg, transparent, ${C.limeAlpha(0.85)}, transparent)`,
-              boxShadow: `0 0 12px ${C.limeAlpha(0.55)}`,
-              transition: 'transform 120ms linear',
-            }}
-          />
-        </div>
-
         <BackgroundAnimation />
 
         <div
