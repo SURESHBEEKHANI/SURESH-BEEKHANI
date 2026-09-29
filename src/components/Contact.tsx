@@ -291,15 +291,54 @@ const Contact = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative overflow-hidden rounded-[24px] sm:rounded-[28px] p-6 sm:p-10 md:p-12"
             style={{
-              background: 'linear-gradient(160deg, #141414 0%, #0d0d0d 100%)',
-              border: `1px solid ${C.wa(0.09)}`,
+              background: C.black,
+              border: `1px solid ${C.wa(0.12)}`,
               boxShadow: `0 8px 16px rgba(0,0,0,0.4), 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px ${C.la(0.06)}, 0 0 60px ${C.la(0.06)}`,
             }}
           >
-            {/* Subtle lime glow top-right */}
+            {/* ── Background textures copied from Our Services ── */}
             <div
-              className="absolute -top-16 -right-16 w-56 h-56 rounded-full blur-[90px] pointer-events-none"
-              style={{ background: 'radial-gradient(circle, rgba(182,255,0,0.12) 0%, transparent 70%)' }}
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+                filter: 'blur(10px)',
+              }}
+            />
+
+            {/* Dot grid */}
+            <svg
+              className="pointer-events-none absolute inset-0 w-full h-full"
+              aria-hidden="true"
+            >
+              <defs>
+                <pattern id="contact-card-dots" width="32" height="32" patternUnits="userSpaceOnUse">
+                  <circle cx="1" cy="1" r="0.5" fill="#FFFFFF" opacity="0.04" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#contact-card-dots)" />
+            </svg>
+
+            {/* Ambient lime glow top-right */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
+              style={{
+                background: `radial-gradient(circle, ${C.lime} 0%, transparent 70%)`,
+                opacity: 0.05,
+                filter: 'blur(80px)',
+              }}
+            />
+
+            {/* Secondary glow bottom-left */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full"
+              style={{
+                background: `radial-gradient(circle, ${C.green} 0%, transparent 70%)`,
+                opacity: 0.04,
+                filter: 'blur(60px)',
+              }}
             />
 
             {/* Card Header */}

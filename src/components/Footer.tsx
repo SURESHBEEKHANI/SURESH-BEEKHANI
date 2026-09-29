@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
-  ArrowRight,
   Linkedin, Twitter, Instagram, Facebook,
   MapPin, Mail, Phone,
   ChevronDown,
@@ -462,82 +461,7 @@ const Footer = () => {
           }} />
         </div>
 
-        {/* ══════════════════════════════════════════════════════
-            ZONE 1 — FINAL CONVERSION CTA
-        ══════════════════════════════════════════════════════ */}
-        <div
-          className="relative z-10"
-          style={{
-            borderBottom: `1px solid ${C.wa(0.08)}`,
-            background: `linear-gradient(180deg, ${C.wa(0.02)} 0%, transparent 100%)`,
-          }}
-        >
-          <div className="relative max-w-7xl mx-auto px-6 lg:px-8" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
 
-              {/* Left — Headline + copy */}
-              <div style={{ maxWidth: 600 }}>
-                {/* CTA Eyebrow */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, ease }}
-                  className="mb-8 inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.20em]"
-                  style={{ color: C.lime }}
-                >
-                  <span
-                    style={{
-                      width: 4, height: 4, borderRadius: '50%',
-                      background: C.lime,
-                      display: 'inline-block',
-                      boxShadow: `0 0 6px ${C.la(0.4)}`,
-                      animation: shouldReduce ? 'none' : 'velnix-footer-blink 3s ease-in-out infinite',
-                    }}
-                  />
-                  Ready to Transform
-                </motion.div>
-
-                {/* CTA Headline */}
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.08, duration: 0.6, ease }}
-                  className="mb-6 max-w-[18ch] font-space-grotesk text-3xl font-bold leading-tight tracking-[-0.04em] sm:text-4xl"
-                >
-                  Scale your business with{' '}
-                  <span style={{ color: C.lime }}>intelligent systems</span>
-                </motion.h2>
-
-                {/* CTA Supporting copy */}
-                <motion.p
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.16, duration: 0.55, ease }}
-                  className="max-w-lg text-lg leading-7 font-inter"
-                  style={{ color: C.wa(0.70) }}
-                >
-                  Partner with Velnix Solutions to transform operational complexity into competitive advantage through AI, automation, and enterprise software.
-                </motion.p>
-              </div>
-
-              {/* Right — CTA buttons + contact quick access */}
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.55, ease }}
-                className="flex flex-col gap-4 shrink-0"
-              >
-                {/* Primary CTA */}
-                <FooterCTA />
-
-              </motion.div>
-            </div>
-          </div>
-        </div>
 
         {/* ══════════════════════════════════════════════════════
             ZONE 2 — BRAND + NAVIGATION GRID
@@ -711,75 +635,4 @@ const Footer = () => {
 
 export default Footer;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FOOTER CTA BUTTON
-// ─────────────────────────────────────────────────────────────────────────────
-const FooterCTA = () => {
-  const ref = useRef<HTMLAnchorElement>(null);
 
-  const handleMove = (e: React.MouseEvent) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.08;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.08;
-    el.style.transform = `translate(${x}px, ${y}px)`;
-  };
-
-  const handleLeave = (e: React.MouseEvent) => {
-    const el = ref.current;
-    if (el) el.style.transform = 'translate(0,0)';
-    (e.currentTarget as HTMLElement).style.background = C.lime;
-    (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 32px ${C.la(0.25)}`;
-  };
-
-  return (
-    <a
-      ref={ref}
-      href="https://calendar.app.google/F63aBoA5vxJdtihj7"
-      target="_blank"
-      rel="noopener noreferrer"
-      onMouseMove={handleMove}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.background = C.green;
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 40px ${C.la(0.35)}`;
-      }}
-      onMouseLeave={handleLeave}
-      className="group relative inline-flex items-center gap-3 overflow-hidden font-inter text-sm font-semibold"
-      style={{
-        background: C.lime,
-        color: C.black,
-        padding: '16px 24px',
-        textDecoration: 'none',
-        transition: 'all 0.25s ease',
-        boxShadow: `0 8px 32px ${C.la(0.25)}`,
-        whiteSpace: 'nowrap',
-        borderRadius: 8,
-      }}
-      aria-label="Book a strategy call with Velnix Solutions"
-    >
-      {/* Subtle shimmer effect - more restrained */}
-      <span
-        aria-hidden="true"
-        style={{
-          position: 'absolute', 
-          inset: 0, 
-          pointerEvents: 'none',
-          width: '200%', 
-          left: '-50%',
-          background: 'linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)',
-          animation: 'velnix-footer-shimmer 3.5s linear infinite',
-          willChange: 'transform',
-        }}
-      />
-      <style>{`@keyframes velnix-footer-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
-
-      <span className="relative z-10">Book Strategy Call</span>
-      <ArrowRight
-        size={16}
-        strokeWidth={2}
-        className="relative z-10 group-hover:translate-x-1 transition-transform duration-200"
-      />
-    </a>
-  );
-};
