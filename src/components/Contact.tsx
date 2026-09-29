@@ -175,7 +175,7 @@ const Contact = () => {
     focusedField === field ? C.lime : C.wa(0.1);
 
   return (
-    <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
+    <div className="min-h-screen flex flex-col font-display antialiased" style={{ background: C.black, color: C.white }}>
       <Navbar />
 
       {/* ── AMBIENT BACKGROUND ── */}
@@ -225,8 +225,10 @@ const Contact = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
-              className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-white/70"
+              className="mb-4 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: C.lime }}
             >
+              <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
               GET IN TOUCH
             </motion.div>
 
@@ -235,10 +237,9 @@ const Contact = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.08, duration: 0.5 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4"
-              style={{ color: C.lime, textShadow: `0 0 50px ${C.la(0.35)}` }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.04em] mb-4 text-white"
             >
-              Contact Us
+              Contact <span style={{ color: C.lime }}>Us.</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -246,8 +247,8 @@ const Contact = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.16, duration: 0.5 }}
-              className="text-sm sm:text-base max-w-lg leading-relaxed mb-8"
-              style={{ color: C.wa(0.75) }}
+              className="max-w-xl text-center text-lg leading-8 sm:text-xl mb-8"
+              style={{ color: 'rgba(255, 255, 255, 0.64)' }}
             >
               Start the conversation with our team today. We'll have the right developer ready within just 24 hours.
             </motion.p>
@@ -260,7 +261,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.24, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-sm transition-all hover:scale-[1.03] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98]"
               style={{
                 background: C.lime,
                 color: C.black,
@@ -284,7 +285,7 @@ const Contact = () => {
         {/* ══════════════════════════════════════════════════════
             MAIN CARD — "Let's Discuss Your Needs"
         ══════════════════════════════════════════════════════ */}
-        <section id="contact-form" className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 -mt-32 sm:-mt-40 pb-24">
+        <section id="contact-form" className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 -mt-32 sm:-mt-40 pb-6">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -344,14 +345,13 @@ const Contact = () => {
             {/* Card Header */}
             <div className="text-center mb-8 relative z-10">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[-0.03em] mb-2"
-                style={{ color: C.white }}
+                className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-[-0.04em] mb-3 text-white"
               >
-                Let's Discuss Your Needs
+                Let's Discuss <span style={{ color: C.lime }}>Your Needs.</span>
               </h2>
               <p
-                className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em]"
-                style={{ color: C.wa(0.45) }}
+                className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em]"
+                style={{ color: C.lime }}
               >
                 Tell Us About Your Project. We'll Take It From There
               </p>
