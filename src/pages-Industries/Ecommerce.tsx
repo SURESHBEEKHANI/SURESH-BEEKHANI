@@ -8,6 +8,7 @@ import EngagementModels from "../components/EngagementModels";
 import { ImpactStatsBanner } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
+import PortfolioSection from "../components/PortfolioSection";
 import Testimonials from "../components/Testimonials";
 import LatestBlogs from "../components/LatestBlogs";
 
@@ -650,6 +651,7 @@ const Ecommerce = () => {
         heading="Built for Ecommerce Scale"
         subheading="The tools and platforms we use to build fast, intelligent commerce systems."
       />
+      <PortfolioSection />
       <Testimonials />
       <LatestBlogs />
       <FAQ />

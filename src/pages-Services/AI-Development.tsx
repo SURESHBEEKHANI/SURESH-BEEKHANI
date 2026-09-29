@@ -41,6 +41,7 @@ import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
 import EngagementModels from "../components/EngagementModels";
 import Testimonials from "../components/Testimonials";
+import PortfolioSection from "../components/PortfolioSection";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System (Consistent with src/components)
@@ -1222,7 +1223,14 @@ export const AIDevelopment: React.FC = () => {
               </div>
             </div>
           </section>
+        </div>
 
+        {/* ══════════════════════════════════════════════════════
+            SELECTED WORK / PROOF OF EXECUTION (Full Width Dark)
+        ══════════════════════════════════════════════════════ */}
+        <PortfolioSection />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* ══════════════════════════════════════════════════════
               07 — CLIENT TESTIMONIALS
           ══════════════════════════════════════════════════════ */}

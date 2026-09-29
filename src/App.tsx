@@ -63,17 +63,16 @@ const OnDemand = lazy(() => import("./pages-Industries/OnDemand"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
-const PredictiveModelling = lazy(() => import("./pages-Services/PredictiveModelling"));
-const NaturalLanguageProcessing = lazy(() => import("./pages-Services/NaturalLanguageProcessing"));
-const MachineLearning = lazy(() => import("./pages-Services/MachineLearning"));
-const ComputerVisionPro = lazy(() => import("./pages-Services/ComputerVisionPro"));
+const NaturalLanguageProcessing = lazy(() => import("./pages-Services/ComputerVisionNLP"));
+const ComputerVision = lazy(() => import("./pages-Services/ComputerVisionNLP"));
+const MachineLearning = lazy(() => import("./pages-Services/MachineLearningData"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
-const WebDevelopment = lazy(() => import("./pages-Services/WebDevelopment"));
-const AppDevelopment = lazy(() => import("./pages-Services/AppDevelopment"));
-const DevOps = lazy(() => import("./pages-Services/DevOps"));
+const WebDevelopment = lazy(() => import("./pages-Services/WebMobileDevelopment"));
+const UIUXDesign = lazy(() => import("./pages-Services/UIUXProductDesign"));
+const DevOps = lazy(() => import("./pages-Services/CloudDevOps"));
+const SoftwareModernization = lazy(() => import("./pages-Services/SoftwareModernization"));
 const CustomSoftware = lazy(() => import("./pages-Services/CustomSoftware"));
-const BigDataAnalytics = lazy(() => import("./pages-Services/BigDataAnalytics"));
 const AgenticAI = lazy(() => import("./pages-Services/AgenticAI"));
 const AIAudit = lazy(() => import("./pages-Services/AIAudit"));
 
@@ -161,8 +160,8 @@ const SiteCursor = () => {
 
 const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.523 5.854L.057 23.882a.5.5 0 0 0 .61.61l6.102-1.458A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.376l-.36-.214-3.724.89.907-3.63-.235-.373A9.818 9.818 0 1 1 12 21.818z"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.523 5.854L.057 23.882a.5.5 0 0 0 .61.61l6.102-1.458A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.376l-.36-.214-3.724.89.907-3.63-.235-.373A9.818 9.818 0 1 1 12 21.818z" />
   </svg>
 );
 
@@ -271,17 +270,16 @@ const AppContent = () => {
 
           {/* Services */}
           <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
-          <Route path="/predictive-modelling" element={<PredictiveModelling />} />
           <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
+          <Route path="/computer-vision" element={<ComputerVision />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
-          <Route path="/computer-vision" element={<ComputerVisionPro />} />
           <Route path="/ai-development" element={<AIDevelopment />} />
           <Route path="/ai-automation" element={<AIAutomation />} />
           <Route path="/web-development" element={<WebDevelopment />} />
-          <Route path="/app-development" element={<AppDevelopment />} />
+          <Route path="/ui-ux-design" element={<UIUXDesign />} />
           <Route path="/devops" element={<DevOps />} />
+          <Route path="/software-modernization" element={<SoftwareModernization />} />
           <Route path="/custom-software-development" element={<CustomSoftware />} />
-          <Route path="/big-data-analytics" element={<BigDataAnalytics />} />
           <Route path="/agentic-ai" element={<AgenticAI />} />
           <Route path="/ai-audit" element={<AIAudit />} />
 

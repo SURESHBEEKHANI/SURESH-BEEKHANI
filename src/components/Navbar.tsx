@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import {
-  Menu, X, ChevronDown, Search, ArrowRight, Phone, Mail,
+  Menu, X, ChevronDown, ChevronRight, Search, ArrowRight, Phone, Mail,
   HeartPulse, Landmark, GraduationCap, ShoppingCart,
   Utensils, Compass, ShieldCheck, Zap,
   Sparkles, MessageCircle, Code2, Brain,
-  Eye, Workflow, type LucideIcon,
+  Eye, Workflow, GitBranch, ArrowUpRight, type LucideIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
@@ -36,12 +36,18 @@ const NAV: NavGroup[] = [
   {
     label: 'Services',
     items: [
-      { label: 'AI Automation',             href: '/ai-automation',                       desc: 'Turn repetitive workflows into automated systems.' },
-      { label: 'AI Development',           href: '/ai-development',                desc: 'Build intelligent software around your business.' },
-      { label: 'Conversational AI',         href: '/ai-chatbot-development',      desc: 'Create AI systems that communicate with customers and teams.' },
-      { label: 'Machine Learning & Data',   href: '/machine-learning',                   desc: 'Turn business data into predictions and decisions.' },
-      { label: 'Computer Vision & NLP',     href: '/computer-vision',                       desc: 'Make software understand documents, images, and language.' },
-      { label: 'Custom Software',           href: '/custom-software-development',         desc: 'Build the software infrastructure your business needs.' },
+      { label: 'AI Audit',                 href: '/ai-audit' },
+      { label: 'Agentic AI',               href: '/agentic-ai' },
+      { label: 'AI Automation',             href: '/ai-automation' },
+      { label: 'AI Development',           href: '/ai-development' },
+      { label: 'Conversational AI',         href: '/ai-chatbot-development' },
+      { label: 'Machine Learning & Data',   href: '/machine-learning' },
+      { label: 'Computer Vision & NLP',     href: '/computer-vision' },
+      { label: 'Custom Software',           href: '/custom-software-development' },
+      { label: 'Cloud DevOps',              href: '/devops' },
+      { label: 'Web & Mobile Development',  href: '/web-development' },
+      { label: 'UI/UX & Product Design',    href: '/ui-ux-design' },
+      { label: 'Software Modernization',    href: '/software-modernization' },
     ],
   },
   {
@@ -82,18 +88,22 @@ const ALL_SEARCHABLE: NavItem[] = [
   { label: 'Contact',          href: '/contact' },
   { label: 'AI Automation',    href: '/ai-automation' },
   { label: 'AI Development',   href: '/ai-development' },
+  { label: 'Agentic AI',       href: '/agentic-ai' },
   { label: 'Conversational AI', href: '/ai-chatbot-development' },
   { label: 'Machine Learning & Data', href: '/machine-learning' },
   { label: 'Computer Vision & NLP', href: '/computer-vision' },
   { label: 'Custom Software',  href: '/custom-software-development' },
+  { label: 'AI Audit',         href: '/ai-audit' },
+  { label: 'Web & Mobile Development', href: '/web-development' },
+  { label: 'UI/UX & Product Design', href: '/ui-ux-design' },
   // Legacy service routes for search compatibility
-  { label: 'Agentic AI',       href: '/agentic-ai' },
   { label: 'Machine Learning', href: '/machine-learning' },
   { label: 'NLP',              href: '/natural-language-processing' },
   { label: 'Predictive Modelling', href: '/predictive-modelling' },
   { label: 'Web Development',  href: '/web-development' },
   { label: 'App Development',  href: '/app-development' },
   { label: 'DevOps Engineering', href: '/devops' },
+      { label: 'Software Modernization', href: '/software-modernization' },
   { label: 'Big Data Analytics', href: '/big-data-analytics' },
   { label: 'Healthcare', href: '/healthcare' },
   { label: 'Fintech', href: '/fintech' },
@@ -108,129 +118,177 @@ const ALL_SEARCHABLE: NavItem[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 // DESKTOP DROPDOWN
 // ─────────────────────────────────────────────────────────────────────────────
+const chunk = <T extends unknown>(arr: T[], size: number): T[][] => {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+};
+
 const DesktopDropdown = ({
   items,
   variant,
+  columns,
+  activeHref,
 }: {
   items: NavItem[];
   variant: 'solutions' | 'industries' | 'simple';
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: -8 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -8 }}
-    transition={{ duration: 0.18, ease }}
-    className="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-3"
-    style={{ minWidth: variant === 'solutions' ? 480 : variant === 'industries' ? 720 : 240 }}
-  >
-    {/* Arrow tip */}
-    <div
+  columns?: number;
+  activeHref?: string;
+}) => {
+  const colCount = variant === 'solutions' ? (columns ?? 2) : variant === 'industries' ? 2 : 1;
+  const isGrid = variant === 'solutions' || variant === 'industries';
+
+  // For Services with 2 columns, split items evenly (6 per column for 12 items)
+  const getColumns = () => {
+    if (variant === 'solutions' && colCount === 2) {
+      const itemsPerCol = Math.ceil(items.length / 2);
+      return [
+        items.slice(0, itemsPerCol),
+        items.slice(itemsPerCol)
+      ];
+    }
+    return chunk(items, colCount);
+  };
+
+  const columns_data = getColumns();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -12, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -12, scale: 0.98 }}
+      transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-4"
       style={{
-        position: 'absolute', top: 8, left: '50%',
-        width: 12, height: 12,
-        background: C.graphite,
-        border: `1px solid ${C.wa(0.1)}`,
-        borderBottom: 'none',
-        borderRight: 'none',
-        transform: 'translateX(-50%) rotate(45deg)',
-        zIndex: 1,
-      }}
-    />
-    <div
-      style={{
-        background: C.graphite,
-        border: `1px solid ${C.wa(0.08)}`,
-        boxShadow: `0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px ${C.la(0.04)}`,
-        overflow: 'hidden',
+        minWidth: variant === 'solutions' ? 720 : variant === 'industries' ? 540 : 260,
+        maxWidth: 'calc(100vw - 2rem)',
       }}
     >
-      {variant === 'solutions' || variant === 'industries' ? (
+      <div
+        style={{
+          background: `linear-gradient(135deg, ${C.graphite} 0%, rgba(25,25,25,0.98) 100%)`,
+          border: `1px solid ${C.wa(0.12)}`,
+          boxShadow: `
+            0 32px 80px rgba(0,0,0,0.45),
+            0 8px 24px rgba(0,0,0,0.25),
+            inset 0 1px 0 ${C.wa(0.08)}
+          `,
+          overflow: 'hidden',
+          borderRadius: 18,
+          padding: '16px',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+        }}
+      >
         <div
-          className={variant === 'solutions' ? 'grid grid-cols-2 gap-px p-2' : 'grid grid-cols-2 gap-px p-2'}
-          style={{ background: C.wa(0.04) }}
+          className="grid"
+          style={{ gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))`, gap: '4px 20px' }}
         >
-          {items.map(item => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="group flex items-start gap-3 px-4 py-4 transition-all duration-150"
-                style={{ background: C.graphite, textDecoration: 'none' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.la(0.08); }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = C.graphite; }}
-              >
-                {Icon && (
-                  <span
-                    className="shrink-0 inline-flex items-center justify-center"
-                    style={{
-                      width: 40,
-                      height: 40,
-                      background: variant === 'industries' ? C.green : C.lime,
-                      border: `1px solid ${variant === 'industries' ? C.green : C.lime}`,
-                      color: C.black,
-                      transition: 'all 0.2s ease',
-                    }}
+          {columns_data.map((col, ci) => (
+            <div key={ci} className="flex flex-col gap-1">
+              {col.map((item, index) => {
+                const isActive = activeHref === item.href;
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (ci * col.length + index) * 0.03, duration: 0.2 }}
                   >
-                    <Icon size={18} strokeWidth={2.25} />
-                  </span>
-                )}
-                <span className="flex min-w-0 flex-col gap-1">
-                  <span className="text-sm font-bold leading-tight" style={{ color: C.wa(0.95) }}>
-                    {item.label}
-                  </span>
-                  {item.desc && (
-                    <span className="text-sm leading-6" style={{ color: C.wa(0.55) }}>
-                      {item.desc}
-                    </span>
-                  )}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="py-1.5">
-          {items.map(item => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="flex items-center gap-3 px-5 py-3 text-sm font-semibold transition-all duration-150"
-              style={{ color: C.wa(0.75), textDecoration: 'none', background: C.graphite }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = C.lime;
-                el.style.background = C.la(0.06);
-                el.style.paddingLeft = '1.375rem';
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = C.wa(0.75);
-                el.style.background = C.graphite;
-                el.style.paddingLeft = '1.25rem';
-              }}
-            >
-              <span
-                style={{ width: 4, height: 4, borderRadius: '50%', background: C.la(0.4), flexShrink: 0, display: 'inline-block' }}
-              />
-              {item.label}
-            </Link>
+                    <Link
+                      to={item.href}
+                      className="group relative flex items-center justify-between gap-3 px-4 py-3.5 transition-all duration-200"
+                      style={{
+                        background: isActive ? `linear-gradient(135deg, ${C.la(0.15)} 0%, ${C.la(0.08)} 100%)` : 'transparent',
+                        textDecoration: 'none',
+                        borderRadius: 12,
+                        border: `1px solid ${isActive ? C.la(0.25) : 'transparent'}`,
+                      }}
+                      onMouseEnter={e => {
+                        const el = e.currentTarget as HTMLElement;
+                        if (!isActive) {
+                          el.style.background = `linear-gradient(135deg, ${C.la(0.12)} 0%, ${C.la(0.06)} 100%)`;
+                          el.style.borderColor = C.la(0.2);
+                          el.style.transform = 'translateX(2px)';
+                          const text = el.querySelector('.menu-text') as HTMLElement;
+                          const arrow = el.querySelector('svg') as SVGElement;
+                          if (text) text.style.color = C.lime;
+                          if (arrow) {
+                            arrow.style.color = C.lime;
+                            arrow.style.transform = 'translate(2px, -2px)';
+                          }
+                        }
+                      }}
+                      onMouseLeave={e => {
+                        const el = e.currentTarget as HTMLElement;
+                        if (!isActive) {
+                          el.style.background = 'transparent';
+                          el.style.borderColor = 'transparent';
+                          el.style.transform = 'translateX(0px)';
+                          const text = el.querySelector('.menu-text') as HTMLElement;
+                          const arrow = el.querySelector('svg') as SVGElement;
+                          if (text) text.style.color = C.wa(0.9);
+                          if (arrow) {
+                            arrow.style.color = C.wa(0.5);
+                            arrow.style.transform = 'translate(0px, 0px)';
+                          }
+                        }
+                      }}
+                    >
+                      <div className="flex flex-col gap-1">
+                        <span
+                          className="menu-text text-sm font-semibold transition-all duration-200"
+                          style={{ 
+                            color: isActive ? C.lime : C.wa(0.9),
+                            lineHeight: '1.4'
+                          }}
+                        >
+                          {item.label}
+                        </span>
+                        {item.desc && variant === 'solutions' && (
+                          <span
+                            className="text-xs leading-relaxed"
+                            style={{ 
+                              color: C.wa(0.55),
+                              maxWidth: '280px',
+                              lineHeight: '1.5'
+                            }}
+                          >
+                            {item.desc}
+                          </span>
+                        )}
+                      </div>
+                      <ArrowUpRight
+                        size={16}
+                        strokeWidth={1.75}
+                        style={{ 
+                          color: isActive ? C.lime : C.wa(0.5), 
+                          flexShrink: 0, 
+                          transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                        }}
+                      />
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
           ))}
         </div>
-      )}
-    </div>
-  </motion.div>
-);
+      </div>
+    </motion.div>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DESKTOP NAV ITEM
 // ─────────────────────────────────────────────────────────────────────────────
 const DesktopNavItem = ({
-  group, isActive, shouldReduce,
+  group, isActive, shouldReduce, currentPath,
 }: {
   group: NavGroup;
   isActive: boolean;
   shouldReduce: boolean;
+  currentPath: string;
 }) => {
   const [open, setOpen] = useState(false);
   const hasDropdown = !!group.items;
@@ -282,6 +340,8 @@ const DesktopNavItem = ({
           {open && (
             <DesktopDropdown
               items={group.items!}
+              columns={group.label === 'Services' ? 2 : 2}
+              activeHref={group.items?.find(i => currentPath === i.href)?.href}
               variant={
                 group.label === 'Services'
                   ? 'solutions'
@@ -597,31 +657,53 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: isHeroTop ? 'transparent' : C.black,
-          backgroundColor: isHeroTop ? 'transparent' : C.black,
-          backgroundImage: 'none',
-          backdropFilter: isHeroTop ? 'none' : 'blur(12px)',
-          WebkitBackdropFilter: isHeroTop ? 'none' : 'blur(12px)',
-          borderBottom: isHeroTop ? '1px solid transparent' : `1px solid ${C.wa(0.1)}`,
-          boxShadow: isHeroTop ? 'none' : `0 8px 24px rgba(0,0,0,0.18)`,
-          transition: 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease',
+          background: isHeroTop 
+            ? 'linear-gradient(180deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.45) 100%)' 
+            : `linear-gradient(180deg, ${C.black} 0%, rgba(8,8,8,0.98) 100%)`,
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderBottom: isHeroTop 
+            ? `1px solid ${C.wa(0.06)}` 
+            : `1px solid ${C.wa(0.12)}`,
+          boxShadow: isHeroTop 
+            ? '0 4px 16px rgba(0,0,0,0.12)' 
+            : `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 ${C.wa(0.05)}`,
+          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
         <div
-          className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between"
+          className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between relative"
           style={{
-            minHeight: 72,
+            minHeight: 76,
           }}
         >
+          {/* Subtle background accent */}
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{
+              background: `radial-gradient(ellipse 100% 40% at 50% 0%, ${C.ga(0.03)} 0%, transparent 70%)`,
+              pointerEvents: 'none'
+            }}
+          />
 
           {/* LOGO */}
-          <a
+          <motion.a
             href="/"
             aria-label="Velnix Solutions — Home"
-            className="flex items-center shrink-0"
-            style={{ transition: 'opacity 0.2s' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.85'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+            className="flex items-center shrink-0 relative z-10"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            style={{ 
+              transition: 'opacity 0.3s ease',
+              filter: 'drop-shadow(0 2px 8px rgba(182,255,0,0.1))'
+            }}
+            onMouseEnter={e => { 
+              (e.currentTarget as HTMLElement).style.opacity = '0.9'; 
+            }}
+            onMouseLeave={e => { 
+              (e.currentTarget as HTMLElement).style.opacity = '1'; 
+            }}
           >
             <img
               src="/image/logo/logo1.png"
@@ -629,21 +711,22 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               width={2172}
               height={724}
               style={{
-                height: 48,
+                height: 50,
                 width: 'auto',
               }}
               decoding="async"
             />
-          </a>
+          </motion.a>
 
           {/* DESKTOP NAV */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-2 relative z-10">
             {NAV.map(group => (
               <DesktopNavItem
                 key={group.label}
                 group={group}
                 isActive={isActive(group)}
                 shouldReduce={!!shouldReduce}
+                currentPath={currentPath}
               />
             ))}
           </div>

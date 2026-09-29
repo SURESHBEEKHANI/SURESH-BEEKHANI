@@ -1,82 +1,80 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus, Smartphone, Layers, RefreshCw, Layout, Server } from "lucide-react";
+import { ArrowRight, CheckCircle, Brain, Cpu, Cloud, Shield, GitBranch, Server, Code2, Zap, RefreshCw, Layers, MessageSquare, Mail, Phone } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
 
-// App Services Data
-const appServices = [
+const softwareModernizationServices = [
 	{
 		id: 1,
-		title: "iOS App Development",
-		description: "Develop seamless, intuitive, and secure iOS apps tailored for iPhone and iPad users with performance-optimized Swift/Objective-C.",
-		icon: <Smartphone className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 2,
-		title: "Android App Development",
-		description: "Build robust Android apps delivering consistent experiences across devices using modern Kotlin and Java development frameworks.",
+		title: "Legacy Modernization",
+		description: "Refactor and modernize legacy monoliths into cloud-native microservices with zero downtime migration.",
 		icon: <Layers className="h-7 w-7" />,
 		color: "from-[#B6FF00] to-[#B6FF00]/70"
 	},
 	{
+		id: 2,
+		title: "Cloud Migration",
+		description: "Seamlessly migrate your infrastructure to AWS, GCP, or Azure with automated deployment pipelines.",
+		icon: <Cloud className="h-7 w-7" />,
+		color: "from-[#B6FF00] to-[#B6FF00]/70"
+	},
+	{
 		id: 3,
-		title: "Cross-Platform Development",
-		description: "Deploy feature-rich apps on iOS and Android simultaneously using React Native or Flutter, reducing development time and costs.",
-		icon: <RefreshCw className="h-7 w-7" />,
+		title: "Microservices Architecture",
+		description: "Decompose monolithic applications into scalable, independently deployable microservices.",
+		icon: <GitBranch className="h-7 w-7" />,
 		color: "from-[#B6FF00] to-[#B6FF00]/70"
 	},
 	{
 		id: 4,
-		title: "Mobile UI/UX Design",
-		description: "Craft intuitive, gesture-friendly interfaces ensuring high user retention, satisfaction, and a premium visual experience.",
-		icon: <Layout className="h-7 w-7" />,
+		title: "CI/CD Pipeline Setup",
+		description: "Build automated CI/CD pipelines with GitHub Actions, Jenkins, or GitLab for rapid, reliable releases.",
+		icon: <Zap className="h-7 w-7" />,
 		color: "from-[#B6FF00] to-[#B6FF00]/70"
 	},
 	{
 		id: 5,
-		title: "Backend & API Integration",
-		description: "Build secure, high-performance backends and RESTful APIs connecting apps to cloud services and third-party systems.",
+		title: "Database Modernization",
+		description: "Migrate and optimize databases for performance, scalability, and cost efficiency on modern cloud engines.",
 		icon: <Server className="h-7 w-7" />,
 		color: "from-[#B6FF00] to-[#B6FF00]/70"
 	},
 	{
 		id: 6,
-		title: "App Maintenance & QA",
-		description: "Comprehensive post-launch support including version updates, bug fixes, performance monitoring, and rigorous QA testing.",
+		title: "DevSecOps Integration",
+		description: "Embed security scans, compliance checks, and vulnerability testing directly into your delivery pipeline.",
 		icon: <Shield className="h-7 w-7" />,
 		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	}
+	},
 ];
 
 const faqData = [
 	{
-		question: "Should I build a native app or a cross-platform app?",
-		answer: "Native apps offer peak performance and full device integration, ideal for complex features. Cross-platform apps (React Native/Flutter) provide faster development and lower costs with a single codebase that runs on both iOS and Android."
+		question: "What is software modernization and why does my business need it?",
+		answer: "Software modernization transforms outdated legacy systems into scalable, cloud-native applications. It reduces maintenance costs, improves performance, accelerates delivery, and eliminates technical debt that slows innovation."
 	},
 	{
-		question: "What is the typical timeframe for app development?",
-		answer: "Basic MVP: 8-12 weeks. Moderate apps: 3-6 months. Enterprise apps: 6+ months. We provide a detailed timeline after the initial discovery phase and technical requirement gathering."
+		question: "How long does a modernization project take?",
+		answer: "Typical modernization spans 3–6 months depending on system complexity. We start with a phased audit, then prioritize high-impact modules for incremental migration with zero downtime."
 	},
 	{
-		question: "Can you help publish the app to the Apple App Store and Google Play?",
-		answer: "Yes, we handle the entire submission process, ensuring compliance with Apple and Google guidelines, optimization of store listings (ASO), and managing the review process until your app is live."
+		question: "Can you modernize systems built on older stacks?",
+		answer: "Yes — we handle legacy stacks including COBOL, Java EE, .NET Framework, and on-premise databases. Our approach refactors or re-architects incrementally without full rewrites."
 	},
 	{
-		question: "Who owns the code once the app is completed?",
-		answer: "Upon project completion and final payment, you assume 100% intellectual property ownership of the source code, databases, and all related design assets. There are no ongoing licensing fees for the code we write."
+		question: "How do you ensure zero downtime during migration?",
+		answer: "We use blue-green deployments, database replication, feature flags, and canary releases. Each phase is validated with automated smoke tests before traffic is switched."
 	},
 	{
-		question: "Will the app be secure?",
-		answer: "Security is foundational to our process. We implement industry-standard encryption, secure authentication protocols, and strict API security measures to safeguard all user data and business information."
-	}
+		question: "What cloud platforms do you support?",
+		answer: "AWS, Google Cloud Platform, Microsoft Azure, and hybrid/multi-cloud environments. We choose the right platform based on your workload requirements and cost profile."
+	},
 ];
 
-const AppDevelopment: React.FC = () => {
+const SoftwareModernization: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -94,57 +92,46 @@ const AppDevelopment: React.FC = () => {
 
 			{/* ─── Hero Section ─── */}
 			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
-				{/* Background Image */}
-				<div className="absolute inset-0 bg-[url('/image/pages_img/App-Development.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
-
-				{/* Layered gradient: deep slate on left fades to transparent — refined vignette */}
+				<div className="absolute inset-0 bg-[url('/image/pages_img/software-modernization.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
 				<div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 sm:via-slate-950/55 to-transparent" />
-
-				{/* Subtle bottom scrim for clean section transition */}
 				<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-950/60 to-transparent" />
-
 				<div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
 					<div className="text-white space-y-5 sm:space-y-7 text-left max-w-3xl">
 						<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight text-white">
-							App Development
+							Software Modernization
 						</h1>
 						<p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-							Engineer groundbreaking mobile applications that put your business directly into the hands of your audience. We create high-performance, user-centric apps that drive engagement and business growth.
+							Transform legacy systems into scalable, cloud-native applications — faster, safer, with zero downtime.
 						</p>
 					</div>
 				</div>
 			</section>
 
-			{/* ─── App Development Capabilities Section ─── */}
-			<section className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
-				{/* Refined ambient wash — right side only, barely perceptible */}
+			{/* ─── Capabilities Section ─── */}
+			<section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
 				<div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
-
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Content */}
 						<div className={`space-y-7 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							<div className="text-left space-y-4 mb-2">
 								<div className="flex flex-col items-start gap-3 sm:gap-4">
 									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.15]">
-										Innovative Mobile Solutions with{" "}
-										<span className="text-slate-900">Velnix Solutions</span>
+										Future-Proof Your Stack with{" "}
+										<span className="text-slate-900">Modern Engineering</span>
 									</h2>
 								</div>
 								<p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
-									Innovative, custom mobile apps designed to help ambitious businesses succeed in a mobile-first world.
+									Unlock faster delivery and lower maintenance costs with Velnix Solutions' AI-integrated software modernization.
 								</p>
 							</div>
-
 							<div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
 								<p>
-									Our team of specialized app developers and UX designers creates scalable iOS and Android solutions that drive measurable results. We go beyond simple coding to deliver comprehensive mobile experiences tailored to your audience's needs.
+									We refactor monolithic codebases, migrate to cloud-native architectures, and embed automated pipelines that accelerate every release cycle.
 								</p>
 								<p>
-									Whether you're looking for native performance or cross-platform cost-efficiency, we leverage the latest technologies like React Native, Flutter, Swift, and Kotlin to build future-ready mobile applications.
+									Our modernization framework reduces technical debt while preserving business logic — delivering measurable ROI within weeks, not months.
 								</p>
 							</div>
-
 							<div className="pt-2">
 								<Link
 									to="/contact"
@@ -154,24 +141,18 @@ const AppDevelopment: React.FC = () => {
 										Contact Expert
 										<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
 									</span>
-									{/* Sheen sweep */}
 									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 								</Link>
 							</div>
 						</div>
-
-						{/* Right: AI Image */}
 						<div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
 							<div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
 								<img
-									src="/image/pages_img/App-Development.jpg"
-									alt="Mobile App Development Excellence"
-									className="w-full h-[350px] md:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
+									src="/image/pages_img/software-modernization.jpg"
+									alt="Software Modernization Engineering"
+									className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
 								/>
-								{/* Premium gradient overlay for depth */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
 								<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
 							</div>
 						</div>
@@ -181,35 +162,33 @@ const AppDevelopment: React.FC = () => {
 
 			{/* ─── Services Section ─── */}
 			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
-				{/* High-Tech Background Layers */}
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
 				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light */}
 				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
 				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
 
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Our Mobile App <span className="text-white">Services</span>
+								Modernization <span className="text-white">Services</span>
 							</h2>
 						</div>
 						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							End-to-end mobile development solutions focused on performance, security, and user experience.
+							End-to-end engineering services to transform, migrate, and optimize your software stack.
 						</p>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{appServices.map((service, index) => (
+						{softwareModernizationServices.map((service, index) => (
 							<div
 								key={service.id}
-								className={`p-5 sm:p-6 flex flex-col gap-3 sm:gap-4 items-center min-h-[180px] sm:min-h-[200px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
+								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
 								style={{ animationDelay: `${index * 0.08}s` }}
 							>
 								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
 									{service.icon}
 								</div>
-								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
+								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center tracking-wide">
 									{service.title}
 								</h3>
 								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
@@ -221,59 +200,53 @@ const AppDevelopment: React.FC = () => {
 				</div>
 			</section>
 
-			{/* ─── Strategic Benefits Infographic Section ─── */}
-			<section className="relative overflow-hidden bg-white py-8 sm:py-12 lg:py-14">
-				{/* Refined technical dot grid — lighter, more breathable */}
-
+			{/* ─── Strategic Benefits ─── */}
+			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
 				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								App Strategic <span className="text-slate-900">Benefits</span>
+								Business <span className="text-slate-900">Impact</span>
 							</h2>
 						</div>
 						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Delivering high-performance mobile applications that create competitive advantages.
+							Tangible outcomes from every layer of your modernized stack.
 						</p>
 					</div>
-
 					<div className="relative px-4">
-						{/* Horizontal Connecting Line (Desktop Only) */}
 						<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 z-0" />
-
 						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
 							{[
 								{
-									title: "User-Centric",
-									desc: "Focused on intuitive, gesture-friendly interfaces that drive high user retention and satisfaction.",
+									title: "Lower Costs",
+									desc: "Reduce infrastructure and maintenance spend by migrating to optimized cloud services.",
+									icon: <Cpu className="w-8 h-8 sm:w-10 sm:h-10" />,
+									color: "#B6FF00",
+									textSide: "above" as const
+								},
+								{
+									title: "Faster Delivery",
+									desc: "Automated pipelines cut release cycles from weeks to hours with zero manual effort.",
 									icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
 									color: "#B6FF00",
-									textSide: "above"
+									textSide: "above" as const
 								},
 								{
-									title: "Performance",
-									desc: "Native-level speed and fluidity for a premium, uninterrupted app experience across all devices.",
-									icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
+									title: "Scalable Architecture",
+									desc: "Microservices and containers scale elastically to handle any traffic spike effortlessly.",
+									icon: <Layers className="w-8 h-8 sm:w-10 sm:h-10" />,
 									color: "#B6FF00",
-									textSide: "above"
+									textSide: "above" as const
 								},
 								{
-									title: "Scalability",
-									desc: "Robust architecture that supports massive user growth and real-time data updates seamlessly.",
-									icon: <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Security",
-									desc: "Multi-layer protection including data encryption and secure API communication for peace of mind.",
+									title: "Enhanced Security",
+									desc: "Built-in DevSecOps scans and compliance checks protect every deployment automatically.",
 									icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
 									color: "#B6FF00",
-									textSide: "above"
+									textSide: "above" as const
 								}
-							].map((item, idx) => (
+							].map((item: any, idx) => (
 								<div key={idx} className="flex flex-col items-center">
-									{/* Label Above (Desktop) */}
 									<div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
 										<div className="text-center max-w-[220px]">
 											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
@@ -282,25 +255,18 @@ const AppDevelopment: React.FC = () => {
 										<div className="w-[1px] h-10 bg-slate-200 mt-4" />
 										<div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
 									</div>
-
-									{/* The Circular Node */}
 									<div className={`relative flex items-center justify-center transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-50 opacity-0'}`} style={{ transitionDelay: `${idx * 0.1}s` }}>
-										{/* Concentric Rings */}
 										<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 											<div className="w-24 h-24 sm:w-32 sm:h-32 border border-slate-100 rounded-full" />
 											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-l-transparent border-r-transparent rotate-45" />
 											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-t-transparent border-b-transparent -rotate-12" />
 										</div>
-
-										{/* Inner Circle Node */}
 										<div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center z-20 hover:scale-110 transition-transform duration-500 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" style={{ border: `1.5px solid ${item.color}25` }}>
 											<div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-black" style={{ backgroundColor: item.color }}>
 												{React.cloneElement(item.icon as React.ReactElement, { className: 'w-7 h-7 sm:w-10 sm:h-10' })}
 											</div>
 										</div>
 									</div>
-
-									{/* Label Below (Desktop) */}
 									<div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
 										<div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
 										<div className="w-[1px] h-10 bg-slate-200 mb-4" />
@@ -309,8 +275,6 @@ const AppDevelopment: React.FC = () => {
 											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
 										</div>
 									</div>
-
-									{/* Mobile Label */}
 									<div className="lg:hidden mt-8 text-center px-4">
 										<h3 className="font-bold text-slate-900 text-lg mb-1.5 tracking-tight">{item.title}</h3>
 										<p className="text-sm text-slate-500 font-normal leading-relaxed">{item.desc}</p>
@@ -321,15 +285,12 @@ const AppDevelopment: React.FC = () => {
 					</div>
 				</div>
 			</section>
-
 			<Industries />
 
-			{/* ─── Development Methodology Section ─── */}
+			{/* ─── Implementation Roadmap ─── */}
 			<section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
-				{/* High-Tech Background Layers */}
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
 				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light — softened, no pulse */}
 				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
 				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
 
@@ -337,33 +298,35 @@ const AppDevelopment: React.FC = () => {
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
 							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Development <span className="text-white">Methodology</span>
+								Implementation <span className="text-white">Roadmap</span>
 							</h2>
 						</div>
 						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							A systematic approach to building high-performance, secure, and user-centric mobile applications.
+							Our systematic methodology for modernizing legacy systems with zero disruption.
 						</p>
 					</div>
 					<div className={`mt-8 sm:mt-12 border border-white/[0.08] rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
 							{[
-								{ id: "01", title: "Strategy & Discovery", desc: "Defining user personas, core features, and technical architecture optimized for your business goals.", color: "#B6FF00", icon: <Target className="w-8 h-8" /> },
-								{ id: "02", title: "UI/UX Design", desc: "Crafting high-fidelity wireframes and clickable prototypes to validate the user journey.", color: "#B6FF00", icon: <Layout className="w-8 h-8" /> },
-								{ id: "03", title: "Agile Implementation", desc: "Developing app features in iterative sprints with continuous testing and feedback.", color: "#B6FF00", icon: <Code className="w-8 h-8" /> },
-								{ id: "04", title: "Launch & Optimize", desc: "App store submission, performance monitoring, and continuous optimization for growth.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> }
+								{ id: "01", title: "System Audit", desc: "Deep analysis of your legacy stack, dependencies, and technical debt hotspots.", color: "#B6FF00", icon: <Brain className="w-8 h-8" /> },
+								{ id: "02", title: "Modern Architecture", desc: "Design cloud-native microservices with containerized, decoupled components.", color: "#B6FF00", icon: <Layers className="w-8 h-8" /> },
+								{ id: "03", title: "Incremental Migration", desc: "Refactor modules iteratively with feature flags and blue-green deployments.", color: "#B6FF00", icon: <GitBranch className="w-8 h-8" /> },
+								{ id: "04", title: "CI/CD Pipeline", desc: "Automated build, test, and deploy pipelines with quality gates and rollbacks.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> },
+								{ id: "05", title: "Security Hardening", desc: "DevSecOps scans, vulnerability testing, and compliance embedded in every release.", color: "#B6FF00", icon: <Shield className="w-8 h-8" /> },
+								{ id: "06", title: "Monitor & Optimize", desc: "Observability with Datadog, Prometheus, and Grafana for continuous improvement.", color: "#B6FF00", icon: <Server className="w-8 h-8" /> }
 							].map((step, index) => (
 								<div
 									key={step.id}
 									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-colors duration-300 hover:bg-white/[0.025]
-										${index % 4 !== 3 ? 'lg:border-r border-white/[0.08]' : ''} 
+										${index % 3 !== 2 ? 'lg:border-r border-white/[0.08]' : ''}
+										${index < 3 ? 'lg:border-b border-white/[0.08]' : ''}
 										${index % 2 === 0 ? 'md:max-lg:border-r border-white/[0.08]' : ''}
-										${index < 2 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
-										${index < 3 ? 'max-md:border-b border-white/[0.08]' : ''}`}
+										${index < 4 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
+										${index < 5 ? 'max-md:border-b border-white/[0.08]' : ''}`}
 								>
 									<div className="text-xl sm:text-2xl font-black mb-4 tracking-tighter" style={{ color: step.color }}>
 										{step.id}
 									</div>
-
 									<div className="flex items-center gap-3 w-full justify-center mb-4">
 										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
 										<div className="text-white group-hover:scale-110 transition-transform duration-300">
@@ -371,11 +334,8 @@ const AppDevelopment: React.FC = () => {
 										</div>
 										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
 									</div>
-
 									<h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
 									<p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
-
-									{/* Corner accents */}
 									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 								</div>
@@ -385,65 +345,56 @@ const AppDevelopment: React.FC = () => {
 				</div>
 			</section>
 
-			{/* ─── Why Choose Us Section ─── */}
+			{/* ─── Why Choose Us ─── */}
 			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
-				{/* Refined ambient left wash */}
 				<div className="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-slate-50/60 to-transparent pointer-events-none" />
-
 				<div className="max-w-7xl mx-auto container-padding">
 					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black leading-[1.2]">
-								Why Choose <span className="text-black">Velnix Solutions?</span>
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
+								Why Choose <span className="text-slate-900">Velnix Solutions?</span>
 							</h2>
 						</div>
 						<p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
-							Technical precision and creative excellence focused on launching world-class mobile experiences.
+							Decades of legacy modernization expertise with proven zero-downtime results.
 						</p>
 					</div>
-
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Workspace Image */}
 						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
 							<div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
 								<img
 									src="/image/pages_img/WHY-CHOOSE-US.jpg"
-									alt="Why Choose Velnix Solutions"
+									alt="Why Choose Us"
 									className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
 								/>
-								{/* Premium gradient overlay for depth */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
 								<div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
 							</div>
 						</div>
-
-						{/* Right: Numbered List */}
 						<div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
 							{[
 								{
 									num: "01",
-									title: "Cross-Platform Mastery",
-									desc: "Our team excels in React Native and Flutter, allowing you to launch high-quality apps on both iOS and Android with a single, efficient codebase.",
+									title: "Legacy Expertise",
+									desc: "We've modernized systems built on COBOL, Java EE, .NET Framework, and mainframes — preserving business logic while eliminating technical debt.",
 									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "02",
-									title: "Elite UI/UX Designers",
-									desc: "We specialize in mobile-first interactions, creating stunning, gesture-friendly designs that ensure your app stands out in a crowded marketplace.",
+									title: "Incremental Approach",
+									desc: "We refactor module by module with feature flags and canary releases — no big-bang cutovers or business disruption.",
 									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "03",
-									title: "End-to-End Store Support",
-									desc: "We don't just build; we launch. We handle technical compliance, listing optimization, and the entire review process for Apple and Google Stores.",
+									title: "Cloud-Native Target",
+									desc: "Microservices, containers, and serverless architectures that scale elastically and reduce infrastructure costs.",
 									color: "bg-[#B6FF00]"
 								},
 								{
 									num: "04",
-									title: "Proven App Performance",
-									desc: "With a track record of high-retention apps, we focus on native-level speed, offline capabilities, and seamless API integrations.",
+									title: "Zero Downtime Guarantee",
+									desc: "Blue-green deployments, database replication, and automated rollback ensure continuous availability throughout.",
 									color: "bg-[#B6FF00]"
 								}
 							].map((item, idx) => (
@@ -462,16 +413,43 @@ const AppDevelopment: React.FC = () => {
 				</div>
 			</section>
 
-
-			<AIOnboardingProcess serviceName="app development" />
+			{/* ─── AI Onboarding ─── */}
+			<section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
+				<div className="max-w-7xl mx-auto container-padding relative z-10">
+					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
+						<div className="flex flex-col items-center gap-3 sm:gap-4">
+							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
+								Start Your <span className="text-white">Modernization</span>
+							</h2>
+						</div>
+						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
+							Book a free architecture assessment and get a tailored modernization roadmap.
+						</p>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+						{[
+							{ icon: <Mail className="h-8 w-8" />, title: "Contact Us", desc: "Share your legacy stack and challenges for a personalized assessment.", color: "from-[#B6FF00] to-[#B6FF00]/70" },
+							{ icon: <Brain className="h-8 w-8" />, title: "Architecture Audit", desc: "Our engineers analyze your codebase, dependencies, and debt hotspots.", color: "from-[#B6FF00] to-[#B6FF00]/70" },
+							{ icon: <Layers className="h-8 w-8" />, title: "Modernization Plan", desc: "A phased roadmap with milestones, timelines, and cost estimates.", color: "from-[#B6FF00] to-[#B6FF00]/70" },
+							{ icon: <Zap className="h-8 w-8" />, title: "Launch & Iterate", desc: "We execute the plan and continuously optimize based on metrics.", color: "from-[#B6FF00] to-[#B6FF00]/70" }
+						].map((step, index) => (
+							<div key={index} className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[180px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: `${index * 0.08}s` }}>
+								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${step.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
+									{step.icon}
+								</div>
+								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center tracking-wide">{step.title}</h3>
+								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">{step.desc}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
 
 			<LatestBlogs />
 
 			{/* ─── FAQ Section ─── */}
 			<section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-				{/* Top rule */}
 				<div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200/80" />
-
 				<div className="max-w-4xl mx-auto">
 					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
 						<div className="flex flex-col items-center gap-3 sm:gap-4">
@@ -480,7 +458,7 @@ const AppDevelopment: React.FC = () => {
 							</h2>
 						</div>
 						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Common questions about our mobile app development lifecycle and store submission support.
+							Common questions about software modernization, migration, and legacy refactoring.
 						</p>
 					</div>
 					<div className="space-y-2.5">
@@ -501,13 +479,12 @@ const AppDevelopment: React.FC = () => {
 											{faq.question}
 										</h3>
 										{openIndex === index ? (
-											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
+											<CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
 										) : (
-											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
+											<ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
 										)}
 									</div>
 								</button>
-
 								{openIndex === index && (
 									<div className="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed border-t border-slate-100 bg-white">
 										<div className="pt-4 font-normal">{faq.answer}</div>
@@ -524,4 +501,4 @@ const AppDevelopment: React.FC = () => {
 	);
 };
 
-export default AppDevelopment;
+export default SoftwareModernization;

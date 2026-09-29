@@ -20,7 +20,7 @@ const C = {
 } as const;
 
 /* ─────────────────────────────────────────────────────────────
-   DATA — 6 CORE SERVICES WITH CAPABILITIES
+   DATA — 12 CORE SERVICES WITH CAPABILITIES
 ───────────────────────────────────────────────────────────── */
 interface Capability {
   name: string;
@@ -40,16 +40,46 @@ interface CoreService {
 
 const CORE_SERVICES: CoreService[] = [
   {
-    id: 'ai-automation',
+    id: 'ai-audit',
     num: '01',
-    title: 'AI Automation',
-    tag: 'Featured',
-    description: 'Turn repetitive workflows into automated systems. Build intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation.',
-    icon: Zap,
+    title: 'AI Audit',
+    tag: 'Assessment',
+    description: 'Assess, audit, and improve your AI systems for safety and performance. Comprehensive evaluation of AI implementations with actionable recommendations.',
+    icon: Shield,
     featured: true,
     capabilities: [
+      { name: 'AI System Assessment', route: '/ai-audit' },
+      { name: 'Performance Optimization' },
+      { name: 'Safety & Compliance' },
+      { name: 'Risk Analysis' },
+      { name: 'Quality Assurance' },
+    ],
+  },
+  {
+    id: 'agentic-ai',
+    num: '02',
+    title: 'Agentic AI',
+    tag: 'Autonomous',
+    description: 'Deploy autonomous AI agents that plan, reason, and act. Build intelligent systems that operate independently and make decisions without constant supervision.',
+    icon: Bot,
+    capabilities: [
+      { name: 'Autonomous AI Agents', route: '/agentic-ai' },
+      { name: 'Decision Making Systems' },
+      { name: 'Multi-Agent Systems' },
+      { name: 'Task Automation' },
+      { name: 'Intelligent Planning' },
+    ],
+  },
+  {
+    id: 'ai-automation',
+    num: '03',
+    title: 'AI Automation',
+    tag: 'Efficiency',
+    description: 'Turn repetitive workflows into automated systems. Build intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation.',
+    icon: Zap,
+    capabilities: [
       { name: 'Workflow Automation', route: '/ai-automation' },
-      { name: 'AI Agents', route: '/agentic-ai' },
+      { name: 'Process Intelligence' },
       { name: 'Business Process Automation' },
       { name: 'AI-Powered Operations' },
       { name: 'System Integrations' },
@@ -57,7 +87,7 @@ const CORE_SERVICES: CoreService[] = [
   },
   {
     id: 'ai-development',
-    num: '02',
+    num: '04',
     title: 'AI Development',
     tag: 'Core AI',
     description: 'Build intelligent software around your business. Leverage cutting-edge AI technologies to create tailored solutions that transform operations and drive measurable growth.',
@@ -72,7 +102,7 @@ const CORE_SERVICES: CoreService[] = [
   },
   {
     id: 'conversational-ai',
-    num: '03',
+    num: '05',
     title: 'Conversational AI',
     tag: 'Communication',
     description: 'Create AI systems that communicate with customers and teams. Transform interactions with intelligent systems that understand, learn, and respond naturally.',
@@ -87,8 +117,8 @@ const CORE_SERVICES: CoreService[] = [
   },
   {
     id: 'ml-data-intelligence',
-    num: '04',
-    title: 'Machine Learning & Data Intelligence',
+    num: '06',
+    title: 'Machine Learning & Data',
     tag: 'Data Science',
     description: 'Turn business data into predictions and decisions. Build intelligent systems that learn from data and make predictions with unprecedented accuracy and reliability.',
     icon: Brain,
@@ -102,7 +132,7 @@ const CORE_SERVICES: CoreService[] = [
   },
   {
     id: 'computer-vision-nlp',
-    num: '05',
+    num: '07',
     title: 'Computer Vision & NLP',
     tag: 'Visual & Language',
     description: 'Make software understand documents, images, and language. Enable machines to see, understand, and interpret visual information and human language at enterprise scale.',
@@ -117,9 +147,9 @@ const CORE_SERVICES: CoreService[] = [
   },
   {
     id: 'custom-software',
-    num: '06',
+    num: '08',
     title: 'Custom Software',
-    tag: 'Infrastructure',
+    tag: 'Development',
     description: 'Build the software infrastructure your business needs. Engineer precision-crafted, scalable software solutions built from the ground up to solve your unique business challenges.',
     icon: Server,
     capabilities: [
@@ -127,7 +157,67 @@ const CORE_SERVICES: CoreService[] = [
       { name: 'Mobile Applications', route: '/app-development' },
       { name: 'Custom Software', route: '/custom-software-development' },
       { name: 'APIs & Backend Systems' },
-      { name: 'DevOps & Cloud', route: '/devops' },
+      { name: 'System Integration' },
+    ],
+  },
+  {
+    id: 'cloud-devops',
+    num: '09',
+    title: 'Cloud DevOps',
+    tag: 'Infrastructure',
+    description: 'Accelerate delivery with CI/CD, IaC, and cloud-native automation. Build robust, scalable infrastructure that supports rapid development and deployment.',
+    icon: Cloud,
+    capabilities: [
+      { name: 'DevOps Engineering', route: '/devops' },
+      { name: 'CI/CD Pipelines' },
+      { name: 'Infrastructure as Code' },
+      { name: 'Cloud Migration' },
+      { name: 'Container Orchestration' },
+    ],
+  },
+  {
+    id: 'web-mobile-development',
+    num: '10',
+    title: 'Web & Mobile Development',
+    tag: 'Digital Platforms',
+    description: 'Build fast, scalable web and mobile applications. Create responsive, user-friendly applications that deliver exceptional experiences across all devices.',
+    icon: Smartphone,
+    capabilities: [
+      { name: 'Web Development', route: '/web-development' },
+      { name: 'Mobile Apps', route: '/app-development' },
+      { name: 'Progressive Web Apps' },
+      { name: 'E-commerce Platforms' },
+      { name: 'API Development' },
+    ],
+  },
+  {
+    id: 'ui-ux-design',
+    num: '11',
+    title: 'UI/UX & Product Design',
+    tag: 'Design',
+    description: 'Design intuitive interfaces and seamless user experiences. Create beautiful, functional designs that engage users and drive business results.',
+    icon: Target,
+    capabilities: [
+      { name: 'UI/UX Design', route: '/ui-ux-design' },
+      { name: 'Product Design' },
+      { name: 'User Research' },
+      { name: 'Prototyping' },
+      { name: 'Design Systems' },
+    ],
+  },
+  {
+    id: 'software-modernization',
+    num: '12',
+    title: 'Software Modernization',
+    tag: 'Transformation',
+    description: 'Refactor legacy systems into scalable cloud-native microservices. Transform outdated systems into modern, efficient, and maintainable solutions.',
+    icon: Workflow,
+    capabilities: [
+      { name: 'Legacy System Migration', route: '/software-modernization' },
+      { name: 'Cloud Migration' },
+      { name: 'Microservices Architecture' },
+      { name: 'Performance Optimization' },
+      { name: 'Code Refactoring' },
     ],
   },
 ];
@@ -152,11 +242,32 @@ const ServiceVisual: React.FC<{ serviceId: string; featured?: boolean }> = ({ se
   };
 
   switch (serviceId) {
-    /* Workflow chain — AI Automation (Featured) */
+    /* Shield with checkmarks — AI Audit */
+    case 'ai-audit':
+      return (
+        <svg {...commonProps}>
+          <path d={`M${s * 0.5},${s * 0.15} L${s * 0.75},${s * 0.3} L${s * 0.7},${s * 0.7} L${s * 0.5},${s * 0.85} L${s * 0.3},${s * 0.7} L${s * 0.25},${s * 0.3} Z`} stroke={C.LIME} strokeWidth={stroke} opacity={0.7} fill={C.LIME} fillOpacity={0.1} />
+          <path d={`M${s * 0.38},${s * 0.46} L${s * 0.44},${s * 0.52} L${s * 0.54},${s * 0.38}`} stroke={C.LIME} strokeWidth={stroke * 1.2} strokeLinecap="round" strokeLinejoin="round" />
+          <path d={`M${s * 0.38},${s * 0.58} L${s * 0.44},${s * 0.64} L${s * 0.54},${s * 0.5}`} stroke={C.DEEP_GREEN} strokeWidth={stroke * 1.2} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+
+    /* Robot head — Agentic AI */
+    case 'agentic-ai':
+      return (
+        <svg {...commonProps}>
+          <rect x={s * 0.25} y={s * 0.3} width={s * 0.5} height={s * 0.45} rx={s * 0.08} stroke={C.LIME} strokeWidth={stroke} opacity={0.7} fill={C.LIME} fillOpacity={0.08} />
+          <circle cx={s * 0.38} cy={s * 0.45} r={nodeR * 1.2} fill={C.LIME} opacity={0.9} />
+          <circle cx={s * 0.62} cy={s * 0.45} r={nodeR * 1.2} fill={C.LIME} opacity={0.9} />
+          <line x1={s * 0.5} y1={s * 0.3} x2={s * 0.5} y2={s * 0.2} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.6} />
+          <circle cx={s * 0.5} cy={s * 0.2} r={nodeR * 0.8} fill={C.DEEP_GREEN} opacity={0.8} />
+        </svg>
+      );
+
+    /* Workflow chain — AI Automation */
     case 'ai-automation':
       return (
         <svg {...commonProps}>
-          {/* Nodes */}
           {[[0.15, 0.5], [0.4, 0.3], [0.4, 0.7], [0.65, 0.5], [0.88, 0.5]].map(([x, y], i) => (
             <React.Fragment key={`auto-${i}`}>
               <circle cx={s * x} cy={s * y} r={nodeR * 1.3} fill={i === 4 ? C.DEEP_GREEN : C.LIME} opacity={0.9} />
@@ -165,12 +276,10 @@ const ServiceVisual: React.FC<{ serviceId: string; featured?: boolean }> = ({ se
               )}
             </React.Fragment>
           ))}
-          {/* Connections */}
           <line x1={s * 0.15} y1={s * 0.5} x2={s * 0.4} y2={s * 0.3} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.5} />
           <line x1={s * 0.15} y1={s * 0.5} x2={s * 0.4} y2={s * 0.7} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.5} />
           <line x1={s * 0.4} y1={s * 0.3} x2={s * 0.65} y2={s * 0.5} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.5} />
           <line x1={s * 0.4} y1={s * 0.7} x2={s * 0.65} y2={s * 0.5} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.5} />
-          {/* Arrow to output */}
           <line x1={s * 0.65} y1={s * 0.5} x2={s * 0.85} y2={s * 0.5} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.6} />
           <polygon points={`${s * 0.83},${s * 0.46} ${s * 0.9},${s * 0.5} ${s * 0.83},${s * 0.54}`} fill={C.DEEP_GREEN} opacity={0.6} />
         </svg>
@@ -180,102 +289,15 @@ const ServiceVisual: React.FC<{ serviceId: string; featured?: boolean }> = ({ se
     case 'ai-development':
       return (
         <svg {...commonProps}>
-          {/* Layer 1 nodes */}
           {[0.2, 0.4, 0.6, 0.8].map((y, i) => (
             <circle key={`l1-${i}`} cx={s * 0.2} cy={s * y} r={nodeR * 1.2} fill={C.LIME} opacity={0.9} />
           ))}
-          {/* Layer 2 nodes */}
           {[0.25, 0.5, 0.75].map((y, i) => (
             <circle key={`l2-${i}`} cx={s * 0.5} cy={s * y} r={nodeR * 1.4} fill={C.LIME} />
           ))}
-          {/* Layer 3 nodes */}
           {[0.35, 0.65].map((y, i) => (
             <circle key={`l3-${i}`} cx={s * 0.8} cy={s * y} r={nodeR * 1.2} fill={C.DEEP_GREEN} opacity={0.95} />
           ))}
-          {/* Connections L1→L2 */}
-          {[0.2, 0.4, 0.6, 0.8].map((y1) =>
-            [0.25, 0.5, 0.75].map((y2, j) => (
-              <line key={`c1-${y1}-${j}`} x1={s * 0.2} y1={s * y1} x2={s * 0.5} y2={s * y2} stroke={C.LIME} strokeWidth={stroke * 0.6} opacity={0.35} />
-            ))
-          )}
-          {/* Connections L2→L3 */}
-          {[0.25, 0.5, 0.75].map((y1) =>
-            [0.35, 0.65].map((y2, j) => (
-              <line key={`c2-${y1}-${j}`} x1={s * 0.5} y1={s * y1} x2={s * 0.8} y2={s * y2} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.6} opacity={0.4} />
-            ))
-          )}
-        </svg>
-      );
-
-    /* Chat bubbles — Conversational AI */
-    case 'conversational-ai':
-      return (
-        <svg {...commonProps}>
-          <rect x={s * 0.1} y={s * 0.15} width={s * 0.5} height={s * 0.3} rx={s * 0.06} stroke={C.LIME} strokeWidth={stroke} opacity={0.8} />
-          <rect x={s * 0.35} y={s * 0.55} width={s * 0.55} height={s * 0.25} rx={s * 0.06} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.7} />
-          {/* Dots inside bubbles */}
-          {[0.22, 0.32, 0.42].map((x, i) => (
-            <circle key={`d1-${i}`} cx={s * x} cy={s * 0.3} r={nodeR * 0.7} fill={C.LIME} opacity={0.7} />
-          ))}
-          {[0.47, 0.57, 0.67].map((x, i) => (
-            <circle key={`d2-${i}`} cx={s * x} cy={s * 0.675} r={nodeR * 0.7} fill={C.DEEP_GREEN} opacity={0.6} />
-          ))}
-          {/* Connection line */}
-          <line x1={s * 0.45} y1={s * 0.45} x2={s * 0.5} y2={s * 0.55} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.5} strokeDasharray="3 3" />
-        </svg>
-      );
-
-    /* Brain network — Machine Learning & Data Intelligence */
-    case 'ml-data-intelligence':
-      return (
-        <svg {...commonProps}>
-          {/* Central brain node */}
-          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.12} stroke={C.LIME} strokeWidth={stroke * 1.2} opacity={0.7} fill={C.LIME} fillOpacity={0.1} />
-          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.05} fill={C.LIME} opacity={0.9} />
-          {/* Data branches */}
-          {[[0.2, 0.25], [0.8, 0.25], [0.15, 0.5], [0.85, 0.5], [0.2, 0.75], [0.8, 0.75]].map(([x, y], i) => (
-            <React.Fragment key={`data-${i}`}>
-              <line x1={s * 0.5} y1={s * 0.5} x2={s * x} y2={s * y} stroke={i > 2 ? C.DEEP_GREEN : C.LIME} strokeWidth={stroke * 0.6} opacity={0.4} />
-              <circle cx={s * x} cy={s * y} r={nodeR} fill={i > 2 ? C.DEEP_GREEN : C.LIME} opacity={0.8} />
-            </React.Fragment>
-          ))}
-          {/* Orbit ring */}
-          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.3} stroke={C.LIME} strokeWidth={stroke * 0.4} opacity={0.2} fill="none" strokeDasharray="6 4" />
-        </svg>
-      );
-
-    /* Eye/lens — Computer Vision & NLP */
-    case 'computer-vision-nlp':
-      return (
-        <svg {...commonProps}>
-          <ellipse cx={s * 0.5} cy={s * 0.5} rx={s * 0.35} ry={s * 0.22} stroke={C.LIME} strokeWidth={stroke} opacity={0.7} fill="none" />
-          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.12} stroke={C.LIME} strokeWidth={stroke} opacity={0.8} fill="none" />
-          <circle cx={s * 0.5} cy={s * 0.5} r={s * 0.04} fill={C.LIME} opacity={0.95} />
-          {/* Scan lines */}
-          {[0.3, 0.5, 0.7].map((y, i) => (
-            <line key={`scan-${i}`} x1={s * 0.15} y1={s * y} x2={s * 0.85} y2={s * y} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.4} opacity={0.4} strokeDasharray="4 4" />
-          ))}
-          {/* Corner brackets */}
-          <path d={`M${s * 0.18},${s * 0.28} L${s * 0.18},${s * 0.22} L${s * 0.24},${s * 0.22}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.6} fill="none" />
-          <path d={`M${s * 0.82},${s * 0.28} L${s * 0.82},${s * 0.22} L${s * 0.76},${s * 0.22}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.6} fill="none" />
-          <path d={`M${s * 0.18},${s * 0.72} L${s * 0.18},${s * 0.78} L${s * 0.24},${s * 0.78}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.6} fill="none" />
-          <path d={`M${s * 0.82},${s * 0.72} L${s * 0.82},${s * 0.78} L${s * 0.76},${s * 0.78}`} stroke={C.LIME} strokeWidth={stroke * 0.8} opacity={0.6} fill="none" />
-        </svg>
-      );
-
-    /* Architecture blocks — Custom Software */
-    case 'custom-software':
-      return (
-        <svg {...commonProps}>
-          {/* Stacked blocks */}
-          <rect x={s * 0.12} y={s * 0.6} width={s * 0.76} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.5} fill={C.LIME} fillOpacity={0.08} />
-          <rect x={s * 0.18} y={s * 0.38} width={s * 0.3} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.55} fill={C.LIME} fillOpacity={0.12} />
-          <rect x={s * 0.52} y={s * 0.38} width={s * 0.3} height={s * 0.16} rx={s * 0.03} stroke={C.DEEP_GREEN} strokeWidth={stroke} opacity={0.5} fill={C.DEEP_GREEN} fillOpacity={0.1} />
-          <rect x={s * 0.28} y={s * 0.16} width={s * 0.44} height={s * 0.16} rx={s * 0.03} stroke={C.LIME} strokeWidth={stroke} opacity={0.6} fill={C.LIME} fillOpacity={0.15} />
-          {/* Connectors */}
-          <line x1={s * 0.33} y1={s * 0.32} x2={s * 0.33} y2={s * 0.38} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.4} />
-          <line x1={s * 0.67} y1={s * 0.32} x2={s * 0.67} y2={s * 0.38} stroke={C.DEEP_GREEN} strokeWidth={stroke * 0.5} opacity={0.35} />
-          <line x1={s * 0.5} y1={s * 0.54} x2={s * 0.5} y2={s * 0.6} stroke={C.LIME} strokeWidth={stroke * 0.5} opacity={0.35} />
         </svg>
       );
 
@@ -288,7 +310,6 @@ const ServiceVisual: React.FC<{ serviceId: string; featured?: boolean }> = ({ se
       );
   }
 };
-
 /* ─────────────────────────────────────────────────────────────
    SERVICE ROW - Direct Navigation (No Expansion)
 ───────────────────────────────────────────────────────────── */
@@ -329,6 +350,11 @@ const ServiceRow: React.FC<{
             {service.title}
           </span>
         </span>
+        <span className="hidden md:block min-w-0 flex-1 max-w-md">
+          <p className="text-sm leading-relaxed transition-colors duration-300" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            {service.description}
+          </p>
+        </span>
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 group-hover:bg-[#B6FF00] group-hover:text-[#050505] sm:h-10 sm:w-10" style={{ borderColor: C.DEEP_GREEN, background: C.DEEP_GREEN, color: C.BLACK }}>
           <ArrowRight size={16} />
         </span>
@@ -361,7 +387,7 @@ const Services = () => {
       style={{ background: C.BLACK }}
       aria-label="Services We Offer"
     >
-      {/* ── Background textures ───────────────────────────────── */}
+      {/* Background textures */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -371,57 +397,19 @@ const Services = () => {
         }}
       />
 
-      {/* Dot grid */}
-      <svg
-        className="pointer-events-none absolute inset-0 w-full h-full"
-        aria-hidden="true"
-      >
-        <defs>
-          <pattern id="services-dots" width="32" height="32" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.5" fill={C.WHITE} opacity="0.03" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#services-dots)" />
-      </svg>
-
-      {/* Ambient lime glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: `radial-gradient(circle, ${C.LIME} 0%, transparent 70%)`,
-          opacity: 0.04,
-          filter: 'blur(80px)',
-        }}
-      />
-
-      {/* Secondary glow bottom-left */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full"
-        style={{
-          background: `radial-gradient(circle, ${C.DEEP_GREEN} 0%, transparent 70%)`,
-          opacity: 0.03,
-          filter: 'blur(60px)',
-        }}
-      />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-
-        {/* ── Section Header ───────────────────────────────────── */}
+        {/* Section Header */}
         <motion.div
           className="mb-4 grid gap-x-8 gap-y-2 pb-0 sm:mb-6 sm:gap-y-3 sm:pb-0 lg:mb-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-x-16 lg:gap-y-3 lg:pb-0"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-
           <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] lg:col-span-2">
             <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             Our Services
           </div>
 
-          {/* H2 */}
           <h2
             className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
             style={{ color: C.WHITE }}
@@ -494,7 +482,6 @@ const Services = () => {
             </button>
           </div>
         )}
-
       </div>
     </section>
   );
