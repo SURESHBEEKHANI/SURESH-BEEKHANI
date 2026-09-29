@@ -1,18 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  Clock, 
-  Mail, 
-  MapPin, 
-  Phone, 
-  Sparkles, 
-  Zap, 
-  Layers, 
-  Cpu, 
-  Database,
-  ChevronDown
+import { motion } from 'framer-motion';
+import {
+  Upload,
+  ChevronDown,
+  ArrowUpRight,
+  CheckCircle2,
+  ShieldCheck,
+  Award,
+  Star,
+  Globe,
+  FileText,
+  X
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/supabaseClient';
@@ -20,11 +18,12 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// BRAND TOKENS (Velnix Locked Color System)
+// BRAND TOKENS
 // ─────────────────────────────────────────────────────────────────────────────
 const C = {
   black:    '#050505',
   graphite: '#111111',
+  card:     '#141414',
   white:    '#FFFFFF',
   lime:     '#B6FF00',
   green:    '#7DCC00',
@@ -33,831 +32,601 @@ const C = {
   ga: (o: number) => `rgba(125,204,0,${o})`,
 };
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 // ─────────────────────────────────────────────────────────────────────────────
-// FORM OPTIONS
+// OPTIONS
 // ─────────────────────────────────────────────────────────────────────────────
-const IMPROVEMENT_GOALS = [
-  { id: 'automate-work', label: 'Automate Repetitive Work', icon: Zap },
-  { id: 'ai-solution', label: 'Build an AI Solution', icon: Cpu },
-  { id: 'connect-systems', label: 'Connect Existing Systems', icon: Layers },
-  { id: 'custom-software', label: 'Build Custom Software', icon: Database },
-  { id: 'improve-product', label: 'Improve Existing Product', icon: Sparkles },
-  { id: 'not-sure', label: "Not Sure / Need Assessment", icon: Clock },
+const TECH_STACK_OPTIONS = [
+  { value: "ai-automation",  label: "AI & Workflow Automation" },
+  { value: "custom-ai-dev",  label: "Custom AI & Machine Learning" },
+  { value: "agentic-ai",     label: "Agentic AI Systems" },
+  { value: "web-development", label: "Full-Stack Web Development" },
+  { value: "mobile-app-dev", label: "Mobile App Development" },
+  { value: "cloud-devops",   label: "Cloud & DevOps Infrastructure" },
+  { value: "data-analytics", label: "Big Data & Business Intelligence" },
+  { value: "other",          label: "Other Technology Needs" }
 ];
 
-const HELP_TOPICS = [
-  { value: "ai-automation", label: "AI & Workflow Automation" },
-  { value: "ai-development", label: "Custom AI Development" },
-  { value: "agentic-ai", label: "Agentic AI & Autonomous Systems" },
-  { value: "custom-software", label: "Custom Software Engineering" },
-  { value: "chatbot-development", label: "AI Chatbots & Conversational AI" },
-  { value: "machine-deep-learning", label: "Machine Learning & Analytics" },
-  { value: "web-app-dev", label: "Web & Mobile Product Engineering" },
-  { value: "other", label: "General Business Query" }
+const COUNTRY_CODES = [
+  { code: "+92",  country: "PK", flag: "🇵🇰", name: "Pakistan" },
+  { code: "+1",   country: "US", flag: "🇺🇸", name: "United States" },
+  { code: "+44",  country: "GB", flag: "🇬🇧", name: "United Kingdom" },
+  { code: "+971", country: "AE", flag: "🇦🇪", name: "UAE" },
+  { code: "+91",  country: "IN", flag: "🇮🇳", name: "India" },
+  { code: "+61",  country: "AU", flag: "🇦🇺", name: "Australia" },
+  { code: "+49",  country: "DE", flag: "🇩🇪", name: "Germany" },
+  { code: "+33",  country: "FR", flag: "🇫🇷", name: "France" },
+  { code: "+966", country: "SA", flag: "🇸🇦", name: "Saudi Arabia" },
 ];
 
-const INDUSTRY_OPTIONS = [
-  { value: "healthcare", label: "Healthcare & Life Sciences" },
-  { value: "fintech", label: "Financial Services & Banking" },
-  { value: "ecommerce", label: "E-Commerce & Retail" },
-  { value: "professional-services", label: "Professional Services & Legal" },
-  { value: "logistics", label: "Logistics & Supply Chain" },
-  { value: "it-software", label: "Technology & SaaS" },
-  { value: "manufacturing", label: "Manufacturing & Industrial" },
-  { value: "other", label: "Other SMB Industry" }
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CUSTOM SELECT COMPONENT (Dark Graphite Velnix Theme)
-// ─────────────────────────────────────────────────────────────────────────────
-const CustomSelect = ({ 
-  options, 
-  value, 
-  onChange, 
-  placeholder,
-  name
-}: { 
-  options: {value: string, label: string}[], 
-  value: string, 
-  onChange: (e: { target: { name: string, value: string, type: string } }) => void, 
-  placeholder: string,
-  name: string
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const selectedOption = options.find(opt => opt.value === value);
-
-  return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        type="button"
-        className="w-full h-12 px-4 flex items-center justify-between text-left transition-all duration-200"
-        style={{
-          background: C.graphite,
-          border: `1px solid ${isOpen ? C.lime : C.wa(0.12)}`,
-          color: value ? C.white : C.wa(0.4),
-          boxShadow: isOpen ? `0 0 16px ${C.la(0.15)}` : 'none',
-        }}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-      >
-        <span className="text-sm font-medium truncate">
-          {selectedOption ? selectedOption.label : placeholder}
-        </span>
-        <ChevronDown 
-          size={16} 
-          className="transition-transform duration-200 shrink-0" 
-          style={{ 
-            color: isOpen ? C.lime : C.wa(0.4),
-            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-          }} 
-        />
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.15 }}
-            className="absolute z-50 w-full mt-1 overflow-auto max-h-60"
-            style={{
-              background: C.graphite,
-              border: `1px solid ${C.wa(0.15)}`,
-              boxShadow: '0 16px 40px rgba(0,0,0,0.7)',
-            }}
-            role="listbox"
-          >
-            {options.map((option) => (
-              <div
-                key={option.value}
-                role="option"
-                aria-selected={value === option.value}
-                className="px-4 py-3 cursor-pointer text-sm transition-colors duration-150 flex items-center justify-between"
-                style={{
-                  background: value === option.value ? C.la(0.1) : 'transparent',
-                  color: value === option.value ? C.lime : C.wa(0.8),
-                  fontWeight: value === option.value ? 600 : 400,
-                }}
-                onMouseEnter={(e) => {
-                  if (value !== option.value) {
-                    e.currentTarget.style.background = C.wa(0.05);
-                    e.currentTarget.style.color = C.white;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (value !== option.value) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = C.wa(0.8);
-                  }
-                }}
-                onClick={() => {
-                  onChange({
-                    target: { name, value: option.value, type: 'select-one' }
-                  });
-                  setIsOpen(false);
-                }}
-              >
-                <span>{option.label}</span>
-                {value === option.value && (
-                  <CheckCircle2 size={14} color={C.lime} />
-                )}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+// Shared input class (dark brand style)
+const inputCls =
+  "w-full px-5 rounded-xl text-sm font-medium outline-none transition-all duration-200 placeholder-white/30";
+const inputStyle = {
+  background: C.graphite,
+  border: `1px solid ${C.wa(0.1)}`,
+  color: C.white,
+  height: 48,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CONTACT COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 const Contact = () => {
-  const shouldReduce = useReducedMotion();
-  const [selectedGoal, setSelectedGoal] = useState('automate-work');
+  const fileInputRef   = useRef<HTMLInputElement>(null);
+  const countryRef     = useRef<HTMLDivElement>(null);
+
   const [formData, setFormData] = useState({
-    helpType: 'ai-automation',
-    industry: 'healthcare',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: '',
-    company: '',
-    message: '',
-    newsletter: true,
-    terms: true
+    fullName: '', email: '', phoneCode: '+92', phone: '',
+    techStack: 'ai-automation', message: '', terms: true
   });
+  const [selectedFile,         setSelectedFile]         = useState<File | null>(null);
+  const [isSubmitting,         setIsSubmitting]         = useState(false);
+  const [isSubmitted,          setIsSubmitted]          = useState(false);
+  const [showCountryDropdown,  setShowCountryDropdown]  = useState(false);
+  const [focusedField,         setFocusedField]         = useState<string | null>(null);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  React.useEffect(() => {
+    const close = (e: MouseEvent) => {
+      if (countryRef.current && !countryRef.current.contains(e.target as Node))
+        setShowCountryDropdown(false);
+    };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | { target: { name: string, value: string, type: string } }) => {
-    const target = e.target;
-    const name = target.name;
-    const type = target.type;
-
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
     if (type === 'checkbox') {
-      const checked = (target as HTMLInputElement).checked;
+      const checked = (e.target as HTMLInputElement).checked;
       setFormData(prev => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: target.value }));
+      setFormData(prev => ({ ...prev, [name]: value }));
     }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) setSelectedFile(e.target.files[0]);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    if (e.dataTransfer.files?.[0]) setSelectedFile(e.dataTransfer.files[0]);
   };
 
   const validateForm = () => {
     const errors: string[] = [];
-    if (!formData.firstName.trim()) errors.push('First Name is required');
-    if (!formData.lastName.trim()) errors.push('Last Name is required');
-    if (!formData.email.trim()) errors.push('Work Email is required');
-    if (!formData.company.trim()) errors.push('Company Name is required');
-    if (!formData.terms) errors.push('Please agree to the Privacy Policy');
-
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (!formData.fullName.trim()) errors.push('Full Name is required');
+    if (!formData.email.trim())    errors.push('Email Address is required');
+    if (!formData.terms)           errors.push('Please agree to the terms & conditions');
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       errors.push('Please enter a valid email address');
-    }
-
     return errors;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const errors = validateForm();
-    if (errors.length > 0) {
-      errors.forEach(error => toast.error(error));
-      return;
-    }
-
+    if (errors.length > 0) { errors.forEach(err => toast.error(err)); return; }
     setIsSubmitting(true);
-
     try {
-      const goalLabel = IMPROVEMENT_GOALS.find(g => g.id === selectedGoal)?.label || selectedGoal;
-      const combinedMessage = `[Primary Goal: ${goalLabel}]\n\n${formData.message || 'No additional message details provided.'}`;
+      const nameParts      = formData.fullName.trim().split(' ');
+      const firstName      = nameParts[0] || '';
+      const lastName       = nameParts.slice(1).join(' ') || nameParts[0] || '';
+      const techStackLabel = TECH_STACK_OPTIONS.find(t => t.value === formData.techStack)?.label || formData.techStack;
+      let combinedMessage  = `[Tech Stack / Service: ${techStackLabel}]\n\n${formData.message || 'No additional project details provided.'}`;
+      if (selectedFile) combinedMessage += `\n\n[Attached File: ${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)]`;
+      const fullPhone = `${formData.phoneCode} ${formData.phone}`.trim();
 
-      const { error } = await supabase.from('Contact Us').insert([
-        {
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          email: formData.email,
-          phone: formData.phone || null,
-          subject: formData.helpType,
-          message: combinedMessage,
-          help_topic: formData.helpType,
-          industry: formData.industry,
-          country: formData.country || null,
-          company_organization: formData.company,
-          newsletter_signup: formData.newsletter,
-          agree_terms: formData.terms
-        }
-      ]);
+      const { error } = await supabase.from('Contact Us').insert([{
+        first_name:            firstName,
+        last_name:             lastName,
+        email:                 formData.email,
+        phone:                 fullPhone || null,
+        subject:               techStackLabel,
+        message:               combinedMessage,
+        help_topic:            formData.techStack,
+        industry:              'other',
+        country:               formData.phoneCode,
+        company_organization:  'Not Specified',
+        newsletter_signup:     true,
+        agree_terms:           formData.terms
+      }]);
 
-      if (error) {
-        console.error('Supabase Error:', error);
-        throw error;
-      }
+      if (error) { console.error('Supabase Error:', error); throw error; }
 
-      toast.success('Strategy inquiry received!', {
-        description: 'Our team will review your operational requirements and reach out within 24 business hours.',
+      toast.success('Inquiry Submitted Successfully!', {
+        description: "We'll have the right developer ready within 24 hours.",
         duration: 5000,
-        style: { background: C.lime, color: C.black, border: 'none' }
+        style: { background: C.lime, color: C.black, border: 'none', fontWeight: 600 }
       });
-
       setIsSubmitted(true);
-    } catch (error) {
-      console.error(error);
-      toast.error('Could not submit inquiry right now. Please email info@velnixsolutions.com directly.');
+    } catch (err) {
+      console.error(err);
+      toast.error('Could not submit right now. Please email info@velnixsolutions.com directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const selectedCountry = COUNTRY_CODES.find(c => c.code === formData.phoneCode) || COUNTRY_CODES[0];
+
+  // Helper: border color for focused inputs
+  const borderFor = (field: string) =>
+    focusedField === field ? C.lime : C.wa(0.1);
+
   return (
     <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
       <Navbar />
 
-      {/* ── BACKGROUND AMBIENT GLOWS ── */}
+      {/* ── AMBIENT BACKGROUND ── */}
       <div className="pointer-events-none select-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          className="absolute top-0 left-1/4 rounded-full blur-[140px]"
-          style={{ width: 500, height: 500, background: C.la(0.04) }}
+          className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[140px]"
+          style={{ background: C.la(0.04) }}
         />
         <div
-          className="absolute bottom-1/3 right-1/4 rounded-full blur-[140px]"
-          style={{ width: 450, height: 450, background: C.ga(0.03) }}
+          className="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full blur-[140px]"
+          style={{ background: C.ga(0.03) }}
         />
       </div>
 
-      <main className="flex-grow relative z-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* ══════════════════════════════════════════════════════
-              HERO HEADER
-          ══════════════════════════════════════════════════════ */}
-          <div className="max-w-3xl mb-16 lg:mb-20">
-            {/* H1 */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6, ease }}
-              style={{
-                fontSize: 'clamp(2.2rem, 4.2vw, 3.75rem)',
-                fontWeight: 800,
-                lineHeight: 1.08,
-                letterSpacing: '-0.03em',
-                color: C.white,
-                marginBottom: '1.25rem',
-              }}
-            >
-              Turn Your Business Problem Into An{' '}
-              <span style={{ color: C.lime }}>Intelligent System.</span>
-            </motion.h1>
+      <main className="flex-grow relative z-10">
 
-            {/* Supporting Copy */}
-            <motion.p
+        {/* ══════════════════════════════════════════════════════
+            HERO SECTION
+        ══════════════════════════════════════════════════════ */}
+        <section className="relative w-full pt-28 pb-48 sm:pt-36 sm:pb-56 overflow-hidden text-center border-b border-white/[0.06]">
+          {/* Deep dark radial backdrop */}
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+            <div
+              className="absolute inset-0"
+              style={{ background: 'radial-gradient(ellipse 95% 85% at 50% 25%, #1e3300 0%, #111d00 36%, #080f00 68%, #050505 100%)' }}
+            />
+            {/* Central lime light cone */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-[110px]"
+              style={{ background: 'radial-gradient(circle, rgba(182,255,0,0.18) 0%, rgba(100,160,0,0.09) 60%, transparent 80%)' }}
+            />
+            {/* Dot grid */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)', backgroundSize: '28px 28px' }}
+            />
+            {/* Edge vignettes */}
+            <div className="absolute inset-y-0 left-0  w-48 bg-gradient-to-r from-[#050505] to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-[#050505] to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+          </div>
+
+          {/* Hero content */}
+          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+              className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-white/70"
+            >
+              GET IN TOUCH
+            </motion.div>
+
+            {/* Heading */}
+            <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6, ease }}
+              transition={{ delay: 0.08, duration: 0.5 }}
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4"
+              style={{ color: C.lime, textShadow: `0 0 50px ${C.la(0.35)}` }}
+            >
+              Contact Us
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.16, duration: 0.5 }}
+              className="text-sm sm:text-base max-w-lg leading-relaxed mb-8"
+              style={{ color: C.wa(0.75) }}
+            >
+              Start the conversation with our team today. We'll have the right developer ready within just 24 hours.
+            </motion.p>
+
+            {/* Schedule a Call Button */}
+            <motion.a
+              href="https://calendar.app.google/F63aBoA5vxJdtihj7"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.24, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-sm transition-all hover:scale-[1.03] active:scale-[0.98]"
               style={{
-                fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
-                color: C.wa(0.72),
-                lineHeight: 1.7,
-                fontWeight: 400,
+                background: C.lime,
+                color: C.black,
+                boxShadow: `0 6px 24px ${C.la(0.35)}`,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = C.green;
+                e.currentTarget.style.boxShadow = `0 8px 32px ${C.la(0.5)}`;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = C.lime;
+                e.currentTarget.style.boxShadow = `0 6px 24px ${C.la(0.35)}`;
               }}
             >
-              Tell us what slows your business down. We will evaluate your workflow, assess where AI or automation creates measurable impact, and outline the right technical path. No complex jargon required.
-            </motion.p>
+              <span>Schedule a Call</span>
+              <span className="font-extrabold text-base">›</span>
+            </motion.a>
           </div>
+        </section>
 
-          {/* ══════════════════════════════════════════════════════
-              MAIN TWO-COLUMN LAYOUT
-          ══════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* ══════════════════════════════════════════════════════
+            MAIN CARD — "Let's Discuss Your Needs"
+        ══════════════════════════════════════════════════════ */}
+        <section id="contact-form" className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 -mt-32 sm:-mt-40 pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[24px] sm:rounded-[28px] p-6 sm:p-10 md:p-12"
+            style={{
+              background: 'linear-gradient(160deg, #141414 0%, #0d0d0d 100%)',
+              border: `1px solid ${C.wa(0.09)}`,
+              boxShadow: `0 8px 16px rgba(0,0,0,0.4), 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px ${C.la(0.06)}, 0 0 60px ${C.la(0.06)}`,
+            }}
+          >
+            {/* Subtle lime glow top-right */}
+            <div
+              className="absolute -top-16 -right-16 w-56 h-56 rounded-full blur-[90px] pointer-events-none"
+              style={{ background: 'radial-gradient(circle, rgba(182,255,0,0.12) 0%, transparent 70%)' }}
+            />
 
-            {/* ──────────────────────────────────────────────────
-                LEFT COLUMN — Context, Roadmap & Trust
-            ────────────────────────────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25, duration: 0.6, ease }}
-              className="lg:order-2 lg:col-span-5 flex flex-col gap-10"
-            >
-              {/* Problem Focus Box */}
-              <div
-                className="p-6 sm:p-8"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.08)}`,
-                }}
+            {/* Card Header */}
+            <div className="text-center mb-8 relative z-10">
+              <h2
+                className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[-0.03em] mb-2"
+                style={{ color: C.white }}
               >
-                <h3
-                  style={{
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    color: C.lime,
-                    marginBottom: '1.25rem',
-                  }}
+                Let's Discuss Your Needs
+              </h2>
+              <p
+                className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em]"
+                style={{ color: C.wa(0.45) }}
+              >
+                Tell Us About Your Project. We'll Take It From There
+              </p>
+              {/* Lime divider */}
+              <div
+                className="mx-auto mt-5 h-[1px] w-24"
+                style={{ background: `linear-gradient(90deg, transparent, ${C.la(0.5)}, transparent)` }}
+              />
+            </div>
+
+            {isSubmitted ? (
+              /* ── Success State ── */
+              <div className="py-14 text-center space-y-5 relative z-10">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto"
+                  style={{ background: C.la(0.12), border: `1px solid ${C.lime}` }}
                 >
-                  Common Operational Challenges We Solve
-                </h3>
-                
-                <ul className="flex flex-col gap-3.5">
-                  {[
-                    'Repetitive manual work taking up team bandwidth',
-                    'Disconnected tools & spreadsheet-heavy processes',
-                    'Administrative workloads slowing customer delivery',
-                    'Data fragmentation across multiple software tools',
-                    'Custom AI software & intelligent workflow needs',
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm" style={{ color: C.wa(0.8) }}>
-                      <CheckCircle2 size={16} color={C.lime} className="shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* 3-Step What Happens Next */}
-              <div>
-                <h3
-                  style={{
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    color: C.wa(0.5),
-                    marginBottom: '1.5rem',
+                  <CheckCircle2 size={32} color={C.lime} />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white">Thank You for Reaching Out!</h3>
+                <p className="text-sm max-w-md mx-auto leading-relaxed" style={{ color: C.wa(0.65) }}>
+                  Your project details have been received. One of our lead engineers will evaluate your requirements and contact you within 24 hours.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setFormData({ fullName: '', email: '', phoneCode: '+92', phone: '', techStack: 'ai-automation', message: '', terms: true });
+                    setSelectedFile(null);
                   }}
+                  className="mt-4 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all hover:scale-[1.02]"
+                  style={{ background: C.lime, color: C.black }}
                 >
-                  What Happens Next
-                </h3>
-
-                <div className="flex flex-col gap-6 relative">
-                  {/* Step 1 */}
-                  <div className="flex gap-4 items-start">
-                    <div
-                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
-                      style={{ background: C.la(0.1), color: C.lime, border: `1px solid ${C.la(0.3)}` }}
-                    >
-                      01
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white mb-1">Tell Us the Business Problem</h4>
-                      <p className="text-xs text-white/60 leading-relaxed">
-                        Share your workflow, pain point, or goal through the form.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Step 2 */}
-                  <div className="flex gap-4 items-start">
-                    <div
-                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
-                      style={{ background: C.wa(0.05), color: C.wa(0.7), border: `1px solid ${C.wa(0.1)}` }}
-                    >
-                      02
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white mb-1">We Assess the Opportunity</h4>
-                      <p className="text-xs text-white/60 leading-relaxed">
-                        Our team reviews where AI, software, or system integration creates clear ROI.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Step 3 */}
-                  <div className="flex gap-4 items-start">
-                    <div
-                      className="w-8 h-8 rounded-none flex items-center justify-center shrink-0 font-bold text-xs"
-                      style={{ background: C.wa(0.05), color: C.wa(0.7), border: `1px solid ${C.wa(0.1)}` }}
-                    >
-                      03
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white mb-1">We Discuss the Right Path</h4>
-                      <p className="text-xs text-white/60 leading-relaxed">
-                        A focused conversation to determine feasibility, scope, and technical direction.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  Submit Another Project
+                </button>
               </div>
+            ) : (
+              /* ── Form ── */
+              <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
 
-              {/* SLA & Direct Contact */}
-              <div
-                className="p-6 flex flex-col gap-4"
-                style={{
-                  background: C.wa(0.02),
-                  border: `1px solid ${C.wa(0.06)}`,
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <Clock size={16} color={C.lime} />
-                  <span className="text-xs font-semibold text-white/90">
-                    Response Guarantee: Within 24 Business Hours
-                  </span>
-                </div>
+                {/* ROW 1: Full Name & Phone */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Full Name */}
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    onFocus={() => setFocusedField('fullName')}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Full Name"
+                    required
+                    className={inputCls}
+                    style={{ ...inputStyle, border: `1px solid ${borderFor('fullName')}`, boxShadow: focusedField === 'fullName' ? `0 0 0 3px ${C.la(0.1)}` : 'none' }}
+                  />
 
-                <div className="flex flex-col gap-2 pt-2" style={{ borderTop: `1px solid ${C.wa(0.06)}` }}>
-                  <a 
-                    href="mailto:info@velnixsolutions.com" 
-                    className="flex items-center gap-3 text-xs text-white/70 hover:text-[#B6FF00] transition-colors"
-                  >
-                    <Mail size={14} color={C.lime} />
-                    <span>info@velnixsolutions.com</span>
-                  </a>
-                  <a 
-                    href="tel:+923351312852" 
-                    className="flex items-center gap-3 text-xs text-white/70 hover:text-[#B6FF00] transition-colors"
-                  >
-                    <Phone size={14} color={C.lime} />
-                    <span>+92 335 131 2852</span>
-                  </a>
-                  <div className="flex items-center gap-3 text-xs text-white/70">
-                    <MapPin size={14} color={C.lime} />
-                    <span>Karachi, Pakistan</span>
-                  </div>
-                </div>
-              </div>
-
-            </motion.div>
-
-            {/* ──────────────────────────────────────────────────
-                RIGHT COLUMN — Guided Conversion Form
-            ────────────────────────────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.6, ease }}
-              className="lg:order-1 lg:col-span-7"
-            >
-              <div
-                className="p-6 sm:p-10 relative overflow-hidden"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.1)}`,
-                  boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
-                }}
-              >
-                {/* Form header badge */}
-                <div className="flex items-center justify-between mb-8 pb-6" style={{ borderBottom: `1px solid ${C.wa(0.08)}` }}>
-                  <div>
-                    <h2 className="text-lg font-bold text-white">Start Your Inquiry</h2>
-                    <p className="text-xs text-white/50 mt-1">Short form • ~45 seconds to complete</p>
-                  </div>
-                  <span
-                    className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1"
-                    style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
-                  >
-                    Qualified B2B Channel
-                  </span>
-                </div>
-
-                {isSubmitted ? (
-                  /* Success Screen */
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="py-12 px-4 text-center space-y-6"
-                  >
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto"
-                      style={{ background: C.la(0.15), border: `1px solid ${C.lime}` }}
-                    >
-                      <CheckCircle2 size={32} color={C.lime} />
-                    </div>
-
-                    <div className="space-y-3 max-w-md mx-auto">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">
-                        Inquiry Submitted Successfully
-                      </h3>
-                      <p className="text-sm text-white/70 leading-relaxed">
-                        Thank you for sharing your business context. Our engineering leads will review your inquiry and reach out within 24 business hours to discuss potential next steps.
-                      </p>
-                    </div>
-
-                    <div className="pt-6">
+                  {/* Phone with flag selector */}
+                  <div className="flex" ref={countryRef}>
+                    {/* Country Code Button */}
+                    <div className="relative shrink-0">
                       <button
                         type="button"
-                        onClick={() => {
-                          setIsSubmitted(false);
-                          setFormData({
-                            helpType: 'ai-automation',
-                            industry: 'healthcare',
-                            firstName: '',
-                            lastName: '',
-                            email: '',
-                            phone: '',
-                            country: '',
-                            company: '',
-                            message: '',
-                            newsletter: true,
-                            terms: true
-                          });
-                        }}
-                        className="px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors"
+                        onClick={() => setShowCountryDropdown(p => !p)}
+                        className="h-12 px-3 rounded-l-xl flex items-center gap-1.5 text-xs font-semibold transition-colors"
                         style={{
-                          background: C.wa(0.05),
-                          color: C.white,
-                          border: `1px solid ${C.wa(0.15)}`,
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = C.lime;
-                          e.currentTarget.style.color = C.black;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = C.wa(0.05);
-                          e.currentTarget.style.color = C.white;
+                          background: '#1a1a1a',
+                          borderTop: `1px solid ${C.wa(0.1)}`,
+                          borderBottom: `1px solid ${C.wa(0.1)}`,
+                          borderLeft: `1px solid ${C.wa(0.1)}`,
+                          borderRight: `1px solid ${C.wa(0.06)}`,
+                          color: C.wa(0.8),
                         }}
                       >
-                        Submit Another Inquiry
+                        <span className="text-base">{selectedCountry.flag}</span>
+                        <span>{selectedCountry.code}</span>
+                        <ChevronDown size={13} style={{ color: C.wa(0.4) }} />
                       </button>
-                    </div>
-                  </motion.div>
-                ) : (
-                  /* Active Form */
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    
-                    {/* STEP 1: What are you looking to improve? (Interactive Pills) */}
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80 mb-3">
-                        01. What are you looking to improve?*
-                      </label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        {IMPROVEMENT_GOALS.map((goal) => {
-                          const IconComp = goal.icon;
-                          const isSelected = selectedGoal === goal.id;
-                          return (
+
+                      {showCountryDropdown && (
+                        <div
+                          className="absolute left-0 top-full mt-1 z-50 w-52 rounded-xl overflow-auto max-h-56 py-1"
+                          style={{ background: '#1c1c1c', border: `1px solid ${C.wa(0.12)}`, boxShadow: '0 16px 40px rgba(0,0,0,0.7)' }}
+                        >
+                          {COUNTRY_CODES.map(c => (
                             <button
-                              key={goal.id}
+                              key={c.code + c.country}
                               type="button"
-                              onClick={() => {
-                                setSelectedGoal(goal.id);
-                                if (goal.id === 'automate-work') setFormData(prev => ({ ...prev, helpType: 'ai-automation' }));
-                                else if (goal.id === 'ai-solution') setFormData(prev => ({ ...prev, helpType: 'ai-development' }));
-                                else if (goal.id === 'connect-systems') setFormData(prev => ({ ...prev, helpType: 'agentic-ai' }));
-                                else if (goal.id === 'custom-software') setFormData(prev => ({ ...prev, helpType: 'custom-software' }));
-                              }}
-                              className="flex items-center gap-3 p-3 text-left transition-all duration-200"
-                              style={{
-                                background: isSelected ? C.la(0.08) : C.wa(0.02),
-                                border: `1px solid ${isSelected ? C.lime : C.wa(0.08)}`,
-                                color: isSelected ? C.lime : C.wa(0.75),
-                              }}
+                              onClick={() => { setFormData(prev => ({ ...prev, phoneCode: c.code })); setShowCountryDropdown(false); }}
+                              className="w-full px-3 py-2 text-xs flex items-center justify-between transition-colors"
+                              style={{ color: c.code === formData.phoneCode ? C.lime : C.wa(0.75) }}
+                              onMouseEnter={e => (e.currentTarget.style.background = C.wa(0.05))}
+                              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                             >
-                              <IconComp size={16} color={isSelected ? C.lime : C.wa(0.4)} className="shrink-0" />
-                              <span className="text-xs font-medium">{goal.label}</span>
+                              <span className="flex items-center gap-2">
+                                <span>{c.flag}</span>
+                                <span className="font-medium">{c.name}</span>
+                              </span>
+                              <span className="font-mono text-white/40">{c.code}</span>
                             </button>
-                          );
-                        })}
-                      </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
-                    {/* STEP 2: Service Category & Industry Dropdowns */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <label className="block text-xs font-semibold text-white/70">
-                          Primary Service Category*
-                        </label>
-                        <CustomSelect
-                          name="helpType"
-                          value={formData.helpType}
-                          onChange={handleInputChange}
-                          placeholder="Select Service"
-                          options={HELP_TOPICS}
-                        />
-                      </div>
+                    {/* Phone input */}
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      onFocus={() => setFocusedField('phone')}
+                      onBlur={() => setFocusedField(null)}
+                      placeholder="Phone Number"
+                      className="flex-1 px-4 rounded-r-xl text-sm font-medium outline-none transition-all duration-200 placeholder-white/30"
+                      style={{
+                        background: C.graphite,
+                        borderTop: `1px solid ${borderFor('phone')}`,
+                        borderRight: `1px solid ${borderFor('phone')}`,
+                        borderBottom: `1px solid ${borderFor('phone')}`,
+                        borderLeft: 'none',
+                        color: C.white,
+                        height: 48,
+                        boxShadow: focusedField === 'phone' ? `0 0 0 3px ${C.la(0.1)}` : 'none',
+                      }}
+                    />
+                  </div>
+                </div>
 
-                      <div className="space-y-2">
-                        <label className="block text-xs font-semibold text-white/70">
-                          Industry Sector*
-                        </label>
-                        <CustomSelect
-                          name="industry"
-                          value={formData.industry}
-                          onChange={handleInputChange}
-                          placeholder="Select Industry"
-                          options={INDUSTRY_OPTIONS}
-                        />
-                      </div>
-                    </div>
+                {/* ROW 2: Email & Tech Stack */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    onFocus={() => setFocusedField('email')}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Email Address *"
+                    required
+                    className={inputCls}
+                    style={{ ...inputStyle, border: `1px solid ${borderFor('email')}`, boxShadow: focusedField === 'email' ? `0 0 0 3px ${C.la(0.1)}` : 'none' }}
+                  />
 
-                    {/* STEP 3: Contact & Company Details */}
-                    <div className="space-y-4">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80">
-                        02. Contact & Organization Details*
-                      </label>
-                      
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {/* First Name */}
-                        <div>
-                          <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleInputChange}
-                            placeholder="First Name *"
-                            required
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
+                  <div className="relative">
+                    <select
+                      name="techStack"
+                      value={formData.techStack}
+                      onChange={handleInputChange}
+                      className="w-full px-5 pr-10 rounded-xl text-sm font-medium outline-none transition-all duration-200 appearance-none cursor-pointer"
+                      style={{ ...inputStyle, color: C.wa(0.8) }}
+                    >
+                      {TECH_STACK_OPTIONS.map(opt => (
+                        <option key={opt.value} value={opt.value} style={{ background: '#111', color: '#fff' }}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown size={15} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: C.wa(0.35) }} />
+                  </div>
+                </div>
 
-                        {/* Last Name */}
-                        <div>
-                          <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleInputChange}
-                            placeholder="Last Name *"
-                            required
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
+                {/* ROW 3: Message Textarea */}
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  onFocus={() => setFocusedField('message')}
+                  onBlur={() => setFocusedField(null)}
+                  rows={4}
+                  placeholder="Help us understand what you require assistance with, the goal of your project, and the problem we're dedicated to solving *"
+                  className="w-full p-5 rounded-xl text-sm font-medium outline-none transition-all duration-200 resize-none placeholder-white/30"
+                  style={{
+                    background: C.graphite,
+                    border: `1px solid ${borderFor('message')}`,
+                    color: C.white,
+                    boxShadow: focusedField === 'message' ? `0 0 0 3px ${C.la(0.1)}` : 'none',
+                  }}
+                />
 
-                        {/* Work Email */}
-                        <div>
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="Work Email *"
-                            required
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
-
-                        {/* Company Name */}
-                        <div>
-                          <input
-                            type="text"
-                            name="company"
-                            value={formData.company}
-                            onChange={handleInputChange}
-                            placeholder="Company / Organization *"
-                            required
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
-
-                        {/* Phone */}
-                        <div>
-                          <input
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                            placeholder="Phone Number (Optional)"
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
-
-                        {/* Country */}
-                        <div>
-                          <input
-                            type="text"
-                            name="country"
-                            value={formData.country}
-                            onChange={handleInputChange}
-                            placeholder="Country / Location"
-                            className="w-full h-12 px-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200"
-                            style={{ border: `1px solid ${C.wa(0.12)}` }}
-                            onFocus={(e) => e.target.style.borderColor = C.lime}
-                            onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* STEP 4: Problem Statement / Message */}
-                    <div className="space-y-2">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-white/80">
-                        03. Tell Us About The Business Problem / Workflow
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        rows={4}
-                        placeholder="Briefly describe what repetitive task, system bottleneck, or workflow challenge you want to address..."
-                        className="w-full p-4 bg-[#050505] text-white placeholder-white/40 text-sm outline-none transition-all duration-200 resize-none"
-                        style={{ border: `1px solid ${C.wa(0.12)}` }}
-                        onFocus={(e) => e.target.style.borderColor = C.lime}
-                        onBlur={(e) => e.target.style.borderColor = C.wa(0.12)}
-                      />
-                    </div>
-
-                    {/* Terms & Newsletter */}
-                    <div className="space-y-3 pt-2">
-                      <label className="flex items-center gap-3 cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          name="terms"
-                          checked={formData.terms}
-                          onChange={handleInputChange}
-                          required
-                          className="w-4 h-4 rounded-none accent-[#B6FF00] cursor-pointer"
-                        />
-                        <span className="text-xs text-white/70">
-                          I agree to Velnix Solutions' Privacy Policy & Terms of Service *
-                        </span>
-                      </label>
-
-                      <label className="flex items-center gap-3 cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          name="newsletter"
-                          checked={formData.newsletter}
-                          onChange={handleInputChange}
-                          className="w-4 h-4 rounded-none accent-[#B6FF00] cursor-pointer"
-                        />
-                        <span className="text-xs text-white/60">
-                          Keep me updated on AI automation insights & B2B case studies
-                        </span>
-                      </label>
-                    </div>
-
-                    {/* Primary CTA Button */}
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full group inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-sm tracking-wide transition-all duration-200 relative overflow-hidden"
-                        style={{
-                          background: C.lime,
-                          color: C.black,
-                          boxShadow: `0 8px 28px ${C.la(0.3)}`,
-                          cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                          opacity: isSubmitting ? 0.75 : 1,
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!isSubmitting) {
-                            e.currentTarget.style.background = C.green;
-                            e.currentTarget.style.boxShadow = `0 12px 36px ${C.la(0.5)}`;
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!isSubmitting) {
-                            e.currentTarget.style.background = C.lime;
-                            e.currentTarget.style.boxShadow = `0 8px 28px ${C.la(0.3)}`;
-                          }
-                        }}
+                {/* ROW 4: File Upload */}
+                <div>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    className="hidden"
+                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.zip"
+                  />
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={e => e.preventDefault()}
+                    onDrop={handleDrop}
+                    className="w-full rounded-xl p-6 text-center cursor-pointer group flex flex-col items-center justify-center min-h-[110px] transition-all duration-200"
+                    style={{
+                      background: C.graphite,
+                      border: `2px dashed ${C.wa(0.15)}`,
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = C.la(0.4))}
+                    onMouseLeave={e => (e.currentTarget.style.borderColor = C.wa(0.15))}
+                  >
+                    {selectedFile ? (
+                      <div
+                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold"
+                        style={{ background: C.wa(0.06), border: `1px solid ${C.wa(0.1)}`, color: C.white }}
                       >
-                        {isSubmitting ? (
-                          <span>Processing Inquiry...</span>
-                        ) : (
-                          <>
-                            <span>Start The Conversation</span>
-                            <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                          </>
-                        )}
-                      </button>
+                        <FileText size={16} style={{ color: C.lime }} />
+                        <span className="truncate max-w-xs">{selectedFile.name}</span>
+                        <span style={{ color: C.wa(0.4) }}>({(selectedFile.size / 1024).toFixed(1)} KB)</span>
+                        <button
+                          type="button"
+                          onClick={e => { e.stopPropagation(); setSelectedFile(null); }}
+                          className="p-1 transition-colors hover:text-red-400"
+                          style={{ color: C.wa(0.4) }}
+                        >
+                          <X size={13} />
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        <div
+                          className="w-9 h-9 rounded-xl flex items-center justify-center mb-2 transition-all group-hover:scale-110"
+                          style={{ background: C.wa(0.06), color: C.wa(0.6) }}
+                        >
+                          <Upload size={17} />
+                        </div>
+                        <p className="text-xs" style={{ color: C.wa(0.55) }}>
+                          <span
+                            className="font-bold transition-colors"
+                            style={{ color: C.lime }}
+                          >
+                            Click to upload
+                          </span>{' '}
+                          or drag and drop
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* ROW 5: Terms & Submit */}
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <label className="flex items-center gap-3 cursor-pointer select-none text-xs font-medium" style={{ color: C.wa(0.65) }}>
+                    <input
+                      type="checkbox"
+                      name="terms"
+                      checked={formData.terms}
+                      onChange={handleInputChange}
+                      required
+                      className="w-4 h-4 cursor-pointer accent-[#B6FF00]"
+                    />
+                    <span>
+                      I understand and agree to the{' '}
+                      <a
+                        href="/terms-and-conditions"
+                        className="font-bold underline transition-colors"
+                        style={{ color: C.lime }}
+                      >
+                        terms & conditions
+                      </a>.
+                    </span>
+                  </label>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-extrabold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
+                    style={{
+                      background: C.lime,
+                      color: C.black,
+                      boxShadow: `0 8px 24px ${C.la(0.35)}`,
+                    }}
+                    onMouseEnter={e => {
+                      if (!isSubmitting) {
+                        e.currentTarget.style.background = C.green;
+                        e.currentTarget.style.boxShadow = `0 12px 32px ${C.la(0.5)}`;
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = C.lime;
+                      e.currentTarget.style.boxShadow = `0 8px 24px ${C.la(0.35)}`;
+                    }}
+                  >
+                    <span>{isSubmitting ? 'Submitting...' : 'Submit Now'}</span>
+                    <ArrowUpRight size={17} strokeWidth={2.5} />
+                  </button>
+                </div>
+
+                {/* ROW 6: Trust Badges */}
+                <div
+                  className="pt-7 mt-5 flex flex-wrap items-center justify-center gap-3"
+                  style={{ borderTop: `1px solid ${C.wa(0.07)}` }}
+                >
+                  {[
+                    { icon: <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />,        label: 'Pro on UpCity' },
+                    { icon: <Star size={11} className="fill-amber-400 text-amber-400" />,                label: 'Top Developer' },
+                    { icon: <Award size={11} style={{ color: C.lime }} />,                              label: 'Clutch 4.9/5' },
+                    { icon: <ShieldCheck size={11} className="text-blue-400" />,                        label: 'Top Software Firm' },
+                    { icon: <Globe size={11} className="text-teal-400" />,                              label: 'Global Partner' },
+                  ].map(({ icon, label }) => (
+                    <div
+                      key={label}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold"
+                      style={{ background: C.wa(0.05), border: `1px solid ${C.wa(0.09)}`, color: C.wa(0.7) }}
+                    >
+                      {icon}
+                      <span>{label}</span>
                     </div>
+                  ))}
+                </div>
 
-                  </form>
-                )}
-
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
+              </form>
+            )}
+          </motion.div>
+        </section>
       </main>
 
       <Footer />

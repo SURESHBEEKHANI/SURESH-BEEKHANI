@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
+import Testimonials from "./Testimonials";
 import Footer from "./Footer";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -49,7 +50,7 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    id: "insurance-fraud-detection",
+    id: "AI Fraud Detection",
     title: "AI-Powered Fraud Detection for Insurance",
     category: "AI & Automation",
     industry: "Insurance",
@@ -195,72 +196,9 @@ const PROJECTS: Project[] = [
       { stat: "200+", label: "Data Signals" },
       { stat: "< 3s", label: "Decision Time" },
     ],
-    tags: ["FinTech", "Risk Modeling", "Machine Learning", "Real-Time"],
+    tags: ["FinTech", "Risk Modeling", "ML"],
     image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
     link: "/portfolio/fintech-risk-analytics",
-  },
-
-  {
-    id: "legal-document-ai",
-    title: "Legal Document Intelligence System",
-    category: "Custom Software",
-    industry: "Legal Tech",
-    problem:
-      "Law firms were spending thousands of billable hours manually reviewing contracts and extracting key clauses.",
-    solution:
-      "Built an AI-powered document intelligence platform that extracts, classifies, and risk-scores legal clauses instantly.",
-    outcome:
-      "Contract review time reduced from days to minutes with 94% extraction accuracy.",
-    metrics: [
-      { stat: "94%", label: "Extraction Accuracy" },
-      { stat: "90%", label: "Time Saved" },
-      { stat: "10k+", label: "Docs Processed" },
-    ],
-    tags: ["Legal AI", "NLP", "Document Processing", "Classification"],
-    image: "/image/Portfolio-img/ai-workflow-automation.png",
-    link: "/portfolio/legal-document-ai",
-  },
-
-  {
-    id: "edtech-adaptive-learning",
-    title: "Adaptive Learning AI for EdTech",
-    category: "Healthcare AI",
-    industry: "Education",
-    problem:
-      "One-size-fits-all course content failed students who learned at different paces, leading to high dropout rates.",
-    solution:
-      "Designed an adaptive AI engine that personalizes learning paths, pacing, and content difficulty per student in real time.",
-    outcome:
-      "Student completion rates improved by 65% with measurable learning outcome gains.",
-    metrics: [
-      { stat: "65%", label: "Completion Rate Up" },
-      { stat: "3×", label: "Engagement" },
-      { stat: "48h", label: "Avg. Onboarding Cut" },
-    ],
-    tags: ["EdTech", "Adaptive AI", "Personalization", "LMS Integration"],
-    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
-    link: "/portfolio/edtech-adaptive-learning",
-  },
-
-  {
-    id: "supply-chain-ai-optimization",
-    title: "AI-Driven Supply Chain Optimization",
-    category: "AI & Automation",
-    industry: "Logistics & Supply Chain",
-    problem:
-      "Supply chain disruptions and inaccurate demand forecasting led to excess inventory and missed delivery windows.",
-    solution:
-      "Implemented an AI forecasting and optimization system integrating live supplier, logistics, and market demand data.",
-    outcome:
-      "Inventory costs cut by 30% with 98% on-time delivery performance achieved.",
-    metrics: [
-      { stat: "30%", label: "Inventory Cost Cut" },
-      { stat: "98%", label: "On-Time Delivery" },
-      { stat: "15+", label: "Data Sources Unified" },
-    ],
-    tags: ["Supply Chain", "Forecasting", "Optimization", "Logistics AI"],
-    image: "/image/Portfolio-img/ai-workflow-automation.png",
-    link: "/portfolio/supply-chain-ai-optimization",
   },
 ];
 
@@ -269,9 +207,6 @@ const PROJECTS: Project[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 const Portfolio: React.FC = () => {
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6);
-
   return (
     <div
       className="min-h-screen flex flex-col antialiased"
@@ -413,8 +348,8 @@ const Portfolio: React.FC = () => {
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-24">
 
           {/* CASE STUDY GRID */}
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-24">
-            {visibleProjects.map((project, i) => (
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-12">
+            {PROJECTS.map((project, i) => (
               <motion.article
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -556,31 +491,6 @@ const Portfolio: React.FC = () => {
             ))}
           </section>
 
-          {/* VIEW ALL CASE STUDIES BUTTON */}
-          {!showAll && PROJECTS.length > 6 && (
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="flex justify-center -mt-10 mb-20"
-            >
-              <Link
-                to="/portfolio"
-                onClick={() => setShowAll(true)}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-black transition-all hover:scale-[1.02] active:scale-[0.98] hover:opacity-90"
-                style={{
-                  background: C.lime,
-                  boxShadow: `0 4px 24px ${C.la(0.3)}`,
-                  textDecoration: "none",
-                }}
-              >
-                View All Case Studies
-                <span aria-hidden="true">→</span>
-              </Link>
-            </motion.div>
-          )}
-
           {/* EMPTY STATE */}
           {PROJECTS.length === 0 && (
             <div
@@ -596,6 +506,9 @@ const Portfolio: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* TESTIMONIALS SECTION */}
+        <Testimonials />
       </main>
 
       <Footer />
