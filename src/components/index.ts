@@ -3,6 +3,7 @@ export { default as ResourcesSection } from './Resources';
 export { default as OriginStory } from './OriginStory';
 export { default as MeetFounder } from './MeetFounder';
 export { default as Approach } from './Approach';
+export { default as PortfolioSection } from './PortfolioSection';
 export { default as ClientSolutions } from './ClientSolutions';
 export { default as Contact } from './Contact';
 export { default as FAQ } from './FAQ';

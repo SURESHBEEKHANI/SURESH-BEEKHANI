@@ -50,16 +50,16 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    id: "AI Fraud Detection",
-    title: "AI-Powered Fraud Detection for Insurance",
+    id: "insurance-fraud-detection",
+    title: "Insurance Fraud Detection",
     category: "AI & Automation",
     industry: "Insurance",
     problem:
-      "Manual claims investigation made it difficult to identify suspicious patterns quickly.",
+      "Claims teams could not surface suspicious patterns quickly enough through manual investigation.",
     solution:
-      "Developed an AI-driven fraud detection system that analyzes claims data and identifies anomalous patterns.",
+      "An AI system that scores claims in real time and flags anomalous patterns for investigators.",
     outcome:
-      "Faster claim investigation with automated risk detection.",
+      "Faster investigation with continuous, automated risk detection.",
     metrics: [
       {
         stat: "60%",
@@ -81,15 +81,15 @@ const PROJECTS: Project[] = [
 
   {
     id: "ai-workflow-automation",
-    title: "AI Workflow Automation Platform",
+    title: "Workflow Automation Platform",
     category: "AI & Automation",
-    industry: "Business Operations",
+    industry: "Operations",
     problem:
-      "Repetitive administrative workflows required significant manual effort across teams.",
+      "Administrative work was repeated across teams with no shared automation layer.",
     solution:
-      "Designed an AI automation platform connecting business processes, data sources, and intelligent agents.",
+      "A platform that connects processes, data sources, and agents into one operational workflow.",
     outcome:
-      "Reduced repetitive work and accelerated internal workflows.",
+      "Less repetitive work and faster internal execution.",
     metrics: [
       {
         stat: "70%",
@@ -111,15 +111,15 @@ const PROJECTS: Project[] = [
 
   {
     id: "clinical-decision-support",
-    title: "Clinical Decision Support AI",
+    title: "Clinical Decision Support",
     category: "Healthcare AI",
     industry: "Healthcare",
     problem:
-      "Diagnostic data retrieval and medical charting was slowing clinical consultations and patient diagnosis.",
+      "Charting and diagnostic retrieval slowed consultations and delayed clinical decisions.",
     solution:
-      "Developed an AI decision-support copilot integrated directly into EHR systems with automated clinical summarization.",
+      "An EHR-integrated copilot that summarizes records and retrieves diagnostic context on demand.",
     outcome:
-      "Reduced physician charting time by 55% with faster diagnostic accuracy.",
+      "Physicians spent 55% less time on charting, with faster access to diagnosis.",
     metrics: [
       {
         stat: "55%",
@@ -140,15 +140,15 @@ const PROJECTS: Project[] = [
   },
   {
     id: "real-estate-ai-platform",
-    title: "Real Estate AI Lead Intelligence",
+    title: "Real Estate Lead Intelligence",
     category: "Custom Software",
     industry: "Real Estate",
     problem:
-      "Agents spent hours manually qualifying leads with no predictive insight into buyer intent or closing probability.",
+      "Agents qualified leads by hand, without a reliable signal for buyer intent or close probability.",
     solution:
-      "Built a custom AI platform that scores, segments, and nurtures leads automatically using behavioral data and NLP.",
+      "A platform that scores, segments, and nurtures leads from behavioral data and language signals.",
     outcome:
-      "Conversion rates doubled with 80% less manual follow-up effort.",
+      "Conversion doubled, with 80% less manual follow-up.",
     metrics: [
       { stat: "2×", label: "Conversion Rate" },
       { stat: "80%", label: "Less Manual Work" },
@@ -161,15 +161,15 @@ const PROJECTS: Project[] = [
 
   {
     id: "ecommerce-ai-personalization",
-    title: "E-Commerce AI Personalization Engine",
+    title: "E-Commerce Personalization",
     category: "AI & Automation",
     industry: "E-Commerce",
     problem:
-      "Generic product recommendations resulted in low engagement and high cart abandonment rates.",
+      "Generic recommendations reduced engagement and increased cart abandonment.",
     solution:
-      "Developed a real-time AI personalization engine analyzing browsing behavior, purchase history, and intent signals.",
+      "A real-time engine that personalizes merchandising from browse, purchase, and intent signals.",
     outcome:
-      "Revenue per visitor increased by 38% within 90 days of deployment.",
+      "Revenue per visitor rose 38% within 90 days of launch.",
     metrics: [
       { stat: "38%", label: "Revenue Per Visitor" },
       { stat: "22%", label: "Cart Abandonment Drop" },
@@ -182,15 +182,15 @@ const PROJECTS: Project[] = [
 
   {
     id: "fintech-risk-analytics",
-    title: "FinTech Credit Risk Analytics Platform",
+    title: "Credit Risk Analytics",
     category: "AI & Automation",
     industry: "Financial Services",
     problem:
-      "Traditional credit scoring models failed to capture non-traditional borrower signals, causing high default rates.",
+      "Legacy scoring missed non-traditional borrower signals and inflated default risk.",
     solution:
-      "Engineered an ML-driven risk analytics platform processing 200+ alternative data signals for real-time credit decisions.",
+      "An ML risk platform that scores 200+ alternative signals for real-time credit decisions.",
     outcome:
-      "Default rates reduced by 42% while approvals increased for creditworthy underserved borrowers.",
+      "Defaults fell 42% while approvals rose for creditworthy underserved borrowers.",
     metrics: [
       { stat: "42%", label: "Default Rate Reduction" },
       { stat: "200+", label: "Data Signals" },
@@ -209,7 +209,7 @@ const PROJECTS: Project[] = [
 const Portfolio: React.FC = () => {
   return (
     <div
-      className="min-h-screen flex flex-col antialiased"
+      className="relative flex min-h-screen flex-col font-display antialiased"
       style={{
         background: C.black,
         color: C.white,
@@ -246,7 +246,10 @@ const Portfolio: React.FC = () => {
 
       <main className="flex-grow relative z-10">
         {/* HERO BANNER - PROFESSIONAL 3D CURVED EMERALD DESIGN */}
-        <section className="relative w-full overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32 text-center border-b border-white/10">
+        <section
+          className="relative w-full overflow-hidden border-b border-white/10 pt-32 pb-16 text-left sm:pt-40 sm:pb-24"
+          aria-label="Portfolio"
+        >
           {/* Deep dark green curved professional backdrop */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
             {/* 1. Base Multi-Stop Lime Radial Gradient */}
@@ -284,68 +287,62 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* CONTENT */}
-          <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 flex flex-col items-center">
-            {/* Eyebrow */}
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-5 sm:mb-6 text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.32em] text-white/80"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-8 flex flex-col items-center text-center sm:mb-10"
             >
-              PORTFOLIO
+              <div className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+                Portfolio
+                <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+              </div>
+
+              <h1
+                className="max-w-[22ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
+                style={{ color: C.white }}
+              >
+                Engineering AI Systems That{' '}
+                <span style={{ color: C.lime }}>Drive Business Forward.</span>
+              </h1>
+
+              <p
+                className="mt-3 max-w-2xl text-center text-lg leading-8 sm:text-xl"
+                style={{ color: 'rgba(255, 255, 255, 0.64)' }}
+              >
+                Real-world AI systems, intelligent automation, and digital products built to solve complex business problems and create measurable operational impact.
+              </p>
             </motion.div>
 
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="mb-6 max-w-4xl text-3xl sm:text-4xl font-black leading-tight tracking-[-0.04em]"
-              style={{
-                color: "#B6FF00",
-                textShadow: "0 0 60px rgba(182,255,0,0.30)",
-                WebkitFontSmoothing: "antialiased",
-              }}
-            >
-              Engineering AI Systems That<br className="hidden sm:inline" /> Move Businesses Forward.
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="mb-9 max-w-2xl text-sm sm:text-base lg:text-[17px] leading-relaxed text-white/75"
-            >
-              Explore detailed case studies demonstrating how Velnix transforms operational complexity into intelligent software systems, automated workflows, and high-performance digital products.
-            </motion.p>
-
-            {/* Inline Stats in Frosted Glass Pill */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 py-3 px-6 sm:px-8 rounded-full bg-black/40 border border-white/[0.08] backdrop-blur-md shadow-[0_12px_32px_rgba(0,0,0,0.5)] text-sm sm:text-base font-medium text-white/90"
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex justify-center"
             >
-              <span className="flex items-center gap-2">
-                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">45+</strong>
-                <span className="text-white/75 text-xs sm:text-sm">AI Systems Built</span>
-              </span>
-              <span className="hidden sm:inline text-[#74DF36]/40 select-none">|</span>
-              <span className="flex items-center gap-2">
-                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">23+</strong>
-                <span className="text-white/75 text-xs sm:text-sm">Clients Served</span>
-              </span>
-              <span className="hidden sm:inline text-[#74DF36]/40 select-none">|</span>
-              <span className="flex items-center gap-2">
-                <strong className="font-extrabold text-white text-base sm:text-lg tracking-tight">95%</strong>
-                <span className="text-white/75 text-xs sm:text-sm">Client Satisfaction</span>
-              </span>
+              <div className="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-white/[0.08] bg-black/40 px-6 py-3 text-sm font-medium text-white/90 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-md sm:px-8">
+                <span className="flex items-center gap-2">
+                  <strong className="text-lg font-black tracking-[-0.04em] text-white">45+</strong>
+                  <span className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.65)' }}>AI Systems Built</span>
+                </span>
+                <span className="hidden select-none sm:inline" style={{ color: 'rgba(182,255,0,0.4)' }}>|</span>
+                <span className="flex items-center gap-2">
+                  <strong className="text-lg font-black tracking-[-0.04em] text-white">23+</strong>
+                  <span className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.65)' }}>Clients Served</span>
+                </span>
+                <span className="hidden select-none sm:inline" style={{ color: 'rgba(182,255,0,0.4)' }}>|</span>
+                <span className="flex items-center gap-2">
+                  <strong className="text-lg font-black tracking-[-0.04em] text-white">95%</strong>
+                  <span className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.65)' }}>Client Satisfaction</span>
+                </span>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-24">
+        <div className="mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-6 lg:px-8">
 
           {/* CASE STUDY GRID */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-12">
@@ -416,33 +413,24 @@ const Portfolio: React.FC = () => {
                 {/* CARD CONTENT */}
                 <div className="relative z-10 flex flex-col flex-1">
                   {/* Top Label: CASE STUDY */}
-                  <div
-                    className="text-[11px] font-bold uppercase tracking-[0.24em] mb-3"
-                    style={{ color: C.lime }}
-                  >
+                  <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] transition-colors duration-300 group-hover:text-[#B6FF00]">
                     CASE STUDY
                   </div>
 
-                  {/* Title */}
-                  <h3
-                    className="text-[22px] font-extrabold tracking-[-0.025em] leading-snug mb-3.5 transition-colors duration-200 group-hover:text-[#B6FF00]"
-                    style={{ color: C.white }}
-                  >
+                  <h2 className="mb-3.5 block text-lg font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-xl lg:text-2xl">
                     {project.title}
-                  </h3>
+                  </h2>
 
-                  {/* Divider */}
                   <div
-                    className="h-[1px] w-full mb-4"
+                    className="mb-4 h-px w-full"
                     style={{
                       background: `linear-gradient(90deg, ${C.la(0.35)}, ${C.wa(0.07)})`,
                     }}
                   />
 
-                  {/* Description / Summary */}
                   <p
-                    className="text-[14px] leading-[1.65] mb-6 flex-1 font-normal"
-                    style={{ color: C.wa(0.68) }}
+                    className="mb-6 flex-1 text-sm leading-relaxed"
+                    style={{ color: 'rgba(255,255,255,0.65)' }}
                   >
                     {project.problem}
                   </p>
@@ -467,7 +455,7 @@ const Portfolio: React.FC = () => {
                   {/* View Project Details Button */}
                   <Link
                     to={project.link}
-                    className="inline-flex items-center justify-center w-full py-3.5 px-5 text-sm font-bold transition-all duration-200 active:scale-[0.99] text-center"
+                    className="inline-flex w-full items-center justify-center px-5 py-3.5 text-center text-sm font-extrabold transition-all duration-200 active:scale-[0.99]"
                     style={{
                       background: C.lime,
                       color: C.black,
@@ -484,7 +472,7 @@ const Portfolio: React.FC = () => {
                       e.currentTarget.style.boxShadow = `0 4px 20px ${C.la(0.24)}`;
                     }}
                   >
-                    View Project Details
+                    View Case Study
                   </Link>
                 </div>
               </motion.article>

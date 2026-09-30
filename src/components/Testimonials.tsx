@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
-
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS (Velnix Locked Color System)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -356,43 +355,6 @@ const Testimonials = () => {
             </button>
           </div>
         </div>
-
-        <motion.div
-          initial={shouldReduce ? false : { opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55, ease }}
-          className="mt-14 border-t border-white/10 pt-12 text-center sm:mt-16 sm:pt-14"
-        >
-          <div className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
-            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
-            Industry Platforms
-            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
-          </div>
-          <h2 className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
-            Recognized across leading industry platforms.
-          </h2>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/42 sm:gap-x-12">
-            <span>PASHA</span>
-            <span>Clutch</span>
-            <span>GoodFirms</span>
-            <span>SoftwareWorld</span>
-            <span>P@SHA ICT Awards</span>
-          </div>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/42">
-            <span>AI Development</span>
-            <span className="text-[#B6FF00]">·</span>
-            <span>Custom Software</span>
-            <span className="text-[#B6FF00]">·</span>
-            <span>Automation</span>
-            <span className="text-[#B6FF00]">·</span>
-            <span>Data Science</span>
-          </div>
-          <div className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/42">
-            Trusted technology partner <span className="mx-2 text-[#B6FF00]">·</span> Global delivery <span className="mx-2 text-[#B6FF00]">·</span> Enterprise-ready engineering
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

@@ -2,96 +2,97 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// ─── BRAND TOKENS ───────────────────────────────────────────────────────────
+// ─── VELNIX COLOR SYSTEM — LOCKED ─────────────────────────────────────────
 const C = {
-  black: "#050505",
-  white: "#FFFFFF",
-  lime: "#B6FF00",
-  green: "#7DCC00",
+  BLACK: '#050505',
+  LIME: '#B6FF00',
+  WHITE: '#FFFFFF',
+  GRAPHITE: '#111111',
+  DEEP_GREEN: '#7DCC00',
   la: (o: number) => `rgba(182,255,0,${o})`,
   wa: (o: number) => `rgba(255,255,255,${o})`,
   ga: (o: number) => `rgba(125,204,0,${o})`,
-};
+} as const;
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
     id: "insurance-fraud-detection",
-    title: "AI-Powered Fraud Detection for Insurance",
+    title: "Insurance Fraud Detection",
     category: "AI & Automation", industry: "Insurance",
-    problem: "Manual claims investigation made it difficult to identify suspicious patterns quickly.",
+    problem: "Claims teams could not surface suspicious patterns quickly enough through manual investigation.",
     tags: ["Machine Learning", "Fraud Detection", "Analytics", "Automation"],
     metrics: [{ stat: "60%", label: "Faster Detection" }, { stat: "3x", label: "Investigation Speed" }, { stat: "24/7", label: "Monitoring" }],
     link: "/portfolio/insurance-fraud-detection",
   },
   {
     id: "ai-workflow-automation",
-    title: "AI Workflow Automation Platform",
-    category: "AI & Automation", industry: "Business Operations",
-    problem: "Repetitive administrative workflows required significant manual effort across teams.",
+    title: "Workflow Automation Platform",
+    category: "AI & Automation", industry: "Operations",
+    problem: "Administrative work was repeated across teams with no shared automation layer.",
     tags: ["AI Agents", "Automation", "n8n", "APIs", "Workflows"],
     metrics: [{ stat: "70%", label: "Admin Work Reduced" }, { stat: "10x", label: "Workflow Speed" }, { stat: "24/7", label: "Automation" }],
     link: "/portfolio/ai-workflow-automation",
   },
   {
     id: "clinical-decision-support",
-    title: "Clinical Decision Support AI",
+    title: "Clinical Decision Support",
     category: "Healthcare AI", industry: "Healthcare",
-    problem: "Diagnostic data retrieval and medical charting was slowing clinical consultations and patient diagnosis.",
+    problem: "Charting and diagnostic retrieval slowed consultations and delayed clinical decisions.",
     tags: ["Healthcare AI", "Clinical NLP", "EHR", "Predictive Analytics"],
     metrics: [{ stat: "55%", label: "Faster Charting" }, { stat: "4x", label: "Diagnosis Retrieval" }, { stat: "HIPAA", label: "Compliant" }],
     link: "/portfolio/clinical-decision-support",
   },
   {
     id: "real-estate-ai-platform",
-    title: "Real Estate AI Lead Intelligence",
+    title: "Real Estate Lead Intelligence",
     category: "Custom Software", industry: "Real Estate",
-    problem: "Agents spent hours manually qualifying leads with no predictive insight into buyer intent or closing probability.",
+    problem: "Agents qualified leads by hand, without a reliable signal for buyer intent or close probability.",
     tags: ["Lead Scoring", "NLP", "CRM Integration", "Automation"],
     metrics: [{ stat: "2x", label: "Conversion Rate" }, { stat: "80%", label: "Less Manual Work" }, { stat: "<2min", label: "Lead Response" }],
     link: "/portfolio/real-estate-ai-platform",
   },
   {
     id: "ecommerce-ai-personalization",
-    title: "E-Commerce AI Personalization Engine",
+    title: "E-Commerce Personalization",
     category: "AI & Automation", industry: "E-Commerce",
-    problem: "Generic product recommendations resulted in low engagement and high cart abandonment rates.",
+    problem: "Generic recommendations reduced engagement and increased cart abandonment.",
     tags: ["Recommendation Engine", "ML", "Real-Time AI", "E-Commerce"],
     metrics: [{ stat: "38%", label: "Revenue Per Visitor" }, { stat: "22%", label: "Cart Abandonment Drop" }, { stat: "5x", label: "Recommendation CTR" }],
     link: "/portfolio/ecommerce-ai-personalization",
   },
   {
     id: "fintech-risk-analytics",
-    title: "FinTech Credit Risk Analytics Platform",
+    title: "Credit Risk Analytics",
     category: "AI & Automation", industry: "Financial Services",
-    problem: "Traditional credit scoring models failed to capture non-traditional borrower signals, causing high default rates.",
+    problem: "Legacy scoring missed non-traditional borrower signals and inflated default risk.",
     tags: ["FinTech", "Risk Modeling", "Machine Learning", "Real-Time"],
     metrics: [{ stat: "42%", label: "Default Rate Reduction" }, { stat: "200+", label: "Data Signals" }, { stat: "<3s", label: "Decision Time" }],
     link: "/portfolio/fintech-risk-analytics",
   },
   {
     id: "legal-document-ai",
-    title: "Legal Document Intelligence System",
-    category: "Custom Software", industry: "Legal Tech",
-    problem: "Law firms were spending thousands of billable hours manually reviewing contracts and extracting key clauses.",
+    title: "Legal Document Intelligence",
+    category: "Custom Software", industry: "Legal",
+    problem: "Contract review consumed billable hours that should have gone to analysis and counsel.",
     tags: ["Legal AI", "NLP", "Document Processing", "Classification"],
     metrics: [{ stat: "94%", label: "Extraction Accuracy" }, { stat: "90%", label: "Time Saved" }, { stat: "10k+", label: "Docs Processed" }],
     link: "/portfolio/legal-document-ai",
   },
   {
     id: "edtech-adaptive-learning",
-    title: "Adaptive Learning AI for EdTech",
+    title: "Adaptive Learning Platform",
     category: "Healthcare AI", industry: "Education",
-    problem: "One-size-fits-all course content failed students who learned at different paces, leading to high dropout rates.",
+    problem: "Uniform course pacing left learners behind and increased dropout.",
     tags: ["EdTech", "Adaptive AI", "Personalization", "LMS Integration"],
     metrics: [{ stat: "65%", label: "Completion Rate Up" }, { stat: "3x", label: "Engagement" }, { stat: "48h", label: "Onboarding Cut" }],
     link: "/portfolio/edtech-adaptive-learning",
   },
   {
     id: "supply-chain-ai-optimization",
-    title: "AI-Driven Supply Chain Optimization",
-    category: "AI & Automation", industry: "Logistics & Supply Chain",
-    problem: "Supply chain disruptions and inaccurate demand forecasting led to excess inventory and missed delivery windows.",
+    title: "Supply Chain Optimization",
+    category: "AI & Automation", industry: "Logistics",
+    problem: "Inaccurate demand forecasts produced excess inventory and missed delivery windows.",
     tags: ["Supply Chain", "Forecasting", "Optimization", "Logistics AI"],
     metrics: [{ stat: "30%", label: "Inventory Cost Cut" }, { stat: "98%", label: "On-Time Delivery" }, { stat: "15+", label: "Data Sources Unified" }],
     link: "/portfolio/supply-chain-ai-optimization",
@@ -102,36 +103,39 @@ const PROJECTS = [
 const PortfolioSection: React.FC = () => {
   return (
     <section
-      className="w-full py-20 sm:py-28"
-      style={{ background: C.black }}
+      className="relative w-full overflow-hidden pb-8 pt-12 font-display md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
+      style={{ background: C.BLACK }}
+      aria-label="Selected Work"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-14 sm:mb-16"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 flex flex-col items-center text-center sm:mb-10"
         >
-          <div
-            className="text-[11px] font-bold uppercase tracking-[0.3em] mb-4"
-            style={{ color: C.lime }}
-          >
+          <div className="mb-7 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             Selected Work
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
           </div>
+
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-[-0.03em] leading-[1.1] mb-4"
-            style={{ color: C.white }}
+            className="max-w-[18ch] text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
+            style={{ color: C.WHITE }}
           >
-            Proof of Execution
+            Work{' '}
+            <span style={{ color: C.LIME }}>We Have Shipped.</span>
           </h2>
+
           <p
-            className="max-w-2xl text-sm sm:text-base leading-relaxed"
-            style={{ color: C.wa(0.55) }}
+            className="mt-3 max-w-xl text-center text-lg leading-8 sm:text-xl"
+            style={{ color: 'rgba(255, 255, 255, 0.64)' }}
           >
-            AI systems and software products we have built across industries — from healthcare to logistics.
+            From intelligence to operations. Outcomes you can measure.
           </p>
         </motion.div>
 
@@ -190,26 +194,23 @@ const PortfolioSection: React.FC = () => {
               {/* CARD CONTENT */}
               <div className="relative z-10 flex flex-col flex-1">
                 {/* Top Label */}
-                <div className="text-[11px] font-bold uppercase tracking-[0.24em] mb-3" style={{ color: C.lime }}>
+                <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#B6FF00] transition-colors duration-300 group-hover:text-[#B6FF00]">
                   CASE STUDY
                 </div>
 
-                {/* Title */}
-                <h3
-                  className="text-[22px] font-extrabold tracking-[-0.025em] leading-snug mb-3.5 transition-colors duration-200 group-hover:text-[#B6FF00]"
-                  style={{ color: C.white }}
-                >
+                <h3 className="mb-3.5 block text-lg font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-xl lg:text-2xl">
                   {project.title}
                 </h3>
 
-                {/* Divider */}
                 <div
-                  className="h-[1px] w-full mb-4"
+                  className="mb-4 h-px w-full"
                   style={{ background: `linear-gradient(90deg, ${C.la(0.35)}, ${C.wa(0.07)})` }}
                 />
 
-                {/* Problem */}
-                <p className="text-[14px] leading-[1.65] mb-6 flex-1 font-normal" style={{ color: C.wa(0.68) }}>
+                <p
+                  className="mb-6 flex-1 text-sm leading-relaxed"
+                  style={{ color: 'rgba(255,255,255,0.65)' }}
+                >
                   {project.problem}
                 </p>
 
@@ -222,7 +223,7 @@ const PortfolioSection: React.FC = () => {
                       style={{
                         background: C.la(0.06),
                         border: `1px solid ${C.la(0.22)}`,
-                        color: C.lime,
+                        color: C.LIME,
                       }}
                     >
                       {tag}
@@ -233,24 +234,24 @@ const PortfolioSection: React.FC = () => {
                 {/* CTA Button */}
                 <Link
                   to={project.link}
-                  className="inline-flex items-center justify-center w-full py-3.5 px-5 text-sm font-bold transition-all duration-200 active:scale-[0.99] text-center"
+                  className="inline-flex w-full items-center justify-center px-5 py-3.5 text-center text-sm font-extrabold transition-all duration-200 active:scale-[0.99]"
                   style={{
-                    background: C.lime,
-                    color: C.black,
+                    background: C.LIME,
+                    color: C.BLACK,
                     borderRadius: 12,
                     boxShadow: `0 4px 20px ${C.la(0.24)}`,
                     textDecoration: "none",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = C.green;
+                    e.currentTarget.style.background = C.DEEP_GREEN;
                     e.currentTarget.style.boxShadow = `0 6px 28px ${C.la(0.45)}`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = C.lime;
+                    e.currentTarget.style.background = C.LIME;
                     e.currentTarget.style.boxShadow = `0 4px 20px ${C.la(0.24)}`;
                   }}
                 >
-                  View Project Details
+                  View Case Study
                 </Link>
               </div>
             </motion.article>
@@ -267,10 +268,10 @@ const PortfolioSection: React.FC = () => {
         >
           <Link
             to="/portfolio"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-black transition-opacity hover:opacity-90"
-            style={{ background: C.lime }}
+            className="inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-extrabold text-black transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: C.LIME, boxShadow: '0 0 30px rgba(182,255,0,0.25)' }}
           >
-            View All Case Studies
+            See More Work
             <span aria-hidden="true">→</span>
           </Link>
         </motion.div>
