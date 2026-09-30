@@ -23,28 +23,28 @@ const STEPS = [
     micro: 'CONNECT',
     title: 'Contact Us',
     description:
-      'Share your vision — we listen to understand your unique business goals and technical challenges.',
+      'Share your vision and business goals.',
   },
   {
     num: '02',
     micro: 'DISCOVER',
     title: 'Consultation & Discovery',
     description:
-      'Assess feasibility, analyze system architecture, and map workflows with expert deep-dives.',
+      'Assess feasibility and map workflows.',
   },
   {
     num: '03',
     micro: 'DEFINE',
     title: 'Detailed Proposal',
     description:
-      'Clear scope, timeline milestones, and fixed, transparent investment estimates.',
+      'Clear scope, timeline, and investment.',
   },
   {
     num: '04',
     micro: 'DELIVER',
     title: 'Kickoff & Delivery',
     description:
-      'Structured sprint execution, continuous feedback loops, and production-grade deployment.',
+      'Structured execution and deployment.',
   },
 ] as const;
 
@@ -144,7 +144,7 @@ const Approach: React.FC = () => {
 
                 {/* Step Title */}
                 <div className="lg:col-span-5">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
                     {step.title}
                   </h3>
                 </div>

@@ -45,15 +45,15 @@ const Index = () => {
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
+              <Approach />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
               <OriginStory />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
             <MeetFounder />
-          </AnimatedSection>
-
-          <AnimatedSection threshold={0.08}>
-              <Approach />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
