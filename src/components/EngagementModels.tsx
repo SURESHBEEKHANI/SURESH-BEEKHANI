@@ -78,9 +78,11 @@ const EngagementModels = () => (
 
         {/* Model cards */}
         {engagementModels.map((model, i) => (
-          <div
+          <a
             key={i}
-            className="group relative flex flex-col gap-5 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden"
+            href="/contact"
+            className="group relative flex flex-col gap-5 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden cursor-pointer"
+            style={{ textDecoration: 'none', color: 'inherit' }}
           >
             {/* Left lime bar — slides in on hover */}
             <div
@@ -123,11 +125,15 @@ const EngagementModels = () => (
                 Learn more
               </span>
             </div>
-          </div>
+          </a>
         ))}
 
         {/* ── CTA tile — fills the 6th cell ── */}
-        <div className="group relative flex flex-col gap-5 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden">
+        <a
+          href="/contact"
+          className="group relative flex flex-col gap-5 p-7 sm:p-8 bg-[#050505] transition-all duration-300 hover:bg-[#0d0d0d] overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <div
             className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{
@@ -168,7 +174,7 @@ const EngagementModels = () => (
               Let's Talk
             </span>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>

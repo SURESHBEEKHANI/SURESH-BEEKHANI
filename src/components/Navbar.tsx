@@ -657,17 +657,17 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
         style={{
           position: 'fixed', top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: isHeroTop 
-            ? 'linear-gradient(180deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.45) 100%)' 
-            : `linear-gradient(180deg, ${C.black} 0%, rgba(8,8,8,0.98) 100%)`,
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-          borderBottom: isHeroTop 
-            ? `1px solid ${C.wa(0.06)}` 
-            : `1px solid ${C.wa(0.12)}`,
-          boxShadow: isHeroTop 
-            ? '0 4px 16px rgba(0,0,0,0.12)' 
-            : `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 ${C.wa(0.05)}`,
+          background: scrolled 
+            ? `linear-gradient(180deg, ${C.black} 0%, rgba(8,8,8,0.98) 100%)` 
+            : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+          borderBottom: scrolled 
+            ? `1px solid ${C.wa(0.12)}` 
+            : 'none',
+          boxShadow: scrolled 
+            ? `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 ${C.wa(0.05)}` 
+            : 'none',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
@@ -677,14 +677,6 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
             minHeight: 76,
           }}
         >
-          {/* Subtle background accent */}
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              background: `radial-gradient(ellipse 100% 40% at 50% 0%, ${C.ga(0.03)} 0%, transparent 70%)`,
-              pointerEvents: 'none'
-            }}
-          />
 
           {/* LOGO */}
           <motion.a
