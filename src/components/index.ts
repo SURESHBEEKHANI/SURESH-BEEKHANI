@@ -6,6 +6,8 @@ export { default as Approach } from './Approach';
 export { default as ClientSolutions } from './ClientSolutions';
 export { default as Contact } from './Contact';
 export { default as FAQ } from './FAQ';
+export { default as CTA } from './ui/CTA';
+export { default as CTAExamples } from './CTAExamples';
 export { default as Footer } from './Footer';
 export { default as Hero } from './Hero';
 export { default as Industries } from './Industries';

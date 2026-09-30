@@ -16,6 +16,7 @@ const Testimonials = lazy(() => import('@/components/Testimonials'));
 const Portfolio = lazy(() => import('@/components/PortfolioSection'));
 const LatestBlogs = lazy(() => import('@/components/LatestBlogs'));
 const FAQ = lazy(() => import('@/components/FAQ'));
+const CTAExamples = lazy(() => import('@/components/CTAExamples'));
 const Footer = lazy(() => import('@/components/Footer'));
 
 const Index = () => {
@@ -27,21 +28,13 @@ const Index = () => {
         <Hero />
         
         <Suspense fallback={<div className="h-20 bg-[#050505]" />}>
-          <AnimatedSection threshold={0.08}>
-              <OriginStory />
-          </AnimatedSection>
-
-          <AnimatedSection threshold={0.08}>
-            <MeetFounder />
-          </AnimatedSection>
+          <div>
+              <Industries />
+          </div>
 
           <AnimatedSection threshold={0.08}>
               <Services />
           </AnimatedSection>
-
-          <div>
-              <Industries />
-          </div>
 
           <AnimatedSection threshold={0.08}>
               <TechnologyStack />
@@ -49,6 +42,14 @@ const Index = () => {
 
           <AnimatedSection threshold={0.08}>
               <EngagementModels />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
+              <OriginStory />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
+            <MeetFounder />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
@@ -69,6 +70,10 @@ const Index = () => {
 
           <AnimatedSection id="faq" threshold={0.08}>
               <FAQ />
+          </AnimatedSection>
+
+          <AnimatedSection threshold={0.08}>
+              <CTAExamples />
           </AnimatedSection>
         </Suspense>
       </main>

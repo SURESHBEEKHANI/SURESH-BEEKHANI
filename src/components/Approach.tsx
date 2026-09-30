@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
-import {
-  MessageSquare,
-  Search,
-  FileText,
-  Rocket,
-} from 'lucide-react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS — Velnix Locked Color System
@@ -29,7 +24,6 @@ const STEPS = [
     title: 'Contact Us',
     description:
       'Share your vision — we listen to understand your unique business goals and technical challenges.',
-    icon: MessageSquare,
   },
   {
     num: '02',
@@ -37,7 +31,6 @@ const STEPS = [
     title: 'Consultation & Discovery',
     description:
       'Assess feasibility, analyze system architecture, and map workflows with expert deep-dives.',
-    icon: Search,
   },
   {
     num: '03',
@@ -45,7 +38,6 @@ const STEPS = [
     title: 'Detailed Proposal',
     description:
       'Clear scope, timeline milestones, and fixed, transparent investment estimates.',
-    icon: FileText,
   },
   {
     num: '04',
@@ -53,7 +45,6 @@ const STEPS = [
     title: 'Kickoff & Delivery',
     description:
       'Structured sprint execution, continuous feedback loops, and production-grade deployment.',
-    icon: Rocket,
   },
 ] as const;
 
@@ -61,270 +52,127 @@ const STEPS = [
 // MAIN COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 const Approach: React.FC = () => {
-  const [activeStep, setActiveStep] = useState(0);
   const shouldReduce = useReducedMotion();
 
   return (
     <section
       id="approach"
       aria-labelledby="approach-heading"
-      className="relative overflow-hidden py-20 sm:py-28 font-display antialiased scroll-mt-20"
+      className="relative overflow-hidden pb-8 pt-12 font-display scroll-mt-20 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
       style={{
-        background:
-          'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(182,255,0,0.05) 0%, transparent 70%), #050505',
+        background: C.black,
         color: C.white,
       }}
     >
-      {/* ─────────────────────────────────────────────────────────────────────
-          SUBTLE BACKGROUND GRID
-      ───────────────────────────────────────────────────────────────────── */}
+      {/* Background textures */}
       <div
-        className="pointer-events-none absolute inset-0 select-none overflow-hidden"
         aria-hidden="true"
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(${C.wa(0.02)} 1px, transparent 1px),
-              linear-gradient(90deg, ${C.wa(0.02)} 1px, transparent 1px)
-            `,
-            backgroundSize: '48px 48px',
-            maskImage:
-              'radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 80%)',
-            WebkitMaskImage:
-              'radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 80%)',
-          }}
-        />
-      </div>
-
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+          filter: 'blur(10px)',
+        }}
+      />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         {/* ───────────────────────────────────────────────────────────────────
             HEADER
         ─────────────────────────────────────────────────────────────────── */}
-        <div className="mx-auto mb-16 max-w-3xl text-center sm:mb-20">
+        <div className="mb-4 text-left sm:mb-6 lg:mb-8">
 
           <motion.div
-            className="mb-3 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.25em] sm:text-sm"
-            style={{ color: C.lime }}
+            className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"
             initial={shouldReduce ? false : { opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
             <span
-              className="h-px w-8"
-              style={{ backgroundColor: C.lime }}
+              className="h-px w-8 bg-[#B6FF00]"
               aria-hidden="true"
             />
-
-            Simple Steps
-
-            <span
-              className="h-px w-8"
-              style={{ backgroundColor: C.lime }}
-              aria-hidden="true"
-            />
+            HOW WE WORK
           </motion.div>
-
           <motion.h2
             id="approach-heading"
-            className="text-2xl font-black leading-tight tracking-[-0.03em] sm:text-3xl lg:text-4xl"
+            className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
+            style={{ color: C.white }}
             initial={shouldReduce ? false : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            From Strategy to Solution{' '}
-            <span style={{ color: C.lime }}>Process</span>
+            From Strategy to Systems. <span style={{ color: C.lime }}>Built for Results.</span>
           </motion.h2>
 
           <motion.p
-            className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg"
+            className="mt-4 max-w-xl text-left text-lg leading-8 sm:text-xl"
+            style={{ color: 'rgba(255, 255, 255, 0.64)' }}
             initial={shouldReduce ? false : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            No confusion or delays. Just clear, transparent, and reliable
-            execution.
+            No confusion or delays. Just clear, transparent, and reliable execution.
           </motion.p>
         </div>
 
         {/* ───────────────────────────────────────────────────────────────────
-            MAIN 2-COLUMN LAYOUT
+            STEPS GRID
         ─────────────────────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
-
-          {/* ───────────────────────────────────────────────────────────────
-              LEFT — IMAGE
-          ─────────────────────────────────────────────────────────────── */}
-          <motion.div
-            className="relative lg:col-span-6"
-            initial={shouldReduce ? false : { opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl sm:aspect-[14/11]">
-
-              {/* Correct Vite /public image path */}
-              <img
-                src="/image/Hero-section-image/approach_process_dev.avif"
-                alt="Software consultant working at laptop"
-                className="h-full w-full object-cover object-center"
-                loading="lazy"
-                decoding="async"
-              />
-
-              {/* Image Overlay */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(to top, rgba(0,0,0,0.45), transparent 55%)',
-                }}
-              />
-
-              {/* Active Step Indicator */}
-              <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
-                <motion.div
-                  key={activeStep}
-                  initial={
-                    shouldReduce
-                      ? false
-                      : { opacity: 0, y: 10 }
-                  }
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="rounded-2xl border border-white/10 bg-black/70 p-4 backdrop-blur-md sm:p-5"
-                >
+        <div className="space-y-0">
+          {STEPS.map((step, index) => (
+            <motion.div
+              key={step.num}
+              className="group border-b border-white/10 py-8 sm:py-12 transition-all duration-300 hover:bg-white/[0.02]"
+              initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                
+                {/* Step Number */}
+                <div className="lg:col-span-1">
                   <div
-                    className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em]"
+                    className="text-lg font-bold"
                     style={{ color: C.lime }}
                   >
-                    Step {STEPS[activeStep].num} — {STEPS[activeStep].micro}
+                    {step.num}
                   </div>
+                </div>
 
-                  <div className="text-base font-bold text-white sm:text-lg">
-                    {STEPS[activeStep].title}
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+                {/* Step Title */}
+                <div className="lg:col-span-5">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                    {step.title}
+                  </h3>
+                </div>
 
-          {/* ───────────────────────────────────────────────────────────────
-              RIGHT — TIMELINE
-          ─────────────────────────────────────────────────────────────── */}
-          <motion.div
-            className="relative space-y-8 py-4 pl-6 sm:pl-8 lg:col-span-6"
-            initial={shouldReduce ? false : { opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            {/* Timeline Line */}
-            <div
-              className="absolute bottom-4 left-2.5 top-4 w-0.5 rounded-full sm:left-3.5"
-              style={{ backgroundColor: C.wa(0.1) }}
-              aria-hidden="true"
-            />
-
-            {STEPS.map((step, index) => {
-              const Icon = step.icon;
-              const isActive = activeStep === index;
-
-              return (
-                <motion.div
-                  key={step.num}
-                  className="group relative flex cursor-pointer items-start gap-4 sm:gap-5"
-                  onClick={() => setActiveStep(index)}
-                  onMouseEnter={() => setActiveStep(index)}
-                  initial={
-                    shouldReduce
-                      ? false
-                      : { opacity: 0, y: 10 }
-                  }
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.4,
-                    delay: index * 0.08,
-                  }}
-                >
-
-                  {/* Step Icon */}
-                  <motion.div
-                    className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl sm:h-12 sm:w-12"
-                    animate={{
-                      scale: isActive ? 1.05 : 1,
-                    }}
-                    transition={{ duration: 0.2 }}
-                    style={{
-                      background: isActive
-                        ? C.lime
-                        : C.wa(0.05),
-                      color: isActive
-                        ? C.black
-                        : C.wa(0.7),
-                      border: `1.5px solid ${isActive ? C.lime : C.wa(0.12)
-                        }`,
-                      boxShadow: isActive
-                        ? `0 0 24px ${C.la(0.35)}`
-                        : 'none',
-                    }}
+                {/* Step Description */}
+                <div className="lg:col-span-5">
+                  <p
+                    className="text-base sm:text-lg leading-relaxed"
+                    style={{ color: C.wa(0.7) }}
                   >
-                    <Icon
-                      size={20}
-                      strokeWidth={isActive ? 2.2 : 1.75}
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Arrow */}
+                <div className="lg:col-span-1 flex justify-start lg:justify-end">
+                  <div className="group-hover:translate-x-2 transition-transform duration-300">
+                    <ArrowRight 
+                      size={24} 
+                      style={{ color: C.lime }}
+                      className="transition-colors duration-300"
                     />
-                  </motion.div>
-
-                  {/* Step Content */}
-                  <div className="flex-1 pt-0.5">
-
-                    {/* Micro Label */}
-                    <div
-                      className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-300"
-                      style={{
-                        color: isActive
-                          ? C.lime
-                          : C.wa(0.35),
-                      }}
-                    >
-                      {step.num} / {step.micro}
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className="flex items-center gap-2 text-lg font-bold tracking-tight transition-colors duration-300 sm:text-xl"
-                      style={{
-                        color: isActive
-                          ? C.lime
-                          : C.white,
-                      }}
-                    >
-                      {step.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      className="mt-1 max-w-xl text-sm leading-relaxed transition-colors duration-300"
-                      style={{
-                        color: isActive
-                          ? C.wa(0.85)
-                          : C.wa(0.55),
-                      }}
-                    >
-                      {step.description}
-                    </p>
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
