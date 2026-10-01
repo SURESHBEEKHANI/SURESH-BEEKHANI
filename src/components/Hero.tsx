@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import BackgroundAnimation from './BackgroundAnimation';
 
@@ -30,20 +30,35 @@ const ease = [0.22, 1, 0.36, 1] as const;
 // ─────────────────────────────────────────────────────────────────────────────
 // METRIC CHIP
 // ─────────────────────────────────────────────────────────────────────────────
-const MetricChip = ({ value, label, delay }: { value: string; label: string; delay: number }) => (
-  <motion.div
-    {...fadeUp}
-    transition={{ delay, duration: 0.55, ease }}
-    className="flex flex-col items-start"
-  >
-    <span className="text-4xl font-black leading-none tracking-[-0.04em]" style={{ color: C.lime }}>
-      {value}
-    </span>
-    <span className="mt-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.whiteAlpha(0.42) }}>
-      {label}
-    </span>
-  </motion.div>
-);
+const MetricChip = ({ value, label, delay }: { value: string; label: string; delay: number }) => {
+  const reducedMotion = useReducedMotion();
+  const target = Number.parseInt(value, 10);
+  const isNumeric = Number.isFinite(target);
+  const suffix = isNumeric ? value.slice(String(target).length) : '';
+  const count = useMotionValue(reducedMotion || !isNumeric ? target : 0);
+  const display = useTransform(count, (current) => isNumeric ? `${Math.round(current)}${suffix}` : value);
+
+  useEffect(() => {
+    if (!isNumeric || reducedMotion) return;
+    const controls = animate(count, target, { duration: 1.4, delay, ease: 'easeOut' });
+    return () => controls.stop();
+  }, [count, delay, isNumeric, reducedMotion, target]);
+
+  return (
+    <motion.div
+      {...fadeUp}
+      transition={{ delay, duration: 0.55, ease }}
+      className="flex flex-col items-start"
+    >
+      <motion.span className="text-4xl font-black leading-none tracking-[-0.04em]" style={{ color: C.lime }} aria-label={value}>
+        {display}
+      </motion.span>
+      <span className="mt-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.whiteAlpha(0.42) }}>
+        {label}
+      </span>
+    </motion.div>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MAIN HERO

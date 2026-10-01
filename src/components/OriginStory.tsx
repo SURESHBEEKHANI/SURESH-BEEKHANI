@@ -1,17 +1,50 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
+import { ArrowRight, Award, BadgeCheck, PanelsTopLeft, ShieldCheck, Star, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useReducedMotion } from '@/hooks/useAnimations';
+import { useReducedMotion, useScrollAnimation } from '@/hooks/useAnimations';
 
 export const IMPACT_STATS = [
-  { number: '5+', label: 'Years of engineering experience' },
-  { number: '23+', label: 'Enterprise and SMBs clients' },
+  { number: '7+', label: 'Years of engineering experience' },
+  { number: '50+', label: 'Enterprise and SMBs clients' },
   { number: '45+', label: 'Intelligent systems deployed' },
   { number: '95%', label: 'Client satisfaction rate' },
 ];
 
-const PLATFORMS = ['PASHA', 'Clutch', 'GoodFirms', 'SoftwareWorld', 'P@SHA ICT Awards'] as const;
+const PLATFORMS = [
+  { name: 'PASHA', Icon: BadgeCheck },
+  { name: 'Clutch', Icon: Star },
+  { name: 'GoodFirms', Icon: ShieldCheck },
+  { name: 'SoftwareWorld', Icon: PanelsTopLeft },
+  { name: 'P@SHA ICT Awards', Icon: Trophy },
+] as const;
 const PRACTICES = ['AI Development', 'Custom Software', 'Automation', 'Data Science'] as const;
+
+const AnimatedNumber = ({ number, prefersReducedMotion }: { number: string; prefersReducedMotion: boolean }) => {
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(prefersReducedMotion ? target : 0);
+  const display = useTransform(count, (value) => `${Math.round(value)}${suffix}`);
+  const { ref, isInView } = useScrollAnimation({ triggerOnce: true, threshold: 0.5 });
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (prefersReducedMotion) {
+      count.set(target);
+      return;
+    }
+
+    const controls = animate(count, target, { duration: 1.8, ease: 'easeOut' });
+    return () => controls.stop();
+  }, [count, isInView, prefersReducedMotion, target]);
+
+  return (
+    <>
+      <span className="sr-only">{number}</span>
+      <motion.span ref={ref} aria-hidden="true">{display}</motion.span>
+    </>
+  );
+};
 
 const OriginStory = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -54,18 +87,17 @@ const OriginStory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex items-center justify-center rounded-2xl bg-[#050505] border border-white/10 p-6 sm:p-8 shadow-[0_24px_64px_rgba(0,0,0,0.6)] group overflow-hidden lg:mt-4"
+          className="relative grid grid-cols-2 content-center gap-x-5 gap-y-8 sm:gap-x-8 lg:ml-auto lg:mt-4 lg:w-full lg:max-w-md lg:grid-cols-1 lg:gap-y-7"
+          aria-label="Velnix company impact"
         >
-          {/* Ambient subtle glow behind image */}
-          <div
-            className="absolute inset-0 bg-radial from-[#B6FF00]/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-            aria-hidden="true"
-          />
-          <img
-            src="/image/Hero-section-image/The Origin Story.avif"
-            alt="The Origin Story"
-            className="relative z-10 w-full max-h-[440px] object-contain transition-transform duration-500 group-hover:scale-105"
-          />
+          {IMPACT_STATS.map(({ number, label }) => (
+            <div key={label} className="border-l-2 border-[#B6FF00]/40 pl-3 sm:pl-5">
+              <p className="text-4xl font-black leading-none text-[#B6FF00] sm:text-5xl">
+                <AnimatedNumber number={number} prefersReducedMotion={prefersReducedMotion} />
+              </p>
+              <p className="mt-2 max-w-[22ch] text-sm leading-6 text-white/60">{label}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
 
@@ -76,50 +108,45 @@ const OriginStory = () => {
 
 const IndustryProof = ({ prefersReducedMotion }: { prefersReducedMotion: boolean }) => {
   return (
-    <div className="relative mt-16 border-t border-white/10 sm:mt-20 lg:mt-24">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.35)_0%,transparent_42%)]" aria-hidden="true" />
+    <div className="relative mt-12 overflow-hidden border-t border-black/10 bg-[#B6FF00] text-[#050505] sm:mt-16 lg:mt-20">
+      <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" style={{ backgroundImage: 'linear-gradient(rgba(5,5,5,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(5,5,5,0.08) 1px, transparent 1px)', backgroundSize: '56px 56px', maskImage: 'linear-gradient(to bottom, black, transparent 82%)' }} />
 
       <motion.div
         initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-14 lg:px-8 lg:py-16"
+        className="relative mx-auto max-w-7xl px-4 py-8 text-center sm:px-6 sm:py-9 lg:px-8 lg:py-10"
       >
-        <div className="mb-6 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
-          <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
-          Industry Platforms
-          <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
-        </div>
-        <h3 className="text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
+        <h3 className="mx-auto max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
           Recognized across leading industry platforms.
         </h3>
 
-        <ul className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
-          {PLATFORMS.map((platform) => (
+        <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
+          {PLATFORMS.map(({ name, Icon }) => (
             <li
-              key={platform}
-              className="flex min-h-16 items-center justify-center rounded-xl border border-white/10 bg-[#050505]/55 px-4 py-4 text-[11px] font-bold uppercase tracking-[0.16em] text-white/72 sm:min-h-[4.5rem] sm:text-xs"
+              key={name}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-md border border-black/15 bg-black/[0.04] px-2 py-2 text-[10px] font-bold uppercase tracking-[0.08em] text-black/85 sm:min-h-14 sm:gap-2.5 sm:px-3 sm:text-xs"
             >
-              {platform}
+              <Icon className="h-4 w-4 shrink-0 text-black/70 sm:h-[18px] sm:w-[18px]" aria-hidden="true" />
+              <span>{name}</span>
             </li>
           ))}
         </ul>
 
-        <p className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45 sm:text-xs">
+        <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-extrabold uppercase tracking-[0.1em] text-black/90 sm:text-sm">
           {PRACTICES.map((practice, index) => (
             <span key={practice} className="inline-flex items-center gap-3">
-              {index > 0 && <span className="text-[#B6FF00]" aria-hidden="true">·</span>}
+              {index > 0 && <span className="text-black/60" aria-hidden="true">·</span>}
               {practice}
             </span>
           ))}
         </p>
-        <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/42 sm:text-xs">
-          Trusted technology partner <span className="mx-2 text-[#B6FF00]">·</span> Global delivery <span className="mx-2 text-[#B6FF00]">·</span> Enterprise-ready engineering
+        <p className="mt-4 border-t border-black/20 pt-4 text-[11px] font-bold uppercase leading-6 tracking-[0.08em] text-black/80 sm:text-sm">
+          Trusted technology partner <span className="mx-2 text-black/60">·</span> Global delivery <span className="mx-2 text-black/60">·</span> Enterprise-ready engineering
         </p>
       </motion.div>
 
-      <ImpactStatsBanner flush />
     </div>
   );
 };

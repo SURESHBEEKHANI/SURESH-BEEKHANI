@@ -67,7 +67,7 @@ const FAQ_DATA: FAQItem[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 // FAQ COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
-const FAQ = () => {
+const FAQ = ({ items = FAQ_DATA }: { items?: FAQItem[] }) => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const shouldReduce = useReducedMotion();
 
@@ -77,7 +77,7 @@ const FAQ = () => {
 
   return (
     <section
-      className="relative overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
+      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-16 font-display antialiased sm:py-20 lg:py-24"
       style={{
         background: `
           radial-gradient(
@@ -129,7 +129,7 @@ const FAQ = () => {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ───────────────────────────────────────────────────────────────────
             TWO COLUMN LAYOUT
         ─────────────────────────────────────────────────────────────────── */}
@@ -163,7 +163,7 @@ const FAQ = () => {
 
           {/* RIGHT COLUMN - FAQ ACCORDION */}
           <div className="space-y-3">
-            {FAQ_DATA.map((item, index) => {
+            {items.map((item, index) => {
               const isOpen = expandedId === item.id;
               const answerId = `${item.id}-answer`;
 

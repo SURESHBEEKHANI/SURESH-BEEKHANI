@@ -67,7 +67,7 @@ const EngagementModels = () => (
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed" style={{ color: C.wa(0.55) }}>
-          Flexible delivery options structured around your project scope, timeline, and business requirements.
+          Flexible engagement models for projects of every scope and timeline.
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { animate, motion, AnimatePresence, useInView, useMotionValue, useReducedMotion as useFramerReducedMotion, useTransform } from "framer-motion";
 import {
   ArrowRight,
   Brain,
@@ -36,6 +36,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
 import LatestBlogs from "../components/LatestBlogs";
+import CTAExamples from "../components/CTAExamples";
+import FAQ from "../components/FAQ";
 import { IMPACT_STATS } from "../components/OriginStory";
 import { useReducedMotion } from "@/hooks/useAnimations";
 import { TechnologyStack } from "../components/TechnologyStack";
@@ -60,6 +62,29 @@ const C = {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const AnimatedImpactNumber = ({ number }: { number: string }) => {
+  const reduceMotion = useFramerReducedMotion();
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const display = useTransform(count, (value) => `${Math.round(value)}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (reduceMotion) {
+      count.set(target);
+      return;
+    }
+
+    const controls = animate(count, target, { duration: 1.8, ease: "easeOut" });
+    return () => controls.stop();
+  }, [count, isInView, reduceMotion, target]);
+
+  return <motion.span ref={ref} aria-label={number}>{display}</motion.span>;
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 03 — CAPABILITIES DATA (9 Structured Modules)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -67,11 +92,8 @@ interface AICapability {
   id: string;
   num: string;
   title: string;
-  category: string;
   description: string;
   icon: React.ElementType;
-  keyOutputs: string[];
-  specs: string[];
 }
 
 const aiCapabilities: AICapability[] = [
@@ -79,135 +101,43 @@ const aiCapabilities: AICapability[] = [
     id: "ai-agents",
     num: "01",
     title: "Agentic AI Systems",
-    category: "Autonomous Intelligence",
-    description: "Production-grade agents that reason through complex work, use business tools, and execute multi-step operations.",
+    description: "AI agents that reason, use business tools, and execute multi-step work.",
     icon: Bot,
-    keyOutputs: [
-      "Reliable tool and API execution",
-      "Multi-agent orchestration",
-      "Stateful reasoning and memory",
-    ],
-    specs: ["Tool Calling", "ReAct Framework", "Multi-Agent"],
   },
   {
     id: "gen-ai-llm",
     num: "02",
     title: "Generative AI & LLM Applications",
-    category: "Intelligent Products",
-    description:
-      "High-value AI products, copilots, and content systems built around how your teams work.",
+    description: "AI products and copilots tailored to your teams and workflows.",
     icon: Sparkles,
-    keyOutputs: [
-      "Domain-specific copilots",
-      "Production content systems",
-      "Reliable structured outputs",
-    ],
-    specs: ["Custom Copilots", "Prompt Systems", "Fine-Tuning"],
   },
   {
     id: "rag-knowledge",
     num: "03",
     title: "RAG & Knowledge Systems",
-    category: "Grounded Intelligence",
-    description:
-      "Grounded intelligence that turns private documents, databases, and business knowledge into trusted answers.",
+    description: "Make private business knowledge searchable and trustworthy.",
     icon: Database,
-    keyOutputs: [
-      "Secure knowledge retrieval",
-      "Document and data grounding",
-      "Cited, auditable answers",
-    ],
-    specs: ["Hybrid Search", "Vector Embeddings", "Zero Drift"],
   },
   {
     id: "workflow-automation",
     num: "04",
     title: "AI Workflow Automation",
-    category: "Operational Efficiency",
-    description:
-      "AI-powered workflows that connect systems, automate execution, and remove operational bottlenecks.",
+    description: "Connect systems and automate repetitive workflows.",
     icon: Workflow,
-    keyOutputs: [
-      "Cross-system orchestration",
-      "Human approval and control gates",
-      "Event-driven automation",
-    ],
-    specs: ["Self-Healing", "Approval Gates", "Zero Bottlenecks"],
   },
   {
-    id: "conversational-ai",
+    id: "predictive-visual-ai",
     num: "05",
-    title: "Conversational AI",
-    category: "Intelligent Interfaces",
-    description:
-      "Business-aware voice and chat experiences that resolve requests and trigger real workflow actions.",
-    icon: Headphones,
-    keyOutputs: [
-      "Context-aware conversations",
-      "Voice and text actions",
-      "Intelligent human handoff",
-    ],
-    specs: ["Voice + Chat", "Context Memory", "System Actions"],
-  },
-  {
-    id: "machine-learning",
-    num: "06",
-    title: "Machine Learning & Predictive AI",
-    category: "Predictive Intelligence",
-    description:
-      "Predictive intelligence for forecasting, recommendations, classification, and higher-confidence decisions.",
+    title: "Machine Learning, Computer Vision & NLP",
+    description: "Build systems that predict, classify, recommend, and understand images and documents.",
     icon: Brain,
-    keyOutputs: [
-      "Forecasting and prediction models",
-      "Recommendation and classification engines",
-      "Decision intelligence pipelines",
-    ],
-    specs: ["Forecasting", "Prediction", "Decision Systems"],
   },
   {
-    id: "computer-vision",
-    num: "07",
-    title: "Computer Vision",
-    category: "Visual Intelligence",
-    description:
-      "Visual systems for document intelligence, OCR, detection, classification, and automated inspection.",
-    icon: Eye,
-    keyOutputs: [
-      "Image understanding and OCR",
-      "Detection and classification engines",
-      "Automated visual inspection",
-    ],
-    specs: ["Dense OCR", "Visual QA", "Spatial Detection"],
-  },
-  {
-    id: "custom-ai-software",
-    num: "08",
-    title: "Custom AI Software",
-    category: "Purpose-Built Solutions",
-    description:
-      "End-to-end AI software tailored to your workflows, users, data, and business model.",
+    id: "custom-ai-software-data",
+    num: "06",
+    title: "Custom AI Software & Data",
+    description: "Custom AI software with data pipelines, analytics, and decision support.",
     icon: Code2,
-    keyOutputs: [
-      "Purpose-built product architecture",
-      "Secure full-stack delivery",
-      "Workflow-specific interfaces",
-    ],
-    specs: ["Private VPC", "Custom Frontends", "SLA Performance"],
-  },
-  {
-    id: "ai-data-analytics",
-    num: "09",
-    title: "AI Data & Analytics",
-    category: "Actionable Intelligence",
-    description:
-      "Turn fragmented business data into clear intelligence through pipelines, dashboards, and AI-powered insight.",
-    icon: LineChart,
-    keyOutputs: [
-      "Reliable data foundations",
-      "Operational dashboards and reporting",
-      "AI-powered decision support",
-    ],
-    specs: ["Data Pipelines", "Dashboards", "AI Insights"],
   },
 ];
 
@@ -391,28 +321,28 @@ const deliveryStages: ProcessStep[] = [
     title: "Assess",
     description: "Identify the highest-value use case, validate the data, and define the outcome worth building toward.",
     icon: Search,
-    deliverables: ["Use Case Viability", "Data Readiness", "Success Metrics"],
+    deliverables: [],
   },
   {
     num: "02",
     title: "Prototype",
-    description: "Build against real workflows and data, proving accuracy, usability, and technical feasibility early.",
+    description: "Integrate the system with your stack, add security and guardrails, and prepare it for reliable adoption.",
     icon: Code2,
-    deliverables: ["Working Prototype", "Model Strategy", "Evaluation Baseline"],
+    deliverables: [],
   },
   {
     num: "03",
     title: "Productionize",
     description: "Integrate the system with your stack, add security and guardrails, and prepare it for reliable adoption.",
     icon: ShieldCheck,
-    deliverables: ["System Integration", "Security Controls", "Production Readiness"],
+    deliverables: [],
   },
   {
     num: "04",
     title: "Operate & Improve",
     description: "Launch with observability, measure business impact, and continuously improve the system as needs evolve.",
     icon: Zap,
-    deliverables: ["Monitoring & Telemetry", "Outcome Reporting", "Continuous Improvement"],
+    deliverables: [],
   },
 ];
 
@@ -513,10 +443,7 @@ const faqData: FaqItem[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 export const AIDevelopment: React.FC = () => {
-  const [activeUseCase, setActiveUseCase] = useState<string>(businessUseCases[0].id);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeTimelineStep, setActiveTimelineStep] = useState(0);
-  const [showAllCapabilities, setShowAllCapabilities] = useState(false);
   const shouldReduce = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const scanRef = useRef<HTMLDivElement>(null);
@@ -551,15 +478,11 @@ export const AIDevelopment: React.FC = () => {
     };
   }, []);
 
-  const selectedUseCase =
-    businessUseCases.find((u) => u.id === activeUseCase) || businessUseCases[0];
-  const SelectedIcon = selectedUseCase.icon;
-
   return (
     <div
       className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black"
       style={{
-        background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505',
+        background: C.black,
         color: C.white,
       }}
     >
@@ -592,33 +515,6 @@ export const AIDevelopment: React.FC = () => {
         }
       `}</style>
 
-      {/* ─────────────────────────────────────────────────────────────────────
-          PAGE AMBIENT BACKGROUND GLOWS & GRID (from src/components)
-      ───────────────────────────────────────────────────────────────────── */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-        {/* Subtle dot-grid */}
-        <div
-          className="absolute inset-0 opacity-[0.14]"
-          style={{
-            backgroundImage: `radial-gradient(${C.wa(0.16)} 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
-            maskImage: "linear-gradient(to bottom, black 25%, transparent 95%)",
-          }}
-        />
-        {/* Ambient Top Glow */}
-        <div
-          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] sm:w-[760px] sm:h-[520px] rounded-full blur-[170px]"
-          style={{
-            background: `radial-gradient(circle, ${C.la(0.09)} 0%, ${C.ga(0.02)} 55%, transparent 75%)`,
-          }}
-        />
-        {/* Subtle mid-page accent glow */}
-        <div
-          className="absolute top-[38%] right-[-100px] w-[400px] h-[400px] sm:w-[560px] sm:h-[560px] rounded-full blur-[190px]"
-          style={{ background: `radial-gradient(circle, ${C.la(0.035)} 0%, transparent 70%)` }}
-        />
-      </div>
-
       {/* ══════════════════════════════════════════════════════
           01 — HERO (Premium AI Network Visual)
       ══════════════════════════════════════════════════════ */}
@@ -629,25 +525,14 @@ export const AIDevelopment: React.FC = () => {
         style={{ background: C.black }}
         aria-label="Velnix AI Development hero section"
       >
-        {/* Atmospheric glows */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div
-            className="absolute"
-            style={{
-              width: 600, height: 400, top: -100, left: '50%', marginLeft: -300,
-              background: `radial-gradient(ellipse, ${C.la(0.12)} 0%, ${C.ga(0.04)} 40%, transparent 70%)`,
-              filter: 'blur(120px)',
-            }}
-          />
-          <div
-            className="absolute"
-            style={{
-              width: 400, height: 400, bottom: -80, right: -100,
-              background: `radial-gradient(ellipse, ${C.ga(0.1)} 0%, transparent 70%)`,
-              filter: 'blur(100px)',
-            }}
-          />
-        </div>
+        <div
+          className="pointer-events-none absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+            filter: 'blur(10px)',
+          }}
+        />
 
         {/* Main Content Container */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
@@ -801,53 +686,13 @@ export const AIDevelopment: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8, ease }}
             >
-              {/* Professional container with refined shadows */}
-              <div 
-                className="relative group"
-                style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
-                }}
-              >
+              <div className="relative">
                 <img
                   src="/image/Servies/service-page image-hero.png"
                   alt="AI Development Hero - Professional AI Systems"
-                  className="w-full max-w-2xl transition-all duration-500"
-                  style={{
-                    boxShadow: `
-                      0 25px 50px -12px rgba(0,0,0,0.25),
-                      0 0 0 1px rgba(255,255,255,0.05),
-                      0 8px 16px -4px rgba(182,255,0,0.1)
-                    `,
-                  }}
-                />
-                
-                {/* Subtle highlight overlay */}
-                <div 
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: `linear-gradient(135deg, ${C.wa(0.05)} 0%, transparent 60%)`,
-                    border: `1px solid ${C.wa(0.08)}`,
-                  }}
-                />
-                
-                {/* Professional corner accent */}
-                <div 
-                  className="absolute -top-2 -right-2 w-4 h-4 rounded-full border-2 border-white/20"
-                  style={{ 
-                    background: C.lime,
-                    boxShadow: `0 0 20px ${C.la(0.3)}`,
-                  }}
+                  className="w-full max-w-2xl"
                 />
               </div>
-              
-              {/* Minimal background enhancement */}
-              <div 
-                className="absolute inset-0 -m-12 rounded-3xl opacity-30 blur-2xl"
-                style={{
-                  background: `radial-gradient(ellipse 60% 70% at 50% 50%, ${C.la(0.08)} 0%, transparent 70%)`,
-                }}
-                aria-hidden="true"
-              />
             </motion.div>
           </div>
         </div>
@@ -870,8 +715,7 @@ export const AIDevelopment: React.FC = () => {
                 <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />
               )}
               <div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl">
-                {number.replace('+', '').replace('%', '')}
-                <span>{number.includes('+') ? '+' : number.includes('%') ? '%' : ''}</span>
+                <AnimatedImpactNumber number={number} />
               </div>
               <p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">
                 {label}
@@ -882,7 +726,7 @@ export const AIDevelopment: React.FC = () => {
       </motion.div>
 
       {/* Main Content Sections */}
-      <main className="flex-grow relative z-10 pt-14 pb-24 sm:pt-18 sm:pb-28">
+      <main className="flex-grow relative z-10 pt-14 pb-0 sm:pt-18">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* ══════════════════════════════════════════════════════
@@ -926,7 +770,7 @@ export const AIDevelopment: React.FC = () => {
                     transition={{ duration: 0.6, delay: 0.2, ease }}
                     className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base"
                   >
-                    We identify where work breaks down, then design AI systems that reduce friction, connect the right information, and help your teams make faster, more confident decisions.
+                    We build integrated AI systems that remove friction and help teams work and decide faster.
                   </motion.p>
                 </div>
 
@@ -960,27 +804,27 @@ export const AIDevelopment: React.FC = () => {
                       {
                         num: "01",
                         title: "Repetitive Work",
-                        desc: "Teams spend valuable time on manual tasks that could be automated, streamlined, or handled by intelligent systems.",
+                        desc: "Manual, repetitive tasks drain time and limit team capacity.",
                       },
                       {
                         num: "02",
                         title: "Disconnected Systems",
-                        desc: "Business data, tools, and workflows operate in silos, creating unnecessary handoffs and operational friction.",
+                        desc: "Siloed tools and data create costly operational handoffs.",
                       },
                       {
                         num: "03",
                         title: "Scattered Knowledge",
-                        desc: "Critical information is buried across documents, databases, inboxes, and internal systems, making it difficult to find and use.",
+                        desc: "Critical knowledge is scattered across documents and systems.",
                       },
                       {
                         num: "04",
                         title: "Slow Decisions",
-                        desc: "Teams lack timely, actionable intelligence because extracting, analyzing, and interpreting business data takes too much effort.",
+                        desc: "Delayed insights make timely, confident decisions harder.",
                       },
                       {
                         num: "05",
                         title: "AI Without Integration",
-                        desc: "AI experiments remain isolated from real operations without the workflows, integrations, and controls required to create lasting business value.",
+                        desc: "Disconnected AI pilots fail to deliver lasting business value.",
                       },
                     ].map(({ num, title, desc }, i) => (
                       <motion.div
@@ -1029,8 +873,8 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               03 — AI DEVELOPMENT CAPABILITIES
           ══════════════════════════════════════════════════════ */}
-          <section id="capabilities" className="mb-8 sm:mb-20 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+          <section id="capabilities" className="mb-6 sm:mb-12 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-6">
               <div>
                 <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
                   <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
@@ -1045,10 +889,9 @@ export const AIDevelopment: React.FC = () => {
               </div>
             </div>
 
-            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {aiCapabilities.slice(0, showAllCapabilities ? aiCapabilities.length : 3).map((cap, idx) => {
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+              {aiCapabilities.map((cap, idx) => {
                 const Icon = cap.icon;
-                const isFeatured = idx === 1;
                 return (
                   <motion.div
                     key={cap.id}
@@ -1056,91 +899,19 @@ export const AIDevelopment: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease }}
-                    className="group relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-xl border border-white/[0.12] p-5 transition-[transform,box-shadow,border-color] duration-500 sm:p-6"
-                    style={{
-                      background: C.black,
-                      borderColor: isFeatured ? C.lime : C.wa(0.12),
-                      boxShadow: isFeatured ? `0 12px 34px ${C.la(0.1)}, inset 0 1px 0 ${C.la(0.16)}` : 'none',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = C.lime;
-                      e.currentTarget.style.transform = 'translateY(-3px)';
-                      e.currentTarget.style.boxShadow = `0 16px 42px ${C.la(0.14)}, inset 0 1px 0 ${C.la(0.2)}`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = isFeatured ? C.lime : C.wa(0.12);
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = isFeatured ? `0 12px 34px ${C.la(0.1)}, inset 0 1px 0 ${C.la(0.16)}` : 'none';
-                    }}
+                    className="group relative flex min-h-[230px] flex-col border-b border-r border-white/10 bg-[#111111]/80 p-5 transition-colors duration-300 hover:bg-[#181818] sm:min-h-[250px] sm:p-6"
                   >
-                    {/* Hover glow overlay */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.la(0.06)} 0%, transparent 60%)` }} />
-                    <div className="absolute left-6 right-6 top-0 h-px opacity-70" style={{ background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)` }} aria-hidden="true" />
-
-                    <div className="relative z-10 flex flex-1 flex-col">
-                      {/* Header */}
-                      <div className="mb-4 flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border transition-all duration-300 group-hover:brightness-110" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                          <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-105" fill="currentColor" fillOpacity={0.16} strokeWidth={1.8} />
-                        </div>
-                        <span className="rounded-full border px-2.5 py-1 font-mono text-[10px] font-bold tracking-[0.16em]" style={{ color: C.lime, borderColor: C.la(0.25), background: C.la(0.05) }}>
-                          {cap.num}
-                        </span>
+                    <div className="mb-5 flex items-start justify-between">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#B6FF00] text-[#B6FF00] transition-colors group-hover:bg-[#B6FF00] group-hover:text-[#050505]">
+                        <Plus className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                       </div>
-
-                      <div className="mb-3 flex items-center gap-2">
-                        <span className="h-px w-5" style={{ background: C.lime }} aria-hidden="true" />
-                        <span className="text-[10px] font-mono uppercase tracking-[0.16em]" style={{ color: C.wa(0.45) }}>
-                          {cap.category}
-                        </span>
-                      </div>
-
-                      <h3 className="mb-2 font-display text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#B6FF00]">
-                        {cap.title}
-                      </h3>
-
-                      <p className="mb-4 text-sm font-light leading-relaxed" style={{ color: C.wa(0.7) }}>
-                        {cap.description}
-                      </p>
-
-                      {/* Key Deliverables */}
-                      <ul className="mb-4 space-y-1.5">
-                        {cap.keyOutputs.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs font-light" style={{ color: C.wa(0.6) }}>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                      <span className="font-mono text-xs font-semibold tracking-[0.16em] text-white/35">{cap.num}</span>
                     </div>
-
+                    <h3 className="mb-2 font-display text-xl font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{cap.title}</h3>
+                    <p className="text-sm leading-6 text-white/60">{cap.description}</p>
                   </motion.div>
                 );
               })}
-            </div>
-
-            <div className="mt-10 flex justify-center">
-              <button
-                type="button"
-                onClick={() => setShowAllCapabilities((current) => !current)}
-                aria-expanded={showAllCapabilities}
-                className="group/service inline-flex items-center gap-3 rounded-full border px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#050505] transition-all duration-300"
-                style={{
-                  background: C.lime,
-                  borderColor: C.la(0.5),
-                  boxShadow: `0 8px 28px ${C.la(0.25)}`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = C.green;
-                  e.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.4)}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = C.lime;
-                  e.currentTarget.style.boxShadow = `0 8px 28px ${C.la(0.25)}`;
-                }}
-              >
-                {showAllCapabilities ? "Hide services" : "Explore our capabilities"}
-                <ChevronRight className={`h-4 w-4 transition-transform duration-300 group-hover/service:translate-x-1 ${showAllCapabilities ? "-rotate-90" : "rotate-90"}`} />
-              </button>
             </div>
           </section>
 
@@ -1161,63 +932,49 @@ export const AIDevelopment: React.FC = () => {
           {/* ══════════════════════════════════════════════════════
               06 — DEVELOPMENT PROCESS (4 Steps)
           ══════════════════════════════════════════════════════ */}
-          <section
-            className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
-          >
-
-            <div className="relative z-10">
-              <div className="mb-10">
-                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
+          <section className="relative mb-12 overflow-hidden bg-[#050505] py-12 font-display sm:mb-16 sm:py-16 lg:mb-20 lg:py-20">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="mb-6 text-left lg:mb-8">
+                <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                  <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
                   PROCESS
                 </div>
-                <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  Our AI <span style={{ color: C.lime }}>Delivery Steps.</span>
+                <h2 className="text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">
+                  Our AI <span className="text-[#B6FF00]">Delivery Steps.</span>
                 </h2>
-                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
-                  From the first use case to measurable production value, every stage is designed to reduce risk and increase adoption.
+                <p className="mt-4 max-w-xl text-left text-lg leading-8 text-white/65 sm:text-xl">
+                  From discovery to production, each stage reduces risk and drives adoption.
                 </p>
               </div>
 
-              {/* Compact process grid */}
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-                {deliveryStages.map((step) => {
+              <div>
+                {deliveryStages.map((step, index) => {
                   const StepIcon = step.icon;
                   return (
-                    <div
+                    <motion.div
                       key={step.num}
-                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
+                      initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.08, ease }}
+                      className="group border-b border-white/10 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:py-9"
                     >
-                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
-                      <div>
-                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
-                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
-                            {step.num}
-                          </span>
-                          <StepIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
+                      <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[3rem_1fr] sm:gap-6 lg:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)_2rem] lg:items-center lg:gap-8">
+                        <span className="font-mono text-lg font-bold text-[#B6FF00]">{step.num}</span>
+
+                        <div>
+                          <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{step.title}</h3>
                         </div>
 
-                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
-                          {step.title}
-                        </h3>
-
-                        <p className="text-xs font-light leading-6 text-white/65">
+                        <p className="max-w-2xl text-sm leading-6 text-white/65 sm:text-base lg:text-left">
                           {step.description}
                         </p>
-                      </div>
 
-                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
-                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
-                          Key Deliverables
-                        </span>
-                        {step.deliverables.map((item, di) => (
-                          <div key={di} className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
-                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
+                        <div className="hidden items-center justify-end lg:flex">
+                          <ArrowRight className="h-5 w-5 text-[#B6FF00] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" />
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -1243,220 +1000,6 @@ export const AIDevelopment: React.FC = () => {
           ══════════════════════════════════════════════════════ */}
           <section className="mb-8 sm:mb-20">
             <TechnologyStack />
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              10 — BUSINESS USE CASES
-          ══════════════════════════════════════════════════════ */}
-          <section className="mb-8 sm:mb-20">
-            <div className="mb-10 w-full">
-              <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                AI THAT DELIVERS
-              </div>
-              <h2 className="mb-6 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                AI That Drives <span style={{ color: C.lime }}>Results.</span>
-              </h2>
-              <p className="max-w-[62ch] text-sm font-light leading-7 text-white/65 sm:text-base">
-                We connect AI to the work that matters—improving execution, decisions, and measurable outcomes.
-              </p>
-            </div>
-
-            {/* Interactive domain selector */}
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
-              {businessUseCases.map((uc) => {
-                const Icon = uc.icon;
-                const isActive = activeUseCase === uc.id;
-                return (
-                  <button
-                    key={uc.id}
-                    onClick={() => setActiveUseCase(uc.id)}
-                    className="group inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-left transition-all duration-200"
-                    style={{
-                      background: isActive ? C.lime : C.black,
-                      borderColor: isActive ? C.lime : C.wa(0.1),
-                      color: isActive ? C.black : C.wa(0.65),
-                    }}
-                  >
-                    <div
-                      className={`flex h-4 w-4 items-center justify-center rounded-full transition-all ${isActive ? "text-black" : "text-white/45 group-hover:text-[#B6FF00]"}`}
-                    >
-                      <Icon
-                        className="h-3 w-3"
-                        fill={isActive ? "currentColor" : "rgba(255,255,255,0.08)"}
-                        fillOpacity={isActive ? 0.3 : 0.15}
-                        strokeWidth={2}
-                      />
-                    </div>
-                    <span
-                      className="block text-[9px] font-mono font-bold uppercase tracking-[0.06em]"
-                    >
-                      {uc.category}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Selected Use Case Structured Flow: Problem -> AI System -> Outcome */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedUseCase.id}
-                initial={shouldReduce ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3, ease }}
-                className="relative mx-auto max-w-[1360px] overflow-hidden rounded-2xl border border-white/10 p-5 sm:p-8 lg:p-10"
-                style={{ background: `linear-gradient(135deg, ${C.graphite} 0%, ${C.black} 62%, ${C.ga(0.08)} 100%)` }}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-white/10 gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center border" style={{ background: C.lime, borderColor: C.lime, color: C.black }}>
-                      <SelectedIcon
-                        className="w-6 h-6"
-                        fill="currentColor"
-                        fillOpacity={0.25}
-                        strokeWidth={2}
-                      />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono text-[#B6FF00] tracking-widest uppercase block mb-1">
-                        SELECTED BUSINESS DOMAIN
-                      </span>
-                      <h3 className="font-display text-2xl font-bold text-white tracking-tight">
-                        {selectedUseCase.category}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B6FF00]/10 border border-[#B6FF00]/30 text-xs font-mono font-bold text-[#B6FF00] w-fit">
-                    <Zap className="w-3.5 h-3.5" fill="currentColor" fillOpacity={0.3} /> IMPACT: {selectedUseCase.metric}
-                  </div>
-                </div>
-
-                {/* Three-Box Flow: Problem -> AI System -> Outcome */}
-                <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
-
-                  {/* Problem */}
-                  <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#080808] p-5 transition-colors duration-300 hover:border-[#7DCC00]/50">
-                    <div>
-                      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg border border-[#7DCC00]/30 bg-[#7DCC00]/10 text-[#7DCC00]">
-                        <Search className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                      </div>
-                      <span className="mb-2 block text-[10px] font-mono font-bold uppercase tracking-wider text-[#7DCC00]">
-                        [01] Business Problem
-                      </span>
-                      <p className="text-sm text-white/75 leading-relaxed font-light">
-                        {selectedUseCase.problem}
-                      </p>
-                    </div>
-                    <div className="pt-4 mt-6 border-t border-white/5 text-[10px] font-mono text-white/40">
-                      STATUS: HIGH FRICTION
-                    </div>
-                  </div>
-
-                  {/* AI System */}
-                  <div className="flex flex-col justify-between rounded-xl border border-[#B6FF00]/35 bg-[#080808] p-5 shadow-[0_0_24px_rgba(182,255,0,0.06)]">
-                    <div>
-                      <div className="w-8 h-8 rounded-lg bg-[#B6FF00]/15 border border-[#B6FF00]/40 text-[#B6FF00] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(182,255,0,0.2)]">
-                        <Cpu className="w-4 h-4" fill="currentColor" fillOpacity={0.25} strokeWidth={2} />
-                      </div>
-                      <span className="text-[10px] font-mono text-[#B6FF00] uppercase tracking-wider block mb-2 font-bold">
-                        [02] Engineered AI System
-                      </span>
-                      <p className="text-sm text-white/80 leading-relaxed font-light">
-                        {selectedUseCase.aiSystem}
-                      </p>
-                    </div>
-                    <div className="pt-4 mt-6 border-t border-white/5 text-[10px] font-mono text-[#B6FF00]">
-                      ENGINEERED BY VELNIX
-                    </div>
-                  </div>
-
-                  {/* Outcome */}
-                  <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#080808] p-5 transition-colors duration-300 hover:border-[#B6FF00]/50">
-                    <div>
-                      <div className="w-8 h-8 rounded-lg bg-[#7DCC00]/15 border border-[#7DCC00]/40 text-[#7DCC00] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(125,204,0,0.2)]">
-                        <TrendingUp className="w-4 h-4" fill="currentColor" fillOpacity={0.2} strokeWidth={2} />
-                      </div>
-                      <span className="text-[10px] font-mono text-[#7DCC00] uppercase tracking-wider block mb-2 font-bold">
-                        [03] Measured Outcome
-                      </span>
-                      <p className="text-sm text-white/75 leading-relaxed font-light">
-                        {selectedUseCase.outcome}
-                      </p>
-                    </div>
-                    <div className="pt-4 mt-6 border-t border-white/5 text-[10px] font-mono text-white/40">
-                      RESULT: VERIFIABLE
-                    </div>
-                  </div>
-
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </section>
-
-          {/* ══════════════════════════════════════════════════════
-              11 — PRODUCTION AI (6 Technical Pillars - Process Style)
-          ══════════════════════════════════════════════════════ */}
-          <section
-            className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"
-          >
-            <div className="relative z-10">
-              <div className="mb-10">
-                <div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}>
-                  <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
-                  ENGINEERING STANDARDS
-                </div>
-                <h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">
-                  Built for Production. <span style={{ color: C.lime }}>Not Just Prototypes.</span>
-                </h2>
-                <p className="max-w-[66ch] text-sm font-light leading-relaxed text-white/65 sm:text-base">
-                  Enterprise AI requires more than a prompt. We embed rigorous evaluation, guardrails, auditing, and security into every layer of the architecture.
-                </p>
-              </div>
-
-              {/* Process-style pillars grid */}
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {productionPillars.map((pillar, i) => {
-                  const PillarIcon = pillar.icon;
-                  return (
-                    <div
-                      key={i}
-                      className="group relative flex min-h-[280px] flex-col justify-between rounded-xl border border-white/15 bg-[#111111]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#B6FF00]/55"
-                    >
-                      <div className="absolute -top-2 left-5 h-4 w-4 rounded-full border-4 border-[#050505] bg-[#B6FF00] transition-shadow duration-300 group-hover:shadow-[0_0_16px_rgba(182,255,0,0.6)]" aria-hidden="true" />
-                      <div>
-                        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
-                          <span className="font-mono text-xs font-bold tracking-[0.16em] text-[#B6FF00]">
-                            {String(i + 1).padStart(2, '0')}
-                          </span>
-                          <PillarIcon className="h-4 w-4 text-[#7DCC00] transition-colors group-hover:text-[#B6FF00]" strokeWidth={1.8} />
-                        </div>
-
-                        <h3 className="mb-3 font-display text-lg font-bold tracking-tight text-white transition-colors group-hover:text-[#B6FF00]">
-                          {pillar.title}
-                        </h3>
-
-                        <p className="text-xs font-light leading-6 text-white/65">
-                          {pillar.details}
-                        </p>
-                      </div>
-
-                      <div className="mt-6 space-y-2 border-t border-white/10 pt-4">
-                        <span className="mb-1 block text-[9px] font-mono uppercase tracking-[0.16em] text-white/35">
-                          {pillar.tag}
-                        </span>
-                        <div className="flex items-start gap-2 text-[10px] font-light leading-4 text-white/55">
-                          <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#B6FF00]" />
-                          <span>{pillar.description}</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </section>
 
           {/* ══════════════════════════════════════════════════════
@@ -1571,7 +1114,17 @@ export const AIDevelopment: React.FC = () => {
             <LatestBlogs />
           </section>
 
+          <FAQ
+            items={faqData.map(({ q, a }, index) => ({
+              id: `ai-development-faq-${index + 1}`,
+              question: q,
+              answer: a,
+            }))}
+          />
+
         </div>
+
+        <CTAExamples className="!pb-8 sm:!pb-10" />
       </main>
 
       <Footer />

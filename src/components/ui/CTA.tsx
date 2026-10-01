@@ -192,7 +192,7 @@ const CTA: React.FC<CTAProps> = ({
             {/* Primary CTA */}
             <a
               href={primaryHref}
-              className={`inline-flex items-center justify-center gap-3 rounded-full font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${config.button}`}
+              className={`inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-[#B6FF00] font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505] ${config.button}`}
               style={{
                 background: C.lime,
                 color: C.black,
@@ -216,20 +216,20 @@ const CTA: React.FC<CTAProps> = ({
             {secondaryLabel && secondaryHref && (
               <a
                 href={secondaryHref}
-                className={`inline-flex items-center justify-center gap-3 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] ${config.button}`}
+                className={`inline-flex min-h-14 items-center justify-center gap-3 rounded-full font-bold transition-all duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B6FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505] ${config.button}`}
                 style={{
-                  background: 'transparent',
-                  color: C.wa(0.8),
+                  background: C.wa(0.04),
+                  color: C.white,
                   textDecoration: 'none',
-                  border: `2px solid ${C.wa(0.2)}`,
+                  border: `2px solid ${C.wa(0.48)}`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = C.lime;
                   e.currentTarget.style.color = C.lime;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = C.wa(0.2);
-                  e.currentTarget.style.color = C.wa(0.8);
+                  e.currentTarget.style.borderColor = C.wa(0.48);
+                  e.currentTarget.style.color = C.white;
                 }}
               >
                 <span>{secondaryLabel}</span>

@@ -4,7 +4,7 @@ import CTA from './ui/CTA';
 // CTA EXAMPLES - Different variations using Velnix brand colors
 // ─────────────────────────────────────────────────────────────────────────────
 
-const CTAExamples = () => {
+const CTAExamples = ({ className = '' }: { className?: string }) => {
   return (
     <div className="space-y-0">
       
@@ -20,6 +20,7 @@ const CTAExamples = () => {
         variant="centered"
         background="gradient"
         size="md"
+        className={className}
       />
 
 
