@@ -178,7 +178,7 @@ const LatestBlogs: React.FC = () => {
           .select('*')
           .eq('status', 'published')
           .order('created_at', { ascending: false })
-          .limit(4);
+          .limit(3);
 
         if (error) throw error;
         setBlogs(data || []);
@@ -208,8 +208,7 @@ const LatestBlogs: React.FC = () => {
               <div className="h-4 w-96 rounded animate-pulse" style={{ background: C.wa(0.05) }} />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <SkeletonCard />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
@@ -221,7 +220,7 @@ const LatestBlogs: React.FC = () => {
 
   if (blogs.length === 0) return null;
 
-  const displayBlogs = blogs.slice(0, 4);
+  const displayBlogs = blogs.slice(0, 3);
 
   return (
     <section
@@ -283,9 +282,9 @@ const LatestBlogs: React.FC = () => {
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            ARTICLE GRID — 4 Card Layout
+            ARTICLE GRID — 3 Card Layout
         ══════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {displayBlogs.map((blog, index) => (
             <BlogCard key={blog.id} blog={blog} index={index} />
           ))}
