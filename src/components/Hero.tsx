@@ -231,7 +231,7 @@ const Hero = () => {
               <span style={{ color: C.lime, display: 'inline' }}>
                  Operations Into
               </span>{' '}
-              Intelligent Systems.
+              Intelligent Systems
             </motion.h1>
 
             {/* Supporting copy */}

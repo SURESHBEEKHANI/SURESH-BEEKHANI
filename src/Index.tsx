@@ -52,16 +52,16 @@ const Index = () => {
               <Portfolio />
           </AnimatedSection>
 
+            <AnimatedSection id="testimonials" threshold={0.08}>
+              <Testimonials />
+            </AnimatedSection>
+
           <AnimatedSection threshold={0.08}>
               <OriginStory />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
             <MeetFounder />
-          </AnimatedSection>
-
-          <AnimatedSection id="testimonials" threshold={0.08}>
-              <Testimonials />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
