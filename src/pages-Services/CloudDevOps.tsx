@@ -1,556 +1,191 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus, Cloud, Terminal, RefreshCw, Box, Activity, GitBranch, Layout, Settings, Server } from "lucide-react";
+import { Activity, ArrowRight, Boxes, CheckCircle2, Cloud, Database, GitBranch, Lock, Search, Server, ShieldCheck, Terminal, Workflow, Zap } from "lucide-react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion as useFramerReducedMotion, useTransform } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
+import CTAExamples from "../components/CTAExamples";
+import FAQ from "../components/FAQ";
+import { IMPACT_STATS } from "../components/OriginStory";
+import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
+import EngagementModels from "../components/EngagementModels";
+import Testimonials from "../components/Testimonials";
+import PortfolioSection from "../components/PortfolioSection";
 
-// DevOps Services
-const devopsServices = [
-	{
-		id: 1,
-		title: "Continuous Integration (CI)",
-		description: "Accelerate your development cycle with automated code integration, efficient build processes, and comprehensive testing for faster code delivery.",
-		icon: <RefreshCw className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 2,
-		title: "Continuous Deployment (CD)",
-		description: "Simplify and speed up your release pipeline with automated deployments, ensuring consistent, fast, and reliable delivery of new features.",
-		icon: <Zap className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 3,
-		title: "Infrastructure as Code (IaC)",
-		description: "Enhance scalability and consistency with code-driven infrastructure management using Terraform, CloudFormation, and Ansible.",
-		icon: <Terminal className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 4,
-		title: "Monitoring & Logging",
-		description: "Gain real-time visibility with advanced monitoring and logging solutions using Datadog, Prometheus, and ELK stack.",
-		icon: <Activity className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 5,
-		title: "Collaboration Tools",
-		description: "Strengthen teamwork with integrated platforms that improve communication across development and operations teams.",
-		icon: <Users className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 6,
-		title: "DevSecOps Integration",
-		description: "Embed security at every stage of development with automated vulnerability scans, compliance checks, and secure delivery.",
-		icon: <Shield className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
+const C = {
+  black: "#050505",
+  graphite: "#111111",
+  graphiteLight: "#181818",
+  white: "#FFFFFF",
+  lime: "#B6FF00",
+  green: "#7DCC00",
+  la: (opacity: number) => `rgba(182, 255, 0, ${opacity})`,
+  wa: (opacity: number) => `rgba(255, 255, 255, ${opacity})`,
+};
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const AnimatedImpactNumber = ({ number }: { number: string }) => {
+  const reduceMotion = useFramerReducedMotion();
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const display = useTransform(count, value => `${Math.round(value)}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+  useEffect(() => {
+    if (!isInView) return;
+    if (reduceMotion) { count.set(target); return; }
+    const controls = animate(count, target, { duration: 1.8, ease: "easeOut" });
+    return () => controls.stop();
+  }, [count, isInView, reduceMotion, target]);
+  return <motion.span ref={ref} aria-label={number}>{display}</motion.span>;
+};
+
+const capabilities = [
+  { id: "cloud-architecture", num: "01", title: "Cloud Architecture & Migration", description: "Design cloud foundations and phased migration paths aligned with application needs and operating constraints.", icon: Cloud },
+  { id: "cicd", num: "02", title: "CI/CD & Release Automation", description: "Automate build, test, and deployment steps to make releases repeatable and easier to review.", icon: GitBranch },
+  { id: "infrastructure-code", num: "03", title: "Infrastructure as Code", description: "Provision and manage environments consistently through versioned, reviewable infrastructure definitions.", icon: Terminal },
+  { id: "containers", num: "04", title: "Containers & Orchestration", description: "Package services with Docker and operate container workloads using Kubernetes where it fits.", icon: Boxes },
+  { id: "observability", num: "05", title: "Monitoring & Observability", description: "Connect metrics, logs, traces, and alerts to give teams clearer insight into service health.", icon: Activity },
+  { id: "security-recovery", num: "06", title: "Cloud Security & Recovery", description: "Strengthen identity, configuration, backup, and recovery practices across cloud environments.", icon: ShieldCheck },
+];
+
+const valueStages = [
+  { num: "01", title: "Manual Releases", desc: "Hand-driven deployment steps make changes slow, difficult to repeat, and prone to error." },
+  { num: "02", title: "Inconsistent Environments", desc: "Differences between development, staging, and production create avoidable deployment risk." },
+  { num: "03", title: "Limited Visibility", desc: "Scattered logs and alerts make it harder to understand system behavior and investigate incidents." },
+  { num: "04", title: "Scaling Constraints", desc: "Legacy infrastructure and unclear capacity planning limit growth and increase operational effort." },
+  { num: "05", title: "Automated Operations", desc: "Managed infrastructure and delivery workflows help teams ship changes with greater visibility and control." },
+];
+
+const deliveryStages = [
+  { num: "01", title: "Assess", description: "Review applications, infrastructure, deployment practices, security needs, and operational goals." },
+  { num: "02", title: "Architect & Plan", description: "Design cloud topology, migration sequence, environments, access controls, and recovery approach." },
+  { num: "03", title: "Automate & Deploy", description: "Implement infrastructure as code, CI/CD workflows, containers, and controlled release practices." },
+  { num: "04", title: "Monitor & Optimize", description: "Improve observability, review system behavior and spend, and refine operations over time." },
+];
+
+const benefits = [
+  { num: "01", metric: "Repeatable", metricLabel: "release process", title: "More Predictable Delivery", description: "Automated build and deployment steps reduce manual variation and make releases easier to manage." },
+  { num: "02", metric: "Visible", metricLabel: "service health", title: "Clearer Operations", description: "Centralized metrics, logs, and alerts help teams spot issues and understand system behavior." },
+  { num: "03", metric: "Consistent", metricLabel: "environments", title: "Reduced Configuration Drift", description: "Versioned infrastructure definitions help environments stay aligned through development and production." },
+  { num: "04", metric: "Elastic", metricLabel: "cloud resources", title: "Infrastructure That Can Grow", description: "Cloud architectures can adapt to changing demand when capacity, resilience, and cost are planned together." },
+  { num: "05", metric: "Integrated", metricLabel: "security practices", title: "Stronger Operational Controls", description: "Identity, configuration, scanning, and recovery practices can be incorporated into delivery workflows." },
+  { num: "06", metric: "Measured", metricLabel: "cloud usage", title: "Better Cost Visibility", description: "Resource tagging, usage reviews, and right-sizing provide a clearer basis for cloud cost decisions." },
 ];
 
 const faqData = [
-	{
-		question: "What is DevOps and why does my business need it?",
-		answer: "DevOps bridges the gap between software development and IT operations. It implements automated practices that streamline software delivery, resulting in faster time-to-market, higher software quality, and rapid recovery from infrastructure failures."
-	},
-	{
-		question: "Which cloud platforms do you support?",
-		answer: "Our DevOps engineers are highly experienced across all major cloud providers including Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, as well as hybrid and multi-cloud environments."
-	},
-	{
-		question: "How long does a DevOps transformation take?",
-		answer: "A complete transformation typically spans several months. However, implementing targeted improvements like a CI/CD pipeline or basic containerization (Docker/K8s) can yield measurable benefits within weeks."
-	},
-	{
-		question: "Can you help migrate our legacy applications to the cloud?",
-		answer: "Yes, we specialize in cloud migrations. We analyze your monolithic systems and architect a phased migration strategy, often refactoring applications into cloud-native microservices along the way."
-	},
-	{
-		question: "How do you handle security in DevOps?",
-		answer: "We practice 'DevSecOps', embedding security checks natively into the CI/CD pipeline. This includes automated vulnerability scanning, secure container registries, IAM best practices, and infrastructure compliance testing."
-	},
+  { q: "What do Cloud & DevOps services include?", a: "Cloud & DevOps work can include architecture, migration, infrastructure as code, CI/CD, containerization, monitoring, security controls, backup planning, and ongoing operational improvement. The scope depends on your systems and delivery goals." },
+  { q: "Which cloud platforms do you support?", a: "The Velnix technology stack includes AWS, Microsoft Azure, and Google Cloud. Platform selection depends on existing systems, team requirements, security constraints, and operational needs." },
+  { q: "Can you help modernize or migrate legacy infrastructure?", a: "Yes. We assess applications and dependencies, identify migration constraints, and plan a phased approach. Options may include rehosting, platform changes, refactoring, or incremental modernization based on the case." },
+  { q: "How do CI/CD and Infrastructure as Code help?", a: "CI/CD automates repeatable build, test, and delivery steps. Infrastructure as Code makes environment configuration reviewable and repeatable, helping teams manage change with more consistency." },
+  { q: "How do you address cloud security and reliability?", a: "We consider identity and access, network boundaries, secure configuration, backups, recovery objectives, deployment controls, and monitoring as part of the architecture and operating process." },
+  { q: "Can you provide ongoing monitoring and support?", a: "Ongoing services can include alert and dashboard setup, incident investigation support, infrastructure updates, cost reviews, security maintenance, and continuous improvements to deployment workflows." },
 ];
 
 const DevOps: React.FC = () => {
-	const [isVisible, setIsVisible] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeTimelineStep, setActiveTimelineStep] = useState(0);
+  const shouldReduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
 
-	const toggleFAQ = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index);
-	};
+  useEffect(() => {
+    let frame = 0;
+    const updateScrollProgress = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const bounds = hero.getBoundingClientRect();
+      const traveled = Math.max(0, -bounds.top);
+      const range = Math.max(1, bounds.height - window.innerHeight);
+      hero.style.setProperty("--hero-scan-progress", `${Math.min(1, traveled / range) * 500}%`);
+    };
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => { frame = 0; updateScrollProgress(); });
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, []);
 
-	useEffect(() => {
-		setIsVisible(true);
-	}, []);
+  return (
+    <div className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black" style={{ background: C.black, color: C.white }}>
+      <Navbar isDark={true} />
+      <style>{`@keyframes velnix-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
-	return (
-		<div className="min-h-screen bg-white flex flex-col">
-			<Navbar />
+      <section id="hero" ref={heroRef} className="relative isolate w-full overflow-hidden" style={{ background: C.black }} aria-label="Velnix Cloud and DevOps hero section">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: "radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)", filter: "blur(10px)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="w-full flex flex-col items-start text-left">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />Cloud & DevOps Engineering</motion.div>
+              <motion.h1 initial={shouldReduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.65, ease }} className="mb-5 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Move from Code to <span style={{ color: C.lime }}>Reliable Production.</span></motion.h1>
+              <motion.p initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.65, ease }} style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: C.wa(0.72), lineHeight: 1.75, maxWidth: "56ch", marginBottom: "2.5rem", fontWeight: 400 }}>Velnix helps teams build, deploy, scale, and operate cloud infrastructure and modern software systems with repeatable delivery, useful observability, and security built into the process.</motion.p>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.55, ease }} className="flex flex-wrap items-center gap-4 mb-6">
+                <Link to="/contact" className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300" style={{ background: C.lime, color: C.black, fontSize: "0.9rem", padding: "0.85rem 1.75rem", textDecoration: "none", border: `1px solid ${C.la(0.5)}`, boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`, lineHeight: 1 }} onMouseEnter={event => { event.currentTarget.style.background = C.green; event.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`; }} onMouseLeave={event => { event.currentTarget.style.background = C.lime; event.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`; }}>
+                  <span aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ width: "200%", left: "-50%", background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)", animation: "velnix-shimmer 2.8s linear infinite", willChange: "transform" }} /><span className="relative z-10">Improve Your Delivery Flow</span><ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
+                </Link>
+                <a href="#capabilities" className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300" style={{ fontSize: "0.9rem", fontWeight: 700, color: C.white, borderColor: C.wa(0.25), background: C.wa(0.04), textDecoration: "none" }} onMouseEnter={event => { event.currentTarget.style.borderColor = C.lime; event.currentTarget.style.color = C.lime; event.currentTarget.style.background = C.la(0.08); }} onMouseLeave={event => { event.currentTarget.style.borderColor = C.wa(0.25); event.currentTarget.style.color = C.white; event.currentTarget.style.background = C.wa(0.04); }}>Explore Capabilities<ArrowRight size={15} /></a>
+              </motion.div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.55, ease }} className="w-full flex items-center gap-6 sm:gap-10 pt-6" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
+                <div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Automated</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Delivery</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Observable</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Operations</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Secure</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Foundations</span></div>
+              </motion.div>
+            </div>
+            <motion.div className="relative flex items-center justify-center" initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease }}><div className="relative"><img src="/image/Servies/service-page image-hero.png" alt="Cloud infrastructure and DevOps engineering" className="w-full max-w-2xl" /></div></motion.div>
+          </div>
+        </div>
+      </section>
 
-			{/* ─── Hero Section ─── */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
-				{/* Background Image */}
-				<div className="absolute inset-0 bg-[url('/image/pages_img/devops-infrastructure.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
+      <motion.div initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.65, delay: 0.15, ease }} className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16">
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">{IMPACT_STATS.map(({ number, label }, index) => <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">{index > 0 && <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />}<div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl"><AnimatedImpactNumber number={number} /></div><p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">{label}</p></div>)}</div>
+      </motion.div>
 
-				{/* Layered gradient: deep slate on left fades to transparent — refined vignette */}
-				<div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 sm:via-slate-950/55 to-transparent" />
+      <main className="flex-grow relative z-10 pt-14 pb-0 sm:pt-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20 relative">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }} aria-hidden="true" />
+            <div className="relative z-10 w-full py-4 sm:py-8 lg:py-10"><div className="relative z-10">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />THE CASE FOR CLOUD & DEVOPS</motion.div>
+              <div className="mb-10"><motion.h2 initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1, ease }} className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">From Manual Releases to <span style={{ color: C.lime }}>Reliable Operations.</span></motion.h2><motion.p initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2, ease }} className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">Cloud foundations and automated delivery practices help teams make infrastructure changes consistently, release with more confidence, and understand production systems.</motion.p></div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2, ease }} className="relative grid w-full grid-cols-1 gap-10 sm:grid-cols-5 sm:gap-0 sm:pt-2">
+                <div className="absolute left-[4%] right-[4%] top-[2.75rem] hidden h-[2px] sm:block" style={{ background: `linear-gradient(90deg, ${C.la(0.45)}, ${C.lime}, ${C.la(0.45)})` }} aria-hidden="true" />
+                <motion.div initial={{ left: "0%" }} animate={shouldReduce ? { left: "50%" } : { left: ["0%", "25%", "50%", "75%", "100%"] }} transition={shouldReduce ? { duration: 0 } : { duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.2, 0.4, 0.6, 1] }} onUpdate={({ left }) => { const progress = Number.parseFloat(String(left)) / 100; const nextStep = progress >= 0.75 ? 4 : progress >= 0.5 ? 3 : progress >= 0.25 ? 2 : 0; setActiveTimelineStep(current => current === nextStep ? current : nextStep); }} className="pointer-events-none absolute top-[calc(2.75rem-4px)] z-10 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-[#B6FF00] shadow-[0_0_14px_rgba(182,255,0,0.85)] sm:block" style={{ left: "4%" }} aria-hidden="true" />
+                {valueStages.map(({ num, title, desc }, index) => <motion.div key={num} initial={shouldReduce ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.3 + index * 0.08, ease }} className="group relative z-10 flex min-h-[188px] flex-col items-center text-center sm:px-3" onMouseEnter={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { circle.style.borderColor = C.lime; circle.style.boxShadow = `0 0 24px ${C.la(0.3)}`; } }} onMouseLeave={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { const active = circle.dataset.active === "true"; circle.style.borderColor = active ? C.lime : C.la(0.5); circle.style.boxShadow = active ? `0 0 20px ${C.la(0.22)}, inset 0 0 0 5px ${C.wa(0.025)}` : "none"; } }}><div data-step-circle data-active={activeTimelineStep === index ? "true" : "false"} className={`mx-auto mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border font-mono text-xs font-bold tracking-[0.16em] transition-all duration-300 ${activeTimelineStep === index ? "text-[#050505]" : "text-[#B6FF00]"}`} style={{ borderColor: activeTimelineStep === index ? C.lime : C.la(0.5), background: activeTimelineStep === index ? C.lime : C.black, boxShadow: activeTimelineStep === index ? `0 0 20px ${C.la(0.3)}, inset 0 0 0 5px ${C.wa(0.08)}` : `inset 0 0 0 5px ${C.wa(0.025)}` }}>{num}</div><h3 className={`mb-3 text-xl font-bold tracking-tight transition-colors duration-300 ${activeTimelineStep === index ? "text-[#B6FF00]" : "text-white group-hover:text-[#B6FF00]"}`}>{title}</h3><p className="mx-auto max-w-[22ch] text-[13px] leading-6 font-light text-white/55">{desc}</p></motion.div>)}
+              </motion.div>
+            </div></div>
+          </section>
 
-				{/* Subtle bottom scrim for clean section transition */}
-				<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-950/60 to-transparent" />
+          <section id="capabilities" className="mb-6 sm:mb-12 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-6"><div><div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />WHAT WE BUILD</div><h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">Cloud Foundations & <span style={{ color: C.lime }}>DevOps Delivery.</span></h2><p className="max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">We connect cloud architecture, infrastructure automation, secure delivery, and operations around the needs of your software and team.</p></div></div>
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">{capabilities.map((capability, index) => { const Icon = capability.icon; return <motion.div key={capability.id} initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.6, delay: index * 0.08, ease }} className="group relative flex min-h-[230px] flex-col border-b border-r border-white/10 bg-[#111111]/80 p-5 transition-colors duration-300 hover:bg-[#181818] sm:min-h-[250px] sm:p-6"><div className="mb-5 flex items-start justify-between"><div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#B6FF00] text-[#B6FF00] transition-colors group-hover:bg-[#B6FF00] group-hover:text-[#050505]"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></div><span className="font-mono text-xs font-semibold tracking-[0.16em] text-white/35">{capability.num}</span></div><h3 className="mb-2 font-display text-xl font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{capability.title}</h3><p className="text-sm leading-6 text-white/60">{capability.description}</p></motion.div>; })}</div>
+          </section>
+          <section className="mb-8 sm:mb-20"><Industries /></section>
+          <section className="mb-8 sm:mb-20"><EngagementModels /></section>
 
-				<div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-					<div className="text-white space-y-5 sm:space-y-7 text-left max-w-3xl">
-						<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight text-white">
-							DevOps Engineering
-						</h1>
-						<p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-							Accelerate delivery, ensure monumental scalability, and eliminate operational bottlenecks with modern DevOps tools and cloud-native infrastructure automation.
-						</p>
-					</div>
-				</div>
-			</section>
+          <section className="relative mb-12 overflow-hidden bg-[#050505] py-12 font-display sm:mb-16 sm:py-16 lg:mb-20 lg:py-20"><div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div className="mb-6 text-left lg:mb-8"><div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"><span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />DELIVERY PROCESS</div><h2 className="text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Our Cloud & DevOps <span className="text-[#B6FF00]">Delivery Steps.</span></h2><p className="mt-4 max-w-xl text-left text-lg leading-8 text-white/65 sm:text-xl">Assess, architect, automate, deploy, monitor, and optimize with practical steps matched to your systems.</p></div><div>{deliveryStages.map((step, index) => <motion.div key={step.num} initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.08, ease }} className="group border-b border-white/10 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:py-9"><div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[3rem_1fr] sm:gap-6 lg:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)_2rem] lg:items-center lg:gap-8"><span className="font-mono text-lg font-bold text-[#B6FF00]">{step.num}</span><h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{step.title}</h3><p className="max-w-2xl text-sm leading-6 text-white/65 sm:text-base lg:text-left">{step.description}</p><div className="hidden items-center justify-end lg:flex"><ArrowRight className="h-5 w-5 text-[#B6FF00] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" /></div></div></motion.div>)}</div></div></section>
+        </div>
 
-			{/* ─── Capabilities Section ─── */}
-			<section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
-				{/* Refined ambient wash — right side only, barely perceptible */}
-				<div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
+        <PortfolioSection />
 
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Content */}
-						<div className={`space-y-7 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<div className="text-left space-y-4 mb-2">
-								<div className="flex flex-col items-start gap-3 sm:gap-4">
-									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.15]">
-										Revolutionize Your Operations with{" "}
-										<span className="text-slate-900">DevOps Mastery</span>
-									</h2>
-								</div>
-								<p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
-									Unlock faster, smarter, and more reliable software delivery with Velnix Solutions’ AI-integrated DevOps consulting.
-								</p>
-							</div>
-
-							<div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
-								<p>
-									We leverage AI-powered automation, predictive analytics, and robust QA to enhance efficiency, reduce risks, and accelerate deployments. Our approach ensures your systems are fast, scalable, and resilient.
-								</p>
-								<p>
-									Our expert consulting optimizes workflows and strengthens team collaboration. We deliver customized strategies and modern toolchains that drive continuous integration and high-performance software development.
-								</p>
-							</div>
-
-							<div className="pt-2">
-								<Link
-									to="/contact"
-									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-black transition-all duration-300 bg-[#B6FF00] rounded-none hover:bg-[#a8ef00] hover:shadow-[0_6px_28px_rgba(182,255,0,0.35)] active:scale-95"
-								>
-									<span className="relative flex items-center gap-2 text-sm sm:text-base">
-										Contact Expert
-										<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-									</span>
-									{/* Sheen sweep */}
-									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-								</Link>
-							</div>
-						</div>
-
-						{/* Right: Image */}
-						<div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
-							<div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/devops-infrastructure.jpg"
-									alt="DevOps Infrastructure Engineering"
-									className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Services Section ─── */}
-			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Technical DevOps <span className="text-white">Excellence</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Comprehensive engineering services designed for relentless deployment speed and infrastructure resilience.
-						</p>
-					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{devopsServices.map((service, index) => (
-							<div
-								key={service.id}
-								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
-								style={{ animationDelay: `${index * 0.08}s` }}
-							>
-								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
-									{service.icon}
-								</div>
-								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
-									{service.title}
-								</h3>
-								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
-									{service.description}
-								</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Strategic Benefits Infographic Section ─── */}
-			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
-				{/* Refined technical dot grid — Lighter, more breathable */}
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Operational <span className="text-slate-900">Impact</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							experience the tactical advantage of streamlined release cycles and rock-solid systems operations.
-						</p>
-					</div>
-
-					<div className="relative px-4">
-						{/* Horizontal Connecting Line (Desktop Only) */}
-						<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 z-0" />
-
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
-							{[
-								{
-									title: "Faster Releases",
-									desc: "Push new features and vital bug fixes to market significantly faster with automated CI/CD pipelines.",
-									icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Higher Quality",
-									desc: "Mandatory automated testing stages catch regressions before code ever reaches your production environment.",
-									icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Scalable Uptime",
-									desc: "Elastic, containerized architectures gracefully handle massive web traffic spikes with automated load balancing.",
-									icon: <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Security & Recovery",
-									desc: "Isolated infrastructure as code and automated backups permit near-instantaneous disaster recovery.",
-									icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex flex-col items-center">
-									{/* Label Above (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-										<div className="w-[1px] h-10 bg-slate-200 mt-4" />
-										<div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
-									</div>
-
-									{/* The Circular Node */}
-									<div className={`relative flex items-center justify-center transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-50 opacity-0'}`} style={{ transitionDelay: `${idx * 0.1}s` }}>
-										{/* Concentric Rings */}
-										<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-											<div className="w-24 h-24 sm:w-32 sm:h-32 border border-slate-100 rounded-full" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-l-transparent border-r-transparent rotate-45" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-t-transparent border-b-transparent -rotate-12" />
-										</div>
-
-										{/* Inner Circle Node */}
-										<div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center z-20 hover:scale-110 transition-transform duration-500 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" style={{ border: `1.5px solid ${item.color}25` }}>
-											<div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-black" style={{ backgroundColor: item.color }}>
-												{React.cloneElement(item.icon as React.ReactElement, { className: 'w-7 h-7 sm:w-10 sm:h-10' })}
-											</div>
-										</div>
-									</div>
-
-									{/* Label Below (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
-										<div className="w-[1px] h-10 bg-slate-200 mb-4" />
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-									</div>
-
-									{/* Mobile Label */}
-									<div className="lg:hidden mt-8 text-center px-4">
-										<h3 className="font-bold text-slate-900 text-lg mb-1.5 tracking-tight">{item.title}</h3>
-										<p className="text-sm text-slate-500 font-normal leading-relaxed">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-			<Industries />
-
-			{/* ─── AI Implementation Process Section ─── */}
-			<section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light — softened, no pulse */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Implementation <span className="text-white">Roadmap</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Our systematic methodology for building high-speed, secure, and resilient infrastructure.
-						</p>
-					</div>
-					<div className={`mt-8 sm:mt-12 border border-white/[0.08] rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-							{[
-								{ id: "01", title: "Infrastructure Audit", desc: "We dive deep into your codebase and server infrastructure to identify bottlenecks and operational silos.", color: "#B6FF00", icon: <Eye className="w-8 h-8" /> },
-								{ id: "02", title: "Architecture Design", desc: "Architecting custom CI/CD pipelines (GitHub Actions, Jenkins, GitLab) mapping from commit to deployment.", color: "#B6FF00", icon: <Layout className="w-8 h-8" /> },
-								{ id: "03", title: "IaC Implementation", desc: "Writing Terraform or CloudFormation code to dynamically spawn staging and production environment safely.", color: "#B6FF00", icon: <Code className="w-8 h-8" /> },
-								{ id: "04", title: "Security Integration", desc: "Embedding automated scans and vulnerability checks (DevSecOps) within the automated deployment pipeline.", color: "#B6FF00", icon: <Shield className="w-8 h-8" /> },
-								{ id: "05", title: "Scale Deployment", desc: "Executing the automated build/deploy cycle across multiple regions with zero-downtime and rollback safety.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> },
-								{ id: "06", title: "Monitoring & Insight", desc: "Implementing Datadog, Prometheus, or Grafana for total real-time insight into performance and production scale.", color: "#B6FF00", icon: <Activity className="w-8 h-8" /> }
-							].map((step, index) => (
-								<div
-									key={step.id}
-									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-colors duration-300 hover:bg-white/[0.025]
-										${index % 3 !== 2 ? 'lg:border-r border-white/[0.08]' : ''} 
-										${index < 3 ? 'lg:border-b border-white/[0.08]' : ''}
-										${index % 2 === 0 ? 'md:max-lg:border-r border-white/[0.08]' : ''}
-										${index < 4 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
-										${index < 5 ? 'max-md:border-b border-white/[0.08]' : ''}`}
-								>
-									<div className="text-xl sm:text-2xl font-black mb-4 tracking-tighter" style={{ color: step.color }}>
-										{step.id}
-									</div>
-
-									<div className="flex items-center gap-3 w-full justify-center mb-4">
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-										<div className="text-white group-hover:scale-110 transition-transform duration-300">
-											{React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
-										</div>
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-									</div>
-
-									<h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
-									<p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
-
-									{/* Corner accents */}
-									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Why Choose Us Section ─── */}
-			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
-				{/* Refined ambient left wash */}
-				<div className="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-slate-50/60 to-transparent pointer-events-none" />
-
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black leading-[1.2]">
-								Why Choose <span className="text-black">Velnix Solutions?</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
-							Mastery of cloud dynamics and systemic efficiency for world-class digital operations.
-						</p>
-					</div>
-
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Workspace Image */}
-						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-							<div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/WHY-CHOOSE-US.jpg"
-									alt="Why Choose Us"
-									className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
-							</div>
-						</div>
-
-						{/* Right: Numbered List */}
-						<div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							{[
-								{
-									num: "01",
-									title: "Comprehensive Architecture Audit",
-									desc: "We dive deep into your existing environment to expose infrastructural bottlenecks and wasteful operational silos.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "02",
-									title: "Toolchain Agnosticism",
-									desc: "From Jenkins and GitHub actions to Kubernetes and Terraform, we use the best tools for your specific custom cloud environment.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "03",
-									title: "High Availability Focus",
-									desc: "Creating redundant subnets, automated load balancing, and failover strategies to guarantee 99.99% system uptime.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "04",
-									title: "Cloud Cost Optimization",
-									desc: "We right-size cloud resources and terminate orphaned instances automatically to dramatically lower monthly AWS/GCP bills.",
-									color: "bg-[#B6FF00]"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.08}s` }}>
-									<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-none flex items-center justify-center text-black font-black text-sm sm:text-base shadow-[0_4px_16px_rgba(182,255,0,0.25)] group-hover:shadow-[0_6px_24px_rgba(182,255,0,0.35)] group-hover:scale-105 transition-all duration-300`}>
-										{item.num}
-									</div>
-									<div className="pt-0.5">
-										<h3 className="font-bold text-[#0a0435] text-base sm:text-lg mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
-										<p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<AIOnboardingProcess
-				serviceName="devops consulting"
-				steps={[
-					{
-						icon: <Mail className="h-8 w-8" />,
-						title: 'Contact Us',
-						description: 'Reach out to start your DevOps transformation. Share your current infrastructure challenges so we can prepare a tailored strategy.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Brain className="h-8 w-8" />,
-						title: 'Infrastructure Discovery',
-						description: 'Schedule a session with our DevOps engineers. We\'ll audit your codebase, server setup, and CI/CD limitations.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Target className="h-8 w-8" />,
-						title: 'Strategic Roadmap',
-						description: 'Based on the audit, we deliver a comprehensive proposal outlining the toolchain, migration path, and automation scope.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Zap className="h-8 w-8" />,
-						title: 'Launch & Automation',
-						description: 'Once approved, we implement IaC, build automated pipelines, and handover a fully optimized, scalable infrastructure.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-				]}
-			/>
-
-			<LatestBlogs />
-
-			{/* ─── FAQ Section ─── */}
-			<section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-				{/* Top rule */}
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200/80" />
-
-				<div className="max-w-4xl mx-auto">
-					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Frequently Asked <span className="text-black">Questions</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Common questions about our DevOps lifecycle, cloud management, and infrastructure security.
-						</p>
-					</div>
-					<div className="space-y-2.5">
-						{faqData.map((faq, index) => (
-							<div
-								key={index}
-								className={`border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_4px_20px_rgba(182,255,0,0.2)] group ${openIndex === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
-								style={openIndex === index ? {
-									boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
-								} : {}}
-							>
-								<button
-									onClick={() => toggleFAQ(index)}
-									className={`w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 ${openIndex === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
-								>
-									<div className="flex items-center justify-between w-full">
-										<h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-slate-900'}`}>
-											{faq.question}
-										</h3>
-										{openIndex === index ? (
-											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
-										) : (
-											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
-										)}
-									</div>
-								</button>
-
-								{openIndex === index && (
-									<div className="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed border-t border-slate-100 bg-white">
-										<div className="pt-4 font-normal">{faq.answer}</div>
-									</div>
-								)}
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<Footer />
-		</div>
-	);
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20"><Testimonials /></section>
+          <section className="mb-8 sm:mb-20"><TechnologyStack /></section>
+          <section className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"><div className="relative z-10"><div className="mb-14 sm:mb-18"><div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />CLOUD & DEVOPS OUTCOMES</div><h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">Reliable Foundations for <span style={{ color: C.lime }}>Software in Production.</span></h2><p className="max-w-2xl text-sm sm:text-base leading-8" style={{ color: C.wa(0.64) }}>Cloud and DevOps practices create value when infrastructure, delivery workflows, and operations are designed to work together.</p></div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">{benefits.map(benefit => <div key={benefit.num} className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden" style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}><div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none" style={{ color: C.wa(0.04) }} aria-hidden="true">{benefit.num}</span><h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">{benefit.title}</h3><p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>{benefit.description}</p><div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]"><span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>{benefit.metric}</span><span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>{benefit.metricLabel}</span></div></div>)}</div></div></section>
+          <section className="mb-8 sm:mb-20"><LatestBlogs /></section>
+          <FAQ items={faqData.map(({ q, a }, index) => ({ id: `cloud-devops-faq-${index + 1}`, question: q, answer: a }))} />
+        </div>
+        <CTAExamples className="!pb-8 sm:!pb-10" />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default DevOps;

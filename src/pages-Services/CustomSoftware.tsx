@@ -1,527 +1,191 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus, Server, Settings, Link2, MonitorPlay, ShoppingCart, Layout } from "lucide-react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion as useFramerReducedMotion, useTransform } from "framer-motion";
+import { ArrowRight, Blocks, Boxes, Code2, Database, GitBranch, Layers, Lock, Search, Server, ShieldCheck, Workflow, Zap } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
+import CTAExamples from "../components/CTAExamples";
+import FAQ from "../components/FAQ";
+import { IMPACT_STATS } from "../components/OriginStory";
+import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
+import EngagementModels from "../components/EngagementModels";
+import Testimonials from "../components/Testimonials";
+import PortfolioSection from "../components/PortfolioSection";
 
-// Custom Software Services
-const customSoftwareServices = [
-	{
-		id: 1,
-		title: "Enterprise Applications",
-		description: "Custom software designed for large organizations to enhance workflow efficiency, streamline operations, and improve decision-making with enterprise-grade stability.",
-		icon: <Server className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 2,
-		title: "SaaS Applications",
-		description: "Feature-rich software-as-a-service platforms that users can access remotely, supporting subscription-based business models and scalable infrastructure.",
-		icon: <MonitorPlay className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 3,
-		title: "HIPAA Compliant Applications",
-		description: "Secure applications compliant with HIPAA regulations, ensuring confidentiality and protection of medical data through advanced encryption and security measures.",
-		icon: <Shield className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 4,
-		title: "E-Commerce Applications",
-		description: "Tailored e-commerce platforms with shopping carts, secure payment gateways, inventory management, and customer portals for a seamless shopping experience.",
-		icon: <ShoppingCart className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 5,
-		title: "Third-Party Integrations",
-		description: "Seamless integration with external systems, APIs, and third-party applications to enhance functionality and streamline operations across your entire tech stack.",
-		icon: <Link2 className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 6,
-		title: "Custom ERP Systems",
-		description: "Enterprise Resource Planning software that centralizes finance, HR, inventory, and other critical business functions into a single, cohesive dashboard.",
-		icon: <Settings className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
+const C = {
+  black: "#050505",
+  graphite: "#111111",
+  graphiteLight: "#181818",
+  white: "#FFFFFF",
+  lime: "#B6FF00",
+  green: "#7DCC00",
+  la: (opacity: number) => `rgba(182, 255, 0, ${opacity})`,
+  wa: (opacity: number) => `rgba(255, 255, 255, ${opacity})`,
+};
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const AnimatedImpactNumber = ({ number }: { number: string }) => {
+  const reduceMotion = useFramerReducedMotion();
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const display = useTransform(count, value => `${Math.round(value)}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+  useEffect(() => {
+    if (!isInView) return;
+    if (reduceMotion) { count.set(target); return; }
+    const controls = animate(count, target, { duration: 1.8, ease: "easeOut" });
+    return () => controls.stop();
+  }, [count, isInView, reduceMotion, target]);
+  return <motion.span ref={ref} aria-label={number}>{display}</motion.span>;
+};
+
+const capabilities = [
+  { id: "web-applications", num: "01", title: "Custom Web Applications", description: "Purpose-built web products designed around your users, business rules, and day-to-day workflows.", icon: Code2 },
+  { id: "saas-platforms", num: "02", title: "SaaS & Customer Portals", description: "Develop multi-user platforms, customer portals, and subscription products with clear product foundations.", icon: Layers },
+  { id: "internal-tools", num: "03", title: "Internal Tools & Workflow Systems", description: "Replace spreadsheet-heavy processes and disconnected tools with software that supports how teams work.", icon: Workflow },
+  { id: "apis-integrations", num: "04", title: "APIs & System Integrations", description: "Connect applications, databases, and third-party services through maintainable API-driven architecture.", icon: GitBranch },
+  { id: "enterprise-systems", num: "05", title: "Business & Enterprise Software", description: "Build secure, role-aware systems for complex operations, shared data, and evolving organizational needs.", icon: Boxes },
+  { id: "modernization", num: "06", title: "Modernization & AI Features", description: "Extend legacy systems and add carefully scoped automation or AI capabilities where they serve the product.", icon: Zap },
+];
+
+const valueStages = [
+  { num: "01", title: "Workflow Mismatch", desc: "Off-the-shelf tools rarely fit every rule, handoff, or customer need in your operation." },
+  { num: "02", title: "Disconnected Systems", desc: "Teams duplicate data across software that does not share context or process state." },
+  { num: "03", title: "Spreadsheet Operations", desc: "Manual workarounds limit visibility and make repeatable processes harder to scale." },
+  { num: "04", title: "Legacy Constraints", desc: "Older applications can slow change, block integrations, and make maintenance costly." },
+  { num: "05", title: "Purpose-Built Software", desc: "A product designed around your business connects people, data, and workflows in one system." },
+];
+
+const deliveryStages = [
+  { num: "01", title: "Discover & Define", description: "Map users, workflows, constraints, integrations, and outcomes to define a practical product scope." },
+  { num: "02", title: "Design & Architect", description: "Shape user journeys, data models, application architecture, access rules, and delivery priorities." },
+  { num: "03", title: "Build & Integrate", description: "Develop in reviewable increments and connect the application to required business systems and APIs." },
+  { num: "04", title: "Launch & Improve", description: "Validate, deploy, support adoption, monitor system health, and plan improvements from real usage." },
+];
+
+const benefits = [
+  { num: "01", metric: "Purpose-built", metricLabel: "for your workflow", title: "A Better Operational Fit", description: "Build around your actual processes instead of forcing teams to work around generic software limits." },
+  { num: "02", metric: "Connected", metricLabel: "business systems", title: "Joined-Up Operations", description: "Link applications and services so information moves reliably between teams and tools." },
+  { num: "03", metric: "Clearer", metricLabel: "process visibility", title: "More Useful Workflows", description: "Give teams a shared view of tasks, records, ownership, and progress through business processes." },
+  { num: "04", metric: "Maintainable", metricLabel: "software foundations", title: "Sustainable Change", description: "Use clear architecture and code practices that make the product easier to support and extend." },
+  { num: "05", metric: "Ready to grow", metricLabel: "with the business", title: "Scalable Systems", description: "Plan for growing users, data, and integrations without overbuilding before the need exists." },
+  { num: "06", metric: "Secure", metricLabel: "by design", title: "Responsible Access", description: "Build authentication, permissions, and data handling into the product architecture from the start." },
 ];
 
 const faqData = [
-	{
-		question: "Why should I choose custom software over off-the-shelf solutions?",
-		answer: "Custom software is designed meticulously around your distinct business workflows rather than forcing you to adjust your business to fit a generic product. It provides a unique competitive edge, uncompromised data ownership, scalability, and no recurring licensing fees per user.",
-	},
-	{
-		question: "Who owns the intellectual property (IP) of the software?",
-		answer: "Upon project completion and full final payment, you assume 100% complete ownership of the source code, databases, and all related intellectual property rights. We impose no lock-in terms.",
-	},
-	{
-		question: "Will you integrate the new software with our existing tools?",
-		answer: "Absolutely. One of the main advantages of bespoke software is structural agility. We build custom APIs and microservices to integrate natively with your current CRMs, payment gateways, and third-party tools seamlessly.",
-	},
-	{
-		question: "What development methodology do you use?",
-		answer: "We employ an Agile development methodology heavily structured around 2-week sprints. This guarantees continuous delivery, unparalleled transparency into the development process, and allows us to pivot rapidly alongside your changing requirements.",
-	},
-	{
-		question: "Do you provide post-launch support and maintenance?",
-		answer: "Yes, we offer comprehensive ongoing Service Level Agreements (SLAs) that encompass version updates, critical security patching, performance monitoring, scaling infrastructure, and feature additions.",
-	},
+  { q: "When should a business build custom software?", a: "Custom software can make sense when important workflows do not fit available products, teams rely on manual workarounds, integrations are limited, or a product idea requires capabilities you cannot configure elsewhere. We assess the problem and alternatives before recommending a build." },
+  { q: "What types of software does Velnix develop?", a: "We build custom web applications, SaaS platforms, internal tools, customer portals, workflow systems, API-driven applications, database-backed products, and modernization projects." },
+  { q: "Can a new application integrate with our current systems?", a: "Yes. We plan integrations around available APIs and system constraints, then design data flows, permissions, failure handling, and ownership for each connection." },
+  { q: "How do you approach software security and scalability?", a: "Security and scale are addressed through architecture decisions such as authentication, role-based access, data handling, testing, and deployment design. The implementation is sized to current needs while allowing for likely growth." },
+  { q: "Which technologies can you use?", a: "The existing Velnix stack includes React, Next.js, TypeScript, Node.js, FastAPI, PostgreSQL, REST APIs, Docker, and AWS, Azure, and Google Cloud. We choose technologies to suit the product, team, and operating environment." },
+  { q: "Do you support software after launch?", a: "Yes. Post-launch support can include issue resolution, security and dependency updates, monitoring, performance work, user feedback, and planned feature improvements." },
 ];
 
 const CustomSoftware: React.FC = () => {
-	const [isVisible, setIsVisible] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeTimelineStep, setActiveTimelineStep] = useState(0);
+  const shouldReduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
 
-	const toggleFAQ = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index);
-	};
+  useEffect(() => {
+    let frame = 0;
+    const updateScrollProgress = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const bounds = hero.getBoundingClientRect();
+      const traveled = Math.max(0, -bounds.top);
+      const range = Math.max(1, bounds.height - window.innerHeight);
+      hero.style.setProperty("--hero-scan-progress", `${Math.min(1, traveled / range) * 500}%`);
+    };
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => { frame = 0; updateScrollProgress(); });
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, []);
 
-	useEffect(() => {
-		setIsVisible(true);
-	}, []);
+  return (
+    <div className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black" style={{ background: C.black, color: C.white }}>
+      <Navbar isDark={true} />
+      <style>{`@keyframes velnix-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
-	return (
-		<div className="min-h-screen bg-white flex flex-col">
-			<Navbar />
+      <section id="hero" ref={heroRef} className="relative isolate w-full overflow-hidden" style={{ background: C.black }} aria-label="Velnix Custom Software Development hero section">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: "radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)", filter: "blur(10px)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="w-full flex flex-col items-start text-left">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />Custom Software Engineering</motion.div>
+              <motion.h1 initial={shouldReduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.65, ease }} className="mb-5 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Software Built Around <span style={{ color: C.lime }}>How Your Business Works.</span></motion.h1>
+              <motion.p initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.65, ease }} style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: C.wa(0.72), lineHeight: 1.75, maxWidth: "56ch", marginBottom: "2.5rem", fontWeight: 400 }}>Velnix designs and builds custom software around real business requirements, connecting people, processes, and systems in secure products that can evolve with your operation.</motion.p>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.55, ease }} className="flex flex-wrap items-center gap-4 mb-6">
+                <Link to="/contact" className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300" style={{ background: C.lime, color: C.black, fontSize: "0.9rem", padding: "0.85rem 1.75rem", textDecoration: "none", border: `1px solid ${C.la(0.5)}`, boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`, lineHeight: 1 }} onMouseEnter={event => { event.currentTarget.style.background = C.green; event.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`; }} onMouseLeave={event => { event.currentTarget.style.background = C.lime; event.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`; }}>
+                  <span aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ width: "200%", left: "-50%", background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)", animation: "velnix-shimmer 2.8s linear infinite", willChange: "transform" }} /><span className="relative z-10">Plan Your Software Project</span><ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
+                </Link>
+                <a href="#capabilities" className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300" style={{ fontSize: "0.9rem", fontWeight: 700, color: C.white, borderColor: C.wa(0.25), background: C.wa(0.04), textDecoration: "none" }} onMouseEnter={event => { event.currentTarget.style.borderColor = C.lime; event.currentTarget.style.color = C.lime; event.currentTarget.style.background = C.la(0.08); }} onMouseLeave={event => { event.currentTarget.style.borderColor = C.wa(0.25); event.currentTarget.style.color = C.white; event.currentTarget.style.background = C.wa(0.04); }}>Explore What We Build<ArrowRight size={15} /></a>
+              </motion.div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.55, ease }} className="w-full flex items-center gap-6 sm:gap-10 pt-6" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
+                <div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Purpose-built</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>For Your Workflows</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Connected</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>To Your Systems</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Maintainable</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Built to Evolve</span></div>
+              </motion.div>
+            </div>
+            <motion.div className="relative flex items-center justify-center" initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease }}><div className="relative"><img src="/image/Servies/service-page image-hero.png" alt="Custom software application development" className="w-full max-w-2xl" /></div></motion.div>
+          </div>
+        </div>
+      </section>
 
-			{/* ─── Hero Section ─── */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
-				{/* Background Image */}
-				<div className="absolute inset-0 bg-[url('/image/pages_img/custom-software-development.png')] bg-cover bg-center opacity-60 sm:opacity-70" />
+      <motion.div initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.65, delay: 0.15, ease }} className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16">
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">{IMPACT_STATS.map(({ number, label }, index) => <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">{index > 0 && <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />}<div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl"><AnimatedImpactNumber number={number} /></div><p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">{label}</p></div>)}</div>
+      </motion.div>
 
-				{/* Layered gradient: deep slate on left fades to transparent — refined vignette */}
-				<div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 sm:via-slate-950/55 to-transparent" />
+      <main className="flex-grow relative z-10 pt-14 pb-0 sm:pt-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20 relative">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }} aria-hidden="true" />
+            <div className="relative z-10 w-full py-4 sm:py-8 lg:py-10"><div className="relative z-10">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />THE CASE FOR CUSTOM SOFTWARE</motion.div>
+              <div className="mb-10"><motion.h2 initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1, ease }} className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">From Business Requirements to <span style={{ color: C.lime }}>Production Software.</span></motion.h2><motion.p initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2, ease }} className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">Custom software is valuable when a product needs to reflect real workflows, connect systems, and support changes that off-the-shelf tools cannot handle well.</motion.p></div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2, ease }} className="relative grid w-full grid-cols-1 gap-10 sm:grid-cols-5 sm:gap-0 sm:pt-2">
+                <div className="absolute left-[4%] right-[4%] top-[2.75rem] hidden h-[2px] sm:block" style={{ background: `linear-gradient(90deg, ${C.la(0.45)}, ${C.lime}, ${C.la(0.45)})` }} aria-hidden="true" />
+                <motion.div initial={{ left: "0%" }} animate={shouldReduce ? { left: "50%" } : { left: ["0%", "25%", "50%", "75%", "100%"] }} transition={shouldReduce ? { duration: 0 } : { duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.2, 0.4, 0.6, 1] }} onUpdate={({ left }) => { const progress = Number.parseFloat(String(left)) / 100; const nextStep = progress >= 0.75 ? 4 : progress >= 0.5 ? 3 : progress >= 0.25 ? 2 : 0; setActiveTimelineStep(current => current === nextStep ? current : nextStep); }} className="pointer-events-none absolute top-[calc(2.75rem-4px)] z-10 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-[#B6FF00] shadow-[0_0_14px_rgba(182,255,0,0.85)] sm:block" style={{ left: "4%" }} aria-hidden="true" />
+                {valueStages.map(({ num, title, desc }, index) => <motion.div key={num} initial={shouldReduce ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.3 + index * 0.08, ease }} className="group relative z-10 flex min-h-[188px] flex-col items-center text-center sm:px-3" onMouseEnter={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { circle.style.borderColor = C.lime; circle.style.boxShadow = `0 0 24px ${C.la(0.3)}`; } }} onMouseLeave={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { const active = circle.dataset.active === "true"; circle.style.borderColor = active ? C.lime : C.la(0.5); circle.style.boxShadow = active ? `0 0 20px ${C.la(0.22)}, inset 0 0 0 5px ${C.wa(0.025)}` : "none"; } }}><div data-step-circle data-active={activeTimelineStep === index ? "true" : "false"} className={`mx-auto mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border font-mono text-xs font-bold tracking-[0.16em] transition-all duration-300 ${activeTimelineStep === index ? "text-[#050505]" : "text-[#B6FF00]"}`} style={{ borderColor: activeTimelineStep === index ? C.lime : C.la(0.5), background: activeTimelineStep === index ? C.lime : C.black, boxShadow: activeTimelineStep === index ? `0 0 20px ${C.la(0.3)}, inset 0 0 0 5px ${C.wa(0.08)}` : `inset 0 0 0 5px ${C.wa(0.025)}` }}>{num}</div><h3 className={`mb-3 text-xl font-bold tracking-tight transition-colors duration-300 ${activeTimelineStep === index ? "text-[#B6FF00]" : "text-white group-hover:text-[#B6FF00]"}`}>{title}</h3><p className="mx-auto max-w-[22ch] text-[13px] leading-6 font-light text-white/55">{desc}</p></motion.div>)}
+              </motion.div>
+            </div></div>
+          </section>
 
-				{/* Subtle bottom scrim for clean section transition */}
-				<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-950/60 to-transparent" />
+          <section id="capabilities" className="mb-6 sm:mb-12 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-6"><div><div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />WHAT WE BUILD</div><h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">Software for <span style={{ color: C.lime }}>Your Operating Reality.</span></h2><p className="max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">From customer-facing platforms to internal systems, we build maintainable software that fits your requirements and connects to the tools your business relies on.</p></div></div>
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">{capabilities.map((capability, index) => { const Icon = capability.icon; return <motion.div key={capability.id} initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.6, delay: index * 0.08, ease }} className="group relative flex min-h-[230px] flex-col border-b border-r border-white/10 bg-[#111111]/80 p-5 transition-colors duration-300 hover:bg-[#181818] sm:min-h-[250px] sm:p-6"><div className="mb-5 flex items-start justify-between"><div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#B6FF00] text-[#B6FF00] transition-colors group-hover:bg-[#B6FF00] group-hover:text-[#050505]"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></div><span className="font-mono text-xs font-semibold tracking-[0.16em] text-white/35">{capability.num}</span></div><h3 className="mb-2 font-display text-xl font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{capability.title}</h3><p className="text-sm leading-6 text-white/60">{capability.description}</p></motion.div>; })}</div>
+          </section>
+          <section className="mb-8 sm:mb-20"><Industries /></section>
+          <section className="mb-8 sm:mb-20"><EngagementModels /></section>
 
-				<div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-					<div className="text-white space-y-5 sm:space-y-7 text-left max-w-3xl">
-						<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight text-white">
-							Custom Software Development
-						</h1>
-						<p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-							Unlock your business’s full potential with our Custom Software Development Services. We deliver tailored digital solutions designed to boost efficiency, streamline operations, and drive measurable growth.
-						</p>
-					</div>
-				</div>
-			</section>
+          <section className="relative mb-12 overflow-hidden bg-[#050505] py-12 font-display sm:mb-16 sm:py-16 lg:mb-20 lg:py-20"><div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div className="mb-6 text-left lg:mb-8"><div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"><span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />PROCESS</div><h2 className="text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Our Software <span className="text-[#B6FF00]">Delivery Steps.</span></h2><p className="mt-4 max-w-xl text-left text-lg leading-8 text-white/65 sm:text-xl">Discover, design, build, integrate, launch, and improve through clear milestones and regular product feedback.</p></div><div>{deliveryStages.map((step, index) => <motion.div key={step.num} initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.08, ease }} className="group border-b border-white/10 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:py-9"><div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[3rem_1fr] sm:gap-6 lg:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)_2rem] lg:items-center lg:gap-8"><span className="font-mono text-lg font-bold text-[#B6FF00]">{step.num}</span><h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{step.title}</h3><p className="max-w-2xl text-sm leading-6 text-white/65 sm:text-base lg:text-left">{step.description}</p><div className="hidden items-center justify-end lg:flex"><ArrowRight className="h-5 w-5 text-[#B6FF00] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" /></div></div></motion.div>)}</div></div></section>
+        </div>
 
-			{/* ─── Custom Software Capabilities Section ─── */}
-			<section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
-				{/* Refined ambient wash — right side only, barely perceptible */}
-				<div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
+        <PortfolioSection />
 
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Content */}
-						<div className={`space-y-7 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<div className="text-left space-y-4 mb-2">
-								<div className="flex flex-col items-start gap-3 sm:gap-4">
-									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.15]">
-										Revolutionize Your Business with{" "}
-										<span className="text-slate-900">Custom Software</span>
-									</h2>
-								</div>
-								<p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
-									Bridge the gap between vision and reality with bespoke software solutions tailored to your unique organizational needs.
-								</p>
-							</div>
-
-							<div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
-								<p>
-									Velnix Solutions is a leading custom software development company, providing specialized services for organizations of all sizes. Our team of experts follows a rigorous development process to design, build, deploy, and maintain software solutions tailored to each client's unique requirements.
-								</p>
-								<p>
-									We focus on both custom-built solutions and modifications to commercial off-the-shelf software, enabling fully personalized experiences for your business. With a global presence, we rapidly deliver high-quality custom software solutions that help businesses achieve their digital goals and gain a competitive edge.
-								</p>
-							</div>
-
-							<div className="pt-2">
-								<Link
-									to="/contact"
-									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-black transition-all duration-300 bg-[#B6FF00] rounded-none hover:bg-[#a8ef00] hover:shadow-[0_6px_28px_rgba(182,255,0,0.35)] active:scale-95"
-								>
-									<span className="relative flex items-center gap-2 text-sm sm:text-base">
-										Contact Expert
-										<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-									</span>
-									{/* Sheen sweep */}
-									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-								</Link>
-							</div>
-						</div>
-
-						{/* Right: Custom Software Image */}
-						<div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
-							<div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/Revolutionize Your Business with Custom Software.png"
-									alt="Custom Software Development Services"
-									className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Services Section ─── */}
-			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Our Development <span className="text-white">Expertise</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Comprehensive software development services designed to drive operational excellence and business growth.
-						</p>
-					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{customSoftwareServices.map((service, index) => (
-							<div
-								key={service.id}
-								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
-								style={{ animationDelay: `${index * 0.08}s` }}
-							>
-								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
-									{service.icon}
-								</div>
-								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
-									{service.title}
-								</h3>
-								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
-									{service.description}
-								</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Strategic Benefits Infographic Section ─── */}
-			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
-				{/* Refined technical dot grid — lighter, more breathable */}
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Strategic <span className="text-slate-900">Advantages</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Unlocking long-term value through tailored digital transformation and architectural precision.
-						</p>
-					</div>
-
-					<div className="relative px-4">
-						{/* Horizontal Connecting Line (Desktop Only) */}
-						<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 z-0" />
-
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
-							{[
-								{
-									title: "Customization",
-									desc: "Software built exactly for your workflows, not a generic product that forces you to adapt.",
-									icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Scalability",
-									desc: "Future-proof solutions that grow with your business without per-user licensing bottlenecks.",
-									icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Efficiency",
-									desc: "Seamless automation of manual tasks that significantly boosts team productivity and ROI.",
-									icon: <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Integration",
-									desc: "Native connectivity with your existing tech ecosystem for a unified operational flow.",
-									icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex flex-col items-center">
-									{/* Label Above (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-										<div className="w-[1px] h-10 bg-slate-200 mt-4" />
-										<div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
-									</div>
-
-									{/* The Circular Node */}
-									<div className={`relative flex items-center justify-center transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-50 opacity-0'}`} style={{ transitionDelay: `${idx * 0.1}s` }}>
-										{/* Concentric Rings */}
-										<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-											<div className="w-24 h-24 sm:w-32 sm:h-32 border border-slate-100 rounded-full" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-l-transparent border-r-transparent rotate-45" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-t-transparent border-b-transparent -rotate-12" />
-										</div>
-
-										{/* Inner Circle Node */}
-										<div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center z-20 hover:scale-110 transition-transform duration-500 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" style={{ border: `1.5px solid ${item.color}25` }}>
-											<div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-black" style={{ backgroundColor: item.color }}>
-												{React.cloneElement(item.icon as React.ReactElement, { className: 'w-7 h-7 sm:w-10 sm:h-10' })}
-											</div>
-										</div>
-									</div>
-
-									{/* Label Below (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
-										<div className="w-[1px] h-10 bg-slate-200 mb-4" />
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-									</div>
-
-									{/* Mobile Label */}
-									<div className="lg:hidden mt-8 text-center px-4">
-										<h3 className="font-bold text-slate-900 text-lg mb-1.5 tracking-tight">{item.title}</h3>
-										<p className="text-sm text-slate-500 font-normal leading-relaxed">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<Industries />
-
-			{/* ─── Development Methodology Section ─── */}
-			<section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light — softened, no pulse */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								Development <span className="text-white">Methodology</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Our systematic approach to building high-performance, secure, and user-centric software solutions.
-						</p>
-					</div>
-					<div className={`mt-8 sm:mt-12 border border-white/[0.08] rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-							{[
-								{ id: "01", title: "Discovery & Planning", desc: "Analyze current operations to identify pain points and high-impact software requirements.", color: "#B6FF00", icon: <Eye className="w-8 h-8" /> },
-								{ id: "02", title: "Design & Architecture", desc: "System architects design a robust, scalable system architecture and intuitive UX.", color: "#B6FF00", icon: <Layout className="w-8 h-8" /> },
-								{ id: "03", title: "Agile Implementation", desc: "Building your solution in transparent sprints, ensuring continuous delivery and immediate feedback loops.", color: "#B6FF00", icon: <Code className="w-8 h-8" /> },
-								{ id: "04", title: "Deployment & Optimization", desc: "Launch your software and empower your team with training, plus continuous monitoring and updates.", color: "#B6FF00", icon: <Settings className="w-8 h-8" /> }
-							].map((step, index) => (
-								<div
-									key={step.id}
-									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-colors duration-300 hover:bg-white/[0.025]
-										${index % 4 !== 3 ? 'lg:border-r border-white/[0.08]' : ''} 
-										${index % 2 === 0 ? 'md:max-lg:border-r border-white/[0.08]' : ''}
-										${index < 2 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
-										${index < 3 ? 'max-md:border-b border-white/[0.08]' : ''}`}
-								>
-									<div className="text-xl sm:text-2xl font-black mb-4 tracking-tighter" style={{ color: step.color }}>
-										{step.id}
-									</div>
-
-									<div className="flex items-center gap-3 w-full justify-center mb-4">
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-										<div className="text-white group-hover:scale-110 transition-transform duration-300">
-											{React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
-										</div>
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-									</div>
-
-									<h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
-									<p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
-
-									{/* Corner accents */}
-									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Why Choose Us Section ─── */}
-			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
-				{/* Refined ambient left wash */}
-				<div className="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-slate-50/60 to-transparent pointer-events-none" />
-
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black leading-[1.2]">
-								Why Choose <span className="text-black">Velnix Solutions?</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
-							Technical excellence and strategic partnership focused on delivering high-impact software solutions.
-						</p>
-					</div>
-
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Workspace Image */}
-						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-							<div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/WHY-CHOOSE-US.jpg"
-									alt="Why Choose Velnix Solutions"
-									className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
-							</div>
-						</div>
-
-						{/* Right: Numbered List */}
-						<div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							{[
-								{
-									num: "01",
-									title: "Full-Stack Technical Expertise",
-									desc: "Our specialized team understands modern front-end, back-end, and database technologies, ensuring high-performance software built with industry best practices.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "02",
-									title: "Transparent Agile Process",
-									desc: "We use sprints to provide continuous delivery and complete transparency, allowing for rapid iterations and alignment with your goals.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "03",
-									title: "100% IP & Data Ownership",
-									desc: "Security and ownership are paramount. Upon completion, you assume total ownership of the source code and all intellectual property rights.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "04",
-									title: "Industry-Specific Experience",
-									desc: "With a proven track record across healthcare, e-commerce, and enterprise sectors, we bring deep domain knowledge to every project.",
-									color: "bg-[#B6FF00]"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.08}s` }}>
-									<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-none flex items-center justify-center text-black font-black text-sm sm:text-base shadow-[0_4px_16px_rgba(182,255,0,0.25)] group-hover:shadow-[0_6px_24px_rgba(182,255,0,0.35)] group-hover:scale-105 transition-all duration-300`}>
-										{item.num}
-									</div>
-									<div className="pt-0.5">
-										<h3 className="font-bold text-[#0a0435] text-base sm:text-lg mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
-										<p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-
-			<AIOnboardingProcess serviceName="software development" />
-
-			<LatestBlogs />
-
-			{/* ─── FAQ Section ─── */}
-			<section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-				{/* Top rule */}
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200/80" />
-
-				<div className="max-w-4xl mx-auto">
-					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Frequently Asked <span className="text-black">Questions</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Common questions about our custom software development lifecycle and post-launch support.
-						</p>
-					</div>
-					<div className="space-y-2.5">
-						{faqData.map((faq, index) => (
-							<div
-								key={index}
-								className={`border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_4px_20px_rgba(182,255,0,0.2)] group ${openIndex === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
-								style={openIndex === index ? {
-									boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
-								} : {}}
-							>
-								<button
-									onClick={() => toggleFAQ(index)}
-									className={`w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 ${openIndex === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
-								>
-									<div className="flex items-center justify-between w-full">
-										<h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-slate-900'}`}>
-											{faq.question}
-										</h3>
-										{openIndex === index ? (
-											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
-										) : (
-											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
-										)}
-									</div>
-								</button>
-
-								{openIndex === index && (
-									<div className="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed border-t border-slate-100 bg-white">
-										<div className="pt-4 font-normal">{faq.answer}</div>
-									</div>
-								)}
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<Footer />
-		</div>
-	);
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20"><Testimonials /></section>
+          <section className="mb-8 sm:mb-20"><TechnologyStack /></section>
+          <section className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"><div className="relative z-10"><div className="mb-14 sm:mb-18"><div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />BUSINESS OUTCOMES</div><h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">Software That Enables <span style={{ color: C.lime }}>Better Ways to Work.</span></h2><p className="max-w-2xl text-sm sm:text-base leading-8" style={{ color: C.wa(0.64) }}>Purpose-built systems bring workflows, teams, and data together while creating a maintainable foundation for future change.</p></div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">{benefits.map(benefit => <div key={benefit.num} className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden" style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}><div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none" style={{ color: C.wa(0.04) }} aria-hidden="true">{benefit.num}</span><h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">{benefit.title}</h3><p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>{benefit.description}</p><div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]"><span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>{benefit.metric}</span><span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>{benefit.metricLabel}</span></div></div>)}</div></div></section>
+          <section className="mb-8 sm:mb-20"><LatestBlogs /></section>
+          <FAQ items={faqData.map(({ q, a }, index) => ({ id: `custom-software-faq-${index + 1}`, question: q, answer: a }))} />
+        </div>
+        <CTAExamples className="!pb-8 sm:!pb-10" />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default CustomSoftware;

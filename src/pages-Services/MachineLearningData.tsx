@@ -1,524 +1,197 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Brain, BarChart3, Target, Users, TrendingUp, Code, ArrowRight, CheckCircle, Shield, Globe, Zap, MessageSquare, Mail, Plus, Minus, Cpu } from "lucide-react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion as useFramerReducedMotion, useTransform } from "framer-motion";
+import { Activity, ArrowRight, BarChart3, Database, GitBranch, TrendingUp, Users } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
+import CTAExamples from "../components/CTAExamples";
+import FAQ from "../components/FAQ";
+import { IMPACT_STATS } from "../components/OriginStory";
+import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
+import EngagementModels from "../components/EngagementModels";
+import Testimonials from "../components/Testimonials";
+import PortfolioSection from "../components/PortfolioSection";
 
-const mlServices = [
-  {
-    id: 1,
-    title: "Predictive Analytics",
-    description: "Forecast business outcomes, customer behavior, and market trends with advanced predictive models for data-driven decision-making.",
-    icon: <BarChart3 className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
-  {
-    id: 2,
-    title: "Classification & Categorization",
-    description: "Automate data classification, content categorization, and intelligent decision support systems across your operations.",
-    icon: <Target className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
-  {
-    id: 3,
-    title: "Recommendation Systems",
-    description: "Deliver personalized product recommendations, content suggestions, and tailored experiences based on user behavior and preferences.",
-    icon: <TrendingUp className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
-  {
-    id: 4,
-    title: "Customer Segmentation",
-    description: "Group customers by behavior, preferences, and value for targeted marketing campaigns and personalized engagement strategies.",
-    icon: <Users className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
-  {
-    id: 5,
-    title: "Natural Language Processing",
-    description: "Extract insights from text data, automate document processing, and enable intelligent text analysis with advanced NLP.",
-    icon: <MessageSquare className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
-  {
-    id: 6,
-    title: "Anomaly Detection",
-    description: "Identify unusual patterns, detect fraud, monitor system health, and prevent issues with intelligent anomaly detection.",
-    icon: <Brain className="h-7 w-7" />,
-    color: "from-[#B6FF00] to-[#B6FF00]/70"
-  },
+const C = {
+  black: "#050505",
+  graphite: "#111111",
+  graphiteLight: "#181818",
+  white: "#FFFFFF",
+  lime: "#B6FF00",
+  green: "#7DCC00",
+  la: (opacity: number) => `rgba(182, 255, 0, ${opacity})`,
+  wa: (opacity: number) => `rgba(255, 255, 255, ${opacity})`,
+};
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const AnimatedImpactNumber = ({ number }: { number: string }) => {
+  const reduceMotion = useFramerReducedMotion();
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const display = useTransform(count, value => `${Math.round(value)}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (reduceMotion) {
+      count.set(target);
+      return;
+    }
+    const controls = animate(count, target, { duration: 1.8, ease: "easeOut" });
+    return () => controls.stop();
+  }, [count, isInView, reduceMotion, target]);
+
+  return <motion.span ref={ref} aria-label={number}>{display}</motion.span>;
+};
+
+const capabilities = [
+  { id: "predictive-analytics", num: "01", title: "Predictive Analytics & Forecasting", description: "Model demand, revenue, customer behavior, and operational patterns to support better planning.", icon: TrendingUp },
+  { id: "classification-regression", num: "02", title: "Classification & Regression", description: "Estimate meaningful outcomes, prioritize cases, and classify events with fit-for-purpose models.", icon: BarChart3 },
+  { id: "recommendations", num: "03", title: "Recommendation Systems", description: "Personalize products, content, and next-best actions using customer and behavioral signals.", icon: Users },
+  { id: "anomaly-detection", num: "04", title: "Anomaly & Risk Detection", description: "Identify unusual activity and emerging operational, quality, or fraud risks earlier.", icon: Activity },
+  { id: "data-engineering", num: "05", title: "Data Pipelines & Features", description: "Prepare reliable data with validation, feature engineering, and repeatable training workflows.", icon: Database },
+  { id: "production-ml", num: "06", title: "Model Deployment & Monitoring", description: "Integrate evaluated models into business systems and monitor performance as data changes.", icon: GitBranch },
+];
+
+const valueStages = [
+  { num: "01", title: "Raw, Fragmented Data", desc: "Important signals are scattered across applications, tables, files, and operational workflows." },
+  { num: "02", title: "Unclear Data Quality", desc: "Missing values, inconsistent definitions, and leakage can undermine model usefulness." },
+  { num: "03", title: "Retrospective Reporting", desc: "Teams see what happened but lack reliable ways to anticipate what may happen next." },
+  { num: "04", title: "Unmeasured Models", desc: "One-off experiments fail to translate into monitored systems people can trust and use." },
+  { num: "05", title: "Predictive Intelligence", desc: "Production-ready models turn governed data into signals that support timely decisions." },
+];
+
+const deliveryStages = [
+  { num: "01", title: "Assess the Data & Use Case", description: "Define the decision to improve, success measures, available data, and baseline performance." },
+  { num: "02", title: "Prepare & Engineer Features", description: "Profile data quality, build repeatable pipelines, and create features suited to the target problem." },
+  { num: "03", title: "Train & Evaluate Models", description: "Compare appropriate approaches and validate accuracy, fairness, robustness, and business fit." },
+  { num: "04", title: "Deploy & Monitor", description: "Integrate predictions into operations and monitor model quality, drift, and business outcomes." },
+];
+
+const benefits = [
+  { num: "01", metric: "Forward-looking", metricLabel: "business planning", title: "Better Forecasts", description: "Use historical and current signals to improve demand, revenue, staffing, and supply planning." },
+  { num: "02", metric: "Earlier", metricLabel: "risk signals", title: "Proactive Decisions", description: "Surface changes and anomalies sooner so teams can investigate and respond with context." },
+  { num: "03", metric: "Evidence-led", metricLabel: "decisions", title: "Operational Intelligence", description: "Bring model outputs into the tools and workflows where business decisions are made." },
+  { num: "04", metric: "Relevant", metricLabel: "experiences", title: "Personalized Services", description: "Apply customer and behavioral insights to tailor recommendations, engagement, and service." },
+  { num: "05", metric: "Repeatable", metricLabel: "data workflows", title: "Improved Efficiency", description: "Automate recurring classification, scoring, and analysis tasks with clear evaluation criteria." },
+  { num: "06", metric: "Monitored", metricLabel: "in production", title: "Reliable ML Systems", description: "Track model behavior and data changes after launch, with clear paths to investigate drift." },
+];
+
+const faqData = [
+  { q: "What is Machine Learning & Data engineering?", a: "Machine learning uses data to learn patterns that can support predictions, classifications, recommendations, and anomaly detection. Production solutions pair model development with dependable data preparation, evaluation, integration, and ongoing monitoring." },
+  { q: "What business problems can machine learning help solve?", a: "Typical use cases include demand and revenue forecasting, customer segmentation, recommendations, lead or risk scoring, quality prediction, and detecting unusual patterns. We start with the decision or workflow to improve, then determine whether ML is appropriate." },
+  { q: "What happens if our data is incomplete or inconsistent?", a: "Data readiness is assessed before model development. We profile sources, identify quality gaps and definitions, and recommend preparation or pipeline work. If the evidence does not support a useful model yet, we make that visible early." },
+  { q: "How do you evaluate a model before production?", a: "We select evaluation methods suited to the use case, establish a baseline, and test on data that reflects expected operating conditions. Evaluation can include predictive quality, calibration, error patterns, robustness, and business impact." },
+  { q: "How are deployed models monitored?", a: "We can monitor service health, input data quality, prediction patterns, model performance, and signs of drift. Alerts and retraining or review processes are designed around the model's role and business risk." },
+  { q: "Which technologies can support our ML system?", a: "The implementation can use technologies already represented in Velnix's stack, including Python, Scikit-learn, TensorFlow, PyTorch, Pandas, NumPy, FastAPI, PostgreSQL, Docker, and major cloud platforms, selected to fit the project." },
 ];
 
 const MachineLearning: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const faqData = [
-    {
-      question: "What is Machine Learning?",
-      answer: "Machine learning uses AI algorithms to analyze data, identify patterns, make predictions, and automate decision-making processes. It powers applications across industries for forecasting, optimization, and intelligent automation.",
-    },
-    {
-      question: "How can machine learning benefit my business?",
-      answer: "ML reduces operational costs, improves accuracy in predictions and analysis, enables data-driven decision-making, automates repetitive tasks, identifies opportunities and risks, and optimizes resource allocation across your organization.",
-    },
-    {
-      question: "Can ML solutions be customized for my industry?",
-      answer: "Yes, machine learning models can be tailored for finance, retail, manufacturing, healthcare, logistics, and any industry, ensuring relevance to your specific business challenges and requirements.",
-    },
-    {
-      question: "Is my data secure with ML integrations?",
-      answer: "Absolutely. We implement enterprise-grade security with robust encryption, access controls, audit trails, and compliance with standards like GDPR and SOC 2 to protect your business data.",
-    },
-    {
-      question: "How do I get started with ML integration?",
-      answer: "Contact us for a consultation. We'll assess your workflows, identify ML opportunities, propose secure solutions, and guide you through seamless integration into your business operations.",
-    },
-  ];
+  const [activeTimelineStep, setActiveTimelineStep] = useState(0);
+  const shouldReduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    let frame = 0;
+    const updateScrollProgress = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const bounds = hero.getBoundingClientRect();
+      const traveled = Math.max(0, -bounds.top);
+      const range = Math.max(1, bounds.height - window.innerHeight);
+      hero.style.setProperty("--hero-scan-progress", `${Math.min(1, traveled / range) * 500}%`);
+    };
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        updateScrollProgress();
+      });
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <Navbar />
+    <div className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black" style={{ background: C.black, color: C.white }}>
+      <Navbar isDark={true} />
+      <style>{`@keyframes velnix-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
-      {/* ─── Hero Section ─── */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-[url('/image/pages_img/Machine-Learning.jpg')] bg-cover bg-center opacity-60 sm:opacity-70" />
-
-        {/* Layered gradient: deep slate on left fades to transparent — refined vignette */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 sm:via-slate-950/55 to-transparent" />
-
-        {/* Subtle bottom scrim for clean section transition */}
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-950/60 to-transparent" />
-
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <div className="text-white space-y-5 sm:space-y-7 text-left max-w-3xl">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight text-white">
-              Machine Learning
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-              Transform your business with intelligent machine learning solutions for predictions, automation, and data-driven decision-making across all industries.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Machine Learning Capabilities Section ─── */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
-        {/* Refined ambient wash — right side only, barely perceptible */}
-        <div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: Content */}
-            <div className={`space-y-7 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              <div className="text-left space-y-4 mb-2">
-                <div className="flex flex-col items-start gap-3 sm:gap-4">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.15]">
-                    The Power of{" "}
-                    <span className="text-slate-900">Machine Learning</span>
-                  </h2>
-                </div>
-                <p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
-                  Revolutionize your business operations with advanced machine learning technology.
-                </p>
-              </div>
-
-              <div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
-                <p>
-                  Our intelligent solutions analyze data, identify patterns, and generate accurate predictions that enhance decision-making, automate processes, and drive innovation across your organization.
-                </p>
-                <p>
-                  Our ML specialists seamlessly integrate machine learning into your workflows, empowering teams with predictive analytics, automated insights, and intelligent recommendations that improve outcomes and operational efficiency.
-                </p>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  to="/contact"
-                  className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-black transition-all duration-300 bg-[#B6FF00] rounded-none hover:bg-[#a8ef00] hover:shadow-[0_6px_28px_rgba(182,255,0,0.35)] active:scale-95"
-                >
-                  <span className="relative flex items-center gap-2 text-sm sm:text-base">
-                    Contact Expert
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                  {/* Sheen sweep */}
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+      <section id="hero" ref={heroRef} className="relative isolate w-full overflow-hidden" style={{ background: C.black }} aria-label="Velnix Machine Learning and Data hero section">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: "radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)", filter: "blur(10px)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="w-full flex flex-col items-start text-left">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />Machine Learning & Data Engineering</motion.div>
+              <motion.h1 initial={shouldReduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.65, ease }} className="mb-5 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Turn Business Data Into <span style={{ color: C.lime }}>Predictive Intelligence.</span></motion.h1>
+              <motion.p initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.65, ease }} style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: C.wa(0.72), lineHeight: 1.75, maxWidth: "56ch", marginBottom: "2.5rem", fontWeight: 400 }}>Velnix builds production-ready machine learning systems that turn prepared data into forecasts, recommendations, and signals your teams can use to make better decisions.</motion.p>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.55, ease }} className="flex flex-wrap items-center gap-4 mb-6">
+                <Link to="/contact" className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300" style={{ background: C.lime, color: C.black, fontSize: "0.9rem", padding: "0.85rem 1.75rem", textDecoration: "none", border: `1px solid ${C.la(0.5)}`, boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`, lineHeight: 1 }} onMouseEnter={event => { event.currentTarget.style.background = C.green; event.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`; }} onMouseLeave={event => { event.currentTarget.style.background = C.lime; event.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`; }}>
+                  <span aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ width: "200%", left: "-50%", background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)", animation: "velnix-shimmer 2.8s linear infinite", willChange: "transform" }} /><span className="relative z-10">Build Your ML System</span><ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Link>
-              </div>
+                <a href="#capabilities" className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300" style={{ fontSize: "0.9rem", fontWeight: 700, color: C.white, borderColor: C.wa(0.25), background: C.wa(0.04), textDecoration: "none" }} onMouseEnter={event => { event.currentTarget.style.borderColor = C.lime; event.currentTarget.style.color = C.lime; event.currentTarget.style.background = C.la(0.08); }} onMouseLeave={event => { event.currentTarget.style.borderColor = C.wa(0.25); event.currentTarget.style.color = C.white; event.currentTarget.style.background = C.wa(0.04); }}>Explore Capabilities<ArrowRight size={15} /></a>
+              </motion.div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.55, ease }} className="w-full flex items-center gap-6 sm:gap-10 pt-6" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
+                <div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Forecasts</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Plan Ahead</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Signals</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Find Patterns</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Production</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Ready Models</span></div>
+              </motion.div>
             </div>
-
-            {/* Right: ML Image */}
-            <div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
-              <div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-                <img
-                  src="/image/pages_img/Machine-Learning-power.jpg"
-                  alt="The Power of Machine Learning"
-                  className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-                />
-                {/* Premium gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-                
-                {/* Decorative corner accent */}
-                <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
-              </div>
-            </div>
+            <motion.div className="relative flex items-center justify-center" initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease }}><div className="relative"><img src="/image/Servies/service-page image-hero.png" alt="Machine learning and predictive data systems" className="w-full max-w-2xl" /></div></motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── Services Section ─── */}
-      <section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
-        {/* High-Tech Background Layers */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-        {/* Ambient light */}
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
+      <motion.div initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.65, delay: 0.15, ease }} className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16">
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">{IMPACT_STATS.map(({ number, label }, index) => <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">{index > 0 && <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />}<div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl"><AnimatedImpactNumber number={number} /></div><p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">{label}</p></div>)}</div>
+      </motion.div>
 
-        <div className="max-w-7xl mx-auto container-padding relative z-10">
-          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="flex flex-col items-center gap-3 sm:gap-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-                Machine Learning <span className="text-white">Solutions</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-              Intelligent ML solutions transforming business operations and decision-making across all industries.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {mlServices.map((service, index) => (
-              <div
-                key={service.id}
-                className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.08}s` }}
-              >
-                <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
-                  {service.icon}
-                </div>
-                <h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
-                  {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
+      <main className="flex-grow relative z-10 pt-14 pb-0 sm:pt-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20 relative">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }} aria-hidden="true" />
+            <div className="relative z-10 w-full py-4 sm:py-8 lg:py-10"><div className="relative z-10">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />THE BUSINESS CASE FOR MACHINE LEARNING</motion.div>
+              <div className="mb-10"><motion.h2 initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1, ease }} className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">From Raw Data to <span style={{ color: C.lime }}>Better Decisions.</span></motion.h2><motion.p initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2, ease }} className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">A useful ML system starts with the quality and meaning of your data, then carries validated predictions into real business decisions.</motion.p></div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2, ease }} className="relative grid w-full grid-cols-1 gap-10 sm:grid-cols-5 sm:gap-0 sm:pt-2">
+                <div className="absolute left-[4%] right-[4%] top-[2.75rem] hidden h-[2px] sm:block" style={{ background: `linear-gradient(90deg, ${C.la(0.45)}, ${C.lime}, ${C.la(0.45)})` }} aria-hidden="true" />
+                <motion.div initial={{ left: "0%" }} animate={shouldReduce ? { left: "50%" } : { left: ["0%", "25%", "50%", "75%", "100%"] }} transition={shouldReduce ? { duration: 0 } : { duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.2, 0.4, 0.6, 1] }} onUpdate={({ left }) => { const progress = Number.parseFloat(String(left)) / 100; const nextStep = progress >= 0.75 ? 4 : progress >= 0.5 ? 3 : progress >= 0.25 ? 2 : 0; setActiveTimelineStep(current => current === nextStep ? current : nextStep); }} className="pointer-events-none absolute top-[calc(2.75rem-4px)] z-10 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-[#B6FF00] shadow-[0_0_14px_rgba(182,255,0,0.85)] sm:block" style={{ left: "4%" }} aria-hidden="true" />
+                {valueStages.map(({ num, title, desc }, index) => <motion.div key={num} initial={shouldReduce ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.3 + index * 0.08, ease }} className="group relative z-10 flex min-h-[188px] flex-col items-center text-center sm:px-3" onMouseEnter={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { circle.style.borderColor = C.lime; circle.style.boxShadow = `0 0 24px ${C.la(0.3)}`; } }} onMouseLeave={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { const active = circle.dataset.active === "true"; circle.style.borderColor = active ? C.lime : C.la(0.5); circle.style.boxShadow = active ? `0 0 20px ${C.la(0.22)}, inset 0 0 0 5px ${C.wa(0.025)}` : "none"; } }}><div data-step-circle data-active={activeTimelineStep === index ? "true" : "false"} className={`mx-auto mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border font-mono text-xs font-bold tracking-[0.16em] transition-all duration-300 ${activeTimelineStep === index ? "text-[#050505]" : "text-[#B6FF00]"}`} style={{ borderColor: activeTimelineStep === index ? C.lime : C.la(0.5), background: activeTimelineStep === index ? C.lime : C.black, boxShadow: activeTimelineStep === index ? `0 0 20px ${C.la(0.3)}, inset 0 0 0 5px ${C.wa(0.08)}` : `inset 0 0 0 5px ${C.wa(0.025)}` }}>{num}</div><h3 className={`mb-3 text-xl font-bold tracking-tight transition-colors duration-300 ${activeTimelineStep === index ? "text-[#B6FF00]" : "text-white group-hover:text-[#B6FF00]"}`}>{title}</h3><p className="mx-auto max-w-[22ch] text-[13px] leading-6 font-light text-white/55">{desc}</p></motion.div>)}
+              </motion.div>
+            </div></div>
+          </section>
+
+          <section id="capabilities" className="mb-6 sm:mb-12 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-6"><div><div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />WHAT WE BUILD</div><h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">Machine Learning for <span style={{ color: C.lime }}>Business Decisions.</span></h2><p className="max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">We develop predictive models and the data workflows around them, so insights can move from experimentation into the operations that need them.</p></div></div>
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">{capabilities.map((capability, index) => { const Icon = capability.icon; return <motion.div key={capability.id} initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.6, delay: index * 0.08, ease }} className="group relative flex min-h-[230px] flex-col border-b border-r border-white/10 bg-[#111111]/80 p-5 transition-colors duration-300 hover:bg-[#181818] sm:min-h-[250px] sm:p-6"><div className="mb-5 flex items-start justify-between"><div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#B6FF00] text-[#B6FF00] transition-colors group-hover:bg-[#B6FF00] group-hover:text-[#050505]"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></div><span className="font-mono text-xs font-semibold tracking-[0.16em] text-white/35">{capability.num}</span></div><h3 className="mb-2 font-display text-xl font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{capability.title}</h3><p className="text-sm leading-6 text-white/60">{capability.description}</p></motion.div>; })}</div>
+          </section>
+          <section className="mb-8 sm:mb-20"><Industries /></section>
+          <section className="mb-8 sm:mb-20"><EngagementModels /></section>
+
+          <section className="relative mb-12 overflow-hidden bg-[#050505] py-12 font-display sm:mb-16 sm:py-16 lg:mb-20 lg:py-20"><div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div className="mb-6 text-left lg:mb-8"><div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"><span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />MODEL LIFECYCLE</div><h2 className="text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">From Data to <span className="text-[#B6FF00]">Production ML.</span></h2><p className="mt-4 max-w-xl text-left text-lg leading-8 text-white/65 sm:text-xl">A measured path from the business question to an integrated, monitored model.</p></div><div>{deliveryStages.map((step, index) => <motion.div key={step.num} initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.08, ease }} className="group border-b border-white/10 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:py-9"><div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[3rem_1fr] sm:gap-6 lg:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)_2rem] lg:items-center lg:gap-8"><span className="font-mono text-lg font-bold text-[#B6FF00]">{step.num}</span><h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{step.title}</h3><p className="max-w-2xl text-sm leading-6 text-white/65 sm:text-base lg:text-left">{step.description}</p><div className="hidden items-center justify-end lg:flex"><ArrowRight className="h-5 w-5 text-[#B6FF00] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" /></div></div></motion.div>)}</div></div></section>
         </div>
-      </section>
 
-      {/* ─── Strategic Benefits Infographic Section ─── */}
-      <section className="relative overflow-hidden bg-white py-10 sm:py-14">
-        {/* Refined technical dot grid — Lighter, more breathable */}
+        <PortfolioSection />
 
-        <div className="max-w-7xl mx-auto container-padding relative z-10">
-          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="flex flex-col items-center gap-3 sm:gap-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-                Machine Learning <span className="text-slate-900">Benefits</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-              Delivering measurable business value through ML innovation and competitive advantage.
-            </p>
-          </div>
-
-          <div className="relative px-4">
-            {/* Horizontal Connecting Line (Desktop Only) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 z-0" />
-
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
-              {[
-                {
-                  title: "Accuracy",
-                  desc: "High-precision predictions and data-driven insights for reliable business decisions.",
-                  icon: <Target className="w-8 h-8 sm:w-10 sm:h-10" />,
-                  color: "#B6FF00",
-                  textSide: "above"
-                },
-                {
-                  title: "Scalability",
-                  desc: "Scale from single departments to enterprise-wide deployments seamlessly.",
-                  icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
-                  color: "#B6FF00",
-                  textSide: "above"
-                },
-                {
-                  title: "Flexibility",
-                  desc: "Customize models to align with your workflows and industry-specific requirements.",
-                  icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
-                  color: "#B6FF00",
-                  textSide: "above"
-                },
-                {
-                  title: "Automation",
-                  desc: "Automate data processing, analysis, and decision-making workflows.",
-                  icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
-                  color: "#B6FF00",
-                  textSide: "above"
-                }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center">
-                  {/* Label Above (Desktop) */}
-                  <div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-                    <div className="text-center max-w-[220px]">
-                      <h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-                      <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-                    </div>
-                    <div className="w-[1px] h-10 bg-slate-200 mt-4" />
-                    <div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
-                  </div>
-
-                  {/* The Circular Node */}
-                  <div className={`relative flex items-center justify-center transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-50 opacity-0'}`} style={{ transitionDelay: `${idx * 0.1}s` }}>
-                    {/* Concentric Rings */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-24 h-24 sm:w-32 sm:h-32 border border-slate-100 rounded-full" />
-                      <div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-l-transparent border-r-transparent rotate-45" />
-                      <div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-t-transparent border-b-transparent -rotate-12" />
-                    </div>
-
-                    {/* Inner Circle Node */}
-                    <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center z-20 hover:scale-110 transition-transform duration-500 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" style={{ border: `1.5px solid ${item.color}25` }}>
-                      <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-black" style={{ backgroundColor: item.color }}>
-                        {React.cloneElement(item.icon as React.ReactElement, { className: 'w-7 h-7 sm:w-10 sm:h-10' })}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Label Below (Desktop) */}
-                  <div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-                    <div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
-                    <div className="w-[1px] h-10 bg-slate-200 mb-4" />
-                    <div className="text-center max-w-[220px]">
-                      <h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-                      <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-
-                  {/* Mobile Label */}
-                  <div className="lg:hidden mt-8 text-center px-4">
-                    <h3 className="font-bold text-slate-900 text-lg mb-1.5 tracking-tight">{item.title}</h3>
-                    <p className="text-sm text-slate-500 font-normal leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20"><Testimonials /></section>
+          <section className="mb-8 sm:mb-20"><TechnologyStack /></section>
+          <section className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"><div className="relative z-10"><div className="mb-14 sm:mb-18"><div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />MACHINE LEARNING OUTCOMES</div><h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">Predictive Intelligence for <span style={{ color: C.lime }}>Better Business Decisions.</span></h2><p className="max-w-2xl text-sm sm:text-base leading-8" style={{ color: C.wa(0.64) }}>ML creates value when reliable data, appropriate models, and business workflows work together beyond the experiment.</p></div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">{benefits.map(benefit => <div key={benefit.num} className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden" style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}><div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none" style={{ color: C.wa(0.04) }} aria-hidden="true">{benefit.num}</span><h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">{benefit.title}</h3><p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>{benefit.description}</p><div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]"><span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>{benefit.metric}</span><span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>{benefit.metricLabel}</span></div></div>)}</div></div></section>
+          <section className="mb-8 sm:mb-20"><LatestBlogs /></section>
+          <FAQ items={faqData.map(({ q, a }, index) => ({ id: `machine-learning-faq-${index + 1}`, question: q, answer: a }))} />
         </div>
-      </section>
-      <Industries />
-
-      {/* ─── AI Implementation Process Section ─── */}
-      <section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
-        {/* High-Tech Background Layers */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-        {/* Ambient light — softened, no pulse */}
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-        <div className="max-w-7xl mx-auto container-padding relative z-10">
-          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="flex flex-col items-center gap-3 sm:gap-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-                ML Implementation <span className="text-white">Process</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-              Proven methodology for deploying secure ML solutions in business environments.
-            </p>
-          </div>
-          <div className={`mt-8 sm:mt-12 border border-white/[0.08] rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-              {[
-                { id: "01", title: "Business Assessment", desc: "Identify workflows where ML delivers maximum operational impact.", color: "#B6FF00", icon: <Brain className="w-8 h-8" /> },
-                { id: "02", title: "Secure Data Integration", desc: "Secure data preparation and system integration for training robust ML models.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> },
-                { id: "03", title: "Validation & Testing", desc: "ML models trained and rigorously tested to ensure accuracy and alignment.", color: "#B6FF00", icon: <CheckCircle className="w-8 h-8" /> },
-                { id: "04", title: "ML Model Development", desc: "Build and validate ML models with stakeholders and industry standards.", color: "#B6FF00", icon: <Cpu className="w-8 h-8" /> },
-                { id: "05", title: "Deployment & Optimization", desc: "Seamless integration into workflows with ongoing monitoring and optimization.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> },
-                { id: "06", title: "Governance & Improvement", desc: "Implement governance frameworks and continuously refine for long-term success.", color: "#B6FF00", icon: <Shield className="w-8 h-8" /> }
-              ].map((step, index) => (
-                <div
-                  key={step.id}
-                  className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-colors duration-300 hover:bg-white/[0.025]
-                    ${index % 3 !== 2 ? 'lg:border-r border-white/[0.08]' : ''} 
-                    ${index < 3 ? 'lg:border-b border-white/[0.08]' : ''}
-                    ${index % 2 === 0 ? 'md:max-lg:border-r border-white/[0.08]' : ''}
-                    ${index < 4 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
-                    ${index < 5 ? 'max-md:border-b border-white/[0.08]' : ''}`}
-                >
-                  <div className="text-xl sm:text-2xl font-black mb-4 tracking-tighter" style={{ color: step.color }}>
-                    {step.id}
-                  </div>
-
-                  <div className="flex items-center gap-3 w-full justify-center mb-4">
-                    <div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-                    <div className="text-white group-hover:scale-110 transition-transform duration-300">
-                      {React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
-                    </div>
-                    <div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-                  </div>
-
-                  <h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
-                  <p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
-
-                  {/* Corner accents */}
-                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Why Choose Us Section ─── */}
-      <section className="py-10 sm:py-14 bg-white relative overflow-hidden">
-        {/* Refined ambient left wash */}
-        <div className="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-slate-50/60 to-transparent pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-            <div className="flex flex-col items-center gap-3 sm:gap-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black leading-[1.2]">
-                Why Choose <span className="text-black">Velnix Solutions?</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
-              Industry expertise with proven results across multiple sectors and use cases.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: Workspace Image */}
-            <div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-              <div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-                <img
-                  src="/image/pages_img/WHY-CHOOSE-US.jpg"
-                  alt="Why Choose Us"
-                  className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-                />
-                {/* Premium gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-                
-                {/* Decorative corner accent */}
-                <div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
-              </div>
-            </div>
-
-            {/* Right: Numbered List */}
-            <div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-              {[
-                {
-                  num: "01",
-                  title: "ML Expertise",
-                  desc: "Specialized team with deep understanding of machine learning algorithms and industry applications.",
-                  color: "bg-[#B6FF00]"
-                },
-                {
-                  num: "02",
-                  title: "Custom Solutions",
-                  desc: "Tailored ML solutions designed for your specific business challenges and operational requirements.",
-                  color: "bg-[#B6FF00]"
-                },
-                {
-                  num: "03",
-                  title: "Enterprise Security",
-                  desc: "Robust security measures and compliance with industry standards protecting your business data.",
-                  color: "bg-[#B6FF00]"
-                },
-                {
-                  num: "04",
-                  title: "Proven Track Record",
-                  desc: "Organizations achieving improved accuracy, reduced costs, and enhanced operational efficiency.",
-                  color: "bg-[#B6FF00]"
-                }
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.08}s` }}>
-                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-none flex items-center justify-center text-black font-black text-sm sm:text-base shadow-[0_4px_16px_rgba(182,255,0,0.25)] group-hover:shadow-[0_6px_24px_rgba(182,255,0,0.35)] group-hover:scale-105 transition-all duration-300`}>
-                    {item.num}
-                  </div>
-                  <div className="pt-0.5">
-                    <h3 className="font-bold text-[#0a0435] text-base sm:text-lg mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
-                    <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <AIOnboardingProcess serviceName="ML" />
-
-      <LatestBlogs />
-
-      {/* ─── FAQ Section ─── */}
-      <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-        {/* Top rule */}
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200/80" />
-
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
-            <div className="flex flex-col items-center gap-3 sm:gap-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-                Frequently Asked <span className="text-black">Questions</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-              Common questions about machine learning implementation and our AI services.
-            </p>
-          </div>
-          <div className="space-y-2.5">
-            {faqData.map((faq, index) => (
-              <div
-                key={index}
-                className={`border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_4px_20px_rgba(182,255,0,0.2)] group ${openIndex === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
-                style={openIndex === index ? {
-                  boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
-                } : {}}
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className={`w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 ${openIndex === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-slate-900'}`}>
-                      {faq.question}
-                    </h3>
-                    {openIndex === index ? (
-                      <Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
-                    ) : (
-                      <Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
-                    )}
-                  </div>
-                </button>
-
-                {openIndex === index && (
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed border-t border-slate-100 bg-white">
-                    <div className="pt-4 font-normal">{faq.answer}</div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+        <CTAExamples className="!pb-8 sm:!pb-10" />
+      </main>
       <Footer />
     </div>
   );

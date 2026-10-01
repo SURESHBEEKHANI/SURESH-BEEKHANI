@@ -1,683 +1,200 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Brain, Code, Zap, Target, Users, TrendingUp, Shield, Globe, ArrowRight, CheckCircle, MessageSquare, BarChart3, Eye, Bot, Mail, Phone, MapPin, Clock, Cpu, Network, Workflow, Plus, Minus } from "lucide-react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion as useFramerReducedMotion, useTransform } from "framer-motion";
+import { ArrowRight, Bot, Brain, Code2, Database, FileText, GitBranch, Headphones, MessageSquare, Phone, Plus, ShieldCheck, Sparkles, Users, Workflow, Zap } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Industries from "../components/Industries";
-import AIOnboardingProcess from "../components/AIOnboardingProcess";
 import LatestBlogs from "../components/LatestBlogs";
+import CTAExamples from "../components/CTAExamples";
+import FAQ from "../components/FAQ";
+import { IMPACT_STATS } from "../components/OriginStory";
+import { useReducedMotion } from "@/hooks/useAnimations";
+import { TechnologyStack } from "../components/TechnologyStack";
+import EngagementModels from "../components/EngagementModels";
+import Testimonials from "../components/Testimonials";
+import PortfolioSection from "../components/PortfolioSection";
 
-const chatbotServices = [
-	{
-		id: 1,
-		title: "AI Chatbot Development",
-		description: "End-to-end AI chatbot solutions for businesses across all industries. Our intelligent virtual assistants provide 24/7 customer support, automate inquiries, and enhance user engagement.",
-		icon: <MessageSquare className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 2,
-		title: "Customer Engagement Chatbots",
-		description: "AI-powered chatbots designed to enhance customer engagement through personalized interactions, proactive support, automated follow-ups, and improved customer satisfaction.",
-		icon: <Code className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 3,
-		title: "Secure Chatbot Solutions",
-		description: "Enterprise-grade secure chatbots that protect sensitive data while delivering seamless communication. Ensure privacy and regulatory compliance across all customer interactions.",
-		icon: <Shield className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 4,
-		title: "Intelligent Support & Triage Chatbots",
-		description: "AI chatbots that assist with customer inquiry assessment, intelligent routing, and automated support. Reduce response times and improve service efficiency.",
-		icon: <Brain className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 5,
-		title: "E-Commerce & Sales Chatbots",
-		description: "Enable seamless online shopping with AI chatbots that facilitate product discovery, order tracking, personalized recommendations, and automated sales support.",
-		icon: <Zap className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
-	{
-		id: 6,
-		title: "Multi-Channel Chatbots",
-		description: "Omnichannel AI chatbots providing consistent support across websites, mobile apps, social media, and messaging platforms for unified customer experiences.",
-		icon: <Globe className="h-7 w-7" />,
-		color: "from-[#B6FF00] to-[#B6FF00]/70"
-	},
+const C = {
+  black: "#050505",
+  graphite: "#111111",
+  graphiteLight: "#181818",
+  white: "#FFFFFF",
+  lime: "#B6FF00",
+  green: "#7DCC00",
+  la: (opacity: number) => `rgba(182, 255, 0, ${opacity})`,
+  wa: (opacity: number) => `rgba(255, 255, 255, ${opacity})`,
+};
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const AnimatedImpactNumber = ({ number }: { number: string }) => {
+  const reduceMotion = useFramerReducedMotion();
+  const target = Number.parseInt(number, 10);
+  const suffix = number.slice(String(target).length);
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const display = useTransform(count, value => `${Math.round(value)}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (reduceMotion) {
+      count.set(target);
+      return;
+    }
+    const controls = animate(count, target, { duration: 1.8, ease: "easeOut" });
+    return () => controls.stop();
+  }, [count, isInView, reduceMotion, target]);
+
+  return <motion.span ref={ref} aria-label={number}>{display}</motion.span>;
+};
+
+const capabilities = [
+  { id: "chat-assistants", num: "01", title: "Website & App Assistants", description: "Answer product, service, and account questions in natural conversations across your website and applications.", icon: MessageSquare },
+  { id: "customer-support", num: "02", title: "Customer Support Automation", description: "Resolve common requests, gather details, and route complex cases with the right context for your team.", icon: Headphones },
+  { id: "voice-assistants", num: "03", title: "Voice AI Assistants", description: "Support inbound and outbound voice experiences for service enquiries, booking, and routine follow-up.", icon: Phone },
+  { id: "messaging", num: "04", title: "WhatsApp & Messaging", description: "Extend customer conversations to messaging channels with consistent answers and clear next steps.", icon: Zap },
+  { id: "rag-knowledge", num: "05", title: "Knowledge-Grounded RAG", description: "Ground responses in approved business knowledge and provide relevant source context for dependable answers.", icon: Database },
+  { id: "business-integrations", num: "06", title: "CRM Actions & Human Handoff", description: "Qualify leads, schedule appointments, update connected systems, and hand conversations to people when needed.", icon: GitBranch },
+];
+
+const valueStages = [
+  { num: "01", title: "Customer Questions", desc: "Customers wait through queues or repeat details across disconnected support channels." },
+  { num: "02", title: "Fragmented Answers", desc: "Knowledge scattered across documents and systems makes responses slow or inconsistent." },
+  { num: "03", title: "Missed Opportunities", desc: "Leads and appointment requests go unanswered when teams are busy or unavailable." },
+  { num: "04", title: "Manual Follow-Up", desc: "Support teams spend too much time triaging routine questions and updating records." },
+  { num: "05", title: "Intelligent Conversations", desc: "AI responds with business context, completes approved actions, and brings people in at the right moment." },
+];
+
+const deliveryStages = [
+  { num: "01", title: "Discover", description: "Map customer journeys, conversation intent, knowledge sources, channels, and escalation needs." },
+  { num: "02", title: "Design", description: "Define assistant behavior, response boundaries, retrieval, integrations, and human handoff paths." },
+  { num: "03", title: "Build & Integrate", description: "Develop chat or voice experiences, connect business systems, and validate real customer scenarios." },
+  { num: "04", title: "Deploy & Improve", description: "Launch with monitoring, review conversation quality, and refine flows using operational feedback." },
+];
+
+const benefits = [
+  { num: "01", metric: "24/7", metricLabel: "customer availability", title: "Faster Responses", description: "Give customers useful answers and clear next steps, including outside normal business hours." },
+  { num: "02", metric: "Less", metricLabel: "routine support work", title: "More Team Capacity", description: "Automate repetitive questions and intake so support teams can focus on complex customer needs." },
+  { num: "03", metric: "Consistent", metricLabel: "approved answers", title: "Better Experiences", description: "Ground responses in current business knowledge and maintain a coherent experience across channels." },
+  { num: "04", metric: "Qualified", metricLabel: "sales conversations", title: "Useful Lead Context", description: "Capture intent, gather qualifying details, and route promising enquiries to the right team." },
+  { num: "05", metric: "Connected", metricLabel: "customer systems", title: "Efficient Operations", description: "Link conversations to CRM records, appointment calendars, support tools, and existing workflows." },
+  { num: "06", metric: "Human-led", metricLabel: "when it matters", title: "Confident Handoffs", description: "Escalate sensitive, uncertain, or complex cases with conversation history preserved for the agent." },
+];
+
+const faqData = [
+  { q: "What is Conversational AI?", a: "Conversational AI combines language understanding, business knowledge, and connected workflows to help people interact with a business through chat or voice. Depending on the use case, it can answer questions, collect information, prepare actions, and hand a conversation to a person." },
+  { q: "Can a conversational assistant use our business knowledge?", a: "Yes. Retrieval-augmented generation can ground answers in approved documents and knowledge sources. We design retrieval scope, source handling, and fallback behavior so the assistant can respond appropriately when information is missing." },
+  { q: "Which channels can you support?", a: "We build conversational experiences for websites, applications, voice, WhatsApp, and other messaging channels based on your customer journey and available platform integrations." },
+  { q: "Can the assistant qualify leads or schedule appointments?", a: "Yes. Assistants can collect qualifying details, identify intent, check connected business systems, and prepare appointment requests or bookings according to the permissions and workflow you define." },
+  { q: "How does human handoff work?", a: "When a conversation is sensitive, uncertain, or outside the assistant's scope, it can route to your team with relevant conversation history and collected details, avoiding a cold restart for the customer." },
+  { q: "How do you keep conversations secure and reliable?", a: "We define access boundaries, approved knowledge sources, tool permissions, logging, testing, and escalation paths. We monitor response quality and operational signals after launch so issues can be identified and improved." },
 ];
 
 const AIChatbotDevelopment: React.FC = () => {
-	const [isVisible, setIsVisible] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeTimelineStep, setActiveTimelineStep] = useState(0);
+  const shouldReduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
 
-	const toggleFAQ = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index);
-	};
+  useEffect(() => {
+    let frame = 0;
+    const updateScrollProgress = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const bounds = hero.getBoundingClientRect();
+      const traveled = Math.max(0, -bounds.top);
+      const range = Math.max(1, bounds.height - window.innerHeight);
+      hero.style.setProperty("--hero-scan-progress", `${Math.min(1, traveled / range) * 500}%`);
+    };
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        updateScrollProgress();
+      });
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, []);
 
-	useEffect(() => {
-		setIsVisible(true);
-	}, []);
+  return (
+    <div className="min-h-screen flex flex-col antialiased font-sans selection:bg-[#B6FF00] selection:text-black" style={{ background: C.black, color: C.white }}>
+      <Navbar isDark={true} />
+      <style>{`@keyframes velnix-shimmer { from { transform: translateX(-50%); } to { transform: translateX(50%); } }`}</style>
 
-	const faqData = [
-		{
-			question: "What are AI chatbots?",
-			answer: "AI chatbots use artificial intelligence to simulate human-like conversations and automate tasks.",
-		},
-		{
-			question: "What is conversational AI?",
-			answer: "Conversational AI uses NLP and machine learning for natural, human-like dialogue.",
-		},
-		{
-			question: "How can your AI chatbot development services solutions help my business?",
-			answer: "Our AI chatbot solutions automate support, streamline workflows, and provide 24/7 assistance.",
-		},
-		{
-			question: "What industries can benefit from AI chatbot solutions?",
-			answer: "Healthcare, education, finance, retail, e-commerce, and legal industries benefit from AI chatbots.",
-		},
-		{
-			question: "How do your AI chatbots work?",
-			answer: "Our AI chatbots use NLP and machine learning to understand queries and deliver context-aware responses.",
-		},
-		{
-			question: "What features do your AI chatbots offer?",
-			answer: "Multi-language support, platform integration, analytics, personalized responses, and scalability.",
-		},
-		{
-			question: "Can AI chatbots be customized to suit my business needs?",
-			answer: "Yes, AI chatbots are fully customizable to align with your business goals and branding.",
-		},
-		{
-			question: "How do your AI chatbots enhance customer engagement and support?",
-			answer: "Our chatbots provide instant, personalized responses and are available 24/7 for improved engagement.",
-		},
-		{
-			question: "Are your AI chatbots capable of handling complex queries?",
-			answer: "Yes, our AI chatbots leverage NLP and machine learning to handle complex queries accurately.",
-		},
-		{
-			question: "What data privacy and security measures are in place for your AI chatbots?",
-			answer: "We implement encryption, secure data storage, and compliance with HIPAA and GDPR standards.",
-		},
-		{
-			question: "How Can I Integrate Your AI Chatbot Into My Existing Systems Or Platforms?",
-			answer: "Our AI chatbots integrate seamlessly with websites, mobile apps, social media, and enterprise systems.",
-		},
-		{
-			question: "Do your Chatbots support multiple languages?",
-			answer: "Yes, our AI chatbots support multiple languages for global audience reach.",
-		},
-	];
+      <section id="hero" ref={heroRef} className="relative isolate w-full overflow-hidden" style={{ background: C.black }} aria-label="Velnix Conversational AI hero section">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: "radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)", filter: "blur(10px)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="w-full flex flex-col items-start text-left">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />Conversational AI Engineering</motion.div>
+              <motion.h1 initial={shouldReduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.65, ease }} className="mb-5 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Turn Customer Questions Into <span style={{ color: C.lime }}>Intelligent Conversations.</span></motion.h1>
+              <motion.p initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.65, ease }} style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: C.wa(0.72), lineHeight: 1.75, maxWidth: "56ch", marginBottom: "2.5rem", fontWeight: 400 }}>Velnix engineers conversational systems that answer customers with business context, connect chat and voice to your operations, and hand off to people when the moment calls for it.</motion.p>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.55, ease }} className="flex flex-wrap items-center gap-4 mb-6">
+                <Link to="/contact" className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300" style={{ background: C.lime, color: C.black, fontSize: "0.9rem", padding: "0.85rem 1.75rem", textDecoration: "none", border: `1px solid ${C.la(0.5)}`, boxShadow: `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`, lineHeight: 1 }} onMouseEnter={event => { event.currentTarget.style.background = C.green; event.currentTarget.style.boxShadow = `0 0 0 3px ${C.la(0.2)}, 0 12px 36px ${C.la(0.5)}`; }} onMouseLeave={event => { event.currentTarget.style.background = C.lime; event.currentTarget.style.boxShadow = `0 0 0 0 ${C.la(0)}, 0 8px 28px ${C.la(0.35)}`; }}>
+                  <span aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ width: "200%", left: "-50%", background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)", animation: "velnix-shimmer 2.8s linear infinite", willChange: "transform" }} /><span className="relative z-10">Build Your Conversational AI</span><ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
+                </Link>
+                <a href="#capabilities" className="inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-all duration-300" style={{ fontSize: "0.9rem", fontWeight: 700, color: C.white, borderColor: C.wa(0.25), background: C.wa(0.04), textDecoration: "none" }} onMouseEnter={event => { event.currentTarget.style.borderColor = C.lime; event.currentTarget.style.color = C.lime; event.currentTarget.style.background = C.la(0.08); }} onMouseLeave={event => { event.currentTarget.style.borderColor = C.wa(0.25); event.currentTarget.style.color = C.white; event.currentTarget.style.background = C.wa(0.04); }}>Explore Capabilities<ArrowRight size={15} /></a>
+              </motion.div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.55, ease }} className="w-full flex items-center gap-6 sm:gap-10 pt-6" style={{ borderTop: `1px solid ${C.wa(0.08)}` }}>
+                <div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>24/7</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Availability</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Multi</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>Channel Support</span></div><div style={{ width: 1, height: 36, background: C.wa(0.1) }} /><div className="flex flex-col items-start"><span style={{ fontSize: "1.75rem", fontWeight: 800, color: C.lime, lineHeight: 1 }}>Human</span><span style={{ fontSize: "0.7rem", color: C.wa(0.55), marginTop: 4, textTransform: "uppercase", fontWeight: 500 }}>When Needed</span></div>
+              </motion.div>
+            </div>
+            <motion.div className="relative flex items-center justify-center" initial={shouldReduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease }}><div className="relative"><img src="/image/Servies/service-page image-hero.png" alt="Conversational AI across customer channels" className="w-full max-w-2xl" /></div></motion.div>
+          </div>
+        </div>
+      </section>
 
-	return (
-		<div className="min-h-screen bg-white flex flex-col">
-			<Navbar />
+      <motion.div initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.65, delay: 0.15, ease }} className="relative mx-auto w-full border-y border-[#050505]/20 bg-[#B6FF00] px-6 py-10 text-[#050505] sm:px-10 sm:py-12 lg:px-16">
+        <div className="relative w-full grid grid-cols-2 gap-y-10 sm:grid-cols-4 sm:gap-y-0 max-w-7xl mx-auto">{IMPACT_STATS.map(({ number, label }, index) => <div key={label} className="relative flex flex-col items-center px-3 text-center sm:px-5">{index > 0 && <div className="absolute left-0 top-1/2 hidden h-9 w-px -translate-y-1/2 bg-[#050505]/20 sm:block" />}<div className="text-3xl font-black leading-none tracking-[-0.04em] text-[#050505] sm:text-4xl"><AnimatedImpactNumber number={number} /></div><p className="mx-auto mt-4 max-w-[15ch] text-xs font-bold uppercase leading-5 tracking-[0.14em] text-[#050505]/65">{label}</p></div>)}</div>
+      </motion.div>
 
-			{/* ─── Hero Section ─── */}
-			<section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center bg-slate-950 overflow-hidden">
-				{/* Background Image */}
-				<div className="absolute inset-0 bg-[url('/image/pages_img/AI-Development-backgound.webp')] bg-cover bg-center opacity-60 sm:opacity-70" />
+      <main className="flex-grow relative z-10 pt-14 pb-0 sm:pt-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20 relative">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, ${C.la(0.12)} 0%, transparent 70%)` }} aria-hidden="true" />
+            <div className="relative z-10 w-full py-4 sm:py-8 lg:py-10"><div className="relative z-10">
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease }} className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />THE CUSTOMER CONVERSATION GAP</motion.div>
+              <div className="mb-10"><motion.h2 initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1, ease }} className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">From Customer Questions to <span style={{ color: C.lime }}>Automated Outcomes.</span></motion.h2><motion.p initial={shouldReduce ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2, ease }} className="mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">Turn fragmented, manual interactions into useful conversations that resolve requests, connect business systems, and bring in your team at the right time.</motion.p></div>
+              <motion.div initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2, ease }} className="relative grid w-full grid-cols-1 gap-10 sm:grid-cols-5 sm:gap-0 sm:pt-2">
+                <div className="absolute left-[4%] right-[4%] top-[2.75rem] hidden h-[2px] sm:block" style={{ background: `linear-gradient(90deg, ${C.la(0.45)}, ${C.lime}, ${C.la(0.45)})` }} aria-hidden="true" />
+                <motion.div initial={{ left: "0%" }} animate={shouldReduce ? { left: "50%" } : { left: ["0%", "25%", "50%", "75%", "100%"] }} transition={shouldReduce ? { duration: 0 } : { duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.2, 0.4, 0.6, 1] }} onUpdate={({ left }) => { const progress = Number.parseFloat(String(left)) / 100; const nextStep = progress >= 0.75 ? 4 : progress >= 0.5 ? 3 : progress >= 0.25 ? 2 : 0; setActiveTimelineStep(current => current === nextStep ? current : nextStep); }} className="pointer-events-none absolute top-[calc(2.75rem-4px)] z-10 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-[#B6FF00] shadow-[0_0_14px_rgba(182,255,0,0.85)] sm:block" style={{ left: "4%" }} aria-hidden="true" />
+                {valueStages.map(({ num, title, desc }, index) => <motion.div key={num} initial={shouldReduce ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.3 + index * 0.08, ease }} className="group relative z-10 flex min-h-[188px] flex-col items-center text-center sm:px-3" onMouseEnter={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { circle.style.borderColor = C.lime; circle.style.boxShadow = `0 0 24px ${C.la(0.3)}`; } }} onMouseLeave={event => { const circle = event.currentTarget.querySelector("[data-step-circle]") as HTMLElement | null; if (circle) { const active = circle.dataset.active === "true"; circle.style.borderColor = active ? C.lime : C.la(0.5); circle.style.boxShadow = active ? `0 0 20px ${C.la(0.22)}, inset 0 0 0 5px ${C.wa(0.025)}` : "none"; } }}><div data-step-circle data-active={activeTimelineStep === index ? "true" : "false"} className={`mx-auto mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border font-mono text-xs font-bold tracking-[0.16em] transition-all duration-300 ${activeTimelineStep === index ? "text-[#050505]" : "text-[#B6FF00]"}`} style={{ borderColor: activeTimelineStep === index ? C.lime : C.la(0.5), background: activeTimelineStep === index ? C.lime : C.black, boxShadow: activeTimelineStep === index ? `0 0 20px ${C.la(0.3)}, inset 0 0 0 5px ${C.wa(0.08)}` : `inset 0 0 0 5px ${C.wa(0.025)}` }}>{num}</div><h3 className={`mb-3 text-xl font-bold tracking-tight transition-colors duration-300 ${activeTimelineStep === index ? "text-[#B6FF00]" : "text-white group-hover:text-[#B6FF00]"}`}>{title}</h3><p className="mx-auto max-w-[22ch] text-[13px] leading-6 font-light text-white/55">{desc}</p></motion.div>)}
+              </motion.div>
+            </div></div>
+          </section>
 
-				{/* Layered gradient: deep slate on left fades to transparent — refined vignette */}
-				<div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 sm:via-slate-950/55 to-transparent" />
+          <section id="capabilities" className="mb-6 sm:mb-12 scroll-mt-28">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-6"><div><div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />WHAT WE BUILD</div><h2 className="font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight mb-4">Conversational Systems for <span style={{ color: C.lime }}>Real Customer Journeys.</span></h2><p className="max-w-[62ch] text-sm font-light leading-relaxed text-white/60 sm:text-base">From first question through resolution, we connect chat and voice experiences to trusted knowledge, business tools, and human support.</p></div></div>
+            <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">{capabilities.map((capability, index) => { const Icon = capability.icon; return <motion.div key={capability.id} initial={shouldReduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.6, delay: index * 0.08, ease }} className="group relative flex min-h-[230px] flex-col border-b border-r border-white/10 bg-[#111111]/80 p-5 transition-colors duration-300 hover:bg-[#181818] sm:min-h-[250px] sm:p-6"><div className="mb-5 flex items-start justify-between"><div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#B6FF00] text-[#B6FF00] transition-colors group-hover:bg-[#B6FF00] group-hover:text-[#050505]"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></div><span className="font-mono text-xs font-semibold tracking-[0.16em] text-white/35">{capability.num}</span></div><h3 className="mb-2 font-display text-xl font-bold leading-tight text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{capability.title}</h3><p className="text-sm leading-6 text-white/60">{capability.description}</p></motion.div>; })}</div>
+          </section>
+          <section className="mb-8 sm:mb-20"><Industries /></section>
+          <section className="mb-8 sm:mb-20"><EngagementModels /></section>
 
-				{/* Subtle bottom scrim for clean section transition */}
-				<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-950/60 to-transparent" />
+          <section className="relative mb-12 overflow-hidden bg-[#050505] py-12 font-display sm:mb-16 sm:py-16 lg:mb-20 lg:py-20"><div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div className="mb-6 text-left lg:mb-8"><div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"><span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />PROCESS</div><h2 className="text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl">Our Conversational AI <span className="text-[#B6FF00]">Delivery Steps.</span></h2><p className="mt-4 max-w-xl text-left text-lg leading-8 text-white/65 sm:text-xl">We engineer each experience around customer intent, dependable answers, and a clear path to resolution.</p></div><div>{deliveryStages.map((step, index) => <motion.div key={step.num} initial={shouldReduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.08, ease }} className="group border-b border-white/10 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:py-9"><div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[3rem_1fr] sm:gap-6 lg:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)_2rem] lg:items-center lg:gap-8"><span className="font-mono text-lg font-bold text-[#B6FF00]">{step.num}</span><h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#B6FF00] sm:text-2xl">{step.title}</h3><p className="max-w-2xl text-sm leading-6 text-white/65 sm:text-base lg:text-left">{step.description}</p><div className="hidden items-center justify-end lg:flex"><ArrowRight className="h-5 w-5 text-[#B6FF00] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" /></div></div></motion.div>)}</div></div></section>
+        </div>
 
-				<div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-					<div className="text-white space-y-5 sm:space-y-7 text-left max-w-3xl">
-						<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight text-white">
-							Chatbot Development
-						</h1>
-						<p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-							Transform customer engagement with enterprise-grade AI chatbots that enhance user experiences, automate support, and provide 24/7 assistance across all business touchpoints.
-						</p>
-					</div>
-				</div>
-			</section>
+        <PortfolioSection />
 
-			{/* ─── AI Chatbot Capabilities Section ─── */}
-			<section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
-				{/* Refined ambient wash — right side only, barely perceptible */}
-				<div className="absolute top-0 right-0 w-2/5 h-full bg-gradient-to-l from-slate-50/70 to-transparent pointer-events-none" />
-
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Content */}
-						<div className={`space-y-7 order-1 lg:order-1 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							<div className="text-left space-y-4 mb-2">
-								<div className="flex flex-col items-start gap-3 sm:gap-4">
-									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.15]">
-										AI Models Powering Our{" "}
-										<span className="text-slate-900">Chatbot Solutions</span>
-									</h2>
-								</div>
-								<p className="text-base md:text-[17px] text-slate-700 max-w-xl font-medium leading-relaxed">
-									AI chatbots revolutionize customer engagement by automating support workflows and providing instant responses.
-								</p>
-							</div>
-
-							<div className="space-y-4 text-slate-800 text-base md:text-[17px] leading-relaxed text-left border-l-4 border-[#B6FF00] pl-6 font-medium">
-								<p>
-									AI chatbots revolutionize customer engagement by automating support workflows, providing instant responses, and delivering personalized experiences across all business touchpoints.
-								</p>
-								<p>
-									Our intelligent chatbots enhance customer satisfaction, reduce operational costs, and enable 24/7 availability with advanced NLP and conversational AI capabilities.
-								</p>
-							</div>
-
-							<div className="pt-2">
-								<Link
-									to="/contact"
-									className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-bold text-black transition-all duration-300 bg-[#B6FF00] rounded-none hover:bg-[#a8ef00] hover:shadow-[0_6px_28px_rgba(182,255,0,0.35)] active:scale-95"
-								>
-									<span className="relative flex items-center gap-2 text-sm sm:text-base">
-										Contact Expert
-										<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-									</span>
-									{/* Sheen sweep */}
-									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-								</Link>
-							</div>
-						</div>
-
-						{/* Right: AI Image */}
-						<div className={`relative order-2 lg:order-2 ${isVisible ? 'slide-right' : 'opacity-0'} w-full`}>
-							<div className="relative w-full md:w-[90%] ml-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/AI-CHATBOT-DEVELOPMENT.jpg"
-									alt="AI Models Powering Our Chatbot Solutions"
-									className="w-full h-auto min-h-[300px] md:min-h-[400px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Services Section ─── */}
-			<section className="py-10 sm:py-14 bg-[#01010c] relative overflow-hidden">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								AI Chatbot Development <span className="text-white">Services</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Comprehensive chatbot solutions for businesses across all industries.
-						</p>
-					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-						{chatbotServices.map((service, index) => (
-							<div
-								key={service.id}
-								className={`p-6 sm:p-8 flex flex-col gap-3 sm:gap-4 items-center min-h-[200px] sm:min-h-[220px] rounded-none bg-white/[0.03] border border-white/10 hover:border-[#B6FF00]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(182,255,0,0.15)] ${isVisible ? 'scale-in' : 'opacity-0'}`}
-								style={{ animationDelay: `${index * 0.08}s` }}
-							>
-								<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg sm:rounded-none flex items-center justify-center mb-2 mx-auto text-black shadow-[0_4px_16px_rgba(182,255,0,0.25)]`}>
-									{service.icon}
-								</div>
-								<h3 className="font-bold text-sm sm:text-base text-white mb-2 text-center w-full tracking-wide">
-									{service.title}
-								</h3>
-								<p className="text-xs sm:text-sm font-medium text-slate-200 text-center leading-relaxed">
-									{service.description}
-								</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Strategic Benefits Infographic Section ─── */}
-			<section className="relative overflow-hidden bg-white py-10 sm:py-14">
-				{/* Refined technical dot grid — Lighter, more breathable */}
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								AI Chatbot <span className="text-slate-900">Benefits</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Deliver better business outcomes and exceptional customer experiences through intelligent automation.
-						</p>
-					</div>
-
-					<div className="relative px-4">
-						{/* Horizontal Connecting Line (Desktop Only) */}
-						<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 z-0" />
-
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-0 relative z-10 w-full">
-							{[
-								{
-									title: "Automation",
-									desc: "Automate inquiries and routine tasks to reduce workload and improve efficiency.",
-									icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Scalability",
-									desc: "Provide 24/7 round-the-clock assistance and instant responses without staff limitations.",
-									icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Security",
-									desc: "Ensure customer data security and compliance with enterprise-grade solutions.",
-									icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								},
-								{
-									title: "Experience",
-									desc: "Improve satisfaction through personalized interactions and seamless support.",
-									icon: <Brain className="w-8 h-8 sm:w-10 sm:h-10" />,
-									color: "#B6FF00",
-									textSide: "above"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex flex-col items-center">
-									{/* Label Above (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] justify-end mb-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'above' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-										<div className="w-[1px] h-10 bg-slate-200 mt-4" />
-										<div className="w-1.5 h-1.5 rounded-full mt-[-4px]" style={{ backgroundColor: item.color }} />
-									</div>
-
-									{/* The Circular Node */}
-									<div className={`relative flex items-center justify-center transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-50 opacity-0'}`} style={{ transitionDelay: `${idx * 0.1}s` }}>
-										{/* Concentric Rings */}
-										<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-											<div className="w-24 h-24 sm:w-32 sm:h-32 border border-slate-100 rounded-full" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-l-transparent border-r-transparent rotate-45" />
-											<div className="absolute w-28 h-28 sm:w-36 sm:h-36 border border-slate-100/50 rounded-full border-t-transparent border-b-transparent -rotate-12" />
-										</div>
-
-										{/* Inner Circle Node */}
-										<div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center z-20 hover:scale-110 transition-transform duration-500 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" style={{ border: `1.5px solid ${item.color}25` }}>
-											<div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-black" style={{ backgroundColor: item.color }}>
-												{React.cloneElement(item.icon as React.ReactElement, { className: 'w-7 h-7 sm:w-10 sm:h-10' })}
-											</div>
-										</div>
-									</div>
-
-									{/* Label Below (Desktop) */}
-									<div className={`hidden lg:flex flex-col items-center h-[180px] mt-10 transition-all duration-700 ${isVisible ? 'fade-in' : 'opacity-0'} ${item.textSide === 'below' ? 'opacity-100' : 'opacity-0 invisible'}`}>
-										<div className="w-1.5 h-1.5 rounded-full mb-[-4px]" style={{ backgroundColor: item.color }} />
-										<div className="w-[1px] h-10 bg-slate-200 mb-4" />
-										<div className="text-center max-w-[220px]">
-											<h3 className="font-bold text-slate-900 text-base mb-2 tracking-tight">{item.title}</h3>
-											<p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-										</div>
-									</div>
-
-									{/* Mobile Label */}
-									<div className="lg:hidden mt-8 text-center px-4">
-										<h3 className="font-bold text-slate-900 text-lg mb-1.5 tracking-tight">{item.title}</h3>
-										<p className="text-sm text-slate-500 font-normal leading-relaxed">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-			<Industries />
-
-			{/* ─── AI Implementation Process Section ─── */}
-			<section className="bg-[#01010c] relative overflow-hidden py-10 sm:py-14">
-				{/* High-Tech Background Layers */}
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-				{/* Ambient light — softened, no pulse */}
-				<div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
-				<div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[160px]" />
-
-				<div className="max-w-7xl mx-auto container-padding relative z-10">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2]">
-								AI Implementation <span className="text-white">Process</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed">
-							Proven methodology for deploying secure, scalable, and intelligent AI chatbots.
-						</p>
-					</div>
-					<div className={`mt-8 sm:mt-12 border border-white/[0.08] rounded-none overflow-hidden ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-							{[
-								{ id: "01", title: "Business Assessment", desc: "We analyze your customer service workflows to identify high-impact opportunities where AI can deliver measurable ROI.", color: "#B6FF00", icon: <Brain className="w-8 h-8" /> },
-								{ id: "02", title: "Secure Design", desc: "We design a robust, scalable chatbot architecture tailored to your needs, ensuring data security and compliance.", color: "#B6FF00", icon: <Shield className="w-8 h-8" /> },
-								{ id: "03", title: "Validation & Testing", desc: "AI models are trained and rigorously tested to ensure accuracy, reliability, and alignment with business objectives.", color: "#B6FF00", icon: <CheckCircle className="w-8 h-8" /> },
-								{ id: "04", title: "Deployment & Optimization", desc: "We seamlessly integrate the chatbot into your platforms, followed by continuous monitoring and optimization.", color: "#B6FF00", icon: <Zap className="w-8 h-8" /> },
-								{ id: "05", title: "Change Management & Training", desc: "We empower your team with training and support to ensure smooth adoption and effective use of the AI system.", color: "#B6FF00", icon: <Users className="w-8 h-8" /> },
-								{ id: "06", title: "Governance & Continuous Improvement", desc: "We implement governance frameworks and continuously refine models to ensure long-term success and scalability.", color: "#B6FF00", icon: <Shield className="w-8 h-8" /> }
-							].map((step, index) => (
-								<div
-									key={step.id}
-									className={`flex flex-col items-center justify-center p-6 sm:p-8 relative group transition-colors duration-300 hover:bg-white/[0.025]
-										${index % 3 !== 2 ? 'lg:border-r border-white/[0.08]' : ''} 
-										${index < 3 ? 'lg:border-b border-white/[0.08]' : ''}
-										${index % 2 === 0 ? 'md:max-lg:border-r border-white/[0.08]' : ''}
-										${index < 4 ? 'md:max-lg:border-b border-white/[0.08]' : ''}
-										${index < 5 ? 'max-md:border-b border-white/[0.08]' : ''}`}
-								>
-									<div className="text-xl sm:text-2xl font-black mb-4 tracking-tighter" style={{ color: step.color }}>
-										{step.id}
-									</div>
-
-									<div className="flex items-center gap-3 w-full justify-center mb-4">
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-										<div className="text-white group-hover:scale-110 transition-transform duration-300">
-											{React.cloneElement(step.icon as React.ReactElement, { className: 'w-4 h-4', style: { color: step.color } })}
-										</div>
-										<div className="w-5 sm:w-8 h-[1px]" style={{ backgroundColor: `${step.color}35` }} />
-									</div>
-
-									<h4 className="text-white font-bold text-base sm:text-lg mb-2 text-center tracking-tight transition-colors duration-300">{step.title}</h4>
-									<p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-center max-w-[220px] font-medium">{step.desc}</p>
-
-									{/* Corner accents */}
-									<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-									<div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* ─── Personalized Digital AI Solutions Section ─── */}
-			{(() => {
-				const aiSolutions = [
-					{
-						key: "CustomerSupport",
-						name: "Customer Support Bot",
-						description: (
-							<>
-								Our Customer Support Bot provides instant, intelligent responses to customer inquiries 24/7. Using advanced NLP and machine learning, it handles FAQs, troubleshooting, order tracking, and seamlessly escalates complex issues to human agents.
-								<br /><br />
-								Perfect for e-commerce, SaaS companies, and service businesses seeking to reduce support costs while improving customer satisfaction and response times.
-							</>
-						),
-						cta: "Book a Demo",
-						image: "/image/pages_img/Customer Support Bot.png",
-					},
-					{
-						key: "SalesAssistant",
-						name: "Sales Assistant Bot",
-						description: (
-							<>
-								Our Sales Assistant Bot engages visitors, qualifies leads, and guides customers through the sales funnel. It offers personalized product recommendations, answers pricing questions, and schedules demos with your sales team.
-								<br /><br />
-								Designed for B2B and B2C businesses, this bot increases conversion rates, captures more leads, and provides valuable insights into customer preferences and buying behavior.
-							</>
-						),
-						cta: "Book a Demo",
-						image: "/image/pages_img/Sales Assistant Bot.jpg",
-					},
-					{
-						key: "InternalAssistant",
-						name: "Internal Operations Bot",
-						description: (
-							<>
-								Our Internal Operations Bot streamlines employee workflows by automating HR inquiries, IT support tickets, policy questions, and internal knowledge base searches. It integrates with your existing tools and systems for seamless operations.
-								<br /><br />
-								Ideal for enterprises and growing companies looking to improve employee productivity, reduce internal support burden, and provide instant access to company information and resources.
-							</>
-						),
-						cta: "Book a Demo",
-						image: "/image/pages_img/Internal Operations.jpg",
-					},
-				];
-				const [activeTab, setActiveTab] = React.useState("CustomerSupport");
-				const solution = aiSolutions.find((s) => s.key === activeTab);
-				return (
-					<section className="py-16 sm:py-20 lg:py-24 bg-white">
-						<div className="max-w-6xl mx-auto container-padding">
-							<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-								<div className="flex flex-col items-center gap-3 sm:gap-4">
-									<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-										AI Chatbot <span className="text-black">Solutions</span>
-									</h2>
-								</div>
-								<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
-									Advanced AI-powered chatbots transforming customer engagement and business operations.
-								</p>
-							</div>
-							<div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
-								{aiSolutions.map((s) => (
-									<button
-										key={s.key}
-										onClick={() => setActiveTab(s.key)}
-										className={`px-4 sm:px-6 py-2 sm:py-3 rounded-none font-bold shadow-md transition-all border-2 text-sm sm:text-base ${activeTab === s.key
-											? "bg-[#B6FF00] text-black border-transparent scale-105"
-											: "bg-white text-gray-900 border-gray-200 hover:border-[#B6FF00] hover:text-[#B6FF00]"
-											}`}
-									>
-										{s.name}
-									</button>
-								))}
-							</div>
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center bg-white/80 rounded-none shadow-lg p-6 sm:p-8">
-								<div>
-									<h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-3 sm:mb-4">{solution.name}</h3>
-									<div className="text-sm sm:text-base lg:text-lg text-slate-700 mb-4 sm:mb-6 leading-relaxed font-medium">{solution.description}</div>
-								</div>
-								<div className="flex justify-center w-full">
-									<div className="relative w-full overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-										<img
-											src={solution.image}
-											alt={solution.name}
-											className="w-full h-[300px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-										<div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#B6FF00]/60 rounded-br-lg" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-				);
-			})()}
-
-			{/* ─── Why Choose Us Section ─── */}
-			<section className="py-10 sm:py-14 bg-white relative overflow-hidden">
-				{/* Refined ambient left wash */}
-				<div className="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-slate-50/60 to-transparent pointer-events-none" />
-
-				<div className="max-w-7xl mx-auto container-padding">
-					<div className={`text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black leading-[1.2]">
-								Why Choose <span className="text-black">Velnix Solutions?</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
-							Trusted AI expertise and proven results for transforming customer engagement.
-						</p>
-					</div>
-
-					<div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-						{/* Left: Workspace Image */}
-						<div className={`relative ${isVisible ? 'slide-left' : 'opacity-0'}`}>
-							<div className="relative w-full md:w-[95%] mr-auto overflow-hidden rounded-2xl border-t-[6px] border-[#B6FF00] shadow-[0_20px_50px_rgba(0,0,0,0.15)] group/cover bg-transparent">
-								<img
-									src="/image/pages_img/WHY-CHOOSE-US.jpg"
-									alt="Why Choose Us"
-									className="w-full h-[350px] lg:h-[500px] object-cover transition-transform duration-700 group-hover/cover:scale-105"
-								/>
-								{/* Premium gradient overlay for depth */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
-								
-								{/* Decorative corner accent */}
-								<div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-[#B6FF00]/60 rounded-bl-lg" />
-							</div>
-						</div>
-
-						{/* Right: Numbered List */}
-						<div className={`space-y-6 ${isVisible ? 'fade-in' : 'opacity-0'}`}>
-							{[
-								{
-									num: "01",
-									title: "AI Chatbot Expertise",
-									desc: "Extensive experience in conversational AI, NLP, and intelligent chatbot development across multiple industries.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "02",
-									title: "Industry Specialization",
-									desc: "Specialized chatbots for e-commerce, customer service, sales, support, and internal operations.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "03",
-									title: "Advanced NLP & AI",
-									desc: "Advanced natural language processing and machine learning for accurate, context-aware interactions.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "04",
-									title: "User-Centric Design",
-									desc: "Intuitive, user-friendly chatbots designed for accessibility, engagement, and optimal user experiences.",
-									color: "bg-[#B6FF00]"
-								},
-								{
-									num: "05",
-									title: "Enterprise Scale & Security",
-									desc: "Scalable solutions with end-to-end encryption and enterprise-grade security protecting sensitive customer data.",
-									color: "bg-[#B6FF00]"
-								}
-							].map((item, idx) => (
-								<div key={idx} className="flex items-start gap-5 group" style={{ animationDelay: `${idx * 0.08}s` }}>
-									<div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-none flex items-center justify-center text-black font-black text-sm sm:text-base shadow-[0_4px_16px_rgba(182,255,0,0.25)] group-hover:shadow-[0_6px_24px_rgba(182,255,0,0.35)] group-hover:scale-105 transition-all duration-300`}>
-										{item.num}
-									</div>
-									<div className="pt-0.5">
-										<h3 className="font-bold text-[#0a0435] text-base sm:text-lg mb-1.5 tracking-tight group-hover:text-black transition-colors duration-300">{item.title}</h3>
-										<p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{item.desc}</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<AIOnboardingProcess
-				serviceName="chatbot"
-				steps={[
-					{
-						icon: <Mail className="h-8 w-8" />,
-						title: 'Contact Us',
-						description: 'Reach out to start the conversation. Share your vision and requirements so we can understand your goals and how best to support you.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Brain className="h-8 w-8" />,
-						title: 'Consultation & Discovery',
-						description: 'Schedule a professional consultation with our experts. We\'ll discuss your project in detail, assess feasibility, and provide strategic recommendations.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Target className="h-8 w-8" />,
-						title: 'Receive a Detailed Proposal',
-						description: 'Based on your requirements, we\'ll deliver a comprehensive proposal outlining the project scope, timeline, and transparent cost estimate.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-					{
-						icon: <Zap className="h-8 w-8" />,
-						title: 'Deployment & Integration',
-						description: 'Once approved, our AI specialists launch your project with validation, team training, and seamless system integration ensuring successful deployment.',
-						color: "from-[#B6FF00] to-[#B6FF00]/70"
-					},
-				]}
-			/>
-
-			<LatestBlogs />
-
-			{/* ─── FAQ Section ─── */}
-			<section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-				{/* Top rule */}
-				<div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200/80" />
-
-				<div className="max-w-4xl mx-auto">
-					<div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-14">
-						<div className="flex flex-col items-center gap-3 sm:gap-4">
-							<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-								Frequently Asked <span className="text-black">Questions</span>
-							</h2>
-						</div>
-						<p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-							Common questions about chatbot implementation and our services.
-						</p>
-					</div>
-					<div className="space-y-2.5">
-						{faqData.map((faq, index) => (
-							<div
-								key={index}
-								className={`border border-slate-200 overflow-hidden bg-white transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_4px_20px_rgba(182,255,0,0.2)] group ${openIndex === index ? 'shadow-lg border-[#B6FF00]/50' : ''}`}
-								style={openIndex === index ? {
-									boxShadow: '0 4px 20px rgba(182, 255, 0, 0.2), 0 0 15px rgba(182, 255, 0, 0.15)'
-								} : {}}
-							>
-								<button
-									onClick={() => toggleFAQ(index)}
-									className={`w-full h-auto p-4 sm:p-5 text-left transition-all duration-300 ${openIndex === index ? 'bg-gradient-to-r from-[#B6FF00]/15 via-[#B6FF00]/10 to-[#B6FF00]/5' : 'hover:bg-[#B6FF00]/5'}`}
-								>
-									<div className="flex items-center justify-between w-full">
-										<h3 className={`text-sm sm:text-[15px] font-semibold pr-3 transition-colors duration-300 group-hover:text-[#B6FF00] ${openIndex === index ? 'text-[#B6FF00]' : 'text-slate-900'}`}>
-											{faq.question}
-										</h3>
-										{openIndex === index ? (
-											<Minus className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" style={{ color: '#B6FF00' }} />
-										) : (
-											<Plus className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 flex-shrink-0 transition-colors duration-300 group-hover:text-[#B6FF00]" />
-										)}
-									</div>
-								</button>
-
-								{openIndex === index && (
-									<div className="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed border-t border-slate-100 bg-white">
-										<div className="pt-4 font-normal">{faq.answer}</div>
-									</div>
-								)}
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<Footer />
-		</div>
-	);
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="mb-8 sm:mb-20"><Testimonials /></section>
+          <section className="mb-8 sm:mb-20"><TechnologyStack /></section>
+          <section className="relative mb-20 overflow-hidden py-10 sm:mb-28 sm:py-12"><div className="relative z-10"><div className="mb-14 sm:mb-18"><div className="mb-4 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]" style={{ color: C.lime }}><span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />CONVERSATIONAL AI OUTCOMES</div><h2 className="mb-4 font-display text-3xl sm:text-4xl font-black text-white tracking-[-0.04em] leading-tight">Better Conversations, <span style={{ color: C.lime }}>Better Customer Outcomes.</span></h2><p className="max-w-2xl text-sm sm:text-base leading-8" style={{ color: C.wa(0.64) }}>Conversational systems create value when customers get useful answers and your teams retain visibility and control.</p></div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl">{benefits.map(benefit => <div key={benefit.num} className="group relative flex flex-col p-7 sm:p-8 border border-white/10 transition-all duration-300 hover:border-[#B6FF00]/50 hover:shadow-[0_0_40px_rgba(182,255,0,0.1)] hover:-translate-y-1.5 overflow-hidden" style={{ background: `linear-gradient(135deg, ${C.wa(0.04)} 0%, ${C.wa(0.02)} 100%)`, borderRadius: 0 }}><div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B6FF00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="absolute top-5 right-6 text-[2.8rem] font-black leading-none select-none pointer-events-none" style={{ color: C.wa(0.04) }} aria-hidden="true">{benefit.num}</span><h3 className="text-base sm:text-lg font-bold tracking-[-0.04em] text-white mb-2 group-hover:text-[#B6FF00] transition-colors duration-200">{benefit.title}</h3><p className="text-sm leading-6 mb-6 flex-1" style={{ color: C.wa(0.6) }}>{benefit.description}</p><div className="flex items-baseline gap-2 pt-4 border-t border-white/[0.07]"><span className="text-xl font-black tracking-tight" style={{ color: C.lime }}>{benefit.metric}</span><span className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: C.wa(0.42) }}>{benefit.metricLabel}</span></div></div>)}</div></div></section>
+          <section className="mb-8 sm:mb-20"><LatestBlogs /></section>
+          <FAQ items={faqData.map(({ q, a }, index) => ({ id: `conversational-ai-faq-${index + 1}`, question: q, answer: a }))} />
+        </div>
+        <CTAExamples className="!pb-8 sm:!pb-10" />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default AIChatbotDevelopment;
