@@ -21,6 +21,7 @@ const img = {
 };
 
 export const healthcareConfig: IndustryPageConfig = {
+  visualTheme: "velnix-dark",
   title: "Healthcare",
   tagline: "Advanced technology for healthcare excellence.",
   heroDescription: "Advanced technology for healthcare excellence.",

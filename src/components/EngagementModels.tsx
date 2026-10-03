@@ -49,7 +49,7 @@ const engagementModels = [
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 const EngagementModels = () => (
-  <section className="font-display py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+  <section className="font-display py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-[#050505]">
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       {/* ── Header ── */}

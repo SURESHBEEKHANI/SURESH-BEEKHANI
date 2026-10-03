@@ -166,10 +166,10 @@ export const ImpactStatsBanner = ({ flush = false }: { flush?: boolean }) => {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-[#050505]/15 sm:grid-cols-4">
         {IMPACT_STATS.map(({ number, label }) => (
           <div key={label} className="bg-[#B6FF00] px-5 py-8 text-center sm:px-6 sm:py-10">
-            <p className="text-4xl font-black leading-none tracking-[-0.06em] text-[#050505] sm:text-5xl">
+            <p className="text-4xl font-black leading-none tracking-[-0.06em] text-black sm:text-5xl">
               {number}
             </p>
-            <p className="mx-auto mt-3 max-w-[16ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-[#050505]/68 sm:text-[0.7rem]">
+            <p className="mx-auto mt-3 max-w-[16ch] text-[0.62rem] font-bold uppercase leading-5 tracking-[0.16em] text-black sm:text-[0.7rem]">
               {label}
             </p>
           </div>
