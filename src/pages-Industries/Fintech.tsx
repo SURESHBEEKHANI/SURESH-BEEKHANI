@@ -175,17 +175,17 @@ const Hero = () => {
             initial={shouldReduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.65, ease }}
-            className="mb-5 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl"
+            className="mb-5 max-w-[12ch] text-[2.5rem] font-black leading-[0.92] tracking-[-0.05em] text-white sm:text-[3.35rem] lg:text-[4.1rem]"
             style={{ WebkitFontSmoothing: 'antialiased' }}
           >
-            Smarter Finance Systems, <br /><span style={{ color: C.lime }}>Built for Trust</span>
+            Smarter Finance Systems, <span style={{ color: C.lime }}>Built for Trust</span>
           </motion.h1>
 
           <motion.p
             initial={shouldReduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.65, ease }}
-            className="mb-10 max-w-xl text-base font-normal leading-8 text-white/70 sm:text-lg"
+            className="mb-10 max-w-xl text-[0.98rem] font-normal leading-7 text-white/70 sm:text-lg sm:leading-8"
           >
             AI systems for lending, payments, onboarding, fraud operations, and customer experience — designed to move faster without losing control.
           </motion.p>

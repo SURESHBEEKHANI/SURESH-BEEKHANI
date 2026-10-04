@@ -152,18 +152,18 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full" style={{ background: `radial-gradient(circle, ${C.ga(0.1)} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
     </div>
 
-    <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 pt-[11.1rem] pb-[5.3rem] sm:px-6 sm:pt-[12.7rem] sm:pb-[6.6rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,1.08fr)] lg:gap-20 lg:px-8 lg:pt-[14.25rem] lg:pb-[9.25rem] xl:pb-[10.55rem]">
+    <div className="relative z-10 mx-auto grid w-full max-w-[1380px] items-center gap-8 px-4 pb-[4.5rem] pt-[7.5rem] sm:px-6 sm:pb-[5.4rem] sm:pt-[8.8rem] lg:grid-cols-[minmax(0,0.9fr)_minmax(440px,1.1fr)] lg:gap-10 lg:px-8 lg:pb-[8.1rem] lg:pt-[7.3rem] xl:pb-[9.1rem]">
       {/* Left Content */}
-      <div className="max-w-2xl">
+      <div className="max-w-[620px]">
         {/* Eyebrow */}
         <motion.div
           initial={shouldReduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6, ease }}
-          className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.25em]"
+          className="mb-5 flex items-center gap-3 text-[0.64rem] font-bold uppercase tracking-[0.26em]"
           style={{ color: C.lime }}
         >
-          <span className="h-px w-6" style={{ background: C.lime }} aria-hidden="true" />
+          <span className="h-px w-8" style={{ background: C.lime }} aria-hidden="true" />
           AI Development Ecommerce Services
         </motion.div>
 
@@ -172,10 +172,12 @@ const Hero = () => {
           initial={shouldReduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.65, ease }}
-          className="mb-5 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl"
+          className="mb-5 max-w-[540px] text-[2.9rem] font-black leading-[0.88] tracking-[-0.06em] text-white sm:text-[4.2rem] lg:text-[4.6rem]"
           style={{ WebkitFontSmoothing: 'antialiased' }}
         >
-          Smarter Ecommerce, <br /><span style={{ color: C.lime }}>Built to Scale</span>
+          Smarter Ecommerce,
+          <br />
+          <span style={{ color: C.lime }}>Built to Scale</span>
         </motion.h1>
 
         {/* Supporting copy */}
@@ -183,7 +185,7 @@ const Hero = () => {
           initial={shouldReduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.65, ease }}
-          className="mb-10 max-w-xl text-base font-normal leading-8 text-white/70 sm:text-lg"
+          className="mb-9 max-w-[540px] text-[1.02rem] font-normal leading-[1.7] text-white/70 lg:text-[1.15rem]"
         >
           AI solutions that streamline operations, improve customer journeys, and help ecommerce teams grow efficiently.
         </motion.p>

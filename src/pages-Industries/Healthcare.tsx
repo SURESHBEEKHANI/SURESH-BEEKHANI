@@ -162,7 +162,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full" style={{ background: `radial-gradient(circle, ${C.ga(0.1)} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
     </div>
 
-    <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 pt-[11.1rem] pb-[5.3rem] sm:px-6 sm:pt-[12.7rem] sm:pb-[6.6rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,1.08fr)] lg:gap-20 lg:px-8 lg:pt-[14.25rem] lg:pb-[9.25rem] xl:pb-[10.55rem]">
+    <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 pt-[10.6rem] pb-[3.8rem] sm:px-6 sm:pt-[11.8rem] sm:pb-[4.8rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,1.08fr)] lg:gap-20 lg:px-8 lg:pt-[12.8rem] lg:pb-[6.8rem] xl:pb-[7.8rem]">
       {/* Left Content */}
       <div className="max-w-2xl">
         {/* Eyebrow */}
@@ -182,10 +182,10 @@ const Hero = () => {
           initial={shouldReduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.65, ease }}
-          className="mb-5 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl"
+          className="mb-5 max-w-[13ch] text-[2.35rem] font-black leading-[0.9] tracking-[-0.05em] text-white sm:text-[3.15rem] lg:text-[3.9rem]"
           style={{ WebkitFontSmoothing: 'antialiased' }}
         >
-          Transform Healthcare Operations with <span style={{ color: C.lime }}>Intelligent Technology</span>
+          Transform Healthcare with <span style={{ color: C.lime, display: 'inline-block' }}>Artificial Intelligence</span>
         </motion.h1>
 
         {/* Supporting copy */}
@@ -193,7 +193,7 @@ const Hero = () => {
           initial={shouldReduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.65, ease }}
-          className="mb-10 max-w-xl text-base font-normal leading-8 text-white/70 sm:text-lg"
+          className="mb-8 max-w-xl text-[0.98rem] font-normal leading-7 text-white/70 sm:text-lg sm:leading-8"
         >
           Velnix combines AI, automation, and custom software to simplify healthcare workflows, connect systems, and improve operational efficiency.
         </motion.p>
