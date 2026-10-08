@@ -1,152 +1,188 @@
 import { motion } from 'framer-motion';
-import {
-  ArrowRight,
-  Brain,
-  Code2,
-  Database,
-  Layers3,
-  Lightbulb,
-  Network,
-  Scale,
-  Sparkles,
-  Target,
-} from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import CTA from '@/components/ui/CTA';
+import { useReducedMotion } from '@/hooks/useAnimations';
 
-const C = {
-  black: '#050505',
-  graphite: '#111111',
-  white: '#FFFFFF',
-  lime: '#B6FF00',
-  green: '#7DCC00',
-  la: (o: number) => `rgba(182,255,0,${o})`,
-  wa: (o: number) => `rgba(255,255,255,${o})`,
-  ga: (o: number) => `rgba(125,204,0,${o})`,
-};
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const principles = [
-  { icon: Target, title: 'Build with purpose', text: 'Connect technical decisions to a real business outcome, not technology for its own sake.' },
-  { icon: Scale, title: 'Own the outcome', text: 'Take responsibility for the quality, clarity, and momentum of the work in front of you.' },
-  { icon: Lightbulb, title: 'Stay curious', text: 'Question assumptions, keep learning, and look for the simpler way through complexity.' },
-  { icon: Network, title: 'Think together', text: 'The strongest solutions come from shared context across engineering, design, and business.' },
+const values = [
+  {
+    title: 'Built for People Who Build',
+    description: 'We’re creating a culture for curious minds, practical thinkers, and people who take ownership.',
+  },
+  {
+    title: 'We Think Bigger',
+    description: 'We look beyond quick fixes. We challenge assumptions, explore better approaches, and build solutions designed to create lasting value.',
+  },
+  {
+    title: 'We Keep Learning',
+    description: 'AI and technology move fast. We experiment, share knowledge, learn from failure, and continuously sharpen our craft.',
+  },
+  {
+    title: 'We Take Ownership',
+    description: 'You won’t just complete tasks. You’ll own problems, make decisions, and see your work move from idea to real-world impact.',
+  },
+  {
+    title: 'We Build With Purpose',
+    description: 'Great technology should solve meaningful problems. We focus on outcomes, not complexity for its own sake.',
+  },
+  {
+    title: 'We Grow Together',
+    description: 'As Velnix grows, we want our people to grow with it. Take on bigger challenges, develop new skills, and shape the company you’re helping build.',
+  },
 ];
-
-const workAreas = [
-  { icon: Brain, title: 'AI systems', text: 'Build intelligent capabilities that help teams make better decisions and reduce repetitive work.' },
-  { icon: Code2, title: 'Digital products', text: 'Turn complex workflows into focused web and mobile experiences people can rely on.' },
-  { icon: Layers3, title: 'Automation', text: 'Connect tools, teams, and processes so businesses can spend more time on meaningful work.' },
-  { icon: Database, title: 'Data and integrations', text: 'Create the dependable foundations that let information move clearly through an organization.' },
-];
-
-const process = ['Understand the context', 'Think through the system', 'Build the smallest useful step', 'Test with real feedback', 'Improve what matters'];
 
 const roles = [
-  { title: 'AI and ML Engineering', group: 'Engineering', text: 'Models, intelligent workflows, and production systems.' },
-  { title: 'Full-stack Engineering', group: 'Engineering', text: 'Reliable products across interfaces, APIs, and data.' },
-  { title: 'Product Design', group: 'Design', text: 'Clear, human experiences for complex business problems.' },
-  { title: 'Product and Delivery', group: 'Product', text: 'Strong context, thoughtful decisions, and steady execution.' },
+  { title: 'Senior AI/ML Engineer', department: 'Engineering', location: 'Remote' },
+  { title: 'Frontend Engineer — React', department: 'Engineering', location: 'Remote' },
+  { title: 'AI Solutions Architect', department: 'Engineering', location: 'Hybrid' },
+  { title: 'Product Designer', department: 'Design', location: 'Remote' },
+  { title: 'Business Development Manager', department: 'Growth', location: 'Remote' },
+  { title: 'Data Engineer', department: 'Data', location: 'Remote' },
 ];
 
-const Reveal = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-80px' }}
-    transition={{ delay, duration: 0.55, ease }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
+const Careers = () => {
+  const prefersReducedMotion = useReducedMotion();
 
-const Careers = () => (
-  <div className="min-h-screen antialiased" style={{ background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%), #050505', color: C.white }}>
-    <style>{`
-      @keyframes careers-signal { 0%, 100% { opacity: .25; transform: scale(.9); } 50% { opacity: 1; transform: scale(1); } }
-      @keyframes careers-scan { from { transform: translateX(-110%); } to { transform: translateX(110%); } }
-    `}</style>
-    <Navbar />
+  return (
+    <div className="min-h-screen antialiased text-white" style={{ background: '#000000' }}>
+      <Navbar />
 
-    <main className="overflow-hidden pt-24 sm:pt-32">
-      <section className="relative grid gap-14 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:pb-32">
-        <div className="pointer-events-none absolute -right-48 top-0 rounded-full" style={{ background: C.la(0.06), filter: 'blur(120px)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} className="mb-6 flex items-center gap-3">
-            <span style={{ background: C.lime }} />
-            <span style={{ color: C.lime, fontSize: '.68rem', fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>Careers at Velnix</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08, duration: .65, ease }} className="max-w-3xl" style={{ fontSize: 'clamp(2.8rem, 6vw, 5.6rem)', fontWeight: 800, lineHeight: .98, letterSpacing: '-.045em' }}>
-            Build what <span style={{ color: C.lime }}>matters.</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .2, duration: .6, ease }} className="mt-7 max-w-xl" style={{ color: C.wa(.7), fontSize: 'clamp(1rem, 1.5vw, 1.18rem)', lineHeight: 1.75 }}>
-            Build intelligent systems, scalable products, and practical solutions for businesses solving meaningful problems. Bring your curiosity, judgment, and ambition to the work.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .32, duration: .55, ease }} className="mt-9 flex flex-wrap gap-4">
-            <a href="#open-positions" className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-bold transition-transform duration-200 hover:-translate-y-1" style={{ background: C.lime, color: C.black, textDecoration: 'none' }}>
-              Explore opportunities <ArrowRight size={17} />
-            </a>
-            <a href="#how-we-work" className="inline-flex items-center gap-2 rounded-full border px-6 py-3.5 font-bold transition-colors duration-200 hover:border-[#B6FF00]" style={{ borderColor: C.wa(.22), color: C.white, textDecoration: 'none' }}>
-              How we work
-            </a>
-          </motion.div>
-        </div>
+      <main
+        className="relative isolate min-h-screen overflow-hidden px-4 pt-28 sm:px-6 sm:pt-32 lg:px-8"
+        style={{ background: '#050505' }}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+            filter: 'blur(10px)',
+          }}
+        />
 
-        <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .18, duration: .8, ease }} className="relative min-h-[360px] overflow-hidden border sm:min-h-[460px]" style={{ borderColor: C.wa(.15), background: `linear-gradient(145deg, ${C.graphite}, ${C.black})` }} role="img" aria-label="Intelligent Systems Architecture diagram showing people, ideas, code, and impact">
-          <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(${C.wa(.05)} 1px, transparent 1px), linear-gradient(90deg, ${C.wa(.05)} 1px, transparent 1px)`, backgroundSize: '42px 42px', opacity: .45 }} />
-          <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b px-5 py-4" style={{ borderColor: C.wa(.1), color: C.wa(.48), fontSize: '.58rem', fontWeight: 700, letterSpacing: '.18em', textTransform: 'uppercase' }}>
-            <span>Velnix / Systems</span>
-            <span className="flex items-center gap-2"><span className="rounded-full" style={{ background: C.lime, boxShadow: `0 0 10px ${C.lime}` }} />Active architecture</span>
-          </div>
-          <div className="absolute left-[16%] top-[30%] h-px w-[68%]" style={{ background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)`, animation: 'careers-scan 4s ease-in-out infinite' }} />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative mt-5 flex items-center justify-center rounded-full border" style={{ borderColor: C.la(.5), boxShadow: `0 0 0 24px ${C.la(.04)}, 0 0 80px ${C.la(.12)}` }}>
-              <div className="pointer-events-none absolute inset-[-14px] rounded-full border" style={{ borderColor: C.la(.16), borderStyle: 'dashed' }} />
-              <div className="text-center"><Sparkles size={26} color={C.lime} className="mx-auto mb-3" /><span className="block text-xs font-bold uppercase tracking-[.22em]" style={{ color: C.white }}>Intelligent<br />systems</span><span className="mt-3 block text-[.55rem] uppercase tracking-[.18em]" style={{ color: C.wa(.4) }}>People + technology</span></div>
-              {['People', 'Ideas', 'Code', 'Impact'].map((label, index) => (
-                <div key={label} className="absolute flex items-center gap-2 text-[.65rem] font-bold uppercase tracking-[.16em]" style={{ color: C.wa(.7), top: index === 0 ? '-2rem' : index === 2 ? 'auto' : '50%', bottom: index === 2 ? '-2rem' : 'auto', left: index === 1 ? '-4.5rem' : index === 3 ? 'auto' : '50%', right: index === 3 ? '-4.5rem' : 'auto', transform: index === 0 || index === 2 ? 'translateX(-50%)' : 'translateY(-50%)', whiteSpace: 'nowrap' }}>
-                  <span className="rounded-full" style={{ background: C.lime, animation: `careers-signal 2.2s ${index * .25}s ease-in-out infinite` }} />{label}
-                </div>
-              ))}
+        <div className="relative z-10 mx-auto max-w-[1040px]">
+          <motion.header
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="pt-2 sm:pt-4"
+          >
+            <div className="mb-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+              <span className="inline-block h-px w-9 bg-[#B6FF00]" aria-hidden="true" />
+              <span className="font-['JetBrains_Mono',monospace]">Careers</span>
             </div>
-          </div>
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t px-5 py-4" style={{ borderColor: C.wa(.1), color: C.wa(.42), fontSize: '.58rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase' }}>
-            <span>Build / Learn / Lead</span>
-            <span style={{ color: C.lime }}>01 — 04</span>
-          </div>
-        </motion.div>
-      </section>
 
-      <section className="border-y py-20 lg:py-28" style={{ borderColor: C.wa(.08), background: C.graphite }}>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>Why Velnix</p><h2 className="max-w-2xl" style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Serious technology. <span style={{ color: C.lime }}>Human judgment.</span></h2></Reveal>
-          <div className="mt-14 grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: C.wa(.1) }}>
-            {principles.map((item, index) => { const Icon = item.icon; return <Reveal key={item.title} delay={index * .06} className="h-full"><div className="h-full p-7" style={{ background: C.graphite }}><Icon size={23} color={C.lime} strokeWidth={1.6} /><h3 className="mt-8 text-lg font-bold">{item.title}</h3><p className="mt-3 text-sm leading-7" style={{ color: C.wa(.58) }}>{item.text}</p></div></Reveal>; })}
+            <h1 className="max-w-[760px] font-['Space_Grotesk','Inter',sans-serif] text-[2rem] font-black leading-[0.92] tracking-[-0.065em] text-white sm:text-[2.8rem] lg:text-[3.5rem]">
+              Build the Future.
+              <span className="mt-2 block text-[#F2F2F7]">
+                Solve What <span className="text-[#B6FF00]">Matters.</span>
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[640px] text-[15px] leading-7 text-white/65 sm:text-[16px]">
+              At Velnix Solutions, we build AI-powered systems that help businesses work smarter. Join a team where ambitious ideas, strong engineering, and meaningful ownership come together to solve real problems.
+            </p>
+            <p className="mt-4 text-sm font-bold tracking-wide text-white sm:text-base">
+              Build boldly. Learn constantly. Create impact.
+            </p>
+          </motion.header>
+
+          <div className="relative mt-10 pt-8 before:absolute before:left-1/2 before:top-0 before:w-screen before:-translate-x-1/2 before:border-t before:border-white/10 before:content-[''] sm:mt-14 sm:pt-10">
+            <section aria-labelledby="values-heading">
+              <div className="mb-8 flex items-center gap-3">
+                <span className="inline-block h-px w-9 bg-[#B6FF00]" aria-hidden="true" />
+                <p className="font-['JetBrains_Mono',monospace] text-[10px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                  Our culture
+                </p>
+              </div>
+
+              <h2
+                id="values-heading"
+                className="mb-8 font-['Space_Grotesk','Inter',sans-serif] text-[2.2rem] font-black tracking-[-0.06em] text-white sm:text-[2.6rem]"
+              >
+                The Culture We’re <span className="text-[#B6FF00]">Building</span>
+              </h2>
+
+              <div className="grid max-w-[1040px] overflow-hidden border-l border-t border-white/10 bg-[#050505] sm:grid-cols-2 lg:grid-cols-3">
+                {values.map((value) => (
+                  <div
+                    key={value.title}
+                    className="flex min-h-[160px] flex-col border-b border-r border-white/10 p-5 sm:p-6"
+                  >
+                    <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-[#B6FF00]/80 bg-[#B6FF00]/10 text-[#B6FF00] shadow-[0_0_0_1px_rgba(182,255,0,0.15)]">
+                      <Check size={15} aria-hidden="true" />
+                    </div>
+                    <h3 className="font-['Space_Grotesk','Inter',sans-serif] text-xl font-bold leading-tight tracking-[-0.05em] text-white sm:text-2xl">
+                      {value.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-white/70">{value.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <div className="relative mt-14 pt-8 before:absolute before:left-1/2 before:top-0 before:w-screen before:-translate-x-1/2 before:border-t before:border-white/10 before:content-[''] sm:mt-16 sm:pt-10">
+            <section aria-labelledby="roles-heading" className="lg:pr-4">
+              <div className="mb-6 flex items-center gap-3 pl-1">
+                <span className="inline-block h-px w-12 bg-[#B6FF00]" aria-hidden="true" />
+                <p className="font-['JetBrains_Mono',monospace] text-[10px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                  Open roles
+                </p>
+              </div>
+
+              <h2
+                id="roles-heading"
+                className="mb-7 max-w-[760px] font-['Space_Grotesk','Inter',sans-serif] text-[2.1rem] font-black tracking-[-0.06em] text-white sm:text-[2.6rem] lg:text-[3rem]"
+              >
+                Find Your Next <span className="text-[#B6FF00]">Challenge.</span>
+              </h2>
+
+              <div className="max-w-[980px] overflow-hidden border-t border-white/10">
+                {roles.map((role, index) => (
+                  <motion.a
+                    key={role.title}
+                    href={`mailto:info@velnixsolutions.com?subject=${encodeURIComponent(`Careers at Velnix — ${role.title}`)}`}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ delay: index * 0.04, duration: 0.3 }}
+                    className="group grid grid-cols-[1.7fr_1fr_0.8fr_28px] items-center gap-4 border-b border-white/10 py-4 text-left text-white/80 transition-colors duration-200 hover:bg-white/[0.01] sm:gap-6"
+                  >
+                    <span className="font-['Space_Grotesk','Inter',sans-serif] text-[1.02rem] font-medium tracking-[-0.03em] text-white sm:text-[1.15rem]">
+                      {role.title}
+                    </span>
+                    <span className="text-[14px] text-white/55">{role.department}</span>
+                    <span className="text-[14px] text-white/55">{role.location}</span>
+                    <span className="ml-auto flex h-7 w-7 items-center justify-center rounded-[4px] border border-[#B6FF00]/55 bg-[#B6FF00]/10 text-[#B6FF00] transition-transform group-hover:translate-x-0.5">
+                      <ArrowRight size={13} aria-hidden="true" />
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
-      </section>
 
-      <section className="py-20 lg:py-28">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>What you will work on</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>From complexity<br /><span style={{ color: C.lime }}>to capability.</span></h2></div><p className="max-w-sm text-sm leading-7" style={{ color: C.wa(.58) }}>Our work sits where AI, software engineering, automation, data, and real business context meet.</p></div></Reveal>
-        <div className="mt-14 grid gap-4 md:grid-cols-2">{workAreas.map((item, index) => { const Icon = item.icon; return <Reveal key={item.title} delay={index * .06}><div className="group flex gap-5 border p-7 transition-colors duration-300 hover:border-[#B6FF00]" style={{ borderColor: C.wa(.12), background: C.graphite }}><div className="flex shrink-0 items-center justify-center" style={{ background: C.la(.09), color: C.lime }}><Icon size={21} strokeWidth={1.6} /></div><div><h3 className="text-lg font-bold">{item.title}</h3><p className="mt-2 text-sm leading-7" style={{ color: C.wa(.58) }}>{item.text}</p></div></div></Reveal>; })}</div>
+        <div className="mt-16 -mx-4 sm:mt-20 sm:-mx-6 lg:-mx-8">
+          <CTA
+            eyebrow="Don't see your role?"
+            title="Let's build what's next."
+            description="We’re always interested in meeting people who think differently, learn quickly, and want to build meaningful technology."
+            primaryLabel="Get touch"
+            primaryHref="/contact"
+            variant="centered"
+            background="gradient"
+            size="lg"
+          />
         </div>
-      </section>
+      </main>
 
-      <section id="how-we-work" className="border-y py-20 lg:py-28" style={{ borderColor: C.wa(.08), background: C.graphite }}>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:items-start"><Reveal><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>How we work</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Context before<br /><span style={{ color: C.lime }}>complexity.</span></h2><p className="mt-6 max-w-md text-sm leading-7" style={{ color: C.wa(.58) }}>Good work starts with understanding the problem. We move deliberately, test our thinking early, and keep improving what reaches the customer.</p></Reveal><div className="border-l pl-6 sm:pl-10" style={{ borderColor: C.la(.35) }}>{process.map((step, index) => <Reveal key={step} delay={index * .07}><div className="relative flex gap-5 border-b py-5" style={{ borderColor: C.wa(.1) }}><span className="-ml-[2.05rem] flex shrink-0 items-center justify-center rounded-full text-xs font-bold" style={{ background: index === process.length - 1 ? C.lime : C.graphite, border: `1px solid ${C.la(.55)}`, color: index === process.length - 1 ? C.black : C.lime }}>{index + 1}</span><span className="font-semibold">{step}</span></div></Reveal>)}</div></div>
-        </div>
-      </section>
-
-      <section id="open-positions" className="py-20 lg:py-28">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="mb-4 text-xs font-bold uppercase tracking-[.2em]" style={{ color: C.lime }}>Open positions</p><h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.7rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-.035em' }}>Find where you can<br /><span style={{ color: C.lime }}>make an impact.</span></h2></div><p className="max-w-sm text-sm leading-7" style={{ color: C.wa(.58) }}>We are interested in thoughtful people across engineering, design, data, and product. Tell us where you can contribute.</p></div></Reveal><div className="mt-12 border-t" style={{ borderColor: C.wa(.15) }}>{roles.map((role, index) => <Reveal key={role.title} delay={index * .05}><a href="mailto:info@velnixsolutions.com?subject=Careers%20at%20Velnix" className="group grid gap-3 border-b py-6 transition-colors duration-200 hover:bg-[#111111] sm:grid-cols-[1fr_auto_auto] sm:items-center sm:gap-8 sm:px-5" style={{ borderColor: C.wa(.12), color: C.white, textDecoration: 'none' }}><span><strong className="block text-base sm:text-lg">{role.title}</strong><span className="mt-1 block text-sm" style={{ color: C.wa(.5) }}>{role.text}</span></span><span className="text-xs font-bold uppercase tracking-[.14em]" style={{ color: C.lime }}>{role.group}</span><ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" color={C.lime} /></a></Reveal>)}</div></div></section>
-
-    </main>
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
+};
 
 export default Careers;
