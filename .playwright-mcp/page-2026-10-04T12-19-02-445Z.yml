@@ -1,0 +1,143 @@
+- generic [ref=f9e2]:
+  - region "Notifications (F8)":
+    - list
+  - complementary "WhatsApp contact options" [ref=f9e3]:
+    - button "Open WhatsApp contact options" [ref=f9e4] [cursor=pointer]
+  - generic [ref=f9e8]:
+    - navigation "Main navigation" [ref=f9e9]:
+      - generic [ref=f9e10]:
+        - link "Velnix Solutions — Home" [ref=f9e11]:
+          - /url: /
+          - img "Velnix Solutions" [ref=f9e12]
+        - button "Open menu" [ref=f9e13]
+    - main [ref=f9e16]:
+      - generic [ref=f9e22]:
+        - generic [ref=f9e23]: About us
+        - heading "Build smarter systems. Grow with confidence." [level=1] [ref=f9e26]
+        - paragraph [ref=f9e27]: We partner with growing businesses to turn operational challenges into intelligent, scalable systems. With AI, automation, and modern engineering, we reduce manual work and make room for lasting growth.
+        - link "Talk to our experts" [ref=f9e28] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f9e32]:
+        - generic [ref=f9e33]:
+          - paragraph [ref=f9e34]: Technical leadership
+          - heading "Message From Leadership" [level=2] [ref=f9e35]
+          - generic [ref=f9e36]:
+            - paragraph [ref=f9e37]:
+              - strong [ref=f9e38]: Welcome to Velnix Solutions.
+            - paragraph [ref=f9e39]:
+              - text: I’m
+              - strong [ref=f9e40]: Suresh Beekhani, Founder & CEO of Velnix Solutions.
+            - paragraph [ref=f9e41]:
+              - text: At Velnix, we believe technology should create
+              - strong [ref=f9e42]: real business value—not just more software.
+              - text: We combine AI, automation, and modern engineering to solve meaningful problems, simplify operations, and help businesses work smarter.
+            - paragraph [ref=f9e43]:
+              - text: Our foundation is built on
+              - strong [ref=f9e44]: innovation, trust, ownership, and continuous learning.
+              - text: We value people who think independently, take responsibility, stay curious, and build with purpose.
+            - paragraph [ref=f9e45]:
+              - text: "As we grow, our goal remains simple:"
+              - strong [ref=f9e46]: solve better problems, build better systems, and create lasting impact.
+            - link [ref=f9e47] [cursor=pointer]:
+              - /url: /contact
+              - strong [ref=f9e48]: Let’s build what’s next.
+          - generic [ref=f9e53]:
+            - paragraph [ref=f9e54]: Suresh Beekhani
+            - paragraph [ref=f9e55]: Founder & CEO | Velnix Solutions
+        - img "Suresh Beekhani, Founder and Lead AI Architect" [ref=f9e58]
+      - generic [ref=f9e60]:
+        - generic [ref=f9e61]:
+          - img "Velnix team sharing a project roadmap and vision" [ref=f9e63]
+          - generic [ref=f9e64]:
+            - paragraph [ref=f9e65]: Direction
+            - heading "Our Inspiring Vision" [level=3] [ref=f9e66]
+            - paragraph [ref=f9e67]: To become the trusted AI and technology partner for SMBs worldwide—helping businesses move from manual, disconnected operations to intelligent systems that work together, scale efficiently, and continuously create more capacity for growth.
+        - generic [ref=f9e68]:
+          - generic [ref=f9e69]:
+            - paragraph [ref=f9e70]: Purpose
+            - heading "Our Impactful Mission" [level=3] [ref=f9e71]
+            - paragraph [ref=f9e72]: To help growing businesses work smarter by building intelligent AI systems and custom software that eliminate repetitive administrative work, connect fragmented tools, and turn inefficient processes into streamlined workflows. We combine practical engineering with AI to create measurable capacity, reduce operational friction, and help teams focus on work that drives growth.
+          - img "Velnix team collaborating to shape an impactful mission" [ref=f9e74]
+      - generic [ref=f9e76]:
+        - generic [ref=f9e77]:
+          - generic [ref=f9e78]: OUR FOUNDATION
+          - heading "Values That Drive Our Engineering" [level=2] [ref=f9e79]
+        - generic [ref=f9e80]:
+          - generic [ref=f9e81]:
+            - heading "Client Value First" [level=3] [ref=f9e88]
+            - paragraph [ref=f9e89]: We focus on tangible business outcomes, exceeding expectations through high-impact technical execution.
+          - generic [ref=f9e90]:
+            - heading "People-Centric Technology" [level=3] [ref=f9e97]
+            - paragraph [ref=f9e98]: We build intuitive systems that empower operational teams rather than creating friction or complexity.
+          - generic [ref=f9e99]:
+            - heading "Engineering Integrity" [level=3] [ref=f9e103]
+            - paragraph [ref=f9e104]: Honesty, data privacy, and transparent communication form the foundation of every client partnership.
+          - generic [ref=f9e105]:
+            - heading "Operational Accountability" [level=3] [ref=f9e110]
+            - paragraph [ref=f9e111]: We take direct responsibility for product quality, timeline adherence, and system stability.
+          - generic [ref=f9e112]:
+            - heading "Practical Innovation" [level=3] [ref=f9e116]
+            - paragraph [ref=f9e117]: We adopt cutting-edge AI breakthroughs only when they deliver clear, measurable value to your business.
+          - generic [ref=f9e118]:
+            - heading "Collaborative Growth" [level=3] [ref=f9e125]
+            - paragraph [ref=f9e126]: By combining domain expertise with system architecture, we solve complex business challenges together.
+      - generic [ref=f9e128]:
+        - generic [ref=f9e129]:
+          - generic [ref=f9e130]: THE VELNIX ADVANTAGE
+          - heading "Why Decision-Makers Choose Velnix" [level=2] [ref=f9e131]
+        - generic [ref=f9e132]:
+          - generic [ref=f9e133]:
+            - heading "Proven Track Record" [level=3] [ref=f9e138]
+            - paragraph [ref=f9e139]: Consistently delivering software systems that automate manual overhead and accelerate growth.
+          - generic [ref=f9e140]:
+            - heading "AI & Domain Expertise" [level=3] [ref=f9e152]
+            - paragraph [ref=f9e153]: Deep knowledge of AI architectures, system integration standards, and SMB operational requirements.
+          - generic [ref=f9e154]:
+            - heading "Dedicated Engineering Team" [level=3] [ref=f9e161]
+            - paragraph [ref=f9e162]: Specialized engineers and architects committed to project speed, precision, and ongoing support.
+          - generic [ref=f9e163]:
+            - heading "Global Delivery Standard" [level=3] [ref=f9e170]
+            - paragraph [ref=f9e171]: Serving businesses across North America, Europe, and the Middle East with agile precision.
+          - generic [ref=f9e172]:
+            - heading "Predictable Timelines" [level=3] [ref=f9e177]
+            - paragraph [ref=f9e178]: Strict milestone commitments and transparent progress reporting from discovery to deployment.
+          - generic [ref=f9e179]:
+            - heading "Flexible Business Models" [level=3] [ref=f9e183]
+            - paragraph [ref=f9e184]: Tailored engagement options—dedicated team or fixed-scope projects—designed around your ROI goals.
+    - contentinfo "Velnix Solutions site footer" [ref=f9e185]:
+      - generic [ref=f9e188]:
+        - generic [ref=f9e189]:
+          - link "Velnix Solutions home" [ref=f9e191] [cursor=pointer]:
+            - /url: /
+            - img "Velnix Solutions" [ref=f9e192]
+          - paragraph [ref=f9e193]: Engineering intelligent systems that transform business operations. We build AI solutions, automation platforms, and enterprise software for forward-thinking organizations.
+          - generic [ref=f9e195]:
+            - paragraph [ref=f9e196]: Technology Insights
+            - generic [ref=f9e198]:
+              - textbox "Enter your email" [ref=f9e199]
+              - button "Subscribe" [ref=f9e200] [cursor=pointer]
+          - generic [ref=f9e201]:
+            - link "LinkedIn" [ref=f9e202] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/velnixsolutions/
+            - link "X / Twitter" [ref=f9e207] [cursor=pointer]:
+              - /url: https://x.com/VelnixSolutions
+            - link "Facebook" [ref=f9e210] [cursor=pointer]:
+              - /url: https://www.facebook.com/VelnixSolutions
+            - link "Instagram" [ref=f9e213] [cursor=pointer]:
+              - /url: https://www.instagram.com/velnixsolutions/
+        - generic [ref=f9e218]:
+          - button "Services" [ref=f9e221] [cursor=pointer]
+          - button "Industries" [ref=f9e228] [cursor=pointer]
+          - button "Company" [ref=f9e235] [cursor=pointer]
+          - button "Contact" [ref=f9e242] [cursor=pointer]
+      - generic [ref=f9e248]:
+        - paragraph [ref=f9e249]: © 2026 Velnix Solutions — Engineering the future of business technology.
+        - generic [ref=f9e250]:
+          - link "Privacy Policy" [ref=f9e251] [cursor=pointer]:
+            - /url: /privacy-policy
+          - generic [ref=f9e252]: •
+          - link "Terms of Service" [ref=f9e253] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - generic [ref=f9e254]: •
+          - link "Cookie Policy" [ref=f9e255] [cursor=pointer]:
+            - /url: /cookie-policy

@@ -6,7 +6,6 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 
 // Lazy load below-the-fold components
 const OriginStory = lazy(() => import('@/components/OriginStory'));
-const MeetFounder = lazy(() => import('@/components/MeetFounder'));
 const Services = lazy(() => import('@/components/Services'));
 const Industries = lazy(() => import('@/components/Industries'));
 const TechnologyStack = lazy(() => import('@/components/TechnologyStack').then(m => ({ default: m.TechnologyStack })));
@@ -14,6 +13,7 @@ const EngagementModels = lazy(() => import('@/components/EngagementModels'));
 const Approach = lazy(() => import('@/components/Approach'));
 const Testimonials = lazy(() => import('@/components/Testimonials'));
 const Portfolio = lazy(() => import('@/components/PortfolioSection'));
+const MeetFounder = lazy(() => import('@/components/MeetFounder'));
 const LatestBlogs = lazy(() => import('@/components/LatestBlogs'));
 const FAQ = lazy(() => import('@/components/FAQ'));
 const CTAExamples = lazy(() => import('@/components/CTAExamples'));
@@ -61,7 +61,7 @@ const Index = () => {
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>
-            <MeetFounder />
+              <MeetFounder />
           </AnimatedSection>
 
           <AnimatedSection threshold={0.08}>

@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   HeartHandshake, Users, Shield, CheckCircle2, Lightbulb, Globe2,
-  TrendingUp, Brain, Clock3, Star, ArrowRight, Target, Zap
+  TrendingUp, Brain, Clock3, Star, ArrowRight
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import MeetFounder from '@/components/MeetFounder';
+import LatestBlogs from '@/components/LatestBlogs';
+import CTA from '@/components/ui/CTA';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BRAND TOKENS (Velnix Locked Color System)
@@ -87,6 +90,13 @@ const whyUs = [
   },
 ];
 
+const impactStats = [
+  { number: '7+', label: 'Years of engineering experience' },
+  { number: '50+', label: 'Enterprise and SMBs clients' },
+  { number: '45+', label: 'Intelligent systems deployed' },
+  { number: '95%', label: 'Client satisfaction rate' },
+];
+
 const AboutPage = () => {
   return (
     <div className="min-h-screen flex flex-col antialiased" style={{ background: C.black, color: C.white }}>
@@ -102,28 +112,20 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             1. HERO SECTION
         ══════════════════════════════════════════════════════ */}
-        <section className="mb-20 sm:mb-28">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+        <section className="relative isolate mb-20 overflow-hidden font-display sm:mb-28">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(125,204,0,0.18),transparent_55%)]" aria-hidden="true" />
+          <div className="relative z-10 mx-auto flex min-h-[420px] max-w-7xl flex-col items-center justify-center px-5 pt-16 pb-8 text-center sm:min-h-[460px] sm:px-8 sm:pt-20 sm:pb-10 lg:min-h-[480px] lg:pt-24 lg:pb-12">
+          <div className="mx-auto max-w-4xl">
             {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-6"
+              className="mb-6 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]"
             >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{
-                  border: `1px solid ${C.la(0.3)}`,
-                  background: C.la(0.06),
-                }}
-              >
-                <span style={{ borderRadius: '50%', background: C.lime, boxShadow: `0 0 8px ${C.lime}` }} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: C.lime, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
-                  ABOUT VELNIX SOLUTIONS
-                </span>
-              </span>
+              <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+              About us
+              <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             </motion.div>
 
             {/* H1 */}
@@ -131,17 +133,11 @@ const AboutPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              style={{
-                fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)',
-                fontWeight: 800,
-                lineHeight: 1.08,
-                letterSpacing: '-0.03em',
-                color: C.white,
-                marginBottom: '1.5rem',
-              }}
+              className="mx-auto mb-6 max-w-[20ch] text-balance text-4xl font-black leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
             >
-              Building The Operating Layer For{' '}
-              <span style={{ color: C.lime }}>AI-Driven Businesses.</span>
+              Build smarter systems.
+              <br className="hidden sm:block" />{' '}
+              <span style={{ color: C.lime }}>Grow with confidence.</span>
             </motion.h1>
 
             {/* Supporting Copy */}
@@ -149,87 +145,126 @@ const AboutPage = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              style={{
-                fontSize: 'clamp(1rem, 1.6vw, 1.18rem)',
-                color: C.wa(0.72),
-                lineHeight: 1.75,
-                fontWeight: 400,
-              }}
+              className="mx-auto max-w-2xl text-pretty text-base leading-7 text-white/75 sm:text-lg sm:leading-8"
             >
-              Velnix Solutions is an AI development company that helps growing businesses eliminate operational complexity. We turn repetitive manual processes into scalable, intelligent software systems.
+              We partner with growing businesses to turn operational challenges into intelligent, scalable systems. With AI, automation, and modern engineering, we reduce manual work and make room for lasting growth.
             </motion.p>
+            <motion.a
+              href="/contact"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#B6FF00] px-7 py-3 text-sm font-bold text-[#050505] shadow-[0_8px_32px_rgba(182,255,0,0.2)] transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-[#7DCC00] hover:shadow-[0_12px_36px_rgba(182,255,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B6FF00]"
+            >
+              Talk to our experts
+              <ArrowRight size={16} aria-hidden="true" />
+            </motion.a>
           </div>
           </div>
         </section>
 
+        <MeetFounder />
+
         {/* ══════════════════════════════════════════════════════
             2. VISION & MISSION
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            
-            {/* Mission Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-8 sm:p-10 flex flex-col justify-between"
-              style={{
-                background: C.graphite,
-                border: `1px solid ${C.wa(0.1)}`,
-              }}
-            >
-              <div>
-                <div
-                  className="flex items-center justify-center mb-6"
-                  style={{ background: C.la(0.1), border: `1px solid ${C.la(0.25)}` }}
-                >
-                  <Target size={22} color={C.lime} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">Our Mission</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  To build intelligent AI systems and custom software that eliminate administrative workloads, connect fragmented tools, and create measurable capacity for growing businesses.
+        <section className="w-full bg-[#111111] py-16 text-white sm:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl space-y-14 px-5 sm:px-8 lg:space-y-20 lg:px-10">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.55 }}
+                className="w-full max-w-[32rem] overflow-hidden rounded-2xl shadow-[0_24px_60px_-32px_rgba(0,0,0,0.7)] ring-1 ring-inset ring-white/10"
+              >
+                <img
+                  src="/image/Hero-section-image/hero-page-image-3.avif"
+                  alt="Velnix team sharing a project roadmap and vision"
+                  width={1264}
+                  height={843}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[1.55] w-full object-cover"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ delay: 0.08, duration: 0.55 }}
+                className="lg:pl-1"
+              >
+                <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#B6FF00]">
+                  Direction
                 </p>
-              </div>
-              <div className="mt-8 pt-6 flex items-center gap-2 text-xs font-bold tracking-wider uppercase" style={{ borderTop: `1px solid ${C.wa(0.08)}`, color: C.lime }}>
-                <span>Execution Focused</span>
-                <ArrowRight size={14} />
-              </div>
-            </motion.div>
-
-            {/* Vision Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="p-8 sm:p-10 flex flex-col justify-between"
-              style={{
-                background: C.graphite,
-                border: `1px solid ${C.wa(0.1)}`,
-              }}
-            >
-              <div>
-                <div
-                  className="flex items-center justify-center mb-6"
-                  style={{ background: C.la(0.1), border: `1px solid ${C.la(0.25)}` }}
-                >
-                  <Zap size={22} color={C.lime} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">Our Vision</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  To become the trusted AI development partner for SMBs globally—recognized for transforming operational chaos into streamlined, autonomous business operations.
+                <h3 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl">
+                  Our Inspiring <span className="text-[#B6FF00]">Vision</span>
+                </h3>
+                <p className="mt-5 max-w-xl text-pretty text-[0.95rem] leading-7 text-white/65 sm:text-base sm:leading-8">
+                  To become the trusted AI and technology partner for SMBs worldwide—helping businesses move from manual, disconnected operations to intelligent systems that work together, scale efficiently, and continuously create more capacity for growth.
                 </p>
-              </div>
-              <div className="mt-8 pt-6 flex items-center gap-2 text-xs font-bold tracking-wider uppercase" style={{ borderTop: `1px solid ${C.wa(0.08)}`, color: C.lime }}>
-                <span>Long-Term Scalability</span>
-                <ArrowRight size={14} />
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.55 }}
+                className="lg:pr-1"
+              >
+                <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#B6FF00]">
+                  Purpose
+                </p>
+                <h3 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl">
+                  Our Impactful <span className="text-[#B6FF00]">Mission</span>
+                </h3>
+                <p className="mt-5 max-w-xl text-pretty text-[0.95rem] leading-7 text-white/65 sm:text-base sm:leading-8">
+                  To help growing businesses work smarter by building intelligent AI systems and custom software that eliminate repetitive administrative work, connect fragmented tools, and turn inefficient processes into streamlined workflows. We combine practical engineering with AI to create measurable capacity, reduce operational friction, and help teams focus on work that drives growth.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ delay: 0.08, duration: 0.55 }}
+                className="w-full max-w-[32rem] overflow-hidden rounded-2xl shadow-[0_24px_60px_-32px_rgba(0,0,0,0.7)] ring-1 ring-inset ring-white/10 lg:ml-auto"
+              >
+                <img
+                  src="/image/Hero-section-image/hero-page-image-1.avif"
+                  alt="Velnix team collaborating to shape an impactful mission"
+                  width={1537}
+                  height={1023}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[1.55] w-full object-cover"
+                />
+              </motion.div>
+            </div>
           </div>
+        </section>
+
+        <section className="w-full bg-[#B6FF00] text-[#050505]" aria-label="Velnix impact">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
+            {impactStats.map(({ number, label }, index) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ delay: index * 0.08, duration: 0.45 }}
+                className={`flex min-h-36 flex-col items-center justify-center px-4 py-7 text-center sm:min-h-44 sm:px-6 sm:py-9 ${index % 2 === 1 ? 'border-l border-black/10' : ''} ${index >= 2 ? 'border-t border-black/10 lg:border-t-0' : ''} ${index === 2 ? 'lg:border-l' : ''}`}
+              >
+                <p className="text-4xl font-black leading-none tracking-tight text-[#050505] sm:text-5xl">
+                  {number}
+                </p>
+                <p className="mx-auto mt-4 max-w-[20ch] text-[0.65rem] font-bold uppercase leading-5 tracking-[0.18em] text-black/85 sm:text-xs sm:leading-6">
+                  {label}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
@@ -338,6 +373,21 @@ const AboutPage = () => {
           </div>
           </div>
         </section>
+
+        <LatestBlogs />
+
+        <CTA
+          eyebrow="Ready to build what's next?"
+          title="Turn your next big idea into a system that moves your business forward."
+          description="Let’s talk about the challenges you’re solving and how AI, automation, and thoughtful engineering can help."
+          primaryLabel="Start a Conversation"
+          primaryHref="/contact"
+          secondaryLabel="Explore Our Work"
+          secondaryHref="/portfolio"
+          variant="centered"
+          background="gradient"
+          size="md"
+        />
 
       </main>
 

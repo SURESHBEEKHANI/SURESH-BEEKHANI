@@ -1,0 +1,603 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - complementary "WhatsApp contact options" [ref=e3]:
+    - button "Open WhatsApp contact options" [ref=e4]
+  - generic [ref=e8]:
+    - navigation "Main navigation" [ref=e9]:
+      - generic [ref=e10]:
+        - link "Velnix Solutions — Home" [ref=e11]:
+          - /url: /
+          - img "Velnix Solutions" [ref=e12]
+        - generic [ref=e13]:
+          - link [ref=e15]:
+            - /url: /
+          - link [ref=e20]:
+            - /url: /#industries
+          - link "Work" [ref=e25]:
+            - /url: /Portfolio
+          - link [ref=e27]:
+            - /url: /
+        - generic [ref=e31]:
+          - button "Search" [ref=e32]
+          - link "+92 335 131 2852" [ref=e36]:
+            - /url: tel:+923351312852
+          - link "Book a Strategy Call with Velnix Solutions" [ref=e40]:
+            - /url: https://calendar.app.google/F63aBoA5vxJdtihj7
+            - text: Book a Strategy Call
+    - main [ref=e43]:
+      - region "Velnix Solutions hero section" [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: AI Innovation · Product Engineering · Strategic Consulting
+            - heading "Turn Repetitive Operations Into Intelligent Systems" [level=1] [ref=e49]
+            - paragraph [ref=e50]: Velnix develops custom AI solutions that replace manual spreadsheets with automated workflows, helping your team focus on growth instead of administration.
+            - generic [ref=e51]:
+              - generic [aria-hidden]:
+                - generic: Scroll
+              - link "Identify what to automate — Book a strategy call with Velnix" [ref=e52]:
+                - /url: https://calendar.app.google/F63aBoA5vxJdtihj7
+                - generic [ref=e53]: Identify What to Automate
+              - link "Get the AI Audit — $1,000" [ref=e56]:
+                - /url: /ai-audit
+            - link "Not sure where to start? Talk to our team" [ref=e59]:
+              - /url: /contact
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - generic "70%" [ref=e64]
+                - generic [ref=e65]: Admin work cut
+              - generic [ref=e67]:
+                - generic "10×" [ref=e68]
+                - generic [ref=e69]: Faster workflows
+              - generic [ref=e71]:
+                - generic "SMBs" [ref=e72]
+                - generic [ref=e73]: Focused solutions
+          - img "Agentic AI visual showing intelligent automation and business impact" [ref=e74]:
+            - img "Velnix intelligent systems in action" [ref=e77]
+        - generic "As featured in" [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: Business Insider
+            - generic [ref=e83]: Mashable
+            - generic [ref=e84]: Khaleej Times
+            - generic [ref=e85]: yahoo! finance
+            - generic [ref=e86]: New York Weekly
+            - generic [aria-hidden] [ref=e87]: Business Insider
+            - generic [aria-hidden] [ref=e88]: Mashable
+            - generic [aria-hidden] [ref=e89]: Khaleej Times
+            - generic [aria-hidden] [ref=e90]: yahoo! finance
+            - generic [aria-hidden] [ref=e91]: New York Weekly
+      - region [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - generic [ref=e97]: Industries
+              - heading "AI Built for Your Industry." [level=2] [ref=e99]
+              - paragraph [ref=e100]: Tailored solutions for your workflows, compliance needs, and operational challenges.
+            - generic [ref=e101]:
+              - button "Previous industries" [ref=e102]
+              - button "Next industries" [ref=e105]
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - article [ref=e110]:
+                - 'link "Healthcare: Advanced technology for healthcare excellence." [ref=e111]':
+                  - /url: /healthcare
+                  - generic [ref=e112]:
+                    - img "Healthcare industry solution" [ref=e113]
+                    - generic [ref=e115]:
+                      - generic [ref=e116]: Healthcare
+                      - paragraph [ref=e117]: Reduce administrative load and disconnected care workflows.
+                      - generic [ref=e118]: Learn More
+              - article [ref=e124]:
+                - 'link "Fintech: Financial technology solutions for modern markets." [ref=e125]':
+                  - /url: /fintech
+                  - generic [ref=e126]:
+                    - img "Fintech industry solution" [ref=e127]
+                    - generic [ref=e129]:
+                      - generic [ref=e130]: Fintech
+                      - paragraph [ref=e131]: Move risk, onboarding, and support work without losing control.
+                      - generic [ref=e132]: Learn More
+              - article [ref=e138]:
+                - 'link "Education: We promote education through innovative technology." [ref=e139]':
+                  - /url: /education
+                  - generic [ref=e140]:
+                    - img "Education industry solution" [ref=e141]
+                    - generic [ref=e143]:
+                      - generic [ref=e144]: Education
+                      - paragraph [ref=e145]: Support learners and staff while repetitive work keeps growing.
+                      - generic [ref=e146]: Learn More
+              - article [ref=e152]:
+                - 'link "E-Commerce: We enhance online commerce with tailored solutions." [ref=e153]':
+                  - /url: /e-commerce
+                  - generic [ref=e154]:
+                    - img "E-Commerce industry solution" [ref=e155]
+                    - generic [ref=e157]:
+                      - generic [ref=e158]: E-Commerce
+                      - paragraph [ref=e159]: Turn customer intent into revenue while keeping operations lean.
+                      - generic [ref=e160]: Learn More
+            - generic [ref=e166]:
+              - button "Go to page 1" [ref=e167]
+              - button "Go to page 2" [ref=e168]
+      - region "Services We Offer" [ref=e170]:
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]: Our Services
+            - heading "Services We Offer." [level=2] [ref=e175]
+            - paragraph [ref=e177]: From intelligence to automation. Systems that scale.
+          - generic [ref=e178]:
+            - article [ref=e179]:
+              - generic [ref=e180]:
+                - generic [ref=e181]: "01"
+                - generic [ref=e182]:
+                  - generic [ref=e183]: Assessment
+                  - generic [ref=e184]: AI Audit
+                - paragraph [ref=e186]: Assess, audit, and improve your AI systems for safety and performance. Comprehensive evaluation of AI implementations with actionable recommendations.
+            - article [ref=e190]:
+              - generic [ref=e191]:
+                - generic [ref=e192]: "02"
+                - generic [ref=e193]:
+                  - generic [ref=e194]: Autonomous
+                  - generic [ref=e195]: Agentic AI
+                - paragraph [ref=e197]: Deploy autonomous AI agents that plan, reason, and act. Build intelligent systems that operate independently and make decisions without constant supervision.
+            - article [ref=e201]:
+              - generic [ref=e202]:
+                - generic [ref=e203]: "03"
+                - generic [ref=e204]:
+                  - generic [ref=e205]: Efficiency
+                  - generic [ref=e206]: AI Automation
+                - paragraph [ref=e208]: Turn repetitive workflows into automated systems. Build intelligent autonomous agents that think, learn, and act independently to drive efficiency and innovation.
+            - article [ref=e212]:
+              - generic [ref=e213]:
+                - generic [ref=e214]: "04"
+                - generic [ref=e215]:
+                  - generic [ref=e216]: Core AI
+                  - generic [ref=e217]: AI Development
+                - paragraph [ref=e219]: Build intelligent software around your business. Leverage cutting-edge AI technologies to create tailored solutions that transform operations and drive measurable growth.
+            - article [ref=e223]:
+              - generic [ref=e224]:
+                - generic [ref=e225]: "05"
+                - generic [ref=e226]:
+                  - generic [ref=e227]: Communication
+                  - generic [ref=e228]: Conversational AI
+                - paragraph [ref=e230]: Create AI systems that communicate with customers and teams. Transform interactions with intelligent systems that understand, learn, and respond naturally.
+          - button "See More Services" [ref=e235]
+      - region "Technology Stack" [ref=e239]:
+        - generic [ref=e240]:
+          - generic [ref=e242]:
+            - generic [ref=e243]: Engineered for Performance
+            - heading "The Technologies Powering Velnix Systems" [level=2] [ref=e245]
+            - paragraph [ref=e246]: Production-grade frameworks, foundational AI models, cloud infrastructure, and enterprise integrations engineered for resilience and scale.
+          - tablist "Technology Stack Categories" [ref=e248]:
+            - tab "AI & Machine Learning" [selected] [ref=e249]
+            - tab "Agentic & GenAI" [ref=e250]
+            - tab "Front-End" [ref=e251]
+            - tab "Back-End" [ref=e252]
+            - tab "Low-Code & Automation" [ref=e253]
+            - tab "Database & Data Systems" [ref=e254]
+            - tab "Vector & Knowledge" [ref=e255]
+            - tab "Cloud & DevOps" [ref=e256]
+            - tab "Mobile" [ref=e257]
+            - tab "CV, NLP & Speech" [ref=e258]
+            - tab "Data Engineering" [ref=e259]
+            - tab "APIs & Integrations" [ref=e260]
+            - tab "Testing & QA" [ref=e261]
+            - tab "Security" [ref=e262]
+            - tab "Software Architecture" [ref=e263]
+          - tabpanel "AI & Machine Learning" [ref=e264]:
+            - generic [ref=e265]:
+              - generic [ref=e266]: AI & ML
+              - heading "Python" [level=3] [ref=e274]
+            - generic [ref=e275]:
+              - generic [ref=e276]: Deep Learning
+              - heading "TensorFlow" [level=3] [ref=e283]
+            - generic [ref=e284]:
+              - generic [ref=e285]: Deep Learning
+              - heading "PyTorch" [level=3] [ref=e292]
+            - generic [ref=e293]:
+              - generic [ref=e294]: Deep Learning
+              - heading "Keras" [level=3] [ref=e302]
+            - generic [ref=e303]:
+              - generic [ref=e304]: ML Library
+              - heading "Scikit-learn" [level=3] [ref=e312]
+            - generic [ref=e313]:
+              - generic [ref=e314]:
+                - generic [ref=e315]: XG
+                - generic [ref=e317]: Gradient Boost
+              - heading "XGBoost" [level=3] [ref=e319]
+            - generic [ref=e320]:
+              - generic [ref=e321]:
+                - generic [ref=e322]: LG
+                - generic [ref=e324]: Gradient Boost
+              - heading "LightGBM" [level=3] [ref=e326]
+            - generic [ref=e327]:
+              - generic [ref=e328]: Scientific
+              - heading "NumPy" [level=3] [ref=e336]
+            - generic [ref=e337]:
+              - generic [ref=e338]: Data Analysis
+              - heading "Pandas" [level=3] [ref=e346]
+            - generic [ref=e347]:
+              - generic [ref=e348]:
+                - generic [ref=e349]: Sc
+                - generic [ref=e351]: Scientific
+              - heading "SciPy" [level=3] [ref=e353]
+      - generic [ref=e356]:
+        - generic [ref=e357]:
+          - generic [ref=e358]: How We Engage
+          - heading "Engagement Models" [level=2] [ref=e360]
+          - paragraph [ref=e361]: Flexible engagement models for projects of every scope and timeline.
+        - generic [ref=e362]:
+          - link "01 Consulting & Discovery Define the right strategy, architecture, AI opportunities, and implementation roadmap before a single line of code is written. Learn more" [ref=e363]:
+            - /url: /contact
+            - generic [ref=e365]: "01"
+            - heading "Consulting & Discovery" [level=3] [ref=e366]
+            - paragraph [ref=e367]: Define the right strategy, architecture, AI opportunities, and implementation roadmap before a single line of code is written.
+            - generic [ref=e368]: Learn more
+          - link "02 Fixed Price A clearly scoped project with defined deliverables, timeline, and budget — suited for well-established requirements and predictable outcomes. Learn more" [ref=e372]:
+            - /url: /contact
+            - generic [ref=e374]: "02"
+            - heading "Fixed Price" [level=3] [ref=e375]
+            - paragraph [ref=e376]: A clearly scoped project with defined deliverables, timeline, and budget — suited for well-established requirements and predictable outcomes.
+            - generic [ref=e377]: Learn more
+          - link "03 Time & Material Flexible development for evolving requirements, shifting priorities, and projects that require continuous iteration over a sustained period. Learn more" [ref=e381]:
+            - /url: /contact
+            - generic [ref=e383]: "03"
+            - heading "Time & Material" [level=3] [ref=e384]
+            - paragraph [ref=e385]: Flexible development for evolving requirements, shifting priorities, and projects that require continuous iteration over a sustained period.
+            - generic [ref=e386]: Learn more
+          - link "04 Milestone-Based Break complex projects into measurable phases — each with defined deliverables, acceptance criteria, and a corresponding payment milestone. Learn more" [ref=e390]:
+            - /url: /contact
+            - generic [ref=e392]: "04"
+            - heading "Milestone-Based" [level=3] [ref=e393]
+            - paragraph [ref=e394]: Break complex projects into measurable phases — each with defined deliverables, acceptance criteria, and a corresponding payment milestone.
+            - generic [ref=e395]: Learn more
+          - link "05 Maintenance & Support Keep your systems reliable and optimized with ongoing monitoring, technical maintenance, iterative improvements, and dedicated support coverage. Learn more" [ref=e399]:
+            - /url: /contact
+            - generic [ref=e401]: "05"
+            - heading "Maintenance & Support" [level=3] [ref=e402]
+            - paragraph [ref=e403]: Keep your systems reliable and optimized with ongoing monitoring, technical maintenance, iterative improvements, and dedicated support coverage.
+            - generic [ref=e404]: Learn more
+          - link "06 Not Sure Which Model Fits? We scope the engagement model after understanding your requirements — no commitment required. Let's Talk" [ref=e408]:
+            - /url: /contact
+            - generic [ref=e410]: "06"
+            - heading "Not Sure Which Model Fits?" [level=3] [ref=e411]
+            - paragraph [ref=e412]: We scope the engagement model after understanding your requirements — no commitment required.
+            - generic [ref=e413]: Let's Talk
+      - region [ref=e418]:
+        - generic [ref=e419]:
+          - generic [ref=e420]:
+            - generic [ref=e421]: HOW WE WORK
+            - heading "From Strategy to Systems. Built for Results." [level=2] [ref=e423]
+            - paragraph [ref=e424]: No confusion or delays. Just clear, transparent, and reliable execution.
+          - generic [ref=e425]:
+            - generic [ref=e427]:
+              - generic [ref=e428]: "01"
+              - heading "Contact Us" [level=3] [ref=e431]
+              - paragraph [ref=e433]: Share your vision and business goals.
+            - generic [ref=e439]:
+              - generic [ref=e440]: "02"
+              - heading "Consultation & Discovery" [level=3] [ref=e443]
+              - paragraph [ref=e445]: Assess feasibility and map workflows.
+            - generic [ref=e451]:
+              - generic [ref=e452]: "03"
+              - heading "Detailed Proposal" [level=3] [ref=e455]
+              - paragraph [ref=e457]: Clear scope, timeline, and investment.
+            - generic [ref=e463]:
+              - generic [ref=e464]: "04"
+              - heading "Kickoff & Delivery" [level=3] [ref=e467]
+              - paragraph [ref=e469]: Structured execution and deployment.
+      - region "Selected Work" [ref=e475]:
+        - generic [ref=e476]:
+          - generic [ref=e477]:
+            - generic [ref=e478]: Selected Work
+            - heading "Work We Have Shipped." [level=2] [ref=e481]
+            - paragraph [ref=e482]: From intelligence to operations. Outcomes you can measure.
+          - generic [ref=e483]:
+            - article [ref=e484]:
+              - generic [ref=e485]:
+                - generic [ref=e486]: CASE STUDY
+                - heading "Insurance Fraud Detection" [level=3] [ref=e487]
+                - paragraph [ref=e489]: Claims teams could not surface suspicious patterns quickly enough through manual investigation.
+                - generic [ref=e490]:
+                  - generic [ref=e491]: Machine Learning
+                  - generic [ref=e492]: Fraud Detection
+                  - generic [ref=e493]: Analytics
+                  - generic [ref=e494]: Automation
+                - link "View Case Study" [ref=e495]:
+                  - /url: /portfolio/insurance-fraud-detection
+            - article [ref=e496]:
+              - generic [ref=e497]:
+                - generic [ref=e498]: CASE STUDY
+                - heading "Workflow Automation Platform" [level=3] [ref=e499]
+                - paragraph [ref=e501]: Administrative work was repeated across teams with no shared automation layer.
+                - generic [ref=e502]:
+                  - generic [ref=e503]: AI Agents
+                  - generic [ref=e504]: Automation
+                  - generic [ref=e505]: n8n
+                  - generic [ref=e506]: APIs
+                  - generic [ref=e507]: Workflows
+                - link "View Case Study" [ref=e508]:
+                  - /url: /portfolio/ai-workflow-automation
+            - article [ref=e509]:
+              - generic [ref=e510]:
+                - generic [ref=e511]: CASE STUDY
+                - heading "Clinical Decision Support" [level=3] [ref=e512]
+                - paragraph [ref=e514]: Charting and diagnostic retrieval slowed consultations and delayed clinical decisions.
+                - generic [ref=e515]:
+                  - generic [ref=e516]: Healthcare AI
+                  - generic [ref=e517]: Clinical NLP
+                  - generic [ref=e518]: EHR
+                  - generic [ref=e519]: Predictive Analytics
+                - link "View Case Study" [ref=e520]:
+                  - /url: /portfolio/clinical-decision-support
+            - article [ref=e521]:
+              - generic [ref=e522]:
+                - generic [ref=e523]: CASE STUDY
+                - heading "Real Estate Lead Intelligence" [level=3] [ref=e524]
+                - paragraph [ref=e526]: Agents qualified leads by hand, without a reliable signal for buyer intent or close probability.
+                - generic [ref=e527]:
+                  - generic [ref=e528]: Lead Scoring
+                  - generic [ref=e529]: NLP
+                  - generic [ref=e530]: CRM Integration
+                  - generic [ref=e531]: Automation
+                - link "View Case Study" [ref=e532]:
+                  - /url: /portfolio/real-estate-ai-platform
+            - article [ref=e533]:
+              - generic [ref=e534]:
+                - generic [ref=e535]: CASE STUDY
+                - heading "E-Commerce Personalization" [level=3] [ref=e536]
+                - paragraph [ref=e538]: Generic recommendations reduced engagement and increased cart abandonment.
+                - generic [ref=e539]:
+                  - generic [ref=e540]: Recommendation Engine
+                  - generic [ref=e541]: ML
+                  - generic [ref=e542]: Real-Time AI
+                  - generic [ref=e543]: E-Commerce
+                - link "View Case Study" [ref=e544]:
+                  - /url: /portfolio/ecommerce-ai-personalization
+            - article [ref=e545]:
+              - generic [ref=e546]:
+                - generic [ref=e547]: CASE STUDY
+                - heading "Credit Risk Analytics" [level=3] [ref=e548]
+                - paragraph [ref=e550]: Legacy scoring missed non-traditional borrower signals and inflated default risk.
+                - generic [ref=e551]:
+                  - generic [ref=e552]: FinTech
+                  - generic [ref=e553]: Risk Modeling
+                  - generic [ref=e554]: Machine Learning
+                  - generic [ref=e555]: Real-Time
+                - link "View Case Study" [ref=e556]:
+                  - /url: /portfolio/fintech-risk-analytics
+          - link "See More Work" [ref=e558]:
+            - /url: /portfolio
+            - text: See More Work
+            - generic [aria-hidden] [ref=e559]: →
+      - region "Client Proof & Testimonials" [ref=e561]:
+        - generic [ref=e562]:
+          - generic [ref=e564]:
+            - generic [ref=e565]: Client Testimonials
+            - heading "Built with Velnix. Proven in the real world" [level=2] [ref=e567]
+            - paragraph [ref=e568]: Real stories from leaders who trust Velnix to build and scale high-impact software.
+          - generic [ref=e569]:
+            - generic [ref=e570]:
+              - article [ref=e571]:
+                - generic [ref=e572]:
+                  - img "5 out of 5 stars" [ref=e573]
+                  - blockquote [ref=e584]: "\"From workflow automation to intelligent decision support, Velnix approached our requirements with strong technical discipline and a clear understanding of healthcare's unique demands.\""
+                - generic [ref=e585]:
+                  - generic [aria-hidden] [ref=e586]: DN
+                  - generic [ref=e587]:
+                    - heading "Dr. Natalie Parker" [level=3] [ref=e588]
+                    - paragraph [ref=e589]: Chief Digital Health Officer
+              - article [ref=e590]:
+                - generic [ref=e591]:
+                  - img "5 out of 5 stars" [ref=e592]
+                  - blockquote [ref=e603]: "\"The collaboration has been exceptional. Velnix was quick to understand our operational bottlenecks, accommodating scope adjustments effortlessly while delivering high-impact software ahead of deadline.\""
+                - generic [ref=e604]:
+                  - generic [aria-hidden] [ref=e605]: KC
+                  - generic [ref=e606]:
+                    - heading "Kate Callahan" [level=3] [ref=e607]
+                    - paragraph [ref=e608]: Chief Executive Officer
+              - article [ref=e609]:
+                - generic [ref=e610]:
+                  - img "5 out of 5 stars" [ref=e611]
+                  - blockquote [ref=e622]: "\"Velnix Solutions significantly upgraded our existing core application. Their team manages projects with strict discipline, clear documentation, and transparent technical communication.\""
+                - generic [ref=e623]:
+                  - generic [aria-hidden] [ref=e624]: AS
+                  - generic [ref=e625]:
+                    - heading "Aram Saffarian" [level=3] [ref=e626]
+                    - paragraph [ref=e627]: VP of Engineering
+            - generic [ref=e628]:
+              - button "Previous testimonial" [ref=e629]
+              - generic [ref=e632]: 1 / 15
+              - button "Next testimonial" [ref=e636]
+      - generic [ref=e640]:
+        - generic [ref=e641]:
+          - generic [ref=e642]:
+            - generic [ref=e643]: The Origin Story
+            - heading "Built from a simple belief technology should create capacity." [level=2] [ref=e645]:
+              - generic [ref=e646]: Built from a simple belief
+              - generic [ref=e647]: technology should create capacity.
+            - paragraph [ref=e648]: Velnix Solutions began at the intersection of ambitious businesses and the operational weight holding them back. We saw teams spending their best hours moving data between tools, repeating decisions, and managing work software should have handled.
+            - paragraph [ref=e649]: "So we built a different kind of AI partner: close to the business, rigorous about engineering, and focused on systems that make people faster without making their work feel less human."
+            - link "Meet Velnix" [ref=e650]:
+              - /url: /about
+          - generic "Velnix company impact" [ref=e653]:
+            - generic [ref=e654]:
+              - paragraph [ref=e655]:
+                - generic [ref=e656]: 7+
+                - text: 0+
+              - paragraph [ref=e657]: Years of engineering experience
+            - generic [ref=e658]:
+              - paragraph [ref=e659]:
+                - generic [ref=e660]: 50+
+                - text: 0+
+              - paragraph [ref=e661]: Enterprise and SMBs clients
+            - generic [ref=e662]:
+              - paragraph [ref=e663]:
+                - generic [ref=e664]: 45+
+                - text: 0+
+              - paragraph [ref=e665]: Intelligent systems deployed
+            - generic [ref=e666]:
+              - paragraph [ref=e667]:
+                - generic [ref=e668]: 95%
+                - text: 0%
+              - paragraph [ref=e669]: Client satisfaction rate
+        - generic [ref=e671]:
+          - heading "Recognized across leading industry platforms." [level=3] [ref=e672]
+          - list [ref=e673]:
+            - listitem [ref=e674]:
+              - generic [ref=e678]: PASHA
+            - listitem [ref=e679]:
+              - generic [ref=e682]: Clutch
+            - listitem [ref=e683]:
+              - generic [ref=e687]: GoodFirms
+            - listitem [ref=e688]:
+              - generic [ref=e691]: SoftwareWorld
+            - listitem [ref=e692]:
+              - generic [ref=e699]: P@SHA ICT Awards
+          - paragraph [ref=e700]:
+            - generic [ref=e701]: AI Development
+            - generic [ref=e702]:
+              - generic [aria-hidden] [ref=e703]: ·
+              - text: Custom Software
+            - generic [ref=e704]:
+              - generic [aria-hidden] [ref=e705]: ·
+              - text: Automation
+            - generic [ref=e706]:
+              - generic [aria-hidden] [ref=e707]: ·
+              - text: Data Science
+          - paragraph [ref=e708]: Trusted technology partner · Global delivery · Enterprise-ready engineering
+      - region "Loading latest insights" [ref=e710]
+      - region [ref=e740]:
+        - generic [ref=e742]:
+          - generic [ref=e743]:
+            - generic [ref=e744]: Before We Build
+            - heading "Know Before We Build Together." [level=2] [ref=e746]
+          - generic [ref=e747]:
+            - button [ref=e749]:
+              - heading "What does Velnix Solutions do?" [level=3] [ref=e750]
+            - button [ref=e754]:
+              - heading "Do we need an AI strategy before starting?" [level=3] [ref=e755]
+            - button [ref=e759]:
+              - heading "What types of business problems can Velnix solve?" [level=3] [ref=e760]
+            - button [ref=e764]:
+              - heading "Where can AI provide genuine ROI for my business?" [level=3] [ref=e765]
+            - button [ref=e769]:
+              - heading "Does every business problem require AI?" [level=3] [ref=e770]
+      - generic [ref=e778]:
+        - generic [ref=e779]: The Future We're Building
+        - heading "We don't just advise on AI. We build it, ship it, and scale it, for you, and for the world." [level=2] [ref=e781]
+        - paragraph [ref=e782]: Whether you're an enterprise, a founder, or an investor. Let's build your part of the future.
+        - generic [ref=e783]:
+          - link "Start a Project" [ref=e784]:
+            - /url: /contact
+          - link "View Our Work →" [ref=e788]:
+            - /url: /portfolio
+    - contentinfo "Velnix Solutions site footer" [ref=e790]:
+      - generic [ref=e793]:
+        - generic [ref=e794]:
+          - link "Velnix Solutions home" [ref=e796]:
+            - /url: /
+            - img "Velnix Solutions" [ref=e797]
+          - paragraph [ref=e798]: Engineering intelligent systems that transform business operations. We build AI solutions, automation platforms, and enterprise software for forward-thinking organizations.
+          - generic [ref=e800]:
+            - paragraph [ref=e801]: Technology Insights
+            - generic [ref=e803]:
+              - textbox "Enter your email" [ref=e804]
+              - button "Subscribe" [ref=e805]
+          - generic [ref=e806]:
+            - link "LinkedIn" [ref=e807]:
+              - /url: https://www.linkedin.com/company/velnixsolutions/
+            - link "X / Twitter" [ref=e812]:
+              - /url: https://x.com/VelnixSolutions
+            - link "Facebook" [ref=e815]:
+              - /url: https://www.facebook.com/VelnixSolutions
+            - link "Instagram" [ref=e818]:
+              - /url: https://www.instagram.com/velnixsolutions/
+        - generic [ref=e823]:
+          - generic [ref=e825]:
+            - heading "Services" [level=3] [ref=e827]
+            - list [ref=e828]:
+              - listitem [ref=e829]:
+                - link "AI Development" [ref=e830]:
+                  - /url: /ai-development
+              - listitem [ref=e832]:
+                - link "AI Automation" [ref=e833]:
+                  - /url: /ai-automation
+              - listitem [ref=e835]:
+                - link "Custom Software" [ref=e836]:
+                  - /url: /custom-software-development
+              - listitem [ref=e838]:
+                - link "AI Agents" [ref=e839]:
+                  - /url: /agentic-ai
+              - listitem [ref=e841]:
+                - link "Chatbot Development" [ref=e842]:
+                  - /url: /ai-chatbot-development
+              - listitem [ref=e844]:
+                - link "Machine Learning" [ref=e845]:
+                  - /url: /machine-learning
+          - generic [ref=e848]:
+            - link "Industries" [ref=e850]:
+              - /url: /#industries
+            - list [ref=e851]:
+              - listitem [ref=e852]:
+                - link "Healthcare" [ref=e853]:
+                  - /url: /healthcare
+              - listitem [ref=e855]:
+                - link "Fintech" [ref=e856]:
+                  - /url: /fintech
+              - listitem [ref=e858]:
+                - link "Education" [ref=e859]:
+                  - /url: /education
+              - listitem [ref=e861]:
+                - link "E-Commerce" [ref=e862]:
+                  - /url: /e-commerce
+              - listitem [ref=e864]:
+                - link "Food & Groceries" [ref=e865]:
+                  - /url: /food-and-groceries
+              - listitem [ref=e867]:
+                - link "Travel & Tourism" [ref=e868]:
+                  - /url: /travel-and-tourism
+              - listitem [ref=e870]:
+                - link "Insurance" [ref=e871]:
+                  - /url: /insurance
+              - listitem [ref=e873]:
+                - link "On-Demand" [ref=e874]:
+                  - /url: /on-demand
+          - generic [ref=e877]:
+            - heading "Company" [level=3] [ref=e879]
+            - list [ref=e880]:
+              - listitem [ref=e881]:
+                - link "About Velnix" [ref=e882]:
+                  - /url: /about
+              - listitem [ref=e884]:
+                - link "Careers" [ref=e885]:
+                  - /url: /careers
+              - listitem [ref=e887]:
+                - link "Portfolio" [ref=e888]:
+                  - /url: /portfolio
+              - listitem [ref=e890]:
+                - link "Blog & Insights" [ref=e891]:
+                  - /url: /blogs
+              - listitem [ref=e893]:
+                - link "Contact" [ref=e894]:
+                  - /url: /contact
+          - generic [ref=e897]:
+            - heading "Contact" [level=3] [ref=e898]
+            - list [ref=e899]:
+              - listitem [ref=e900]:
+                - generic [ref=e901]: M.A. Jinnah Road, Near Taj Medical Complex, Street 13, Karachi, Sindh, Pakistan
+              - listitem [ref=e906]:
+                - link "info@velnixsolutions.com" [ref=e907]:
+                  - /url: mailto:info@velnixsolutions.com
+              - listitem [ref=e912]:
+                - link "+92 335 131 2852" [ref=e913]:
+                  - /url: tel:+923351312852
+      - generic [ref=e918]:
+        - paragraph [ref=e919]: © 2026 Velnix Solutions — Engineering the future of business technology.
+        - generic [ref=e920]:
+          - link "Privacy Policy" [ref=e921]:
+            - /url: /privacy-policy
+          - generic [ref=e922]: •
+          - link "Terms of Service" [ref=e923]:
+            - /url: /terms-and-conditions
+          - generic [ref=e924]: •
+          - link "Cookie Policy" [ref=e925]:
+            - /url: /cookie-policy

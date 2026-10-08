@@ -1,0 +1,6 @@
+- generic [ref=f4e2]:
+  - region "Notifications (F8)":
+    - list
+  - complementary "WhatsApp contact options" [ref=f4e3]:
+    - button "Open WhatsApp contact options" [ref=f4e4]
+  - generic [ref=f4e8]: Loading...
