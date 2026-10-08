@@ -1,8 +1,8 @@
-import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Award, BadgeCheck, PanelsTopLeft, ShieldCheck, Star, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useReducedMotion, useScrollAnimation } from '@/hooks/useAnimations';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import { useReducedMotion } from '@/hooks/useAnimations';
 
 export const IMPACT_STATS = [
   { number: '7+', label: 'Years of engineering experience' },
@@ -19,32 +19,6 @@ const PLATFORMS = [
   { name: 'P@SHA ICT Awards', Icon: Trophy },
 ] as const;
 const PRACTICES = ['AI Development', 'Custom Software', 'Automation', 'Data Science'] as const;
-
-const AnimatedNumber = ({ number, prefersReducedMotion }: { number: string; prefersReducedMotion: boolean }) => {
-  const target = Number.parseInt(number, 10);
-  const suffix = number.slice(String(target).length);
-  const count = useMotionValue(prefersReducedMotion ? target : 0);
-  const display = useTransform(count, (value) => `${Math.round(value)}${suffix}`);
-  const { ref, isInView } = useScrollAnimation({ triggerOnce: true, threshold: 0.5 });
-
-  useEffect(() => {
-    if (!isInView) return;
-    if (prefersReducedMotion) {
-      count.set(target);
-      return;
-    }
-
-    const controls = animate(count, target, { duration: 1.8, ease: 'easeOut' });
-    return () => controls.stop();
-  }, [count, isInView, prefersReducedMotion, target]);
-
-  return (
-    <>
-      <span className="sr-only">{number}</span>
-      <motion.span ref={ref} aria-hidden="true">{display}</motion.span>
-    </>
-  );
-};
 
 const OriginStory = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -93,7 +67,7 @@ const OriginStory = () => {
           {IMPACT_STATS.map(({ number, label }) => (
             <div key={label} className="border-l-2 border-[#B6FF00]/40 pl-3 sm:pl-5">
               <p className="text-4xl font-black leading-none text-[#B6FF00] sm:text-5xl">
-                <AnimatedNumber number={number} prefersReducedMotion={prefersReducedMotion} />
+                <AnimatedNumber number={number} />
               </p>
               <p className="mt-2 max-w-[22ch] text-sm leading-6 text-white/60">{label}</p>
             </div>

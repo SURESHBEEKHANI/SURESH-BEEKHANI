@@ -7,6 +7,7 @@ import {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MeetFounder from '@/components/MeetFounder';
+import AnimatedNumber from '@/components/AnimatedNumber';
 import LatestBlogs from '@/components/LatestBlogs';
 import CTA from '@/components/ui/CTA';
 
@@ -258,7 +259,7 @@ const AboutPage = () => {
                 className={`flex min-h-36 flex-col items-center justify-center px-4 py-7 text-center sm:min-h-44 sm:px-6 sm:py-9 ${index % 2 === 1 ? 'border-l border-black/10' : ''} ${index >= 2 ? 'border-t border-black/10 lg:border-t-0' : ''} ${index === 2 ? 'lg:border-l' : ''}`}
               >
                 <p className="text-4xl font-black leading-none tracking-tight text-[#050505] sm:text-5xl">
-                  {number}
+                  <AnimatedNumber number={number} />
                 </p>
                 <p className="mx-auto mt-4 max-w-[20ch] text-[0.65rem] font-bold uppercase leading-5 tracking-[0.18em] text-black/85 sm:text-xs sm:leading-6">
                   {label}
@@ -271,21 +272,27 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════
             3. CORE VALUES
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--black w-full py-16 sm:py-20 lg:py-24">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <span 
-              className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
-              style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
-            >
-              OUR FOUNDATION
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              Values That Drive Our Engineering
-            </h2>
-          </div>
+        <section className="relative w-full overflow-hidden bg-[#050505] py-12 font-display text-white sm:py-16 lg:py-20">
+          <div
+            className="pointer-events-none absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.22) 0%, rgba(125,204,0,0.07) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.12) 0%, rgba(125,204,0,0.035) 42%, transparent 76%)',
+              filter: 'blur(10px)',
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-4 sm:mb-6 lg:mb-8">
+              <div className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+                Our Foundation
+              </div>
+              <h2 className="whitespace-nowrap text-[clamp(1rem,4.5vw,2.25rem)] font-black leading-tight tracking-[-0.05em] text-white">
+                Values That Drive Our <span className="text-[#B6FF00]">Engineering</span>
+              </h2>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 border-l border-t border-white/[0.14] sm:grid-cols-2 lg:grid-cols-3">
             {values.map(({ icon: Icon, title, desc }, i) => (
               <motion.div
                 key={title}
@@ -293,84 +300,68 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group p-8 transition-all duration-300"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.08)}`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = C.la(0.3);
-                  e.currentTarget.style.background = C.la(0.03);
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = C.wa(0.08);
-                  e.currentTarget.style.background = C.graphite;
-                }}
+                className="group relative min-h-[250px] border-b border-r border-white/[0.14] bg-[#111111] p-6 transition-all duration-300 hover:border-[#B6FF00]/40 hover:bg-[#B6FF00]/5 sm:min-h-[270px] sm:p-7 lg:p-8"
               >
-                <div
-                  className="flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
-                  style={{ background: C.la(0.1), border: `1px solid ${C.la(0.2)}` }}
-                >
+                <span className="absolute right-6 top-7 font-mono text-xs tracking-[0.12em] text-white/40 transition-colors duration-300 group-hover:text-[#B6FF00] sm:right-7 lg:right-8" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="mb-7 flex h-[50px] w-[50px] items-center justify-center border border-[#B6FF00] text-[#B6FF00] transition-colors duration-300 group-hover:bg-[#B6FF00]/10">
                   <Icon size={22} color={C.lime} />
                 </div>
-                <h3 className="font-bold text-base text-white mb-2 tracking-tight">{title}</h3>
-                <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{desc}</p>
+                <h3 className="mb-3 pr-4 text-lg font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-xl lg:text-2xl">{title}</h3>
+                <p className="max-w-[38ch] text-sm leading-relaxed text-white/65">{desc}</p>
               </motion.div>
             ))}
-          </div>
+            </div>
           </div>
         </section>
 
         {/* ══════════════════════════════════════════════════════
           5. THE VELNIX ADVANTAGE (WHY US)
         ══════════════════════════════════════════════════════ */}
-        <section className="about-band about-band--graphite w-full py-16 sm:py-20 lg:py-24">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <span 
-              className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4 inline-block"
-              style={{ background: C.la(0.08), color: C.lime, border: `1px solid ${C.la(0.2)}` }}
-            >
-              THE VELNIX ADVANTAGE
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              Why Decision-Makers Choose Velnix
-            </h2>
-          </div>
+        <section className="relative w-full overflow-hidden bg-[#050505] py-12 font-display text-white sm:py-16 lg:py-20">
+          <div
+            className="pointer-events-none absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background: 'radial-gradient(ellipse 52% 74% at 4% 44%, rgba(125,204,0,0.16) 0%, rgba(125,204,0,0.05) 40%, transparent 76%), radial-gradient(ellipse 46% 60% at 94% 84%, rgba(182,255,0,0.1) 0%, rgba(125,204,0,0.025) 42%, transparent 76%)',
+              filter: 'blur(10px)',
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 sm:mb-10">
+              <div className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#B6FF00]">
+                <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
+                The Velnix Advantage
+              </div>
+              <h2 className="whitespace-nowrap text-[clamp(0.875rem,4.2vw,2.25rem)] font-black leading-tight tracking-[-0.05em] text-white">
+                Why Decision-Makers Choose <span className="text-[#B6FF00]">Velnix</span>
+              </h2>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyUs.map(({ icon: Icon, title, desc }, i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group p-8 transition-all duration-300"
-                style={{
-                  background: C.graphite,
-                  border: `1px solid ${C.wa(0.08)}`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = C.la(0.3);
-                  e.currentTarget.style.background = C.la(0.03);
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = C.wa(0.08);
-                  e.currentTarget.style.background = C.graphite;
-                }}
-              >
-                <div
-                  className="flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105"
-                  style={{ background: C.la(0.1), border: `1px solid ${C.la(0.2)}` }}
+            <div className="border-t border-white/[0.14]">
+              {whyUs.map(({ title, desc }, i) => (
+                <motion.article
+                  key={title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className="group grid grid-cols-[2rem_minmax(0,1fr)_1.5rem] items-center gap-x-4 gap-y-2 border-b border-white/[0.14] px-1 py-6 transition-colors duration-300 hover:bg-[#B6FF00]/[0.035] sm:grid-cols-[3rem_minmax(0,1fr)_2rem] sm:gap-x-6 sm:py-8 lg:grid-cols-[4rem_minmax(0,0.95fr)_minmax(0,1.2fr)_2rem] lg:gap-x-6 lg:py-9"
                 >
-                  <Icon size={22} color={C.lime} />
-                </div>
-                <h3 className="font-bold text-base text-white mb-2 tracking-tight">{title}</h3>
-                <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </div>
+                  <span className="row-span-2 font-mono text-xs tracking-[0.12em] text-[#B6FF00] lg:row-span-1">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="min-w-0 text-xl font-black leading-tight tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-[#B6FF00] sm:text-2xl lg:text-[2rem]">
+                    {title}
+                  </h3>
+                  <p className="col-start-2 row-start-2 max-w-[64ch] text-sm leading-relaxed text-white/60 sm:text-base sm:leading-7 lg:col-start-3 lg:row-start-1">
+                    {desc}
+                  </p>
+                  <ArrowRight className="col-start-3 row-span-2 h-4 w-4 text-white/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#B6FF00] lg:col-start-4 lg:row-span-1" aria-hidden="true" />
+                </motion.article>
+              ))}
+            </div>
           </div>
         </section>
 

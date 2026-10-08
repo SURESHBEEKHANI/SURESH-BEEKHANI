@@ -32,7 +32,8 @@ const MeetFounder = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="mb-4 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#B6FF00]">
+          <p className="mb-4 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#B6FF00]">
+            <span className="h-px w-8 bg-[#B6FF00]" aria-hidden="true" />
             Technical leadership
           </p>
           <h2 className="max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl">
