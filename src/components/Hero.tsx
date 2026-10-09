@@ -242,11 +242,10 @@ const Hero = () => {
               className="mb-8 max-w-4xl text-3xl font-black leading-tight tracking-[-0.04em] sm:text-4xl"
               style={{ WebkitFontSmoothing: 'antialiased' }}
             >
-              Turn Repetitive{' '}
+              We Deploy AI-Native  Without  Costly Mistakes{' '}
               <span style={{ color: C.lime, display: 'inline' }}>
-                 Operations Into
-              </span>{' '}
-              Intelligent Systems
+                Getting Burned.
+              </span>
             </motion.h1>
 
             {/* Supporting copy */}
@@ -256,15 +255,15 @@ const Hero = () => {
               className="mb-8 max-w-xl text-lg leading-8 sm:text-xl"
               style={{ color: C.whiteAlpha(0.64) }}
             >
-              Velnix develops custom AI solutions that replace manual spreadsheets with automated workflows,
-              helping your team focus on growth instead of administration.
+              Velnix helps SMBs identify where AI can create real business value, automate repetitive workflows,
+              and build reliable systems—without wasting money on hype, unnecessary tools, or the wrong automation.
             </motion.p>
 
             {/* CTA Row */}
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.35, duration: 0.55, ease }}
-              className="flex flex-wrap items-center gap-4 mb-8"
+              className="mb-8 flex flex-wrap items-center gap-4"
             >
 
               <motion.div
@@ -287,10 +286,37 @@ const Hero = () => {
                 </span>
               </motion.div>
 
-              {/* Primary CTA */}
-              <PrimaryButton />
+              <a
+                href="/contact"
+                className="group relative inline-flex min-h-12 items-center gap-3 overflow-hidden rounded-full text-sm font-bold transition-transform duration-200"
+                style={{
+                  background: C.lime,
+                  color: C.black,
+                  padding: '1rem 1.5rem',
+                  textDecoration: 'none',
+                  border: `1px solid ${C.limeAlpha(0.5)}`,
+                  boxShadow: `0 0 0 0 ${C.limeAlpha(0)}, 0 8px 28px ${C.limeAlpha(0.35)}`,
+                  transition: 'box-shadow 0.3s ease, transform 0.2s ease',
+                  lineHeight: 1,
+                }}
+                aria-label="Find your AI opportunity with Velnix"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    width: '200%',
+                    left: '-50%',
+                    right: 'auto',
+                    background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)',
+                    animation: 'velnix-shimmer 2.8s linear infinite',
+                    willChange: 'transform',
+                  }}
+                />
+                <span className="relative z-10">Find Your AI Opportunity</span>
+                <ArrowRight size={17} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-200" />
+              </a>
 
-              {/* AI Audit CTA */}
               <a
                 href="/ai-audit"
                 className="inline-flex min-h-12 items-center gap-2 rounded-full border px-6 py-4 text-sm font-semibold transition-all duration-300"
@@ -326,21 +352,21 @@ const Hero = () => {
               onMouseEnter={e => { e.currentTarget.style.color = C.lime; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.whiteAlpha(0.52); }}
             >
-              Not sure where to start? Talk to our team <ArrowRight size={13} />
+              Not sure where AI fits in your business? Talk to our team <ArrowRight size={13} />
             </motion.a>
 
             {/* Metrics row */}
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.55, duration: 0.5, ease }}
-              className="flex items-center gap-10 mt-0 pt-8"
+              className="mt-0 flex items-center gap-10 pt-8"
               style={{ borderTop: `1px solid ${C.whiteAlpha(0.08)}` }}
             >
-              <MetricChip value="70%" label="Admin work cut"  delay={0.58} />
+              <MetricChip value="70%" label="Less admin work" delay={0.58} />
               <div style={{ width: 1, height: 36, background: C.whiteAlpha(0.1) }} />
-              <MetricChip value="10×"  label="Faster workflows" delay={0.62} />
+              <MetricChip value="10×" label="Faster workflows" delay={0.62} />
               <div style={{ width: 1, height: 36, background: C.whiteAlpha(0.1) }} />
-              <MetricChip value="SMBs" label="Focused solutions"  delay={0.66} />
+              <MetricChip value="SMBs" label="Built around your operations" delay={0.66} />
             </motion.div>
           </div>
 
