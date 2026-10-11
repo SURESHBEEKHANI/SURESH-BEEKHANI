@@ -82,7 +82,15 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
-const CaseStudyDetail = lazy(() => import("./Pages-Portfolio/CaseStudyDetail"));
+const InsuranceFraudDetection = lazy(() => import("./Pages-Portfolio/InsuranceFraudDetection"));
+const AIWorkflowAutomation = lazy(() => import("./Pages-Portfolio/AIWorkflowAutomation"));
+const ClinicalDecisionSupport = lazy(() => import("./Pages-Portfolio/ClinicalDecisionSupport"));
+const RealEstateAIPlatform = lazy(() => import("./Pages-Portfolio/RealEstateAIPlatform"));
+const EcommerceAIPersonalization = lazy(() => import("./Pages-Portfolio/EcommerceAIPersonalization"));
+const FintechRiskAnalytics = lazy(() => import("./Pages-Portfolio/FintechRiskAnalytics"));
+const LegalDocumentAI = lazy(() => import("./Pages-Portfolio/LegalDocumentAI"));
+const EdtechAdaptiveLearning = lazy(() => import("./Pages-Portfolio/EdtechAdaptiveLearning"));
+const SupplyChainAIOptimization = lazy(() => import("./Pages-Portfolio/SupplyChainAIOptimization"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const AboutPage = lazy(() => import("./pages/About"));
@@ -286,7 +294,15 @@ const AppContent = () => {
           {/* Portfolio */}
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/Portfolio" element={<PortfolioPage />} />
-          <Route path="/portfolio/:slug" element={<CaseStudyDetail />} />
+          <Route path="/portfolio/insurance-fraud-detection" element={<InsuranceFraudDetection />} />
+          <Route path="/portfolio/ai-workflow-automation" element={<AIWorkflowAutomation />} />
+          <Route path="/portfolio/clinical-decision-support" element={<ClinicalDecisionSupport />} />
+          <Route path="/portfolio/real-estate-ai-platform" element={<RealEstateAIPlatform />} />
+          <Route path="/portfolio/ecommerce-ai-personalization" element={<EcommerceAIPersonalization />} />
+          <Route path="/portfolio/fintech-risk-analytics" element={<FintechRiskAnalytics />} />
+          <Route path="/portfolio/legal-document-ai" element={<LegalDocumentAI />} />
+          <Route path="/portfolio/edtech-adaptive-learning" element={<EdtechAdaptiveLearning />} />
+          <Route path="/portfolio/supply-chain-ai-optimization" element={<SupplyChainAIOptimization />} />
 
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

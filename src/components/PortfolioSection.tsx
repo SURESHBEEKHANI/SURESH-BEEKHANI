@@ -100,7 +100,15 @@ const PROJECTS = [
 ];
 
 // ─── COMPONENT ───────────────────────────────────────────────────────────────
-const PortfolioSection: React.FC = () => {
+interface PortfolioSectionProps {
+  excludeProjectIds?: string[];
+}
+
+const PortfolioSection: React.FC<PortfolioSectionProps> = ({ excludeProjectIds = [] }) => {
+  const visibleProjects = PROJECTS.filter(
+    (project) => !excludeProjectIds.includes(project.id),
+  ).slice(0, 6);
+
   return (
     <section
       className="relative w-full overflow-hidden pb-8 pt-12 font-display md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
@@ -141,7 +149,7 @@ const PortfolioSection: React.FC = () => {
 
         {/* Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-14">
-          {PROJECTS.slice(0, 6).map((project, i) => (
+          {visibleProjects.map((project, i) => (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 20 }}

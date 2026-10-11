@@ -38,6 +38,7 @@ interface CTAProps {
   variant?: 'default' | 'centered' | 'split';
   background?: 'dark' | 'gradient';
   size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
   
   // Custom styling
   className?: string;
@@ -58,6 +59,7 @@ const CTA: React.FC<CTAProps> = ({
   variant = 'centered',
   background = 'gradient',
   size = 'lg',
+  fullWidth = false,
   className = '',
 }) => {
   
@@ -102,7 +104,7 @@ const CTA: React.FC<CTAProps> = ({
 
   return (
     <section 
-      className={`relative overflow-hidden font-display ${config.container} ${className}`}
+      className={`relative overflow-hidden w-full font-display ${config.container} ${fullWidth ? 'px-6 sm:px-10 lg:px-16' : ''} ${className}`}
       style={backgroundStyles}
     >
       {/* Background Effects */}
@@ -137,7 +139,7 @@ const CTA: React.FC<CTAProps> = ({
         </>
       )}
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className={`relative z-10 ${fullWidth ? 'w-full max-w-[1200px] mx-auto' : 'max-w-4xl mx-auto'}`}>
         <div className={`${variant === 'centered' ? 'text-center' : 'text-left'}`}>
           
           {/* Eyebrow */}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Testimonials from "./Testimonials";
 import Footer from "./Footer";
+import CTA from "./ui/CTA";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VELNIX BRAND TOKENS
@@ -497,6 +498,18 @@ const Portfolio: React.FC = () => {
 
         {/* TESTIMONIALS SECTION */}
         <Testimonials />
+
+        {/* LAST CTA */}
+        <CTA
+          eyebrow="Ready to build your next win?"
+          title="Let’s turn your next idea into a measurable business advantage."
+          description="From strategy to delivery, we design and build AI systems that reduce friction, unlock growth, and scale with your operations."
+          primaryLabel="Start a Project"
+          primaryHref="/contact"
+          variant="centered"
+          background="gradient"
+          size="lg"
+        />
       </main>
 
       <Footer />
