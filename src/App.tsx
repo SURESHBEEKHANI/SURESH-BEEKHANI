@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Index from "./Index";
 import Contact from "./components/Contact";
 import NotFound from "./pages-Services/NotFound";
@@ -82,9 +82,11 @@ const BlogAdmin = lazy(() => import("./pages-Blogs/BlogAdmin"));
 
 // Portfolio
 const PortfolioPage = lazy(() => import("./components/portfolio"));
-const InsuranceFraudDetection = lazy(() => import("./Pages-Portfolio/InsuranceFraudDetection"));
+const FoodGroceryKnowledgeAgent = lazy(() => import("./Pages-Portfolio/InsuranceFraudDetection"));
 const AIWorkflowAutomation = lazy(() => import("./Pages-Portfolio/AIWorkflowAutomation"));
 const ClinicalDecisionSupport = lazy(() => import("./Pages-Portfolio/ClinicalDecisionSupport"));
+const PatientAccessIntakeAssistant = lazy(() => import("./Pages-Portfolio/PatientAccessIntakeAssistant"));
+const TravelDisruptionRebookingAssistant = lazy(() => import("./Pages-Portfolio/TravelDisruptionRebookingAssistant"));
 const RealEstateAIPlatform = lazy(() => import("./Pages-Portfolio/RealEstateAIPlatform"));
 const EcommerceAIPersonalization = lazy(() => import("./Pages-Portfolio/EcommerceAIPersonalization"));
 const FintechRiskAnalytics = lazy(() => import("./Pages-Portfolio/FintechRiskAnalytics"));
@@ -294,9 +296,12 @@ const AppContent = () => {
           {/* Portfolio */}
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/Portfolio" element={<PortfolioPage />} />
-          <Route path="/portfolio/insurance-fraud-detection" element={<InsuranceFraudDetection />} />
+          <Route path="/portfolio/food-grocery-knowledge-ai-agent" element={<FoodGroceryKnowledgeAgent />} />
+          <Route path="/portfolio/insurance-fraud-detection" element={<Navigate to="/portfolio/food-grocery-knowledge-ai-agent" replace />} />
           <Route path="/portfolio/ai-workflow-automation" element={<AIWorkflowAutomation />} />
           <Route path="/portfolio/clinical-decision-support" element={<ClinicalDecisionSupport />} />
+          <Route path="/portfolio/ai-patient-access-intake-assistant" element={<PatientAccessIntakeAssistant />} />
+          <Route path="/portfolio/ai-travel-disruption-rebooking-assistant" element={<TravelDisruptionRebookingAssistant />} />
           <Route path="/portfolio/real-estate-ai-platform" element={<RealEstateAIPlatform />} />
           <Route path="/portfolio/ecommerce-ai-personalization" element={<EcommerceAIPersonalization />} />
           <Route path="/portfolio/fintech-risk-analytics" element={<FintechRiskAnalytics />} />

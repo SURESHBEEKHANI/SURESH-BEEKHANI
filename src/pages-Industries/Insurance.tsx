@@ -639,7 +639,7 @@ const Insurance = () => {
         heading="Built for Insurance Scale"
         subheading="The tools and platforms we use to build resilient, intelligent insurance systems."
       />
-      <PortfolioSection excludeProjectIds={["insurance-fraud-detection"]} />
+      <PortfolioSection />
       <Testimonials />
       <LatestBlogs />
       <FAQ />

@@ -51,33 +51,33 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    id: "insurance-fraud-detection",
-    title: "Insurance Fraud Detection",
+    id: "food-grocery-knowledge-ai-agent",
+    title: "Food & Grocery Knowledge AI Agent",
     category: "AI & Automation",
-    industry: "Insurance",
+    industry: "Food & Grocery",
     problem:
-      "Claims teams could not surface suspicious patterns quickly enough through manual investigation.",
+      "Product, supplier, and inventory knowledge was spread across business systems, leaving staff to search manually or interrupt experienced colleagues.",
     solution:
-      "An AI system that scores claims in real time and flags anomalous patterns for investigators.",
+      "A source-grounded AI agent that connects approved product and operational information and answers questions in plain language.",
     outcome:
-      "Faster investigation with continuous, automated risk detection.",
+      "On-demand knowledge access with clear citations and escalation when an answer needs human verification.",
     metrics: [
       {
-        stat: "60%",
-        label: "Faster Detection",
-      },
-      {
-        stat: "3×",
-        label: "Investigation Speed",
-      },
-      {
         stat: "24/7",
-        label: "Monitoring",
+        label: "On-demand access",
+      },
+      {
+        stat: "0",
+        label: "Routine interruptions",
+      },
+      {
+        stat: "Source-Grounded",
+        label: "Cited answers",
       },
     ],
-    tags: ["Machine Learning", "Fraud Detection", "Analytics", "Automation"],
-    image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
-    link: "/portfolio/insurance-fraud-detection",
+    tags: ["RAG", "AI Knowledge Agent", "Product Information", "Source Citations"],
+    image: "/image/Industries-Img/food-and-groceries.png",
+    link: "/portfolio/food-grocery-knowledge-ai-agent",
   },
 
   {
@@ -138,6 +138,36 @@ const PROJECTS: Project[] = [
     tags: ["Healthcare AI", "Clinical NLP", "EHR", "Predictive Analytics"],
     image: "/image/Portfolio-img/ai-powered-fraud-detection.png",
     link: "/portfolio/clinical-decision-support",
+  },
+  {
+    id: "ai-patient-access-intake-assistant",
+    title: "AI Patient Access & Intake Assistant",
+    category: "Healthcare AI",
+    industry: "Healthcare",
+    problem:
+      "Manual intake, appointment coordination, and repetitive inquiries can add friction for patients and administrative teams.",
+    solution:
+      "An illustrative assistant concept for structured intake, routine administrative questions, and human-routed scheduling workflows.",
+    outcome:
+      "A proposed foundation for evaluating administrative efficiency and patient experience through a measured pilot.",
+    tags: ["Healthcare AI", "AI Agents", "Workflow Automation", "EHR Integration"],
+    image: "/image/Portfolio/Patient-Experience AI-cover.jpg",
+    link: "/portfolio/ai-patient-access-intake-assistant",
+  },
+  {
+    id: "ai-travel-disruption-rebooking-assistant",
+    title: "AI Travel Disruption & Rebooking Assistant",
+    category: "Travel AI",
+    industry: "Travel & Tourism",
+    problem:
+      "Cancellations and missed connections can leave travelers searching for options while support teams manage fragmented booking and policy information.",
+    solution:
+      "An illustrative assistant concept for policy-aware alternatives, traveler-approved rebooking, and coordinated human support.",
+    outcome:
+      "A proposed foundation for evaluating disruption response and support coordination through a measured pilot.",
+    tags: ["AI Agents", "RAG", "Travel APIs", "Workflow Automation"],
+    image: "/image/Industries-Img/Travel & Tourism.avif",
+    link: "/portfolio/ai-travel-disruption-rebooking-assistant",
   },
   {
     id: "real-estate-ai-platform",

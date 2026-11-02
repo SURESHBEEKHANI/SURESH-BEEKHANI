@@ -19,23 +19,38 @@ export interface CaseStudyMetric {
   label: string;
 }
 
+export interface CaseStudySuccessMetric {
+  metric: string;
+  whatItMeasures: string;
+}
+
 export interface CaseStudy {
   title: string;
   category: string;
   industry: string;
+  solutionStatus?: string;
   introduction: string;
   problem: string;
+  problemHighlights?: string[];
+  problemQuote?: string;
   solution: string;
   outcome: string;
+  outcomeHighlights?: string[];
   metrics: CaseStudyMetric[];
   tags: string[];
+  capabilitiesHeading?: string;
+  capabilitiesDescription?: string;
   approach?: string[];
   keyCapabilities?: string[];
+  technologyStack?: string[];
+  successMetrics?: CaseStudySuccessMetric[];
+  safetyNote?: string;
   conclusion?: string;
 }
 
 interface CaseStudyPageProps {
   project: CaseStudy;
+  heroTitle?: string;
   heroDescription?: string;
   referenceStyle?: boolean;
   pdfDownloadHref?: string;
@@ -58,6 +73,10 @@ interface CaseStudyPageProps {
   cta?: {
     title: string;
     description: string;
+    primaryLabel?: string;
+    primaryHref?: string;
+    secondaryLabel?: string;
+    secondaryHref?: string;
   };
 }
 
@@ -107,6 +126,9 @@ const ProjectDetailsCard: React.FC<{
           <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-solution">Solution</a></li>
           {project.keyCapabilities && project.keyCapabilities.length > 0 && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-key-capabilities">Key Capabilities</a></li>}
           {project.approach && project.approach.length > 0 && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-our-approach">Our Approach</a></li>}
+          {project.technologyStack && project.technologyStack.length > 0 && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-technology-stack">Technology Stack</a></li>}
+          {project.successMetrics && project.successMetrics.length > 0 && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-success-metrics">Success Metrics</a></li>}
+          {project.safetyNote && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-patient-safety">Security &amp; Patient Safety</a></li>}
           <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-end-results">Measurable Outcomes</a></li>
           {project.conclusion && <li><a className="text-sm transition-colors hover:text-lime-300" style={{ color: C.wa(0.72) }} href="#case-study-conclusion">Conclusion</a></li>}
         </ul>
@@ -149,6 +171,19 @@ const ProjectDetailsCard: React.FC<{
           {project.category}
         </p>
       </div>
+      {project.solutionStatus && (
+        <div>
+          <p
+            className="mb-1 text-[10px] font-bold uppercase tracking-[0.24em]"
+            style={{ color: C.wa(0.45) }}
+          >
+            Solution status
+          </p>
+          <p className="font-display text-base leading-relaxed text-white/80 sm:text-lg">
+            {project.solutionStatus}
+          </p>
+        </div>
+      )}
     </div>
 
     <div className="mt-6 border-t pt-5" style={{ borderColor: C.wa(0.1) }}>
@@ -180,10 +215,10 @@ const ProjectDetailsCard: React.FC<{
       <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: C.lime }} aria-hidden="true" />
       <div>
         <p className="text-[10px] font-bold uppercase tracking-[0.24em]" style={{ color: C.wa(0.45) }}>
-          Solution partner
+          Built by
         </p>
         <p className="mt-1 text-sm font-semibold text-white/80">
-          Built by Velnix
+          Velnix Solutions
         </p>
       </div>
     </div>
@@ -192,6 +227,7 @@ const ProjectDetailsCard: React.FC<{
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   project,
+  heroTitle,
   heroDescription,
   referenceStyle = false,
   pdfDownloadHref,
@@ -227,7 +263,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               Case Study <span style={{ color: C.wa(0.36) }}>/</span> {project.category}
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className={`${referenceStyle ? "max-w-[13ch] font-display text-4xl leading-[1.02] tracking-[-0.055em] text-balance sm:text-5xl lg:text-[4.25rem]" : "text-3xl sm:text-5xl lg:text-[56px] tracking-[-0.04em] leading-tight"} font-black ${heroDescription ? "mb-6" : "mb-8"}`} style={{ color: C.white, WebkitFontSmoothing: "antialiased" }}>
-              {project.title}
+              {heroTitle ?? project.title}
             </motion.h1>
             {heroDescription && (
               <motion.p
@@ -353,7 +389,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
     </section>
 
-    <main ref={mainRef} className="flex-grow w-full max-w-7xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
+    <main ref={mainRef} className="relative flex-grow w-full max-w-7xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(260px,0.34fr)_minmax(0,1fr)] lg:gap-16">
         <ProjectDetailsCard
           project={project}
@@ -396,6 +432,21 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <p className="text-base sm:text-lg leading-relaxed" style={{ color: C.wa(0.75) }}>
               {project.problem}
             </p>
+            {project.problemHighlights && project.problemHighlights.length > 0 && (
+              <ul className="mt-6 space-y-3">
+                {project.problemHighlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-3 text-base leading-relaxed sm:text-lg" style={{ color: C.wa(0.75) }}>
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.lime }} aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {project.problemQuote && (
+              <blockquote className="mt-7 border-l-2 pl-5 text-lg font-semibold leading-relaxed sm:text-xl" style={{ borderColor: C.lime, color: C.wa(0.9) }}>
+                {project.problemQuote}
+              </blockquote>
+            )}
           </div>
           {!referenceStyle && (
             <div>
@@ -435,9 +486,9 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           className="border-t py-12 sm:py-16"
           style={{ borderColor: C.wa(0.08) }}
         >
-          <SectionHeading id="case-study-key-capabilities" title="Key Capabilities" eyebrow="System Capabilities" referenceStyle={referenceStyle} />
+          <SectionHeading id="case-study-key-capabilities" title={project.capabilitiesHeading ?? "Key Capabilities"} eyebrow="System Capabilities" referenceStyle={referenceStyle} />
           <p className="mb-8 text-base leading-relaxed sm:text-lg" style={{ color: C.wa(0.62) }}>
-            Connected tools bring core workflows, data, and human expertise into one coordinated experience.
+            {project.capabilitiesDescription ?? "Connected tools bring core workflows, data, and human expertise into one coordinated experience."}
           </p>
           <div className="border-t" style={{ borderColor: C.wa(0.12) }}>
             {project.keyCapabilities.map((capability, index) => (
@@ -497,6 +548,81 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </motion.section>
       )}
 
+      {project.technologyStack && project.technologyStack.length > 0 && (
+        <motion.section
+          id="case-study-technology-stack"
+          aria-labelledby="case-study-technology-stack-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          className="border-t py-12 sm:py-16"
+          style={{ borderColor: C.wa(0.08) }}
+        >
+          <SectionHeading id="case-study-technology-stack-heading" title="Technology Stack" eyebrow="Implementation Building Blocks" referenceStyle={referenceStyle} marginClass="mb-6" />
+          <ul className="space-y-4">
+            {project.technologyStack.map((technology) => (
+              <li key={technology} className="flex gap-3 text-base leading-relaxed sm:text-lg" style={{ color: C.wa(0.75) }}>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.lime }} aria-hidden="true" />
+                <span>{technology}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.section>
+      )}
+
+      {project.successMetrics && project.successMetrics.length > 0 && (
+        <motion.section
+          id="case-study-success-metrics"
+          aria-labelledby="case-study-success-metrics-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.37, duration: 0.6 }}
+          className="border-t py-12 sm:py-16"
+          style={{ borderColor: C.wa(0.08) }}
+        >
+          <SectionHeading id="case-study-success-metrics-heading" title="Success Metrics" eyebrow="Pilot Evaluation" referenceStyle={referenceStyle} marginClass="mb-6" />
+          <div className="overflow-x-auto rounded-xl border" style={{ borderColor: C.wa(0.12) }}>
+            <table className="w-full min-w-[32rem] border-collapse text-left">
+              <caption className="sr-only">Proposed pilot success metrics and what each measures</caption>
+              <thead>
+                <tr className="border-b" style={{ borderColor: C.wa(0.12), background: C.wa(0.04) }}>
+                  <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider sm:px-5" style={{ color: C.lime }}>Metric</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider sm:px-5" style={{ color: C.lime }}>What it measures</th>
+                </tr>
+              </thead>
+              <tbody>
+                {project.successMetrics.map((item) => (
+                  <tr key={item.metric} className="border-b last:border-b-0" style={{ borderColor: C.wa(0.08) }}>
+                    <th scope="row" className="px-4 py-4 text-sm font-semibold sm:px-5 sm:text-base" style={{ color: C.wa(0.9) }}>{item.metric}</th>
+                    <td className="px-4 py-4 text-sm leading-relaxed sm:px-5 sm:text-base" style={{ color: C.wa(0.72) }}>{item.whatItMeasures}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed" style={{ color: C.wa(0.55) }}>
+            Establish a documented baseline before a pilot and compare it with post-deployment measurements.
+          </p>
+        </motion.section>
+      )}
+
+      {project.safetyNote && (
+        <motion.section
+          id="case-study-patient-safety"
+          aria-labelledby="case-study-patient-safety-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.39, duration: 0.6 }}
+          className="border-t py-12 sm:py-16"
+          style={{ borderColor: C.wa(0.08) }}
+        >
+          <SectionHeading id="case-study-patient-safety-heading" title="Security & Patient Safety" eyebrow="Responsible Deployment" referenceStyle={referenceStyle} marginClass="mb-4" />
+          <p className="text-base leading-relaxed sm:text-lg" style={{ color: C.wa(0.75) }}>
+            {project.safetyNote}
+          </p>
+        </motion.section>
+      )}
+
       <motion.section
         id="case-study-end-results"
         aria-labelledby="case-study-end-results-heading"
@@ -510,6 +636,16 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         <p className="text-lg sm:text-xl leading-relaxed" style={{ color: C.wa(0.75) }}>
           {project.outcome}
         </p>
+        {project.outcomeHighlights && project.outcomeHighlights.length > 0 && (
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {project.outcomeHighlights.map((highlight) => (
+              <li key={highlight} className="flex gap-3 text-base leading-relaxed sm:text-lg" style={{ color: C.wa(0.75) }}>
+                <Check className="mt-1 h-5 w-5 shrink-0" style={{ color: C.lime }} aria-hidden="true" />
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        )}
         {!referenceStyle && project.metrics.length > 0 && (
           <div className="mt-8 grid grid-cols-1 gap-6 border-t pt-8 sm:grid-cols-3 sm:gap-8" style={{ borderColor: C.wa(0.08) }}>
             {project.metrics.map((metric) => (
@@ -549,11 +685,11 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         eyebrow="Ready to build something similar?"
         title={cta?.title ?? "Bring smarter experiences to your operations."}
         description={cta?.description ?? "We help teams streamline workflows, improve response times, and keep people focused on high-value work."}
-        primaryLabel="Start a Similar Project"
-        primaryHref="/contact"
+        primaryLabel={cta?.primaryLabel ?? "Start a Similar Project"}
+        primaryHref={cta?.primaryHref ?? "/contact"}
         primaryIcon="arrow-right"
-        secondaryLabel="All Case Studies"
-        secondaryHref="/portfolio"
+        secondaryLabel={cta?.secondaryLabel ?? "All Case Studies"}
+        secondaryHref={cta?.secondaryHref ?? "/portfolio"}
         variant="centered"
         background="gradient"
         size="md"

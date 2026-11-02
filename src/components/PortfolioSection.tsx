@@ -17,13 +17,13 @@ const C = {
 // ─── PROJECTS ────────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
-    id: "insurance-fraud-detection",
-    title: "Insurance Fraud Detection",
-    category: "AI & Automation", industry: "Insurance",
-    problem: "Claims teams could not surface suspicious patterns quickly enough through manual investigation.",
-    tags: ["Machine Learning", "Fraud Detection", "Analytics", "Automation"],
-    metrics: [{ stat: "60%", label: "Faster Detection" }, { stat: "3x", label: "Investigation Speed" }, { stat: "24/7", label: "Monitoring" }],
-    link: "/portfolio/insurance-fraud-detection",
+    id: "food-grocery-knowledge-ai-agent",
+    title: "Food & Grocery Knowledge AI Agent",
+    category: "AI & Automation", industry: "Food & Grocery",
+    problem: "Product, supplier, and inventory knowledge was spread across business systems, making routine answers hard to find.",
+    tags: ["RAG", "AI Knowledge Agent", "Product Information", "Source Citations"],
+    metrics: [{ stat: "24/7", label: "On-demand access" }, { stat: "0", label: "Routine interruptions" }, { stat: "Cited", label: "Source-grounded answers" }],
+    link: "/portfolio/food-grocery-knowledge-ai-agent",
   },
   {
     id: "ai-workflow-automation",
@@ -42,6 +42,22 @@ const PROJECTS = [
     tags: ["Healthcare AI", "Clinical NLP", "EHR", "Predictive Analytics"],
     metrics: [{ stat: "55%", label: "Faster Charting" }, { stat: "4x", label: "Diagnosis Retrieval" }, { stat: "HIPAA", label: "Compliant" }],
     link: "/portfolio/clinical-decision-support",
+  },
+  {
+    id: "ai-patient-access-intake-assistant",
+    title: "AI Patient Access & Intake Assistant",
+    category: "Healthcare AI", industry: "Healthcare",
+    problem: "Manual intake, appointment coordination, and repetitive inquiries can add friction for patients and administrative teams.",
+    tags: ["Healthcare AI", "AI Agents", "Workflow Automation", "EHR Integration"],
+    link: "/portfolio/ai-patient-access-intake-assistant",
+  },
+  {
+    id: "ai-travel-disruption-rebooking-assistant",
+    title: "AI Travel Disruption & Rebooking Assistant",
+    category: "Travel AI", industry: "Travel & Tourism",
+    problem: "Cancellations and missed connections can leave travelers searching for options while support teams manage fragmented booking and policy information.",
+    tags: ["AI Agents", "RAG", "Travel APIs", "Workflow Automation"],
+    link: "/portfolio/ai-travel-disruption-rebooking-assistant",
   },
   {
     id: "real-estate-ai-platform",

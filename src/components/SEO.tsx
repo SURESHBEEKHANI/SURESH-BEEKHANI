@@ -72,6 +72,31 @@ const THEME_COLOR = '#050505';
 
 // ─── Route-Specific SEO Defaults ────────────────────────────────────────────────
 const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
+  '/portfolio/food-grocery-knowledge-ai-agent': {
+    title: 'Food & Grocery Knowledge AI Agent | Velnix Solutions',
+    description:
+      'Explore a proposed source-grounded AI knowledge agent that helps food and grocery teams find product, supplier, and operational information across approved business systems.',
+    keywords:
+      'food and grocery AI, grocery knowledge agent, RAG AI, product information assistant, source-grounded answers, grocery operations',
+    schemaType: 'WebPage',
+  },
+  '/portfolio/ai-patient-access-intake-assistant': {
+    title: 'AI Patient Access & Intake Assistant | Velnix Solutions',
+    description:
+      'Explore an illustrative AI patient access and intake assistant concept for healthcare providers, covering administrative inquiries, structured intake, appointment coordination, and patient-safety guardrails.',
+    keywords:
+      'healthcare AI, patient access assistant, patient intake automation, appointment coordination, healthcare workflow automation, EHR integration',
+    schemaType: 'WebPage',
+  },
+  '/portfolio/ai-travel-disruption-rebooking-assistant': {
+    title: 'AI Travel Disruption & Rebooking Assistant | Velnix Solutions',
+    description:
+      'Explore an illustrative AI travel disruption and rebooking assistant concept for cancellations, delays, and missed connections, with policy-aware options, traveler approval, and human escalation.',
+    keywords:
+      'travel AI, travel disruption assistant, AI rebooking, flight cancellation support, RAG travel policies, travel API integration',
+    schemaType: 'WebPage',
+  },
+
   '/': {
     title: 'AI Workflow Automation for SMBs | Velnix Solutions',
     description:

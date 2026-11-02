@@ -2,6 +2,23 @@ import CaseStudyPage from "./CaseStudyPage";
 
 const AIWorkflowAutomation = () => (
   <CaseStudyPage
+    referenceStyle
+    heroDescription="An AI-powered orchestration layer that connects business systems, data, and agents—moving routine work forward while keeping people in control of important decisions."
+    heroPreview={{
+      ariaLabel: "Illustrative AI workflow automation preview",
+      title: "Workflow Assistant",
+      subtitle: "Operations orchestration",
+      status: "Workflow running",
+      conversationLabel: "Example approval workflow",
+      customerMessage: "Can you process this new vendor request?",
+      assistantMessage: "I’ve checked the request and sent it to the right approver.",
+      supportingText: "The approval is tracked and the connected systems stay in sync.",
+      options: ["Review request", "View activity"],
+      cardLabel: "Approval status",
+      cardTitle: "Vendor request",
+      cardDetail: "Sent to Finance · Activity tracked",
+      footerText: "Exceptions stay visible and can be handed to a team member.",
+    }}
     project={{
       title: "AI Workflow Automation Platform",
       category: "AI & Automation",
