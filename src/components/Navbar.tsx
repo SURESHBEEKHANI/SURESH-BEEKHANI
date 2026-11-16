@@ -703,7 +703,7 @@ const Navbar = ({ isDark = false }: { isDark?: boolean }) => {
               width={2172}
               height={724}
               style={{
-                height: 50,
+                height: 40,
                 width: 'auto',
               }}
               decoding="async"
