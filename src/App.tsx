@@ -63,14 +63,13 @@ const OnDemand = lazy(() => import("./pages-Industries/OnDemand"));
 
 // Services
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
-const NaturalLanguageProcessing = lazy(() => import("./pages-Services/ComputerVisionNLP"));
-const ComputerVision = lazy(() => import("./pages-Services/ComputerVisionNLP"));
+const DataScienceIntelligence = lazy(() => import("./pages-Services/DataScienceIntelligence"));
 const AINativeMVP = lazy(() => import("./pages-Services/AINativeMVP"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 const WebDevelopment = lazy(() => import("./pages-Services/WebMobileDevelopment"));
 const UIUXDesign = lazy(() => import("./pages-Services/UIUXProductDesign"));
-const DevOps = lazy(() => import("./pages-Services/CloudDevOps"));
+const CloudInfrastructure = lazy(() => import("./pages-Services/CloudInfrastructure"));
 const SoftwareModernization = lazy(() => import("./pages-Services/SoftwareModernization"));
 const CustomSoftware = lazy(() => import("./pages-Services/CustomSoftware"));
 const AgenticAI = lazy(() => import("./pages-Services/AgenticAI"));
@@ -280,15 +279,18 @@ const AppContent = () => {
 
           {/* Services */}
           <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
-          <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
-          <Route path="/computer-vision" element={<ComputerVision />} />
+          <Route path="/data-science-intelligence" element={<DataScienceIntelligence />} />
+          <Route path="/natural-language-processing" element={<Navigate to="/data-science-intelligence" replace />} />
+          <Route path="/computer-vision" element={<Navigate to="/data-science-intelligence" replace />} />
+          <Route path="/predictive-modelling" element={<Navigate to="/data-science-intelligence" replace />} />
           <Route path="/ai-native-mvp" element={<AINativeMVP />} />
           <Route path="/machine-learning" element={<Navigate to="/ai-native-mvp" replace />} />
           <Route path="/ai-development" element={<AIDevelopment />} />
           <Route path="/ai-automation" element={<AIAutomation />} />
           <Route path="/web-development" element={<WebDevelopment />} />
           <Route path="/ui-ux-design" element={<UIUXDesign />} />
-          <Route path="/devops" element={<DevOps />} />
+          <Route path="/cloud-infrastructure" element={<CloudInfrastructure />} />
+          <Route path="/devops" element={<Navigate to="/cloud-infrastructure" replace />} />
           <Route path="/software-modernization" element={<SoftwareModernization />} />
           <Route path="/custom-software-development" element={<CustomSoftware />} />
           <Route path="/agentic-ai" element={<AgenticAI />} />

@@ -97,7 +97,7 @@ The route table is defined in `src/App.tsx`. Route families include:
 
 - `/` — homepage.
 - `/healthcare`, `/fintech`, `/education`, `/e-commerce`, `/food-and-groceries`, `/travel-and-tourism`, `/insurance`, `/on-demand` — industry pages.
-- `/ai-chatbot-development`, `/natural-language-processing`, `/computer-vision`, `/ai-native-mvp`, `/ai-development`, `/ai-automation`, `/web-development`, `/ui-ux-design`, `/devops`, `/software-modernization`, `/custom-software-development`, `/agentic-ai`, `/ai-audit` — service pages. `/machine-learning` redirects to `/ai-native-mvp`.
+- `/ai-chatbot-development`, `/data-science-intelligence`, `/ai-native-mvp`, `/ai-development`, `/ai-automation`, `/web-development`, `/ui-ux-design`, `/cloud-infrastructure`, `/software-modernization`, `/custom-software-development`, `/agentic-ai`, `/ai-audit` — service pages. `/devops` redirects to `/cloud-infrastructure`; `/natural-language-processing`, `/computer-vision`, and `/predictive-modelling` redirect to `/data-science-intelligence`; `/machine-learning` redirects to `/ai-native-mvp`.
 - `/portfolio` and individual `/portfolio/...` case studies — portfolio.
 - `/blogs` and `/blog-admin` — public blog and administration.
 - `/about`, `/careers`, `/contact`, `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy` — company, inquiry, and policy pages.

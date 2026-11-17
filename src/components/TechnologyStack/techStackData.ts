@@ -29,9 +29,9 @@ export const TECH_CATEGORIES: TechCategory[] = [
   { id: 'automation',       label: 'Low-Code & Automation',    shortLabel: 'Automation'     },
   { id: 'database',         label: 'Database & Data Systems',  shortLabel: 'Database'       },
   { id: 'vector-knowledge', label: 'Vector & Knowledge',       shortLabel: 'Vector DB'      },
-  { id: 'cloud-devops',     label: 'Cloud & DevOps',           shortLabel: 'Cloud'          },
+  { id: 'cloud-devops',     label: 'Cloud Infrastructure',     shortLabel: 'Cloud'          },
   { id: 'mobile',           label: 'Mobile',                   shortLabel: 'Mobile'         },
-  { id: 'computer-vision',  label: 'CV, NLP & Speech',         shortLabel: 'CV & NLP'       },
+  { id: 'computer-vision',  label: 'Data Science & Intelligence', shortLabel: 'Data Science' },
   { id: 'data-engineering', label: 'Data Engineering',         shortLabel: 'Data Eng.'      },
   { id: 'apis',             label: 'APIs & Integrations',      shortLabel: 'APIs'           },
   { id: 'testing',          label: 'Testing & QA',             shortLabel: 'Testing'        },
@@ -173,7 +173,7 @@ export const ALL_TECHNOLOGIES: Technology[] = [
   { id: 'embeddings',      name: 'Embeddings',          categoryId: 'vector-knowledge', label: 'AI Primitive',   iconType: 'lucide', iconKey: 'Binary',      iconColor: '#B6FF00' },
   { id: 'enterprise-search',name:'Enterprise Search',   categoryId: 'vector-knowledge', label: 'Search System',  iconType: 'lucide', iconKey: 'Globe',       iconColor: '#B6FF00' },
 
-  // ── Cloud & DevOps ────────────────────────────────────────────────────────
+  // ── Cloud Infrastructure ──────────────────────────────────────────────────
   { id: 'aws',             name: 'AWS',                 categoryId: 'cloud-devops', label: 'Cloud Provider',  iconType: 'logo',   iconKey: 'amazonaws',   iconColor: '#FF9900' },
   { id: 'azure',           name: 'Microsoft Azure',     categoryId: 'cloud-devops', label: 'Cloud Provider',  iconType: 'logo',   iconKey: 'microsoftazure',iconColor: '#0089D6' },
   { id: 'gcp',             name: 'Google Cloud',        categoryId: 'cloud-devops', label: 'Cloud Provider',  iconType: 'logo',   iconKey: 'googlecloud', iconColor: '#4285F4' },
@@ -319,13 +319,13 @@ export const APP_DEV_STACK_CATEGORIES   = ['mobile', 'backend', 'database', 'clo
 /** AI Automation page: Agentic AI + Automation + APIs + Database */
 export const AI_AUTOMATION_STACK_CATEGORIES = ['agentic-genai', 'automation', 'apis', 'database'];
 
-/** Computer Vision page: CV + AI/ML + Cloud */
+/** Data Science & Intelligence page: vision, language, AI/ML, and cloud */
 export const CV_STACK_CATEGORIES        = ['computer-vision', 'ai-ml', 'cloud-devops'];
 
 /** NLP & Speech page: NLP + Agentic AI + AI/ML */
 export const NLP_STACK_CATEGORIES       = ['nlp-speech', 'agentic-genai', 'ai-ml'];
 
-/** DevOps page: Cloud & DevOps + Back-End + Security + Testing */
+/** Cloud infrastructure page: cloud, back-end, security, and testing */
 export const DEVOPS_STACK_CATEGORIES    = ['cloud-devops', 'backend', 'security', 'testing'];
 
 /** Chatbot Development page: Agentic AI + NLP + APIs + Database */

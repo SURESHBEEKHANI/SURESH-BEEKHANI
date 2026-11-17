@@ -41,7 +41,8 @@ const TECH_STACK_OPTIONS = [
   { value: "agentic-ai",     label: "Agentic AI Systems" },
   { value: "web-development", label: "Full-Stack Web Development" },
   { value: "mobile-app-dev", label: "Mobile App Development" },
-  { value: "cloud-devops",   label: "Cloud & DevOps Infrastructure" },
+  { value: "cloud-devops",   label: "Cloud Infrastructure" },
+  { value: "data-science-intelligence", label: "Data Science & Intelligence" },
   { value: "data-analytics", label: "Big Data & Business Intelligence" },
   { value: "other",          label: "Other Technology Needs" }
 ];

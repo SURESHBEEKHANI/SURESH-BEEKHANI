@@ -202,21 +202,12 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     schemaType: 'Service',
   },
 
-  '/predictive-modelling': {
-    title: 'Predictive Modeling & Analytics | Velnix Solutions',
+  '/data-science-intelligence': {
+    title: 'Data Science & Intelligence Services | Velnix Solutions',
     description:
-      'Use predictive modeling and machine learning to identify patterns, forecast demand, anticipate business trends, and support better operational decisions.',
+      'Connect business data to clearer decisions with data engineering, analytics, business intelligence, predictive modeling, and AI-powered intelligence.',
     keywords:
-      'predictive modeling, predictive analytics, machine learning forecasting, business forecasting, data analytics, ML models',
-    schemaType: 'Service',
-  },
-
-  '/natural-language-processing': {
-    title: 'Natural Language Processing Services | Velnix Solutions',
-    description:
-      'Build NLP solutions for document processing, information extraction, semantic search, text classification, and language-driven business automation.',
-    keywords:
-      'natural language processing, NLP development, document AI, semantic search, text analytics, language AI',
+      'data science services, data intelligence, data engineering, predictive analytics, business intelligence, machine learning, document intelligence',
     schemaType: 'Service',
   },
 
@@ -226,15 +217,6 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
       'Validate your product opportunity and launch a focused AI-native MVP. Velnix helps turn product ideas into tested, user-ready AI products with practical architecture and clear next steps.',
     keywords:
       'AI-native MVP development, AI MVP development, AI product development, AI product prototyping, MVP strategy, AI startup product development',
-    schemaType: 'Service',
-  },
-
-  '/computer-vision': {
-    title: 'Computer Vision & Image AI Solutions | Velnix Solutions',
-    description:
-      'Build computer vision solutions for image recognition, object detection, visual inspection, OCR, video analysis, and automated quality control.',
-    keywords:
-      'computer vision development, image recognition, object detection, OCR, video AI, visual inspection',
     schemaType: 'Service',
   },
 
@@ -256,12 +238,12 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     schemaType: 'Service',
   },
 
-  '/devops': {
-    title: 'DevOps & Cloud Infrastructure Services | Velnix Solutions',
+  '/cloud-infrastructure': {
+    title: 'Cloud Infrastructure Services | Velnix Solutions',
     description:
-      'Improve software delivery with CI/CD automation, cloud infrastructure, deployment pipelines, monitoring, and scalable application operations.',
+      'Design, migrate, and operate cloud infrastructure with infrastructure as code, CI/CD, containers, observability, security, and recovery practices.',
     keywords:
-      'DevOps services, CI/CD automation, cloud infrastructure, Docker, Kubernetes, MLOps, software deployment',
+      'cloud infrastructure services, cloud architecture, cloud migration, infrastructure as code, CI/CD, DevOps, Docker, Kubernetes, observability',
     schemaType: 'Service',
   },
 

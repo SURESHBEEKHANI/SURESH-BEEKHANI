@@ -82,28 +82,14 @@
   </url>
 
   <url>
-    <loc>https://velnixsolutions.com/predictive-modelling</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://velnixsolutions.com/natural-language-processing</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://velnixsolutions.com/data-science-intelligence</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://velnixsolutions.com/ai-native-mvp</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://velnixsolutions.com/computer-vision</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -143,8 +129,8 @@
   </url>
 
   <url>
-    <loc>https://velnixsolutions.com/devops</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://velnixsolutions.com/cloud-infrastructure</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -217,7 +203,14 @@
     <priority>0.70</priority>
   </url>
 
-                                                                                                                                                                                                                                                <!-- GENERATED BLOG LINKS:START -->
+                                                                                                                                                                                                                                                        <!-- GENERATED BLOG LINKS:START -->
+  <url>
+    <loc>https://velnixsolutions.com/blogs?article=1ab63b62-5d56-4fb0-9f46-3f7b234372c0</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
   <url>
     <loc>https://velnixsolutions.com/blogs?article=99173409-84cb-4c98-b821-20824aa50ca8</loc>
     <lastmod>2026-09-20</lastmod>
@@ -255,9 +248,9 @@
 
   <url>
     <loc>https://velnixsolutions.com/blogs?article=2d92add5-c35f-4199-b725-fecc956e07cf</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.70</priority>
   </url>
   <!-- GENERATED BLOG LINKS:END -->
 </urlset>
