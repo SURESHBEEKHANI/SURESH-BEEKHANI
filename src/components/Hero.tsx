@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CalendarDays, Check, Clock3, Code2, MessageCircle } from 'lucide-react';
 import BackgroundAnimation from './BackgroundAnimation';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -26,6 +26,23 @@ const fadeUp = {
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const AGENTIC_CODE = [
+  'const request = await agent.read();',
+  'const result = await agent.route(request);',
+  'await result.sync();',
+  'return result.status;',
+].join('\n');
+const AGENTIC_CODE_TOKEN = /(\b(?:const|await|return)\b|\b(?:request|result|agent|approval)\b|\b(?:read|route|sync|status)\b|[=().;])/g;
+
+const renderAgenticCodeLine = (line: string) => line.split(AGENTIC_CODE_TOKEN).map((token, index) => {
+  let color = C.whiteAlpha(0.78);
+  if (/^(const|await|return)$/.test(token)) color = '#C792EA';
+  else if (/^(request|result|agent|approval)$/.test(token)) color = '#82AAFF';
+  else if (/^(read|route|sync|status)$/.test(token)) color = C.lime;
+  else if (/^[=().;]$/.test(token)) color = C.whiteAlpha(0.48);
+
+  return <span key={index} style={{ color }}>{token}</span>;
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // METRIC CHIP
@@ -145,6 +162,48 @@ const Hero = () => {
         @keyframes velnix-core-pulse {
           0%, 100% { opacity: .35; transform: scale(.92); }
           50% { opacity: .75; transform: scale(1); }
+        }
+        @keyframes workflow-status-pulse {
+          0%, 100% { opacity: .65; }
+          50% { opacity: 1; }
+        }
+        @keyframes workflow-card-enter {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes workflow-code-cursor {
+          0%, 48% { opacity: 1; }
+          49%, 100% { opacity: 0; }
+        }
+        @keyframes workflow-code-scan {
+          from { transform: translateY(0); opacity: 0; }
+          12%, 82% { opacity: .8; }
+          to { transform: translateY(46px); opacity: 0; }
+        }
+        .workflow-visual .workflow-live-dot {
+          animation: workflow-status-pulse 2.8s ease-in-out infinite;
+        }
+        .workflow-visual .workflow-chat {
+          animation: workflow-card-enter .7s ease-out both;
+        }
+        .workflow-visual .workflow-chat-reply {
+          animation-delay: .18s;
+        }
+        .workflow-visual .workflow-code-cursor {
+          animation: workflow-code-cursor .9s steps(1, end) infinite;
+        }
+        .workflow-visual .workflow-code-scan {
+          animation: workflow-code-scan 3.2s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .workflow-visual .workflow-live-dot,
+          .workflow-visual .workflow-chat,
+          .workflow-visual .workflow-code-cursor {
+            animation: none !important;
+          }
+          .workflow-visual .workflow-code-scan {
+            display: none;
+          }
         }
       `}</style>
 
@@ -386,51 +445,131 @@ export default Hero;
 // ─────────────────────────────────────────────────────────────────────────────
 // HERO SYSTEM VISUAL
 // ─────────────────────────────────────────────────────────────────────────────
-const HERO_IMAGES = [
-  { src: '/image/Hero-section-image/hero-page-image-1.avif', width: 1537, height: 1023 },
-  { src: '/image/Hero-section-image/hero-page-image-2.avif', width: 1537, height: 1023 },
-  { src: '/image/Hero-section-image/hero-page-image-3.avif', width: 1199, height: 1312 },
-];
-
 const HeroSystemVisual = () => {
-  const [imageIndex, setImageIndex] = useState(0);
   const shouldReduce = useReducedMotion();
+  const [visibleCodeLength, setVisibleCodeLength] = useState(0);
 
   useEffect(() => {
-    const imageRotation = window.setInterval(() => {
-      setImageIndex(index => (index + 1) % HERO_IMAGES.length);
-    }, 5000);
+    if (shouldReduce) return;
 
-    return () => window.clearInterval(imageRotation);
-  }, []);
+    let timer = 0;
+    let characterIndex = 0;
+    const streamNextCharacter = () => {
+      if (characterIndex <= AGENTIC_CODE.length) {
+        setVisibleCodeLength(++characterIndex);
+        timer = window.setTimeout(streamNextCharacter, 34);
+        return;
+      }
+
+      timer = window.setTimeout(() => {
+        characterIndex = 0;
+        setVisibleCodeLength(0);
+        timer = window.setTimeout(streamNextCharacter, 400);
+      }, 1200);
+    };
+
+    timer = window.setTimeout(streamNextCharacter, 350);
+    return () => window.clearTimeout(timer);
+  }, [shouldReduce]);
+
+  const visibleCode = shouldReduce ? AGENTIC_CODE : AGENTIC_CODE.slice(0, visibleCodeLength);
+  const visibleCodeLines = visibleCode.split('\n');
 
   return (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.96 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay: 0.22, duration: 0.8, ease }}
-    className="relative min-h-[390px] overflow-visible sm:min-h-[520px] lg:-translate-x-12 lg:-translate-y-6"
-    style={{
-      background: 'transparent',
-    }}
-    role="img"
-    aria-label="Agentic AI visual showing intelligent automation and business impact"
-  >
-    <div
-      className="absolute left-[16%] top-1/2 h-px w-[68%]"
-      style={{
-        background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)`,
-        animation: 'velnix-system-scan 4s ease-in-out infinite',
-      }}
-    />
-    <div className="absolute inset-1 overflow-hidden border sm:inset-3" style={{ borderColor: C.limeAlpha(0.42), boxShadow: `0 0 70px ${C.limeAlpha(0.12)}` }}>
-      <img src={HERO_IMAGES[imageIndex].src} alt="Velnix intelligent systems in action" width={HERO_IMAGES[imageIndex].width} height={HERO_IMAGES[imageIndex].height} fetchPriority="high" decoding="async" className="h-full w-full object-cover" style={{ opacity: 0.78, filter: 'saturate(0.72) contrast(1.04)', transform: 'scale(1.04)', transition: 'opacity 700ms ease-in-out' }} />
-      <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${C.black}b8 0%, ${C.black}26 42%, ${C.black}c2 100%), linear-gradient(0deg, ${C.greenAlpha(0.2)}, transparent 48%), linear-gradient(115deg, ${C.limeAlpha(0.14)}, transparent 38%)`, mixBlendMode: 'screen', opacity: 0.82 }} />
-      <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(90deg, transparent 10%, ${C.greenAlpha(0.12)} 50%, transparent 90%)`, mixBlendMode: 'color', opacity: 0.9 }} />
-      <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(${C.whiteAlpha(0.06)} 1px, transparent 1px), linear-gradient(90deg, ${C.whiteAlpha(0.06)} 1px, transparent 1px)`, backgroundSize: '44px 44px', opacity: 0.22 }} />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${C.lime}, transparent)`, boxShadow: `0 0 14px ${C.limeAlpha(0.75)}`, animation: 'velnix-image-scan 4.5s ease-in-out infinite' }} />
-    </div>
-  </motion.div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.22, duration: 0.8, ease }}
+      className="workflow-visual relative mx-auto flex min-h-[590px] w-full max-w-[610px] items-center justify-center overflow-hidden sm:min-h-[620px] lg:-translate-x-6 lg:-translate-y-4"
+      role="img"
+      aria-label="Workflow assistant handling a vendor request, routing it for approval, and tracking status"
+    >
+      <div className="pointer-events-none absolute bottom-0 left-[3%] top-0 w-px" style={{ background: `linear-gradient(transparent, ${C.whiteAlpha(0.12)} 12%, ${C.whiteAlpha(0.12)} 88%, transparent)` }} />
+
+      <div
+        className="relative w-[calc(100%-32px)] max-w-[516px] overflow-hidden rounded-[24px] border sm:w-[calc(100%-56px)]"
+        style={{
+          minHeight: 0,
+          borderColor: C.whiteAlpha(0.12),
+          background: 'linear-gradient(145deg, rgba(22,24,20,.96), rgba(7,9,8,.99) 72%)',
+          boxShadow: '0 28px 80px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.035)',
+        }}
+      >
+        <div className="flex h-[72px] items-center justify-between border-b px-5 sm:px-6" style={{ borderColor: C.whiteAlpha(0.08) }}>
+          <div className="flex min-w-0 items-center gap-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl" style={{ background: C.limeAlpha(0.12), color: C.lime }}>
+              <MessageCircle size={19} strokeWidth={2} />
+            </span>
+            <div className="min-w-0">
+              <div className="truncate text-[13px] font-bold text-white sm:text-sm">Agentic AI Assistant</div>
+              <div className="mt-0.5 text-[10px] text-white/50 sm:text-[11px]">Code &amp; workflow orchestration</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6 sm:pt-7">
+          <div className="workflow-chat mb-3 ml-auto w-[86%] rounded-2xl rounded-tr-md border px-4 py-3 text-[13px] leading-[1.45] text-white/85 sm:text-sm" style={{ borderColor: C.whiteAlpha(0.06), background: 'rgba(255,255,255,.065)' }}>
+            Can you process this new vendor request?
+          </div>
+
+          <div className="workflow-chat workflow-chat-reply mb-4 flex items-start gap-3">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center" style={{ background: C.lime, color: C.black }}>
+              <MessageCircle size={14} strokeWidth={2.2} />
+            </span>
+            <div className="w-[86%] rounded-2xl rounded-tl-md border px-4 py-3 text-[13px] leading-[1.45] text-white/80 sm:text-sm" style={{ borderColor: C.whiteAlpha(0.07), background: 'rgba(255,255,255,.045)' }}>
+              I’ve checked the request and sent it to the right approver.
+              <div className="mt-3 overflow-hidden rounded-lg border" style={{ borderColor: C.whiteAlpha(0.08), background: 'rgba(0,0,0,.28)' }}>
+                <div className="flex items-center gap-1.5 border-b px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-white/45" style={{ borderColor: C.whiteAlpha(0.07) }}>
+                  <Code2 size={10} color={C.lime} /> Agentic AI · writing code
+                </div>
+                <div className="relative overflow-hidden">
+                  <span className="workflow-code-scan pointer-events-none absolute left-0 right-0 top-1 z-10 h-px" style={{ background: `linear-gradient(90deg, transparent, ${C.limeAlpha(0.8)}, transparent)`, boxShadow: `0 0 8px ${C.limeAlpha(0.5)}` }} />
+                  <code className="block overflow-hidden px-2.5 py-2 font-mono text-[8px] leading-[1.65] text-white/65 sm:text-[9px]">
+                    {visibleCodeLines.map((line, lineIndex) => (
+                      <span key={lineIndex} className="block whitespace-nowrap">
+                        {renderAgenticCodeLine(line)}
+                        {lineIndex === visibleCodeLines.length - 1 && <span className="workflow-code-cursor ml-0.5" style={{ color: C.lime }}>▍</span>}
+                      </span>
+                    ))}
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="mb-4 pl-9 text-[10px] leading-relaxed text-white/45 sm:text-[11px]">
+            Approval status and connected systems stay in sync.
+          </p>
+
+          <div className="mb-4 flex flex-wrap gap-2 pl-9">
+            <span className="rounded-full border px-3 py-1.5 text-[9px] font-semibold sm:text-[10px]" style={{ borderColor: C.limeAlpha(0.25), background: C.limeAlpha(0.055), color: C.lime }}>Review request</span>
+            <span className="rounded-full border px-3 py-1.5 text-[9px] font-semibold sm:text-[10px]" style={{ borderColor: C.limeAlpha(0.25), background: C.limeAlpha(0.055), color: C.lime }}>View activity</span>
+          </div>
+
+          <div className="rounded-xl border p-4 sm:p-[17px]" style={{ borderColor: C.limeAlpha(0.24), background: 'linear-gradient(110deg, rgba(182,255,0,.065), rgba(182,255,0,.025))' }}>
+            <div className="mb-3 flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.12em]" style={{ color: C.lime }}>
+              <CalendarDays size={13} /> Approval status
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <div className="text-[13px] font-semibold text-white/90 sm:text-sm">Vendor request</div>
+                <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[9px] text-white/45 sm:text-[10px]">
+                  <Clock3 size={11} /> Sent to Finance · Activity tracked
+                </div>
+              </div>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: C.limeAlpha(0.12), color: C.lime }}>
+                <Check size={15} strokeWidth={2.5} />
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2 border-t pt-3 text-[9px] leading-relaxed text-white/40 sm:text-[10px]" style={{ borderColor: C.whiteAlpha(0.08) }}>
+            <Check size={13} className="shrink-0" color={C.lime} />
+            Exceptions stay visible and can be handed to a team member.
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

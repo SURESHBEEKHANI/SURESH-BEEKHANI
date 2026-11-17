@@ -220,12 +220,12 @@ const ROUTE_SEO: Record<string, Partial<SEOProps>> = {
     schemaType: 'Service',
   },
 
-  '/machine-learning': {
-    title: 'Machine Learning Development Services | Velnix Solutions',
+  '/ai-native-mvp': {
+    title: 'AI-Native MVP Development Services | Velnix Solutions',
     description:
-      'Develop and deploy machine learning models for prediction, classification, recommendation, forecasting, and data-driven business decisions.',
+      'Validate your product opportunity and launch a focused AI-native MVP. Velnix helps turn product ideas into tested, user-ready AI products with practical architecture and clear next steps.',
     keywords:
-      'machine learning services, ML development, machine learning models, deep learning, predictive analytics, model deployment',
+      'AI-native MVP development, AI MVP development, AI product development, AI product prototyping, MVP strategy, AI startup product development',
     schemaType: 'Service',
   },
 

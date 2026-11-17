@@ -21,7 +21,7 @@ Velnix Solutions designs and builds intelligent software systems, AI agents, aut
 - [Agentic AI](https://velnixsolutions.com/agentic-ai)
 - [AI Automation](https://velnixsolutions.com/ai-automation)
 - [AI Chatbot Development](https://velnixsolutions.com/ai-chatbot-development)
-- [Machine Learning](https://velnixsolutions.com/machine-learning)
+- [AI-Native MVP Development](https://velnixsolutions.com/ai-native-mvp)
 - [Natural Language Processing](https://velnixsolutions.com/natural-language-processing)
 - [Computer Vision](https://velnixsolutions.com/computer-vision)
 - [Predictive Modelling](https://velnixsolutions.com/predictive-modelling)

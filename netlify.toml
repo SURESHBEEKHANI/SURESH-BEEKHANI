@@ -8,6 +8,12 @@
   SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_ANON_KEY"
 
 [[redirects]]
+  from = "/machine-learning"
+  to = "/ai-native-mvp"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/rss.xml"
   to = "/.netlify/functions/rss"
   status = 200

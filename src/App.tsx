@@ -65,7 +65,7 @@ const OnDemand = lazy(() => import("./pages-Industries/OnDemand"));
 const AIChatbotDevelopment = lazy(() => import("./pages-Services/ChatbotDevelopment"));
 const NaturalLanguageProcessing = lazy(() => import("./pages-Services/ComputerVisionNLP"));
 const ComputerVision = lazy(() => import("./pages-Services/ComputerVisionNLP"));
-const MachineLearning = lazy(() => import("./pages-Services/MachineLearningData"));
+const AINativeMVP = lazy(() => import("./pages-Services/AINativeMVP"));
 const AIDevelopment = lazy(() => import("./pages-Services/AI-Development"));
 const AIAutomation = lazy(() => import("./pages-Services/ai-automation"));
 const WebDevelopment = lazy(() => import("./pages-Services/WebMobileDevelopment"));
@@ -282,7 +282,8 @@ const AppContent = () => {
           <Route path="/ai-chatbot-development" element={<AIChatbotDevelopment />} />
           <Route path="/natural-language-processing" element={<NaturalLanguageProcessing />} />
           <Route path="/computer-vision" element={<ComputerVision />} />
-          <Route path="/machine-learning" element={<MachineLearning />} />
+          <Route path="/ai-native-mvp" element={<AINativeMVP />} />
+          <Route path="/machine-learning" element={<Navigate to="/ai-native-mvp" replace />} />
           <Route path="/ai-development" element={<AIDevelopment />} />
           <Route path="/ai-automation" element={<AIAutomation />} />
           <Route path="/web-development" element={<WebDevelopment />} />

@@ -37,7 +37,7 @@ const NAV_COLS = [
       { label: 'Custom Software',       href: '/custom-software-development' },
       { label: 'AI Agents',             href: '/agentic-ai' },
       { label: 'Chatbot Development',   href: '/ai-chatbot-development' },
-      { label: 'Machine Learning',      href: '/machine-learning' },
+      { label: 'AI-Native MVP Development', href: '/ai-native-mvp' },
     ],
   },
   {
